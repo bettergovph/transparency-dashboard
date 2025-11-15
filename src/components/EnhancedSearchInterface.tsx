@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -19,6 +19,7 @@ const EnhancedSearchInterface: React.FC = () => {
   const [tableSortField, setTableSortField] = useState<keyof SearchDocument | null>(null)
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
   const [strictMatch, setStrictMatch] = useState(false)
+  const [showSearchGuide, setShowSearchGuide] = useState(false)
 
   const categories = [
     { value: 'all', label: 'All Categories', icon: FileText },
@@ -49,11 +50,11 @@ const EnhancedSearchInterface: React.FC = () => {
     setLoading(true)
     
     try {
-      // Wrap query in quotes for strict/exact match
-      const searchQuery = strictMatch ? `"${query}"` : query
+      // Parse advanced search syntax
+      const processedQuery = parseAdvancedQuery(query, strictMatch)
       
       const searchResults = await searchDocuments({
-        query: searchQuery,
+        query: processedQuery,
         filter: selectedCategory !== 'all' ? `business_category = "${selectedCategory}"` : undefined,
         sort: sortBy === 'date' ? ['award_date:desc'] : sortBy === 'amount' ? ['contract_amount:desc'] : undefined,
         limit: 1000 // Fetch more results for client-side pagination
@@ -68,6 +69,28 @@ const EnhancedSearchInterface: React.FC = () => {
     } finally {
       setLoading(false)
     }
+  }
+
+  // Parse advanced search query with field-specific searches and logical operators
+  const parseAdvancedQuery = (inputQuery: string, isStrict: boolean): string => {
+    let processedQuery = inputQuery.trim()
+    
+    // If strict match is enabled and no quotes already, wrap entire query
+    if (isStrict && !processedQuery.includes('"')) {
+      return `"${processedQuery}"`
+    }
+    
+    // Support for field-specific searches: awardee:query, organization:query
+    // Replace field-specific syntax with actual field names
+    processedQuery = processedQuery.replace(/awardee:([^\s]+|"[^"]+")/gi, 'awardee_name:$1')
+    processedQuery = processedQuery.replace(/organization:([^\s]+|"[^"]+")/gi, 'organization_name:$1')
+    processedQuery = processedQuery.replace(/contract:([^\s]+|"[^"]+")/gi, 'contract_no:$1')
+    processedQuery = processedQuery.replace(/reference:([^\s]+|"[^"]+")/gi, 'reference_id:$1')
+    processedQuery = processedQuery.replace(/title:([^\s]+|"[^"]+")/gi, 'award_title:$1')
+    processedQuery = processedQuery.replace(/category:([^\s]+|"[^"]+")/gi, 'business_category:$1')
+    processedQuery = processedQuery.replace(/status:([^\s]+|"[^"]+")/gi, 'award_status:$1')
+    
+    return processedQuery
   }
 
   const formatCurrency = (amount: number) => {
@@ -246,18 +269,107 @@ const EnhancedSearchInterface: React.FC = () => {
           </div>
 
           {/* Strict Match Checkbox */}
-          <div className="mb-6 flex items-center">
-            <input
-              type="checkbox"
-              id="strictMatch"
-              checked={strictMatch}
-              onChange={(e) => setStrictMatch(e.target.checked)}
-              className="w-4 h-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2 cursor-pointer"
-            />
-            <label htmlFor="strictMatch" className="ml-2 text-sm text-gray-700 cursor-pointer">
-              Strict matching (exact phrase search)
-            </label>
+          <div className="mb-6 flex items-center justify-between">
+            <div className="flex items-center">
+              <input
+                type="checkbox"
+                id="strictMatch"
+                checked={strictMatch}
+                onChange={(e) => setStrictMatch(e.target.checked)}
+                className="w-4 h-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2 cursor-pointer"
+              />
+              <label htmlFor="strictMatch" className="ml-2 text-sm text-gray-700 cursor-pointer">
+                Strict matching (exact phrase search)
+              </label>
+            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowSearchGuide(!showSearchGuide)}
+              className="text-blue-600 hover:text-blue-800"
+            >
+              <HelpCircle className="h-4 w-4 mr-2" />
+              Search Guide
+            </Button>
           </div>
+
+          {/* Search Guide Panel */}
+          {showSearchGuide && (
+            <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center">
+                  <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
+                  <h3 className="text-lg font-semibold text-blue-900">Advanced Search Guide</h3>
+                </div>
+                <button
+                  onClick={() => setShowSearchGuide(false)}
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              
+              <div className="space-y-4 text-sm">
+                <div>
+                  <h4 className="font-semibold text-blue-900 mb-2">🔍 Basic Search</h4>
+                  <ul className="space-y-1 text-gray-700 ml-4">
+                    <li>• Type any keyword to search across all fields</li>
+                    <li>• Example: <code className="bg-white px-2 py-0.5 rounded">construction materials</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-blue-900 mb-2">📝 Exact Phrase Search</h4>
+                  <ul className="space-y-1 text-gray-700 ml-4">
+                    <li>• Wrap text in quotes for exact matches</li>
+                    <li>• Example: <code className="bg-white px-2 py-0.5 rounded">"office supplies"</code></li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-blue-900 mb-2">🎯 Field-Specific Search</h4>
+                  <ul className="space-y-1 text-gray-700 ml-4">
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">awardee:CompanyName</code> - Search by awardee</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">organization:"Department of Health"</code> - Search by organization</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">contract:2024-001</code> - Search by contract number</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">reference:REF-12345</code> - Search by reference ID</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">title:"Road Construction"</code> - Search by award title</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">category:Construction</code> - Search by business category</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">status:Awarded</code> - Search by award status</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-blue-900 mb-2">🔗 Logical Operators</h4>
+                  <ul className="space-y-1 text-gray-700 ml-4">
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">construction AND materials</code> - Both terms must be present</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">computers OR laptops</code> - Either term can be present</li>
+                    <li>• <code className="bg-white px-2 py-0.5 rounded">awardee:"ABC Corp" AND status:Awarded</code> - Combine field search with operators</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-blue-900 mb-2">💡 Pro Tips</h4>
+                  <ul className="space-y-1 text-gray-700 ml-4">
+                    <li>• Use quotes around multi-word field values: <code className="bg-white px-2 py-0.5 rounded">awardee:"XYZ Corporation"</code></li>
+                    <li>• Combine multiple field searches: <code className="bg-white px-2 py-0.5 rounded">awardee:ABC organization:DOH</code></li>
+                    <li>• Enable "Strict matching" checkbox for even more precise results</li>
+                    <li>• Operators (AND, OR) must be in UPPERCASE</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white border border-blue-200 rounded p-3 mt-4">
+                  <h4 className="font-semibold text-blue-900 mb-2">Example Queries:</h4>
+                  <ul className="space-y-1 text-gray-600 text-xs ml-4">
+                    <li>• <code>awardee:"ABC Corporation" AND category:Construction</code></li>
+                    <li>• <code>organization:"Department of Education" OR organization:"Department of Health"</code></li>
+                    <li>• <code>"office furniture" AND status:Awarded</code></li>
+                    <li>• <code>contract:2024 AND awardee:ABC</code></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* View Controls */}
           <div className="flex items-center justify-between mb-4">
