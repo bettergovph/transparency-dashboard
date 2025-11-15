@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X } from 'lucide-react'
+import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { searchDocuments } from '@/lib/meilisearch'
 import type { SearchDocument } from '@/types/search'
+import SearchGuide from './SearchGuide'
 
 const EnhancedSearchInterface: React.FC = () => {
   const [query, setQuery] = useState('')
@@ -13,13 +14,13 @@ const EnhancedSearchInterface: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [sortBy, setSortBy] = useState<'date' | 'amount' | 'relevance'>('relevance')
-  const [viewMode, setViewMode] = useState<'card' | 'table'>('table')
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentPage, setCurrentPage] = useState(1)
   const [tableSortField, setTableSortField] = useState<keyof SearchDocument | null>(null)
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
   const [strictMatch, setStrictMatch] = useState(false)
   const [showSearchGuide, setShowSearchGuide] = useState(false)
+  const [debugInfo, setDebugInfo] = useState<{ query: string; filter?: string; sort?: string[]; limit?: number } | null>(null)
 
   const categories = [
     { value: 'all', label: 'All Categories', icon: FileText },
@@ -49,14 +50,24 @@ const EnhancedSearchInterface: React.FC = () => {
   const performSearch = async () => {
     setLoading(true)
     
+    // Parse the query to extract field-specific searches and build filters
+    const { searchQuery, filters } = parseSearchQuery(query, strictMatch, selectedCategory)
+    
+    const sortParam = sortBy === 'date' ? ['award_date:desc'] : sortBy === 'amount' ? ['contract_amount:desc'] : undefined
+    
+    // Set debug info BEFORE the search (so it persists even on error)
+    setDebugInfo({ 
+      query: searchQuery, 
+      filter: filters,
+      sort: sortParam,
+      limit: 1000
+    })
+    
     try {
-      // Parse advanced search syntax
-      const processedQuery = parseAdvancedQuery(query, strictMatch)
-      
       const searchResults = await searchDocuments({
-        query: processedQuery,
-        filter: selectedCategory !== 'all' ? `business_category = "${selectedCategory}"` : undefined,
-        sort: sortBy === 'date' ? ['award_date:desc'] : sortBy === 'amount' ? ['contract_amount:desc'] : undefined,
+        query: searchQuery,
+        filter: filters,
+        sort: sortParam,
         limit: 1000 // Fetch more results for client-side pagination
       })
       
@@ -66,31 +77,60 @@ const EnhancedSearchInterface: React.FC = () => {
     } catch (error) {
       console.error('Search error:', error)
       setResults([])
+      // Don't clear debugInfo on error - keep it visible for debugging
     } finally {
       setLoading(false)
     }
   }
 
-  // Parse advanced search query with field-specific searches and logical operators
-  const parseAdvancedQuery = (inputQuery: string, isStrict: boolean): string => {
-    let processedQuery = inputQuery.trim()
-    
-    // If strict match is enabled and no quotes already, wrap entire query
-    if (isStrict && !processedQuery.includes('"')) {
-      return `"${processedQuery}"`
+  // Parse search query and convert to MeiliSearch format
+  const parseSearchQuery = (inputQuery: string, isStrict: boolean, category: string) => {
+    let searchQuery = inputQuery.trim()
+    const filterParts: string[] = []
+
+    // Add category filter if selected
+    if (category !== 'all') {
+      filterParts.push(`business_category = "${category}"`)
     }
+
+    // Extract field-specific searches (e.g., awardee:"ABC Corp")
+    const fieldPatterns = [
+      { pattern: /awardee:(?:"([^"]+)"|([^\s]+))/gi, field: 'awardee_name' },
+      { pattern: /organization:(?:"([^"]+)"|([^\s]+))/gi, field: 'organization_name' },
+      { pattern: /contract:(?:"([^"]+)"|([^\s]+))/gi, field: 'contract_no' },
+      { pattern: /reference:(?:"([^"]+)"|([^\s]+))/gi, field: 'reference_id' },
+      { pattern: /title:(?:"([^"]+)"|([^\s]+))/gi, field: 'award_title' },
+      { pattern: /category:(?:"([^"]+)"|([^\s]+))/gi, field: 'business_category' },
+      { pattern: /status:(?:"([^"]+)"|([^\s]+))/gi, field: 'award_status' },
+    ]
+
+    fieldPatterns.forEach(({ pattern, field }) => {
+      const matches = [...searchQuery.matchAll(pattern)]
+      matches.forEach(match => {
+        const value = match[1] || match[2] // quoted or unquoted value
+        filterParts.push(`${field} = "${value}"`)
+        // Remove the field-specific part from the search query
+        searchQuery = searchQuery.replace(match[0], '').trim()
+      })
+    })
+
+    // Handle AND/OR operators in remaining query
+    // MeiliSearch doesn't support AND/OR in query, so we keep them in the search string
+    // The search engine will find documents containing those terms
+    // For proper AND/OR logic, users should use field-specific filters
     
-    // Support for field-specific searches: awardee:query, organization:query
-    // Replace field-specific syntax with actual field names
-    processedQuery = processedQuery.replace(/awardee:([^\s]+|"[^"]+")/gi, 'awardee_name:$1')
-    processedQuery = processedQuery.replace(/organization:([^\s]+|"[^"]+")/gi, 'organization_name:$1')
-    processedQuery = processedQuery.replace(/contract:([^\s]+|"[^"]+")/gi, 'contract_no:$1')
-    processedQuery = processedQuery.replace(/reference:([^\s]+|"[^"]+")/gi, 'reference_id:$1')
-    processedQuery = processedQuery.replace(/title:([^\s]+|"[^"]+")/gi, 'award_title:$1')
-    processedQuery = processedQuery.replace(/category:([^\s]+|"[^"]+")/gi, 'business_category:$1')
-    processedQuery = processedQuery.replace(/status:([^\s]+|"[^"]+")/gi, 'award_status:$1')
-    
-    return processedQuery
+    // Clean up the search query
+    searchQuery = searchQuery.replace(/\s+/g, ' ').trim()
+
+    // Apply strict matching if enabled and no field-specific searches
+    if (isStrict && searchQuery && !searchQuery.includes('"')) {
+      searchQuery = `"${searchQuery}"`
+    }
+
+    // Combine filters with AND logic
+    const finalFilter = filterParts.length > 0 ? filterParts.join(' AND ') : undefined
+
+    return { searchQuery, filters: finalFilter }
   }
 
   const formatCurrency = (amount: number) => {
@@ -146,10 +186,17 @@ const EnhancedSearchInterface: React.FC = () => {
   const endIndex = startIndex + resultsPerPage
   
   // Apply table sorting if active
-  const sortedResults = tableSortField && viewMode === 'table'
+  const sortedResults = tableSortField
     ? [...results].sort((a, b) => {
         const aValue = a[tableSortField]
         const bValue = b[tableSortField]
+        
+        // Special handling for contract_amount to ensure numeric sorting
+        if (tableSortField === 'contract_amount') {
+          const aNum = parseFloat(String(aValue || 0))
+          const bNum = parseFloat(String(bValue || 0))
+          return tableSortDirection === 'asc' ? aNum - bNum : bNum - aNum
+        }
         
         if (typeof aValue === 'number' && typeof bValue === 'number') {
           return tableSortDirection === 'asc' ? aValue - bValue : bValue - aValue
@@ -197,6 +244,55 @@ const EnhancedSearchInterface: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const downloadCSV = () => {
+    // Prepare CSV headers
+    const headers = [
+      'Reference ID',
+      'Contract No',
+      'Award Title',
+      'Awardee',
+      'Organization',
+      'Contract Amount',
+      'Award Date',
+      'Status',
+      'Business Category',
+      'Area of Delivery',
+      'Notice Title'
+    ]
+
+    // Prepare CSV rows
+    const rows = results.map(doc => [
+      doc.reference_id,
+      doc.contract_no,
+      `"${doc.award_title.replace(/"/g, '""')}"`, // Escape quotes
+      `"${doc.awardee_name.replace(/"/g, '""')}"`,
+      `"${doc.organization_name.replace(/"/g, '""')}"`,
+      doc.contract_amount,
+      doc.award_date,
+      doc.award_status,
+      doc.business_category,
+      doc.area_of_delivery,
+      doc.notice_title ? `"${doc.notice_title.replace(/"/g, '""')}"` : ''
+    ])
+
+    // Combine headers and rows
+    const csvContent = [
+      headers.join(','),
+      ...rows.map(row => row.join(','))
+    ].join('\n')
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    const url = URL.createObjectURL(blob)
+    link.setAttribute('href', url)
+    link.setAttribute('download', `philgeps-search-results-${new Date().toISOString().split('T')[0]}.csv`)
+    link.style.visibility = 'hidden'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   const getPageNumbers = () => {
     const pages: (number | string)[] = []
     const maxVisiblePages = 5
@@ -224,22 +320,36 @@ const EnhancedSearchInterface: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="max-w-screen min-h-screen bg-gradient-to-br from-gray-50 to-white">
       {/* Header Section */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold text-black mb-4 font-figtree">
-              {import.meta.env.VITE_APP_NAME || 'PHILGEPS Search'}
+        <div className="flex justify-between mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://bettergov.ph/logos/svg/BetterGov_Icon-Primary.svg" 
+              alt="BetterGov.ph Logo" 
+              className="h-8 w-8"
+            />
+            <h1 className="text-xl font-bold text-black font-figtree">
+              Philgeps Browser by BetterGov.ph
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-figtree">
-              {import.meta.env.VITE_APP_DESCRIPTION || 'Discover government procurement opportunities and awarded contracts'}
-            </p>
           </div>
+                      <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setShowSearchGuide(!showSearchGuide)}
+              className="text-blue-600 hover:text-blue-800"
+            >
+              <HelpCircle className="h-4 w-4 mr-2" />
+              How to search
+            </Button>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {/* Main Grid Layout */}
+      <div className="flex">
+        {/* Main Content Column */}
+        <div className={`transition-all duration-300 px-4 sm:px-6 lg:px-8 py-8 ${showSearchGuide ? 'w-3/4' : 'flex-1 mx-auto'}`}>
         {/* Search and Filters Section */}
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
           {/* Search Bar */}
@@ -270,110 +380,19 @@ const EnhancedSearchInterface: React.FC = () => {
 
           {/* Strict Match Checkbox */}
           <div className="mb-6 flex items-center justify-between">
-            <div className="flex items-center">
-              <input
-                type="checkbox"
-                id="strictMatch"
-                checked={strictMatch}
-                onChange={(e) => setStrictMatch(e.target.checked)}
-                className="w-4 h-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2 cursor-pointer"
-              />
-              <label htmlFor="strictMatch" className="ml-2 text-sm text-gray-700 cursor-pointer">
-                Strict matching (exact phrase search)
-              </label>
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setShowSearchGuide(!showSearchGuide)}
-              className="text-blue-600 hover:text-blue-800"
-            >
-              <HelpCircle className="h-4 w-4 mr-2" />
-              Search Guide
-            </Button>
-          </div>
-
-          {/* Search Guide Panel */}
-          {showSearchGuide && (
-            <div className="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center">
-                  <HelpCircle className="h-5 w-5 text-blue-600 mr-2" />
-                  <h3 className="text-lg font-semibold text-blue-900">Advanced Search Guide</h3>
-                </div>
-                <button
-                  onClick={() => setShowSearchGuide(false)}
-                  className="text-blue-600 hover:text-blue-800"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+            <div className="flex items-center gap-6">
+              <div className="flex items-center">
+                <input
+                  type="checkbox"
+                  id="strictMatch"
+                  checked={strictMatch}
+                  onChange={(e) => setStrictMatch(e.target.checked)}
+                  className="w-4 h-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2 cursor-pointer"
+                />
+                <label htmlFor="strictMatch" className="ml-2 text-sm text-gray-700 cursor-pointer">
+                  Strict matching (exact phrase search)
+                </label>
               </div>
-              
-              <div className="space-y-4 text-sm">
-                <div>
-                  <h4 className="font-semibold text-blue-900 mb-2">🔍 Basic Search</h4>
-                  <ul className="space-y-1 text-gray-700 ml-4">
-                    <li>• Type any keyword to search across all fields</li>
-                    <li>• Example: <code className="bg-white px-2 py-0.5 rounded">construction materials</code></li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-blue-900 mb-2">📝 Exact Phrase Search</h4>
-                  <ul className="space-y-1 text-gray-700 ml-4">
-                    <li>• Wrap text in quotes for exact matches</li>
-                    <li>• Example: <code className="bg-white px-2 py-0.5 rounded">"office supplies"</code></li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-blue-900 mb-2">🎯 Field-Specific Search</h4>
-                  <ul className="space-y-1 text-gray-700 ml-4">
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">awardee:CompanyName</code> - Search by awardee</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">organization:"Department of Health"</code> - Search by organization</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">contract:2024-001</code> - Search by contract number</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">reference:REF-12345</code> - Search by reference ID</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">title:"Road Construction"</code> - Search by award title</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">category:Construction</code> - Search by business category</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">status:Awarded</code> - Search by award status</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-blue-900 mb-2">🔗 Logical Operators</h4>
-                  <ul className="space-y-1 text-gray-700 ml-4">
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">construction AND materials</code> - Both terms must be present</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">computers OR laptops</code> - Either term can be present</li>
-                    <li>• <code className="bg-white px-2 py-0.5 rounded">awardee:"ABC Corp" AND status:Awarded</code> - Combine field search with operators</li>
-                  </ul>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-blue-900 mb-2">💡 Pro Tips</h4>
-                  <ul className="space-y-1 text-gray-700 ml-4">
-                    <li>• Use quotes around multi-word field values: <code className="bg-white px-2 py-0.5 rounded">awardee:"XYZ Corporation"</code></li>
-                    <li>• Combine multiple field searches: <code className="bg-white px-2 py-0.5 rounded">awardee:ABC organization:DOH</code></li>
-                    <li>• Enable "Strict matching" checkbox for even more precise results</li>
-                    <li>• Operators (AND, OR) must be in UPPERCASE</li>
-                  </ul>
-                </div>
-
-                <div className="bg-white border border-blue-200 rounded p-3 mt-4">
-                  <h4 className="font-semibold text-blue-900 mb-2">Example Queries:</h4>
-                  <ul className="space-y-1 text-gray-600 text-xs ml-4">
-                    <li>• <code>awardee:"ABC Corporation" AND category:Construction</code></li>
-                    <li>• <code>organization:"Department of Education" OR organization:"Department of Health"</code></li>
-                    <li>• <code>"office furniture" AND status:Awarded</code></li>
-                    <li>• <code>contract:2024 AND awardee:ABC</code></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* View Controls */}
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
                 <label className="text-sm font-medium text-gray-700">Results per page:</label>
                 <select
@@ -388,76 +407,57 @@ const EnhancedSearchInterface: React.FC = () => {
                 </select>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <Button
-                variant={viewMode === 'card' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setViewMode('card')}
-              >
-                <LayoutGrid className="h-4 w-4 mr-2" />
-                Card View
-              </Button>
-              <Button
-                variant={viewMode === 'table' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setViewMode('table')}
-              >
-                <LayoutList className="h-4 w-4 mr-2" />
-                Table View
-              </Button>
-            </div>
+
           </div>
+
+          {/* Debug Info */}
+          {debugInfo  && (
+            <div className="p-4 bg-gray-900 border border-gray-700 rounded-lg text-xs font-mono mb-6 text-white">
+              <div className="font-semibold text-green-400 mb-3">MeiliSearch Request:</div>
+              <div className="bg-gray-800 p-3 rounded overflow-x-auto">
+                <pre className="text-gray-300">{JSON.stringify({
+                  query: debugInfo.query,
+                  filter: debugInfo.filter,
+                  sort: debugInfo.sort,
+                  limit: debugInfo.limit
+                }, null, 2)}</pre>
+              </div>
+            </div>
+          )}
 
           {/* Filters Panel */}
           {showFilters && (
-            <div className="border-t border-gray-200 pt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="border-t border-gray-200 pt-6 mb-6">
+              <div className="flex items-center gap-4 flex-wrap">
                 {/* Category Filter */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Business Category
-                  </label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {categories.map((category) => {
-                      const Icon = category.icon
-                      return (
-                        <Button
-                          key={category.value}
-                          variant={selectedCategory === category.value ? "default" : "outline"}
-                          size="sm"
-                          onClick={() => setSelectedCategory(category.value)}
-                          className="justify-start"
-                        >
-                          <Icon className="h-4 w-4 mr-2" />
-                          {category.label}
-                        </Button>
-                      )
-                    })}
-                  </div>
+                <div className="flex items-center gap-2">
+                  <label className="text-sm font-medium text-gray-700">Category:</label>
+                  <select
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  >
+                    <option value="all">All Categories</option>
+                    {categories.slice(1).map((category) => (
+                      <option key={category.value} value={category.value}>
+                        {category.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Sort Options */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Sort By
-                  </label>
-                  <div className="space-y-2">
-                    {[
-                      { value: 'relevance', label: 'Relevance' },
-                      { value: 'date', label: 'Award Date' },
-                      { value: 'amount', label: 'Contract Amount' },
-                    ].map((option) => (
-                      <Button
-                        key={option.value}
-                        variant={sortBy === option.value ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setSortBy(option.value as any)}
-                        className="w-full justify-start"
-                      >
-                        {option.label}
-                      </Button>
-                    ))}
-                  </div>
+                <div className="flex items-center gap-2">
+                  <label className="text-sm font-medium text-gray-700">Sort by:</label>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value as any)}
+                    className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                  >
+                    <option value="relevance">Relevance</option>
+                    <option value="date">Award Date</option>
+                    <option value="amount">Contract Amount</option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -469,40 +469,34 @@ const EnhancedSearchInterface: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
               <CardContent className="p-6">
-                <div className="flex items-center">
-                  <FileText className="h-8 w-8 text-blue-600 mr-4" />
-                  <div>
-                    <p className="text-sm font-medium text-blue-600">Results Found</p>
-                    <p className="text-2xl font-bold text-blue-900">{results.length}</p>
-                  </div>
+                <div className="flex flex-col items-center text-center">
+                  <FileText className="h-8 w-8 text-blue-600 mb-2" />
+                  <p className="text-sm font-medium text-blue-600">Results Found</p>
+                  <p className="text-2xl font-bold text-blue-900">{results.length}</p>
                 </div>
               </CardContent>
             </Card>
             
             <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
               <CardContent className="p-6">
-                <div className="flex items-center">
-                  <DollarSign className="h-8 w-8 text-green-600 mr-4" />
-                  <div>
-                    <p className="text-sm font-medium text-green-600">Total Value</p>
-                    <p className="text-2xl font-bold text-green-900">
-                      {formatCurrency(totalContractAmount)}
-                    </p>
-                  </div>
+                <div className="flex flex-col items-center text-center">
+                  <DollarSign className="h-8 w-8 text-green-600 mb-2" />
+                  <p className="text-sm font-medium text-green-600">Total Value</p>
+                  <p className="text-2xl font-bold text-green-900">
+                    {formatCurrency(totalContractAmount)}
+                  </p>
                 </div>
               </CardContent>
             </Card>
             
             <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
               <CardContent className="p-6">
-                <div className="flex items-center">
-                  <Users className="h-8 w-8 text-purple-600 mr-4" />
-                  <div>
-                    <p className="text-sm font-medium text-purple-600">Unique Organizations</p>
-                    <p className="text-2xl font-bold text-purple-900">
-                      {new Set(results.map(r => r.organization_name)).size}
-                    </p>
-                  </div>
+                <div className="flex flex-col items-center text-center">
+                  <Users className="h-8 w-8 text-purple-600 mb-2" />
+                  <p className="text-sm font-medium text-purple-600">Unique Organizations</p>
+                  <p className="text-2xl font-bold text-purple-900">
+                    {new Set(results.map(r => r.organization_name)).size}
+                  </p>
                 </div>
               </CardContent>
             </Card>
@@ -524,118 +518,28 @@ const EnhancedSearchInterface: React.FC = () => {
               <h2 className="text-2xl font-bold text-black">
                 Search Results for "{query}"
               </h2>
-              <p className="text-gray-600">
-                {results.length} contracts found • Showing {startIndex + 1}-{Math.min(endIndex, results.length)}
-              </p>
+              <div className="flex items-center gap-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={downloadCSV}
+                  className="text-green-600 hover:text-green-800 border-green-600 hover:border-green-800"
+                >
+                  <Download className="h-4 w-4 mr-2" />
+                  Download CSV
+                </Button>
+                <p className="text-gray-600">
+                  {results.length} contracts found • Showing {startIndex + 1}-{Math.min(endIndex, results.length)}
+                </p>
+              </div>
             </div>
             
-            {viewMode === 'card' ? (
-              <div className="grid gap-6">
-                {paginatedResults.map((doc) => (
-                <Card key={doc.id} className="hover:shadow-xl transition-all duration-300 border-gray-200">
-                  <CardHeader className="pb-4">
-                    <div className="flex justify-between items-start">
-                      <div className="flex-1">
-                        <CardTitle className="text-xl mb-2 text-black font-figtree">
-                          {doc.award_title}
-                        </CardTitle>
-                        <CardDescription className="text-sm text-gray-600">
-                          <div className="flex flex-wrap gap-4 mt-2">
-                            <span className="flex items-center">
-                              <FileText className="h-4 w-4 mr-1" />
-                              {doc.reference_id}
-                            </span>
-                            <span className="flex items-center">
-                              <Building className="h-4 w-4 mr-1" />
-                              {doc.contract_no}
-                            </span>
-                            <span className="flex items-center">
-                              <Calendar className="h-4 w-4 mr-1" />
-                              {formatDate(doc.award_date)}
-                            </span>
-                          </div>
-                        </CardDescription>
-                      </div>
-                      <div className="text-right ml-6">
-                        <div className="text-3xl font-bold text-black font-figtree">
-                          {formatCurrency(doc.contract_amount)}
-                        </div>
-                        <div className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium mt-2 ${getStatusColor(doc.award_status)}`}>
-                          {doc.award_status}
-                        </div>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  
-                  <CardContent>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                      <div className="space-y-3">
-                        <div>
-                          <h4 className="font-semibold text-gray-700 flex items-center mb-1">
-                            <Users className="h-4 w-4 mr-2" />
-                            Awardee
-                          </h4>
-                          <button
-                            onClick={() => handleSearchByValue(doc.awardee_name)}
-                            className="text-blue-600 font-medium hover:text-blue-800 underline text-left transition-colors cursor-pointer"
-                          >
-                            {doc.awardee_name}
-                          </button>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-700 flex items-center mb-1">
-                            <Building className="h-4 w-4 mr-2" />
-                            Procuring Entity
-                          </h4>
-                          <button
-                            onClick={() => handleSearchByValue(doc.organization_name)}
-                            className="text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer"
-                          >
-                            {doc.organization_name}
-                          </button>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-3">
-                        <div>
-                          <h4 className="font-semibold text-gray-700 flex items-center mb-1">
-                            <MapPin className="h-4 w-4 mr-2" />
-                            Delivery Location
-                          </h4>
-                          <p className="text-black">{doc.area_of_delivery}</p>
-                        </div>
-                        <div>
-                          <h4 className="font-semibold text-gray-700 flex items-center mb-1">
-                            <FileText className="h-4 w-4 mr-2" />
-                            Business Category
-                          </h4>
-                          <p className="text-black">{doc.business_category}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="space-y-3">
-                        {doc.notice_title && doc.notice_title !== doc.award_title && (
-                          <div>
-                            <h4 className="font-semibold text-gray-700 flex items-center mb-1">
-                              <FileText className="h-4 w-4 mr-2" />
-                              Notice Title
-                            </h4>
-                            <p className="text-black text-sm italic">{doc.notice_title}</p>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-              </div>
-            ) : (
-              <div className="bg-white rounded-lg shadow overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th 
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th 
                           className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('reference_id')}
                         >
@@ -734,7 +638,6 @@ const EnhancedSearchInterface: React.FC = () => {
                   </table>
                 </div>
               </div>
-            )}
 
             {/* Pagination Controls */}
             {totalPages > 1 && (
@@ -845,8 +748,7 @@ const EnhancedSearchInterface: React.FC = () => {
                   Welcome to PHILGEPS Search
                 </h3>
                 <p className="text-gray-600 mb-6">
-                  Search through thousands of government procurement records. Find awarded contracts, 
-                  bidding opportunities, and procurement information by reference ID, company name, 
+                  Search through thousands of government procurement records. Find awarded contracts and procurement information by reference ID, company name, 
                   or any keyword.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
@@ -868,6 +770,14 @@ const EnhancedSearchInterface: React.FC = () => {
                 </div>
               </div>
             </div>
+          </div>
+        )}
+        </div>
+
+        {/* Search Guide Column */}
+        {showSearchGuide && (
+          <div className="w-1/4 flex-shrink-0">
+            <SearchGuide isOpen={showSearchGuide} onClose={() => setShowSearchGuide(false)} />
           </div>
         )}
       </div>
