@@ -13,9 +13,11 @@ const EnhancedSearchInterface: React.FC = () => {
   const [showFilters, setShowFilters] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [sortBy, setSortBy] = useState<'date' | 'amount' | 'relevance'>('relevance')
-  const [viewMode, setViewMode] = useState<'card' | 'table'>('card')
+  const [viewMode, setViewMode] = useState<'card' | 'table'>('table')
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentPage, setCurrentPage] = useState(1)
+  const [tableSortField, setTableSortField] = useState<keyof SearchDocument | null>(null)
+  const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
 
   const categories = [
     { value: 'all', label: 'All Categories', icon: FileText },
@@ -115,12 +117,56 @@ const EnhancedSearchInterface: React.FC = () => {
   const totalPages = Math.ceil(results.length / resultsPerPage)
   const startIndex = (currentPage - 1) * resultsPerPage
   const endIndex = startIndex + resultsPerPage
-  const paginatedResults = results.slice(startIndex, endIndex)
   
-  const totalContractAmount = results.reduce((sum, doc) => sum + doc.contract_amount, 0)
+  // Apply table sorting if active
+  const sortedResults = tableSortField && viewMode === 'table'
+    ? [...results].sort((a, b) => {
+        const aValue = a[tableSortField]
+        const bValue = b[tableSortField]
+        
+        if (typeof aValue === 'number' && typeof bValue === 'number') {
+          return tableSortDirection === 'asc' ? aValue - bValue : bValue - aValue
+        }
+        
+        const aString = String(aValue || '').toLowerCase()
+        const bString = String(bValue || '').toLowerCase()
+        
+        if (tableSortDirection === 'asc') {
+          return aString.localeCompare(bString)
+        } else {
+          return bString.localeCompare(aString)
+        }
+      })
+    : results
+  
+  const paginatedResults = sortedResults.slice(startIndex, endIndex)
+  
+  const totalContractAmount = results.reduce((sum, doc) => {
+    const amount = parseFloat(String(doc.contract_amount || 0))
+    return sum + (isNaN(amount) ? 0 : amount)
+  }, 0)
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleTableSort = (field: keyof SearchDocument) => {
+    if (tableSortField === field) {
+      setTableSortDirection(tableSortDirection === 'asc' ? 'desc' : 'asc')
+    } else {
+      setTableSortField(field)
+      setTableSortDirection('asc')
+    }
+  }
+
+  const getSortIcon = (field: keyof SearchDocument) => {
+    if (tableSortField !== field) return null
+    return tableSortDirection === 'asc' ? ' ↑' : ' ↓'
+  }
+
+  const handleSearchByValue = (value: string) => {
+    setQuery(value)
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -345,7 +391,7 @@ const EnhancedSearchInterface: React.FC = () => {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <h2 className="text-2xl font-bold text-black">
-                Search Results
+                Search Results for "{query}"
               </h2>
               <p className="text-gray-600">
                 {results.length} contracts found • Showing {startIndex + 1}-{Math.min(endIndex, results.length)}
@@ -398,14 +444,24 @@ const EnhancedSearchInterface: React.FC = () => {
                             <Users className="h-4 w-4 mr-2" />
                             Awardee
                           </h4>
-                          <p className="text-black font-medium">{doc.awardee_name}</p>
+                          <button
+                            onClick={() => handleSearchByValue(doc.awardee_name)}
+                            className="text-blue-600 font-medium hover:text-blue-800 underline text-left transition-colors cursor-pointer"
+                          >
+                            {doc.awardee_name}
+                          </button>
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-700 flex items-center mb-1">
                             <Building className="h-4 w-4 mr-2" />
                             Procuring Entity
                           </h4>
-                          <p className="text-black">{doc.organization_name}</p>
+                          <button
+                            onClick={() => handleSearchByValue(doc.organization_name)}
+                            className="text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer"
+                          >
+                            {doc.organization_name}
+                          </button>
                         </div>
                       </div>
                       
@@ -448,29 +504,53 @@ const EnhancedSearchInterface: React.FC = () => {
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Reference ID
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('reference_id')}
+                        >
+                          Reference ID{getSortIcon('reference_id')}
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Contract No
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('contract_no')}
+                        >
+                          Contract No{getSortIcon('contract_no')}
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Award Title
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('award_title')}
+                        >
+                          Award Title{getSortIcon('award_title')}
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Awardee
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('awardee_name')}
+                        >
+                          Awardee{getSortIcon('awardee_name')}
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Organization
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('organization_name')}
+                        >
+                          Organization{getSortIcon('organization_name')}
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Amount
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('contract_amount')}
+                        >
+                          Amount{getSortIcon('contract_amount')}
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Date
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('award_date')}
+                        >
+                          Date{getSortIcon('award_date')}
                         </th>
-                        <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          Status
+                        <th 
+                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('award_status')}
+                        >
+                          Status{getSortIcon('award_status')}
                         </th>
                       </tr>
                     </thead>
@@ -489,14 +569,22 @@ const EnhancedSearchInterface: React.FC = () => {
                             </div>
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-900 max-w-xs">
-                            <div className="truncate" title={doc.awardee_name}>
+                            <button
+                              onClick={() => handleSearchByValue(doc.awardee_name)}
+                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
+                              title={doc.awardee_name}
+                            >
                               {doc.awardee_name}
-                            </div>
+                            </button>
                           </td>
                           <td className="px-6 py-4 text-sm text-gray-900 max-w-xs">
-                            <div className="truncate" title={doc.organization_name}>
+                            <button
+                              onClick={() => handleSearchByValue(doc.organization_name)}
+                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
+                              title={doc.organization_name}
+                            >
                               {doc.organization_name}
-                            </div>
+                            </button>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                             {formatCurrency(doc.contract_amount)}
