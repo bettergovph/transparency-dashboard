@@ -53,7 +53,9 @@ const EnhancedSearchInterface: React.FC = () => {
         limit: 1000 // Fetch more results for client-side pagination
       })
       
-      setResults(searchResults.hits)
+      // Deduplicate results before setting state
+      const deduplicatedResults = deduplicateResults(searchResults.hits)
+      setResults(deduplicatedResults)
     } catch (error) {
       console.error('Search error:', error)
       setResults([])
@@ -77,6 +79,23 @@ const EnhancedSearchInterface: React.FC = () => {
       month: 'long',
       day: 'numeric'
     })
+  }
+
+  // Deduplicate results based on contract_amount, awardee_name, award_title, and contract_no
+  const deduplicateResults = (results: SearchDocument[]): SearchDocument[] => {
+    const seen = new Map<string, SearchDocument>()
+    
+    results.forEach(doc => {
+      // Create a unique key based on the duplicate conditions
+      const key = `${doc.contract_amount}_${doc.awardee_name}_${doc.award_title}_${doc.contract_no}`.toLowerCase()
+      
+      // Keep the first occurrence of each unique combination
+      if (!seen.has(key)) {
+        seen.set(key, doc)
+      }
+    })
+    
+    return Array.from(seen.values())
   }
 
   const getStatusColor = (status: string) => {
