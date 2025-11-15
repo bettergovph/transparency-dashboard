@@ -18,6 +18,7 @@ const EnhancedSearchInterface: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [tableSortField, setTableSortField] = useState<keyof SearchDocument | null>(null)
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
+  const [strictMatch, setStrictMatch] = useState(false)
 
   const categories = [
     { value: 'all', label: 'All Categories', icon: FileText },
@@ -38,7 +39,7 @@ const EnhancedSearchInterface: React.FC = () => {
     }, 300)
 
     return () => clearTimeout(delayDebounceFn)
-  }, [query, selectedCategory, sortBy])
+  }, [query, selectedCategory, sortBy, strictMatch])
 
   useEffect(() => {
     setCurrentPage(1)
@@ -48,8 +49,11 @@ const EnhancedSearchInterface: React.FC = () => {
     setLoading(true)
     
     try {
+      // Wrap query in quotes for strict/exact match
+      const searchQuery = strictMatch ? `"${query}"` : query
+      
       const searchResults = await searchDocuments({
-        query: query,
+        query: searchQuery,
         filter: selectedCategory !== 'all' ? `business_category = "${selectedCategory}"` : undefined,
         sort: sortBy === 'date' ? ['award_date:desc'] : sortBy === 'amount' ? ['contract_amount:desc'] : undefined,
         limit: 1000 // Fetch more results for client-side pagination
@@ -239,6 +243,20 @@ const EnhancedSearchInterface: React.FC = () => {
                 Filters
               </Button>
             </div>
+          </div>
+
+          {/* Strict Match Checkbox */}
+          <div className="mb-6 flex items-center">
+            <input
+              type="checkbox"
+              id="strictMatch"
+              checked={strictMatch}
+              onChange={(e) => setStrictMatch(e.target.checked)}
+              className="w-4 h-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2 cursor-pointer"
+            />
+            <label htmlFor="strictMatch" className="ml-2 text-sm text-gray-700 cursor-pointer">
+              Strict matching (exact phrase search)
+            </label>
           </div>
 
           {/* View Controls */}
