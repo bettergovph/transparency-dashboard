@@ -217,7 +217,7 @@ const EnhancedSearchInterface: React.FC = () => {
         <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
           {/* Search Bar */}
           <div className="relative mb-6">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
               <Search className="h-5 w-5 text-gray-400" />
             </div>
             <Input
@@ -225,7 +225,8 @@ const EnhancedSearchInterface: React.FC = () => {
               placeholder="Search by reference ID, contract number, company name, or any keyword..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-black focus:ring-black"
+              className="!pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-black focus:ring-black"
+              style={{ paddingLeft: '3rem' }}
             />
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
               <Button
