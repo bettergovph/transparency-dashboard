@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* Base styles */
+:root {
+  font-family: 'Figtree', system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light;
+  color: #000000;
+  background-color: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Custom utility classes */
+.font-figtree {
+  font-family: 'Figtree', system-ui, sans-serif;
+}
+
+/* Enhanced animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Enhanced button styles */
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none transform hover:scale-[1.02];
+}
+
+.btn-primary {
+  @apply bg-black text-white hover:bg-gray-800 shadow-lg hover:shadow-xl;
+}
+
+.btn-secondary {
+  @apply bg-white text-black border-2 border-black hover:bg-gray-50 shadow-md hover:shadow-lg;
+}
+
+.btn-outline {
+  @apply bg-white text-black border-2 border-gray-300 hover:border-black hover:bg-gray-50;
+}
+
+.btn-ghost {
+  @apply hover:bg-gray-100 text-gray-700;
+}
+
+/* Enhanced input styles */
+.input {
+  @apply flex h-12 w-full rounded-xl border-2 border-gray-200 bg-white px-4 py-3 text-base placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200 hover:border-gray-300;
+}
+
+/* Enhanced card styles */
+.card {
+  @apply rounded-2xl border border-gray-200 bg-white shadow-lg transition-all duration-300 hover:shadow-xl;
+}
+
+.card-header {
+  @apply flex flex-col space-y-1.5 p-6;
+}
+
+.card-content {
+  @apply p-6 pt-0;
+}
+
+.card-title {
+  @apply text-2xl font-bold leading-none tracking-tight text-black;
+}
+
+.card-description {
+  @apply text-sm text-gray-600 leading-relaxed;
+}
+
+/* Gradient backgrounds */
+.gradient-primary {
+  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+}
+
+/* Status badges */
+.status-badge {
+  @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold border transition-all duration-200;
+}
+
+.status-success {
+  @apply bg-green-50 text-green-800 border-green-200;
+}
+
+.status-warning {
+  @apply bg-yellow-50 text-yellow-800 border-yellow-200;
+}
+
+.status-error {
+  @apply bg-red-50 text-red-800 border-red-200;
+}
+
+.status-neutral {
+  @apply bg-gray-50 text-gray-800 border-gray-200;
+}
+
+/* Search enhancements */
+.search-container {
+  @apply relative;
+}
+
+.search-input {
+  @apply pl-12 pr-12 text-lg rounded-2xl border-2 focus:border-black focus:ring-black;
+}
+
+.search-icon {
+  @apply absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400;
+}
+
+.search-button {
+  @apply absolute right-2 top-1/2 transform -translate-y-1/2;
+}
+
+/* Loading animations */
+.loading-spinner {
+  @apply inline-block animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite];
+}
+
+.loading-dots {
+  @apply flex space-x-1;
+}
+
+.loading-dot {
+  @apply w-2 h-2 bg-black rounded-full animate-bounce;
+}
+
+.loading-dot:nth-child(1) {
+  animation-delay: -0.3s;
+}
+
+.loading-dot:nth-child(2) {
+  animation-delay: -0.15s;
+}
+
+/* Hover effects */
+.hover-lift {
+  @apply transition-transform duration-200 hover:-translate-y-1;
+}
+
+.hover-glow {
+  @apply transition-all duration-300 hover:shadow-2xl hover:shadow-black/10;
+}
+
+/* Typography enhancements */
+.text-gradient {
+  @apply bg-gradient-to-r from-black to-gray-600 bg-clip-text text-transparent;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
