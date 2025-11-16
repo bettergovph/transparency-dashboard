@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Search } from 'lucide-react'
 import Navigation from './Navigation'
 import { filterIndices } from '@/lib/meilisearch'
@@ -113,6 +114,15 @@ const ContractorsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>Contractors Directory - PhilGEPS Contract Browser</title>
+        <meta name="description" content={`Browse ${totalCount.toLocaleString()} government contractors and awardees. View contract counts and search by name or letter.`} />
+        <meta name="keywords" content="PhilGEPS contractors, government suppliers, awardees, Philippines procurement, contractor directory" />
+        <meta property="og:title" content="Contractors Directory - PhilGEPS" />
+        <meta property="og:description" content="Browse government contractors and awardees" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://philgeps.bettergov.ph/contractors" />
+      </Helmet>
       <Navigation />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download, BarChart3 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -503,6 +504,15 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
 
   return (
     <div className="max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden">
+      <Helmet>
+        <title>{filterValue ? `${filterValue} - PhilGEPS Contract Browser` : 'PhilGEPS Contract Browser - Search Government Procurement Records'}</title>
+        <meta name="description" content={filterValue ? `View all government contracts for ${filterValue}. Browse detailed procurement records, contract amounts, and award information from PhilGEPS.` : 'Search and browse Philippine government procurement records from PhilGEPS. Find contracts, awardees, organizations, and detailed procurement information.'} />
+        <meta name="keywords" content="PhilGEPS, government contracts, procurement, Philippines, contract search, awardees, bidding" />
+        <meta property="og:title" content={filterValue ? `${filterValue} - PhilGEPS Contract Browser` : 'PhilGEPS Contract Browser'} />
+        <meta property="og:description" content={filterValue ? `Government contracts for ${filterValue}` : 'Search Philippine government procurement records'} />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href={filterValue ? `https://philgeps.bettergov.ph/${filterType}s/${toSlug(filterValue)}` : 'https://philgeps.bettergov.ph/'} />
+      </Helmet>
       {/* Header Section */}
       <Navigation />
 

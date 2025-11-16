@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Search } from 'lucide-react'
 import Navigation from './Navigation'
 import { filterIndices } from '@/lib/meilisearch'
@@ -113,6 +114,15 @@ const OrganizationsListPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>Organizations Directory - PhilGEPS Contract Browser</title>
+        <meta name="description" content={`Browse ${totalCount.toLocaleString()} government organizations and agencies. Search procurement entities and view contract statistics.`} />
+        <meta name="keywords" content="PhilGEPS organizations, government agencies, procurement entities, Philippines government, organization directory" />
+        <meta property="og:title" content="Organizations Directory - PhilGEPS" />
+        <meta property="og:description" content="Browse government organizations and agencies" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://philgeps.bettergov.ph/organizations" />
+      </Helmet>
       <Navigation />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { Search } from 'lucide-react'
 import Navigation from './Navigation'
 import { filterIndices } from '@/lib/meilisearch'
@@ -113,6 +114,15 @@ const CategoriesListPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Helmet>
+        <title>Business Categories Directory - PhilGEPS Contract Browser</title>
+        <meta name="description" content={`Browse ${totalCount.toLocaleString()} business categories in government procurement. Search by category type and view related contracts.`} />
+        <meta name="keywords" content="PhilGEPS categories, business categories, procurement types, Philippines government contracts, category directory" />
+        <meta property="og:title" content="Business Categories Directory - PhilGEPS" />
+        <meta property="og:description" content="Browse government procurement business categories" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://philgeps.bettergov.ph/categories" />
+      </Helmet>
       <Navigation />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
