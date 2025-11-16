@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
-import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download, BarChart3 } from 'lucide-react'
+import { Search, Filter, Building, MapPin, Award, FileText, TrendingUp, ChevronLeft, ChevronRight, X, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -12,7 +12,7 @@ import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
 import Navigation from './Navigation'
 import { toSlug } from '@/lib/utils'
-import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 interface EnhancedSearchInterfaceProps {
   filterType?: 'awardee' | 'organization' | 'location' | 'category'
@@ -20,20 +20,19 @@ interface EnhancedSearchInterfaceProps {
 }
 
 const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filterType, filterValue }) => {
-  const navigate = useNavigate()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchDocument[]>([])
   const [loading, setLoading] = useState(false)
   const [showFilters, setShowFilters] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
-  const [sortBy, setSortBy] = useState<'date' | 'amount' | 'relevance'>('relevance')
+  const [sortBy,] = useState<'date' | 'amount' | 'relevance'>('relevance')
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentPage, setCurrentPage] = useState(1)
   const [tableSortField, setTableSortField] = useState<keyof SearchDocument | null>(null)
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
   const [strictMatch, setStrictMatch] = useState(false)
   const [showSearchGuide, setShowSearchGuide] = useState(false)
-  const [debugInfo, setDebugInfo] = useState<{ query: string; filter?: string; sort?: string[]; limit?: number } | null>(null)
+  const [, setDebugInfo] = useState<{ query: string; filter?: string; sort?: string[]; limit?: number } | null>(null)
 
   // Autocomplete filter states - now arrays for multi-select
   const [selectedAreas, setSelectedAreas] = useState<string[]>([])
@@ -69,15 +68,6 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
   const [areaLoading, setAreaLoading] = useState(false)
   const [awardeeLoading, setAwardeeLoading] = useState(false)
   const [organizationLoading, setOrganizationLoading] = useState(false)
-
-  const categories = [
-    { value: 'all', label: 'All Categories', icon: FileText },
-    { value: 'Construction', label: 'Construction', icon: Building },
-    { value: 'Information Technology', label: 'IT & Technology', icon: TrendingUp },
-    { value: 'Medical Equipment', label: 'Medical Equipment', icon: Award },
-    { value: 'Office Supplies', label: 'Office Supplies', icon: FileText },
-    { value: 'Automotive', label: 'Automotive', icon: MapPin },
-  ]
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -415,18 +405,6 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
     return tableSortDirection === 'asc' ? ' ↑' : ' ↓'
   }
 
-  const handleSearchByValue = (value: string, type: 'awardee' | 'organization') => {
-    // Convert value to slug using utility function
-    const slug = toSlug(value)
-
-    // Navigate to the appropriate page
-    if (type === 'awardee') {
-      navigate(`/awardees/${slug}`)
-    } else if (type === 'organization') {
-      navigate(`/organizations/${slug}`)
-    }
-  }
-
   const downloadCSV = () => {
     // Prepare CSV headers
     const headers = [
@@ -533,11 +511,11 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                   placeholder="Search by reference ID, contract number, company name, or any keyword..."
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="!pl-8 pr-2 py-1.5 text-xs border border-gray-300 rounded focus:border-black focus:ring-1 focus:ring-black"
+                  className="pl-8! pr-2 py-1.5 text-xs border border-gray-300 rounded focus:border-black focus:ring-1 focus:ring-black"
                   style={{ paddingLeft: '2rem' }}
                 />
               </div>
-              <label className="flex items-center cursor-pointer flex-shrink-0">
+              <label className="flex items-center cursor-pointer shrink-0">
                 <input
                   type="checkbox"
                   checked={strictMatch}
@@ -597,7 +575,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                 variant="ghost"
                 size="sm"
                 onClick={() => setShowFilters(!showFilters)}
-                className="hover:bg-gray-100 rounded text-[10px] h-6 px-2 flex-shrink-0"
+                className="hover:bg-gray-100 rounded text-[10px] h-6 px-2 shrink-0"
               >
                 <Filter className="h-2.5 w-2.5 mr-1" />
                 {showFilters ? 'Hide' : 'Advanced Filters'}
@@ -652,7 +630,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                         setSelectedAwardees([])
                         setSelectedOrganizations([])
                       }}
-                      className="text-red-600 hover:text-red-800 border-red-600 hover:border-red-800 text-[10px] px-2 h-6 flex-shrink-0"
+                      className="text-red-600 hover:text-red-800 border-red-600 hover:border-red-800 text-[10px] px-2 h-6 shrink-0"
                     >
                       <X className="h-2.5 w-2.5 mr-0.5" />
                       Clear
@@ -662,7 +640,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
               )}
 
               {/* Right side controls */}
-              <div className="flex items-center gap-2 ml-auto flex-shrink-0">
+              <div className="flex items-center gap-2 ml-auto shrink-0">
                 <select
                   value={resultsPerPage}
                   onChange={(e) => setResultsPerPage(Number(e.target.value))}
@@ -877,7 +855,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                               variant={currentPage === page ? 'default' : 'outline'}
                               size="sm"
                               onClick={() => handlePageChange(page as number)}
-                              className="rounded-none text-xs h-7 px-3 min-w-[32px]"
+                              className="rounded-none text-xs h-7 px-3 min-w-8"
                             >
                               {page}
                             </Button>
@@ -1072,7 +1050,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                               variant={currentPage === page ? 'default' : 'outline'}
                               size="sm"
                               onClick={() => handlePageChange(page as number)}
-                              className="rounded-none text-xs h-7 px-3 min-w-[32px]"
+                              className="rounded-none text-xs h-7 px-3 min-w-8"
                             >
                               {page}
                             </Button>
@@ -1120,10 +1098,10 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
           )}
 
           {/* Welcome State */}
-          {!query && !loading && (
+          {!query && !loading && results.length === 0 && (
             <div className="text-center py-16">
               <div className="max-w-2xl mx-auto">
-                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
+                <div className="bg-linear-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
                   <FileText className="h-16 w-16 text-blue-600 mx-auto mb-6" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
                     Welcome to PHILGEPS Search
@@ -1157,7 +1135,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
 
         {/* Search Guide Column */}
         {showSearchGuide && (
-          <div className="w-1/4 flex-shrink-0">
+          <div className="w-1/4 shrink-0">
             <SearchGuide isOpen={showSearchGuide} onClose={() => setShowSearchGuide(false)} />
           </div>
         )}
