@@ -93,44 +93,44 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         disabled={disabled}
-        className="w-full"
+        className="w-full text-[10px] py-1 px-2 h-4"
       />
 
       {/* Selected Tags - Below Input */}
-      {selectedValues.length > 0 && (
-        <div className="flex flex-wrap gap-1 mt-2">
+      {/* {selectedValues.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-1">
           {selectedValues.map((value) => (
             <div
               key={value}
-              className="inline-flex items-center gap-1 px-2 py-1 bg-blue-100 text-blue-800 rounded text-sm"
+              className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-blue-100 text-blue-800 rounded text-[10px]"
             >
-              <span className="truncate max-w-[200px]">{value}</span>
+              <span className="truncate max-w-[150px]">{value}</span>
               <button
                 type="button"
                 onClick={() => handleRemove(value)}
                 className="hover:bg-blue-200 rounded-full p-0.5"
               >
-                <X className="h-3 w-3" />
+                <X className="h-2 w-2" />
               </button>
             </div>
           ))}
         </div>
-      )}
+      )} */}
 
       {/* Dropdown */}
       {isOpen && (
         <div className="absolute z-50 mt-1 w-full rounded-md border border-gray-300 bg-white shadow-lg">
-          <div className="max-h-60 overflow-y-auto p-1">
+          <div className="max-h-48 overflow-y-auto p-1">
             {loading ? (
-              <div className="py-6 text-center text-sm text-gray-500">
+              <div className="py-4 text-center text-[10px] text-gray-500">
                 Loading...
               </div>
             ) : options.length === 0 ? (
-              <div className="py-6 text-center text-sm text-gray-500">
+              <div className="py-4 text-center text-[10px] text-gray-500">
                 No results found
               </div>
             ) : (
-              <div className="space-y-1">
+              <div className="space-y-0.5">
                 {options.map((option) => {
                   const isSelected = selectedValues.includes(option.value)
                   return (
@@ -138,14 +138,14 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
                       key={option.value}
                       onClick={() => handleSelect(option.value)}
                       className={`
-                        w-full flex items-center justify-between px-2 py-1.5 text-sm rounded
+                        w-full flex items-center justify-between px-2 py-1 text-[11px] rounded
                         hover:bg-gray-100 transition-colors
                         ${isSelected ? 'bg-blue-50' : ''}
                       `}
                     >
                       <span className="truncate">{option.label}</span>
                       {isSelected && (
-                        <Check className="h-4 w-4 text-blue-600 flex-shrink-0" />
+                        <Check className="h-3 w-3 text-blue-600 flex-shrink-0" />
                       )}
                     </button>
                   )

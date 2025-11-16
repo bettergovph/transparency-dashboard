@@ -383,7 +383,7 @@ const EnhancedSearchInterface: React.FC = () => {
   }
 
   return (
-    <div className="max-w-screen min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div className="max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden">
       {/* Header Section */}
       <div className="bg-white border-b border-gray-200">
         <div className="flex justify-between mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -412,169 +412,131 @@ const EnhancedSearchInterface: React.FC = () => {
       {/* Main Grid Layout */}
       <div className="flex">
         {/* Main Content Column */}
-        <div className={`transition-all duration-300 px-4 sm:px-6 lg:px-8 py-8 ${showSearchGuide ? 'w-3/4' : 'flex-1 mx-auto'}`}>
+        <div className={`transition-all duration-300 px-3 sm:px-4 lg:px-6 py-4 ${showSearchGuide ? 'w-3/4' : 'flex-1 mx-auto'} max-w-full`}>
           {/* Search and Filters Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
-            {/* Search Bar */}
-            <div className="relative mb-6">
-              <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none z-10">
-                <Search className="h-5 w-5 text-gray-400" />
+          <div className="bg-white rounded-lg shadow p-2 mb-3">
+            {/* Row 1: Search Bar + Strict Match */}
+            <div className="flex items-center gap-2 mb-2">
+              <div className="relative flex-1">
+                <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none z-10">
+                  <Search className="h-3 w-3 text-gray-400" />
+                </div>
+                <Input
+                  type="text"
+                  placeholder="Search by reference ID, contract number, company name, or any keyword..."
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  className="!pl-8 pr-2 py-1.5 text-xs border border-gray-300 rounded focus:border-black focus:ring-1 focus:ring-black"
+                  style={{ paddingLeft: '2rem' }}
+                />
               </div>
-              <Input
-                type="text"
-                placeholder="Search by reference ID, contract number, company name, or any keyword..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                className="!pl-12 pr-4 py-4 text-lg border-2 border-gray-200 rounded-xl focus:border-black focus:ring-black"
-                style={{ paddingLeft: '3rem' }}
-              />
-              <div className="absolute inset-y-0 right-0 pr-3 flex items-center">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowFilters(!showFilters)}
-                  className="hover:bg-gray-100 rounded-lg"
-                >
-                  <Filter className="h-4 w-4 mr-2" />
-                  Filters
-                </Button>
-              </div>
+              <label className="flex items-center cursor-pointer flex-shrink-0">
+                <input
+                  type="checkbox"
+                  checked={strictMatch}
+                  onChange={(e) => setStrictMatch(e.target.checked)}
+                  className="w-2.5 h-2.5 text-black border-gray-300 rounded focus:ring-1 focus:ring-black cursor-pointer"
+                />
+                <span className="ml-1 text-[10px] text-gray-700 whitespace-nowrap">Strict</span>
+              </label>
             </div>
 
-            {/* Strict Match Checkbox */}
-            <div className="mb-6 flex items-center justify-between">
-              <div className="flex items-center gap-6">
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="strictMatch"
-                    checked={strictMatch}
-                    onChange={(e) => setStrictMatch(e.target.checked)}
-                    className="w-4 h-4 text-black border-gray-300 rounded focus:ring-black focus:ring-2 cursor-pointer"
-                  />
-                  <label htmlFor="strictMatch" className="ml-2 text-sm text-gray-700 cursor-pointer">
-                    Strict matching (exact phrase search)
-                  </label>
-                </div>
-                <div className="flex items-center gap-2">
-                  <label className="text-sm font-medium text-gray-700">Results per page:</label>
-                  <select
-                    value={resultsPerPage}
-                    onChange={(e) => setResultsPerPage(Number(e.target.value))}
-                    className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
-                  >
-                    <option value={10}>10</option>
-                    <option value={20}>20</option>
-                    <option value={50}>50</option>
-                    <option value={100}>100</option>
-                  </select>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Debug Info */}
-            {debugInfo && (
-              <div className="p-4 bg-gray-900 border border-gray-700 rounded-lg text-xs font-mono mb-6 text-white">
-                <div className="font-semibold text-green-400 mb-3">MeiliSearch Request:</div>
-                <div className="bg-gray-800 p-3 rounded overflow-x-auto">
-                  <pre className="text-gray-300">{JSON.stringify({
-                    query: debugInfo.query,
-                    filter: debugInfo.filter,
-                    sort: debugInfo.sort,
-                    limit: debugInfo.limit
-                  }, null, 2)}</pre>
-                </div>
+            {/* Selected Filter Tags */}
+            {(selectedAreas.length > 0 || selectedAwardees.length > 0 || selectedOrganizations.length > 0) && (
+              <div className="flex flex-wrap gap-1 mb-2 px-1">
+                {selectedAreas.map((area) => (
+                  <div key={area} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-blue-100 text-blue-800 rounded text-[10px]">
+                    <span className="truncate max-w-[150px]">{area}</span>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedAreas(selectedAreas.filter(a => a !== area))}
+                      className="hover:bg-blue-200 rounded-full p-0.5"
+                    >
+                      <X className="h-2 w-2" />
+                    </button>
+                  </div>
+                ))}
+                {selectedAwardees.map((awardee) => (
+                  <div key={awardee} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-green-100 text-green-800 rounded text-[10px]">
+                    <span className="truncate max-w-[150px]">{awardee}</span>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedAwardees(selectedAwardees.filter(a => a !== awardee))}
+                      className="hover:bg-green-200 rounded-full p-0.5"
+                    >
+                      <X className="h-2 w-2" />
+                    </button>
+                  </div>
+                ))}
+                {selectedOrganizations.map((org) => (
+                  <div key={org} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-purple-100 text-purple-800 rounded text-[10px]">
+                    <span className="truncate max-w-[150px]">{org}</span>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedOrganizations(selectedOrganizations.filter(o => o !== org))}
+                      className="hover:bg-purple-200 rounded-full p-0.5"
+                    >
+                      <X className="h-2 w-2" />
+                    </button>
+                  </div>
+                ))}
               </div>
             )}
 
-            {/* Filters Panel */}
-            {showFilters && (
-              <div className="border-t border-gray-200 pt-6 mb-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
-                  {/* Area of Delivery Filter */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-700 mb-1 block">
-                      <MapPin className="inline h-4 w-4 mr-1" />
-                      Area of Delivery
-                    </label>
+            {/* Row 2: Filters + Controls */}
+            <div className="flex items-center gap-2">
+              {/* Filter Toggle */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowFilters(!showFilters)}
+                className="hover:bg-gray-100 rounded text-[10px] h-6 px-2 flex-shrink-0"
+              >
+                <Filter className="h-2.5 w-2.5 mr-1" />
+                {showFilters ? 'Hide' : 'Advanced Filters'}
+              </Button>
+
+              {/* Filters when expanded */}
+              {showFilters && (
+                <>
+                  {/* Area Filter */}
+                  <div className="flex-1 min-w-0">
                     <Autocomplete
                       options={areaOptions}
                       selectedValues={selectedAreas}
                       onChange={setSelectedAreas}
                       onSearchChange={handleAreaSearch}
-                      placeholder="Type to search areas..."
+                      placeholder="Area..."
                       loading={areaLoading}
                     />
                   </div>
 
                   {/* Awardee Filter */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-700 mb-1 block">
-                      <Users className="inline h-4 w-4 mr-1" />
-                      Awardee
-                    </label>
+                  <div className="flex-1 min-w-0">
                     <Autocomplete
                       options={awardeeOptions}
                       selectedValues={selectedAwardees}
                       onChange={setSelectedAwardees}
                       onSearchChange={handleAwardeeSearch}
-                      placeholder="Type to search awardees..."
+                      placeholder="Awardee..."
                       loading={awardeeLoading}
                     />
                   </div>
 
                   {/* Organization Filter */}
-                  <div>
-                    <label className="text-sm font-medium text-gray-700 mb-1 block">
-                      <Building className="inline h-4 w-4 mr-1" />
-                      Organization
-                    </label>
+                  <div className="flex-1 min-w-0">
                     <Autocomplete
                       options={organizationOptions}
                       selectedValues={selectedOrganizations}
                       onChange={setSelectedOrganizations}
                       onSearchChange={handleOrganizationSearch}
-                      placeholder="Type to search organizations..."
+                      placeholder="Organization..."
                       loading={organizationLoading}
                     />
                   </div>
-                </div>
-
-                <div className="flex items-center gap-4 flex-wrap">
-                  {/* Category Filter */}
-                  <div className="flex items-center gap-2">
-                    <label className="text-sm font-medium text-gray-700">Category:</label>
-                    <select
-                      value={selectedCategory}
-                      onChange={(e) => setSelectedCategory(e.target.value)}
-                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
-                    >
-                      <option value="all">All Categories</option>
-                      {categories.slice(1).map((category) => (
-                        <option key={category.value} value={category.value}>
-                          {category.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-
-                  {/* Sort Options */}
-                  <div className="flex items-center gap-2">
-                    <label className="text-sm font-medium text-gray-700">Sort by:</label>
-                    <select
-                      value={sortBy}
-                      onChange={(e) => setSortBy(e.target.value as any)}
-                      className="border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-black"
-                    >
-                      <option value="relevance">Relevance</option>
-                      <option value="date">Award Date</option>
-                      <option value="amount">Contract Amount</option>
-                    </select>
-                  </div>
 
                   {/* Clear Filters Button */}
-                  {(selectedAreas.length > 0 || selectedAwardees.length > 0 || selectedOrganizations.length > 0 || selectedCategory !== 'all') && (
+                  {(selectedAreas.length > 0 || selectedAwardees.length > 0 || selectedOrganizations.length > 0) && (
                     <Button
                       variant="outline"
                       size="sm"
@@ -582,138 +544,120 @@ const EnhancedSearchInterface: React.FC = () => {
                         setSelectedAreas([])
                         setSelectedAwardees([])
                         setSelectedOrganizations([])
-                        setSelectedCategory('all')
                       }}
-                      className="text-red-600 hover:text-red-800 border-red-600 hover:border-red-800"
+                      className="text-red-600 hover:text-red-800 border-red-600 hover:border-red-800 text-[10px] px-2 h-6 flex-shrink-0"
                     >
-                      <X className="h-4 w-4 mr-2" />
-                      Clear All Filters
+                      <X className="h-2.5 w-2.5 mr-0.5" />
+                      Clear
                     </Button>
                   )}
-                </div>
+                </>
+              )}
+
+              {/* Right side controls */}
+              <div className="flex items-center gap-2 ml-auto flex-shrink-0">
+                <select
+                  value={resultsPerPage}
+                  onChange={(e) => setResultsPerPage(Number(e.target.value))}
+                  className="border border-gray-300 rounded px-1.5 py-0.5 text-[10px] focus:outline-none focus:ring-1 focus:ring-black"
+                >
+                  <option value={10}>10</option>
+                  <option value={20}>20</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
               </div>
-            )}
-          </div>
-
-          {/* Stats Section */}
-          {query && (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <Card className="bg-gradient-to-r from-blue-50 to-blue-100 border-blue-200">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <FileText className="h-8 w-8 text-blue-600 mb-2" />
-                    <p className="text-sm font-medium text-blue-600">Results Found</p>
-                    <p className="text-2xl font-bold text-blue-900">{results.length}</p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-r from-green-50 to-green-100 border-green-200">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <DollarSign className="h-8 w-8 text-green-600 mb-2" />
-                    <p className="text-sm font-medium text-green-600">Total Value</p>
-                    <p className="text-2xl font-bold text-green-900">
-                      {formatCurrency(totalContractAmount)}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-r from-purple-50 to-purple-100 border-purple-200">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center">
-                    <Users className="h-8 w-8 text-purple-600 mb-2" />
-                    <p className="text-sm font-medium text-purple-600">Unique Organizations</p>
-                    <p className="text-2xl font-bold text-purple-900">
-                      {new Set(results.map(r => r.organization_name)).size}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
-          )}
+          </div>
 
           {/* Loading State */}
           {loading && (
-            <div className="text-center py-12">
-              <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-black mb-4"></div>
-              <p className="text-gray-600 text-lg">Searching through procurement records...</p>
+            <div className="text-center py-8">
+              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black mb-2"></div>
+              <p className="text-gray-600 text-sm">Searching...</p>
             </div>
           )}
 
           {/* Results */}
           {!loading && results.length > 0 && (
-            <div className="space-y-6">
+            <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <h2 className="text-2xl font-bold text-black">
-                  Search Results for "{query}"
-                </h2>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3">
+                  <h2 className="text-base font-semibold text-black">
+                    Results {query && `for "${query}"`}
+                  </h2>
+                  {/* Inline Stats */}
+                  <div className="flex items-center gap-2 text-[10px] text-gray-600 border-l border-gray-300 pl-3">
+                    <span><strong>{results.length}</strong> results</span>
+                    <span><strong>{formatCurrency(totalContractAmount)}</strong></span>
+                    <span><strong>{new Set(results.map(r => r.organization_name)).size}</strong> orgs</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={downloadCSV}
-                    className="text-green-600 hover:text-green-800 border-green-600 hover:border-green-800"
+                    className="text-green-600 hover:text-green-800 border-green-600 hover:border-green-800 text-xs h-7 px-2"
                   >
-                    <Download className="h-4 w-4 mr-2" />
-                    Download CSV
+                    <Download className="h-3 w-3 mr-1" />
+                    CSV
                   </Button>
-                  <p className="text-gray-600">
-                    {results.length} contracts found • Showing {startIndex + 1}-{Math.min(endIndex, results.length)}
+                  <p className="text-xs text-gray-600">
+                    Showing {startIndex + 1}-{Math.min(endIndex, results.length)} of {results.length}
                   </p>
                 </div>
               </div>
 
               <div className="bg-white rounded-lg shadow overflow-hidden">
                 <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200">
+                  <table className="min-w-full divide-y divide-gray-200 text-xs">
                     <thead className="bg-gray-50">
                       <tr>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('reference_id')}
                         >
-                          Reference ID{getSortIcon('reference_id')}
+                          Ref ID{getSortIcon('reference_id')}
                         </th>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('contract_no')}
                         >
-                          Contract No{getSortIcon('contract_no')}
+                          Contract{getSortIcon('contract_no')}
                         </th>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('award_title')}
                         >
-                          Award Title{getSortIcon('award_title')}
+                          Title{getSortIcon('award_title')}
                         </th>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('awardee_name')}
                         >
                           Awardee{getSortIcon('awardee_name')}
                         </th>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('organization_name')}
                         >
                           Organization{getSortIcon('organization_name')}
                         </th>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('contract_amount')}
                         >
                           Amount{getSortIcon('contract_amount')}
                         </th>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('award_date')}
                         >
                           Date{getSortIcon('award_date')}
                         </th>
                         <th
-                          className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('award_status')}
                         >
                           Status{getSortIcon('award_status')}
@@ -723,18 +667,18 @@ const EnhancedSearchInterface: React.FC = () => {
                     <tbody className="bg-white divide-y divide-gray-200">
                       {paginatedResults.map((doc) => (
                         <tr key={doc.id} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">
+                          <td className="px-3 py-2 whitespace-nowrap text-xs font-medium text-blue-600">
                             {doc.reference_id}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                          <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-900">
                             {doc.contract_no}
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-900 max-w-md">
+                          <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                             <div className="truncate" title={doc.award_title}>
                               {doc.award_title}
                             </div>
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-900 max-w-xs">
+                          <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                             <button
                               onClick={() => handleSearchByValue(doc.awardee_name)}
                               className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
@@ -743,7 +687,7 @@ const EnhancedSearchInterface: React.FC = () => {
                               {doc.awardee_name}
                             </button>
                           </td>
-                          <td className="px-6 py-4 text-sm text-gray-900 max-w-xs">
+                          <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                             <button
                               onClick={() => handleSearchByValue(doc.organization_name)}
                               className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
@@ -752,14 +696,14 @@ const EnhancedSearchInterface: React.FC = () => {
                               {doc.organization_name}
                             </button>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                          <td className="px-3 py-2 whitespace-nowrap text-xs font-semibold text-gray-900">
                             {formatCurrency(doc.contract_amount)}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                          <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-600">
                             {formatDate(doc.award_date)}
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(doc.award_status)}`}>
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium ${getStatusColor(doc.award_status)}`}>
                               {doc.award_status}
                             </span>
                           </td>
@@ -772,12 +716,13 @@ const EnhancedSearchInterface: React.FC = () => {
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
-                <div className="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 rounded-lg">
+                <div className="flex items-center justify-between border-t border-gray-200 bg-white px-3 py-2 rounded-lg">
                   <div className="flex flex-1 justify-between sm:hidden">
                     <Button
                       variant="outline"
                       onClick={() => handlePageChange(currentPage - 1)}
                       disabled={currentPage === 1}
+                      className="text-xs h-7"
                     >
                       Previous
                     </Button>
@@ -785,13 +730,14 @@ const EnhancedSearchInterface: React.FC = () => {
                       variant="outline"
                       onClick={() => handlePageChange(currentPage + 1)}
                       disabled={currentPage === totalPages}
+                      className="text-xs h-7"
                     >
                       Next
                     </Button>
                   </div>
                   <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
                     <div>
-                      <p className="text-sm text-gray-700">
+                      <p className="text-xs text-gray-700">
                         Showing <span className="font-medium">{startIndex + 1}</span> to{' '}
                         <span className="font-medium">{Math.min(endIndex, results.length)}</span> of{' '}
                         <span className="font-medium">{results.length}</span> results
@@ -804,15 +750,15 @@ const EnhancedSearchInterface: React.FC = () => {
                           size="sm"
                           onClick={() => handlePageChange(currentPage - 1)}
                           disabled={currentPage === 1}
-                          className="rounded-r-none"
+                          className="rounded-r-none text-xs h-7 px-2"
                         >
-                          <ChevronLeft className="h-4 w-4" />
+                          <ChevronLeft className="h-3 w-3" />
                         </Button>
                         {getPageNumbers().map((page, index) => (
                           page === '...' ? (
                             <span
                               key={`ellipsis-${index}`}
-                              className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300"
+                              className="relative inline-flex items-center px-3 py-1 text-xs font-semibold text-gray-700 ring-1 ring-inset ring-gray-300"
                             >
                               ...
                             </span>
@@ -822,7 +768,7 @@ const EnhancedSearchInterface: React.FC = () => {
                               variant={currentPage === page ? 'default' : 'outline'}
                               size="sm"
                               onClick={() => handlePageChange(page as number)}
-                              className="rounded-none"
+                              className="rounded-none text-xs h-7 px-2"
                             >
                               {page}
                             </Button>
@@ -833,9 +779,9 @@ const EnhancedSearchInterface: React.FC = () => {
                           size="sm"
                           onClick={() => handlePageChange(currentPage + 1)}
                           disabled={currentPage === totalPages}
-                          className="rounded-l-none"
+                          className="rounded-l-none text-xs h-7 px-2"
                         >
-                          <ChevronRight className="h-4 w-4" />
+                          <ChevronRight className="h-3 w-3" />
                         </Button>
                       </nav>
                     </div>
@@ -870,7 +816,7 @@ const EnhancedSearchInterface: React.FC = () => {
           )}
 
           {/* Welcome State */}
-          {!query && (
+          {!query && !loading && results.length === 0 && selectedAreas.length === 0 && selectedAwardees.length === 0 && selectedOrganizations.length === 0 && selectedCategory === 'all' && (
             <div className="text-center py-16">
               <div className="max-w-2xl mx-auto">
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
