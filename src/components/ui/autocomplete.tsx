@@ -76,10 +76,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const handleInputFocus = () => {
     setIsOpen(true)
-    // Trigger search immediately on focus if options are empty
-    if (options.length === 0 && !searchQuery.trim()) {
-      onSearchChange('')
-    }
+    // Don't trigger initial search - only search when user types
   }
 
   return (
