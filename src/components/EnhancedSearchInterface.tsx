@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -8,8 +9,15 @@ import type { AutocompleteOption } from '@/components/ui/autocomplete'
 import { searchDocuments, searchFilterOptions } from '@/lib/meilisearch'
 import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
+import { toSlug } from '@/lib/utils'
 
-const EnhancedSearchInterface: React.FC = () => {
+interface EnhancedSearchInterfaceProps {
+  filterType?: 'awardee' | 'organization' | 'location' | 'category'
+  filterValue?: string
+}
+
+const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filterType, filterValue }) => {
+  const navigate = useNavigate()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchDocument[]>([])
   const [loading, setLoading] = useState(false)
@@ -28,6 +36,26 @@ const EnhancedSearchInterface: React.FC = () => {
   const [selectedAreas, setSelectedAreas] = useState<string[]>([])
   const [selectedAwardees, setSelectedAwardees] = useState<string[]>([])
   const [selectedOrganizations, setSelectedOrganizations] = useState<string[]>([])
+
+  // Initialize filters based on props
+  useEffect(() => {
+    if (filterType && filterValue) {
+      switch (filterType) {
+        case 'awardee':
+          setSelectedAwardees([filterValue])
+          break
+        case 'organization':
+          setSelectedOrganizations([filterValue])
+          break
+        case 'location':
+          setSelectedAreas([filterValue])
+          break
+        case 'category':
+          setSelectedCategory(filterValue)
+          break
+      }
+    }
+  }, [filterType, filterValue])
 
   // Autocomplete options states
   const [areaOptions, setAreaOptions] = useState<AutocompleteOption[]>([])
@@ -302,9 +330,16 @@ const EnhancedSearchInterface: React.FC = () => {
     return tableSortDirection === 'asc' ? ' ↑' : ' ↓'
   }
 
-  const handleSearchByValue = (value: string) => {
-    setQuery(value)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+  const handleSearchByValue = (value: string, type: 'awardee' | 'organization') => {
+    // Convert value to slug using utility function
+    const slug = toSlug(value)
+
+    // Navigate to the appropriate page
+    if (type === 'awardee') {
+      navigate(`/awardees/${slug}`)
+    } else if (type === 'organization') {
+      navigate(`/organizations/${slug}`)
+    }
   }
 
   const downloadCSV = () => {
@@ -680,7 +715,7 @@ const EnhancedSearchInterface: React.FC = () => {
                           </td>
                           <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                             <button
-                              onClick={() => handleSearchByValue(doc.awardee_name)}
+                              onClick={() => handleSearchByValue(doc.awardee_name, 'awardee')}
                               className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
                               title={doc.awardee_name}
                             >
@@ -689,7 +724,7 @@ const EnhancedSearchInterface: React.FC = () => {
                           </td>
                           <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                             <button
-                              onClick={() => handleSearchByValue(doc.organization_name)}
+                              onClick={() => handleSearchByValue(doc.organization_name, 'organization')}
                               className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
                               title={doc.organization_name}
                             >
