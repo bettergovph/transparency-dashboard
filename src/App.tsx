@@ -4,19 +4,23 @@ import AwardeePage from './components/AwardeePage'
 import OrganizationPage from './components/OrganizationPage'
 import LocationPage from './components/LocationPage'
 import CategoryPage from './components/CategoryPage'
+import ContractorsPage from './components/ContractorsPage'
+import OrganizationsListPage from './components/OrganizationsListPage'
+import CategoriesListPage from './components/CategoriesListPage'
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-white">
-        <Routes>
-          <Route path="/" element={<EnhancedSearchInterface />} />
-          <Route path="/awardees/:slug" element={<AwardeePage />} />
-          <Route path="/organizations/:slug" element={<OrganizationPage />} />
-          <Route path="/locations/:slug" element={<LocationPage />} />
-          <Route path="/categories/:slug" element={<CategoryPage />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<EnhancedSearchInterface />} />
+        <Route path="/contractors" element={<ContractorsPage />} />
+        <Route path="/organizations" element={<OrganizationsListPage />} />
+        <Route path="/categories" element={<CategoriesListPage />} />
+        <Route path="/awardees/:slug" element={<AwardeePage />} />
+        <Route path="/organizations/:slug" element={<OrganizationPage />} />
+        <Route path="/locations/:slug" element={<LocationPage />} />
+        <Route path="/categories/:slug" element={<CategoryPage />} />
+      </Routes>
     </BrowserRouter>
   )
 }

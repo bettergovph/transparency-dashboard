@@ -9,6 +9,7 @@ import type { AutocompleteOption } from '@/components/ui/autocomplete'
 import { searchDocuments, searchFilterOptions } from '@/lib/meilisearch'
 import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
+import Navigation from './Navigation'
 import { toSlug } from '@/lib/utils'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
@@ -503,31 +504,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
   return (
     <div className="max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden">
       {/* Header Section */}
-      <div className="bg-white border-b border-gray-200">
-        <div className="flex justify-between mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center gap-3">
-            <img
-              src="https://bettergov.ph/logos/svg/BetterGov_Icon-Primary.svg"
-              alt="BetterGov.ph Logo"
-              className="h-8 w-8"
-            />
-            <Link to="/">
-              <h1 className="text-xl font-bold text-black font-figtree">
-                Philgeps Browser by BetterGov.ph
-              </h1>
-            </Link>
-          </div>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setShowSearchGuide(!showSearchGuide)}
-            className="text-blue-600 hover:text-blue-800"
-          >
-            <HelpCircle className="h-4 w-4 mr-2" />
-            How to search
-          </Button>
-        </div>
-      </div>
+      <Navigation />
 
       {/* Main Grid Layout */}
       <div className="flex">
