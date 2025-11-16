@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download, BarChart3 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -511,9 +511,11 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
               alt="BetterGov.ph Logo"
               className="h-8 w-8"
             />
-            <h1 className="text-xl font-bold text-black font-figtree">
-              Philgeps Browser by BetterGov.ph
-            </h1>
+            <Link to="/">
+              <h1 className="text-xl font-bold text-black font-figtree">
+                Philgeps Browser by BetterGov.ph
+              </h1>
+            </Link>
           </div>
           <Button
             variant="outline"
@@ -835,7 +837,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
           {/* Results */}
           {!loading && results.length > 0 && (
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3">
                   <h2 className="text-base font-semibold text-black">
                     Results {query && `for "${query}"`}
@@ -847,7 +849,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                     <span><strong>{new Set(results.map(r => r.organization_name)).size}</strong> orgs</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <Button
                     variant="outline"
                     size="sm"
@@ -857,9 +859,54 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                     <Download className="h-3 w-3 mr-1" />
                     CSV
                   </Button>
-                  <p className="text-xs text-gray-600">
-                    Showing {startIndex + 1}-{Math.min(endIndex, results.length)} of {results.length}
-                  </p>
+                  {/* Top Pagination */}
+                  {totalPages > 1 && (
+                    <div className="flex items-center gap-2">
+                      <p className="text-xs text-gray-600">
+                        Showing {startIndex + 1}-{Math.min(endIndex, results.length)} of {results.length}
+                      </p>
+                      <nav className="inline-flex rounded-md shadow-sm" aria-label="Pagination">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handlePageChange(currentPage - 1)}
+                          disabled={currentPage === 1}
+                          className="rounded-r-none text-xs h-7 px-2"
+                        >
+                          <ChevronLeft className="h-3 w-3" />
+                        </Button>
+                        {getPageNumbers().map((page, index) => (
+                          page === '...' ? (
+                            <span
+                              key={`ellipsis-top-${index}`}
+                              className="inline-flex items-center px-2 py-1 text-xs font-semibold text-gray-700 border border-gray-300 bg-white"
+                            >
+                              ...
+                            </span>
+                          ) : (
+                            <Button
+                              key={page}
+                              variant={currentPage === page ? 'default' : 'outline'}
+                              size="sm"
+                              onClick={() => handlePageChange(page as number)}
+                              className="rounded-none text-xs h-7 px-3 min-w-[32px]"
+                            >
+                              {page}
+                            </Button>
+                          )
+                        ))}
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handlePageChange(currentPage + 1)}
+                          disabled={currentPage === totalPages}
+                          className="rounded-l-none text-xs h-7 px-2"
+                        >
+                          <ChevronRight className="h-3 w-3" />
+                        </Button>
+                      </nav>
+                    </div>
+                  )}
                 </div>
               </div>
 
@@ -906,6 +953,12 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                         </th>
                         <th
                           className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                          onClick={() => handleTableSort('business_category')}
+                        >
+                          Category{getSortIcon('business_category')}
+                        </th>
+                        <th
+                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                           onClick={() => handleTableSort('award_date')}
                         >
                           Date{getSortIcon('award_date')}
@@ -933,25 +986,34 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                             </div>
                           </td>
                           <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
-                            <button
-                              onClick={() => handleSearchByValue(doc.awardee_name, 'awardee')}
-                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
+                            <Link
+                              to={`/awardees/${toSlug(doc.awardee_name)}`}
+                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
                               title={doc.awardee_name}
                             >
                               {doc.awardee_name}
-                            </button>
+                            </Link>
                           </td>
                           <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
-                            <button
-                              onClick={() => handleSearchByValue(doc.organization_name, 'organization')}
-                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer w-full"
+                            <Link
+                              to={`/organizations/${toSlug(doc.organization_name)}`}
+                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
                               title={doc.organization_name}
                             >
                               {doc.organization_name}
-                            </button>
+                            </Link>
                           </td>
                           <td className="px-3 py-2 whitespace-nowrap text-xs font-semibold text-gray-900">
                             {formatCurrency(doc.contract_amount)}
+                          </td>
+                          <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
+                            <Link
+                              to={`/categories/${toSlug(doc.business_category)}`}
+                              className="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer"
+                              title={doc.business_category}
+                            >
+                              {doc.business_category}
+                            </Link>
                           </td>
                           <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-600">
                             {formatDate(doc.award_date)}
@@ -998,7 +1060,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                       </p>
                     </div>
                     <div>
-                      <nav className="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+                      <nav className="inline-flex rounded-md shadow-sm" aria-label="Pagination">
                         <Button
                           variant="outline"
                           size="sm"
@@ -1011,8 +1073,8 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                         {getPageNumbers().map((page, index) => (
                           page === '...' ? (
                             <span
-                              key={`ellipsis-${index}`}
-                              className="relative inline-flex items-center px-3 py-1 text-xs font-semibold text-gray-700 ring-1 ring-inset ring-gray-300"
+                              key={`ellipsis-bottom-${index}`}
+                              className="inline-flex items-center px-2 py-1 text-xs font-semibold text-gray-700 border border-gray-300 bg-white"
                             >
                               ...
                             </span>
@@ -1022,7 +1084,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                               variant={currentPage === page ? 'default' : 'outline'}
                               size="sm"
                               onClick={() => handlePageChange(page as number)}
-                              className="rounded-none text-xs h-7 px-2"
+                              className="rounded-none text-xs h-7 px-3 min-w-[32px]"
                             >
                               {page}
                             </Button>
@@ -1070,7 +1132,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
           )}
 
           {/* Welcome State */}
-          {!query && !loading && results.length === 0 && selectedAreas.length === 0 && selectedAwardees.length === 0 && selectedOrganizations.length === 0 && selectedCategory === 'all' && (
+          {!query && !loading && (
             <div className="text-center py-16">
               <div className="max-w-2xl mx-auto">
                 <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
