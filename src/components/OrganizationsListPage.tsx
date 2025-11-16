@@ -58,14 +58,14 @@ const OrganizationsListPage = () => {
     setLoading(true)
     try {
       const index = filterIndices.organizations
-      
+
       // Build search query based on letter and search input
       let searchQuery = search
       if (!search && letter !== '0-9') {
         // If no search input, use the letter as prefix search
         searchQuery = letter
       }
-      
+
       const result = await index.search(searchQuery, {
         limit: 10000,
         attributesToRetrieve: ['organization_name'],
@@ -83,7 +83,7 @@ const OrganizationsListPage = () => {
           } else {
             matches = name.toUpperCase().startsWith(letter)
           }
-          
+
           if (matches) {
             counts[name] = (counts[name] || 0) + 1
           }

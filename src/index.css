@@ -64,7 +64,7 @@ body {
 
 /* Enhanced button styles */
 .btn {
-  @apply inline-flex items-center justify-center rounded-lg text-sm font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none transform hover:scale-[1.02];
+  @apply inline-flex items-center justify-center rounded-lg text-sm font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none transform hover:scale-[1.02];
 }
 
 .btn-primary {

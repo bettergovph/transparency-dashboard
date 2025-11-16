@@ -58,14 +58,14 @@ const CategoriesListPage = () => {
     setLoading(true)
     try {
       const index = filterIndices.business_categories
-      
+
       // Build search query based on letter and search input
       let searchQuery = search
       if (!search && letter !== '0-9') {
         // If no search input, use the letter as prefix search
         searchQuery = letter
       }
-      
+
       const result = await index.search(searchQuery, {
         limit: 10000,
         attributesToRetrieve: ['business_category'],
@@ -83,7 +83,7 @@ const CategoriesListPage = () => {
           } else {
             matches = name.toUpperCase().startsWith(letter)
           }
-          
+
           if (matches) {
             counts[name] = (counts[name] || 0) + 1
           }
@@ -138,10 +138,10 @@ const CategoriesListPage = () => {
                   onClick={() => setSelectedLetter(letter)}
                   disabled={count === 0}
                   className={`px-3 py-1 rounded text-sm font-medium transition-colors ${selectedLetter === letter
-                      ? 'bg-blue-600 text-white'
-                      : count === 0
-                        ? 'bg-gray-50 text-gray-300 cursor-not-allowed'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-600 text-white'
+                    : count === 0
+                      ? 'bg-gray-50 text-gray-300 cursor-not-allowed'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
                   {letter}
