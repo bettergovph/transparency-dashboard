@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download } from 'lucide-react'
+import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download, BarChart3 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -10,6 +10,7 @@ import { searchDocuments, searchFilterOptions } from '@/lib/meilisearch'
 import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
 import { toSlug } from '@/lib/utils'
+import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
 interface EnhancedSearchInterfaceProps {
   filterType?: 'awardee' | 'organization' | 'location' | 'category'
@@ -311,6 +312,88 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
     return sum + (isNaN(amount) ? 0 : amount)
   }, 0)
 
+  // Detailed statistics for detail pages
+  const detailedStats = useMemo(() => {
+    if (!filterType || !filterValue) return null
+
+    // Unique business categories
+    const uniqueCategories = new Set(results.map(doc => doc.business_category).filter(Boolean))
+
+    // Calculate annual totals
+    const yearlyData: Record<string, number> = {}
+    const monthlyData: Record<string, number> = {}
+
+    results.forEach(doc => {
+      const amount = parseFloat(String(doc.contract_amount || 0))
+      if (isNaN(amount)) return
+
+      const date = new Date(doc.award_date)
+      const year = date.getFullYear()
+      const monthKey = `${year}-${String(date.getMonth() + 1).padStart(2, '0')}`
+
+      yearlyData[year] = (yearlyData[year] || 0) + amount
+      monthlyData[monthKey] = (monthlyData[monthKey] || 0) + amount
+    })
+
+    // Format monthly data for chart
+    const monthlyChartData = Object.entries(monthlyData)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([month, amount]) => ({
+        month,
+        amount,
+        displayMonth: new Date(month + '-01').toLocaleDateString('en-US', { year: 'numeric', month: 'short' })
+      }))
+
+    // Calculate top partners
+    let topPartners: Array<{ name: string; amount: number; count: number }> = []
+    if (filterType === 'organization') {
+      // For organizations, show top awardees
+      const awardeeStats: Record<string, { amount: number; count: number }> = {}
+      results.forEach(doc => {
+        const amount = parseFloat(String(doc.contract_amount || 0))
+        if (isNaN(amount)) return
+        if (!awardeeStats[doc.awardee_name]) {
+          awardeeStats[doc.awardee_name] = { amount: 0, count: 0 }
+        }
+        awardeeStats[doc.awardee_name].amount += amount
+        awardeeStats[doc.awardee_name].count += 1
+      })
+      topPartners = Object.entries(awardeeStats)
+        .map(([name, stats]) => ({ name, ...stats }))
+        .sort((a, b) => b.amount - a.amount)
+        .slice(0, 10)
+    } else if (filterType === 'awardee') {
+      // For awardees, show top organizations
+      const orgStats: Record<string, { amount: number; count: number }> = {}
+      results.forEach(doc => {
+        const amount = parseFloat(String(doc.contract_amount || 0))
+        if (isNaN(amount)) return
+        if (!orgStats[doc.organization_name]) {
+          orgStats[doc.organization_name] = { amount: 0, count: 0 }
+        }
+        orgStats[doc.organization_name].amount += amount
+        orgStats[doc.organization_name].count += 1
+      })
+      topPartners = Object.entries(orgStats)
+        .map(([name, stats]) => ({ name, ...stats }))
+        .sort((a, b) => b.amount - a.amount)
+        .slice(0, 10)
+    }
+
+    const averageCost = results.length > 0 ? totalContractAmount / results.length : 0
+
+    return {
+      uniqueCategories: uniqueCategories.size,
+      annualCost: Object.values(yearlyData).reduce((sum, val) => sum + val, 0),
+      averageCost,
+      monthlyChartData,
+      topPartners,
+      yearlyData: Object.entries(yearlyData)
+        .sort(([a], [b]) => b.localeCompare(a))
+        .map(([year, amount]) => ({ year, amount }))
+    }
+  }, [results, filterType, filterValue, totalContractAmount])
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
     window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -605,11 +688,147 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
             </div>
           </div>
 
+          {/* Detail Page Title */}
+          {filterType && filterValue && (
+            <div className="">
+              <h1 className="text-2xl font-bold text-gray-900 mb-2">
+                {filterValue}
+              </h1>
+            </div>
+          )}
+
           {/* Loading State */}
           {loading && (
             <div className="text-center py-8">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black mb-2"></div>
               <p className="text-gray-600 text-sm">Searching...</p>
+            </div>
+          )}
+
+          {/* Detailed Stats for Detail Pages */}
+          {!loading && detailedStats && results.length > 0 && (
+            <div className="space-y-4 mb-6">
+              {/* Large Stat Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardDescription className="text-xs">Unique Categories</CardDescription>
+                    <CardTitle className="text-3xl font-bold">{detailedStats.uniqueCategories}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-xs text-gray-600">Business categories</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardDescription className="text-xs">Total Value</CardDescription>
+                    <CardTitle className="text-2xl font-bold">{formatCurrency(totalContractAmount)}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-xs text-gray-600">All contracts</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardDescription className="text-xs">Average Cost</CardDescription>
+                    <CardTitle className="text-2xl font-bold">{formatCurrency(detailedStats.averageCost)}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-xs text-gray-600">Per contract</p>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader className="pb-2">
+                    <CardDescription className="text-xs">Total Contracts</CardDescription>
+                    <CardTitle className="text-3xl font-bold">{results.length}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-xs text-gray-600">Awarded contracts</p>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Charts Section */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* Monthly Cost Trend */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="text-lg">Monthly Cost Trend</CardTitle>
+                    <CardDescription className="text-xs">Contract amounts over time</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ResponsiveContainer width="100%" height={300}>
+                      <LineChart data={detailedStats.monthlyChartData}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis
+                          dataKey="displayMonth"
+                          tick={{ fontSize: 10 }}
+                          angle={-45}
+                          textAnchor="end"
+                          height={60}
+                        />
+                        <YAxis
+                          tick={{ fontSize: 10 }}
+                          tickFormatter={(value) => `₱${(value / 1000000).toFixed(1)}M`}
+                        />
+                        <Tooltip
+                          formatter={(value: number) => formatCurrency(value)}
+                          contentStyle={{ fontSize: '12px' }}
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="amount"
+                          stroke="#3b82f6"
+                          strokeWidth={2}
+                          dot={{ r: 3 }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
+
+                {/* Top Partners */}
+                {detailedStats.topPartners.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">
+                        Top 10 {filterType === 'organization' ? 'Awardees' : 'Organizations'}
+                      </CardTitle>
+                      <CardDescription className="text-xs">By total contract value</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ResponsiveContainer width="100%" height={300}>
+                        <BarChart
+                          data={detailedStats.topPartners}
+                          layout="vertical"
+                          margin={{ left: 10, right: 10 }}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis
+                            type="number"
+                            tick={{ fontSize: 10 }}
+                            tickFormatter={(value) => `₱${(value / 1000000).toFixed(1)}M`}
+                          />
+                          <YAxis
+                            type="category"
+                            dataKey="name"
+                            tick={{ fontSize: 9 }}
+                            width={150}
+                          />
+                          <Tooltip
+                            formatter={(value: number) => formatCurrency(value)}
+                            contentStyle={{ fontSize: '12px' }}
+                          />
+                          <Bar dataKey="amount" fill="#10b981" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </CardContent>
+                  </Card>
+                )}
+              </div>
             </div>
           )}
 
