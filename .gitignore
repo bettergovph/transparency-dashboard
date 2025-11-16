@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .env
-data/*.parquet
+**.parquet
 *.csv
 csv_batches/
-data/philgeps.tar.gz
+philgeps.tar.gz
 data/import.py
