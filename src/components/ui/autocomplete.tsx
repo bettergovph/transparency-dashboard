@@ -61,7 +61,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
       // Add to selected values
       onChange([...selectedValues, selectedValue])
     }
-    setSearchQuery('')
+    // Don't clear search query or close dropdown - keep it open for multi-select
     inputRef.current?.focus()
   }
 
@@ -76,13 +76,29 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
 
   const handleInputFocus = () => {
     setIsOpen(true)
+    // Trigger search immediately on focus if options are empty
+    if (options.length === 0 && !searchQuery.trim()) {
+      onSearchChange('')
+    }
   }
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
-      {/* Selected Tags */}
+      {/* Input Field */}
+      <Input
+        ref={inputRef}
+        type="text"
+        placeholder={placeholder}
+        value={searchQuery}
+        onChange={handleInputChange}
+        onFocus={handleInputFocus}
+        disabled={disabled}
+        className="w-full"
+      />
+
+      {/* Selected Tags - Below Input */}
       {selectedValues.length > 0 && (
-        <div className="flex flex-wrap gap-1 mb-2">
+        <div className="flex flex-wrap gap-1 mt-2">
           {selectedValues.map((value) => (
             <div
               key={value}
@@ -101,20 +117,8 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         </div>
       )}
 
-      {/* Input Field */}
-      <Input
-        ref={inputRef}
-        type="text"
-        placeholder={placeholder}
-        value={searchQuery}
-        onChange={handleInputChange}
-        onFocus={handleInputFocus}
-        disabled={disabled}
-        className="w-full"
-      />
-
       {/* Dropdown */}
-      {isOpen && searchQuery.trim() && (
+      {isOpen && (
         <div className="absolute z-50 mt-1 w-full rounded-md border border-gray-300 bg-white shadow-lg">
           <div className="max-h-60 overflow-y-auto p-1">
             {loading ? (

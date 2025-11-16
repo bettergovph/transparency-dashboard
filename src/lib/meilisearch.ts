@@ -90,7 +90,8 @@ export async function searchFilterOptions(
     const index = filterIndices[filterType]
     const field = fieldMap[filterType]
 
-    const result = await index.search(query, {
+    // Use empty string for query to get initial results
+    const result = await index.search(query || '', {
       limit,
       attributesToRetrieve: [field],
     })
