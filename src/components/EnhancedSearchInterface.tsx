@@ -814,19 +814,20 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
           {/* Results */}
           {!loading && results.length > 0 && (
             <div className="space-y-3">
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-3">
+              {/* Title and Stats Row - Mobile Responsive */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
                   <h2 className="text-base font-semibold text-black">
                     Results {query && `for "${query}"`}
                   </h2>
                   {/* Inline Stats */}
-                  <div className="flex items-center gap-2 text-[10px] text-gray-600 border-l border-gray-300 pl-3">
+                  <div className="flex items-center gap-2 text-[10px] text-gray-600 sm:border-l border-gray-300 sm:pl-3">
                     <span><strong>{results.length}</strong> results</span>
                     <span><strong>{formatCurrency(totalContractAmount)}</strong></span>
                     <span><strong>{new Set(results.map(r => r.organization_name)).size}</strong> orgs</span>
                   </div>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <Button
                     variant="outline"
                     size="sm"
@@ -834,11 +835,11 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                     className="text-green-600 hover:text-green-800 border-green-600 hover:border-green-800 text-xs h-7 px-2"
                   >
                     <Download className="h-3 w-3 mr-1" />
-                    CSV
+                    <span className="hidden sm:inline">CSV</span>
                   </Button>
-                  {/* Top Pagination */}
+                  {/* Top Pagination - Hidden on mobile, shown on tablet+ */}
                   {totalPages > 1 && (
-                    <div className="flex items-center gap-2">
+                    <div className="hidden md:flex items-center gap-2">
                       <p className="text-xs text-gray-600">
                         Showing {startIndex + 1}-{Math.min(endIndex, results.length)} of {results.length}
                       </p>
