@@ -20,6 +20,13 @@ const ContractorsPage = () => {
   }, [])
 
   useEffect(() => {
+    // Reset letter selection when user starts typing
+    if (searchQuery && selectedLetter !== 'A') {
+      setSelectedLetter('A')
+    }
+  }, [searchQuery])
+
+  useEffect(() => {
     loadContractors(selectedLetter, searchQuery)
   }, [selectedLetter, searchQuery])
 
@@ -59,12 +66,8 @@ const ContractorsPage = () => {
     try {
       const index = filterIndices.awardee
 
-      // Build search query based on letter and search input
-      let searchQuery = search
-      if (!search && letter !== '0-9') {
-        // If no search input, use the letter as prefix search
-        searchQuery = letter
-      }
+      // Use search query if provided, otherwise use letter as prefix
+      const searchQuery = search || letter
 
       const result = await index.search(searchQuery, {
         limit: 10000,
@@ -76,15 +79,20 @@ const ContractorsPage = () => {
       result.hits.forEach((hit: any) => {
         const name = hit.awardee_name
         if (name) {
-          // Apply letter filter
-          let matches = false
-          if (letter === '0-9') {
-            matches = !/^[A-Za-z]/.test(name)
-          } else {
-            matches = name.toUpperCase().startsWith(letter)
-          }
+          // Only apply letter filter if no search query
+          if (!search) {
+            let matches = false
+            if (letter === '0-9') {
+              matches = !/^[A-Za-z]/.test(name)
+            } else {
+              matches = name.toUpperCase().startsWith(letter)
+            }
 
-          if (matches) {
+            if (matches) {
+              counts[name] = (counts[name] || 0) + 1
+            }
+          } else {
+            // When searching, show all results from MeiliSearch
             counts[name] = (counts[name] || 0) + 1
           }
         }
