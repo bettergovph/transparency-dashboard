@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Search, Filter, Calendar, Building, MapPin, DollarSign, Award, FileText, Users, TrendingUp, LayoutGrid, LayoutList, ChevronLeft, ChevronRight, HelpCircle, X, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { searchDocuments } from '@/lib/meilisearch'
+import { Autocomplete } from '@/components/ui/autocomplete'
+import type { AutocompleteOption } from '@/components/ui/autocomplete'
+import { searchDocuments, searchFilterOptions } from '@/lib/meilisearch'
 import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
 
@@ -21,6 +23,21 @@ const EnhancedSearchInterface: React.FC = () => {
   const [strictMatch, setStrictMatch] = useState(false)
   const [showSearchGuide, setShowSearchGuide] = useState(false)
   const [debugInfo, setDebugInfo] = useState<{ query: string; filter?: string; sort?: string[]; limit?: number } | null>(null)
+  
+  // Autocomplete filter states - now arrays for multi-select
+  const [selectedAreas, setSelectedAreas] = useState<string[]>([])
+  const [selectedAwardees, setSelectedAwardees] = useState<string[]>([])
+  const [selectedOrganizations, setSelectedOrganizations] = useState<string[]>([])
+  
+  // Autocomplete options states
+  const [areaOptions, setAreaOptions] = useState<AutocompleteOption[]>([])
+  const [awardeeOptions, setAwardeeOptions] = useState<AutocompleteOption[]>([])
+  const [organizationOptions, setOrganizationOptions] = useState<AutocompleteOption[]>([])
+  
+  // Autocomplete loading states
+  const [areaLoading, setAreaLoading] = useState(false)
+  const [awardeeLoading, setAwardeeLoading] = useState(false)
+  const [organizationLoading, setOrganizationLoading] = useState(false)
 
   const categories = [
     { value: 'all', label: 'All Categories', icon: FileText },
@@ -41,11 +58,54 @@ const EnhancedSearchInterface: React.FC = () => {
     }, 300)
 
     return () => clearTimeout(delayDebounceFn)
-  }, [query, selectedCategory, sortBy, strictMatch])
+  }, [query, selectedCategory, sortBy, strictMatch, selectedAreas, selectedAwardees, selectedOrganizations])
 
   useEffect(() => {
     setCurrentPage(1)
   }, [query, selectedCategory, sortBy, resultsPerPage])
+
+  // Memoized autocomplete search handlers
+  const handleAreaSearch = useCallback(async (query: string) => {
+    if (!query.trim()) {
+      setAreaOptions([])
+      return
+    }
+    setAreaLoading(true)
+    try {
+      const options = await searchFilterOptions('area', query)
+      setAreaOptions(options)
+    } finally {
+      setAreaLoading(false)
+    }
+  }, [])
+
+  const handleAwardeeSearch = useCallback(async (query: string) => {
+    if (!query.trim()) {
+      setAwardeeOptions([])
+      return
+    }
+    setAwardeeLoading(true)
+    try {
+      const options = await searchFilterOptions('awardee', query)
+      setAwardeeOptions(options)
+    } finally {
+      setAwardeeLoading(false)
+    }
+  }, [])
+
+  const handleOrganizationSearch = useCallback(async (query: string) => {
+    if (!query.trim()) {
+      setOrganizationOptions([])
+      return
+    }
+    setOrganizationLoading(true)
+    try {
+      const options = await searchFilterOptions('organizations', query)
+      setOrganizationOptions(options)
+    } finally {
+      setOrganizationLoading(false)
+    }
+  }, [])
 
   const performSearch = async () => {
     setLoading(true)
@@ -91,6 +151,20 @@ const EnhancedSearchInterface: React.FC = () => {
     // Add category filter if selected
     if (category !== 'all') {
       filterParts.push(`business_category = "${category}"`)
+    }
+    
+    // Add autocomplete filters with OR logic for multiple selections
+    if (selectedAreas.length > 0) {
+      const areaFilters = selectedAreas.map(area => `area_of_delivery = "${area}"`).join(' OR ')
+      filterParts.push(`(${areaFilters})`)
+    }
+    if (selectedAwardees.length > 0) {
+      const awardeeFilters = selectedAwardees.map(awardee => `awardee_name = "${awardee}"`).join(' OR ')
+      filterParts.push(`(${awardeeFilters})`)
+    }
+    if (selectedOrganizations.length > 0) {
+      const orgFilters = selectedOrganizations.map(org => `organization_name = "${org}"`).join(' OR ')
+      filterParts.push(`(${orgFilters})`)
     }
 
     // Extract field-specific searches (e.g., awardee:"ABC Corp")
@@ -428,6 +502,56 @@ const EnhancedSearchInterface: React.FC = () => {
           {/* Filters Panel */}
           {showFilters && (
             <div className="border-t border-gray-200 pt-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                {/* Area of Delivery Filter */}
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-1 block">
+                    <MapPin className="inline h-4 w-4 mr-1" />
+                    Area of Delivery
+                  </label>
+                  <Autocomplete
+                    options={areaOptions}
+                    selectedValues={selectedAreas}
+                    onChange={setSelectedAreas}
+                    onSearchChange={handleAreaSearch}
+                    placeholder="Type to search areas..."
+                    loading={areaLoading}
+                  />
+                </div>
+
+                {/* Awardee Filter */}
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-1 block">
+                    <Users className="inline h-4 w-4 mr-1" />
+                    Awardee
+                  </label>
+                  <Autocomplete
+                    options={awardeeOptions}
+                    selectedValues={selectedAwardees}
+                    onChange={setSelectedAwardees}
+                    onSearchChange={handleAwardeeSearch}
+                    placeholder="Type to search awardees..."
+                    loading={awardeeLoading}
+                  />
+                </div>
+
+                {/* Organization Filter */}
+                <div>
+                  <label className="text-sm font-medium text-gray-700 mb-1 block">
+                    <Building className="inline h-4 w-4 mr-1" />
+                    Organization
+                  </label>
+                  <Autocomplete
+                    options={organizationOptions}
+                    selectedValues={selectedOrganizations}
+                    onChange={setSelectedOrganizations}
+                    onSearchChange={handleOrganizationSearch}
+                    placeholder="Type to search organizations..."
+                    loading={organizationLoading}
+                  />
+                </div>
+              </div>
+
               <div className="flex items-center gap-4 flex-wrap">
                 {/* Category Filter */}
                 <div className="flex items-center gap-2">
@@ -459,6 +583,24 @@ const EnhancedSearchInterface: React.FC = () => {
                     <option value="amount">Contract Amount</option>
                   </select>
                 </div>
+
+                {/* Clear Filters Button */}
+                {(selectedAreas.length > 0 || selectedAwardees.length > 0 || selectedOrganizations.length > 0 || selectedCategory !== 'all') && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setSelectedAreas([])
+                      setSelectedAwardees([])
+                      setSelectedOrganizations([])
+                      setSelectedCategory('all')
+                    }}
+                    className="text-red-600 hover:text-red-800 border-red-600 hover:border-red-800"
+                  >
+                    <X className="h-4 w-4 mr-2" />
+                    Clear All Filters
+                  </Button>
+                )}
               </div>
             </div>
           )}

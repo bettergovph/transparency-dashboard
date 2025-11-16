@@ -60,3 +60,47 @@ export async function getDocumentById(id: string): Promise<SearchDocument | null
     return null
   }
 }
+
+// Filter autocomplete indices
+export const filterIndices = {
+  area: client.index('philgeps_area_of_deliveries'),
+  awardee: client.index('philgeps_awardees'),
+  business_categories: client.index('philgeps_business_categories'),
+  organizations: client.index('philgeps_organizations'),
+}
+
+export interface FilterOption {
+  value: string;
+  label: string;
+}
+
+export async function searchFilterOptions(
+  filterType: keyof typeof filterIndices,
+  query: string,
+  limit: number = 20
+): Promise<FilterOption[]> {
+  try {
+    const fieldMap = {
+      area: 'area_of_delivery',
+      awardee: 'awardee_name',
+      business_categories: 'business_category',
+      organizations: 'organization_name',
+    }
+
+    const index = filterIndices[filterType]
+    const field = fieldMap[filterType]
+
+    const result = await index.search(query, {
+      limit,
+      attributesToRetrieve: [field],
+    })
+
+    return result.hits.map((hit: any) => ({
+      value: hit[field],
+      label: hit[field],
+    }))
+  } catch (error) {
+    console.error(`Error searching ${filterType}:`, error)
+    return []
+  }
+}
