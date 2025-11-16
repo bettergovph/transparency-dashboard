@@ -8,20 +8,65 @@ import { toSlug } from '@/lib/utils'
 const OrganizationsListPage = () => {
   const [organizations, setOrganizations] = useState<Array<{ name: string; count: number }>>([])
   const [loading, setLoading] = useState(true)
-  const [selectedLetter, setSelectedLetter] = useState<string>('ALL')
+  const [selectedLetter, setSelectedLetter] = useState<string>('A')
   const [searchQuery, setSearchQuery] = useState('')
+  const [totalCount, setTotalCount] = useState(0)
+  const [letterCounts, setLetterCounts] = useState<Record<string, number>>({})
 
   const alphabet = ['0-9', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')]
 
   useEffect(() => {
-    loadOrganizations()
+    loadLetterCounts()
   }, [])
 
-  const loadOrganizations = async () => {
+  useEffect(() => {
+    loadOrganizations(selectedLetter, searchQuery)
+  }, [selectedLetter, searchQuery])
+
+  const loadLetterCounts = async () => {
+    try {
+      const index = filterIndices.organizations
+      const stats = await index.getStats()
+      setTotalCount(stats.numberOfDocuments)
+
+      // Load all unique names to count by letter
+      const result = await index.search('', {
+        limit: 10000,
+        attributesToRetrieve: ['organization_name'],
+      })
+
+      const uniqueNames = new Set<string>()
+      result.hits.forEach((hit: any) => {
+        if (hit.organization_name) uniqueNames.add(hit.organization_name)
+      })
+
+      const counts: Record<string, number> = {}
+      alphabet.forEach(letter => {
+        if (letter === '0-9') {
+          counts[letter] = Array.from(uniqueNames).filter(name => !/^[A-Za-z]/.test(name)).length
+        } else {
+          counts[letter] = Array.from(uniqueNames).filter(name => name.toUpperCase().startsWith(letter)).length
+        }
+      })
+      setLetterCounts(counts)
+    } catch (error) {
+      console.error('Error loading letter counts:', error)
+    }
+  }
+
+  const loadOrganizations = async (letter: string, search: string) => {
     setLoading(true)
     try {
       const index = filterIndices.organizations
-      const result = await index.search('', {
+      
+      // Build search query based on letter and search input
+      let searchQuery = search
+      if (!search && letter !== '0-9') {
+        // If no search input, use the letter as prefix search
+        searchQuery = letter
+      }
+      
+      const result = await index.search(searchQuery, {
         limit: 10000,
         attributesToRetrieve: ['organization_name'],
       })
@@ -31,12 +76,22 @@ const OrganizationsListPage = () => {
       result.hits.forEach((hit: any) => {
         const name = hit.organization_name
         if (name) {
-          counts[name] = (counts[name] || 0) + 1
+          // Apply letter filter
+          let matches = false
+          if (letter === '0-9') {
+            matches = !/^[A-Za-z]/.test(name)
+          } else {
+            matches = name.toUpperCase().startsWith(letter)
+          }
+          
+          if (matches) {
+            counts[name] = (counts[name] || 0) + 1
+          }
         }
       })
 
       // Convert to array and sort
-      const orgList = Object.entries(counts)
+      let orgList = Object.entries(counts)
         .map(([name, count]) => ({ name, count }))
         .sort((a, b) => a.name.localeCompare(b.name))
 
@@ -48,20 +103,6 @@ const OrganizationsListPage = () => {
     }
   }
 
-  const filteredOrganizations = organizations.filter((org) => {
-    // Filter by search query
-    if (searchQuery && !org.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return false
-    }
-    // Filter by letter
-    if (selectedLetter === 'ALL') return true
-    if (selectedLetter === '0-9') {
-      // Match entries starting with numbers or special characters (non-letters)
-      return !/^[A-Za-z]/.test(org.name)
-    }
-    return org.name.toUpperCase().startsWith(selectedLetter)
-  })
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -69,7 +110,7 @@ const OrganizationsListPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Organizations Directory</h1>
-          <p className="text-gray-600">Browse {organizations.length} organizations alphabetically</p>
+          <p className="text-gray-600">Browse {totalCount.toLocaleString()} organizations</p>
         </div>
 
         {/* Search Bar */}
@@ -89,19 +130,8 @@ const OrganizationsListPage = () => {
         {/* A-Z Filter */}
         <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
           <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedLetter('ALL')}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${selectedLetter === 'ALL'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-            >
-              ALL
-            </button>
             {alphabet.map((letter) => {
-              const count = letter === '0-9'
-                ? organizations.filter((o) => !/^[A-Za-z]/.test(o.name)).length
-                : organizations.filter((o) => o.name.toUpperCase().startsWith(letter)).length
+              const count = letterCounts[letter] || 0
               return (
                 <button
                   key={letter}
@@ -134,11 +164,11 @@ const OrganizationsListPage = () => {
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="mb-4">
               <p className="text-sm text-gray-600">
-                Showing {filteredOrganizations.length} organization{filteredOrganizations.length !== 1 ? 's' : ''}
+                Showing {organizations.length} organization{organizations.length !== 1 ? 's' : ''}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
-              {filteredOrganizations.map((org) => (
+              {organizations.map((org) => (
                 <Link
                   key={org.name}
                   to={`/organizations/${toSlug(org.name)}`}
@@ -151,9 +181,9 @@ const OrganizationsListPage = () => {
               ))}
             </div>
 
-            {filteredOrganizations.length === 0 && (
+            {organizations.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500">No organizations found for letter "{selectedLetter}"</p>
+                <p className="text-gray-500">No organizations found{searchQuery ? ` for "${searchQuery}"` : ` for letter "${selectedLetter}"`}</p>
               </div>
             )}
           </div>

@@ -8,20 +8,65 @@ import { toSlug } from '@/lib/utils'
 const ContractorsPage = () => {
   const [contractors, setContractors] = useState<Array<{ name: string; count: number }>>([])
   const [loading, setLoading] = useState(true)
-  const [selectedLetter, setSelectedLetter] = useState<string>('ALL')
+  const [selectedLetter, setSelectedLetter] = useState<string>('A')
   const [searchQuery, setSearchQuery] = useState('')
+  const [totalCount, setTotalCount] = useState(0)
+  const [letterCounts, setLetterCounts] = useState<Record<string, number>>({})
 
   const alphabet = ['0-9', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')]
 
   useEffect(() => {
-    loadContractors()
+    loadLetterCounts()
   }, [])
 
-  const loadContractors = async () => {
+  useEffect(() => {
+    loadContractors(selectedLetter, searchQuery)
+  }, [selectedLetter, searchQuery])
+
+  const loadLetterCounts = async () => {
+    try {
+      const index = filterIndices.awardee
+      const stats = await index.getStats()
+      setTotalCount(stats.numberOfDocuments)
+
+      // Load all unique names to count by letter
+      const result = await index.search('', {
+        limit: 10000,
+        attributesToRetrieve: ['awardee_name'],
+      })
+
+      const uniqueNames = new Set<string>()
+      result.hits.forEach((hit: any) => {
+        if (hit.awardee_name) uniqueNames.add(hit.awardee_name)
+      })
+
+      const counts: Record<string, number> = {}
+      alphabet.forEach(letter => {
+        if (letter === '0-9') {
+          counts[letter] = Array.from(uniqueNames).filter(name => !/^[A-Za-z]/.test(name)).length
+        } else {
+          counts[letter] = Array.from(uniqueNames).filter(name => name.toUpperCase().startsWith(letter)).length
+        }
+      })
+      setLetterCounts(counts)
+    } catch (error) {
+      console.error('Error loading letter counts:', error)
+    }
+  }
+
+  const loadContractors = async (letter: string, search: string) => {
     setLoading(true)
     try {
       const index = filterIndices.awardee
-      const result = await index.search('', {
+      
+      // Build search query based on letter and search input
+      let searchQuery = search
+      if (!search && letter !== '0-9') {
+        // If no search input, use the letter as prefix search
+        searchQuery = letter
+      }
+      
+      const result = await index.search(searchQuery, {
         limit: 10000,
         attributesToRetrieve: ['awardee_name'],
       })
@@ -31,12 +76,22 @@ const ContractorsPage = () => {
       result.hits.forEach((hit: any) => {
         const name = hit.awardee_name
         if (name) {
-          counts[name] = (counts[name] || 0) + 1
+          // Apply letter filter
+          let matches = false
+          if (letter === '0-9') {
+            matches = !/^[A-Za-z]/.test(name)
+          } else {
+            matches = name.toUpperCase().startsWith(letter)
+          }
+          
+          if (matches) {
+            counts[name] = (counts[name] || 0) + 1
+          }
         }
       })
 
       // Convert to array and sort
-      const contractorList = Object.entries(counts)
+      let contractorList = Object.entries(counts)
         .map(([name, count]) => ({ name, count }))
         .sort((a, b) => a.name.localeCompare(b.name))
 
@@ -48,20 +103,6 @@ const ContractorsPage = () => {
     }
   }
 
-  const filteredContractors = contractors.filter((contractor) => {
-    // Filter by search query
-    if (searchQuery && !contractor.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return false
-    }
-    // Filter by letter
-    if (selectedLetter === 'ALL') return true
-    if (selectedLetter === '0-9') {
-      // Match entries starting with numbers or special characters (non-letters)
-      return !/^[A-Za-z]/.test(contractor.name)
-    }
-    return contractor.name.toUpperCase().startsWith(selectedLetter)
-  })
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -69,7 +110,7 @@ const ContractorsPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Contractors Directory</h1>
-          <p className="text-gray-600">Browse {contractors.length} contractors alphabetically</p>
+          <p className="text-gray-600">Browse {totalCount.toLocaleString()} contractors</p>
         </div>
 
         {/* Search Bar */}
@@ -89,29 +130,18 @@ const ContractorsPage = () => {
         {/* A-Z Filter */}
         <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
           <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedLetter('ALL')}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${selectedLetter === 'ALL'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-            >
-              ALL
-            </button>
             {alphabet.map((letter) => {
-              const count = letter === '0-9'
-                ? contractors.filter((c) => !/^[A-Za-z]/.test(c.name)).length
-                : contractors.filter((c) => c.name.toUpperCase().startsWith(letter)).length
+              const count = letterCounts[letter] || 0
               return (
                 <button
                   key={letter}
                   onClick={() => setSelectedLetter(letter)}
                   disabled={count === 0}
                   className={`px-3 py-1 rounded text-sm font-medium transition-colors ${selectedLetter === letter
-                    ? 'bg-blue-600 text-white'
-                    : count === 0
-                      ? 'bg-gray-50 text-gray-300 cursor-not-allowed'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-blue-600 text-white'
+                      : count === 0
+                        ? 'bg-gray-50 text-gray-300 cursor-not-allowed'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
                   {letter}
@@ -134,11 +164,11 @@ const ContractorsPage = () => {
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="mb-4">
               <p className="text-sm text-gray-600">
-                Showing {filteredContractors.length} contractor{filteredContractors.length !== 1 ? 's' : ''}
+                Showing {contractors.length} contractor{contractors.length !== 1 ? 's' : ''}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
-              {filteredContractors.map((contractor) => (
+              {contractors.map((contractor) => (
                 <Link
                   key={contractor.name}
                   to={`/awardees/${toSlug(contractor.name)}`}
@@ -151,9 +181,9 @@ const ContractorsPage = () => {
               ))}
             </div>
 
-            {filteredContractors.length === 0 && (
+            {contractors.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500">No contractors found for letter "{selectedLetter}"</p>
+                <p className="text-gray-500">No contractors found{searchQuery ? ` for "${searchQuery}"` : ` for letter "${selectedLetter}"`}</p>
               </div>
             )}
           </div>

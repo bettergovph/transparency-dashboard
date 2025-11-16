@@ -8,20 +8,65 @@ import { toSlug } from '@/lib/utils'
 const CategoriesListPage = () => {
   const [categories, setCategories] = useState<Array<{ name: string; count: number }>>([])
   const [loading, setLoading] = useState(true)
-  const [selectedLetter, setSelectedLetter] = useState<string>('ALL')
+  const [selectedLetter, setSelectedLetter] = useState<string>('A')
   const [searchQuery, setSearchQuery] = useState('')
+  const [totalCount, setTotalCount] = useState(0)
+  const [letterCounts, setLetterCounts] = useState<Record<string, number>>({})
 
   const alphabet = ['0-9', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')]
 
   useEffect(() => {
-    loadCategories()
+    loadLetterCounts()
   }, [])
 
-  const loadCategories = async () => {
+  useEffect(() => {
+    loadCategories(selectedLetter, searchQuery)
+  }, [selectedLetter, searchQuery])
+
+  const loadLetterCounts = async () => {
+    try {
+      const index = filterIndices.business_categories
+      const stats = await index.getStats()
+      setTotalCount(stats.numberOfDocuments)
+
+      // Load all unique names to count by letter
+      const result = await index.search('', {
+        limit: 10000,
+        attributesToRetrieve: ['business_category'],
+      })
+
+      const uniqueNames = new Set<string>()
+      result.hits.forEach((hit: any) => {
+        if (hit.business_category) uniqueNames.add(hit.business_category)
+      })
+
+      const counts: Record<string, number> = {}
+      alphabet.forEach(letter => {
+        if (letter === '0-9') {
+          counts[letter] = Array.from(uniqueNames).filter(name => !/^[A-Za-z]/.test(name)).length
+        } else {
+          counts[letter] = Array.from(uniqueNames).filter(name => name.toUpperCase().startsWith(letter)).length
+        }
+      })
+      setLetterCounts(counts)
+    } catch (error) {
+      console.error('Error loading letter counts:', error)
+    }
+  }
+
+  const loadCategories = async (letter: string, search: string) => {
     setLoading(true)
     try {
       const index = filterIndices.business_categories
-      const result = await index.search('', {
+      
+      // Build search query based on letter and search input
+      let searchQuery = search
+      if (!search && letter !== '0-9') {
+        // If no search input, use the letter as prefix search
+        searchQuery = letter
+      }
+      
+      const result = await index.search(searchQuery, {
         limit: 10000,
         attributesToRetrieve: ['business_category'],
       })
@@ -31,12 +76,22 @@ const CategoriesListPage = () => {
       result.hits.forEach((hit: any) => {
         const name = hit.business_category
         if (name) {
-          counts[name] = (counts[name] || 0) + 1
+          // Apply letter filter
+          let matches = false
+          if (letter === '0-9') {
+            matches = !/^[A-Za-z]/.test(name)
+          } else {
+            matches = name.toUpperCase().startsWith(letter)
+          }
+          
+          if (matches) {
+            counts[name] = (counts[name] || 0) + 1
+          }
         }
       })
 
       // Convert to array and sort
-      const categoryList = Object.entries(counts)
+      let categoryList = Object.entries(counts)
         .map(([name, count]) => ({ name, count }))
         .sort((a, b) => a.name.localeCompare(b.name))
 
@@ -48,20 +103,6 @@ const CategoriesListPage = () => {
     }
   }
 
-  const filteredCategories = categories.filter((category) => {
-    // Filter by search query
-    if (searchQuery && !category.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-      return false
-    }
-    // Filter by letter
-    if (selectedLetter === 'ALL') return true
-    if (selectedLetter === '0-9') {
-      // Match entries starting with numbers or special characters (non-letters)
-      return !/^[A-Za-z]/.test(category.name)
-    }
-    return category.name.toUpperCase().startsWith(selectedLetter)
-  })
-
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
@@ -69,7 +110,7 @@ const CategoriesListPage = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Business Categories Directory</h1>
-          <p className="text-gray-600">Browse {categories.length} business categories alphabetically</p>
+          <p className="text-gray-600">Browse {totalCount.toLocaleString()} categories</p>
         </div>
 
         {/* Search Bar */}
@@ -89,29 +130,18 @@ const CategoriesListPage = () => {
         {/* A-Z Filter */}
         <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
           <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedLetter('ALL')}
-              className={`px-3 py-1 rounded text-sm font-medium transition-colors ${selectedLetter === 'ALL'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
-            >
-              ALL
-            </button>
             {alphabet.map((letter) => {
-              const count = letter === '0-9'
-                ? categories.filter((c) => !/^[A-Za-z]/.test(c.name)).length
-                : categories.filter((c) => c.name.toUpperCase().startsWith(letter)).length
+              const count = letterCounts[letter] || 0
               return (
                 <button
                   key={letter}
                   onClick={() => setSelectedLetter(letter)}
                   disabled={count === 0}
                   className={`px-3 py-1 rounded text-sm font-medium transition-colors ${selectedLetter === letter
-                    ? 'bg-blue-600 text-white'
-                    : count === 0
-                      ? 'bg-gray-50 text-gray-300 cursor-not-allowed'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      ? 'bg-blue-600 text-white'
+                      : count === 0
+                        ? 'bg-gray-50 text-gray-300 cursor-not-allowed'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
                   {letter}
@@ -134,11 +164,11 @@ const CategoriesListPage = () => {
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="mb-4">
               <p className="text-sm text-gray-600">
-                Showing {filteredCategories.length} categor{filteredCategories.length !== 1 ? 'ies' : 'y'}
+                Showing {categories.length} categor{categories.length !== 1 ? 'ies' : 'y'}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
-              {filteredCategories.map((category) => (
+              {categories.map((category) => (
                 <Link
                   key={category.name}
                   to={`/categories/${toSlug(category.name)}`}
@@ -151,9 +181,9 @@ const CategoriesListPage = () => {
               ))}
             </div>
 
-            {filteredCategories.length === 0 && (
+            {categories.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500">No categories found for letter "{selectedLetter}"</p>
+                <p className="text-gray-500">No categories found{searchQuery ? ` for "${searchQuery}"` : ` for letter "${selectedLetter}"`}</p>
               </div>
             )}
           </div>
