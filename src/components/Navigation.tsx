@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook } from 'lucide-react'
 import { useState } from 'react'
 
 const Navigation = () => {
@@ -24,55 +24,70 @@ const Navigation = () => {
   return (
     <nav className="bg-white shadow-sm">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-8 h-16 md:h-24">
-          {/* Logo and Title */}
-          <div className="flex items-center gap-3 md:gap-8">
-            <img
-              src="https://bettergov.ph/logos/svg/BetterGov_Icon-Primary.svg"
-              alt="BetterGov.ph Logo"
-              className="h-8 w-8 md:h-12 md:w-12"
-            />
-            <Link to="/">
-              <h1 className="text-sm md:text-lg font-bold text-black font-figtree">
-                Philgeps Contract Browser
-              </h1>
-              <p className="text-gray-600 text-xs hidden sm:block">by BetterGov.ph</p>
-            </Link>
+        <div className="flex items-center justify-between h-16 md:h-24">
+          <div className="flex items-center gap-8">
+            {/* Logo and Title */}
+            <div className="flex items-center gap-3 md:gap-8">
+              <img
+                src="https://bettergov.ph/logos/svg/BetterGov_Icon-Primary.svg"
+                alt="BetterGov.ph Logo"
+                className="h-8 w-8 md:h-12 md:w-12"
+              />
+              <Link to="/">
+                <h1 className="text-sm md:text-lg font-bold text-black font-figtree">
+                  Philgeps Contract Browser
+                </h1>
+                <p className="text-gray-600 text-xs hidden sm:block">by BetterGov.ph</p>
+              </Link>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center gap-1">
+              {navItems.map((item) => {
+                const Icon = item.icon
+                const active = isActive(item.path)
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    className={`flex items-center gap-2 px-4 py-2 text-md transition-colors ${active
+                      ? 'border-b text-blue-600 font-bold'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                      }`}
+                  >
+                    <Icon className="h-4 w-4" />
+                    {item.label}
+                  </Link>
+                )
+              })}
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => {
-              const Icon = item.icon
-              const active = isActive(item.path)
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex items-center gap-2 px-4 py-2 text-md transition-colors ${active
-                    ? 'border-b text-blue-600 font-bold'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                    }`}
-                >
-                  <Icon className="h-4 w-4" />
-                  {item.label}
-                </Link>
-              )
-            })}
+          {/* Right Side - Facebook Link + Mobile Menu */}
+          <div className="flex items-center gap-2">
+            <a
+              href="https://www.facebook.com/BetterGovPh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:text-blue-600 transition-colors"
+            >
+              <Facebook className="h-4 w-4" />
+              Follow us on Facebook
+            </a>
+            
+            {/* Mobile Hamburger */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              aria-label="Toggle menu"
+            >
+              {mobileMenuOpen ? (
+                <X className="h-6 w-6 text-gray-700" />
+              ) : (
+                <Menu className="h-6 w-6 text-gray-700" />
+              )}
+            </button>
           </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
-            ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
-            )}
-          </button>
         </div>
 
         {/* Mobile Menu */}
