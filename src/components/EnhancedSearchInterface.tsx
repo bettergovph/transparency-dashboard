@@ -22,8 +22,8 @@ interface EnhancedSearchInterfaceProps {
   limit?: number
 }
 
-const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ 
-  filterType, 
+const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
+  filterType,
   filterValue,
   enableDeduplication = true,
   limit = 1000
@@ -42,6 +42,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   const [showSearchGuide, setShowSearchGuide] = useState(false)
   const [, setDebugInfo] = useState<{ query: string; filter?: string; sort?: string[]; limit?: number } | null>(null)
   const [precomputedStats, setPrecomputedStats] = useState<{ count: number; total: number } | null>(null)
+  const [userDeduplication, setUserDeduplication] = useState(enableDeduplication)
 
   // Autocomplete filter states - now arrays for multi-select
   const [selectedAreas, setSelectedAreas] = useState<string[]>([])
@@ -56,7 +57,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
 
       try {
         let index
-        
+
         if (filterType === 'category') {
           index = filterIndices.business_categories
         } else if (filterType === 'location') {
@@ -129,7 +130,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
     }, 300)
 
     return () => clearTimeout(delayDebounceFn)
-  }, [query, selectedCategory, sortBy, strictMatch, selectedAreas, selectedAwardees, selectedOrganizations])
+  }, [query, selectedCategory, sortBy, strictMatch, selectedAreas, selectedAwardees, selectedOrganizations, userDeduplication])
 
   useEffect(() => {
     setCurrentPage(1)
@@ -190,8 +191,8 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
         limit: limit // Use configurable limit
       })
 
-      // Conditionally deduplicate results based on prop
-      const processedResults = enableDeduplication 
+      // Conditionally deduplicate results based on user preference
+      const processedResults = userDeduplication
         ? deduplicateResults(searchResults.hits)
         : searchResults.hits
       setResults(processedResults)
@@ -350,12 +351,12 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
 
   const paginatedResults = sortedResults.slice(startIndex, endIndex)
 
-  const totalContractAmount = precomputedStats 
-    ? precomputedStats.total 
+  const totalContractAmount = precomputedStats
+    ? precomputedStats.total
     : results.reduce((sum, doc) => {
-        const amount = parseFloat(String(doc.contract_amount || 0))
-        return sum + (isNaN(amount) ? 0 : amount)
-      }, 0)
+      const amount = parseFloat(String(doc.contract_amount || 0))
+      return sum + (isNaN(amount) ? 0 : amount)
+    }, 0)
 
   const totalContractCount = precomputedStats
     ? precomputedStats.count
@@ -862,6 +863,8 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           {/* Results */}
           {!loading && results.length > 0 && (
             <div className="space-y-3">
+
+
               {/* Title and Stats Row - Mobile Responsive */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
@@ -874,7 +877,20 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                     <span><strong>{formatCurrency(totalContractAmount)}</strong></span>
                     <span><strong>{new Set(results.map(r => r.organization_name)).size}</strong> orgs</span>
                   </div>
+                  {/* Deduplication Checkbox */}
+                  <div className="flex items-center gap-2">
+                    <label className="flex items-center cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={userDeduplication}
+                        onChange={(e) => setUserDeduplication(e.target.checked)}
+                        className="w-3.5 h-3.5 text-black border-gray-300 rounded focus:ring-1 focus:ring-black cursor-pointer"
+                      />
+                      <span className="ml-2 text-xs text-gray-700">Remove duplicate contracts</span>
+                    </label>
+                  </div>
                 </div>
+
                 <div className="flex items-center gap-2 sm:gap-3">
                   <Button
                     variant="outline"
@@ -1188,7 +1204,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Data Disclaimer */}
                 <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-left">
                   <p className="font-semibold text-yellow-800 mb-2">⚠️ Data Disclaimer:</p>
