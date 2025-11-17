@@ -1,10 +1,12 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook } from 'lucide-react'
-import { useState } from 'react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown } from 'lucide-react'
+import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
@@ -14,12 +16,31 @@ const Navigation = () => {
     { path: '/categories', label: 'Categories', icon: Grid3x3 },
   ]
 
+  const projectsDropdownItems = [
+    { label: 'About BetterGov.ph', url: 'https://bettergov.ph/join-us' },
+    { label: '2026 Budget', url: 'https://2026-budget.bettergov.ph' },
+    { label: 'Budget', url: 'https://budget.bettergov.ph' },
+    { label: 'Research', url: 'https://visualizations.bettergov.ph' },
+  ]
+
   const isActive = (path: string) => {
     if (path === '/') {
       return location.pathname === '/'
     }
     return location.pathname.startsWith(path)
   }
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setProjectsDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
 
   return (
     <nav className="bg-white shadow-sm">
@@ -60,6 +81,34 @@ const Navigation = () => {
                   </Link>
                 )
               })}
+              
+              {/* Our Projects Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
+                  className="flex items-center gap-2 px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                >
+                  Our Projects
+                  <ChevronDown className={`h-4 w-4 transition-transform ${projectsDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {projectsDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                    {projectsDropdownItems.map((item) => (
+                      <a
+                        key={item.url}
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                        onClick={() => setProjectsDropdownOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -111,6 +160,25 @@ const Navigation = () => {
                 </Link>
               )
             })}
+            
+            {/* Our Projects Section in Mobile */}
+            <div className="border-t border-gray-200 mt-2 pt-2">
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                Our Projects
+              </div>
+              {projectsDropdownItems.map((item) => (
+                <a
+                  key={item.url}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </div>
           </div>
         )}
       </div>
