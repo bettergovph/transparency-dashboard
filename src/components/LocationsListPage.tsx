@@ -6,8 +6,8 @@ import Navigation from './Navigation'
 import { filterIndices } from '@/lib/meilisearch'
 import { toSlug } from '@/lib/utils'
 
-const CategoriesListPage = () => {
-  const [categories, setCategories] = useState<Array<{ name: string; count: number }>>([])
+const LocationsListPage = () => {
+  const [locations, setLocations] = useState<Array<{ name: string; count: number }>>([])
   const [loading, setLoading] = useState(true)
   const [selectedLetter, setSelectedLetter] = useState<string>('A')
   const [searchQuery, setSearchQuery] = useState('')
@@ -28,24 +28,24 @@ const CategoriesListPage = () => {
   }, [searchQuery])
 
   useEffect(() => {
-    loadCategories(selectedLetter, searchQuery)
+    loadLocations(selectedLetter, searchQuery)
   }, [selectedLetter, searchQuery])
 
   const loadLetterCounts = async () => {
     try {
-      const index = filterIndices.business_categories
+      const index = filterIndices.area
       const stats = await index.getStats()
       setTotalCount(stats.numberOfDocuments)
 
       // Load all unique names to count by letter
       const result = await index.search('', {
         limit: 10000,
-        attributesToRetrieve: ['business_category'],
+        attributesToRetrieve: ['area_of_delivery'],
       })
 
       const uniqueNames = new Set<string>()
       result.hits.forEach((hit: any) => {
-        if (hit.business_category) uniqueNames.add(hit.business_category)
+        if (hit.area_of_delivery) uniqueNames.add(hit.area_of_delivery)
       })
 
       const counts: Record<string, number> = {}
@@ -62,23 +62,23 @@ const CategoriesListPage = () => {
     }
   }
 
-  const loadCategories = async (letter: string, search: string) => {
+  const loadLocations = async (letter: string, search: string) => {
     setLoading(true)
     try {
-      const index = filterIndices.business_categories
+      const index = filterIndices.area
 
       // Use search query if provided, otherwise use letter as prefix
       const searchQuery = search || letter
 
       const result = await index.search(searchQuery, {
         limit: 10000,
-        attributesToRetrieve: ['business_category'],
+        attributesToRetrieve: ['area_of_delivery'],
       })
 
       // Count occurrences
       const counts: Record<string, number> = {}
       result.hits.forEach((hit: any) => {
-        const name = hit.business_category
+        const name = hit.area_of_delivery
         if (name) {
           // Only apply letter filter if no search query
           if (!search) {
@@ -100,13 +100,13 @@ const CategoriesListPage = () => {
       })
 
       // Convert to array and sort
-      let categoryList = Object.entries(counts)
+      let locationList = Object.entries(counts)
         .map(([name, count]) => ({ name, count }))
         .sort((a, b) => a.name.localeCompare(b.name))
 
-      setCategories(categoryList)
+      setLocations(locationList)
     } catch (error) {
-      console.error('Error loading categories:', error)
+      console.error('Error loading locations:', error)
     } finally {
       setLoading(false)
     }
@@ -115,20 +115,20 @@ const CategoriesListPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Helmet>
-        <title>Business Categories Directory - PhilGEPS Contract Browser</title>
-        <meta name="description" content={`Browse ${totalCount.toLocaleString()} business categories in government procurement. Search by category type and view related contracts.`} />
-        <meta name="keywords" content="PhilGEPS categories, business categories, procurement types, Philippines government contracts, category directory" />
-        <meta property="og:title" content="Business Categories Directory - PhilGEPS" />
-        <meta property="og:description" content="Browse government procurement business categories" />
+        <title>Locations Directory - PhilGEPS Contract Browser</title>
+        <meta name="description" content={`Browse ${totalCount.toLocaleString()} delivery locations and areas. Search by region, province, or city for government contracts.`} />
+        <meta name="keywords" content="PhilGEPS locations, delivery areas, Philippines regions, provinces, cities, location directory" />
+        <meta property="og:title" content="Locations Directory - PhilGEPS" />
+        <meta property="og:description" content="Browse government contract delivery locations and areas" />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://philgeps.bettergov.ph/categories" />
+        <link rel="canonical" href="https://philgeps.bettergov.ph/locations" />
       </Helmet>
       <Navigation />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Business Categories Directory</h1>
-          <p className="text-gray-600">Browse {totalCount.toLocaleString()} categories</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Locations Directory</h1>
+          <p className="text-gray-600">Browse {totalCount.toLocaleString()} locations</p>
         </div>
 
         {/* Search Bar */}
@@ -137,7 +137,7 @@ const CategoriesListPage = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             <input
               type="text"
-              placeholder="Search categories..."
+              placeholder="Search locations..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -173,7 +173,7 @@ const CategoriesListPage = () => {
         {loading && (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-2"></div>
-            <p className="text-gray-600">Loading categories...</p>
+            <p className="text-gray-600">Loading locations...</p>
           </div>
         )}
 
@@ -182,26 +182,26 @@ const CategoriesListPage = () => {
           <div className="bg-white rounded-lg shadow-sm p-6">
             <div className="mb-4">
               <p className="text-sm text-gray-600">
-                Showing {categories.length} categor{categories.length !== 1 ? 'ies' : 'y'}
+                Showing {locations.length} location{locations.length !== 1 ? 's' : ''}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2">
-              {categories.map((category) => (
+              {locations.map((location) => (
                 <Link
-                  key={category.name}
-                  to={`/categories/${toSlug(category.name)}`}
+                  key={location.name}
+                  to={`/locations/${toSlug(location.name)}`}
                   className="flex items-baseline justify-between py-2 border-b border-gray-100 hover:bg-gray-50 px-2 -mx-2 transition-colors group"
                 >
                   <span className="text-sm text-gray-900 group-hover:text-blue-600 transition-colors truncate pr-2">
-                    {category.name}
+                    {location.name}
                   </span>
                 </Link>
               ))}
             </div>
 
-            {categories.length === 0 && (
+            {locations.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500">No categories found{searchQuery ? ` for "${searchQuery}"` : ` for letter "${selectedLetter}"`}</p>
+                <p className="text-gray-500">No locations found{searchQuery ? ` for "${searchQuery}"` : ` for letter "${selectedLetter}"`}</p>
               </div>
             )}
           </div>
@@ -211,4 +211,4 @@ const CategoriesListPage = () => {
   )
 }
 
-export default CategoriesListPage
+export default LocationsListPage

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, Menu, X } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
 const Navigation = () => {
@@ -10,6 +10,7 @@ const Navigation = () => {
     { path: '/', label: 'Home', icon: Home },
     { path: '/contractors', label: 'Contractors', icon: Users },
     { path: '/organizations', label: 'Organizations', icon: Building2 },
+    { path: '/locations', label: 'Locations', icon: MapPin },
     { path: '/categories', label: 'Categories', icon: Grid3x3 },
   ]
 

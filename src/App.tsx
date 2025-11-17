@@ -6,6 +6,7 @@ import LocationPage from './components/LocationPage'
 import CategoryPage from './components/CategoryPage'
 import ContractorsPage from './components/ContractorsPage'
 import OrganizationsListPage from './components/OrganizationsListPage'
+import LocationsListPage from './components/LocationsListPage'
 import CategoriesListPage from './components/CategoriesListPage'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<EnhancedSearchInterface />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
+        <Route path="/locations" element={<LocationsListPage />} />
         <Route path="/categories" element={<CategoriesListPage />} />
         <Route path="/awardees/:slug" element={<AwardeePage />} />
         <Route path="/organizations/:slug" element={<OrganizationPage />} />

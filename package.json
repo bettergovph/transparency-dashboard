@@ -11,6 +11,7 @@
     "seed": "node seed-meilisearch.mjs"
   },
   "dependencies": {
+    "@dr.pogodin/react-helmet": "^3.0.4",
     "@meilisearch/instant-meilisearch": "^0.29.0",
     "@radix-ui/react-slot": "^1.2.4",
     "@tailwindcss/postcss7-compat": "^2.2.17",
@@ -23,7 +24,6 @@
     "meilisearch": "^0.54.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-helmet-async": "^2.0.5",
     "react-is": "^19.2.0",
     "react-router-dom": "^7.9.6",
     "recharts": "^3.4.1",
