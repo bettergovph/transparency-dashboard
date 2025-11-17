@@ -8,7 +8,14 @@ const LocationPage = () => {
   // Convert slug back to readable name
   const locationName = slug ? fromSlug(slug) : ''
 
-  return <EnhancedSearchInterface filterType="location" filterValue={locationName} />
+  return (
+    <EnhancedSearchInterface 
+      filterType="location" 
+      filterValue={locationName}
+      enableDeduplication={false}
+      limit={10000}
+    />
+  )
 }
 
 export default LocationPage

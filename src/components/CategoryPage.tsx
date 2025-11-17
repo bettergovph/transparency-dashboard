@@ -8,7 +8,14 @@ const CategoryPage = () => {
   // Convert slug back to readable name
   const categoryName = slug ? fromSlug(slug) : ''
 
-  return <EnhancedSearchInterface filterType="category" filterValue={categoryName} />
+  return (
+    <EnhancedSearchInterface  
+      filterType="category" 
+      filterValue={categoryName}
+      enableDeduplication={false}
+      limit={10000}
+    />
+  )
 }
 
 export default CategoryPage

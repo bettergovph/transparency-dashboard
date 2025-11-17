@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Autocomplete } from '@/components/ui/autocomplete'
 import type { AutocompleteOption } from '@/components/ui/autocomplete'
-import { searchDocuments, searchFilterOptions } from '@/lib/meilisearch'
+import { searchDocuments, searchFilterOptions, filterIndices } from '@/lib/meilisearch'
 import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
 import Navigation from './Navigation'
@@ -17,9 +17,16 @@ import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, R
 interface EnhancedSearchInterfaceProps {
   filterType?: 'awardee' | 'organization' | 'location' | 'category'
   filterValue?: string
+  enableDeduplication?: boolean
+  limit?: number
 }
 
-const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filterType, filterValue }) => {
+const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ 
+  filterType, 
+  filterValue,
+  enableDeduplication = true,
+  limit = 1000
+}) => {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchDocument[]>([])
   const [loading, setLoading] = useState(false)
@@ -33,13 +40,52 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
   const [strictMatch, setStrictMatch] = useState(false)
   const [showSearchGuide, setShowSearchGuide] = useState(false)
   const [, setDebugInfo] = useState<{ query: string; filter?: string; sort?: string[]; limit?: number } | null>(null)
+  const [precomputedStats, setPrecomputedStats] = useState<{ count: number; total: number } | null>(null)
 
   // Autocomplete filter states - now arrays for multi-select
   const [selectedAreas, setSelectedAreas] = useState<string[]>([])
   const [selectedAwardees, setSelectedAwardees] = useState<string[]>([])
   const [selectedOrganizations, setSelectedOrganizations] = useState<string[]>([])
 
-  // Initialize filters based on props
+  // Fetch precomputed stats for categories and locations
+  useEffect(() => {
+    const fetchPrecomputedStats = async () => {
+      if (!filterType || !filterValue) return
+      if (filterType !== 'category' && filterType !== 'location') return
+
+      try {
+        let index
+        
+        if (filterType === 'category') {
+          index = filterIndices.business_categories
+        } else if (filterType === 'location') {
+          index = filterIndices.area
+        }
+
+        if (!index) return
+
+        // Search for the specific category/location using query (not filter)
+        // The filterValue is already the category/location name
+        const cleanValue = filterValue.replace(/^'|'$/g, '') // Remove quotes if present
+        const result = await index.search(cleanValue, {
+          limit: 1,
+          attributesToRetrieve: ['count', 'total']
+        })
+
+        if (result.hits.length > 0) {
+          const hit: any = result.hits[0]
+          setPrecomputedStats({
+            count: hit.count || 0,
+            total: hit.total || 0
+          })
+        }
+      } catch (error) {
+        console.error('Error fetching precomputed stats:', error)
+      }
+    }
+
+    fetchPrecomputedStats()
+  }, [filterType, filterValue])
   useEffect(() => {
     if (filterType && filterValue) {
       switch (filterType) {
@@ -130,7 +176,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
       query: searchQuery || '*', // Use wildcard if no query
       filter: filters,
       sort: sortParam,
-      limit: 1000
+      limit: limit
     })
 
     try {
@@ -138,12 +184,14 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
         query: searchQuery || '', // Empty query returns all results
         filter: filters,
         sort: sortParam,
-        limit: 1000 // Fetch more results for client-side pagination
+        limit: limit // Use configurable limit
       })
 
-      // Deduplicate results before setting state
-      const deduplicatedResults = deduplicateResults(searchResults.hits)
-      setResults(deduplicatedResults)
+      // Conditionally deduplicate results based on prop
+      const processedResults = enableDeduplication 
+        ? deduplicateResults(searchResults.hits)
+        : searchResults.hits
+      setResults(processedResults)
     } catch (error) {
       console.error('Search error:', error)
       setResults([])
@@ -299,10 +347,16 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
 
   const paginatedResults = sortedResults.slice(startIndex, endIndex)
 
-  const totalContractAmount = results.reduce((sum, doc) => {
-    const amount = parseFloat(String(doc.contract_amount || 0))
-    return sum + (isNaN(amount) ? 0 : amount)
-  }, 0)
+  const totalContractAmount = precomputedStats 
+    ? precomputedStats.total 
+    : results.reduce((sum, doc) => {
+        const amount = parseFloat(String(doc.contract_amount || 0))
+        return sum + (isNaN(amount) ? 0 : amount)
+      }, 0)
+
+  const totalContractCount = precomputedStats
+    ? precomputedStats.count
+    : results.length
 
   // Detailed statistics for detail pages
   const detailedStats = useMemo(() => {
@@ -372,7 +426,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
         .slice(0, 10)
     }
 
-    const averageCost = results.length > 0 ? totalContractAmount / results.length : 0
+    const averageCost = totalContractCount > 0 ? totalContractAmount / totalContractCount : 0
 
     return {
       uniqueCategories: uniqueCategories.size,
@@ -711,7 +765,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                 <Card>
                   <CardHeader className="pb-2">
                     <CardDescription className="text-xs">Total Contracts</CardDescription>
-                    <CardTitle className="text-3xl font-bold">{results.length}</CardTitle>
+                    <CardTitle className="text-3xl font-bold">{totalContractCount.toLocaleString()}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-xs text-gray-600">Awarded contracts</p>
