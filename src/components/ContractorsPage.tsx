@@ -163,7 +163,7 @@ const ContractorsPage = () => {
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-20">#</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Contractor Name</th>
                       <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-32">Contracts</th>
-                      <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-48">Total Amount</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-48">Total Amount</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -183,7 +183,7 @@ const ContractorsPage = () => {
                         <td className="px-6 py-4 text-right text-base font-mono text-gray-900">
                           {contractor.count.toLocaleString()}
                         </td>
-                        <td className="px-6 py-4 text-right text-base font-mono text-green-600 font-semibold">
+                        <td className="px-6 py-4 text-left text-base font-mono text-green-600 font-semibold">
                           ₱{contractor.total.toLocaleString()}
                         </td>
                       </tr>

@@ -163,7 +163,7 @@ const CategoriesListPage = () => {
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-20">#</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Category Name</th>
                       <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-32">Contracts</th>
-                      <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-48">Total Amount</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-48">Total Amount</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -183,7 +183,7 @@ const CategoriesListPage = () => {
                         <td className="px-6 py-4 text-right text-base font-mono text-gray-900">
                           {category.count.toLocaleString()}
                         </td>
-                        <td className="px-6 py-4 text-right text-base font-mono text-green-600 font-semibold">
+                        <td className="px-6 py-4 text-left text-base font-mono text-green-600 font-semibold">
                           ₱{category.total.toLocaleString()}
                         </td>
                       </tr>
