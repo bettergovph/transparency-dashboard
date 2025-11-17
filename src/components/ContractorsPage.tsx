@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search } from 'lucide-react'
 import Navigation from './Navigation'
+import Footer from './Footer'
 import { filterIndices } from '@/lib/meilisearch'
 import { toSlug } from '@/lib/utils'
 
@@ -73,7 +74,7 @@ const ContractorsPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 flex flex-col">
       <Helmet>
         <title>Contractors Directory - PhilGEPS Contract Browser</title>
         <meta name="description" content={`Browse ${totalCount.toLocaleString()} government contractors and awardees. View contract counts and search by name or letter.`} />
@@ -85,7 +86,7 @@ const ContractorsPage = () => {
       </Helmet>
       <Navigation />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Contractors Directory</h1>
           <p className="text-gray-600">
@@ -144,49 +145,53 @@ const ContractorsPage = () => {
           </div>
         )}
 
-        {/* Directory Grid */}
+        {/* Directory Table */}
         {!loading && (
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <div className="mb-4">
-              <p className="text-sm text-gray-600">
+          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200">
+              <p className="text-base text-gray-600">
                 Showing {contractors.length} contractor{contractors.length !== 1 ? 's' : ''}
                 {!selectedLetter && !searchQuery && ' (Top 100)'}
               </p>
             </div>
-            <div className="space-y-1">
-              {contractors.map((contractor, index) => (
-                <Link
-                  key={contractor.name}
-                  to={`/awardees/${toSlug(contractor.name)}`}
-                  className="flex items-center justify-between py-3 px-4 border border-gray-200 rounded hover:bg-blue-50 hover:border-blue-300 transition-all group"
-                >
-                  <div className="flex items-center gap-4 flex-1 min-w-0">
-                    <span className="text-sm font-medium text-gray-500 w-8 text-right flex-shrink-0">
-                      #{index + 1}
-                    </span>
-                    <span className="text-sm text-gray-900 group-hover:text-blue-600 transition-colors truncate">
-                      {contractor.name}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-6 flex-shrink-0">
-                    <div className="text-right">
-                      <div className="text-sm font-semibold text-gray-900">
-                        {contractor.count.toLocaleString()}
-                      </div>
-                      <div className="text-xs text-gray-500">contracts</div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-sm font-semibold text-green-600">
-                        ₱{contractor.total.toLocaleString()}
-                      </div>
-                      <div className="text-xs text-gray-500">total</div>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            {contractors.length === 0 && (
+            
+            {contractors.length > 0 ? (
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 border-b border-gray-200">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-20">#</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Contractor Name</th>
+                      <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-32">Contracts</th>
+                      <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-48">Total Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {contractors.map((contractor, index) => (
+                      <tr key={contractor.name} className="hover:bg-gray-50 transition-colors">
+                        <td className="px-6 py-4 text-base font-mono text-gray-500">
+                          {index + 1}
+                        </td>
+                        <td className="px-6 py-4">
+                          <Link
+                            to={`/awardees/${toSlug(contractor.name)}`}
+                            className="text-base text-gray-900 hover:text-blue-600 transition-colors"
+                          >
+                            {contractor.name}
+                          </Link>
+                        </td>
+                        <td className="px-6 py-4 text-right text-base font-mono text-gray-900">
+                          {contractor.count.toLocaleString()}
+                        </td>
+                        <td className="px-6 py-4 text-right text-base font-mono text-green-600 font-semibold">
+                          ₱{contractor.total.toLocaleString()}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
               <div className="text-center py-12">
                 <p className="text-gray-500">No contractors found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
               </div>
@@ -194,6 +199,7 @@ const ContractorsPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   )
 }
