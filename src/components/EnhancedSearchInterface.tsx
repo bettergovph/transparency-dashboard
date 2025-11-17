@@ -11,6 +11,7 @@ import { searchDocuments, searchFilterOptions, filterIndices } from '@/lib/meili
 import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
 import Navigation from './Navigation'
+import Footer from './Footer'
 import { toSlug } from '@/lib/utils'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
@@ -537,7 +538,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   }
 
   return (
-    <div className="max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden">
+    <div className="max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden flex flex-col">
       <Helmet>
         <title>{filterValue ? `${filterValue} - PhilGEPS Contract Browser` : 'PhilGEPS Contract Browser - Search Government Procurement Records'}</title>
         <meta name="description" content={filterValue ? `View all government contracts for ${filterValue}. Browse detailed procurement records, contract amounts, and award information from PhilGEPS.` : 'Search and browse Philippine government procurement records from PhilGEPS. Find contracts, awardees, organizations, and detailed procurement information.'} />
@@ -551,7 +552,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
       <Navigation />
 
       {/* Main Grid Layout */}
-      <div className="flex">
+      <div className="flex flex-1">
         {/* Main Content Column */}
         <div className={`transition-all duration-300 px-3 sm:px-4 lg:px-6 py-4 ${showSearchGuide ? 'w-3/4' : 'flex-1 mx-auto'} max-w-full`}>
           {/* Search and Filters Section */}
@@ -1185,6 +1186,17 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                     </div>
                   </div>
                 </div>
+                
+                {/* Data Disclaimer */}
+                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-left">
+                  <p className="font-semibold text-yellow-800 mb-2">⚠️ Data Disclaimer:</p>
+                  <ul className="text-gray-700 space-y-1">
+                    <li>• Data coverage period: <strong>2000-2025</strong></li>
+                    <li>• Data is subject to change and may contain inaccuracies</li>
+                    <li>• Some contracts may have duplicates; we've done our best to clean the data</li>
+                    <li>• This is an unofficial community resource for transparency and research purposes</li>
+                  </ul>
+                </div>
               </div>
             </div>
           )}
@@ -1197,6 +1209,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           </div>
         )}
       </div>
+      <Footer />
     </div>
   )
 }
