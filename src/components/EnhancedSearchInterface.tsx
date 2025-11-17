@@ -47,11 +47,11 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   const [selectedAwardees, setSelectedAwardees] = useState<string[]>([])
   const [selectedOrganizations, setSelectedOrganizations] = useState<string[]>([])
 
-  // Fetch precomputed stats for categories and locations
+  // Fetch precomputed stats for categories, locations, and organizations
   useEffect(() => {
     const fetchPrecomputedStats = async () => {
       if (!filterType || !filterValue) return
-      if (filterType !== 'category' && filterType !== 'location') return
+      if (filterType !== 'category' && filterType !== 'location' && filterType !== 'organization') return
 
       try {
         let index
@@ -60,12 +60,14 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           index = filterIndices.business_categories
         } else if (filterType === 'location') {
           index = filterIndices.area
+        } else if (filterType === 'organization') {
+          index = filterIndices.organizations
         }
 
         if (!index) return
 
-        // Search for the specific category/location using query (not filter)
-        // The filterValue is already the category/location name
+        // Search for the specific category/location/organization using query (not filter)
+        // The filterValue is already the name
         const cleanValue = filterValue.replace(/^'|'$/g, '') // Remove quotes if present
         const result = await index.search(cleanValue, {
           limit: 1,

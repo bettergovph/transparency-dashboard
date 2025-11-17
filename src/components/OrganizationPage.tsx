@@ -8,7 +8,14 @@ const OrganizationPage = () => {
   // Convert slug back to readable name
   const organizationName = slug ? fromSlug(slug) : ''
 
-  return <EnhancedSearchInterface filterType="organization" filterValue={organizationName} />
+  return (
+    <EnhancedSearchInterface 
+      filterType="organization" 
+      filterValue={organizationName}
+      enableDeduplication={false}
+      limit={10000}
+    />
+  )
 }
 
 export default OrganizationPage

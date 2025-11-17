@@ -8,7 +8,7 @@ const AwardeePage = () => {
   // Convert slug back to readable name
   const awardeeName = slug ? fromSlug(slug) : ''
 
-  return <EnhancedSearchInterface filterType="awardee" filterValue={awardeeName} />
+  return <EnhancedSearchInterface filterType="awardee" filterValue={awardeeName} enableDeduplication={false} limit={5000} />
 }
 
 export default AwardeePage
