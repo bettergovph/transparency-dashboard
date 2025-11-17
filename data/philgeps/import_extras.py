@@ -13,7 +13,7 @@ MEILISEARCH_API_KEY = os.getenv('VITE_MEILISEARCH_API_KEY', '')
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description='Import parquet files into MeiliSearch with philgeps_ prefix')
-parser.add_argument('--batch-size', type=int, default=5000, help='Number of records per batch (default: 5000)')
+parser.add_argument('--batch-size', type=int, default=50000, help='Number of records per batch (default: 5000)')
 parser.add_argument('--data-dir', default='.', help='Directory containing parquet files (default: current directory)')
 args = parser.parse_args()
 
@@ -51,7 +51,7 @@ def import_parquet_to_index(file_path, index_name):
     records = df.to_dict('records')
     
     # Delete the index to be sure
-    # client.delete_index(index_name) 
+    client.delete_index(index_name) 
   
     # Get or create index
     index = client.index(index_name)

@@ -1108,7 +1108,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                     Welcome to PHILGEPS Search
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Search through thousands of government procurement records. Find awarded contracts and procurement information by reference ID, company name,
+                    Search through millions of government procurement records. Find awarded contracts and procurement information by reference ID, company name,
                     or any keyword.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
