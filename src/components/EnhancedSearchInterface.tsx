@@ -510,8 +510,9 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({ filte
                   type="text"
                   placeholder="Search by reference ID, contract number, company name, or any keyword..."
                   value={query}
+                  autoFocus
                   onChange={(e) => setQuery(e.target.value)}
-                  className="pl-8! pr-2 py-1.5 text-xs border border-gray-300 rounded focus:border-black focus:ring-1 focus:ring-black"
+                  className="pl-8! pr-2 py-1.5 text-xs border border-gray-800 rounded focus:border-black focus:ring-1 focus:ring-black"
                   style={{ paddingLeft: '2rem' }}
                 />
               </div>
