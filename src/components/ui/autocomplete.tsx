@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Check, X } from 'lucide-react'
+import { Check } from 'lucide-react'
 import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 
 export interface AutocompleteOption {
   value: string
@@ -63,10 +62,6 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
     }
     // Don't clear search query or close dropdown - keep it open for multi-select
     inputRef.current?.focus()
-  }
-
-  const handleRemove = (valueToRemove: string) => {
-    onChange(selectedValues.filter(v => v !== valueToRemove))
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
