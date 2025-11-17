@@ -779,44 +779,46 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
               {/* Charts Section */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {/* Monthly Cost Trend */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg">Monthly Cost Trend</CardTitle>
-                    <CardDescription className="text-xs">Contract amounts over time</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ResponsiveContainer width="100%" height={300}>
-                      <LineChart data={detailedStats.monthlyChartData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis
-                          dataKey="displayMonth"
-                          tick={{ fontSize: 10 }}
-                          angle={-45}
-                          textAnchor="end"
-                          height={60}
-                        />
-                        <YAxis
-                          tick={{ fontSize: 10 }}
-                          tickFormatter={(value) => `₱${(value / 1000000).toFixed(1)}M`}
-                        />
-                        <Tooltip
-                          formatter={(value: number) => formatCurrency(value)}
-                          contentStyle={{ fontSize: '12px' }}
-                        />
-                        <Line
-                          type="monotone"
-                          dataKey="amount"
-                          stroke="#3b82f6"
-                          strokeWidth={2}
-                          dot={{ r: 3 }}
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </CardContent>
-                </Card>
+                {filterType !== 'category' && filterType !== 'location' && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="text-lg">Monthly Cost Trend</CardTitle>
+                      <CardDescription className="text-xs">Contract amounts over time</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ResponsiveContainer width="100%" height={300}>
+                        <LineChart data={detailedStats.monthlyChartData}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis
+                            dataKey="displayMonth"
+                            tick={{ fontSize: 10 }}
+                            angle={-45}
+                            textAnchor="end"
+                            height={60}
+                          />
+                          <YAxis
+                            tick={{ fontSize: 10 }}
+                            tickFormatter={(value) => `₱${(value / 1000000).toFixed(1)}M`}
+                          />
+                          <Tooltip
+                            formatter={(value: number) => formatCurrency(value)}
+                            contentStyle={{ fontSize: '12px' }}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="amount"
+                            stroke="#3b82f6"
+                            strokeWidth={2}
+                            dot={{ r: 3 }}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </CardContent>
+                  </Card>
+                )}
 
                 {/* Top Partners */}
-                {detailedStats.topPartners.length > 0 && (
+                {detailedStats.topPartners.length > 0 && filterType !== 'category' && filterType !== 'location' && (
                   <Card>
                     <CardHeader>
                       <CardTitle className="text-lg">
