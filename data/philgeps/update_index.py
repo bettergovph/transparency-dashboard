@@ -24,44 +24,14 @@ BATCH_SIZE = args.batch_size
 print(f"Connecting to MeiliSearch at {MEILISEARCH_HOST}...")
 client = Client(MEILISEARCH_HOST, MEILISEARCH_API_KEY)
 
-client.delete_index(MEILISEARCH_INDEX)
-
-client.create_index(MEILISEARCH_INDEX, { "primaryKey": "id" } )
-
 # Get or create index
 index = client.index(MEILISEARCH_INDEX)
 
-print(f"Importing data from {CSV_FILE}...")
-
-# Read CSV and import in batches
-with open(CSV_FILE, 'r', encoding='utf-8') as f:
-    reader = csv.DictReader(f)
-    
-    batch = []
-    total_imported = 0
-    
-    for row in reader:
-        batch.append(row)
-        
-        if len(batch) >= BATCH_SIZE:
-            # Import batch
-            index.add_documents(batch)
-            total_imported += len(batch)
-            print(f"Imported {total_imported} records...")
-            batch = []
-    
-    # Import remaining records
-    if batch:
-        index.add_documents(batch)
-        total_imported += len(batch)
-        print(f"Imported {total_imported} records...")
-
-
 index.update_settings({"searchableAttributes": ["*"], 
                        "filterableAttributes": ["awardee_name", "organization_name", 
-                                                "area_of_delivery", "business_category"], 
+                                                "area_of_delivery", "business_category", "award_date"], 
                        "sortableAttributes": ["contract_amount"]})
 
 
-print(f"\n✓ Successfully imported {total_imported} records into '{MEILISEARCH_INDEX}' index")
+print(f"\n✓ Updating index settings '{MEILISEARCH_INDEX}'")
 print(f"  Host: {MEILISEARCH_HOST}")
