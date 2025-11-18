@@ -164,36 +164,35 @@ const LocationsListPage = () => {
             </p>
           </div>
           
-          <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+          <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+              {/* Tab-like Sort Options */}
+              <div className="flex items-center gap-1">
+                <button
+                  onClick={() => setSortBy('total')}
+                  className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
+                    sortBy === 'total'
+                      ? 'border-blue-600 text-blue-600'
+                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                  }`}
+                >
+                  Top 100 by Total Amount
+                </button>
+                <button
+                  onClick={() => setSortBy('count')}
+                  className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
+                    sortBy === 'count'
+                      ? 'border-blue-600 text-blue-600'
+                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                  }`}
+                >
+                  Top 100 by Contract Count
+                </button>
+              </div>
+              
               <p className="text-base text-gray-600">
                 Showing {locations.length} location{locations.length !== 1 ? 's' : ''}
                 {!selectedLetter && !searchQuery && ' (Top 100)'}
               </p>
-              
-              {/* Sort Options */}
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">Sort by:</span>
-                <button
-                  onClick={() => setSortBy('total')}
-                  className={`px-3 py-1 text-sm rounded transition-colors ${
-                    sortBy === 'total'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Total Amount
-                </button>
-                <button
-                  onClick={() => setSortBy('count')}
-                  className={`px-3 py-1 text-sm rounded transition-colors ${
-                    sortBy === 'count'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  Contract Count
-                </button>
-              </div>
             </div>
             
             {locations.length > 0 ? (
