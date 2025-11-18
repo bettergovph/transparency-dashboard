@@ -22,16 +22,36 @@ Save the file to the `data/philgeps/` directory.
 
 ## Step 2: Extract Data with DuckDB
 
-Use DuckDB to extract and prepare the data using the provided SQL script:
+Use DuckDB to extract and prepare the aggregated data using the provided SQL script:
 
 ```bash
 cd data/philgeps
 duckdb < philgeps-extract.sql
 ```
 
-This will create the necessary CSV files from the parquet data.
+This will create the necessary parquet files for aggregated data (area_of_deliveries, awardees, business_categories, organizations).
 
-## Step 3: Set Environment Variables
+## Step 3: Split CSV into Batches
+
+**Important:** For large datasets, the CSV file must be split into smaller batch files before importing to MeiliSearch. This prevents memory issues and allows for more efficient processing.
+
+Convert the parquet file to CSV and split it into batches:
+
+```bash
+cd data
+
+# First, export the parquet to CSV using DuckDB
+duckdb -c "COPY (SELECT uuid() as id, * FROM 'philgeps/philgeps.parquet') TO 'philgeps/philgeps.csv' (HEADER, DELIMITER ',')"
+
+# Split the CSV into batch files (50,000 rows per batch)
+python split-csv.py philgeps/philgeps.csv --batch-size 50000 --output-dir philgeps/philgeps_batches
+```
+
+This creates smaller CSV files in `philgeps/philgeps_batches/` directory (e.g., `batch_0001.csv`, `batch_0002.csv`, etc.).
+
+**Note:** You can adjust the `--batch-size` parameter based on your system's memory. Larger batches = faster import but more memory usage.
+
+## Step 4: Set Environment Variables
 
 Create a `.env` file in the project root with your MeiliSearch configuration:
 
@@ -43,7 +63,7 @@ VITE_MEILISEARCH_INDEX_NAME=philgeps
 
 **Important:** You need the MeiliSearch **master key** for write access to create and populate indexes.
 
-## Step 4: Install Python Dependencies
+## Step 5: Install Python Dependencies
 
 Install the required Python packages:
 
@@ -52,13 +72,26 @@ cd data
 pip install -r requirements.txt
 ```
 
-## Step 5: Import Main PhilGEPS Data
+## Step 6: Import Main PhilGEPS Data
 
-Run the main import script to load PhilGEPS contracts data into MeiliSearch:
+Run the main import script to load PhilGEPS contracts data into MeiliSearch.
+
+**Option A: Import from batch files (Recommended for large datasets)**
 
 ```bash
 cd data/philgeps
-python import.py
+
+# Import each batch file
+for batch in philgeps_batches/batch_*.csv; do
+    python import.py "$batch" --batch-size 50000
+done
+```
+
+**Option B: Import single CSV file (Only for smaller datasets)**
+
+```bash
+cd data/philgeps
+python import.py philgeps.csv --batch-size 50000
 ```
 
 This will:
@@ -66,7 +99,7 @@ This will:
 - Import all contract records
 - Configure searchable attributes and filters
 
-## Step 6: Import Aggregated Data
+## Step 7: Import Aggregated Data
 
 Run the extras import script to load pre-aggregated filter data:
 
