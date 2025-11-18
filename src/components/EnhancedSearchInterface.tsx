@@ -553,11 +553,11 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
       <Navigation />
 
       {/* Main Grid Layout */}
-      <div className="flex flex-1">
+      <div className="flex flex-1 overflow-x-hidden">
         {/* Main Content Column */}
-        <div className={`transition-all duration-300 px-3 sm:px-4 lg:px-6 py-4 ${showSearchGuide ? 'w-3/4' : 'flex-1 mx-auto'} max-w-full`}>
+        <div className={`transition-all duration-300 px-3 sm:px-4 lg:px-6 py-4 ${showSearchGuide ? 'w-3/4' : 'flex-1 mx-auto'} max-w-full overflow-x-hidden`}>
           {/* Search and Filters Section */}
-          <div className="bg-white rounded-lg shadow p-2 mb-3">
+          <div className="bg-white rounded-lg shadow p-2 mb-3 overflow-x-hidden">
             {/* Row 1: Search Bar + Strict Match */}
             <div className="flex items-center gap-2 mb-2">
               <div className="relative flex-1">
@@ -587,10 +587,10 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
 
             {/* Selected Filter Tags */}
             {(selectedAreas.length > 0 || selectedAwardees.length > 0 || selectedOrganizations.length > 0) && (
-              <div className="flex flex-wrap gap-1 mb-2 px-1">
+              <div className="flex flex-wrap gap-1 mb-2 px-1 overflow-x-auto">
                 {selectedAreas.map((area) => (
-                  <div key={area} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-blue-100 text-blue-800 rounded text-[10px]">
-                    <span className="truncate max-w-[150px]">{area}</span>
+                  <div key={area} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-blue-100 text-blue-800 rounded text-[10px] flex-shrink-0">
+                    <span className="truncate max-w-[120px] sm:max-w-[150px]">{area}</span>
                     <button
                       type="button"
                       onClick={() => setSelectedAreas(selectedAreas.filter(a => a !== area))}
@@ -601,8 +601,8 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                   </div>
                 ))}
                 {selectedAwardees.map((awardee) => (
-                  <div key={awardee} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-green-100 text-green-800 rounded text-[10px]">
-                    <span className="truncate max-w-[150px]">{awardee}</span>
+                  <div key={awardee} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-green-100 text-green-800 rounded text-[10px] flex-shrink-0">
+                    <span className="truncate max-w-[120px] sm:max-w-[150px]">{awardee}</span>
                     <button
                       type="button"
                       onClick={() => setSelectedAwardees(selectedAwardees.filter(a => a !== awardee))}
@@ -613,8 +613,8 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                   </div>
                 ))}
                 {selectedOrganizations.map((org) => (
-                  <div key={org} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-purple-100 text-purple-800 rounded text-[10px]">
-                    <span className="truncate max-w-[150px]">{org}</span>
+                  <div key={org} className="inline-flex items-center gap-0.5 px-1.5 py-0.5 bg-purple-100 text-purple-800 rounded text-[10px] flex-shrink-0">
+                    <span className="truncate max-w-[120px] sm:max-w-[150px]">{org}</span>
                     <button
                       type="button"
                       onClick={() => setSelectedOrganizations(selectedOrganizations.filter(o => o !== org))}
@@ -628,7 +628,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
             )}
 
             {/* Row 2: Filters + Controls */}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 overflow-x-auto">
               {/* Filter Toggle */}
               <Button
                 variant="ghost"
@@ -953,8 +953,9 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
               </div>
 
               <div className="bg-white rounded-lg shadow overflow-hidden">
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200 text-xs">
+                <div className="overflow-x-auto -mx-3 sm:mx-0">
+                  <div className="inline-block min-w-full align-middle">
+                    <table className="min-w-full divide-y divide-gray-200 text-xs">
                     <thead className="bg-gray-50">
                       <tr>
                         <th
@@ -1071,6 +1072,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                   </table>
                 </div>
               </div>
+            </div>
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
