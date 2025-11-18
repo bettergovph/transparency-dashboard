@@ -161,7 +161,14 @@ const ContractorsPage = () => {
 
         {/* Directory Table */}
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+          {/* Data Disclaimer */}
+          <div className="bg-yellow-50 border-b border-yellow-200 px-6 py-3">
+            <p className="text-xs text-yellow-800">
+              <strong>Note:</strong> Data totals include possible duplicates. See each detail page for more information.
+            </p>
+          </div>
+          
+          <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
               <p className="text-base text-gray-600">
                 Showing {contractors.length} contractor{contractors.length !== 1 ? 's' : ''}
                 {!selectedLetter && !searchQuery && ' (Top 100)'}

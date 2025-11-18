@@ -139,7 +139,14 @@ const CategoriesListPage = () => {
 
         {/* Directory Table */}
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
+          {/* Data Disclaimer */}
+          <div className="bg-yellow-50 border-b border-yellow-200 px-6 py-3">
+            <p className="text-xs text-yellow-800">
+              <strong>Note:</strong> Data totals include possible duplicates. See each detail page for more information.
+            </p>
+          </div>
+          
+          <div className="px-6 py-4 border-b border-gray-200">
               <p className="text-base text-gray-600">
                 Showing {categories.length} categor{categories.length !== 1 ? 'ies' : 'y'}
                 {!selectedLetter && !searchQuery && ' (Top 100)'}
