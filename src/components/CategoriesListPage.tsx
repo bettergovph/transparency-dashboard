@@ -137,17 +137,8 @@ const CategoriesListPage = () => {
           )}
         </div>
 
-        {/* Loading State */}
-        {loading && (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-2"></div>
-            <p className="text-gray-600">Loading categories...</p>
-          </div>
-        )}
-
         {/* Directory Table */}
-        {!loading && (
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
               <p className="text-base text-gray-600">
                 Showing {categories.length} categor{categories.length !== 1 ? 'ies' : 'y'}
@@ -175,7 +166,7 @@ const CategoriesListPage = () => {
                         <td className="px-6 py-4">
                           <Link
                             to={`/categories/${toSlug(category.name)}`}
-                            className="text-base text-gray-900 hover:text-blue-600 transition-colors"
+                            className="text-base text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                           >
                             {category.name}
                           </Link>
@@ -196,8 +187,7 @@ const CategoriesListPage = () => {
                 <p className="text-gray-500">No categories found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
               </div>
             )}
-          </div>
-        )}
+        </div>
       </div>
       <Footer />
     </div>

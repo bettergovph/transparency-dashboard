@@ -8,17 +8,38 @@ import { filterIndices } from '@/lib/meilisearch'
 import { toSlug } from '@/lib/utils'
 
 const ContractorsPage = () => {
-  const [contractors, setContractors] = useState<Array<{ name: string; count: number; total: number }>>([])
+  const [contractors, setContractors] = useState<Array<{ name: string; count: number; total: number; startDate?: string; endDate?: string }>>([])
   const [loading, setLoading] = useState(true)
   const [selectedLetter, setSelectedLetter] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState('')
   const [totalCount, setTotalCount] = useState(0)
+  const [sortBy, setSortBy] = useState<'total' | 'count'>('total')
 
   const alphabet = ['0-9', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')]
 
   useEffect(() => {
     loadContractors(selectedLetter, searchQuery)
-  }, [selectedLetter, searchQuery])
+  }, [selectedLetter, searchQuery, sortBy])
+
+  const formatDateRange = (startDate?: string, endDate?: string) => {
+    if (!startDate || !endDate) return 'N/A'
+    
+    try {
+      const start = new Date(startDate)
+      const end = new Date(endDate)
+      
+      // If year is below 2000, use 2000
+      const startYear = start.getFullYear() < 2000 ? 2000 : start.getFullYear()
+      const endYear = end.getFullYear() < 2000 ? 2000 : end.getFullYear()
+      
+      const startMonth = start.getMonth() + 1 // 0-indexed
+      const endMonth = end.getMonth() + 1
+      
+      return `${startMonth}/${startYear}-${endMonth}/${endYear}`
+    } catch {
+      return 'N/A'
+    }
+  }
 
   const loadContractors = async (letter: string, search: string) => {
     setLoading(true)
@@ -30,7 +51,8 @@ const ContractorsPage = () => {
 
       const result = await index.search(searchQuery, {
         limit: 10000,
-        attributesToRetrieve: ['awardee_name', 'count', 'total'],
+        attributesToRetrieve: ['awardee_name', 'count', 'total', 'start_date', 'end_date'],
+        sort: [sortBy === 'total' ? 'total:desc' : 'count:desc'],
       })
 
       // Get total count from first load
@@ -43,7 +65,9 @@ const ContractorsPage = () => {
         .map((hit: any) => ({
           name: hit.awardee_name,
           count: hit.count || 0,
-          total: hit.total || 0
+          total: hit.total || 0,
+          startDate: hit.start_date,
+          endDate: hit.end_date
         }))
         .filter(contractor => contractor.name) // Filter out items without names
 
@@ -57,12 +81,10 @@ const ContractorsPage = () => {
         })
       }
 
-      // If no letter filter and no search, show top 100 by total amount
+      // Note: Results are already sorted by MeiliSearch using the sort parameter
+      // If no letter filter and no search, show top 100
       if (!letter && !search) {
-        contractorList = contractorList.sort((a, b) => b.total - a.total).slice(0, 100)
-      } else {
-        // Otherwise sort by count, then by name
-        contractorList = contractorList.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+        contractorList = contractorList.slice(0, 100)
       }
 
       setContractors(contractorList)
@@ -137,22 +159,38 @@ const ContractorsPage = () => {
           )}
         </div>
 
-        {/* Loading State */}
-        {loading && (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-2"></div>
-            <p className="text-gray-600">Loading contractors...</p>
-          </div>
-        )}
-
         {/* Directory Table */}
-        {!loading && (
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
               <p className="text-base text-gray-600">
                 Showing {contractors.length} contractor{contractors.length !== 1 ? 's' : ''}
                 {!selectedLetter && !searchQuery && ' (Top 100)'}
               </p>
+              
+              {/* Sort Options */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600">Sort by:</span>
+                <button
+                  onClick={() => setSortBy('total')}
+                  className={`px-3 py-1 text-sm rounded transition-colors ${
+                    sortBy === 'total'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  Total Amount
+                </button>
+                <button
+                  onClick={() => setSortBy('count')}
+                  className={`px-3 py-1 text-sm rounded transition-colors ${
+                    sortBy === 'count'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  Contract Count
+                </button>
+              </div>
             </div>
             
             {contractors.length > 0 ? (
@@ -164,6 +202,7 @@ const ContractorsPage = () => {
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Contractor Name</th>
                       <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-32">Contracts</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-48">Total Amount</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-40">Period</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -175,7 +214,7 @@ const ContractorsPage = () => {
                         <td className="px-6 py-4">
                           <Link
                             to={`/awardees/${toSlug(contractor.name)}`}
-                            className="text-base text-gray-900 hover:text-blue-600 transition-colors"
+                            className="text-base text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                           >
                             {contractor.name}
                           </Link>
@@ -185,6 +224,9 @@ const ContractorsPage = () => {
                         </td>
                         <td className="px-6 py-4 text-left text-base font-mono text-green-600 font-semibold">
                           ₱{contractor.total.toLocaleString()}
+                        </td>
+                        <td className="px-6 py-4 text-left text-sm text-gray-600">
+                          {formatDateRange(contractor.startDate, contractor.endDate)}
                         </td>
                       </tr>
                     ))}
@@ -196,8 +238,7 @@ const ContractorsPage = () => {
                 <p className="text-gray-500">No contractors found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
               </div>
             )}
-          </div>
-        )}
+        </div>
       </div>
       <Footer />
     </div>

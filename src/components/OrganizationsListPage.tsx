@@ -8,17 +8,38 @@ import { filterIndices } from '@/lib/meilisearch'
 import { toSlug } from '@/lib/utils'
 
 const OrganizationsListPage = () => {
-  const [organizations, setOrganizations] = useState<Array<{ name: string; count: number; total: number }>>([])
+  const [organizations, setOrganizations] = useState<Array<{ name: string; count: number; total: number; startDate?: string; endDate?: string }>>([])
   const [loading, setLoading] = useState(true)
   const [selectedLetter, setSelectedLetter] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState('')
   const [totalCount, setTotalCount] = useState(0)
+  const [sortBy, setSortBy] = useState<'total' | 'count'>('total')
 
   const alphabet = ['0-9', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')]
 
   useEffect(() => {
     loadOrganizations(selectedLetter, searchQuery)
-  }, [selectedLetter, searchQuery])
+  }, [selectedLetter, searchQuery, sortBy])
+
+  const formatDateRange = (startDate?: string, endDate?: string) => {
+    if (!startDate || !endDate) return 'N/A'
+    
+    try {
+      const start = new Date(startDate)
+      const end = new Date(endDate)
+      
+      // If year is below 2000, use 2000
+      const startYear = start.getFullYear() < 2000 ? 2000 : start.getFullYear()
+      const endYear = end.getFullYear() < 2000 ? 2000 : end.getFullYear()
+      
+      const startMonth = start.getMonth() + 1 // 0-indexed
+      const endMonth = end.getMonth() + 1
+      
+      return `${startMonth}/${startYear}-${endMonth}/${endYear}`
+    } catch {
+      return 'N/A'
+    }
+  }
 
   const loadOrganizations = async (letter: string, search: string) => {
     setLoading(true)
@@ -30,7 +51,8 @@ const OrganizationsListPage = () => {
 
       const result = await index.search(searchQuery, {
         limit: 10000,
-        attributesToRetrieve: ['organization_name', 'count', 'total'],
+        attributesToRetrieve: ['organization_name', 'count', 'total', 'start_date', 'end_date'],
+        sort: [sortBy === 'total' ? 'total:desc' : 'count:desc'],
       })
 
       // Get total count from first load
@@ -43,7 +65,9 @@ const OrganizationsListPage = () => {
         .map((hit: any) => ({
           name: hit.organization_name,
           count: hit.count || 0,
-          total: hit.total || 0
+          total: hit.total || 0,
+          startDate: hit.start_date,
+          endDate: hit.end_date
         }))
         .filter(org => org.name) // Filter out items without names
 
@@ -57,12 +81,10 @@ const OrganizationsListPage = () => {
         })
       }
 
-      // If no letter filter and no search, show top 100 by total amount
+      // Note: Results are already sorted by MeiliSearch using the sort parameter
+      // If no letter filter and no search, show top 100
       if (!letter && !search) {
-        orgList = orgList.sort((a, b) => b.total - a.total).slice(0, 100)
-      } else {
-        // Otherwise sort by count, then by name
-        orgList = orgList.sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+        orgList = orgList.slice(0, 100)
       }
 
       setOrganizations(orgList)
@@ -137,22 +159,38 @@ const OrganizationsListPage = () => {
           )}
         </div>
 
-        {/* Loading State */}
-        {loading && (
-          <div className="text-center py-12">
-            <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-2"></div>
-            <p className="text-gray-600">Loading organizations...</p>
-          </div>
-        )}
-
         {/* Directory Table */}
-        {!loading && (
-          <div className="bg-white rounded-lg shadow-sm overflow-hidden">
-            <div className="px-6 py-4 border-b border-gray-200">
+        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div className="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
               <p className="text-base text-gray-600">
                 Showing {organizations.length} organization{organizations.length !== 1 ? 's' : ''}
                 {!selectedLetter && !searchQuery && ' (Top 100)'}
               </p>
+              
+              {/* Sort Options */}
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-600">Sort by:</span>
+                <button
+                  onClick={() => setSortBy('total')}
+                  className={`px-3 py-1 text-sm rounded transition-colors ${
+                    sortBy === 'total'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  Total Amount
+                </button>
+                <button
+                  onClick={() => setSortBy('count')}
+                  className={`px-3 py-1 text-sm rounded transition-colors ${
+                    sortBy === 'count'
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  Contract Count
+                </button>
+              </div>
             </div>
             
             {organizations.length > 0 ? (
@@ -164,6 +202,7 @@ const OrganizationsListPage = () => {
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Organization Name</th>
                       <th className="px-6 py-4 text-right text-sm font-semibold text-gray-900 w-32">Contracts</th>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-48">Total Amount</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-40">Period</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
@@ -175,7 +214,7 @@ const OrganizationsListPage = () => {
                         <td className="px-6 py-4">
                           <Link
                             to={`/organizations/${toSlug(org.name)}`}
-                            className="text-base text-gray-900 hover:text-blue-600 transition-colors"
+                            className="text-base text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                           >
                             {org.name}
                           </Link>
@@ -185,6 +224,9 @@ const OrganizationsListPage = () => {
                         </td>
                         <td className="px-6 py-4 text-left text-base font-mono text-green-600 font-semibold">
                           ₱{org.total.toLocaleString()}
+                        </td>
+                        <td className="px-6 py-4 text-left text-sm text-gray-600">
+                          {formatDateRange(org.startDate, org.endDate)}
                         </td>
                       </tr>
                     ))}
@@ -196,8 +238,7 @@ const OrganizationsListPage = () => {
                 <p className="text-gray-500">No organizations found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
               </div>
             )}
-          </div>
-        )}
+        </div>
       </div>
       <Footer />
     </div>
