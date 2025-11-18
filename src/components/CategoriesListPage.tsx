@@ -147,8 +147,9 @@ const CategoriesListPage = () => {
             </div>
             
             {categories.length > 0 ? (
-              <div className="overflow-x-auto">
-                <table className="w-full">
+              <div className="overflow-x-auto -mx-4 sm:mx-0">
+                <div className="inline-block min-w-full align-middle">
+                  <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-20">#</th>
@@ -180,7 +181,8 @@ const CategoriesListPage = () => {
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                  </table>
+                </div>
               </div>
             ) : (
               <div className="text-center py-12">
