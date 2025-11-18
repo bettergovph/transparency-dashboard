@@ -62,6 +62,7 @@ def import_parquet_to_index(file_path, index_name):
     
     for record in records:
         # Convert any bytes to string (handles UUID bytes)
+        # Convert timestamps to ISO format strings
         for key, value in record.items():
             if isinstance(value, bytes):
                 import uuid
@@ -69,6 +70,10 @@ def import_parquet_to_index(file_path, index_name):
                     record[key] = str(uuid.UUID(bytes=value))
                 except:
                     record[key] = value.hex()  # fallback to hex string
+            elif pd.isna(value):
+                record[key] = None  # Convert NaN/NaT to None for JSON
+            elif isinstance(value, pd.Timestamp):
+                record[key] = value.isoformat()  # Convert timestamp to ISO string
         
         batch.append(record)
         
@@ -80,21 +85,14 @@ def import_parquet_to_index(file_path, index_name):
     
     # Import remaining records
     if batch:
-        # Convert any bytes to string in remaining batch
-        for record in batch:
-            for key, value in record.items():
-                if isinstance(value, bytes):
-                    import uuid
-                    try:
-                        record[key] = str(uuid.UUID(bytes=value))
-                    except:
-                        record[key] = value.hex()
-        
         index.add_documents(batch)
         total_imported += len(batch)
         print(f"  Imported {total_imported}/{total_records} records...")
     
+    
+    index.update_settings({"sortableAttributes": ["total", "count"], "filterableAttributes": ["total", "count", "start_date", "end_date"]})    
     print(f"✓ Successfully imported {total_imported} records into '{index_name}'")
+     
     return total_imported
 
 # Process all parquet files
@@ -103,6 +101,7 @@ for parquet_file, index_name in PARQUET_FILES:
     file_path = os.path.join(DATA_DIR, parquet_file)
     count = import_parquet_to_index(file_path, index_name)
     total_all += count
+
 
 print(f"\n{'='*60}")
 print(f"✓ COMPLETE - Imported {total_all} total records")
