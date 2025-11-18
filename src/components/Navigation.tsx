@@ -56,7 +56,7 @@ const Navigation = () => {
               />
               <Link to="/">
                 <h1 className="text-sm md:text-lg font-bold text-black font-figtree">
-                  Philgeps Contract Browser
+                  Transparency Dashboard
                 </h1>
                 <p className="text-gray-600 text-xs hidden sm:block">by BetterGov.ph</p>
               </Link>
@@ -71,7 +71,7 @@ const Navigation = () => {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className={`flex items-center gap-2 px-4 py-2 text-md transition-colors ${active
+                    className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${active
                       ? 'border-b text-blue-600 font-bold'
                       : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                       }`}
@@ -86,7 +86,7 @@ const Navigation = () => {
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
-                  className="flex items-center gap-2 px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                  className="flex items-center gap-2 md:px-3 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                 >
                   Our Projects
                   <ChevronDown className={`h-4 w-4 transition-transform ${projectsDropdownOpen ? 'rotate-180' : ''}`} />
