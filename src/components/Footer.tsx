@@ -31,12 +31,15 @@ const Footer = () => {
             <p className="text-gray-400">
               All content is public domain unless otherwise specified.
             </p>
+            <p>
+              <a href='https://bettergov.ph/terms-of-service' target='_blank' rel='noopener noreferrer'>Terms of Service</a>
+            </p>
           </div>
 
           {/* Right Side */}
           <div className="text-sm text-right flex items-center justify-end">
             <a
-              href="https://github.com/bettergov"
+              href="https://github.com/bettergovph/transparency-dashboard"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-gray-300 hover:text-white transition-colors"

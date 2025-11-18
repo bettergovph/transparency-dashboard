@@ -1,25 +1,29 @@
-# PHILGEPS Search Application
+# PhilGEPS Contract Browser
 
-A modern, responsive search interface for government procurement records built with Vite, React, TypeScript, Tailwind CSS v4, and MeiliSearch.
+A modern, responsive search interface for Philippine government procurement records built with Vite, React 19, TypeScript, Tailwind CSS v4, and MeiliSearch.
 
 ## ✨ Features
 
-- **🔍 Smart Search**: Advanced search across all procurement fields with real-time results
-- **📊 Interactive Dashboard**: Statistics and analytics for search results
-- **🎨 Modern UI/UX**: Clean, professional design with Figtree font and black & white theme
-- **📱 Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **🔍 Smart Search**: Real-time full-text search across multiple fields with advanced query syntax
+- **📊 Interactive Dashboard**: Statistics, analytics, and visualizations for search results
+- **🗂️ Entity Directories**: Browse contractors, organizations, locations, and categories
+- **📈 Data Insights**: Charts and trends for procurement spending over time
+- **🎨 Modern UI/UX**: Clean, professional design with responsive tables and mobile support
+- **📱 Mobile Responsive**: Optimized for all screen sizes with touch-friendly interfaces
 - **⚡ Fast Performance**: Powered by MeiliSearch for instant search results
-- **🛡️ Error Handling**: Comprehensive error boundaries and loading states
-- **🔧 Environment Configuration**: Easy setup with environment variables
+- **🔧 Advanced Filtering**: Multi-select filters for areas, awardees, and organizations
+- **📥 CSV Export**: Download search results for offline analysis
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: Vite, React 19, TypeScript
+- **Frontend**: Vite, React 19, TypeScript, React Router
 - **Styling**: Tailwind CSS v4, Figtree font, custom animations
-- **Search Engine**: MeiliSearch with instant search capabilities
-- **UI Components**: shadcn/ui, Lucide React icons
+- **Search Engine**: MeiliSearch with instant search and filtering
+- **UI Components**: shadcn/ui (Radix UI primitives), Lucide React icons
+- **Charts**: Recharts for data visualization
+- **SEO**: React Helmet for meta tags
 - **State Management**: React hooks with debounced search
-- **Error Handling**: React Error Boundaries
+- **Data Processing**: Python scripts with pandas and pyarrow
 
 ## 🚀 Quick Start
 
@@ -97,54 +101,17 @@ The application allows searching across these comprehensive fields:
 - **Status Indicators**: Color-coded award status badges
 - **Responsive Cards**: Hover effects and smooth transitions
 
-## 🔧 MeiliSearch Setup
+## 🔧 MeiliSearch Setup & Data Loading
 
-### Option 1: Docker (Recommended)
+For detailed instructions on downloading data, setting up MeiliSearch, and importing PhilGEPS data, see:
 
-```bash
-docker run -it --rm \
-  -p 7700:7700 \
-  -v $(pwd)/meili_data:/meili_data \
-  getmeili/meilisearch:latest
-```
+**[data/README.md](data/README.md)**
 
-### Option 2: Binary Installation
-
-Download and install MeiliSearch from the [official website](https://www.meilisearch.com/docs/learn/getting-started/installation).
-
-### Indexing Data
-
-Once MeiliSearch is running, you can index your procurement data:
-
-```javascript
-// Example indexing script
-const { MeiliSearch } = require('meilisearch')
-
-const client = new MeiliSearch({
-  host: 'http://localhost:7700',
-  apiKey: 'your_master_key'
-})
-
-const documents = [
-  {
-    id: '1',
-    reference_id: 'REF-2024-001',
-    contract_no: 'CON-2024-001',
-    award_title: 'Supply and Delivery of Office Equipment',
-    notice_title: 'Invitation to Bid - Office Equipment',
-    awardee_name: 'ABC Office Supplies Corp.',
-    organization_name: 'Department of Education',
-    area_of_delivery: 'Metro Manila',
-    business_category: 'Office Supplies',
-    contract_amount: 2500000,
-    award_date: '2024-01-15',
-    award_status: 'Awarded'
-  },
-  // ... more documents
-]
-
-await client.index('philgeps').addDocuments(documents)
-```
+The data loading process includes:
+1. Downloading parquet files from Hugging Face
+2. Extracting data using DuckDB
+3. Importing main contract data into MeiliSearch
+4. Importing pre-aggregated filter data for efficient browsing
 
 ## 🎨 Customization
 
@@ -154,7 +121,12 @@ await client.index('philgeps').addDocuments(documents)
 - Update component styles in individual `.tsx` files
 
 ### Components
-- **SearchInterface**: Main search component with filters and results
+- **Navigation**: Main navigation with dropdown menus
+- **EnhancedSearchInterface**: Advanced search with filters, sorting, and pagination
+- **Directory Pages**: Contractors, Organizations, Locations, Categories list views
+- **Detail Pages**: Individual entity pages with statistics and charts
+- **Footer**: Site-wide footer component
+- **SearchGuide**: Interactive search syntax guide
 - **UI Components**: Reusable shadcn/ui components in `src/components/ui/`
 - **ErrorBoundary**: Error handling component
 - **Types**: TypeScript definitions in `src/types/`
@@ -186,22 +158,47 @@ npm run preview  # Preview production build
 philgeps/
 ├── src/
 │   ├── components/
-│   │   ├── ui/           # shadcn/ui components
-│   │   ├── EnhancedSearchInterface.tsx
-│   │   └── ErrorBoundary.tsx
+│   │   ├── ui/                      # shadcn/ui components
+│   │   │   ├── autocomplete.tsx
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   └── input.tsx
+│   │   ├── AwardeePage.tsx          # Individual contractor detail page
+│   │   ├── CategoriesListPage.tsx   # Categories directory
+│   │   ├── CategoryPage.tsx         # Category detail page
+│   │   ├── ContractorsPage.tsx      # Contractors directory
+│   │   ├── EnhancedSearchInterface.tsx  # Main search interface
+│   │   ├── ErrorBoundary.tsx        # Error handling
+│   │   ├── Footer.tsx               # Site footer
+│   │   ├── LocationPage.tsx         # Location detail page
+│   │   ├── LocationsListPage.tsx    # Locations directory
+│   │   ├── Navigation.tsx           # Main navigation
+│   │   ├── OrganizationPage.tsx     # Organization detail page
+│   │   ├── OrganizationsListPage.tsx # Organizations directory
+│   │   └── SearchGuide.tsx          # Search syntax guide
 │   ├── lib/
-│   │   ├── meilisearch.ts  # MeiliSearch configuration
-│   │   └── utils.ts        # Utility functions
+│   │   ├── meilisearch.ts           # MeiliSearch client config
+│   │   └── utils.ts                 # Utility functions
 │   ├── types/
-│   │   └── search.ts       # TypeScript definitions
-│   ├── data/
-│   │   └── sampleData.ts   # Sample data for testing
-│   ├── index.css           # Global styles
-│   ├── App.tsx
-│   └── main.tsx
-├── .env.example            # Environment variables example
-├── tailwind.config.js      # Tailwind CSS configuration
-├── vite.config.ts          # Vite configuration
+│   │   └── search.ts                # TypeScript interfaces
+│   ├── App.tsx                      # Root component with routing
+│   ├── main.tsx                     # React 19 render root
+│   ├── index.css                    # Global styles
+│   └── App.css                      # Component styles
+├── data/
+│   ├── philgeps/
+│   │   ├── import.py                # Main data import script
+│   │   ├── import_extras.py         # Aggregated data import
+│   │   ├── philgeps-extract.sql     # DuckDB extraction script
+│   │   └── update_index.py          # Index update script
+│   ├── gaa/
+│   │   └── import_gaa.py            # GAA data import
+│   ├── requirements.txt             # Python dependencies
+│   └── README.md                    # Data setup instructions
+├── .env.example                     # Environment variables example
+├── tailwind.config.js               # Tailwind CSS v4 config
+├── vite.config.ts                   # Vite configuration
+├── LICENSE                          # MIT License
 └── README.md
 ```
 
