@@ -9,7 +9,6 @@ import { toSlug } from '@/lib/utils'
 
 const OrganizationsListPage = () => {
   const [organizations, setOrganizations] = useState<Array<{ name: string; count: number; total: number; startDate?: string; endDate?: string }>>([])
-  const [loading, setLoading] = useState(true)
   const [selectedLetter, setSelectedLetter] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState('')
   const [totalCount, setTotalCount] = useState(0)
@@ -42,7 +41,6 @@ const OrganizationsListPage = () => {
   }
 
   const loadOrganizations = async (letter: string, search: string) => {
-    setLoading(true)
     try {
       const index = filterIndices.organizations
 
@@ -90,8 +88,6 @@ const OrganizationsListPage = () => {
       setOrganizations(orgList)
     } catch (error) {
       console.error('Error loading organizations:', error)
-    } finally {
-      setLoading(false)
     }
   }
 

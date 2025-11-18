@@ -21,6 +21,9 @@ const Navigation = () => {
     { label: '2026 Budget', url: 'https://2026-budget.bettergov.ph' },
     { label: 'Budget', url: 'https://budget.bettergov.ph' },
     { label: 'Research', url: 'https://visualizations.bettergov.ph' },
+    { label: 'Bisto Proyekto', url: 'https://bisto.ph' },
+    { label: 'Flood Control Projects', url: 'https://bettergov.ph/flood-control-projects' },
+    { label: 'SALN Tracker', url: 'https://saln.bettergov.ph' }
   ]
 
   const isActive = (path: string) => {

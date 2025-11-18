@@ -9,7 +9,6 @@ import { toSlug } from '@/lib/utils'
 
 const LocationsListPage = () => {
   const [locations, setLocations] = useState<Array<{ name: string; count: number; total: number; startDate?: string; endDate?: string }>>([])
-  const [loading, setLoading] = useState(true)
   const [selectedLetter, setSelectedLetter] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState('')
   const [totalCount, setTotalCount] = useState(0)
@@ -42,7 +41,6 @@ const LocationsListPage = () => {
   }
 
   const loadLocations = async (letter: string, search: string) => {
-    setLoading(true)
     try {
       const index = filterIndices.area
 
@@ -90,8 +88,6 @@ const LocationsListPage = () => {
       setLocations(locationList)
     } catch (error) {
       console.error('Error loading locations:', error)
-    } finally {
-      setLoading(false)
     }
   }
 

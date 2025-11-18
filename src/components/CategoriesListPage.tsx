@@ -9,7 +9,6 @@ import { toSlug } from '@/lib/utils'
 
 const CategoriesListPage = () => {
   const [categories, setCategories] = useState<Array<{ name: string; count: number; total: number }>>([])
-  const [loading, setLoading] = useState(true)
   const [selectedLetter, setSelectedLetter] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState('')
   const [totalCount, setTotalCount] = useState(0)
@@ -21,7 +20,6 @@ const CategoriesListPage = () => {
   }, [selectedLetter, searchQuery])
 
   const loadCategories = async (letter: string, search: string) => {
-    setLoading(true)
     try {
       const index = filterIndices.business_categories
 
@@ -68,8 +66,6 @@ const CategoriesListPage = () => {
       setCategories(categoryList)
     } catch (error) {
       console.error('Error loading categories:', error)
-    } finally {
-      setLoading(false)
     }
   }
 
