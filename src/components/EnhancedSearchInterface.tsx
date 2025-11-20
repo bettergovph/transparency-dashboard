@@ -724,15 +724,15 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           )}
 
           {/* Loading State */}
-          {loading && (
+          {/* {loading && (
             <div className="text-center py-8">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black mb-2"></div>
               <p className="text-gray-600 text-sm">Searching...</p>
             </div>
-          )}
+          )} */}
 
           {/* Detailed Stats for Detail Pages */}
-          {!loading && detailedStats && results.length > 0 && (
+          {detailedStats && results.length > 0 && (
             <div className="space-y-4 mb-6">
               {/* Large Stat Cards */}
               <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -861,7 +861,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           )}
 
           {/* Results */}
-          {!loading && results.length > 0 && (
+          {results.length > 0 && (
             <div className="space-y-3">
 
 
@@ -956,123 +956,123 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                 <div className="overflow-x-auto -mx-3 sm:mx-0">
                   <div className="inline-block min-w-full align-middle">
                     <table className="min-w-full divide-y divide-gray-200 text-xs">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('reference_id')}
-                        >
-                          Ref ID{getSortIcon('reference_id')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('contract_no')}
-                        >
-                          Contract{getSortIcon('contract_no')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('award_title')}
-                        >
-                          Title{getSortIcon('award_title')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('awardee_name')}
-                        >
-                          Awardee{getSortIcon('awardee_name')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('organization_name')}
-                        >
-                          Organization{getSortIcon('organization_name')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('contract_amount')}
-                        >
-                          Amount{getSortIcon('contract_amount')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('business_category')}
-                        >
-                          Category{getSortIcon('business_category')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('award_date')}
-                        >
-                          Date{getSortIcon('award_date')}
-                        </th>
-                        <th
-                          className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
-                          onClick={() => handleTableSort('award_status')}
-                        >
-                          Status{getSortIcon('award_status')}
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {paginatedResults.map((doc) => (
-                        <tr key={doc.id} className="hover:bg-gray-50 transition-colors">
-                          <td className="px-3 py-2 whitespace-nowrap text-xs font-medium text-blue-600">
-                            {doc.reference_id}
-                          </td>
-                          <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-900">
-                            {doc.contract_no}
-                          </td>
-                          <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
-                            <div className="truncate" title={doc.award_title}>
-                              {doc.award_title}
-                            </div>
-                          </td>
-                          <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
-                            <Link
-                              to={`/awardees/${toSlug(doc.awardee_name)}`}
-                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
-                              title={doc.awardee_name}
-                            >
-                              {doc.awardee_name}
-                            </Link>
-                          </td>
-                          <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
-                            <Link
-                              to={`/organizations/${toSlug(doc.organization_name)}`}
-                              className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
-                              title={doc.organization_name}
-                            >
-                              {doc.organization_name}
-                            </Link>
-                          </td>
-                          <td className="px-3 py-2 whitespace-nowrap text-xs font-semibold text-gray-900">
-                            {formatCurrency(doc.contract_amount)}
-                          </td>
-                          <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
-                            <Link
-                              to={`/categories/${toSlug(doc.business_category)}`}
-                              className="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer"
-                              title={doc.business_category}
-                            >
-                              {doc.business_category}
-                            </Link>
-                          </td>
-                          <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-600">
-                            {formatDate(doc.award_date)}
-                          </td>
-                          <td className="px-3 py-2 whitespace-nowrap">
-                            <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium ${getStatusColor(doc.award_status)}`}>
-                              {doc.award_status}
-                            </span>
-                          </td>
+                      <thead className="bg-gray-50">
+                        <tr>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('reference_id')}
+                          >
+                            Ref ID{getSortIcon('reference_id')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('contract_no')}
+                          >
+                            Contract{getSortIcon('contract_no')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('award_title')}
+                          >
+                            Title{getSortIcon('award_title')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('awardee_name')}
+                          >
+                            Awardee{getSortIcon('awardee_name')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('organization_name')}
+                          >
+                            Organization{getSortIcon('organization_name')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('contract_amount')}
+                          >
+                            Amount{getSortIcon('contract_amount')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('business_category')}
+                          >
+                            Category{getSortIcon('business_category')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('award_date')}
+                          >
+                            Date{getSortIcon('award_date')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('award_status')}
+                          >
+                            Status{getSortIcon('award_status')}
+                          </th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {paginatedResults.map((doc) => (
+                          <tr key={doc.id} className="hover:bg-gray-50 transition-colors">
+                            <td className="px-3 py-2 whitespace-nowrap text-xs font-medium text-blue-600">
+                              {doc.reference_id}
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-900">
+                              {doc.contract_no}
+                            </td>
+                            <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
+                              <div className="truncate" title={doc.award_title}>
+                                {doc.award_title}
+                              </div>
+                            </td>
+                            <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
+                              <Link
+                                to={`/awardees/${toSlug(doc.awardee_name)}`}
+                                className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
+                                title={doc.awardee_name}
+                              >
+                                {doc.awardee_name}
+                              </Link>
+                            </td>
+                            <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
+                              <Link
+                                to={`/organizations/${toSlug(doc.organization_name)}`}
+                                className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
+                                title={doc.organization_name}
+                              >
+                                {doc.organization_name}
+                              </Link>
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-xs font-semibold text-gray-900">
+                              {formatCurrency(doc.contract_amount)}
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
+                              <Link
+                                to={`/categories/${toSlug(doc.business_category)}`}
+                                className="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer"
+                                title={doc.business_category}
+                              >
+                                {doc.business_category}
+                              </Link>
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-600">
+                              {formatDate(doc.award_date)}
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap">
+                              <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium ${getStatusColor(doc.award_status)}`}>
+                                {doc.award_status}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-            </div>
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
