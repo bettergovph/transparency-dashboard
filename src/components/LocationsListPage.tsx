@@ -13,6 +13,7 @@ const LocationsListPage = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [totalCount, setTotalCount] = useState(0)
   const [sortBy, setSortBy] = useState<'total' | 'count'>('total')
+  const [isLoading, setIsLoading] = useState(true)
 
   const alphabet = ['0-9', ...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')]
 
@@ -41,6 +42,7 @@ const LocationsListPage = () => {
   }
 
   const loadLocations = async (letter: string, search: string) => {
+    setIsLoading(true)
     try {
       const index = filterIndices.area
 
@@ -88,6 +90,8 @@ const LocationsListPage = () => {
       setLocations(locationList)
     } catch (error) {
       console.error('Error loading locations:', error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -195,7 +199,19 @@ const LocationsListPage = () => {
               </p>
             </div>
             
-            {locations.length > 0 ? (
+            {isLoading ? (
+              <div className="divide-y divide-gray-200">
+                {[...Array(10)].map((_, i) => (
+                  <div key={i} className="px-6 py-4 flex items-center gap-4 animate-pulse">
+                    <div className="w-12 h-4 bg-gray-200 rounded"></div>
+                    <div className="flex-1 h-4 bg-gray-200 rounded"></div>
+                    <div className="w-24 h-4 bg-gray-200 rounded"></div>
+                    <div className="w-32 h-4 bg-gray-200 rounded"></div>
+                    <div className="w-28 h-4 bg-gray-200 rounded"></div>
+                  </div>
+                ))}
+              </div>
+            ) : locations.length > 0 ? (
               <div className="overflow-x-auto -mx-4 sm:mx-0">
                 <div className="inline-block min-w-full align-middle">
                   <table className="min-w-full divide-y divide-gray-200">
