@@ -724,12 +724,62 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           )}
 
           {/* Loading State */}
-          {/* {loading && (
-            <div className="text-center py-8">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-black mb-2"></div>
-              <p className="text-gray-600 text-sm">Searching...</p>
+          {loading && (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="overflow-x-auto -mx-3 sm:mx-0">
+                <div className="inline-block min-w-full align-middle">
+                  <table className="min-w-full divide-y divide-gray-200 text-xs">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Ref ID</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Contract</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Title</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Awardee</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Organization</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Amount</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {[...Array(10)].map((_, i) => (
+                        <tr key={i} className="animate-pulse">
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            <div className="h-3 bg-gray-200 rounded w-16"></div>
+                          </td>
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            <div className="h-3 bg-gray-200 rounded w-20"></div>
+                          </td>
+                          <td className="px-3 py-2">
+                            <div className="h-3 bg-gray-200 rounded w-48"></div>
+                          </td>
+                          <td className="px-3 py-2">
+                            <div className="h-3 bg-gray-200 rounded w-32"></div>
+                          </td>
+                          <td className="px-3 py-2">
+                            <div className="h-3 bg-gray-200 rounded w-40"></div>
+                          </td>
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            <div className="h-3 bg-gray-200 rounded w-24"></div>
+                          </td>
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            <div className="h-3 bg-gray-200 rounded w-20"></div>
+                          </td>
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            <div className="h-3 bg-gray-200 rounded w-24"></div>
+                          </td>
+                          <td className="px-3 py-2 whitespace-nowrap">
+                            <div className="h-5 bg-gray-200 rounded-full w-16"></div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-          )} */}
+          )}
 
           {/* Detailed Stats for Detail Pages */}
           {detailedStats && results.length > 0 && (
@@ -861,7 +911,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           )}
 
           {/* Results */}
-          {results.length > 0 && (
+          {!loading && results.length > 0 && (
             <div className="space-y-3">
 
 
