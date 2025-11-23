@@ -145,29 +145,29 @@ const CategoriesListPage = () => {
               <strong>Note:</strong> Data totals include possible duplicates. See each detail page for more information.
             </p>
           </div>
-          
+
           <div className="px-6 py-4 border-b border-gray-200">
-              <p className="text-base text-gray-600">
-                Showing {categories.length} categor{categories.length !== 1 ? 'ies' : 'y'}
-                {!selectedLetter && !searchQuery && ' (Top 100)'}
-              </p>
+            <p className="text-base text-gray-600">
+              Showing {categories.length} categor{categories.length !== 1 ? 'ies' : 'y'}
+              {!selectedLetter && !searchQuery && ' (Top 100)'}
+            </p>
+          </div>
+
+          {isLoading ? (
+            <div className="divide-y divide-gray-200">
+              {[...Array(10)].map((_, i) => (
+                <div key={i} className="px-6 py-4 flex items-center gap-4 animate-pulse">
+                  <div className="w-12 h-4 bg-gray-200 rounded"></div>
+                  <div className="flex-1 h-4 bg-gray-200 rounded"></div>
+                  <div className="w-24 h-4 bg-gray-200 rounded"></div>
+                  <div className="w-32 h-4 bg-gray-200 rounded"></div>
+                </div>
+              ))}
             </div>
-            
-            {isLoading ? (
-              <div className="divide-y divide-gray-200">
-                {[...Array(10)].map((_, i) => (
-                  <div key={i} className="px-6 py-4 flex items-center gap-4 animate-pulse">
-                    <div className="w-12 h-4 bg-gray-200 rounded"></div>
-                    <div className="flex-1 h-4 bg-gray-200 rounded"></div>
-                    <div className="w-24 h-4 bg-gray-200 rounded"></div>
-                    <div className="w-32 h-4 bg-gray-200 rounded"></div>
-                  </div>
-                ))}
-              </div>
-            ) : categories.length > 0 ? (
-              <div className="overflow-x-auto -mx-4 sm:mx-0">
-                <div className="inline-block min-w-full align-middle">
-                  <table className="min-w-full divide-y divide-gray-200">
+          ) : categories.length > 0 ? (
+            <div className="overflow-x-auto -mx-4 sm:mx-0">
+              <div className="inline-block min-w-full align-middle">
+                <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-20">#</th>
@@ -199,14 +199,14 @@ const CategoriesListPage = () => {
                       </tr>
                     ))}
                   </tbody>
-                  </table>
-                </div>
+                </table>
               </div>
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-gray-500">No categories found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
-              </div>
-            )}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">No categories found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
+            </div>
+          )}
         </div>
       </div>
       <Footer />

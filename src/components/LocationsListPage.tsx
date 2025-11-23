@@ -23,18 +23,18 @@ const LocationsListPage = () => {
 
   const formatDateRange = (startDate?: string, endDate?: string) => {
     if (!startDate || !endDate) return 'N/A'
-    
+
     try {
       const start = new Date(startDate)
       const end = new Date(endDate)
-      
+
       // If year is below 2000, use 2000
       const startYear = start.getFullYear() < 2000 ? 2000 : start.getFullYear()
       const endYear = end.getFullYear() < 2000 ? 2000 : end.getFullYear()
-      
+
       const startMonth = start.getMonth() + 1 // 0-indexed
       const endMonth = end.getMonth() + 1
-      
+
       return `${startMonth}/${startYear}-${endMonth}/${endYear}`
     } catch {
       return 'N/A'
@@ -167,54 +167,52 @@ const LocationsListPage = () => {
               <strong>Note:</strong> Data totals include possible duplicates. See each detail page for more information.
             </p>
           </div>
-          
+
           <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
-              {/* Tab-like Sort Options */}
-              <div className="flex items-center gap-1">
-                <button
-                  onClick={() => setSortBy('total')}
-                  className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
-                    sortBy === 'total'
-                      ? 'border-blue-600 text-blue-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+            {/* Tab-like Sort Options */}
+            <div className="flex items-center gap-1">
+              <button
+                onClick={() => setSortBy('total')}
+                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${sortBy === 'total'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
-                >
-                  Top 100 by Total Amount
-                </button>
-                <button
-                  onClick={() => setSortBy('count')}
-                  className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
-                    sortBy === 'count'
-                      ? 'border-blue-600 text-blue-600'
-                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+              >
+                Top 100 by Total Amount
+              </button>
+              <button
+                onClick={() => setSortBy('count')}
+                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${sortBy === 'count'
+                    ? 'border-blue-600 text-blue-600'
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
-                >
-                  Top 100 by Contract Count
-                </button>
-              </div>
-              
-              <p className="text-base text-gray-600">
-                Showing {locations.length} location{locations.length !== 1 ? 's' : ''}
-                {!selectedLetter && !searchQuery && ' (Top 100)'}
-              </p>
+              >
+                Top 100 by Contract Count
+              </button>
             </div>
-            
-            {isLoading ? (
-              <div className="divide-y divide-gray-200">
-                {[...Array(10)].map((_, i) => (
-                  <div key={i} className="px-6 py-4 flex items-center gap-4 animate-pulse">
-                    <div className="w-12 h-4 bg-gray-200 rounded"></div>
-                    <div className="flex-1 h-4 bg-gray-200 rounded"></div>
-                    <div className="w-24 h-4 bg-gray-200 rounded"></div>
-                    <div className="w-32 h-4 bg-gray-200 rounded"></div>
-                    <div className="w-28 h-4 bg-gray-200 rounded"></div>
-                  </div>
-                ))}
-              </div>
-            ) : locations.length > 0 ? (
-              <div className="overflow-x-auto -mx-4 sm:mx-0">
-                <div className="inline-block min-w-full align-middle">
-                  <table className="min-w-full divide-y divide-gray-200">
+
+            <p className="text-base text-gray-600">
+              Showing {locations.length} location{locations.length !== 1 ? 's' : ''}
+              {!selectedLetter && !searchQuery && ' (Top 100)'}
+            </p>
+          </div>
+
+          {isLoading ? (
+            <div className="divide-y divide-gray-200">
+              {[...Array(10)].map((_, i) => (
+                <div key={i} className="px-6 py-4 flex items-center gap-4 animate-pulse">
+                  <div className="w-12 h-4 bg-gray-200 rounded"></div>
+                  <div className="flex-1 h-4 bg-gray-200 rounded"></div>
+                  <div className="w-24 h-4 bg-gray-200 rounded"></div>
+                  <div className="w-32 h-4 bg-gray-200 rounded"></div>
+                  <div className="w-28 h-4 bg-gray-200 rounded"></div>
+                </div>
+              ))}
+            </div>
+          ) : locations.length > 0 ? (
+            <div className="overflow-x-auto -mx-4 sm:mx-0">
+              <div className="inline-block min-w-full align-middle">
+                <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
                       <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 w-20">#</th>
@@ -250,14 +248,14 @@ const LocationsListPage = () => {
                       </tr>
                     ))}
                   </tbody>
-                  </table>
-                </div>
+                </table>
               </div>
-            ) : (
-              <div className="text-center py-12">
-                <p className="text-gray-500">No locations found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
-              </div>
-            )}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-gray-500">No locations found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
+            </div>
+          )}
         </div>
       </div>
       <Footer />
