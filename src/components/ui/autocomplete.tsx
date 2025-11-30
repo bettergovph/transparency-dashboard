@@ -85,7 +85,7 @@ export const Autocomplete: React.FC<AutocompleteProps> = ({
         onChange={handleInputChange}
         onFocus={handleInputFocus}
         disabled={disabled}
-        className="w-full text-[10px] py-1 px-2 h-4"
+        className="w-full text-[10px] py-1 px-2 h-6 min-h-[24px]"
       />
 
       {/* Selected Tags - Below Input */}

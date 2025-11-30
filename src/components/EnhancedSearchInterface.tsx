@@ -557,7 +557,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
         {/* Main Content Column */}
         <div className={`transition-all duration-300 px-3 sm:px-4 lg:px-6 py-4 ${showSearchGuide ? 'w-3/4' : 'flex-1 mx-auto'} max-w-full overflow-x-hidden`}>
           {/* Search and Filters Section */}
-          <div className="bg-white rounded-lg shadow p-2 mb-3 overflow-x-hidden">
+          <div className="bg-white rounded-lg shadow p-2 mb-3 overflow-visible">
             {/* Row 1: Search Bar + Strict Match */}
             <div className="flex items-center gap-2 mb-2">
               <div className="relative flex-1">
@@ -628,7 +628,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
             )}
 
             {/* Row 2: Filters + Controls */}
-            <div className="flex flex-wrap items-center gap-2 overflow-x-auto">
+            <div className="flex flex-wrap items-center gap-2 overflow-visible">
               {/* Filter Toggle */}
               <Button
                 variant="ghost"
