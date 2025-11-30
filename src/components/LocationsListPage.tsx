@@ -162,37 +162,37 @@ const LocationsListPage = () => {
         {/* Directory Table */}
         <div className="bg-white rounded-lg shadow-sm overflow-hidden">
           {/* Data Disclaimer */}
-          <div className="bg-yellow-50 border-b border-yellow-200 px-6 py-3">
+          <div className="bg-yellow-50 border-b border-yellow-200 px-3 sm:px-6 py-3">
             <p className="text-xs text-yellow-800">
               <strong>Note:</strong> Data totals include possible duplicates. See each detail page for more information.
             </p>
           </div>
 
-          <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+          <div className="px-3 sm:px-6 py-4 border-b border-gray-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             {/* Tab-like Sort Options */}
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 overflow-x-auto">
               <button
                 onClick={() => setSortBy('total')}
-                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${sortBy === 'total'
+                className={`px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${sortBy === 'total'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
               >
-                Top 100 by Total Amount
+                By Total Amount
               </button>
               <button
                 onClick={() => setSortBy('count')}
-                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${sortBy === 'count'
+                className={`px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${sortBy === 'count'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
               >
-                Top 100 by Contract Count
+                By Contract Count
               </button>
             </div>
 
-            <p className="text-base text-gray-600">
-              Showing {locations.length} location{locations.length !== 1 ? 's' : ''}
+            <p className="text-sm sm:text-base text-gray-600">
+              {locations.length} location{locations.length !== 1 ? 's' : ''}
               {!selectedLetter && !searchQuery && ' (Top 100)'}
             </p>
           </div>
@@ -210,8 +210,40 @@ const LocationsListPage = () => {
               ))}
             </div>
           ) : locations.length > 0 ? (
-            <div className="overflow-x-auto -mx-4 sm:mx-0">
-              <div className="inline-block min-w-full align-middle">
+            <>
+              {/* Mobile Card View */}
+              <div className="block lg:hidden divide-y divide-gray-200">
+                {locations.map((location, index) => (
+                  <div key={location.name} className="px-3 py-4 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-start gap-2 mb-2">
+                      <span className="text-xs font-mono text-gray-500 shrink-0 w-8">#{index + 1}</span>
+                      <Link
+                        to={`/locations/${toSlug(location.name)}`}
+                        className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors flex-1 text-left"
+                      >
+                        {location.name}
+                      </Link>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-xs">
+                      <div>
+                        <span className="text-gray-500">Contracts:</span>
+                        <span className="ml-1 font-mono text-gray-900">{location.count.toLocaleString()}</span>
+                      </div>
+                      <div className="text-right">
+                        <span className="text-gray-500">Period:</span>
+                        <span className="ml-1 text-gray-600">{formatDateRange(location.startDate, location.endDate)}</span>
+                      </div>
+                      <div className="col-span-2 text-right">
+                        <span className="text-gray-500">Total:</span>
+                        <span className="ml-1 font-mono text-green-600 font-semibold">₱{location.total.toLocaleString()}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Desktop Table View */}
+              <div className="hidden lg:block overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50 border-b border-gray-200">
                     <tr>
@@ -250,7 +282,7 @@ const LocationsListPage = () => {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </>
           ) : (
             <div className="text-center py-12">
               <p className="text-gray-500">No locations found{searchQuery ? ` for "${searchQuery}"` : selectedLetter ? ` for letter "${selectedLetter}"` : ''}</p>
