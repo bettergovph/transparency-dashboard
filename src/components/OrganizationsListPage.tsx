@@ -174,8 +174,8 @@ const OrganizationsListPage = () => {
               <button
                 onClick={() => setSortBy('total')}
                 className={`px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${sortBy === 'total'
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
               >
                 By Total Amount
@@ -183,8 +183,8 @@ const OrganizationsListPage = () => {
               <button
                 onClick={() => setSortBy('count')}
                 className={`px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium transition-colors border-b-2 whitespace-nowrap ${sortBy === 'count'
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                   }`}
               >
                 By Contract Count
