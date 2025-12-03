@@ -8,12 +8,14 @@ import ContractorsPage from './components/ContractorsPage'
 import OrganizationsListPage from './components/OrganizationsListPage'
 import LocationsListPage from './components/LocationsListPage'
 import CategoriesListPage from './components/CategoriesListPage'
+import BIRDashboard from './components/BIRDashboard'
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<EnhancedSearchInterface />} />
+        <Route path="/bir" element={<BIRDashboard />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />

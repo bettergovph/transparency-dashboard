@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -10,6 +10,7 @@ const Navigation = () => {
 
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
+    { path: '/bir', label: 'BIR Tax Data', icon: TrendingUp },
     { path: '/contractors', label: 'Contractors', icon: Users },
     { path: '/organizations', label: 'Organizations', icon: Building2 },
     { path: '/locations', label: 'Locations', icon: MapPin },
@@ -84,7 +85,7 @@ const Navigation = () => {
                   </Link>
                 )
               })}
-              
+
               {/* Our Projects Dropdown */}
               <div className="relative" ref={dropdownRef}>
                 <button
@@ -94,7 +95,7 @@ const Navigation = () => {
                   Our Projects
                   <ChevronDown className={`h-4 w-4 transition-transform ${projectsDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
-                
+
                 {projectsDropdownOpen && (
                   <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
                     {projectsDropdownItems.map((item) => (
@@ -126,7 +127,7 @@ const Navigation = () => {
               <Facebook className="h-4 w-4" />
               Follow us on Facebook
             </a>
-            
+
             {/* Mobile Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -163,7 +164,7 @@ const Navigation = () => {
                 </Link>
               )
             })}
-            
+
             {/* Our Projects Section in Mobile */}
             <div className="border-t border-gray-200 mt-2 pt-2">
               <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
