@@ -6,8 +6,6 @@ import {
   Building2,
   Calendar,
   PieChart as PieChartIcon,
-  BarChart3,
-  Filter,
   AlertCircle,
   ChevronDown,
   ChevronRight,
@@ -84,14 +82,6 @@ interface RegionByMonthData {
   months: { month: string; month_num: number; total: number; count: number; average: number }[]
 }
 
-interface TopArea {
-  rank: number
-  region: string
-  area: string
-  total: number
-  count: number
-  average: number
-}
 
 interface GAARegionData {
   region: string
@@ -126,21 +116,19 @@ const COLORS = [
 ]
 
 const BIRDashboard = () => {
-  const [totalByRegion, setTotalByRegion] = useState<RegionData[]>([])
   const [totalByArea, setTotalByArea] = useState<AreaData[]>([])
   const [areaByYear, setAreaByYear] = useState<AreaByYearData[]>([])
   const [monthlyTimeSeries, setMonthlyTimeSeries] = useState<MonthlyData[]>([])
   const [totalByYear, setTotalByYear] = useState<YearlyData[]>([])
   const [regionByYear, setRegionByYear] = useState<RegionByYearData[]>([])
   const [regionByMonth, setRegionByMonth] = useState<RegionByMonthData[]>([])
-  const [topAreas, setTopAreas] = useState<TopArea[]>([])
   const [gaaData, setGaaData] = useState<GAAData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   // Filters
   const [selectedRegion, setSelectedRegion] = useState<string>('All Regions')
   const [selectedYear, setSelectedYear] = useState<number>(2024)
-  const [topN, setTopN] = useState<number>(10)
+  const topN = 10
 
   // Available years
   const [availableYears, setAvailableYears] = useState<number[]>([])
@@ -169,45 +157,37 @@ const BIRDashboard = () => {
       setIsLoading(true)
 
       const [
-        regionRes,
         areaRes,
         areaYearRes,
         monthlyRes,
         yearRes,
         regionYearRes,
         regionMonthRes,
-        topAreasRes,
         gaaRes
       ] = await Promise.all([
-        fetch('/data/bir/aggregates/total_by_region.json'),
         fetch('/data/bir/aggregates/total_by_area.json'),
         fetch('/data/bir/aggregates/area_by_year.json'),
         fetch('/data/bir/aggregates/monthly_time_series.json'),
         fetch('/data/bir/aggregates/total_by_year.json'),
         fetch('/data/bir/aggregates/region_by_year.json'),
         fetch('/data/bir/aggregates/region_by_month.json'),
-        fetch('/data/bir/aggregates/top_100_areas.json'),
         fetch('/data/bir/aggregates/gaa_by_region.json')
       ])
 
-      const regionData = await regionRes.json()
       const areaData = await areaRes.json()
       const areaYearData = await areaYearRes.json()
       const monthlyData = await monthlyRes.json()
       const yearData = await yearRes.json()
       const regionYearData = await regionYearRes.json()
       const regionMonthData = await regionMonthRes.json()
-      const topAreasData = await topAreasRes.json()
       const gaaDataRes = await gaaRes.json()
 
-      setTotalByRegion(regionData.data)
       setTotalByArea(areaData.data)
       setAreaByYear(areaYearData.data)
       setMonthlyTimeSeries(monthlyData.data)
       setTotalByYear(yearData.data)
       setRegionByYear(regionYearData.data)
       setRegionByMonth(regionMonthData.data)
-      setTopAreas(topAreasData.data)
       setGaaData(gaaDataRes)
 
       const years = yearData.data.map((y: YearlyData) => y.year).sort((a: number, b: number) => b - a)
@@ -226,13 +206,11 @@ const BIRDashboard = () => {
   // Calculate summary statistics (year-aware)
   const yearData = totalByYear.find(y => y.year === selectedYear)
   const grandTotal = yearData?.total || 0
-  const totalRecords = yearData?.count || 0
 
   // Region-specific data when a region is selected
   const selectedRegionData = regionByYear.find(r => r.region === selectedRegion)
   const regionYearValue = selectedRegionData?.values.find(v => v.year === selectedYear)
   const regionTotal = regionYearValue?.total || 0
-  const regionRecords = regionYearValue?.count || 0
 
   // Get GAA (National Budget) for selected region and year
   const getGAAForRegion = (region: string, year: number): number => {
@@ -243,15 +221,7 @@ const BIRDashboard = () => {
     return regionData?.gaa || 0
   }
 
-  // Get total national GAA for selected year
-  const getNationalGAA = (year: number): number => {
-    if (!gaaData) return 0
-    const yearData = gaaData.data.find(d => d.year === year)
-    return yearData?.total || 0
-  }
-
   const regionGAA = getGAAForRegion(selectedRegion, selectedYear)
-  const nationalGAA = getNationalGAA(selectedYear)
   const collectionEfficiency = regionGAA > 0 ? (regionTotal / (regionGAA / 1_000_000)) * 100 : 0
 
   const yearRegionData = regionByYear
@@ -868,7 +838,7 @@ const BIRDashboard = () => {
                             label={(entry: any) => `${(entry.total / grandTotal * 100).toFixed(1)}%`}
                             labelLine={{ stroke: '#666', strokeWidth: 1 }}
                           >
-                            {filteredRegionData.map((entry, index) => (
+                            {filteredRegionData.map((_entry, index) => (
                               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                             ))}
                           </Pie>
@@ -1106,7 +1076,7 @@ const BIRDashboard = () => {
                                   {formatRawCurrency(regionGAAValue)}
                                 </td>
                                 <td className={`px-4 py-3 text-sm text-right font-mono font-semibold ${regionEfficiency === 0 ? 'text-gray-400' :
-                                    regionEfficiency < 50 ? 'text-red-600' : 'text-green-600'
+                                  regionEfficiency < 50 ? 'text-red-600' : 'text-green-600'
                                   }`}>
                                   {regionEfficiency === 0 ? 'To follow' : `${regionEfficiency.toFixed(2)}%`}
                                 </td>
