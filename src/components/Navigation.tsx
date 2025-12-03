@@ -92,8 +92,8 @@ const Navigation = () => {
               <Link
                 to="/"
                 className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isActive('/')
-                    ? 'border-b text-blue-600 font-bold'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  ? 'border-b text-blue-600 font-bold'
+                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                   }`}
               >
                 <Home className="h-4 w-4" />
@@ -105,8 +105,8 @@ const Navigation = () => {
                 <button
                   onClick={() => setProcurementDropdownOpen(!procurementDropdownOpen)}
                   className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isProcurementActive()
-                      ? 'border-b text-blue-600 font-bold'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    ? 'border-b text-blue-600 font-bold'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                     }`}
                 >
                   <ShoppingCart className="h-4 w-4" />
@@ -123,8 +123,8 @@ const Navigation = () => {
                           key={item.path}
                           to={item.path}
                           className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors ${isActive(item.path)
-                              ? 'bg-blue-50 text-blue-600 font-semibold'
-                              : 'text-gray-700 hover:bg-gray-100'
+                            ? 'bg-blue-50 text-blue-600 font-semibold'
+                            : 'text-gray-700 hover:bg-gray-100'
                             }`}
                           onClick={() => setProcurementDropdownOpen(false)}
                         >
@@ -142,8 +142,8 @@ const Navigation = () => {
                 <button
                   onClick={() => setTaxDropdownOpen(!taxDropdownOpen)}
                   className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isTaxCollectionActive()
-                      ? 'border-b text-blue-600 font-bold'
-                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    ? 'border-b text-blue-600 font-bold'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                     }`}
                 >
                   <Coins className="h-4 w-4" />
@@ -160,8 +160,8 @@ const Navigation = () => {
                           key={item.path}
                           to={item.path}
                           className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors ${isActive(item.path)
-                              ? 'bg-blue-50 text-blue-600 font-semibold'
-                              : 'text-gray-700 hover:bg-gray-100'
+                            ? 'bg-blue-50 text-blue-600 font-semibold'
+                            : 'text-gray-700 hover:bg-gray-100'
                             }`}
                           onClick={() => setTaxDropdownOpen(false)}
                         >
@@ -240,8 +240,8 @@ const Navigation = () => {
               to="/"
               onClick={() => setMobileMenuOpen(false)}
               className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${isActive('/')
-                  ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
-                  : 'text-gray-700 hover:bg-gray-50'
+                ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                : 'text-gray-700 hover:bg-gray-50'
                 }`}
             >
               <Home className="h-5 w-5" />
@@ -263,8 +263,8 @@ const Navigation = () => {
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 pl-10 text-sm transition-colors ${active
-                        ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
-                        : 'text-gray-700 hover:bg-gray-50'
+                      ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                      : 'text-gray-700 hover:bg-gray-50'
                       }`}
                   >
                     <Icon className="h-5 w-5" />
@@ -289,8 +289,8 @@ const Navigation = () => {
                     to={item.path}
                     onClick={() => setMobileMenuOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3 pl-10 text-sm transition-colors ${active
-                        ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
-                        : 'text-gray-700 hover:bg-gray-50'
+                      ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                      : 'text-gray-700 hover:bg-gray-50'
                       }`}
                   >
                     <Icon className="h-5 w-5" />

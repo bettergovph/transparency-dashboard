@@ -121,7 +121,7 @@ const BIRDashboard = () => {
 
   // Expanded regions for drill-down
   const [expandedRegions, setExpandedRegions] = useState<Set<string>>(new Set())
-  
+
   // Mobile sidebar state
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
 
@@ -188,6 +188,12 @@ const BIRDashboard = () => {
   const yearData = totalByYear.find(y => y.year === selectedYear)
   const grandTotal = yearData?.total || 0
   const totalRecords = yearData?.count || 0
+
+  // Region-specific data when a region is selected
+  const selectedRegionData = regionByYear.find(r => r.region === selectedRegion)
+  const regionYearValue = selectedRegionData?.values.find(v => v.year === selectedYear)
+  const regionTotal = regionYearValue?.total || 0
+  const regionRecords = regionYearValue?.count || 0
 
   const yearRegionData = regionByYear
     .map(r => {
@@ -332,8 +338,7 @@ const BIRDashboard = () => {
               overflow-y-auto
               transition-transform duration-300 ease-in-out
               lg:translate-x-0
-              ${
-                isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+              ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
               }
             `}
           >
@@ -357,8 +362,8 @@ const BIRDashboard = () => {
                     setIsMobileSidebarOpen(false)
                   }}
                   className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${selectedRegion === 'All Regions'
-                      ? 'bg-blue-600 text-white font-semibold shadow-sm'
-                      : 'text-gray-700 hover:bg-gray-100'
+                    ? 'bg-blue-600 text-white font-semibold shadow-sm'
+                    : 'text-gray-700 hover:bg-gray-100'
                     }`}
                 >
                   <div className="flex items-center justify-between">
@@ -379,8 +384,8 @@ const BIRDashboard = () => {
                         setIsMobileSidebarOpen(false)
                       }}
                       className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${isSelected
-                          ? 'bg-blue-600 text-white font-semibold shadow-sm'
-                          : 'text-gray-700 hover:bg-gray-100'
+                        ? 'bg-blue-600 text-white font-semibold shadow-sm'
+                        : 'text-gray-700 hover:bg-gray-100'
                         }`}
                     >
                       <div className="flex items-center gap-2">
@@ -412,12 +417,12 @@ const BIRDashboard = () => {
                     >
                       <Menu className="h-5 w-5 text-gray-600" />
                     </button>
-                    
+
                     <div className="p-3 bg-blue-600 rounded-lg shrink-0">
                       <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-white" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 truncate">
+                      <h1 className="text-lg sm:text-lg md:text-xl font-bold text-gray-900 truncate">
                         {selectedRegion === 'All Regions'
                           ? 'BIR Tax Collection Dashboard'
                           : `${selectedRegion} - Tax Collection`
@@ -440,11 +445,10 @@ const BIRDashboard = () => {
                         <button
                           key={year}
                           onClick={() => setSelectedYear(year)}
-                          className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                            selectedYear === year
-                              ? 'bg-blue-600 text-white shadow-lg'
-                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                          className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
+                            ? 'bg-blue-600 text-white shadow-lg'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                            }`}
                         >
                           {year}
                         </button>
@@ -461,11 +465,10 @@ const BIRDashboard = () => {
                       <button
                         key={year}
                         onClick={() => setSelectedYear(year)}
-                        className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                          selectedYear === year
-                            ? 'bg-blue-600 text-white shadow-lg'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
+                        className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
+                          ? 'bg-blue-600 text-white shadow-lg'
+                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
                       >
                         {year}
                       </button>
@@ -492,407 +495,516 @@ const BIRDashboard = () => {
                 </div>
               </div>
 
-              {/* Summary Cards - 3 columns */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-[1800px] mx-auto">
-                <Card className="border-l-4 border-l-blue-600">
-                  <CardHeader className="pb-3">
-                    <CardDescription>Total Collection ({selectedYear})</CardDescription>
-                    <CardTitle className="text-2xl text-blue-600">
-                      {formatFullCurrency(grandTotal)}
+              {/* Summary Cards - Different for National vs Regional View */}
+              {selectedRegion === 'All Regions' ? (
+                // National Overview Cards
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-[1800px] mx-auto">
+                  <Card className="border-l-4 border-l-blue-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>Total National Collection ({selectedYear})</CardDescription>
+                      <CardTitle className="text-2xl text-blue-600">
+                        {formatFullCurrency(grandTotal)}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        {formatCurrencyInMillions(grandTotal)}
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-l-4 border-l-purple-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>Regions Covered</CardDescription>
+                      <CardTitle className="text-2xl text-purple-600">
+                        {totalRegions}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        Philippine regions
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-l-4 border-l-orange-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>Total Collection Areas</CardDescription>
+                      <CardTitle className="text-2xl text-orange-600">
+                        {totalAreas}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        Collection districts
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              ) : (
+                // Regional Specific Cards
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 max-w-[1800px] mx-auto">
+                  <Card className="border-l-4 border-l-blue-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>{selectedRegion} Collection ({selectedYear})</CardDescription>
+                      <CardTitle className="text-2xl text-blue-600">
+                        {formatFullCurrency(regionTotal)}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        {formatCurrencyInMillions(regionTotal)}
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-l-4 border-l-green-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>Share of National</CardDescription>
+                      <CardTitle className="text-2xl text-green-600">
+                        {((regionTotal / grandTotal) * 100).toFixed(2)}%
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        Regional contribution
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-l-4 border-l-purple-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>Collection Areas</CardDescription>
+                      <CardTitle className="text-2xl text-purple-600">
+                        {areaByYear.filter(a => a.region === selectedRegion && a.year === selectedYear).length}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        Districts in region
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-l-4 border-l-orange-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>Average per Area</CardDescription>
+                      <CardTitle className="text-2xl text-orange-600">
+                        {formatCurrency(regionTotal / regionRecords)}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        Monthly average
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+
+              {/* Filters - Compact */}
+              <Card className="mb-4 max-w-[1800px] mx-auto">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-2">
+                    <Filter className="h-4 w-4 text-gray-600" />
+                    <CardTitle className="text-base">Filters</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 gap-3">
+                    {/* Region filter removed - now in sidebar */}
+
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">
+                        <BarChart3 className="h-3 w-3 inline mr-1" />
+                        Top N Areas
+                      </label>
+                      <select
+                        value={topN}
+                        onChange={(e) => setTopN(Number(e.target.value))}
+                        className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value={5}>Top 5</option>
+                        <option value={10}>Top 10</option>
+                        <option value={15}>Top 15</option>
+                        <option value={20}>Top 20</option>
+                      </select>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Charts Grid - Different for National vs Regional View */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1800px] mx-auto">
+
+                {/* 1. Year-over-Year Trend - FIRST */}
+                <Card className="lg:col-span-2">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-indigo-600" />
+                      {selectedRegion === 'All Regions'
+                        ? 'National Year-over-Year Collection Trend (2020-2024)'
+                        : `${selectedRegion} - Year-over-Year Trend (2020-2024)`
+                      }
                     </CardTitle>
+                    <CardDescription>
+                      {selectedRegion === 'All Regions'
+                        ? 'National tax collection trend across all regions'
+                        : `Tax collection growth pattern for ${selectedRegion}`
+                      }
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-xs text-gray-500">
-                      {formatCurrencyInMillions(grandTotal)}
-                    </p>
+                    <ResponsiveContainer width="100%" height={350}>
+                      <LineChart
+                        data={selectedRegion === 'All Regions'
+                          ? totalByYear
+                          : [...(regionByYear
+                            .find(r => r.region === selectedRegion)
+                            ?.values || [])].sort((a, b) => a.year - b.year)
+                        }
+                      >
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                        <XAxis
+                          dataKey="year"
+                          tick={{ fontSize: 12 }}
+                        />
+                        <YAxis
+                          tickFormatter={(value) => formatCurrency(value)}
+                          tick={{ fontSize: 12 }}
+                        />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend />
+                        <Line
+                          type="monotone"
+                          dataKey="total"
+                          stroke="#6366f1"
+                          strokeWidth={3}
+                          name="Total Collection"
+                          dot={{ fill: '#6366f1', r: 6 }}
+                          activeDot={{ r: 8 }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
                   </CardContent>
                 </Card>
 
-                <Card className="border-l-4 border-l-purple-600">
-                  <CardHeader className="pb-3">
-                    <CardDescription>Regions Covered</CardDescription>
-                    <CardTitle className="text-2xl text-purple-600">
-                      {totalRegions}
+                {/* Regional Distribution Pie Chart - Only for National View */}
+                {selectedRegion === 'All Regions' && (
+                  <Card className="lg:col-span-2">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <PieChartIcon className="h-5 w-5 text-purple-600" />
+                        Regional Distribution ({selectedYear})
+                      </CardTitle>
+                      <CardDescription>
+                        Percentage share of total national collection
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ResponsiveContainer width="100%" height={500}>
+                        <PieChart>
+                          <Pie
+                            data={filteredRegionData as any}
+                            dataKey="total"
+                            nameKey="region"
+                            cx="50%"
+                            cy="50%"
+                            outerRadius={180}
+                            label={(entry: any) => `${(entry.total / grandTotal * 100).toFixed(1)}%`}
+                            labelLine={{ stroke: '#666', strokeWidth: 1 }}
+                          >
+                            {filteredRegionData.map((entry, index) => (
+                              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                            ))}
+                          </Pie>
+                          <Tooltip content={<CustomTooltip />} />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* Monthly Breakdown - Only for Regional View */}
+                {selectedRegion !== 'All Regions' && (
+                  <Card className="lg:col-span-2">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Calendar className="h-5 w-5 text-green-600" />
+                        Monthly Collection Pattern ({selectedYear})
+                      </CardTitle>
+                      <CardDescription>
+                        Monthly tax collection for {selectedRegion}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart
+                          data={[...(regionByMonth
+                            .find(r => r.region === selectedRegion)
+                            ?.months || [])].sort((a, b) => a.month_num - b.month_num)}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                          <XAxis
+                            dataKey="month"
+                            tick={{ fontSize: 11 }}
+                          />
+                          <YAxis
+                            tickFormatter={(value) => formatCurrency(value)}
+                            tick={{ fontSize: 12 }}
+                          />
+                          <Tooltip content={<CustomTooltip />} />
+                          <Legend />
+                          <Bar
+                            dataKey="total"
+                            fill="#10b981"
+                            name="Monthly Collection"
+                            radius={[8, 8, 0, 0]}
+                          />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </CardContent>
+                  </Card>
+                )}
+
+                {/* 3. Regional Bar Chart */}
+                <Card className="lg:col-span-2">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MapPin className="h-5 w-5 text-blue-600" />
+                      Tax Collection by Region ({selectedYear})
                     </CardTitle>
+                    <CardDescription>
+                      Total tax revenue collected across Philippine regions
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-xs text-gray-500">
-                      Philippine regions
-                    </p>
+                    <ResponsiveContainer width="100%" height={400}>
+                      <BarChart data={filteredRegionData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                        <XAxis
+                          dataKey="region"
+                          angle={-45}
+                          textAnchor="end"
+                          height={150}
+                          tick={{ fontSize: 11 }}
+                        />
+                        <YAxis
+                          tickFormatter={(value) => formatCurrency(value)}
+                          tick={{ fontSize: 12 }}
+                        />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend />
+                        <Bar
+                          dataKey="total"
+                          fill="#3b82f6"
+                          name="Total Collection"
+                          radius={[8, 8, 0, 0]}
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
                   </CardContent>
                 </Card>
 
-                <Card className="border-l-4 border-l-orange-600">
-                  <CardHeader className="pb-3">
-                    <CardDescription>Areas/Districts</CardDescription>
-                    <CardTitle className="text-2xl text-orange-600">
-                      {totalAreas}
+                {/* 4. Monthly Trend */}
+                <Card className="lg:col-span-2">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <TrendingUp className="h-5 w-5 text-green-600" />
+                      Monthly Collection Trend ({selectedYear})
                     </CardTitle>
+                    <CardDescription>
+                      {selectedRegion === 'All Regions'
+                        ? 'Month-by-month tax collection'
+                        : `Monthly collection for ${selectedRegion}`
+                      }
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-xs text-gray-500">
-                      Collection areas
-                    </p>
+                    <ResponsiveContainer width="100%" height={350}>
+                      <LineChart data={filteredMonthlyData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                        <XAxis
+                          dataKey="month"
+                          tick={{ fontSize: 12 }}
+                        />
+                        <YAxis
+                          tickFormatter={(value) => formatCurrency(value)}
+                          tick={{ fontSize: 12 }}
+                        />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Legend />
+                        <Line
+                          type="monotone"
+                          dataKey="total"
+                          stroke="#10b981"
+                          strokeWidth={3}
+                          name="Total Collection"
+                          dot={{ fill: '#10b981', r: 5 }}
+                          activeDot={{ r: 7 }}
+                        />
+                      </LineChart>
+                    </ResponsiveContainer>
                   </CardContent>
                 </Card>
+
+                {/* 5. Top Areas */}
+                <Card className="lg:col-span-2">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Building2 className="h-5 w-5 text-orange-600" />
+                      Top {topN} Areas by Collection ({selectedYear})
+                    </CardTitle>
+                    <CardDescription>
+                      {selectedRegion === 'All Regions'
+                        ? `Highest collecting areas nationwide`
+                        : `Top areas in ${selectedRegion}`
+                      }
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <ResponsiveContainer width="100%" height={350}>
+                      <BarChart
+                        data={filteredAreaData}
+                        layout="vertical"
+                      >
+                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                        <XAxis
+                          type="number"
+                          tickFormatter={(value) => formatCurrency(value)}
+                          tick={{ fontSize: 11 }}
+                        />
+                        <YAxis
+                          type="category"
+                          dataKey="area"
+                          width={150}
+                          tick={{ fontSize: 10 }}
+                        />
+                        <Tooltip content={<CustomTooltip />} />
+                        <Bar
+                          dataKey="total"
+                          fill="#f59e0b"
+                          name="Total Collection"
+                          radius={[0, 8, 8, 0]}
+                        />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </CardContent>
+                </Card>
+
               </div>
 
-            {/* Filters - Compact */}
-            <Card className="mb-4 max-w-[1800px] mx-auto">
-              <CardHeader className="pb-3">
-                <div className="flex items-center gap-2">
-                  <Filter className="h-4 w-4 text-gray-600" />
-                  <CardTitle className="text-base">Filters</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-1 gap-3">
-                  {/* Region filter removed - now in sidebar */}
-
+              {/* Data Table */}
+              <Card className="mt-6 max-w-[1800px] mx-auto">
+                <CardHeader>
                   <div>
-                    <label className="block text-xs font-medium text-gray-700 mb-1">
-                      <BarChart3 className="h-3 w-3 inline mr-1" />
-                      Top N Areas
-                    </label>
-                    <select
-                      value={topN}
-                      onChange={(e) => setTopN(Number(e.target.value))}
-                      className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value={5}>Top 5</option>
-                      <option value={10}>Top 10</option>
-                      <option value={15}>Top 15</option>
-                      <option value={20}>Top 20</option>
-                    </select>
+                    <CardTitle>Regional Summary Table ({selectedYear})</CardTitle>
+                    <CardDescription>Detailed breakdown of collections by region - Click to expand areas</CardDescription>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Charts Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1800px] mx-auto">
-
-              {/* 1. Year-over-Year Trend - FIRST */}
-              <Card className="lg:col-span-2">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-indigo-600" />
-                    Year-over-Year Collection Trend (2020-2024)
-                  </CardTitle>
-                  <CardDescription>
-                    {selectedRegion === 'All Regions'
-                      ? 'National tax collection trend across all regions'
-                      : `Tax collection trend for ${selectedRegion}`
-                    }
-                  </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <ResponsiveContainer width="100%" height={350}>
-                    <LineChart
-                      data={selectedRegion === 'All Regions'
-                        ? totalByYear
-                        : regionByYear
-                          .find(r => r.region === selectedRegion)
-                          ?.values.sort((a, b) => a.year - b.year) || []
-                      }
-                    >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                      <XAxis
-                        dataKey="year"
-                        tick={{ fontSize: 12 }}
-                      />
-                      <YAxis
-                        tickFormatter={(value) => formatCurrency(value)}
-                        tick={{ fontSize: 12 }}
-                      />
-                      <Tooltip content={<CustomTooltip />} />
-                      <Legend />
-                      <Line
-                        type="monotone"
-                        dataKey="total"
-                        stroke="#6366f1"
-                        strokeWidth={3}
-                        name="Total Collection"
-                        dot={{ fill: '#6366f1', r: 6 }}
-                        activeDot={{ r: 8 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
+                  <div className="overflow-x-auto">
+                    <table className="min-w-full divide-y divide-gray-200">
+                      <thead className="bg-gray-50">
+                        <tr>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-8"></th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rank</th>
+                          <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Region / Area</th>
+                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total Collection</th>
+                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Records</th>
+                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Average</th>
+                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">% of Total</th>
+                        </tr>
+                      </thead>
+                      <tbody className="bg-white divide-y divide-gray-200">
+                        {filteredRegionData.map((region, index) => {
+                          const isExpanded = expandedRegions.has(region.region)
+                          const areas = getAreasForRegion(region.region)
 
-              {/* 2. Regional Distribution Pie Chart - LARGER, SECOND */}
-              <Card className="lg:col-span-2">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <PieChartIcon className="h-5 w-5 text-purple-600" />
-                    Regional Distribution ({selectedYear})
-                  </CardTitle>
-                  <CardDescription>
-                    Percentage share of total collection
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={500}>
-                    <PieChart>
-                      <Pie
-                        data={filteredRegionData as any}
-                        dataKey="total"
-                        nameKey="region"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={180}
-                        label={(entry: any) => `${(entry.total / grandTotal * 100).toFixed(1)}%`}
-                        labelLine={{ stroke: '#666', strokeWidth: 1 }}
-                      >
-                        {filteredRegionData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                        ))}
-                      </Pie>
-                      <Tooltip content={<CustomTooltip />} />
-                    </PieChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
-
-              {/* 3. Regional Bar Chart */}
-              <Card className="lg:col-span-2">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <MapPin className="h-5 w-5 text-blue-600" />
-                    Tax Collection by Region ({selectedYear})
-                  </CardTitle>
-                  <CardDescription>
-                    Total tax revenue collected across Philippine regions
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={400}>
-                    <BarChart data={filteredRegionData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                      <XAxis
-                        dataKey="region"
-                        angle={-45}
-                        textAnchor="end"
-                        height={150}
-                        tick={{ fontSize: 11 }}
-                      />
-                      <YAxis
-                        tickFormatter={(value) => formatCurrency(value)}
-                        tick={{ fontSize: 12 }}
-                      />
-                      <Tooltip content={<CustomTooltip />} />
-                      <Legend />
-                      <Bar
-                        dataKey="total"
-                        fill="#3b82f6"
-                        name="Total Collection"
-                        radius={[8, 8, 0, 0]}
-                      />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
-
-              {/* 4. Monthly Trend */}
-              <Card className="lg:col-span-2">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <TrendingUp className="h-5 w-5 text-green-600" />
-                    Monthly Collection Trend ({selectedYear})
-                  </CardTitle>
-                  <CardDescription>
-                    {selectedRegion === 'All Regions'
-                      ? 'Month-by-month tax collection'
-                      : `Monthly collection for ${selectedRegion}`
-                    }
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={350}>
-                    <LineChart data={filteredMonthlyData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                      <XAxis
-                        dataKey="month"
-                        tick={{ fontSize: 12 }}
-                      />
-                      <YAxis
-                        tickFormatter={(value) => formatCurrency(value)}
-                        tick={{ fontSize: 12 }}
-                      />
-                      <Tooltip content={<CustomTooltip />} />
-                      <Legend />
-                      <Line
-                        type="monotone"
-                        dataKey="total"
-                        stroke="#10b981"
-                        strokeWidth={3}
-                        name="Total Collection"
-                        dot={{ fill: '#10b981', r: 5 }}
-                        activeDot={{ r: 7 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
-
-              {/* 5. Top Areas */}
-              <Card className="lg:col-span-2">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Building2 className="h-5 w-5 text-orange-600" />
-                    Top {topN} Areas by Collection ({selectedYear})
-                  </CardTitle>
-                  <CardDescription>
-                    {selectedRegion === 'All Regions'
-                      ? `Highest collecting areas nationwide`
-                      : `Top areas in ${selectedRegion}`
-                    }
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={350}>
-                    <BarChart
-                      data={filteredAreaData}
-                      layout="vertical"
-                    >
-                      <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                      <XAxis
-                        type="number"
-                        tickFormatter={(value) => formatCurrency(value)}
-                        tick={{ fontSize: 11 }}
-                      />
-                      <YAxis
-                        type="category"
-                        dataKey="area"
-                        width={150}
-                        tick={{ fontSize: 10 }}
-                      />
-                      <Tooltip content={<CustomTooltip />} />
-                      <Bar
-                        dataKey="total"
-                        fill="#f59e0b"
-                        name="Total Collection"
-                        radius={[0, 8, 8, 0]}
-                      />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
-
-            </div>
-
-            {/* Data Table */}
-            <Card className="mt-6 max-w-[1800px] mx-auto">
-              <CardHeader>
-                <div>
-                  <CardTitle>Regional Summary Table ({selectedYear})</CardTitle>
-                  <CardDescription>Detailed breakdown of collections by region - Click to expand areas</CardDescription>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
-                      <tr>
-                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-8"></th>
-                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rank</th>
-                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Region / Area</th>
-                        <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total Collection</th>
-                        <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Records</th>
-                        <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Average</th>
-                        <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">% of Total</th>
-                      </tr>
-                    </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
-                      {filteredRegionData.map((region, index) => {
-                        const isExpanded = expandedRegions.has(region.region)
-                        const areas = getAreasForRegion(region.region)
-
-                        return (
-                          <>
-                            {/* Region Row */}
-                            <tr
-                              key={region.region}
-                              className="hover:bg-gray-50 cursor-pointer transition-colors"
-                              onClick={() => toggleRegion(region.region)}
-                            >
-                              <td className="px-4 py-3 text-sm">
-                                {isExpanded ? (
-                                  <ChevronDown className="h-4 w-4 text-gray-600" />
-                                ) : (
-                                  <ChevronRight className="h-4 w-4 text-gray-600" />
-                                )}
-                              </td>
-                              <td className="px-4 py-3 text-sm font-mono text-gray-500">#{index + 1}</td>
-                              <td className="px-4 py-3 text-sm font-semibold text-gray-900">{region.region}</td>
-                              <td className="px-4 py-3 text-sm text-right font-mono text-green-600 font-semibold">
-                                {formatCurrencyInMillions(region.total)}
-                              </td>
-                              <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
-                                {region.count.toLocaleString()}
-                              </td>
-                              <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
-                                {formatCurrency(region.average)}
-                              </td>
-                              <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">
-                                {((region.total / grandTotal) * 100).toFixed(2)}%
-                              </td>
-                            </tr>
-
-                            {/* Area Rows (Expanded) */}
-                            {isExpanded && areas.map((area, areaIndex) => (
+                          return (
+                            <>
+                              {/* Region Row */}
                               <tr
-                                key={`${region.region}-${area.area}`}
-                                className="bg-gray-50 hover:bg-gray-100 transition-colors"
+                                key={region.region}
+                                className="hover:bg-gray-50 cursor-pointer transition-colors"
+                                onClick={() => toggleRegion(region.region)}
                               >
-                                <td className="px-4 py-2"></td>
-                                <td className="px-4 py-2 text-xs font-mono text-gray-400">
-                                  {index + 1}.{areaIndex + 1}
+                                <td className="px-4 py-3 text-sm">
+                                  {isExpanded ? (
+                                    <ChevronDown className="h-4 w-4 text-gray-600" />
+                                  ) : (
+                                    <ChevronRight className="h-4 w-4 text-gray-600" />
+                                  )}
                                 </td>
-                                <td className="px-4 py-2 text-sm text-gray-700 pl-8">
-                                  <span className="text-gray-400 mr-2">└</span>
-                                  {area.area}
+                                <td className="px-4 py-3 text-sm font-mono text-gray-500">#{index + 1}</td>
+                                <td className="px-4 py-3 text-sm font-semibold text-gray-900">{region.region}</td>
+                                <td className="px-4 py-3 text-sm text-right font-mono text-green-600 font-semibold">
+                                  {formatCurrencyInMillions(region.total)}
                                 </td>
-                                <td className="px-4 py-2 text-sm text-right font-mono text-green-600">
-                                  {formatCurrencyInMillions(area.total)}
+                                <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
+                                  {region.count.toLocaleString()}
                                 </td>
-                                <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
-                                  {area.count.toLocaleString()}
+                                <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
+                                  {formatCurrency(region.average)}
                                 </td>
-                                <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
-                                  {formatCurrency(area.average)}
-                                </td>
-                                <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
-                                  {((area.total / grandTotal) * 100).toFixed(2)}%
+                                <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">
+                                  {((region.total / grandTotal) * 100).toFixed(2)}%
                                 </td>
                               </tr>
-                            ))}
-                          </>
-                        )
-                      })}
-                    </tbody>
-                    <tfoot className="bg-gray-100 font-semibold">
-                      <tr>
-                        <td className="px-4 py-3"></td>
-                        <td className="px-4 py-3"></td>
-                        <td className="px-4 py-3 text-sm text-gray-900">TOTAL</td>
-                        <td className="px-4 py-3 text-sm text-right font-mono text-green-600">
-                          {formatCurrencyInMillions(grandTotal)}
-                        </td>
-                        <td className="px-4 py-3 text-sm text-right font-mono text-gray-900">
-                          {totalRecords.toLocaleString()}
-                        </td>
-                        <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
-                          {formatCurrency(grandTotal / totalRecords)}
-                        </td>
-                        <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">100.00%</td>
-                      </tr>
-                    </tfoot>
-                  </table>
-                </div>
-              </CardContent>
-            </Card>
+
+                              {/* Area Rows (Expanded) */}
+                              {isExpanded && areas.map((area, areaIndex) => (
+                                <tr
+                                  key={`${region.region}-${area.area}`}
+                                  className="bg-gray-50 hover:bg-gray-100 transition-colors"
+                                >
+                                  <td className="px-4 py-2"></td>
+                                  <td className="px-4 py-2 text-xs font-mono text-gray-400">
+                                    {index + 1}.{areaIndex + 1}
+                                  </td>
+                                  <td className="px-4 py-2 text-sm text-gray-700 pl-8">
+                                    <span className="text-gray-400 mr-2">└</span>
+                                    {area.area}
+                                  </td>
+                                  <td className="px-4 py-2 text-sm text-right font-mono text-green-600">
+                                    {formatCurrencyInMillions(area.total)}
+                                  </td>
+                                  <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
+                                    {area.count.toLocaleString()}
+                                  </td>
+                                  <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
+                                    {formatCurrency(area.average)}
+                                  </td>
+                                  <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
+                                    {((area.total / grandTotal) * 100).toFixed(2)}%
+                                  </td>
+                                </tr>
+                              ))}
+                            </>
+                          )
+                        })}
+                      </tbody>
+                      <tfoot className="bg-gray-100 font-semibold">
+                        <tr>
+                          <td className="px-4 py-3"></td>
+                          <td className="px-4 py-3"></td>
+                          <td className="px-4 py-3 text-sm text-gray-900">TOTAL</td>
+                          <td className="px-4 py-3 text-sm text-right font-mono text-green-600">
+                            {formatCurrencyInMillions(grandTotal)}
+                          </td>
+                          <td className="px-4 py-3 text-sm text-right font-mono text-gray-900">
+                            {totalRecords.toLocaleString()}
+                          </td>
+                          <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
+                            {formatCurrency(grandTotal / totalRecords)}
+                          </td>
+                          <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">100.00%</td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
 
             </div>
           </main>
