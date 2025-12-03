@@ -92,6 +92,30 @@ interface TopArea {
   average: number
 }
 
+interface GAARegionData {
+  region: string
+  gaa: number
+}
+
+interface GAAYearData {
+  year: number
+  regions: GAARegionData[]
+  total: number
+}
+
+interface GAAData {
+  metadata: {
+    title: string
+    description: string
+    generated_at: string
+    years_covered: string
+    total_years: number
+    source: string
+    note: string
+  }
+  data: GAAYearData[]
+}
+
 // Colors for charts
 const COLORS = [
   '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6',
@@ -109,6 +133,7 @@ const BIRDashboard = () => {
   const [regionByYear, setRegionByYear] = useState<RegionByYearData[]>([])
   const [regionByMonth, setRegionByMonth] = useState<RegionByMonthData[]>([])
   const [topAreas, setTopAreas] = useState<TopArea[]>([])
+  const [gaaData, setGaaData] = useState<GAAData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
 
   // Filters
@@ -141,7 +166,8 @@ const BIRDashboard = () => {
         yearRes,
         regionYearRes,
         regionMonthRes,
-        topAreasRes
+        topAreasRes,
+        gaaRes
       ] = await Promise.all([
         fetch('/data/bir/aggregates/total_by_region.json'),
         fetch('/data/bir/aggregates/total_by_area.json'),
@@ -150,7 +176,8 @@ const BIRDashboard = () => {
         fetch('/data/bir/aggregates/total_by_year.json'),
         fetch('/data/bir/aggregates/region_by_year.json'),
         fetch('/data/bir/aggregates/region_by_month.json'),
-        fetch('/data/bir/aggregates/top_100_areas.json')
+        fetch('/data/bir/aggregates/top_100_areas.json'),
+        fetch('/data/bir/aggregates/gaa_by_region.json')
       ])
 
       const regionData = await regionRes.json()
@@ -161,6 +188,7 @@ const BIRDashboard = () => {
       const regionYearData = await regionYearRes.json()
       const regionMonthData = await regionMonthRes.json()
       const topAreasData = await topAreasRes.json()
+      const gaaDataRes = await gaaRes.json()
 
       setTotalByRegion(regionData.data)
       setTotalByArea(areaData.data)
@@ -170,6 +198,7 @@ const BIRDashboard = () => {
       setRegionByYear(regionYearData.data)
       setRegionByMonth(regionMonthData.data)
       setTopAreas(topAreasData.data)
+      setGaaData(gaaDataRes)
 
       const years = yearData.data.map((y: YearlyData) => y.year).sort((a: number, b: number) => b - a)
       setAvailableYears(years)
@@ -194,6 +223,18 @@ const BIRDashboard = () => {
   const regionYearValue = selectedRegionData?.values.find(v => v.year === selectedYear)
   const regionTotal = regionYearValue?.total || 0
   const regionRecords = regionYearValue?.count || 0
+
+  // Get GAA (National Budget) for selected region and year
+  const getGAAForRegion = (region: string, year: number): number => {
+    if (!gaaData) return 0
+    const yearData = gaaData.data.find(d => d.year === year)
+    if (!yearData) return 0
+    const regionData = yearData.regions.find(r => r.region === region)
+    return regionData?.gaa || 0
+  }
+
+  const regionGAA = getGAAForRegion(selectedRegion, selectedYear)
+  const collectionEfficiency = regionGAA > 0 ? (regionTotal / (regionGAA / 1_000_000)) * 100 : 0
 
   const yearRegionData = regionByYear
     .map(r => {
@@ -257,6 +298,19 @@ const BIRDashboard = () => {
       return `₱${billions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
     }
   }
+
+  const formatRawCurrency = (value: number) => {
+    const pesos = value
+
+    if (pesos >= 1_000_000_000_000) {
+      const trillions = pesos / 1_000_000_000_000
+      return `₱${trillions.toLocaleString('en-PH', { minimumFractionDigits: 3, maximumFractionDigits: 3 })}T`
+    } else {
+      const billions = pesos / 1_000_000_000
+      return `₱${billions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
+    }
+  }
+
 
   const formatCurrencyInMillions = (value: number) => {
     return `₱${value.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`
@@ -425,7 +479,7 @@ const BIRDashboard = () => {
                       <h1 className="text-lg sm:text-lg md:text-xl font-bold text-gray-900 truncate">
                         {selectedRegion === 'All Regions'
                           ? 'BIR Tax Collection Dashboard'
-                          : `${selectedRegion} - Tax Collection`
+                          : `${selectedRegion} - ${selectedYear}`
                         }
                       </h1>
                       <p className="text-xs sm:text-sm text-gray-600 mt-0.5 truncate">
@@ -498,7 +552,7 @@ const BIRDashboard = () => {
               {/* Summary Cards - Different for National vs Regional View */}
               {selectedRegion === 'All Regions' ? (
                 // National Overview Cards
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-[1800px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 max-w-[1800px] mx-auto">
                   <Card className="border-l-4 border-l-blue-600">
                     <CardHeader className="pb-3">
                       <CardDescription>Total National Collection ({selectedYear})</CardDescription>
@@ -543,10 +597,10 @@ const BIRDashboard = () => {
                 </div>
               ) : (
                 // Regional Specific Cards
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4 max-w-[1800px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 my-4 max-w-[1800px] mx-auto">
                   <Card className="border-l-4 border-l-blue-600">
                     <CardHeader className="pb-3">
-                      <CardDescription>{selectedRegion} Collection ({selectedYear})</CardDescription>
+                      <CardDescription>{selectedRegion}</CardDescription>
                       <CardTitle className="text-2xl text-blue-600">
                         {formatFullCurrency(regionTotal)}
                       </CardTitle>
@@ -558,10 +612,38 @@ const BIRDashboard = () => {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-l-4 border-l-green-600">
+                  <Card className="border-l-4 border-l-amber-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>Regional Budget (GAA)</CardDescription>
+                      <CardTitle className="text-2xl text-amber-600">
+                        {formatRawCurrency(regionGAA)}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        {formatCurrencyInMillions(regionGAA)}
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className={`border-l-4 ${collectionEfficiency < 50 ? 'border-l-red-600' : 'border-l-green-600'}`}>
+                    <CardHeader className="pb-3">
+                      <CardDescription>Collection Efficiency</CardDescription>
+                      <CardTitle className={`text-2xl ${collectionEfficiency < 50 ? 'text-red-600' : 'text-green-600'}`}>
+                        {collectionEfficiency.toFixed(2)}%
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        Tax vs Budget ratio
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-l-4 border-l-purple-600">
                     <CardHeader className="pb-3">
                       <CardDescription>Share of National</CardDescription>
-                      <CardTitle className="text-2xl text-green-600">
+                      <CardTitle className="text-2xl text-purple-600">
                         {((regionTotal / grandTotal) * 100).toFixed(2)}%
                       </CardTitle>
                     </CardHeader>
@@ -572,10 +654,10 @@ const BIRDashboard = () => {
                     </CardContent>
                   </Card>
 
-                  <Card className="border-l-4 border-l-purple-600">
+                  <Card className="border-l-4 border-l-orange-600">
                     <CardHeader className="pb-3">
                       <CardDescription>Collection Areas</CardDescription>
-                      <CardTitle className="text-2xl text-purple-600">
+                      <CardTitle className="text-2xl text-orange-600">
                         {areaByYear.filter(a => a.region === selectedRegion && a.year === selectedYear).length}
                       </CardTitle>
                     </CardHeader>
@@ -585,54 +667,9 @@ const BIRDashboard = () => {
                       </p>
                     </CardContent>
                   </Card>
-
-                  <Card className="border-l-4 border-l-orange-600">
-                    <CardHeader className="pb-3">
-                      <CardDescription>Average per Area</CardDescription>
-                      <CardTitle className="text-2xl text-orange-600">
-                        {formatCurrency(regionTotal / regionRecords)}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-xs text-gray-500">
-                        Monthly average
-                      </p>
-                    </CardContent>
-                  </Card>
                 </div>
               )}
 
-              {/* Filters - Compact */}
-              <Card className="mb-4 max-w-[1800px] mx-auto">
-                <CardHeader className="pb-3">
-                  <div className="flex items-center gap-2">
-                    <Filter className="h-4 w-4 text-gray-600" />
-                    <CardTitle className="text-base">Filters</CardTitle>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid grid-cols-1 gap-3">
-                    {/* Region filter removed - now in sidebar */}
-
-                    <div>
-                      <label className="block text-xs font-medium text-gray-700 mb-1">
-                        <BarChart3 className="h-3 w-3 inline mr-1" />
-                        Top N Areas
-                      </label>
-                      <select
-                        value={topN}
-                        onChange={(e) => setTopN(Number(e.target.value))}
-                        className="w-full px-2 py-1.5 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-                      >
-                        <option value={5}>Top 5</option>
-                        <option value={10}>Top 10</option>
-                        <option value={15}>Top 15</option>
-                        <option value={20}>Top 20</option>
-                      </select>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
 
               {/* Charts Grid - Different for National vs Regional View */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1800px] mx-auto">
