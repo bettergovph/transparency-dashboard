@@ -155,6 +155,15 @@ const BIRDashboard = () => {
     loadData()
   }, [])
 
+  // Auto-expand selected region in table when viewing a specific region
+  useEffect(() => {
+    if (selectedRegion !== 'All Regions') {
+      setExpandedRegions(new Set([selectedRegion]))
+    } else {
+      setExpandedRegions(new Set())
+    }
+  }, [selectedRegion])
+
   const loadData = async () => {
     try {
       setIsLoading(true)
@@ -325,6 +334,12 @@ const BIRDashboard = () => {
     return `₱${value.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`
   }
 
+  // Format currency in billions for table display
+  const formatCurrencyInBillions = (value: number) => {
+    const billions = (value * 1_000_000) / 1_000_000_000
+    return `₱${billions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
+  }
+
   // Toggle region expansion
   const toggleRegion = (regionName: string) => {
     const newExpanded = new Set(expandedRegions)
@@ -376,7 +391,7 @@ const BIRDashboard = () => {
 
     // Create CSV content
     let csvContent = ''
-    
+
     if (selectedRegion === 'All Regions') {
       // National view - regions data
       csvContent = 'Region,Year,Total Collection (Millions),Number of Records\n'
@@ -395,14 +410,14 @@ const BIRDashboard = () => {
     const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
     const link = document.createElement('a')
     const url = URL.createObjectURL(blob)
-    
+
     link.setAttribute('href', url)
     const filename = selectedRegion === 'All Regions'
       ? `BIR_Tax_Collection_All_Regions_${selectedYear}.csv`
       : `BIR_Tax_Collection_${selectedRegion.replace(/[^a-zA-Z0-9]/g, '_')}_${selectedYear}.csv`
     link.setAttribute('download', filename)
     link.style.visibility = 'hidden'
-    
+
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
@@ -622,9 +637,9 @@ const BIRDashboard = () => {
                       The figures represent BIR tax collections only and may not reflect the complete tax revenue picture.
                     </p>
                     <p className="text-sm text-amber-800">
-                      <strong>Large Taxpayers Service (LTS):</strong> The LTS has been categorized as a separate region in this dashboard. 
-                      While LTS operations are primarily headquartered in the National Capital Region, they serve major corporations 
-                      and high-value taxpayers nationwide. Due to the current limitations in available data granularity, 
+                      <strong>Large Taxpayers Service (LTS):</strong> The LTS has been categorized as a separate region in this dashboard.
+                      While LTS operations are primarily headquartered in the National Capital Region, they serve major corporations
+                      and high-value taxpayers nationwide. Due to the current limitations in available data granularity,
                       geographic distribution details for LTS collections are not readily accessible and are therefore presented as a distinct entity.
                     </p>
                   </div>
@@ -634,7 +649,7 @@ const BIRDashboard = () => {
               {/* Summary Cards - Different for National vs Regional View */}
               {selectedRegion === 'All Regions' ? (
                 // National Overview Cards
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-4 max-w-[1800px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 max-w-[1800px] mx-auto">
                   <Card className="border-l-4 border-l-blue-600">
                     <CardHeader className="pb-3">
                       <CardDescription>Total National Collection ({selectedYear})</CardDescription>
@@ -645,20 +660,6 @@ const BIRDashboard = () => {
                     <CardContent>
                       <p className="text-xs text-gray-500">
                         {formatCurrencyInMillions(grandTotal)}
-                      </p>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-l-4 border-l-amber-600">
-                    <CardHeader className="pb-3">
-                      <CardDescription>National Budget - GAA ({selectedYear})</CardDescription>
-                      <CardTitle className="text-2xl text-amber-600">
-                        {formatRawCurrency(nationalGAA)}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-xs text-gray-500">
-                        General Appropriations Act
                       </p>
                     </CardContent>
                   </Card>
@@ -792,11 +793,11 @@ const BIRDashboard = () => {
                       <LineChart
                         data={selectedRegion === 'All Regions'
                           ? totalByYear.map(d => ({
-                              year: d.year,
-                              total: d.total,
-                              gaa: gaaData ? (gaaData.data.find(g => g.year === d.year)?.total || 0) / 1_000_000 : 0,
-                              count: d.count
-                            }))
+                            year: d.year,
+                            total: d.total,
+                            gaa: gaaData ? (gaaData.data.find(g => g.year === d.year)?.total || 0) / 1_000_000 : 0,
+                            count: d.count
+                          }))
                           : [...(regionByYear
                             .find(r => r.region === selectedRegion)
                             ?.values || [])].sort((a, b) => a.year - b.year).map(d => ({
@@ -920,44 +921,46 @@ const BIRDashboard = () => {
                   </Card>
                 )}
 
-                {/* 3. Regional Bar Chart */}
-                <Card className="lg:col-span-2">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <MapPin className="h-5 w-5 text-blue-600" />
-                      Tax Collection by Region ({selectedYear})
-                    </CardTitle>
-                    <CardDescription>
-                      Total tax revenue collected across Philippine regions
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ResponsiveContainer width="100%" height={400}>
-                      <BarChart data={filteredRegionData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                        <XAxis
-                          dataKey="region"
-                          angle={-45}
-                          textAnchor="end"
-                          height={150}
-                          tick={{ fontSize: 11 }}
-                        />
-                        <YAxis
-                          tickFormatter={(value) => formatCurrency(value)}
-                          tick={{ fontSize: 12 }}
-                        />
-                        <Tooltip content={<CustomTooltip />} />
-                        <Legend />
-                        <Bar
-                          dataKey="total"
-                          fill="#3b82f6"
-                          name="Total Collection"
-                          radius={[8, 8, 0, 0]}
-                        />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </CardContent>
-                </Card>
+                {/* 3. Regional Bar Chart - Only for National View */}
+                {selectedRegion === 'All Regions' && (
+                  <Card className="lg:col-span-2">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <MapPin className="h-5 w-5 text-blue-600" />
+                        Tax Collection by Region ({selectedYear})
+                      </CardTitle>
+                      <CardDescription>
+                        Total tax revenue collected across Philippine regions
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={filteredRegionData}>
+                          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                          <XAxis
+                            dataKey="region"
+                            angle={-45}
+                            textAnchor="end"
+                            height={150}
+                            tick={{ fontSize: 11 }}
+                          />
+                          <YAxis
+                            tickFormatter={(value) => formatCurrency(value)}
+                            tick={{ fontSize: 12 }}
+                          />
+                          <Tooltip content={<CustomTooltip />} />
+                          <Legend />
+                          <Bar
+                            dataKey="total"
+                            fill="#3b82f6"
+                            name="Total Collection"
+                            radius={[8, 8, 0, 0]}
+                          />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </CardContent>
+                  </Card>
+                )}
 
                 {/* 4. Monthly Trend */}
                 <Card className="lg:col-span-2">
@@ -1052,7 +1055,10 @@ const BIRDashboard = () => {
                 <CardHeader>
                   <div>
                     <CardTitle>Regional Summary Table ({selectedYear})</CardTitle>
-                    <CardDescription>Detailed breakdown of collections by region - Click to expand areas</CardDescription>
+                    <CardDescription>
+                      Detailed breakdown of collections by region - Click to expand areas
+                      <span className="ml-2 text-xs font-semibold text-amber-600">(Numbers in Billions)</span>
+                    </CardDescription>
                   </div>
                 </CardHeader>
                 <CardContent>
@@ -1066,7 +1072,6 @@ const BIRDashboard = () => {
                           <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Tax Collection</th>
                           <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">GAA Budget</th>
                           <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Efficiency</th>
-                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Records</th>
                           <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">% of Total</th>
                         </tr>
                       </thead>
@@ -1095,19 +1100,15 @@ const BIRDashboard = () => {
                                 <td className="px-4 py-3 text-sm font-mono text-gray-500">#{index + 1}</td>
                                 <td className="px-4 py-3 text-sm font-semibold text-gray-900">{region.region}</td>
                                 <td className="px-4 py-3 text-sm text-right font-mono text-green-600 font-semibold">
-                                  {formatCurrencyInMillions(region.total)}
+                                  {formatCurrencyInBillions(region.total)}
                                 </td>
                                 <td className="px-4 py-3 text-sm text-right font-mono text-amber-600">
                                   {formatRawCurrency(regionGAAValue)}
                                 </td>
-                                <td className={`px-4 py-3 text-sm text-right font-mono font-semibold ${
-                                  regionEfficiency === 0 ? 'text-gray-400' :
-                                  regionEfficiency < 50 ? 'text-red-600' : 'text-green-600'
-                                }`}>
+                                <td className={`px-4 py-3 text-sm text-right font-mono font-semibold ${regionEfficiency === 0 ? 'text-gray-400' :
+                                    regionEfficiency < 50 ? 'text-red-600' : 'text-green-600'
+                                  }`}>
                                   {regionEfficiency === 0 ? 'To follow' : `${regionEfficiency.toFixed(2)}%`}
-                                </td>
-                                <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
-                                  {region.count.toLocaleString()}
                                 </td>
                                 <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">
                                   {((region.total / grandTotal) * 100).toFixed(2)}%
@@ -1129,16 +1130,13 @@ const BIRDashboard = () => {
                                     {area.area}
                                   </td>
                                   <td className="px-4 py-2 text-sm text-right font-mono text-green-600">
-                                    {formatCurrencyInMillions(area.total)}
+                                    {formatCurrencyInBillions(area.total)}
                                   </td>
                                   <td className="px-4 py-2 text-sm text-right font-mono text-gray-400">
                                     —
                                   </td>
                                   <td className="px-4 py-2 text-sm text-right font-mono text-gray-400">
                                     —
-                                  </td>
-                                  <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
-                                    {area.count.toLocaleString()}
                                   </td>
                                   <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
                                     {((area.total / grandTotal) * 100).toFixed(2)}%
@@ -1155,16 +1153,13 @@ const BIRDashboard = () => {
                           <td className="px-4 py-3"></td>
                           <td className="px-4 py-3 text-sm text-gray-900">TOTAL</td>
                           <td className="px-4 py-3 text-sm text-right font-mono text-green-600">
-                            {formatCurrencyInMillions(grandTotal)}
+                            {formatCurrencyInBillions(grandTotal)}
                           </td>
                           <td className="px-4 py-3 text-sm text-right font-mono text-gray-400">
                             —
                           </td>
                           <td className="px-4 py-3 text-sm text-right font-mono text-gray-400">
                             —
-                          </td>
-                          <td className="px-4 py-3 text-sm text-right font-mono text-gray-900">
-                            {totalRecords.toLocaleString()}
                           </td>
                           <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">100.00%</td>
                         </tr>
