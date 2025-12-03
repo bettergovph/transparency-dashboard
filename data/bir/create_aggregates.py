@@ -151,6 +151,48 @@ def create_aggregates(input_parquet, output_dir='aggregates'):
     print(f"  ✓ total_by_area.json ({len(data['data'])} areas)")
     
     # ================================================================
+    # 2b. AREA BY YEAR (for year-aware drill-down)
+    # ================================================================
+    result = con.execute("""
+        SELECT 
+            region,
+            area,
+            year,
+            SUM(amount) as total,
+            COUNT(*) as count,
+            AVG(amount) as average
+        FROM bir_collections
+        GROUP BY region, area, year
+        ORDER BY year, region, total DESC
+    """).fetchall()
+    
+    data = {
+        "metadata": {
+            "title": "Tax Collection by Area and Year",
+            "generated_at": datetime.now().isoformat(),
+            "years_covered": f"{constraints[0]}-{constraints[1]}",
+            "note": "Year-aware area data for drill-down functionality"
+        },
+        "data": [
+            {
+                "region": row[0],
+                "area": row[1],
+                "year": row[2],
+                "total": float(row[3]),
+                "count": row[4],
+                "average": float(row[5])
+            }
+            for row in result
+        ]
+    }
+    
+    filename = f"{output_dir}/area_by_year.json"
+    with open(filename, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2)
+    aggregates_created.append("area_by_year.json")
+    print(f"  ✓ area_by_year.json ({len(data['data'])} area-year combinations)")
+    
+    # ================================================================
     # 3. TOTAL BY MONTH (across all years)
     # ================================================================
     result = con.execute("""
