@@ -1,20 +1,26 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
   const location = useLocation()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [procurementDropdownOpen, setProcurementDropdownOpen] = useState(false)
+  const [taxDropdownOpen, setTaxDropdownOpen] = useState(false)
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const procurementDropdownRef = useRef<HTMLDivElement>(null)
+  const taxDropdownRef = useRef<HTMLDivElement>(null)
+  const projectsDropdownRef = useRef<HTMLDivElement>(null)
 
-  const navItems = [
-    { path: '/', label: 'Home', icon: Home },
-    { path: '/bir', label: 'BIR Tax Data', icon: TrendingUp },
+  const procurementItems = [
     { path: '/contractors', label: 'Contractors', icon: Users },
     { path: '/organizations', label: 'Organizations', icon: Building2 },
     { path: '/locations', label: 'Locations', icon: MapPin },
     { path: '/categories', label: 'Categories', icon: Grid3x3 },
+  ]
+
+  const taxCollectionItems = [
+    { path: '/bir', label: 'BIR Collection Statistics', icon: TrendingUp },
   ]
 
   const projectsDropdownItems = [
@@ -34,10 +40,24 @@ const Navigation = () => {
     return location.pathname.startsWith(path)
   }
 
-  // Close dropdown when clicking outside
+  const isProcurementActive = () => {
+    return procurementItems.some(item => isActive(item.path))
+  }
+
+  const isTaxCollectionActive = () => {
+    return taxCollectionItems.some(item => isActive(item.path))
+  }
+
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (procurementDropdownRef.current && !procurementDropdownRef.current.contains(event.target as Node)) {
+        setProcurementDropdownOpen(false)
+      }
+      if (taxDropdownRef.current && !taxDropdownRef.current.contains(event.target as Node)) {
+        setTaxDropdownOpen(false)
+      }
+      if (projectsDropdownRef.current && !projectsDropdownRef.current.contains(event.target as Node)) {
         setProjectsDropdownOpen(false)
       }
     }
@@ -68,30 +88,99 @@ const Navigation = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-1">
-              {navItems.map((item) => {
-                const Icon = item.icon
-                const active = isActive(item.path)
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${active
+              {/* Home */}
+              <Link
+                to="/"
+                className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isActive('/')
+                    ? 'border-b text-blue-600 font-bold'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
+              >
+                <Home className="h-4 w-4" />
+                Home
+              </Link>
+
+              {/* Procurement Dropdown */}
+              <div className="relative" ref={procurementDropdownRef}>
+                <button
+                  onClick={() => setProcurementDropdownOpen(!procurementDropdownOpen)}
+                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isProcurementActive()
                       ? 'border-b text-blue-600 font-bold'
                       : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                      }`}
-                  >
-                    <Icon className="h-4 w-4" />
-                    {item.label}
-                  </Link>
-                )
-              })}
+                    }`}
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  Procurement
+                  <ChevronDown className={`h-4 w-4 transition-transform ${procurementDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {procurementDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                    {procurementItems.map((item) => {
+                      const Icon = item.icon
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors ${isActive(item.path)
+                              ? 'bg-blue-50 text-blue-600 font-semibold'
+                              : 'text-gray-700 hover:bg-gray-100'
+                            }`}
+                          onClick={() => setProcurementDropdownOpen(false)}
+                        >
+                          <Icon className="h-4 w-4" />
+                          {item.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+
+              {/* Tax Collection Dropdown */}
+              <div className="relative" ref={taxDropdownRef}>
+                <button
+                  onClick={() => setTaxDropdownOpen(!taxDropdownOpen)}
+                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isTaxCollectionActive()
+                      ? 'border-b text-blue-600 font-bold'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    }`}
+                >
+                  <Coins className="h-4 w-4" />
+                  Tax Collection
+                  <ChevronDown className={`h-4 w-4 transition-transform ${taxDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {taxDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                    {taxCollectionItems.map((item) => {
+                      const Icon = item.icon
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors ${isActive(item.path)
+                              ? 'bg-blue-50 text-blue-600 font-semibold'
+                              : 'text-gray-700 hover:bg-gray-100'
+                            }`}
+                          onClick={() => setTaxDropdownOpen(false)}
+                        >
+                          <Icon className="h-4 w-4" />
+                          {item.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
 
               {/* Our Projects Dropdown */}
-              <div className="relative" ref={dropdownRef}>
+              <div className="relative" ref={projectsDropdownRef}>
                 <button
                   onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
-                  className="flex items-center gap-2 md:px-3 lg:px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                  className="flex items-center gap-2 md:px-3 lg:px-4 py-2  md:text-sm lg:text-md  text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                 >
+                  <Briefcase className="h-4 w-4" />
                   Our Projects
                   <ChevronDown className={`h-4 w-4 transition-transform ${projectsDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>
@@ -146,28 +235,75 @@ const Navigation = () => {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-2">
-            {navItems.map((item) => {
-              const Icon = item.icon
-              const active = isActive(item.path)
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${active
-                    ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
-                    : 'text-gray-700 hover:bg-gray-50'
-                    }`}
-                >
-                  <Icon className="h-5 w-5" />
-                  {item.label}
-                </Link>
-              )
-            })}
+            {/* Home */}
+            <Link
+              to="/"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${isActive('/')
+                  ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                  : 'text-gray-700 hover:bg-gray-50'
+                }`}
+            >
+              <Home className="h-5 w-5" />
+              Home
+            </Link>
+
+            {/* Procurement Section */}
+            <div className="border-t border-gray-200 mt-2 pt-2">
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                <ShoppingCart className="h-4 w-4" />
+                Procurement
+              </div>
+              {procurementItems.map((item) => {
+                const Icon = item.icon
+                const active = isActive(item.path)
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 pl-10 text-sm transition-colors ${active
+                        ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                        : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.label}
+                  </Link>
+                )
+              })}
+            </div>
+
+            {/* Tax Collection Section */}
+            <div className="border-t border-gray-200 mt-2 pt-2">
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                <Coins className="h-4 w-4" />
+                Tax Collection
+              </div>
+              {taxCollectionItems.map((item) => {
+                const Icon = item.icon
+                const active = isActive(item.path)
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 pl-10 text-sm transition-colors ${active
+                        ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                        : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.label}
+                  </Link>
+                )
+              })}
+            </div>
 
             {/* Our Projects Section in Mobile */}
             <div className="border-t border-gray-200 mt-2 pt-2">
-              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                <Briefcase className="h-4 w-4" />
                 Our Projects
               </div>
               {projectsDropdownItems.map((item) => (

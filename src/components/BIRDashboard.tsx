@@ -10,7 +10,9 @@ import {
   Filter,
   AlertCircle,
   ChevronDown,
-  ChevronRight
+  ChevronRight,
+  Menu,
+  X
 } from 'lucide-react'
 import {
   BarChart,
@@ -119,6 +121,9 @@ const BIRDashboard = () => {
 
   // Expanded regions for drill-down
   const [expandedRegions, setExpandedRegions] = useState<Set<string>>(new Set())
+  
+  // Mobile sidebar state
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
 
   useEffect(() => {
     loadData()
@@ -311,13 +316,46 @@ const BIRDashboard = () => {
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
         <div className="flex">
+          {/* Mobile Sidebar Backdrop */}
+          {isMobileSidebarOpen && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+              onClick={() => setIsMobileSidebarOpen(false)}
+            />
+          )}
+
           {/* Sidebar - Region Navigation */}
-          <aside className="w-64 bg-white border-r border-gray-200 min-h-screen sticky top-0 overflow-y-auto">
+          <aside
+            className={`
+              fixed lg:sticky top-0 z-30 lg:z-0
+              w-64 bg-white border-r border-gray-200 h-screen
+              overflow-y-auto
+              transition-transform duration-300 ease-in-out
+              lg:translate-x-0
+              ${
+                isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+              }
+            `}
+          >
+            {/* Mobile Close Button */}
+            <div className="lg:hidden flex items-center justify-between p-4 border-b border-gray-200">
+              <h2 className="font-semibold text-gray-900">Filter by Region</h2>
+              <button
+                onClick={() => setIsMobileSidebarOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+              >
+                <X className="h-5 w-5 text-gray-600" />
+              </button>
+            </div>
+
             <div className="p-4">
-              <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3">Filter by Region</h3>
+              <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3 hidden lg:block">Filter by Region</h3>
               <nav className="space-y-1">
                 <button
-                  onClick={() => setSelectedRegion('All Regions')}
+                  onClick={() => {
+                    setSelectedRegion('All Regions')
+                    setIsMobileSidebarOpen(false)
+                  }}
                   className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${selectedRegion === 'All Regions'
                       ? 'bg-blue-600 text-white font-semibold shadow-sm'
                       : 'text-gray-700 hover:bg-gray-100'
@@ -336,7 +374,10 @@ const BIRDashboard = () => {
                   return (
                     <button
                       key={region.region}
-                      onClick={() => setSelectedRegion(region.region)}
+                      onClick={() => {
+                        setSelectedRegion(region.region)
+                        setIsMobileSidebarOpen(false)
+                      }}
                       className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${isSelected
                           ? 'bg-blue-600 text-white font-semibold shadow-sm'
                           : 'text-gray-700 hover:bg-gray-100'
@@ -357,37 +398,74 @@ const BIRDashboard = () => {
           </aside>
 
           {/* Main Content */}
-          <main className="flex-1 px-4 sm:px-6 lg:px-8 py-8">
-
-            {/* Header with Year Tabs */}
-            <div className="mb-6 max-w-[1800px] mx-auto">
-              <div className="flex items-start justify-between mb-4 gap-4">
-                <div className="flex items-center gap-3">
-                  <div className="p-3 bg-blue-600 rounded-lg">
-                    <TrendingUp className="h-8 w-8 text-white" />
+          <main className="flex-1 min-w-0">
+            {/* Sticky Header with Title and Year Tabs */}
+            <div className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
+              <div className="px-4 sm:px-6 lg:px-8 py-4">
+                <div className="flex items-center justify-between gap-4 max-w-[1800px] mx-auto">
+                  <div className="flex items-center gap-3 flex-1 min-w-0">
+                    {/* Mobile Menu Button */}
+                    <button
+                      onClick={() => setIsMobileSidebarOpen(true)}
+                      className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors shrink-0"
+                      aria-label="Open region menu"
+                    >
+                      <Menu className="h-5 w-5 text-gray-600" />
+                    </button>
+                    
+                    <div className="p-3 bg-blue-600 rounded-lg shrink-0">
+                      <TrendingUp className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 truncate">
+                        {selectedRegion === 'All Regions'
+                          ? 'BIR Tax Collection Dashboard'
+                          : `${selectedRegion} - Tax Collection`
+                        }
+                      </h1>
+                      <p className="text-xs sm:text-sm text-gray-600 mt-0.5 truncate">
+                        {selectedRegion === 'All Regions'
+                          ? 'Philippine Tax Revenue Collection (2020-2024)'
+                          : `Regional breakdown for ${selectedYear}`
+                        }
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-                      BIR Tax Collection Dashboard
-                    </h1>
-                    <p className="text-gray-600 mt-1">
-                      Transparency in Philippine Tax Revenue Collection (2020-2024)
-                    </p>
+
+                  {/* Year Tabs */}
+                  <div className="hidden lg:flex flex-col items-end shrink-0">
+                    <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Select Year</h3>
+                    <div className="flex gap-2">
+                      {availableYears.map((year) => (
+                        <button
+                          key={year}
+                          onClick={() => setSelectedYear(year)}
+                          className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                            selectedYear === year
+                              ? 'bg-blue-600 text-white shadow-lg'
+                              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          }`}
+                        >
+                          {year}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                {/* Year Tabs - Top Right */}
-                <div className="hidden lg:flex flex-col items-end shrink-0">
+                {/* Mobile Year Tabs */}
+                <div className="lg:hidden mt-4 max-w-[1800px] mx-auto">
                   <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Select Year</h3>
-                  <div className="flex gap-2">
+                  <div className="flex flex-wrap gap-2">
                     {availableYears.map((year) => (
                       <button
                         key={year}
                         onClick={() => setSelectedYear(year)}
-                        className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                          ? 'bg-blue-600 text-white shadow-lg'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
+                        className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
+                          selectedYear === year
+                            ? 'bg-blue-600 text-white shadow-lg'
+                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        }`}
                       >
                         {year}
                       </button>
@@ -395,28 +473,13 @@ const BIRDashboard = () => {
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Mobile Year Tabs */}
-              <div className="lg:hidden mb-4">
-                <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Select Year</h3>
-                <div className="flex flex-wrap gap-2">
-                  {availableYears.map((year) => (
-                    <button
-                      key={year}
-                      onClick={() => setSelectedYear(year)}
-                      className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                        ? 'bg-blue-600 text-white shadow-lg'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
-                    >
-                      {year}
-                    </button>
-                  ))}
-                </div>
-              </div>
+            {/* Content Area with Padding */}
+            <div className="px-4 sm:px-6 lg:px-8 py-6">
 
               {/* Data Limitation Notice */}
-              <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 rounded-r-lg">
+              <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 rounded-r-lg max-w-[1800px] mx-auto">
                 <div className="flex items-start gap-3">
                   <AlertCircle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
@@ -473,7 +536,6 @@ const BIRDashboard = () => {
                   </CardContent>
                 </Card>
               </div>
-            </div>
 
             {/* Filters - Compact */}
             <Card className="mb-4 max-w-[1800px] mx-auto">
@@ -832,6 +894,7 @@ const BIRDashboard = () => {
               </CardContent>
             </Card>
 
+            </div>
           </main>
         </div>
       </div>
