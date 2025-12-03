@@ -12,7 +12,8 @@ import {
   ChevronDown,
   ChevronRight,
   Menu,
-  X
+  X,
+  Download
 } from 'lucide-react'
 import {
   BarChart,
@@ -350,6 +351,55 @@ const BIRDashboard = () => {
     return null
   }
 
+  // Download CSV function
+  const downloadCSV = () => {
+    // Get data for selected year
+    const yearData = selectedRegion === 'All Regions'
+      ? regionByYear.map(r => {
+        const yearValue = r.values.find(v => v.year === selectedYear)
+        return {
+          region: r.region,
+          year: selectedYear,
+          total: yearValue?.total || 0,
+          count: yearValue?.count || 0
+        }
+      }).filter(d => d.total > 0)
+      : areaByYear.filter(a => a.region === selectedRegion && a.year === selectedYear)
+
+    // Create CSV content
+    let csvContent = ''
+    
+    if (selectedRegion === 'All Regions') {
+      // National view - regions data
+      csvContent = 'Region,Year,Total Collection (Millions),Number of Records\n'
+      yearData.forEach((row: any) => {
+        csvContent += `"${row.region}",${row.year},${row.total.toFixed(2)},${row.count}\n`
+      })
+    } else {
+      // Regional view - areas data
+      csvContent = 'Region,Area,Year,Total Collection (Millions),Number of Records,Average\n'
+      yearData.forEach((row: any) => {
+        csvContent += `"${row.region}","${row.area}",${row.year},${row.total.toFixed(2)},${row.count},${row.average.toFixed(2)}\n`
+      })
+    }
+
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+    const link = document.createElement('a')
+    const url = URL.createObjectURL(blob)
+    
+    link.setAttribute('href', url)
+    const filename = selectedRegion === 'All Regions'
+      ? `BIR_Tax_Collection_All_Regions_${selectedYear}.csv`
+      : `BIR_Tax_Collection_${selectedRegion.replace(/[^a-zA-Z0-9]/g, '_')}_${selectedYear}.csv`
+    link.setAttribute('download', filename)
+    link.style.visibility = 'hidden'
+    
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   if (isLoading) {
     return (
       <>
@@ -494,7 +544,7 @@ const BIRDashboard = () => {
                   {/* Year Tabs */}
                   <div className="hidden lg:flex flex-col items-end shrink-0">
                     <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Select Year</h3>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 items-center">
                       {availableYears.map((year) => (
                         <button
                           key={year}
@@ -507,13 +557,31 @@ const BIRDashboard = () => {
                           {year}
                         </button>
                       ))}
+                      <button
+                        onClick={downloadCSV}
+                        className="px-4 py-2 rounded-lg font-semibold text-sm bg-green-600 text-white hover:bg-green-700 transition-all shadow-lg flex items-center gap-2"
+                        title={`Download ${selectedYear} data as CSV`}
+                      >
+                        <Download className="h-4 w-4" />
+                        CSV
+                      </button>
                     </div>
                   </div>
                 </div>
 
                 {/* Mobile Year Tabs */}
                 <div className="lg:hidden mt-4 max-w-[1800px] mx-auto">
-                  <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Select Year</h3>
+                  <div className="flex items-center justify-between mb-2">
+                    <h3 className="text-xs font-semibold text-gray-500 uppercase">Select Year</h3>
+                    <button
+                      onClick={downloadCSV}
+                      className="px-3 py-1.5 rounded-lg font-semibold text-xs bg-green-600 text-white hover:bg-green-700 transition-all shadow flex items-center gap-1.5"
+                      title={`Download ${selectedYear} data as CSV`}
+                    >
+                      <Download className="h-3.5 w-3.5" />
+                      CSV
+                    </button>
+                  </div>
                   <div className="flex flex-wrap gap-2">
                     {availableYears.map((year) => (
                       <button
@@ -626,11 +694,11 @@ const BIRDashboard = () => {
                     </CardContent>
                   </Card>
 
-                  <Card className={`border-l-4 ${collectionEfficiency < 50 ? 'border-l-red-600' : 'border-l-green-600'}`}>
+                  <Card className={`border-l-4 ${collectionEfficiency === 0 ? 'border-l-gray-400' : collectionEfficiency < 50 ? 'border-l-red-600' : 'border-l-green-600'}`}>
                     <CardHeader className="pb-3">
                       <CardDescription>Collection Efficiency</CardDescription>
-                      <CardTitle className={`text-2xl ${collectionEfficiency < 50 ? 'text-red-600' : 'text-green-600'}`}>
-                        {collectionEfficiency.toFixed(2)}%
+                      <CardTitle className={`text-2xl ${collectionEfficiency === 0 ? 'text-gray-400' : collectionEfficiency < 50 ? 'text-red-600' : 'text-green-600'}`}>
+                        {collectionEfficiency === 0 ? 'To follow' : `${collectionEfficiency.toFixed(2)}%`}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
@@ -947,9 +1015,10 @@ const BIRDashboard = () => {
                           <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase w-8"></th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rank</th>
                           <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Region / Area</th>
-                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total Collection</th>
+                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Tax Collection</th>
+                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">GAA Budget</th>
+                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Efficiency</th>
                           <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Records</th>
-                          <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Average</th>
                           <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">% of Total</th>
                         </tr>
                       </thead>
@@ -957,6 +1026,8 @@ const BIRDashboard = () => {
                         {filteredRegionData.map((region, index) => {
                           const isExpanded = expandedRegions.has(region.region)
                           const areas = getAreasForRegion(region.region)
+                          const regionGAAValue = getGAAForRegion(region.region, selectedYear)
+                          const regionEfficiency = regionGAAValue > 0 ? (region.total / (regionGAAValue / 1_000_000)) * 100 : 0
 
                           return (
                             <>
@@ -978,11 +1049,17 @@ const BIRDashboard = () => {
                                 <td className="px-4 py-3 text-sm text-right font-mono text-green-600 font-semibold">
                                   {formatCurrencyInMillions(region.total)}
                                 </td>
-                                <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
-                                  {region.count.toLocaleString()}
+                                <td className="px-4 py-3 text-sm text-right font-mono text-amber-600">
+                                  {formatRawCurrency(regionGAAValue)}
+                                </td>
+                                <td className={`px-4 py-3 text-sm text-right font-mono font-semibold ${
+                                  regionEfficiency === 0 ? 'text-gray-400' :
+                                  regionEfficiency < 50 ? 'text-red-600' : 'text-green-600'
+                                }`}>
+                                  {regionEfficiency === 0 ? 'To follow' : `${regionEfficiency.toFixed(2)}%`}
                                 </td>
                                 <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
-                                  {formatCurrency(region.average)}
+                                  {region.count.toLocaleString()}
                                 </td>
                                 <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">
                                   {((region.total / grandTotal) * 100).toFixed(2)}%
@@ -1006,11 +1083,14 @@ const BIRDashboard = () => {
                                   <td className="px-4 py-2 text-sm text-right font-mono text-green-600">
                                     {formatCurrencyInMillions(area.total)}
                                   </td>
-                                  <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
-                                    {area.count.toLocaleString()}
+                                  <td className="px-4 py-2 text-sm text-right font-mono text-gray-400">
+                                    —
+                                  </td>
+                                  <td className="px-4 py-2 text-sm text-right font-mono text-gray-400">
+                                    —
                                   </td>
                                   <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
-                                    {formatCurrency(area.average)}
+                                    {area.count.toLocaleString()}
                                   </td>
                                   <td className="px-4 py-2 text-sm text-right font-mono text-gray-500">
                                     {((area.total / grandTotal) * 100).toFixed(2)}%
@@ -1029,11 +1109,14 @@ const BIRDashboard = () => {
                           <td className="px-4 py-3 text-sm text-right font-mono text-green-600">
                             {formatCurrencyInMillions(grandTotal)}
                           </td>
+                          <td className="px-4 py-3 text-sm text-right font-mono text-gray-400">
+                            —
+                          </td>
+                          <td className="px-4 py-3 text-sm text-right font-mono text-gray-400">
+                            —
+                          </td>
                           <td className="px-4 py-3 text-sm text-right font-mono text-gray-900">
                             {totalRecords.toLocaleString()}
-                          </td>
-                          <td className="px-4 py-3 text-sm text-right font-mono text-gray-600">
-                            {formatCurrency(grandTotal / totalRecords)}
                           </td>
                           <td className="px-4 py-3 text-sm text-right font-mono text-blue-600">100.00%</td>
                         </tr>

@@ -47,8 +47,16 @@ def create_aggregates(input_parquet, output_dir='aggregates'):
     print("Loading source data...")
     con.execute(f"CREATE TABLE bir_collections AS SELECT * FROM '{input_parquet}'")
     
+    # Remap Large Taxpayers Service to its own region
+    con.execute("""
+        UPDATE bir_collections 
+        SET region = 'Large Taxpayers Service'
+        WHERE area = 'Large Taxpayers Service'
+    """)
+    
     total_rows = con.execute("SELECT COUNT(*) FROM bir_collections").fetchone()[0]
-    print(f"✓ Loaded {total_rows:,} rows\n")
+    print(f"✓ Loaded {total_rows:,} rows")
+    print(f"✓ Separated 'Large Taxpayers Service' as independent region\n")
     
     # Get data constraints
     constraints = con.execute("""

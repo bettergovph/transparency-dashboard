@@ -9,9 +9,9 @@ const Footer = () => {
           <div className="text-sm flex gap-4">
             <img src="https://bettergov.ph/logos/svg/BetterGov_Icon-White.svg" alt="BetterGov" width="48" height="48" />
             <p className="font-semibold text-white mb-2">BetterGov.ph
-            <p className="text-gray-400">
-              A community portal providing Philippine citizens, businesses, and visitors with information and services.
-            </p>
+              <p className="text-gray-400">
+                A community portal providing Philippine citizens, businesses, and visitors with information and services.
+              </p>
             </p>
           </div>
 
@@ -26,6 +26,14 @@ const Footer = () => {
                 className="text-blue-400 hover:text-blue-300 transition-colors underline"
               >
                 https://philgeps.gov.ph
+              </a>,
+              <a
+                href="https://bir.gov.ph"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors underline"
+              >
+                https://bir.gov.ph
               </a>
             </p>
             <p className="text-gray-400">
