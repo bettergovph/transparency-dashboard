@@ -1,16 +1,22 @@
 {
   "metadata": {
     "title": "Total Tax Collection by Region",
-    "generated_at": "2025-12-03T13:20:47.671864",
+    "generated_at": "2025-12-03T13:49:14.794435",
     "years_covered": "2020-2024",
     "total_records": 6000
   },
   "data": [
     {
+      "region": "Large Taxpayers Service",
+      "total": 6902245.35,
+      "count": 60,
+      "average": 115037.4225
+    },
+    {
       "region": "National Capital Region (NCR)",
-      "total": 9393185.24,
-      "count": 960,
-      "average": 9784.567958333333
+      "total": 2490939.89,
+      "count": 900,
+      "average": 2767.710988888889
     },
     {
       "region": "Region IV-A (CALABARZON)",

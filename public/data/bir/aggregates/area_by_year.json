@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Tax Collection by Area and Year",
-    "generated_at": "2025-12-03T13:20:47.677703",
+    "generated_at": "2025-12-03T13:49:14.800271",
     "years_covered": "2020-2024",
     "note": "Year-aware area data for drill-down functionality"
   },
@@ -95,6 +95,14 @@
       "average": 23.558333333333334
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "year": 2020,
+      "total": 1219661.81,
+      "count": 12,
+      "average": 101638.48416666666
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Palawan (includes City of Puerto Princesa)",
       "year": 2020,
@@ -133,14 +141,6 @@
       "total": 218.56,
       "count": 12,
       "average": 18.213333333333335
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "year": 2020,
-      "total": 1219661.81,
-      "count": 12,
-      "average": 101638.48416666666
     },
     {
       "region": "National Capital Region (NCR)",
@@ -895,6 +895,14 @@
       "average": 31.108333333333334
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "year": 2021,
+      "total": 1242694.88,
+      "count": 12,
+      "average": 103557.90666666666
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Palawan (includes City of Puerto Princesa)",
       "year": 2021,
@@ -933,14 +941,6 @@
       "total": 293.5,
       "count": 12,
       "average": 24.458333333333332
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "year": 2021,
-      "total": 1242694.88,
-      "count": 12,
-      "average": 103557.90666666666
     },
     {
       "region": "National Capital Region (NCR)",
@@ -1695,6 +1695,14 @@
       "average": 35.138333333333335
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "year": 2022,
+      "total": 1348726.98,
+      "count": 12,
+      "average": 112393.915
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Palawan (includes City of Puerto Princesa)",
       "year": 2022,
@@ -1733,14 +1741,6 @@
       "total": 320.78,
       "count": 12,
       "average": 26.731666666666666
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "year": 2022,
-      "total": 1348726.98,
-      "count": 12,
-      "average": 112393.915
     },
     {
       "region": "National Capital Region (NCR)",
@@ -2495,6 +2495,14 @@
       "average": 45.803333333333335
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "year": 2023,
+      "total": 1457388.96,
+      "count": 12,
+      "average": 121449.08
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Palawan (includes City of Puerto Princesa)",
       "year": 2023,
@@ -2533,14 +2541,6 @@
       "total": 635.44,
       "count": 12,
       "average": 52.95333333333333
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "year": 2023,
-      "total": 1457388.96,
-      "count": 12,
-      "average": 121449.08
     },
     {
       "region": "National Capital Region (NCR)",
@@ -3295,6 +3295,14 @@
       "average": 44.975833333333334
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "year": 2024,
+      "total": 1633772.72,
+      "count": 12,
+      "average": 136147.72666666665
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Palawan (includes City of Puerto Princesa)",
       "year": 2024,
@@ -3333,14 +3341,6 @@
       "total": 628.44,
       "count": 12,
       "average": 52.37
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "year": 2024,
-      "total": 1633772.72,
-      "count": 12,
-      "average": 136147.72666666665
     },
     {
       "region": "National Capital Region (NCR)",

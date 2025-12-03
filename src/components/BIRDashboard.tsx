@@ -234,7 +234,15 @@ const BIRDashboard = () => {
     return regionData?.gaa || 0
   }
 
+  // Get total national GAA for selected year
+  const getNationalGAA = (year: number): number => {
+    if (!gaaData) return 0
+    const yearData = gaaData.data.find(d => d.year === year)
+    return yearData?.total || 0
+  }
+
   const regionGAA = getGAAForRegion(selectedRegion, selectedYear)
+  const nationalGAA = getNationalGAA(selectedYear)
   const collectionEfficiency = regionGAA > 0 ? (regionTotal / (regionGAA / 1_000_000)) * 100 : 0
 
   const yearRegionData = regionByYear
@@ -609,9 +617,15 @@ const BIRDashboard = () => {
                   <AlertCircle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-sm font-semibold text-amber-900 mb-1">Data Scope Notice</h3>
-                    <p className="text-sm text-amber-800">
+                    <p className="text-sm text-amber-800 mb-2">
                       This data currently <strong>does not include NON-BIR operations collection and tax refunds</strong>.
                       The figures represent BIR tax collections only and may not reflect the complete tax revenue picture.
+                    </p>
+                    <p className="text-sm text-amber-800">
+                      <strong>Large Taxpayers Service (LTS):</strong> The LTS has been categorized as a separate region in this dashboard. 
+                      While LTS operations are primarily headquartered in the National Capital Region, they serve major corporations 
+                      and high-value taxpayers nationwide. Due to the current limitations in available data granularity, 
+                      geographic distribution details for LTS collections are not readily accessible and are therefore presented as a distinct entity.
                     </p>
                   </div>
                 </div>
@@ -620,7 +634,7 @@ const BIRDashboard = () => {
               {/* Summary Cards - Different for National vs Regional View */}
               {selectedRegion === 'All Regions' ? (
                 // National Overview Cards
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 my-4 max-w-[1800px] mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-4 max-w-[1800px] mx-auto">
                   <Card className="border-l-4 border-l-blue-600">
                     <CardHeader className="pb-3">
                       <CardDescription>Total National Collection ({selectedYear})</CardDescription>
@@ -631,6 +645,20 @@ const BIRDashboard = () => {
                     <CardContent>
                       <p className="text-xs text-gray-500">
                         {formatCurrencyInMillions(grandTotal)}
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-l-4 border-l-amber-600">
+                    <CardHeader className="pb-3">
+                      <CardDescription>National Budget - GAA ({selectedYear})</CardDescription>
+                      <CardTitle className="text-2xl text-amber-600">
+                        {formatRawCurrency(nationalGAA)}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-xs text-gray-500">
+                        General Appropriations Act
                       </p>
                     </CardContent>
                   </Card>
@@ -748,14 +776,14 @@ const BIRDashboard = () => {
                     <CardTitle className="flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-indigo-600" />
                       {selectedRegion === 'All Regions'
-                        ? 'National Year-over-Year Collection Trend (2020-2024)'
-                        : `${selectedRegion} - Year-over-Year Trend (2020-2024)`
+                        ? 'National Year-over-Year Collection Trend vs GAA Budget (2020-2024)'
+                        : `${selectedRegion} - Year-over-Year Trend vs GAA Budget (2020-2024)`
                       }
                     </CardTitle>
                     <CardDescription>
                       {selectedRegion === 'All Regions'
-                        ? 'National tax collection trend across all regions'
-                        : `Tax collection growth pattern for ${selectedRegion}`
+                        ? 'Tax collection vs national budget allocation trend'
+                        : `Tax collection vs regional budget allocation for ${selectedRegion}`
                       }
                     </CardDescription>
                   </CardHeader>
@@ -763,10 +791,20 @@ const BIRDashboard = () => {
                     <ResponsiveContainer width="100%" height={350}>
                       <LineChart
                         data={selectedRegion === 'All Regions'
-                          ? totalByYear
+                          ? totalByYear.map(d => ({
+                              year: d.year,
+                              total: d.total,
+                              gaa: gaaData ? (gaaData.data.find(g => g.year === d.year)?.total || 0) / 1_000_000 : 0,
+                              count: d.count
+                            }))
                           : [...(regionByYear
                             .find(r => r.region === selectedRegion)
-                            ?.values || [])].sort((a, b) => a.year - b.year)
+                            ?.values || [])].sort((a, b) => a.year - b.year).map(d => ({
+                              year: d.year,
+                              total: d.total,
+                              gaa: getGAAForRegion(selectedRegion, d.year) / 1_000_000,
+                              count: d.count
+                            }))
                         }
                       >
                         <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -785,9 +823,19 @@ const BIRDashboard = () => {
                           dataKey="total"
                           stroke="#6366f1"
                           strokeWidth={3}
-                          name="Total Collection"
+                          name="Tax Collection"
                           dot={{ fill: '#6366f1', r: 6 }}
                           activeDot={{ r: 8 }}
+                        />
+                        <Line
+                          type="monotone"
+                          dataKey="gaa"
+                          stroke="#f59e0b"
+                          strokeWidth={3}
+                          name="GAA Budget"
+                          dot={{ fill: '#f59e0b', r: 6 }}
+                          activeDot={{ r: 8 }}
+                          strokeDasharray="5 5"
                         />
                       </LineChart>
                     </ResponsiveContainer>

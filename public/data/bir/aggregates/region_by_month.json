@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Regional Tax Collection by Month (Seasonal Patterns)",
-    "generated_at": "2025-12-03T13:20:47.688147",
+    "generated_at": "2025-12-03T13:49:14.810674",
     "years_covered": "2020-2024",
     "note": "Aggregates same month across all years per region"
   },
@@ -185,6 +185,95 @@
       ]
     },
     {
+      "region": "Large Taxpayers Service",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 637995.47,
+          "count": 5,
+          "average": 127599.094
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 401761.23,
+          "count": 5,
+          "average": 80352.246
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 414126.87,
+          "count": 5,
+          "average": 82825.374
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 743547.29,
+          "count": 5,
+          "average": 148709.458
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 576159.22,
+          "count": 5,
+          "average": 115231.844
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 558148.83,
+          "count": 5,
+          "average": 111629.766
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 668223.06,
+          "count": 5,
+          "average": 133644.612
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 645879.14,
+          "count": 5,
+          "average": 129175.828
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 453479.85,
+          "count": 5,
+          "average": 90695.97
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 651356.07,
+          "count": 5,
+          "average": 130271.214
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 660646.36,
+          "count": 5,
+          "average": 132129.272
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 490921.96,
+          "count": 5,
+          "average": 98184.392
+        }
+      ]
+    },
+    {
       "region": "MIMAROPA Region",
       "months": [
         {
@@ -279,86 +368,86 @@
         {
           "month": "January",
           "month_num": 1,
-          "total": 890648.12,
-          "count": 80,
-          "average": 11133.1015
+          "total": 252652.65,
+          "count": 75,
+          "average": 3368.702
         },
         {
           "month": "February",
           "month_num": 2,
-          "total": 549313.96,
-          "count": 80,
-          "average": 6866.4245
+          "total": 147552.73,
+          "count": 75,
+          "average": 1967.3697333333334
         },
         {
           "month": "March",
           "month_num": 3,
-          "total": 566566.55,
-          "count": 80,
-          "average": 7082.081875
+          "total": 152439.68,
+          "count": 75,
+          "average": 2032.5290666666667
         },
         {
           "month": "April",
           "month_num": 4,
-          "total": 1015221.17,
-          "count": 80,
-          "average": 12690.264625
+          "total": 271673.88,
+          "count": 75,
+          "average": 3622.3184
         },
         {
           "month": "May",
           "month_num": 5,
-          "total": 764936.19,
-          "count": 80,
-          "average": 9561.702375
+          "total": 188776.97,
+          "count": 75,
+          "average": 2517.0262666666667
         },
         {
           "month": "June",
           "month_num": 6,
-          "total": 768987.99,
-          "count": 80,
-          "average": 9612.349875
+          "total": 210839.16,
+          "count": 75,
+          "average": 2811.1888
         },
         {
           "month": "July",
           "month_num": 7,
-          "total": 905308.18,
-          "count": 80,
-          "average": 11316.35225
+          "total": 237085.12,
+          "count": 75,
+          "average": 3161.1349333333333
         },
         {
           "month": "August",
           "month_num": 8,
-          "total": 849079.84,
-          "count": 80,
-          "average": 10613.498
+          "total": 203200.7,
+          "count": 75,
+          "average": 2709.3426666666664
         },
         {
           "month": "September",
           "month_num": 9,
-          "total": 619462.96,
-          "count": 80,
-          "average": 7743.287
+          "total": 165983.11,
+          "count": 75,
+          "average": 2213.108133333333
         },
         {
           "month": "October",
           "month_num": 10,
-          "total": 890066.42,
-          "count": 80,
-          "average": 11125.83025
+          "total": 238710.35,
+          "count": 75,
+          "average": 3182.804666666667
         },
         {
           "month": "November",
           "month_num": 11,
-          "total": 890723.66,
-          "count": 80,
-          "average": 11134.04575
+          "total": 230077.3,
+          "count": 75,
+          "average": 3067.6973333333335
         },
         {
           "month": "December",
           "month_num": 12,
-          "total": 682870.2,
-          "count": 80,
-          "average": 8535.8775
+          "total": 191948.24,
+          "count": 75,
+          "average": 2559.3098666666665
         }
       ]
     },

@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Full Granular BIR Collection Data",
-    "generated_at": "2025-12-03T13:20:47.697327",
+    "generated_at": "2025-12-03T13:49:14.820798",
     "years_covered": "2020-2024",
     "total_records": 6000,
     "note": "Complete dataset for custom client-side aggregation"
@@ -94,6 +94,14 @@
       "month_num": 1,
       "year": 2020,
       "amount": 39.88
+    },
+    {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "January",
+      "month_num": 1,
+      "year": 2020,
+      "amount": 112165.47
     },
     {
       "region": "MIMAROPA Region",
@@ -238,14 +246,6 @@
       "month_num": 1,
       "year": 2020,
       "amount": 513.15
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "January",
-      "month_num": 1,
-      "year": 2020,
-      "amount": 112165.47
     },
     {
       "region": "National Capital Region (NCR)",
@@ -896,6 +896,14 @@
       "amount": 21.12
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "February",
+      "month_num": 2,
+      "year": 2020,
+      "amount": 85230.03
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "February",
@@ -1038,14 +1046,6 @@
       "month_num": 2,
       "year": 2020,
       "amount": 370.42
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "February",
-      "month_num": 2,
-      "year": 2020,
-      "amount": 85230.03
     },
     {
       "region": "National Capital Region (NCR)",
@@ -1696,6 +1696,14 @@
       "amount": 19.58
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "March",
+      "month_num": 3,
+      "year": 2020,
+      "amount": 81156.77
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "March",
@@ -1838,14 +1846,6 @@
       "month_num": 3,
       "year": 2020,
       "amount": 317.27
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "March",
-      "month_num": 3,
-      "year": 2020,
-      "amount": 81156.77
     },
     {
       "region": "National Capital Region (NCR)",
@@ -2496,6 +2496,14 @@
       "amount": 15.29
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "April",
+      "month_num": 4,
+      "year": 2020,
+      "amount": 64283.45
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "April",
@@ -2638,14 +2646,6 @@
       "month_num": 4,
       "year": 2020,
       "amount": 55.91
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "April",
-      "month_num": 4,
-      "year": 2020,
-      "amount": 64283.45
     },
     {
       "region": "National Capital Region (NCR)",
@@ -3296,6 +3296,14 @@
       "amount": 16.94
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "May",
+      "month_num": 5,
+      "year": 2020,
+      "amount": 76416.39
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "May",
@@ -3438,14 +3446,6 @@
       "month_num": 5,
       "year": 2020,
       "amount": 147.85
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "May",
-      "month_num": 5,
-      "year": 2020,
-      "amount": 76416.39
     },
     {
       "region": "National Capital Region (NCR)",
@@ -4096,6 +4096,14 @@
       "amount": 20.93
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "June",
+      "month_num": 6,
+      "year": 2020,
+      "amount": 174107.7
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "June",
@@ -4238,14 +4246,6 @@
       "month_num": 6,
       "year": 2020,
       "amount": 705.93
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "June",
-      "month_num": 6,
-      "year": 2020,
-      "amount": 174107.7
     },
     {
       "region": "National Capital Region (NCR)",
@@ -4896,6 +4896,14 @@
       "amount": 27.7
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "July",
+      "month_num": 7,
+      "year": 2020,
+      "amount": 100919.39
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "July",
@@ -5038,14 +5046,6 @@
       "month_num": 7,
       "year": 2020,
       "amount": 362.4
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "July",
-      "month_num": 7,
-      "year": 2020,
-      "amount": 100919.39
     },
     {
       "region": "National Capital Region (NCR)",
@@ -5696,6 +5696,14 @@
       "amount": 17.9
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "August",
+      "month_num": 8,
+      "year": 2020,
+      "amount": 126498.52
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "August",
@@ -5838,14 +5846,6 @@
       "month_num": 8,
       "year": 2020,
       "amount": 353.93
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "August",
-      "month_num": 8,
-      "year": 2020,
-      "amount": 126498.52
     },
     {
       "region": "National Capital Region (NCR)",
@@ -6496,6 +6496,14 @@
       "amount": 27.31
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "September",
+      "month_num": 9,
+      "year": 2020,
+      "amount": 86765.77
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "September",
@@ -6638,14 +6646,6 @@
       "month_num": 9,
       "year": 2020,
       "amount": 387.98
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "September",
-      "month_num": 9,
-      "year": 2020,
-      "amount": 86765.77
     },
     {
       "region": "National Capital Region (NCR)",
@@ -7296,6 +7296,14 @@
       "amount": 28.09
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "October",
+      "month_num": 10,
+      "year": 2020,
+      "amount": 92967.94
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "October",
@@ -7438,14 +7446,6 @@
       "month_num": 10,
       "year": 2020,
       "amount": 460.52
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "October",
-      "month_num": 10,
-      "year": 2020,
-      "amount": 92967.94
     },
     {
       "region": "National Capital Region (NCR)",
@@ -8096,6 +8096,14 @@
       "amount": 25.56
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "November",
+      "month_num": 11,
+      "year": 2020,
+      "amount": 123615.42
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "November",
@@ -8238,14 +8246,6 @@
       "month_num": 11,
       "year": 2020,
       "amount": 458.8
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "November",
-      "month_num": 11,
-      "year": 2020,
-      "amount": 123615.42
     },
     {
       "region": "National Capital Region (NCR)",
@@ -8896,6 +8896,14 @@
       "amount": 22.4
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "December",
+      "month_num": 12,
+      "year": 2020,
+      "amount": 95534.96
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "December",
@@ -9038,14 +9046,6 @@
       "month_num": 12,
       "year": 2020,
       "amount": 427.31
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "December",
-      "month_num": 12,
-      "year": 2020,
-      "amount": 95534.96
     },
     {
       "region": "National Capital Region (NCR)",
@@ -9696,6 +9696,14 @@
       "amount": 47.88
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "January",
+      "month_num": 1,
+      "year": 2021,
+      "amount": 105267.1
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "January",
@@ -9838,14 +9846,6 @@
       "month_num": 1,
       "year": 2021,
       "amount": 448.79
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "January",
-      "month_num": 1,
-      "year": 2021,
-      "amount": 105267.1
     },
     {
       "region": "National Capital Region (NCR)",
@@ -10496,6 +10496,14 @@
       "amount": 17.75
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "February",
+      "month_num": 2,
+      "year": 2021,
+      "amount": 89403.62
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "February",
@@ -10638,14 +10646,6 @@
       "month_num": 2,
       "year": 2021,
       "amount": 348.39
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "February",
-      "month_num": 2,
-      "year": 2021,
-      "amount": 89403.62
     },
     {
       "region": "National Capital Region (NCR)",
@@ -11296,6 +11296,14 @@
       "amount": 19.97
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "March",
+      "month_num": 3,
+      "year": 2021,
+      "amount": 80602.65
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "March",
@@ -11438,14 +11446,6 @@
       "month_num": 3,
       "year": 2021,
       "amount": 376.39
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "March",
-      "month_num": 3,
-      "year": 2021,
-      "amount": 80602.65
     },
     {
       "region": "National Capital Region (NCR)",
@@ -12096,6 +12096,14 @@
       "amount": 40.14
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "April",
+      "month_num": 4,
+      "year": 2021,
+      "amount": 129029.67
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "April",
@@ -12238,14 +12246,6 @@
       "month_num": 4,
       "year": 2021,
       "amount": 539.02
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "April",
-      "month_num": 4,
-      "year": 2021,
-      "amount": 129029.67
     },
     {
       "region": "National Capital Region (NCR)",
@@ -12896,6 +12896,14 @@
       "amount": 18.17
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "May",
+      "month_num": 5,
+      "year": 2021,
+      "amount": 115435.29
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "May",
@@ -13038,14 +13046,6 @@
       "month_num": 5,
       "year": 2021,
       "amount": 383.92
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "May",
-      "month_num": 5,
-      "year": 2021,
-      "amount": 115435.29
     },
     {
       "region": "National Capital Region (NCR)",
@@ -13696,6 +13696,14 @@
       "amount": 29.4
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "June",
+      "month_num": 6,
+      "year": 2021,
+      "amount": 95695.99
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "June",
@@ -13838,14 +13846,6 @@
       "month_num": 6,
       "year": 2021,
       "amount": 461.98
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "June",
-      "month_num": 6,
-      "year": 2021,
-      "amount": 95695.99
     },
     {
       "region": "National Capital Region (NCR)",
@@ -14496,6 +14496,14 @@
       "amount": 36.09
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "July",
+      "month_num": 7,
+      "year": 2021,
+      "amount": 101606.71
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "July",
@@ -14638,14 +14646,6 @@
       "month_num": 7,
       "year": 2021,
       "amount": 501.86
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "July",
-      "month_num": 7,
-      "year": 2021,
-      "amount": 101606.71
     },
     {
       "region": "National Capital Region (NCR)",
@@ -15296,6 +15296,14 @@
       "amount": 29.48
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "August",
+      "month_num": 8,
+      "year": 2021,
+      "amount": 115587.7
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "August",
@@ -15438,14 +15446,6 @@
       "month_num": 8,
       "year": 2021,
       "amount": 461.43
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "August",
-      "month_num": 8,
-      "year": 2021,
-      "amount": 115587.7
     },
     {
       "region": "National Capital Region (NCR)",
@@ -16096,6 +16096,14 @@
       "amount": 30.58
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "September",
+      "month_num": 9,
+      "year": 2021,
+      "amount": 89985.44
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "September",
@@ -16238,14 +16246,6 @@
       "month_num": 9,
       "year": 2021,
       "amount": 450.41
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "September",
-      "month_num": 9,
-      "year": 2021,
-      "amount": 89985.44
     },
     {
       "region": "National Capital Region (NCR)",
@@ -16896,6 +16896,14 @@
       "amount": 32.13
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "October",
+      "month_num": 10,
+      "year": 2021,
+      "amount": 95956.98
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "October",
@@ -17038,14 +17046,6 @@
       "month_num": 10,
       "year": 2021,
       "amount": 430.38
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "October",
-      "month_num": 10,
-      "year": 2021,
-      "amount": 95956.98
     },
     {
       "region": "National Capital Region (NCR)",
@@ -17696,6 +17696,14 @@
       "amount": 33.19
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "November",
+      "month_num": 11,
+      "year": 2021,
+      "amount": 130663.38
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "November",
@@ -17838,14 +17846,6 @@
       "month_num": 11,
       "year": 2021,
       "amount": 512.99
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "November",
-      "month_num": 11,
-      "year": 2021,
-      "amount": 130663.38
     },
     {
       "region": "National Capital Region (NCR)",
@@ -18496,6 +18496,14 @@
       "amount": 38.52
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "December",
+      "month_num": 12,
+      "year": 2021,
+      "amount": 93460.35
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "December",
@@ -18638,14 +18646,6 @@
       "month_num": 12,
       "year": 2021,
       "amount": 450.46
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "December",
-      "month_num": 12,
-      "year": 2021,
-      "amount": 93460.35
     },
     {
       "region": "National Capital Region (NCR)",
@@ -19296,6 +19296,14 @@
       "amount": 45.71
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "January",
+      "month_num": 1,
+      "year": 2022,
+      "amount": 107803.92
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "January",
@@ -19438,14 +19446,6 @@
       "month_num": 1,
       "year": 2022,
       "amount": 483.35
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "January",
-      "month_num": 1,
-      "year": 2022,
-      "amount": 107803.92
     },
     {
       "region": "National Capital Region (NCR)",
@@ -20096,6 +20096,14 @@
       "amount": 25.1
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "February",
+      "month_num": 2,
+      "year": 2022,
+      "amount": 77290.32
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "February",
@@ -20238,14 +20246,6 @@
       "month_num": 2,
       "year": 2022,
       "amount": 397.73
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "February",
-      "month_num": 2,
-      "year": 2022,
-      "amount": 77290.32
     },
     {
       "region": "National Capital Region (NCR)",
@@ -20896,6 +20896,14 @@
       "amount": 27.17
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "March",
+      "month_num": 3,
+      "year": 2022,
+      "amount": 100956.15
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "March",
@@ -21038,14 +21046,6 @@
       "month_num": 3,
       "year": 2022,
       "amount": 504.02
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "March",
-      "month_num": 3,
-      "year": 2022,
-      "amount": 100956.15
     },
     {
       "region": "National Capital Region (NCR)",
@@ -21696,6 +21696,14 @@
       "amount": 53.94
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "April",
+      "month_num": 4,
+      "year": 2022,
+      "amount": 129561.04
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "April",
@@ -21838,14 +21846,6 @@
       "month_num": 4,
       "year": 2022,
       "amount": 656.08
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "April",
-      "month_num": 4,
-      "year": 2022,
-      "amount": 129561.04
     },
     {
       "region": "National Capital Region (NCR)",
@@ -22496,6 +22496,14 @@
       "amount": 40.86
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "May",
+      "month_num": 5,
+      "year": 2022,
+      "amount": 126788.61
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "May",
@@ -22638,14 +22646,6 @@
       "month_num": 5,
       "year": 2022,
       "amount": 497.15
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "May",
-      "month_num": 5,
-      "year": 2022,
-      "amount": 126788.61
     },
     {
       "region": "National Capital Region (NCR)",
@@ -23296,6 +23296,14 @@
       "amount": 32.3
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "June",
+      "month_num": 6,
+      "year": 2022,
+      "amount": 98915.42
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "June",
@@ -23438,14 +23446,6 @@
       "month_num": 6,
       "year": 2022,
       "amount": 426.4
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "June",
-      "month_num": 6,
-      "year": 2022,
-      "amount": 98915.42
     },
     {
       "region": "National Capital Region (NCR)",
@@ -24096,6 +24096,14 @@
       "amount": 34.93
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "July",
+      "month_num": 7,
+      "year": 2022,
+      "amount": 117242.97
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "July",
@@ -24238,14 +24246,6 @@
       "month_num": 7,
       "year": 2022,
       "amount": 446.38
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "July",
-      "month_num": 7,
-      "year": 2022,
-      "amount": 117242.97
     },
     {
       "region": "National Capital Region (NCR)",
@@ -24896,6 +24896,14 @@
       "amount": 29.6
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "August",
+      "month_num": 8,
+      "year": 2022,
+      "amount": 138000.23
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "August",
@@ -25038,14 +25046,6 @@
       "month_num": 8,
       "year": 2022,
       "amount": 475.54
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "August",
-      "month_num": 8,
-      "year": 2022,
-      "amount": 138000.23
     },
     {
       "region": "National Capital Region (NCR)",
@@ -25696,6 +25696,14 @@
       "amount": 31.12
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "September",
+      "month_num": 9,
+      "year": 2022,
+      "amount": 99385.3
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "September",
@@ -25838,14 +25846,6 @@
       "month_num": 9,
       "year": 2022,
       "amount": 377.08
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "September",
-      "month_num": 9,
-      "year": 2022,
-      "amount": 99385.3
     },
     {
       "region": "National Capital Region (NCR)",
@@ -26496,6 +26496,14 @@
       "amount": 38.53
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "October",
+      "month_num": 10,
+      "year": 2022,
+      "amount": 109129.96
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "October",
@@ -26638,14 +26646,6 @@
       "month_num": 10,
       "year": 2022,
       "amount": 504.84
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "October",
-      "month_num": 10,
-      "year": 2022,
-      "amount": 109129.96
     },
     {
       "region": "National Capital Region (NCR)",
@@ -27296,6 +27296,14 @@
       "amount": 40.76
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "November",
+      "month_num": 11,
+      "year": 2022,
+      "amount": 140201.83
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "November",
@@ -27438,14 +27446,6 @@
       "month_num": 11,
       "year": 2022,
       "amount": 515.43
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "November",
-      "month_num": 11,
-      "year": 2022,
-      "amount": 140201.83
     },
     {
       "region": "National Capital Region (NCR)",
@@ -28096,6 +28096,14 @@
       "amount": 47.55
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "December",
+      "month_num": 12,
+      "year": 2022,
+      "amount": 103451.23
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "December",
@@ -28238,14 +28246,6 @@
       "month_num": 12,
       "year": 2022,
       "amount": 423.73
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "December",
-      "month_num": 12,
-      "year": 2022,
-      "amount": 103451.23
     },
     {
       "region": "National Capital Region (NCR)",
@@ -28896,6 +28896,14 @@
       "amount": 61.27
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "January",
+      "month_num": 1,
+      "year": 2023,
+      "amount": 135938.1
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "January",
@@ -29038,14 +29046,6 @@
       "month_num": 1,
       "year": 2023,
       "amount": 555.98
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "January",
-      "month_num": 1,
-      "year": 2023,
-      "amount": 135938.1
     },
     {
       "region": "National Capital Region (NCR)",
@@ -29696,6 +29696,14 @@
       "amount": 35.42
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "February",
+      "month_num": 2,
+      "year": 2023,
+      "amount": 71157.33
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "February",
@@ -29838,14 +29846,6 @@
       "month_num": 2,
       "year": 2023,
       "amount": 366.87
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "February",
-      "month_num": 2,
-      "year": 2023,
-      "amount": 71157.33
     },
     {
       "region": "National Capital Region (NCR)",
@@ -30496,6 +30496,14 @@
       "amount": 34.99
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "March",
+      "month_num": 3,
+      "year": 2023,
+      "amount": 73781.81
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "March",
@@ -30638,14 +30646,6 @@
       "month_num": 3,
       "year": 2023,
       "amount": 501.6
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "March",
-      "month_num": 3,
-      "year": 2023,
-      "amount": 73781.81
     },
     {
       "region": "National Capital Region (NCR)",
@@ -31296,6 +31296,14 @@
       "amount": 60.26
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "April",
+      "month_num": 4,
+      "year": 2023,
+      "amount": 200469.02
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "April",
@@ -31438,14 +31446,6 @@
       "month_num": 4,
       "year": 2023,
       "amount": 883.4
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "April",
-      "month_num": 4,
-      "year": 2023,
-      "amount": 200469.02
     },
     {
       "region": "National Capital Region (NCR)",
@@ -32096,6 +32096,14 @@
       "amount": 51.24
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "May",
+      "month_num": 5,
+      "year": 2023,
+      "amount": 128650.92
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "May",
@@ -32238,14 +32246,6 @@
       "month_num": 5,
       "year": 2023,
       "amount": 440.35
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "May",
-      "month_num": 5,
-      "year": 2023,
-      "amount": 128650.92
     },
     {
       "region": "National Capital Region (NCR)",
@@ -32896,6 +32896,14 @@
       "amount": 44.82
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "June",
+      "month_num": 6,
+      "year": 2023,
+      "amount": 92862.86
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "June",
@@ -33038,14 +33046,6 @@
       "month_num": 6,
       "year": 2023,
       "amount": 402.25
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "June",
-      "month_num": 6,
-      "year": 2023,
-      "amount": 92862.86
     },
     {
       "region": "National Capital Region (NCR)",
@@ -33696,6 +33696,14 @@
       "amount": 57.28
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "July",
+      "month_num": 7,
+      "year": 2023,
+      "amount": 164780.79
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "July",
@@ -33838,14 +33846,6 @@
       "month_num": 7,
       "year": 2023,
       "amount": 788.04
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "July",
-      "month_num": 7,
-      "year": 2023,
-      "amount": 164780.79
     },
     {
       "region": "National Capital Region (NCR)",
@@ -34496,6 +34496,14 @@
       "amount": 37.0
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "August",
+      "month_num": 8,
+      "year": 2023,
+      "amount": 126961.58
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "August",
@@ -34638,14 +34646,6 @@
       "month_num": 8,
       "year": 2023,
       "amount": 530.44
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "August",
-      "month_num": 8,
-      "year": 2023,
-      "amount": 126961.58
     },
     {
       "region": "National Capital Region (NCR)",
@@ -35296,6 +35296,14 @@
       "amount": 43.45
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "September",
+      "month_num": 9,
+      "year": 2023,
+      "amount": 83193.66
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "September",
@@ -35438,14 +35446,6 @@
       "month_num": 9,
       "year": 2023,
       "amount": 357.37
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "September",
-      "month_num": 9,
-      "year": 2023,
-      "amount": 83193.66
     },
     {
       "region": "National Capital Region (NCR)",
@@ -36096,6 +36096,14 @@
       "amount": 60.15
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "October",
+      "month_num": 10,
+      "year": 2023,
+      "amount": 161498.1
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "October",
@@ -36238,14 +36246,6 @@
       "month_num": 10,
       "year": 2023,
       "amount": 840.4
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "October",
-      "month_num": 10,
-      "year": 2023,
-      "amount": 161498.1
     },
     {
       "region": "National Capital Region (NCR)",
@@ -36896,6 +36896,14 @@
       "amount": 36.65
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "November",
+      "month_num": 11,
+      "year": 2023,
+      "amount": 123972.2
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "November",
@@ -37038,14 +37046,6 @@
       "month_num": 11,
       "year": 2023,
       "amount": 515.27
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "November",
-      "month_num": 11,
-      "year": 2023,
-      "amount": 123972.2
     },
     {
       "region": "National Capital Region (NCR)",
@@ -37696,6 +37696,14 @@
       "amount": 85.99
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "December",
+      "month_num": 12,
+      "year": 2023,
+      "amount": 94122.59
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "December",
@@ -37838,14 +37846,6 @@
       "month_num": 12,
       "year": 2023,
       "amount": 397.16
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "December",
-      "month_num": 12,
-      "year": 2023,
-      "amount": 94122.59
     },
     {
       "region": "National Capital Region (NCR)",
@@ -38496,6 +38496,14 @@
       "amount": 61.42
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "January",
+      "month_num": 1,
+      "year": 2024,
+      "amount": 176820.88
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "January",
@@ -38638,14 +38646,6 @@
       "month_num": 1,
       "year": 2024,
       "amount": 945.4
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "January",
-      "month_num": 1,
-      "year": 2024,
-      "amount": 176820.88
     },
     {
       "region": "National Capital Region (NCR)",
@@ -39296,6 +39296,14 @@
       "amount": 39.28
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "February",
+      "month_num": 2,
+      "year": 2024,
+      "amount": 78679.93
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "February",
@@ -39438,14 +39446,6 @@
       "month_num": 2,
       "year": 2024,
       "amount": 311.39
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "February",
-      "month_num": 2,
-      "year": 2024,
-      "amount": 78679.93
     },
     {
       "region": "National Capital Region (NCR)",
@@ -40096,6 +40096,14 @@
       "amount": 27.74
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "March",
+      "month_num": 3,
+      "year": 2024,
+      "amount": 77629.49
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "March",
@@ -40238,14 +40246,6 @@
       "month_num": 3,
       "year": 2024,
       "amount": 350.0
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "March",
-      "month_num": 3,
-      "year": 2024,
-      "amount": 77629.49
     },
     {
       "region": "National Capital Region (NCR)",
@@ -40896,6 +40896,14 @@
       "amount": 44.06
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "April",
+      "month_num": 4,
+      "year": 2024,
+      "amount": 220204.11
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "April",
@@ -41038,14 +41046,6 @@
       "month_num": 4,
       "year": 2024,
       "amount": 1050.28
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "April",
-      "month_num": 4,
-      "year": 2024,
-      "amount": 220204.11
     },
     {
       "region": "National Capital Region (NCR)",
@@ -41696,6 +41696,14 @@
       "amount": 52.99
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "May",
+      "month_num": 5,
+      "year": 2024,
+      "amount": 128868.01
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "May",
@@ -41838,14 +41846,6 @@
       "month_num": 5,
       "year": 2024,
       "amount": 614.99
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "May",
-      "month_num": 5,
-      "year": 2024,
-      "amount": 128868.01
     },
     {
       "region": "National Capital Region (NCR)",
@@ -42496,6 +42496,14 @@
       "amount": 51.59
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "June",
+      "month_num": 6,
+      "year": 2024,
+      "amount": 96566.86
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "June",
@@ -42638,14 +42646,6 @@
       "month_num": 6,
       "year": 2024,
       "amount": 593.83
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "June",
-      "month_num": 6,
-      "year": 2024,
-      "amount": 96566.86
     },
     {
       "region": "National Capital Region (NCR)",
@@ -43296,6 +43296,14 @@
       "amount": 58.72
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "July",
+      "month_num": 7,
+      "year": 2024,
+      "amount": 183673.2
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "July",
@@ -43438,14 +43446,6 @@
       "month_num": 7,
       "year": 2024,
       "amount": 968.83
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "July",
-      "month_num": 7,
-      "year": 2024,
-      "amount": 183673.2
     },
     {
       "region": "National Capital Region (NCR)",
@@ -44096,6 +44096,14 @@
       "amount": 39.56
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "August",
+      "month_num": 8,
+      "year": 2024,
+      "amount": 138831.11
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "August",
@@ -44238,14 +44246,6 @@
       "month_num": 8,
       "year": 2024,
       "amount": 555.33
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "August",
-      "month_num": 8,
-      "year": 2024,
-      "amount": 138831.11
     },
     {
       "region": "National Capital Region (NCR)",
@@ -44896,6 +44896,14 @@
       "amount": 54.76
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "September",
+      "month_num": 9,
+      "year": 2024,
+      "amount": 94149.68
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "September",
@@ -45038,14 +45046,6 @@
       "month_num": 9,
       "year": 2024,
       "amount": 437.79
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "September",
-      "month_num": 9,
-      "year": 2024,
-      "amount": 94149.68
     },
     {
       "region": "National Capital Region (NCR)",
@@ -45696,6 +45696,14 @@
       "amount": 76.31
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "October",
+      "month_num": 10,
+      "year": 2024,
+      "amount": 191803.09
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "October",
@@ -45838,14 +45846,6 @@
       "month_num": 10,
       "year": 2024,
       "amount": 949.45
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "October",
-      "month_num": 10,
-      "year": 2024,
-      "amount": 191803.09
     },
     {
       "region": "National Capital Region (NCR)",
@@ -46496,6 +46496,14 @@
       "amount": 42.89
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "November",
+      "month_num": 11,
+      "year": 2024,
+      "amount": 142193.53
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "November",
@@ -46638,14 +46646,6 @@
       "month_num": 11,
       "year": 2024,
       "amount": 597.06
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "November",
-      "month_num": 11,
-      "year": 2024,
-      "amount": 142193.53
     },
     {
       "region": "National Capital Region (NCR)",
@@ -47296,6 +47296,14 @@
       "amount": 96.65
     },
     {
+      "region": "Large Taxpayers Service",
+      "area": "Large Taxpayers Service",
+      "month": "December",
+      "month_num": 12,
+      "year": 2024,
+      "amount": 104352.83
+    },
+    {
       "region": "MIMAROPA Region",
       "area": "Marinduque",
       "month": "December",
@@ -47438,14 +47446,6 @@
       "month_num": 12,
       "year": 2024,
       "amount": 487.03
-    },
-    {
-      "region": "National Capital Region (NCR)",
-      "area": "Large Taxpayers Service",
-      "month": "December",
-      "month_num": 12,
-      "year": 2024,
-      "amount": 104352.83
     },
     {
       "region": "National Capital Region (NCR)",

@@ -24,7 +24,8 @@ dist-ssr
 *.sw?
 .env
 **.parquet
-*.csv
+# *.csv
 csv_batches/
 philgeps.tar.gz
 data/import.py
+data/bir/bir_collections.sql

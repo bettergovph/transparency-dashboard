@@ -1,13 +1,13 @@
 {
   "metadata": {
     "title": "Total Tax Collection by Area",
-    "generated_at": "2025-12-03T13:20:47.673707",
+    "generated_at": "2025-12-03T13:49:14.796259",
     "years_covered": "2020-2024",
     "total_records": 6000
   },
   "data": [
     {
-      "region": "National Capital Region (NCR)",
+      "region": "Large Taxpayers Service",
       "area": "Large Taxpayers Service",
       "total": 6902245.35,
       "count": 60,

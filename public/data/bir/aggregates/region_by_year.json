@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "Tax Collection Time Series by Region",
-    "generated_at": "2025-12-03T13:20:47.684343",
+    "generated_at": "2025-12-03T13:49:14.806491",
     "years_covered": "2020-2024"
   },
   "data": [
@@ -66,6 +66,36 @@
       ]
     },
     {
+      "region": "Large Taxpayers Service",
+      "values": [
+        {
+          "year": 2020,
+          "total": 1219661.81,
+          "count": 12
+        },
+        {
+          "year": 2021,
+          "total": 1242694.88,
+          "count": 12
+        },
+        {
+          "year": 2022,
+          "total": 1348726.98,
+          "count": 12
+        },
+        {
+          "year": 2023,
+          "total": 1457388.96,
+          "count": 12
+        },
+        {
+          "year": 2024,
+          "total": 1633772.72,
+          "count": 12
+        }
+      ]
+    },
+    {
       "region": "MIMAROPA Region",
       "values": [
         {
@@ -100,28 +130,28 @@
       "values": [
         {
           "year": 2020,
-          "total": 1605684.14,
-          "count": 192
+          "total": 386022.33,
+          "count": 180
         },
         {
           "year": 2021,
-          "total": 1689606.99,
-          "count": 192
+          "total": 446912.11,
+          "count": 180
         },
         {
           "year": 2022,
-          "total": 1872204.41,
-          "count": 192
+          "total": 523477.43,
+          "count": 180
         },
         {
           "year": 2023,
-          "total": 1982825.79,
-          "count": 192
+          "total": 525436.83,
+          "count": 180
         },
         {
           "year": 2024,
-          "total": 2242863.91,
-          "count": 192
+          "total": 609091.19,
+          "count": 180
         }
       ]
     },
