@@ -82,7 +82,6 @@ interface RegionByMonthData {
   months: { month: string; month_num: number; total: number; count: number; average: number }[]
 }
 
-
 interface GAARegionData {
   region: string
   gaa: number
