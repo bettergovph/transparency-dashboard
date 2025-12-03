@@ -1,0 +1,1612 @@
+{
+  "metadata": {
+    "title": "Regional Tax Collection by Month (Seasonal Patterns)",
+    "generated_at": "2025-12-03T13:20:47.688147",
+    "years_covered": "2020-2024",
+    "note": "Aggregates same month across all years per region"
+  },
+  "data": [
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 2263.25,
+          "count": 25,
+          "average": 90.53
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 1553.08,
+          "count": 25,
+          "average": 62.1232
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 1505.56,
+          "count": 25,
+          "average": 60.2224
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 1854.39,
+          "count": 25,
+          "average": 74.1756
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 1627.25,
+          "count": 25,
+          "average": 65.09
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 1696.96,
+          "count": 25,
+          "average": 67.8784
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 1864.88,
+          "count": 25,
+          "average": 74.5952
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 1609.27,
+          "count": 25,
+          "average": 64.3708
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 1618.76,
+          "count": 25,
+          "average": 64.7504
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 1808.47,
+          "count": 25,
+          "average": 72.3388
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 1856.44,
+          "count": 25,
+          "average": 74.2576
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 2178.75,
+          "count": 25,
+          "average": 87.15
+        }
+      ]
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 3893.15,
+          "count": 30,
+          "average": 129.77166666666668
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 2289.01,
+          "count": 30,
+          "average": 76.30033333333333
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 2603.55,
+          "count": 30,
+          "average": 86.785
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 3692.05,
+          "count": 30,
+          "average": 123.06833333333333
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 2940.55,
+          "count": 30,
+          "average": 98.01833333333333
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 3183.34,
+          "count": 30,
+          "average": 106.11133333333333
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 3751.43,
+          "count": 30,
+          "average": 125.04766666666667
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 3379.83,
+          "count": 30,
+          "average": 112.661
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 3142.13,
+          "count": 30,
+          "average": 104.73766666666667
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 3925.2,
+          "count": 30,
+          "average": 130.84
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 3341.4,
+          "count": 30,
+          "average": 111.38
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 3825.21,
+          "count": 30,
+          "average": 127.507
+        }
+      ]
+    },
+    {
+      "region": "MIMAROPA Region",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 4364.33,
+          "count": 25,
+          "average": 174.5732
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 2362.47,
+          "count": 25,
+          "average": 94.4988
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 2603.88,
+          "count": 25,
+          "average": 104.1552
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 4136.78,
+          "count": 25,
+          "average": 165.4712
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 3095.92,
+          "count": 25,
+          "average": 123.8368
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 3311.15,
+          "count": 25,
+          "average": 132.446
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 3750.26,
+          "count": 25,
+          "average": 150.0104
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 3131.73,
+          "count": 25,
+          "average": 125.2692
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 2742.58,
+          "count": 25,
+          "average": 109.7032
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 3781.31,
+          "count": 25,
+          "average": 151.2524
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 3219.82,
+          "count": 25,
+          "average": 128.7928
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 2983.79,
+          "count": 25,
+          "average": 119.3516
+        }
+      ]
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 890648.12,
+          "count": 80,
+          "average": 11133.1015
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 549313.96,
+          "count": 80,
+          "average": 6866.4245
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 566566.55,
+          "count": 80,
+          "average": 7082.081875
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 1015221.17,
+          "count": 80,
+          "average": 12690.264625
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 764936.19,
+          "count": 80,
+          "average": 9561.702375
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 768987.99,
+          "count": 80,
+          "average": 9612.349875
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 905308.18,
+          "count": 80,
+          "average": 11316.35225
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 849079.84,
+          "count": 80,
+          "average": 10613.498
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 619462.96,
+          "count": 80,
+          "average": 7743.287
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 890066.42,
+          "count": 80,
+          "average": 11125.83025
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 890723.66,
+          "count": 80,
+          "average": 11134.04575
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 682870.2,
+          "count": 80,
+          "average": 8535.8775
+        }
+      ]
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 6116.3,
+          "count": 10,
+          "average": 611.63
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 3906.42,
+          "count": 10,
+          "average": 390.642
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 4361.57,
+          "count": 10,
+          "average": 436.157
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 7231.29,
+          "count": 10,
+          "average": 723.129
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 4680.25,
+          "count": 10,
+          "average": 468.025
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 5239.73,
+          "count": 10,
+          "average": 523.973
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 5566.54,
+          "count": 10,
+          "average": 556.654
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 4840.7,
+          "count": 10,
+          "average": 484.07
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 4628.18,
+          "count": 10,
+          "average": 462.818
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 6619.46,
+          "count": 10,
+          "average": 661.946
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 5120.8,
+          "count": 10,
+          "average": 512.08
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 4724.98,
+          "count": 10,
+          "average": 472.498
+        }
+      ]
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 9009.98,
+          "count": 20,
+          "average": 450.499
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 5061.91,
+          "count": 20,
+          "average": 253.0955
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 5659.95,
+          "count": 20,
+          "average": 282.9975
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 8309.72,
+          "count": 20,
+          "average": 415.486
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 6696.21,
+          "count": 20,
+          "average": 334.8105
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 7421.33,
+          "count": 20,
+          "average": 371.0665
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 7869.29,
+          "count": 20,
+          "average": 393.4645
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 7742.94,
+          "count": 20,
+          "average": 387.147
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 6275.08,
+          "count": 20,
+          "average": 313.754
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 8171.15,
+          "count": 20,
+          "average": 408.5575
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 8021.9,
+          "count": 20,
+          "average": 401.095
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 6552.7,
+          "count": 20,
+          "average": 327.635
+        }
+      ]
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 5484.71,
+          "count": 20,
+          "average": 274.2355
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 3236.1,
+          "count": 20,
+          "average": 161.805
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 3724.92,
+          "count": 20,
+          "average": 186.246
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 5364.21,
+          "count": 20,
+          "average": 268.2105
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 4169.59,
+          "count": 20,
+          "average": 208.4795
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 4846.01,
+          "count": 20,
+          "average": 242.3005
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 4906.8,
+          "count": 20,
+          "average": 245.34
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 4840.51,
+          "count": 20,
+          "average": 242.0255
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 4139.72,
+          "count": 20,
+          "average": 206.986
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 5309.57,
+          "count": 20,
+          "average": 265.4785
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 4806.99,
+          "count": 20,
+          "average": 240.3495
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 4728.03,
+          "count": 20,
+          "average": 236.4015
+        }
+      ]
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 28733.93,
+          "count": 45,
+          "average": 638.5317777777777
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 18132.31,
+          "count": 45,
+          "average": 402.94022222222225
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 19984.48,
+          "count": 45,
+          "average": 444.0995555555556
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 32275.5,
+          "count": 45,
+          "average": 717.2333333333333
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 25916.47,
+          "count": 45,
+          "average": 575.9215555555555
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 25612.25,
+          "count": 45,
+          "average": 569.1611111111112
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 28430.36,
+          "count": 45,
+          "average": 631.7857777777778
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 26958.94,
+          "count": 45,
+          "average": 599.0875555555556
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 20740.78,
+          "count": 45,
+          "average": 460.9062222222222
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 29214.98,
+          "count": 45,
+          "average": 649.2217777777778
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 28270.05,
+          "count": 45,
+          "average": 628.2233333333334
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 22625.73,
+          "count": 45,
+          "average": 502.794
+        }
+      ]
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 42452.8,
+          "count": 30,
+          "average": 1415.0933333333332
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 24798.69,
+          "count": 30,
+          "average": 826.623
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 29049.28,
+          "count": 30,
+          "average": 968.3093333333334
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 45452.88,
+          "count": 30,
+          "average": 1515.096
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 33426.84,
+          "count": 30,
+          "average": 1114.228
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 34700.59,
+          "count": 30,
+          "average": 1156.6863333333333
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 39999.4,
+          "count": 30,
+          "average": 1333.3133333333333
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 36361.35,
+          "count": 30,
+          "average": 1212.045
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 28318.05,
+          "count": 30,
+          "average": 943.935
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 41386.01,
+          "count": 30,
+          "average": 1379.5336666666667
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 38579.58,
+          "count": 30,
+          "average": 1285.986
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 32733.47,
+          "count": 30,
+          "average": 1091.1156666666666
+        }
+      ]
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 3994.94,
+          "count": 20,
+          "average": 199.747
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 2213.26,
+          "count": 20,
+          "average": 110.663
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 2599.62,
+          "count": 20,
+          "average": 129.981
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 3691.18,
+          "count": 20,
+          "average": 184.559
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 2773.5,
+          "count": 20,
+          "average": 138.675
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 3083.34,
+          "count": 20,
+          "average": 154.167
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 3615.21,
+          "count": 20,
+          "average": 180.7605
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 3046.93,
+          "count": 20,
+          "average": 152.3465
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 2878.29,
+          "count": 20,
+          "average": 143.9145
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 3727.79,
+          "count": 20,
+          "average": 186.3895
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 3108.68,
+          "count": 20,
+          "average": 155.434
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 3351.41,
+          "count": 20,
+          "average": 167.5705
+        }
+      ]
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 7496.93,
+          "count": 30,
+          "average": 249.89766666666668
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 3835.61,
+          "count": 30,
+          "average": 127.85366666666667
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 4513.58,
+          "count": 30,
+          "average": 150.45266666666666
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 6610.43,
+          "count": 30,
+          "average": 220.34766666666667
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 4915.31,
+          "count": 30,
+          "average": 163.84366666666668
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 5674.05,
+          "count": 30,
+          "average": 189.135
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 6671.37,
+          "count": 30,
+          "average": 222.379
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 5731.62,
+          "count": 30,
+          "average": 191.054
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 5310.88,
+          "count": 30,
+          "average": 177.02933333333334
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 6828.7,
+          "count": 30,
+          "average": 227.62333333333333
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 5877.54,
+          "count": 30,
+          "average": 195.918
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 6676.92,
+          "count": 30,
+          "average": 222.564
+        }
+      ]
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 7496.36,
+          "count": 25,
+          "average": 299.8544
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 3942.46,
+          "count": 25,
+          "average": 157.6984
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 4691.86,
+          "count": 25,
+          "average": 187.6744
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 7001.5,
+          "count": 25,
+          "average": 280.06
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 5049.17,
+          "count": 25,
+          "average": 201.9668
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 5958.95,
+          "count": 25,
+          "average": 238.358
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 6641.12,
+          "count": 25,
+          "average": 265.6448
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 5392.28,
+          "count": 25,
+          "average": 215.6912
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 5155.63,
+          "count": 25,
+          "average": 206.2252
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 6829.93,
+          "count": 25,
+          "average": 273.1972
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 5434.33,
+          "count": 25,
+          "average": 217.3732
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 5920.92,
+          "count": 25,
+          "average": 236.8368
+        }
+      ]
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 35346.23,
+          "count": 20,
+          "average": 1767.3115
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 20319.77,
+          "count": 20,
+          "average": 1015.9885
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 21910.47,
+          "count": 20,
+          "average": 1095.5235
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 43551.86,
+          "count": 20,
+          "average": 2177.593
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 29957.01,
+          "count": 20,
+          "average": 1497.8505
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 29227.45,
+          "count": 20,
+          "average": 1461.3725
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 31607.97,
+          "count": 20,
+          "average": 1580.3985
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 33779.18,
+          "count": 20,
+          "average": 1688.959
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 23658.17,
+          "count": 20,
+          "average": 1182.9085
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 32879.18,
+          "count": 20,
+          "average": 1643.959
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 35003.21,
+          "count": 20,
+          "average": 1750.1605
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 25618.07,
+          "count": 20,
+          "average": 1280.9035
+        }
+      ]
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 5036.3,
+          "count": 30,
+          "average": 167.87666666666667
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 2971.59,
+          "count": 30,
+          "average": 99.053
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 3422.3,
+          "count": 30,
+          "average": 114.07666666666667
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 5172.19,
+          "count": 30,
+          "average": 172.40633333333332
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 4203.95,
+          "count": 30,
+          "average": 140.13166666666666
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 4326.71,
+          "count": 30,
+          "average": 144.22366666666667
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 5062.83,
+          "count": 30,
+          "average": 168.761
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 4434.03,
+          "count": 30,
+          "average": 147.801
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 4267.41,
+          "count": 30,
+          "average": 142.247
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 5031.76,
+          "count": 30,
+          "average": 167.72533333333334
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 4269.86,
+          "count": 30,
+          "average": 142.32866666666666
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 4757.22,
+          "count": 30,
+          "average": 158.574
+        }
+      ]
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 7282.18,
+          "count": 25,
+          "average": 291.2872
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 4270.4,
+          "count": 25,
+          "average": 170.816
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 4956.58,
+          "count": 25,
+          "average": 198.2632
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 7049.04,
+          "count": 25,
+          "average": 281.9616
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 5409.89,
+          "count": 25,
+          "average": 216.3956
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 5822.15,
+          "count": 25,
+          "average": 232.886
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 6459.5,
+          "count": 25,
+          "average": 258.38
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 6038.93,
+          "count": 25,
+          "average": 241.5572
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 5453.24,
+          "count": 25,
+          "average": 218.1296
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 7307.07,
+          "count": 25,
+          "average": 292.2828
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 6078.33,
+          "count": 25,
+          "average": 243.1332
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 6156.95,
+          "count": 25,
+          "average": 246.278
+        }
+      ]
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 20697.83,
+          "count": 25,
+          "average": 827.9132
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 11206.08,
+          "count": 25,
+          "average": 448.2432
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 13252.67,
+          "count": 25,
+          "average": 530.1068
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 22134.58,
+          "count": 25,
+          "average": 885.3832
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 16419.14,
+          "count": 25,
+          "average": 656.7656
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 16502.05,
+          "count": 25,
+          "average": 660.082
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 19547.96,
+          "count": 25,
+          "average": 781.9184
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 17701.19,
+          "count": 25,
+          "average": 708.0476
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 14480.0,
+          "count": 25,
+          "average": 579.2
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 19761.72,
+          "count": 25,
+          "average": 790.4688
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 19815.86,
+          "count": 25,
+          "average": 792.6344
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 15167.55,
+          "count": 25,
+          "average": 606.702
+        }
+      ]
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 4920.16,
+          "count": 20,
+          "average": 246.008
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 2652.63,
+          "count": 20,
+          "average": 132.6315
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 3264.66,
+          "count": 20,
+          "average": 163.233
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 4761.9,
+          "count": 20,
+          "average": 238.095
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 3404.65,
+          "count": 20,
+          "average": 170.2325
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 3818.0,
+          "count": 20,
+          "average": 190.9
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 4704.7,
+          "count": 20,
+          "average": 235.235
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 3992.15,
+          "count": 20,
+          "average": 199.6075
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 3430.71,
+          "count": 20,
+          "average": 171.5355
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 4580.05,
+          "count": 20,
+          "average": 229.0025
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 4361.85,
+          "count": 20,
+          "average": 218.0925
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 4480.42,
+          "count": 20,
+          "average": 224.021
+        }
+      ]
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "months": [
+        {
+          "month": "January",
+          "month_num": 1,
+          "total": 3962.74,
+          "count": 20,
+          "average": 198.137
+        },
+        {
+          "month": "February",
+          "month_num": 2,
+          "total": 2255.54,
+          "count": 20,
+          "average": 112.777
+        },
+        {
+          "month": "March",
+          "month_num": 3,
+          "total": 2669.93,
+          "count": 20,
+          "average": 133.4965
+        },
+        {
+          "month": "April",
+          "month_num": 4,
+          "total": 3569.19,
+          "count": 20,
+          "average": 178.4595
+        },
+        {
+          "month": "May",
+          "month_num": 5,
+          "total": 3021.03,
+          "count": 20,
+          "average": 151.0515
+        },
+        {
+          "month": "June",
+          "month_num": 6,
+          "total": 3182.82,
+          "count": 20,
+          "average": 159.141
+        },
+        {
+          "month": "July",
+          "month_num": 7,
+          "total": 3324.18,
+          "count": 20,
+          "average": 166.209
+        },
+        {
+          "month": "August",
+          "month_num": 8,
+          "total": 3370.68,
+          "count": 20,
+          "average": 168.534
+        },
+        {
+          "month": "September",
+          "month_num": 9,
+          "total": 3213.29,
+          "count": 20,
+          "average": 160.6645
+        },
+        {
+          "month": "October",
+          "month_num": 10,
+          "total": 3743.42,
+          "count": 20,
+          "average": 187.171
+        },
+        {
+          "month": "November",
+          "month_num": 11,
+          "total": 3527.27,
+          "count": 20,
+          "average": 176.3635
+        },
+        {
+          "month": "December",
+          "month_num": 12,
+          "total": 3176.2,
+          "count": 20,
+          "average": 158.81
+        }
+      ]
+    }
+  ]
+}

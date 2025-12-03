@@ -1,0 +1,549 @@
+{
+  "metadata": {
+    "title": "Tax Collection Time Series by Region",
+    "generated_at": "2025-12-03T13:20:47.684343",
+    "years_covered": "2020-2024"
+  },
+  "data": [
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 2586.61,
+          "count": 60
+        },
+        {
+          "year": 2021,
+          "total": 3791.78,
+          "count": 60
+        },
+        {
+          "year": 2022,
+          "total": 4556.58,
+          "count": 60
+        },
+        {
+          "year": 2023,
+          "total": 5043.21,
+          "count": 60
+        },
+        {
+          "year": 2024,
+          "total": 5458.88,
+          "count": 60
+        }
+      ]
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 5184.6,
+          "count": 72
+        },
+        {
+          "year": 2021,
+          "total": 6007.76,
+          "count": 72
+        },
+        {
+          "year": 2022,
+          "total": 7613.39,
+          "count": 72
+        },
+        {
+          "year": 2023,
+          "total": 10361.65,
+          "count": 72
+        },
+        {
+          "year": 2024,
+          "total": 10799.45,
+          "count": 72
+        }
+      ]
+    },
+    {
+      "region": "MIMAROPA Region",
+      "values": [
+        {
+          "year": 2020,
+          "total": 5822.08,
+          "count": 60
+        },
+        {
+          "year": 2021,
+          "total": 6746.68,
+          "count": 60
+        },
+        {
+          "year": 2022,
+          "total": 7501.09,
+          "count": 60
+        },
+        {
+          "year": 2023,
+          "total": 9093.97,
+          "count": 60
+        },
+        {
+          "year": 2024,
+          "total": 10320.2,
+          "count": 60
+        }
+      ]
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 1605684.14,
+          "count": 192
+        },
+        {
+          "year": 2021,
+          "total": 1689606.99,
+          "count": 192
+        },
+        {
+          "year": 2022,
+          "total": 1872204.41,
+          "count": 192
+        },
+        {
+          "year": 2023,
+          "total": 1982825.79,
+          "count": 192
+        },
+        {
+          "year": 2024,
+          "total": 2242863.91,
+          "count": 192
+        }
+      ]
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 9517.82,
+          "count": 24
+        },
+        {
+          "year": 2021,
+          "total": 10240.14,
+          "count": 24
+        },
+        {
+          "year": 2022,
+          "total": 12668.44,
+          "count": 24
+        },
+        {
+          "year": 2023,
+          "total": 14302.27,
+          "count": 24
+        },
+        {
+          "year": 2024,
+          "total": 16307.55,
+          "count": 24
+        }
+      ]
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 12806.92,
+          "count": 48
+        },
+        {
+          "year": 2021,
+          "total": 14010.16,
+          "count": 48
+        },
+        {
+          "year": 2022,
+          "total": 16990.99,
+          "count": 48
+        },
+        {
+          "year": 2023,
+          "total": 19332.54,
+          "count": 48
+        },
+        {
+          "year": 2024,
+          "total": 23651.55,
+          "count": 48
+        }
+      ]
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 8331.97,
+          "count": 48
+        },
+        {
+          "year": 2021,
+          "total": 9078.21,
+          "count": 48
+        },
+        {
+          "year": 2022,
+          "total": 10315.1,
+          "count": 48
+        },
+        {
+          "year": 2023,
+          "total": 12954.14,
+          "count": 48
+        },
+        {
+          "year": 2024,
+          "total": 14877.74,
+          "count": 48
+        }
+      ]
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 40860.57,
+          "count": 108
+        },
+        {
+          "year": 2021,
+          "total": 50945.65,
+          "count": 108
+        },
+        {
+          "year": 2022,
+          "total": 64633.5,
+          "count": 108
+        },
+        {
+          "year": 2023,
+          "total": 67239.51,
+          "count": 108
+        },
+        {
+          "year": 2024,
+          "total": 83216.55,
+          "count": 108
+        }
+      ]
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 59489.18,
+          "count": 72
+        },
+        {
+          "year": 2021,
+          "total": 74076.72,
+          "count": 72
+        },
+        {
+          "year": 2022,
+          "total": 87782.05,
+          "count": 72
+        },
+        {
+          "year": 2023,
+          "total": 98195.4,
+          "count": 72
+        },
+        {
+          "year": 2024,
+          "total": 107715.59,
+          "count": 72
+        }
+      ]
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 5556.72,
+          "count": 48
+        },
+        {
+          "year": 2021,
+          "total": 6370.02,
+          "count": 48
+        },
+        {
+          "year": 2022,
+          "total": 7308.66,
+          "count": 48
+        },
+        {
+          "year": 2023,
+          "total": 8812.01,
+          "count": 48
+        },
+        {
+          "year": 2024,
+          "total": 10036.74,
+          "count": 48
+        }
+      ]
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 8981.26,
+          "count": 72
+        },
+        {
+          "year": 2021,
+          "total": 10697.13,
+          "count": 72
+        },
+        {
+          "year": 2022,
+          "total": 12805.94,
+          "count": 72
+        },
+        {
+          "year": 2023,
+          "total": 17405.62,
+          "count": 72
+        },
+        {
+          "year": 2024,
+          "total": 20252.99,
+          "count": 72
+        }
+      ]
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 10409.36,
+          "count": 60
+        },
+        {
+          "year": 2021,
+          "total": 11094.96,
+          "count": 60
+        },
+        {
+          "year": 2022,
+          "total": 13724.73,
+          "count": 60
+        },
+        {
+          "year": 2023,
+          "total": 15968.33,
+          "count": 60
+        },
+        {
+          "year": 2024,
+          "total": 18317.13,
+          "count": 60
+        }
+      ]
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 58214.34,
+          "count": 48
+        },
+        {
+          "year": 2021,
+          "total": 59432.47,
+          "count": 48
+        },
+        {
+          "year": 2022,
+          "total": 70874.07,
+          "count": 48
+        },
+        {
+          "year": 2023,
+          "total": 82459.8,
+          "count": 48
+        },
+        {
+          "year": 2024,
+          "total": 91877.89,
+          "count": 48
+        }
+      ]
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 6813.99,
+          "count": 72
+        },
+        {
+          "year": 2021,
+          "total": 7858.14,
+          "count": 72
+        },
+        {
+          "year": 2022,
+          "total": 9353.43,
+          "count": 72
+        },
+        {
+          "year": 2023,
+          "total": 13146.58,
+          "count": 72
+        },
+        {
+          "year": 2024,
+          "total": 15784.01,
+          "count": 72
+        }
+      ]
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 10444.17,
+          "count": 60
+        },
+        {
+          "year": 2021,
+          "total": 11637.39,
+          "count": 60
+        },
+        {
+          "year": 2022,
+          "total": 13828.77,
+          "count": 60
+        },
+        {
+          "year": 2023,
+          "total": 16744.2,
+          "count": 60
+        },
+        {
+          "year": 2024,
+          "total": 19629.73,
+          "count": 60
+        }
+      ]
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 31861.19,
+          "count": 60
+        },
+        {
+          "year": 2021,
+          "total": 35195.81,
+          "count": 60
+        },
+        {
+          "year": 2022,
+          "total": 40262.67,
+          "count": 60
+        },
+        {
+          "year": 2023,
+          "total": 46654.26,
+          "count": 60
+        },
+        {
+          "year": 2024,
+          "total": 52712.7,
+          "count": 60
+        }
+      ]
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 6475.32,
+          "count": 48
+        },
+        {
+          "year": 2021,
+          "total": 7333.72,
+          "count": 48
+        },
+        {
+          "year": 2022,
+          "total": 8965.92,
+          "count": 48
+        },
+        {
+          "year": 2023,
+          "total": 12021.4,
+          "count": 48
+        },
+        {
+          "year": 2024,
+          "total": 13575.52,
+          "count": 48
+        }
+      ]
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "values": [
+        {
+          "year": 2020,
+          "total": 4890.97,
+          "count": 48
+        },
+        {
+          "year": 2021,
+          "total": 5938.63,
+          "count": 48
+        },
+        {
+          "year": 2022,
+          "total": 7202.67,
+          "count": 48
+        },
+        {
+          "year": 2023,
+          "total": 9963.96,
+          "count": 48
+        },
+        {
+          "year": 2024,
+          "total": 11020.06,
+          "count": 48
+        }
+      ]
+    }
+  ]
+}

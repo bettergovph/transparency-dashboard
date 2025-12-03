@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "Total Tax Collection by Year",
+    "generated_at": "2025-12-03T13:20:47.683136",
+    "years_covered": "2020-2024"
+  },
+  "data": [
+    {
+      "year": 2020,
+      "total": 1893931.21,
+      "count": 1200,
+      "average": 1578.2760083333333
+    },
+    {
+      "year": 2021,
+      "total": 2020062.36,
+      "count": 1200,
+      "average": 1683.3853
+    },
+    {
+      "year": 2022,
+      "total": 2268592.41,
+      "count": 1200,
+      "average": 1890.493675
+    },
+    {
+      "year": 2023,
+      "total": 2442524.64,
+      "count": 1200,
+      "average": 2035.4372
+    },
+    {
+      "year": 2024,
+      "total": 2768418.19,
+      "count": 1200,
+      "average": 2307.015158333333
+    }
+  ]
+}

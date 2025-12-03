@@ -78,6 +78,16 @@ INSERT INTO bir_collections (region, area, month, year, amount) VALUES
 
 ## Usage
 
+Download the data first from huggingface.com/bettergovph
+
+Put all the csv files in data/bir/data
+
+Run
+
+```
+./process_bir_data.sh
+```
+
 ### Option 1: Process All CSV Files in data/bir/data/ (Recommended)
 
 This is the easiest method - just place your CSV files in the `data/bir/data/` directory and run:

@@ -1,0 +1,481 @@
+{
+  "metadata": {
+    "title": "General Appropriations Act (GAA) by Region",
+    "description": "National budget allocation per region",
+    "generated_at": "2025-12-03T13:21:34.580272",
+    "years_covered": "2020-2025",
+    "total_years": 6,
+    "source": "Department of Budget and Management (DBM)",
+    "note": "Values are in Philippine Peso (PHP)"
+  },
+  "data": [
+    {
+      "year": 2020,
+      "regions": [
+        {
+          "region": "Region I (Ilocos Region)",
+          "gaa": 3453911000.0
+        },
+        {
+          "region": "Region II (Cagayan Valley)",
+          "gaa": 3398294000.0
+        },
+        {
+          "region": "Region III (Central Luzon)",
+          "gaa": 5004220000.0
+        },
+        {
+          "region": "Region IV-A (CALABARZON)",
+          "gaa": 3904312000.0
+        },
+        {
+          "region": "Region V (Bicol Region)",
+          "gaa": 3681803000.0
+        },
+        {
+          "region": "Region VI (Western Visayas)",
+          "gaa": 3778511000.0
+        },
+        {
+          "region": "Region VII (Central Visayas)",
+          "gaa": 3085211000.0
+        },
+        {
+          "region": "Region VIII (Eastern Visayas)",
+          "gaa": 2969533000.0
+        },
+        {
+          "region": "Region IX (Zamboanga Peninsula)",
+          "gaa": 2210494000.0
+        },
+        {
+          "region": "Region X (Northern Mindanao)",
+          "gaa": 2476556000.0
+        },
+        {
+          "region": "Region XI (Davao Region)",
+          "gaa": 2706856000.0
+        },
+        {
+          "region": "Region XII (SOCCSKSARGEN)",
+          "gaa": 2705482000.0
+        },
+        {
+          "region": "National Capital Region (NCR)",
+          "gaa": 82288390000.0
+        },
+        {
+          "region": "Cordillera Administrative Region (CAR)",
+          "gaa": 2131977000.0
+        },
+        {
+          "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+          "gaa": 246252000.0
+        },
+        {
+          "region": "Region XIII (Caraga)",
+          "gaa": 2282422000.0
+        },
+        {
+          "region": "Negros Island Region (NIR)",
+          "gaa": 2231298000.0
+        }
+      ],
+      "total": 128555522000.0
+    },
+    {
+      "year": 2021,
+      "regions": [
+        {
+          "region": "Region I (Ilocos Region)",
+          "gaa": 67082684000.0
+        },
+        {
+          "region": "Region II (Cagayan Valley)",
+          "gaa": 57707237000.0
+        },
+        {
+          "region": "Region III (Central Luzon)",
+          "gaa": 114201592000.0
+        },
+        {
+          "region": "Region IV-A (CALABARZON)",
+          "gaa": 116751616000.0
+        },
+        {
+          "region": "Region V (Bicol Region)",
+          "gaa": 89552121000.0
+        },
+        {
+          "region": "Region VI (Western Visayas)",
+          "gaa": 91284321000.0
+        },
+        {
+          "region": "Region VII (Central Visayas)",
+          "gaa": 84801147000.0
+        },
+        {
+          "region": "Region VIII (Eastern Visayas)",
+          "gaa": 76024574000.0
+        },
+        {
+          "region": "Region IX (Zamboanga Peninsula)",
+          "gaa": 53923343000.0
+        },
+        {
+          "region": "Region X (Northern Mindanao)",
+          "gaa": 65232116000.0
+        },
+        {
+          "region": "Region XI (Davao Region)",
+          "gaa": 66121458000.0
+        },
+        {
+          "region": "Region XII (SOCCSKSARGEN)",
+          "gaa": 51765466000.0
+        },
+        {
+          "region": "National Capital Region (NCR)",
+          "gaa": 1799923823000.0
+        },
+        {
+          "region": "Cordillera Administrative Region (CAR)",
+          "gaa": 43533545000.0
+        },
+        {
+          "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+          "gaa": 8089882000.0
+        },
+        {
+          "region": "Region XIII (Caraga)",
+          "gaa": 40850124000.0
+        },
+        {
+          "region": "Negros Island Region (NIR)",
+          "gaa": 49385375000.0
+        },
+        {
+          "region": "Region Unknown",
+          "gaa": 50000000.0
+        }
+      ],
+      "total": 2876280424000.0
+    },
+    {
+      "year": 2022,
+      "regions": [
+        {
+          "region": "Region I (Ilocos Region)",
+          "gaa": 127332598000.0
+        },
+        {
+          "region": "Region II (Cagayan Valley)",
+          "gaa": 113120893000.0
+        },
+        {
+          "region": "Region III (Central Luzon)",
+          "gaa": 223930440000.0
+        },
+        {
+          "region": "Region IV-A (CALABARZON)",
+          "gaa": 236545060000.0
+        },
+        {
+          "region": "Region V (Bicol Region)",
+          "gaa": 159184726000.0
+        },
+        {
+          "region": "Region VI (Western Visayas)",
+          "gaa": 172504976000.0
+        },
+        {
+          "region": "Region VII (Central Visayas)",
+          "gaa": 158870438000.0
+        },
+        {
+          "region": "Region VIII (Eastern Visayas)",
+          "gaa": 140288504000.0
+        },
+        {
+          "region": "Region IX (Zamboanga Peninsula)",
+          "gaa": 95474258000.0
+        },
+        {
+          "region": "Region X (Northern Mindanao)",
+          "gaa": 120158422000.0
+        },
+        {
+          "region": "Region XI (Davao Region)",
+          "gaa": 113120753000.0
+        },
+        {
+          "region": "Region XII (SOCCSKSARGEN)",
+          "gaa": 95815464000.0
+        },
+        {
+          "region": "National Capital Region (NCR)",
+          "gaa": 2042793990000.0
+        },
+        {
+          "region": "Cordillera Administrative Region (CAR)",
+          "gaa": 75703671000.0
+        },
+        {
+          "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+          "gaa": 56436624000.0
+        },
+        {
+          "region": "Region XIII (Caraga)",
+          "gaa": 80479776000.0
+        },
+        {
+          "region": "Negros Island Region (NIR)",
+          "gaa": 97409346000.0
+        },
+        {
+          "region": "Region Unknown",
+          "gaa": 914430061000.0
+        }
+      ],
+      "total": 5023600000000.0
+    },
+    {
+      "year": 2023,
+      "regions": [
+        {
+          "region": "Region I (Ilocos Region)",
+          "gaa": 130366129000.0
+        },
+        {
+          "region": "Region II (Cagayan Valley)",
+          "gaa": 115427187000.0
+        },
+        {
+          "region": "Region III (Central Luzon)",
+          "gaa": 222120563000.0
+        },
+        {
+          "region": "Region IV-A (CALABARZON)",
+          "gaa": 226821236000.0
+        },
+        {
+          "region": "Region V (Bicol Region)",
+          "gaa": 149773445000.0
+        },
+        {
+          "region": "Region VI (Western Visayas)",
+          "gaa": 169248150000.0
+        },
+        {
+          "region": "Region VII (Central Visayas)",
+          "gaa": 157079242000.0
+        },
+        {
+          "region": "Region VIII (Eastern Visayas)",
+          "gaa": 138549748000.0
+        },
+        {
+          "region": "Region IX (Zamboanga Peninsula)",
+          "gaa": 95841179000.0
+        },
+        {
+          "region": "Region X (Northern Mindanao)",
+          "gaa": 119423621000.0
+        },
+        {
+          "region": "Region XI (Davao Region)",
+          "gaa": 107289627000.0
+        },
+        {
+          "region": "Region XII (SOCCSKSARGEN)",
+          "gaa": 93550326000.0
+        },
+        {
+          "region": "National Capital Region (NCR)",
+          "gaa": 2241655959000.0
+        },
+        {
+          "region": "Cordillera Administrative Region (CAR)",
+          "gaa": 65576454000.0
+        },
+        {
+          "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+          "gaa": 43769644000.0
+        },
+        {
+          "region": "Region XIII (Caraga)",
+          "gaa": 79683190000.0
+        },
+        {
+          "region": "Negros Island Region (NIR)",
+          "gaa": 89299110000.0
+        },
+        {
+          "region": "Region 19",
+          "gaa": 7130550000.0
+        },
+        {
+          "region": "Region Unknown",
+          "gaa": 1015394640000.0
+        }
+      ],
+      "total": 5268000000000.0
+    },
+    {
+      "year": 2024,
+      "regions": [
+        {
+          "region": "Region I (Ilocos Region)",
+          "gaa": 129488283000.0
+        },
+        {
+          "region": "Region II (Cagayan Valley)",
+          "gaa": 114709932000.0
+        },
+        {
+          "region": "Region III (Central Luzon)",
+          "gaa": 227777298000.0
+        },
+        {
+          "region": "Region IV-A (CALABARZON)",
+          "gaa": 241874844000.0
+        },
+        {
+          "region": "Region V (Bicol Region)",
+          "gaa": 160130770000.0
+        },
+        {
+          "region": "Region VI (Western Visayas)",
+          "gaa": 178350843000.0
+        },
+        {
+          "region": "Region VII (Central Visayas)",
+          "gaa": 166807522000.0
+        },
+        {
+          "region": "Region VIII (Eastern Visayas)",
+          "gaa": 139150067000.0
+        },
+        {
+          "region": "Region IX (Zamboanga Peninsula)",
+          "gaa": 97483215000.0
+        },
+        {
+          "region": "Region X (Northern Mindanao)",
+          "gaa": 126584756000.0
+        },
+        {
+          "region": "Region XI (Davao Region)",
+          "gaa": 113003078000.0
+        },
+        {
+          "region": "Region XII (SOCCSKSARGEN)",
+          "gaa": 98594728000.0
+        },
+        {
+          "region": "National Capital Region (NCR)",
+          "gaa": 2569800061000.0
+        },
+        {
+          "region": "Cordillera Administrative Region (CAR)",
+          "gaa": 69453278000.0
+        },
+        {
+          "region": "Region XIII (Caraga)",
+          "gaa": 82199451000.0
+        },
+        {
+          "region": "Negros Island Region (NIR)",
+          "gaa": 97857419000.0
+        },
+        {
+          "region": "Region 19",
+          "gaa": 60186535000.0
+        },
+        {
+          "region": "Region Unknown",
+          "gaa": 1094147920000.0
+        }
+      ],
+      "total": 5767600000000.0
+    },
+    {
+      "year": 2025,
+      "regions": [
+        {
+          "region": "Region I (Ilocos Region)",
+          "gaa": 152954791000.0
+        },
+        {
+          "region": "Region II (Cagayan Valley)",
+          "gaa": 121897043000.0
+        },
+        {
+          "region": "Region III (Central Luzon)",
+          "gaa": 256169064000.0
+        },
+        {
+          "region": "Region IV-A (CALABARZON)",
+          "gaa": 264806591000.0
+        },
+        {
+          "region": "Region V (Bicol Region)",
+          "gaa": 169856951000.0
+        },
+        {
+          "region": "Region VI (Western Visayas)",
+          "gaa": 192057536000.0
+        },
+        {
+          "region": "Region VII (Central Visayas)",
+          "gaa": 178514030000.0
+        },
+        {
+          "region": "Region VIII (Eastern Visayas)",
+          "gaa": 150066492000.0
+        },
+        {
+          "region": "Region IX (Zamboanga Peninsula)",
+          "gaa": 108192880000.0
+        },
+        {
+          "region": "Region X (Northern Mindanao)",
+          "gaa": 134136265000.0
+        },
+        {
+          "region": "Region XI (Davao Region)",
+          "gaa": 121103890000.0
+        },
+        {
+          "region": "Region XII (SOCCSKSARGEN)",
+          "gaa": 105221356000.0
+        },
+        {
+          "region": "National Capital Region (NCR)",
+          "gaa": 2665467590000.0
+        },
+        {
+          "region": "Cordillera Administrative Region (CAR)",
+          "gaa": 79116832000.0
+        },
+        {
+          "region": "Region XIII (Caraga)",
+          "gaa": 91191605000.0
+        },
+        {
+          "region": "Negros Island Region (NIR)",
+          "gaa": 104025344000.0
+        },
+        {
+          "region": "Region 19",
+          "gaa": 66206489000.0
+        },
+        {
+          "region": "Region Unknown",
+          "gaa": 1365339551000.0
+        }
+      ],
+      "total": 6326324300000.0
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "metadata": {
+    "title": "Total Tax Collection by Region",
+    "generated_at": "2025-12-03T13:20:47.671864",
+    "years_covered": "2020-2024",
+    "total_records": 6000
+  },
+  "data": [
+    {
+      "region": "National Capital Region (NCR)",
+      "total": 9393185.24,
+      "count": 960,
+      "average": 9784.567958333333
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "total": 427258.94,
+      "count": 360,
+      "average": 1186.8303888888888
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "total": 362858.57,
+      "count": 240,
+      "average": 1511.9107083333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "total": 306895.78,
+      "count": 540,
+      "average": 568.3255185185185
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "total": 206686.63,
+      "count": 300,
+      "average": 688.9554333333333
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "total": 86792.16,
+      "count": 240,
+      "average": 361.634
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "total": 72284.26,
+      "count": 300,
+      "average": 240.94753333333333
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "total": 70142.94,
+      "count": 360,
+      "average": 194.8415
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "total": 69514.51,
+      "count": 300,
+      "average": 231.71503333333334
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "total": 63036.22,
+      "count": 120,
+      "average": 525.3018333333333
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "total": 55557.16,
+      "count": 240,
+      "average": 231.48816666666667
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "total": 52956.15,
+      "count": 360,
+      "average": 147.10041666666666
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "total": 48371.88,
+      "count": 240,
+      "average": 201.5495
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "total": 39966.85,
+      "count": 360,
+      "average": 111.01902777777778
+    },
+    {
+      "region": "MIMAROPA Region",
+      "total": 39484.02,
+      "count": 300,
+      "average": 131.6134
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "total": 39016.29,
+      "count": 240,
+      "average": 162.567875
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "total": 38084.15,
+      "count": 240,
+      "average": 158.68395833333332
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "total": 21437.06,
+      "count": 300,
+      "average": 71.45686666666667
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "metadata": {
+    "title": "Monthly Tax Collection Time Series",
+    "generated_at": "2025-12-03T13:20:47.685955",
+    "years_covered": "2020-2024",
+    "note": "Granular month-by-month data for trend analysis"
+  },
+  "data": [
+    {
+      "year": 2020,
+      "month": "January",
+      "month_num": 1,
+      "total": 189458.56,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "February",
+      "month_num": 2,
+      "total": 138207.96,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "March",
+      "month_num": 3,
+      "total": 126746.66,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "April",
+      "month_num": 4,
+      "total": 87744.02,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "May",
+      "month_num": 5,
+      "total": 109226.17,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "June",
+      "month_num": 6,
+      "total": 279253.02,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "July",
+      "month_num": 7,
+      "total": 151858.59,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "August",
+      "month_num": 8,
+      "total": 179974.08,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "September",
+      "month_num": 9,
+      "total": 136797.37,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "October",
+      "month_num": 10,
+      "total": 149865.9,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "November",
+      "month_num": 11,
+      "total": 188405.5,
+      "count": 100
+    },
+    {
+      "year": 2020,
+      "month": "December",
+      "month_num": 12,
+      "total": 156393.38,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "January",
+      "month_num": 1,
+      "total": 178236.11,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "February",
+      "month_num": 2,
+      "total": 140956.89,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "March",
+      "month_num": 3,
+      "total": 133665.86,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "April",
+      "month_num": 4,
+      "total": 213990.12,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "May",
+      "month_num": 5,
+      "total": 179373.43,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "June",
+      "month_num": 6,
+      "total": 155130.95,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "July",
+      "month_num": 7,
+      "total": 165608.28,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "August",
+      "month_num": 8,
+      "total": 179270.97,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "September",
+      "month_num": 9,
+      "total": 148175.86,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "October",
+      "month_num": 10,
+      "total": 157804.31,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "November",
+      "month_num": 11,
+      "total": 208661.96,
+      "count": 100
+    },
+    {
+      "year": 2021,
+      "month": "December",
+      "month_num": 12,
+      "total": 159187.62,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "January",
+      "month_num": 1,
+      "total": 188693.08,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "February",
+      "month_num": 2,
+      "total": 132288.89,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "March",
+      "month_num": 3,
+      "total": 164312.89,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "April",
+      "month_num": 4,
+      "total": 231712.26,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "May",
+      "month_num": 5,
+      "total": 212274.8,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "June",
+      "month_num": 6,
+      "total": 169110.51,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "July",
+      "month_num": 7,
+      "total": 193411.09,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "August",
+      "month_num": 8,
+      "total": 223456.78,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "September",
+      "month_num": 9,
+      "total": 166172.07,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "October",
+      "month_num": 10,
+      "total": 183107.98,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "November",
+      "month_num": 11,
+      "total": 229486.61,
+      "count": 100
+    },
+    {
+      "year": 2022,
+      "month": "December",
+      "month_num": 12,
+      "total": 174565.45,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "January",
+      "month_num": 1,
+      "total": 230184.11,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "February",
+      "month_num": 2,
+      "total": 119845.59,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "March",
+      "month_num": 3,
+      "total": 136450.04,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "April",
+      "month_num": 4,
+      "total": 328069.67,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "May",
+      "month_num": 5,
+      "total": 208289.35,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "June",
+      "month_num": 6,
+      "total": 159201.99,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "July",
+      "month_num": 7,
+      "total": 268242.08,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "August",
+      "month_num": 8,
+      "total": 208035.07,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "September",
+      "month_num": 9,
+      "total": 143966.82,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "October",
+      "month_num": 10,
+      "total": 268751.48,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "November",
+      "month_num": 11,
+      "total": 205806.65,
+      "count": 100
+    },
+    {
+      "year": 2023,
+      "month": "December",
+      "month_num": 12,
+      "total": 165681.79,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "January",
+      "month_num": 1,
+      "total": 302628.38,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "February",
+      "month_num": 2,
+      "total": 133021.96,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "March",
+      "month_num": 3,
+      "total": 136165.96,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "April",
+      "month_num": 4,
+      "total": 365563.79,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "May",
+      "month_num": 5,
+      "total": 213479.17,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "June",
+      "month_num": 6,
+      "total": 169898.4,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "July",
+      "month_num": 7,
+      "total": 309961.94,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "August",
+      "month_num": 8,
+      "total": 230695.2,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "September",
+      "month_num": 9,
+      "total": 163803.74,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "October",
+      "month_num": 10,
+      "total": 321442.52,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "November",
+      "month_num": 11,
+      "total": 239056.85,
+      "count": 100
+    },
+    {
+      "year": 2024,
+      "month": "December",
+      "month_num": 12,
+      "total": 182700.28,
+      "count": 100
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "title": "Total Tax Collection by Month (All Years Combined)",
+    "generated_at": "2025-12-03T13:20:47.682484",
+    "years_covered": "2020-2024",
+    "note": "Aggregates same month across multiple years"
+  },
+  "data": [
+    {
+      "month": "January",
+      "total": 1089200.24,
+      "count": 500,
+      "average": 2178.40048
+    },
+    {
+      "month": "February",
+      "total": 664321.29,
+      "count": 500,
+      "average": 1328.64258
+    },
+    {
+      "month": "March",
+      "total": 697341.41,
+      "count": 500,
+      "average": 1394.68282
+    },
+    {
+      "month": "April",
+      "total": 1227079.86,
+      "count": 500,
+      "average": 2454.15972
+    },
+    {
+      "month": "May",
+      "total": 922642.92,
+      "count": 500,
+      "average": 1845.28584
+    },
+    {
+      "month": "June",
+      "total": 932594.87,
+      "count": 500,
+      "average": 1865.18974
+    },
+    {
+      "month": "July",
+      "total": 1089081.98,
+      "count": 500,
+      "average": 2178.16396
+    },
+    {
+      "month": "August",
+      "total": 1021432.1,
+      "count": 500,
+      "average": 2042.8642
+    },
+    {
+      "month": "September",
+      "total": 758915.86,
+      "count": 500,
+      "average": 1517.83172
+    },
+    {
+      "month": "October",
+      "total": 1080972.19,
+      "count": 500,
+      "average": 2161.94438
+    },
+    {
+      "month": "November",
+      "total": 1071417.57,
+      "count": 500,
+      "average": 2142.83514
+    },
+    {
+      "month": "December",
+      "total": 838528.52,
+      "count": 500,
+      "average": 1677.05704
+    }
+  ]
+}

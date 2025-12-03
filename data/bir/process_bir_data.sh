@@ -17,6 +17,9 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd "$SCRIPT_DIR"
 
+# Use explicit python3 path
+PYTHON="/usr/bin/python3"
+
 echo -e "${BLUE}╔════════════════════════════════════════════════╗${NC}"
 echo -e "${BLUE}║   BIR Data Processing Pipeline                ║${NC}"
 echo -e "${BLUE}║   CSV → SQL → Parquet → JSON Aggregates       ║${NC}"
@@ -25,7 +28,7 @@ echo ""
 
 # Step 1: Transform CSV to SQL
 echo -e "${YELLOW}[1/4] Transforming CSV files to SQL...${NC}"
-if python3 transform_bir_collection.py; then
+if $PYTHON transform_bir_collection.py; then
     echo -e "${GREEN}✓ CSV to SQL conversion complete${NC}"
     echo -e "${GREEN}  Output: bir_collections.sql${NC}"
 else
@@ -36,7 +39,7 @@ echo ""
 
 # Step 2: Convert SQL to Parquet
 echo -e "${YELLOW}[2/4] Converting SQL to Parquet...${NC}"
-if python3 sql_to_parquet.py bir_collections.sql bir_collections.parquet; then
+if $PYTHON sql_to_parquet.py bir_collections.sql bir_collections.parquet; then
     echo -e "${GREEN}✓ SQL to Parquet conversion complete${NC}"
     echo -e "${GREEN}  Output: bir_collections.parquet${NC}"
 else
@@ -47,7 +50,7 @@ echo ""
 
 # Step 3: Create JSON Aggregates
 echo -e "${YELLOW}[3/4] Generating JSON aggregates...${NC}"
-if python3 create_aggregates.py bir_collections.parquet --output-dir ../../public/data/bir/aggregates; then
+if $PYTHON create_aggregates.py bir_collections.parquet --output-dir ../../public/data/bir/aggregates; then
     echo -e "${GREEN}✓ JSON aggregates generated${NC}"
     echo -e "${GREEN}  Output directory: public/data/bir/aggregates/${NC}"
 else

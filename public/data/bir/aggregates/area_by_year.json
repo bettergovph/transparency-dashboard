@@ -1,0 +1,4010 @@
+{
+  "metadata": {
+    "title": "Tax Collection by Area and Year",
+    "generated_at": "2025-12-03T13:20:47.677703",
+    "years_covered": "2020-2024",
+    "note": "Year-aware area data for drill-down functionality"
+  },
+  "data": [
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Maguindanao del Norte and Maguindanao del Sur",
+      "year": 2020,
+      "total": 1546.6,
+      "count": 12,
+      "average": 128.88333333333333
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Lanao del Sur",
+      "year": 2020,
+      "total": 460.03,
+      "count": 12,
+      "average": 38.33583333333333
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Tawi-tawi",
+      "year": 2020,
+      "total": 250.02,
+      "count": 12,
+      "average": 20.835
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Basilan (includes City of Isabela)",
+      "year": 2020,
+      "total": 178.66,
+      "count": 12,
+      "average": 14.888333333333334
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Sulu",
+      "year": 2020,
+      "total": 151.3,
+      "count": 12,
+      "average": 12.608333333333333
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "City of Baguio",
+      "year": 2020,
+      "total": 2658.84,
+      "count": 12,
+      "average": 221.57
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Benguet",
+      "year": 2020,
+      "total": 818.47,
+      "count": 12,
+      "average": 68.20583333333333
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Apayao and Kalinga",
+      "year": 2020,
+      "total": 658.45,
+      "count": 12,
+      "average": 54.87083333333333
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Abra",
+      "year": 2020,
+      "total": 449.68,
+      "count": 12,
+      "average": 37.473333333333336
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Ifugao",
+      "year": 2020,
+      "total": 316.46,
+      "count": 12,
+      "average": 26.371666666666666
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Mountain Province",
+      "year": 2020,
+      "total": 282.7,
+      "count": 12,
+      "average": 23.558333333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Palawan (includes City of Puerto Princesa)",
+      "year": 2020,
+      "total": 3091.33,
+      "count": 12,
+      "average": 257.61083333333335
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Oriental Mindoro",
+      "year": 2020,
+      "total": 1547.78,
+      "count": 12,
+      "average": 128.98166666666665
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Occidental Mindoro",
+      "year": 2020,
+      "total": 617.87,
+      "count": 12,
+      "average": 51.48916666666667
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Romblon",
+      "year": 2020,
+      "total": 346.54,
+      "count": 12,
+      "average": 28.878333333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Marinduque",
+      "year": 2020,
+      "total": 218.56,
+      "count": 12,
+      "average": 18.213333333333335
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Large Taxpayers Service",
+      "year": 2020,
+      "total": 1219661.81,
+      "count": 12,
+      "average": 101638.48416666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Makati",
+      "year": 2020,
+      "total": 100727.05,
+      "count": 12,
+      "average": 8393.920833333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Quezon City",
+      "year": 2020,
+      "total": 68385.31,
+      "count": 12,
+      "average": 5698.775833333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Taguig and Pateros",
+      "year": 2020,
+      "total": 52896.17,
+      "count": 12,
+      "average": 4408.014166666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Manila",
+      "year": 2020,
+      "total": 40326.54,
+      "count": 12,
+      "average": 3360.545
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Pasig",
+      "year": 2020,
+      "total": 34703.36,
+      "count": 12,
+      "average": 2891.9466666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Mandaluyong",
+      "year": 2020,
+      "total": 18673.89,
+      "count": 12,
+      "average": 1556.1575
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Pasay City",
+      "year": 2020,
+      "total": 15636.87,
+      "count": 12,
+      "average": 1303.0725
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Para\u00f1aque",
+      "year": 2020,
+      "total": 13449.56,
+      "count": 12,
+      "average": 1120.7966666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Muntinlupa",
+      "year": 2020,
+      "total": 12045.17,
+      "count": 12,
+      "average": 1003.7641666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Marikina",
+      "year": 2020,
+      "total": 6009.67,
+      "count": 12,
+      "average": 500.80583333333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Las Pi\u00f1as",
+      "year": 2020,
+      "total": 5783.17,
+      "count": 12,
+      "average": 481.93083333333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of San Juan",
+      "year": 2020,
+      "total": 5218.01,
+      "count": 12,
+      "average": 434.83416666666665
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Caloocan",
+      "year": 2020,
+      "total": 4850.0,
+      "count": 12,
+      "average": 404.1666666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Valenzuela",
+      "year": 2020,
+      "total": 4561.47,
+      "count": 12,
+      "average": 380.1225
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Cities of Malabon and Navotas",
+      "year": 2020,
+      "total": 2756.09,
+      "count": 12,
+      "average": 229.67416666666668
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Occidental (includes City of Bacolod)",
+      "year": 2020,
+      "total": 7224.0,
+      "count": 12,
+      "average": 602.0
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Oriental and Siquijor",
+      "year": 2020,
+      "total": 2293.82,
+      "count": 12,
+      "average": 191.15166666666667
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Pangasinan",
+      "year": 2020,
+      "total": 6534.64,
+      "count": 12,
+      "average": 544.5533333333333
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "La Union",
+      "year": 2020,
+      "total": 2664.24,
+      "count": 12,
+      "average": 222.02
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Sur",
+      "year": 2020,
+      "total": 1874.31,
+      "count": 12,
+      "average": 156.1925
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Norte",
+      "year": 2020,
+      "total": 1733.73,
+      "count": 12,
+      "average": 144.4775
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Isabela",
+      "year": 2020,
+      "total": 3631.74,
+      "count": 12,
+      "average": 302.645
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Cagayan and Batanes",
+      "year": 2020,
+      "total": 3407.17,
+      "count": 12,
+      "average": 283.93083333333334
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Nueva Vizcaya",
+      "year": 2020,
+      "total": 980.94,
+      "count": 12,
+      "average": 81.745
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Quirino",
+      "year": 2020,
+      "total": 312.12,
+      "count": 12,
+      "average": 26.01
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bulacan",
+      "year": 2020,
+      "total": 10948.99,
+      "count": 12,
+      "average": 912.4158333333334
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Pampanga",
+      "year": 2020,
+      "total": 9616.03,
+      "count": 12,
+      "average": 801.3358333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Angeles",
+      "year": 2020,
+      "total": 6151.74,
+      "count": 12,
+      "average": 512.645
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Nueva Ecija",
+      "year": 2020,
+      "total": 4142.5,
+      "count": 12,
+      "average": 345.2083333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Tarlac",
+      "year": 2020,
+      "total": 3319.87,
+      "count": 12,
+      "average": 276.6558333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bataan",
+      "year": 2020,
+      "total": 3170.69,
+      "count": 12,
+      "average": 264.2241666666667
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Zambales",
+      "year": 2020,
+      "total": 1628.91,
+      "count": 12,
+      "average": 135.7425
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Olongapo",
+      "year": 2020,
+      "total": 1559.08,
+      "count": 12,
+      "average": 129.92333333333335
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Aurora",
+      "year": 2020,
+      "total": 322.76,
+      "count": 12,
+      "average": 26.89666666666667
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Laguna",
+      "year": 2020,
+      "total": 21801.72,
+      "count": 12,
+      "average": 1816.81
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Cavite",
+      "year": 2020,
+      "total": 17230.4,
+      "count": 12,
+      "average": 1435.8666666666666
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Batangas",
+      "year": 2020,
+      "total": 12763.71,
+      "count": 12,
+      "average": 1063.6425
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Rizal",
+      "year": 2020,
+      "total": 4307.2,
+      "count": 12,
+      "average": 358.93333333333334
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "City of Lucena",
+      "year": 2020,
+      "total": 2873.38,
+      "count": 12,
+      "average": 239.44833333333332
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Quezon",
+      "year": 2020,
+      "total": 512.77,
+      "count": 12,
+      "average": 42.73083333333334
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "City of Zamboanga",
+      "year": 2020,
+      "total": 2320.62,
+      "count": 12,
+      "average": 193.385
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Norte",
+      "year": 2020,
+      "total": 1534.23,
+      "count": 12,
+      "average": 127.8525
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Sur",
+      "year": 2020,
+      "total": 1224.34,
+      "count": 12,
+      "average": 102.02833333333334
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga Sibugay",
+      "year": 2020,
+      "total": 477.53,
+      "count": 12,
+      "average": 39.79416666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Sur",
+      "year": 2020,
+      "total": 3166.3,
+      "count": 12,
+      "average": 263.85833333333335
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Albay",
+      "year": 2020,
+      "total": 2966.69,
+      "count": 12,
+      "average": 247.22416666666666
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Sorsogon",
+      "year": 2020,
+      "total": 866.71,
+      "count": 12,
+      "average": 72.22583333333333
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Norte",
+      "year": 2020,
+      "total": 815.98,
+      "count": 12,
+      "average": 67.99833333333333
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Masbate",
+      "year": 2020,
+      "total": 659.5,
+      "count": 12,
+      "average": 54.958333333333336
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Catanduanes",
+      "year": 2020,
+      "total": 506.08,
+      "count": 12,
+      "average": 42.17333333333333
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "City of Iloilo (includes the province of Guimaras)",
+      "year": 2020,
+      "total": 5763.36,
+      "count": 12,
+      "average": 480.28
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Aklan",
+      "year": 2020,
+      "total": 1827.46,
+      "count": 12,
+      "average": 152.28833333333333
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Capiz",
+      "year": 2020,
+      "total": 1176.52,
+      "count": 12,
+      "average": 98.04333333333334
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Iloilo",
+      "year": 2020,
+      "total": 1029.33,
+      "count": 12,
+      "average": 85.7775
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Antique",
+      "year": 2020,
+      "total": 612.69,
+      "count": 12,
+      "average": 51.0575
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "LTD Cebu",
+      "year": 2020,
+      "total": 29161.11,
+      "count": 12,
+      "average": 2430.0925
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "City of Cebu",
+      "year": 2020,
+      "total": 13873.26,
+      "count": 12,
+      "average": 1156.105
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Cebu (includes Cities of Lapu-Lapu and Mandaue)",
+      "year": 2020,
+      "total": 12948.75,
+      "count": 12,
+      "average": 1079.0625
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Bohol",
+      "year": 2020,
+      "total": 2231.22,
+      "count": 12,
+      "average": 185.935
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "City of Tacloban (includes the province of Biliran)",
+      "year": 2020,
+      "total": 2796.69,
+      "count": 12,
+      "average": 233.0575
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Leyte",
+      "year": 2020,
+      "total": 1432.46,
+      "count": 12,
+      "average": 119.37166666666667
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Samar",
+      "year": 2020,
+      "total": 871.66,
+      "count": 12,
+      "average": 72.63833333333334
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Northern Samar",
+      "year": 2020,
+      "total": 603.53,
+      "count": 12,
+      "average": 50.29416666666667
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Southern Leyte",
+      "year": 2020,
+      "total": 562.14,
+      "count": 12,
+      "average": 46.845
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Eastern Samar",
+      "year": 2020,
+      "total": 547.51,
+      "count": 12,
+      "average": 45.62583333333333
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "City of Cagayan de Oro",
+      "year": 2020,
+      "total": 5294.23,
+      "count": 12,
+      "average": 441.18583333333333
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Bukidnon",
+      "year": 2020,
+      "total": 2038.03,
+      "count": 12,
+      "average": 169.83583333333334
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Lanao del Norte (includes City of Iligan)",
+      "year": 2020,
+      "total": 1490.69,
+      "count": 12,
+      "average": 124.22416666666666
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Occidental",
+      "year": 2020,
+      "total": 1093.81,
+      "count": 12,
+      "average": 91.15083333333334
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Oriental (includes the province of Camiguin)",
+      "year": 2020,
+      "total": 527.41,
+      "count": 12,
+      "average": 43.950833333333335
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "LTD Davao",
+      "year": 2020,
+      "total": 16093.82,
+      "count": 12,
+      "average": 1341.1516666666666
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "City of Davao",
+      "year": 2020,
+      "total": 11084.7,
+      "count": 12,
+      "average": 923.725
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Norte and Davao de Oro",
+      "year": 2020,
+      "total": 2974.13,
+      "count": 12,
+      "average": 247.84416666666667
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Sur and Davao Occidental",
+      "year": 2020,
+      "total": 1064.98,
+      "count": 12,
+      "average": 88.74833333333333
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao Oriental",
+      "year": 2020,
+      "total": 643.56,
+      "count": 12,
+      "average": 53.63
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "City of General Santos (includes the province of Sarangani)",
+      "year": 2020,
+      "total": 2594.95,
+      "count": 12,
+      "average": 216.24583333333334
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "South Cotabato",
+      "year": 2020,
+      "total": 1556.02,
+      "count": 12,
+      "average": 129.66833333333332
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Cotabato",
+      "year": 2020,
+      "total": 1354.0,
+      "count": 12,
+      "average": 112.83333333333333
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Sultan Kudarat",
+      "year": 2020,
+      "total": 970.35,
+      "count": 12,
+      "average": 80.8625
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Norte (includes City of Butuan)",
+      "year": 2020,
+      "total": 2094.4,
+      "count": 12,
+      "average": 174.53333333333333
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Norte and Dinagat Islands",
+      "year": 2020,
+      "total": 1076.45,
+      "count": 12,
+      "average": 89.70416666666667
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Sur",
+      "year": 2020,
+      "total": 919.03,
+      "count": 12,
+      "average": 76.58583333333333
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Sur",
+      "year": 2020,
+      "total": 801.09,
+      "count": 12,
+      "average": 66.7575
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Maguindanao del Norte and Maguindanao del Sur",
+      "year": 2021,
+      "total": 2167.22,
+      "count": 12,
+      "average": 180.60166666666666
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Lanao del Sur",
+      "year": 2021,
+      "total": 779.33,
+      "count": 12,
+      "average": 64.94416666666666
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Basilan (includes City of Isabela)",
+      "year": 2021,
+      "total": 285.29,
+      "count": 12,
+      "average": 23.774166666666666
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Tawi-tawi",
+      "year": 2021,
+      "total": 281.19,
+      "count": 12,
+      "average": 23.4325
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Sulu",
+      "year": 2021,
+      "total": 278.75,
+      "count": 12,
+      "average": 23.229166666666668
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "City of Baguio",
+      "year": 2021,
+      "total": 2933.48,
+      "count": 12,
+      "average": 244.45666666666668
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Benguet",
+      "year": 2021,
+      "total": 1061.93,
+      "count": 12,
+      "average": 88.49416666666667
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Apayao and Kalinga",
+      "year": 2021,
+      "total": 733.43,
+      "count": 12,
+      "average": 61.119166666666665
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Abra",
+      "year": 2021,
+      "total": 523.91,
+      "count": 12,
+      "average": 43.659166666666664
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Ifugao",
+      "year": 2021,
+      "total": 381.71,
+      "count": 12,
+      "average": 31.809166666666666
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Mountain Province",
+      "year": 2021,
+      "total": 373.3,
+      "count": 12,
+      "average": 31.108333333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Palawan (includes City of Puerto Princesa)",
+      "year": 2021,
+      "total": 3508.77,
+      "count": 12,
+      "average": 292.3975
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Oriental Mindoro",
+      "year": 2021,
+      "total": 1815.34,
+      "count": 12,
+      "average": 151.27833333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Occidental Mindoro",
+      "year": 2021,
+      "total": 739.96,
+      "count": 12,
+      "average": 61.663333333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Romblon",
+      "year": 2021,
+      "total": 389.11,
+      "count": 12,
+      "average": 32.42583333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Marinduque",
+      "year": 2021,
+      "total": 293.5,
+      "count": 12,
+      "average": 24.458333333333332
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Large Taxpayers Service",
+      "year": 2021,
+      "total": 1242694.88,
+      "count": 12,
+      "average": 103557.90666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Makati",
+      "year": 2021,
+      "total": 110887.71,
+      "count": 12,
+      "average": 9240.6425
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Quezon City",
+      "year": 2021,
+      "total": 80491.02,
+      "count": 12,
+      "average": 6707.585
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Taguig and Pateros",
+      "year": 2021,
+      "total": 67269.49,
+      "count": 12,
+      "average": 5605.7908333333335
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Manila",
+      "year": 2021,
+      "total": 42629.35,
+      "count": 12,
+      "average": 3552.445833333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Pasig",
+      "year": 2021,
+      "total": 41603.16,
+      "count": 12,
+      "average": 3466.93
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Mandaluyong",
+      "year": 2021,
+      "total": 21553.76,
+      "count": 12,
+      "average": 1796.1466666666668
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Pasay City",
+      "year": 2021,
+      "total": 19344.44,
+      "count": 12,
+      "average": 1612.0366666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Para\u00f1aque",
+      "year": 2021,
+      "total": 15502.08,
+      "count": 12,
+      "average": 1291.84
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Muntinlupa",
+      "year": 2021,
+      "total": 13446.36,
+      "count": 12,
+      "average": 1120.53
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Marikina",
+      "year": 2021,
+      "total": 7231.73,
+      "count": 12,
+      "average": 602.6441666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Las Pi\u00f1as",
+      "year": 2021,
+      "total": 6673.32,
+      "count": 12,
+      "average": 556.11
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of San Juan",
+      "year": 2021,
+      "total": 5871.02,
+      "count": 12,
+      "average": 489.25166666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Caloocan",
+      "year": 2021,
+      "total": 5768.96,
+      "count": 12,
+      "average": 480.74666666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Valenzuela",
+      "year": 2021,
+      "total": 5366.02,
+      "count": 12,
+      "average": 447.16833333333335
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Cities of Malabon and Navotas",
+      "year": 2021,
+      "total": 3273.69,
+      "count": 12,
+      "average": 272.8075
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Occidental (includes City of Bacolod)",
+      "year": 2021,
+      "total": 7597.39,
+      "count": 12,
+      "average": 633.1158333333333
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Oriental and Siquijor",
+      "year": 2021,
+      "total": 2642.75,
+      "count": 12,
+      "average": 220.22916666666666
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Pangasinan",
+      "year": 2021,
+      "total": 7321.39,
+      "count": 12,
+      "average": 610.1158333333333
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "La Union",
+      "year": 2021,
+      "total": 2872.96,
+      "count": 12,
+      "average": 239.41333333333333
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Sur",
+      "year": 2021,
+      "total": 2006.56,
+      "count": 12,
+      "average": 167.21333333333334
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Norte",
+      "year": 2021,
+      "total": 1809.25,
+      "count": 12,
+      "average": 150.77083333333334
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Isabela",
+      "year": 2021,
+      "total": 4159.41,
+      "count": 12,
+      "average": 346.6175
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Cagayan and Batanes",
+      "year": 2021,
+      "total": 3418.76,
+      "count": 12,
+      "average": 284.89666666666665
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Nueva Vizcaya",
+      "year": 2021,
+      "total": 1135.98,
+      "count": 12,
+      "average": 94.665
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Quirino",
+      "year": 2021,
+      "total": 364.06,
+      "count": 12,
+      "average": 30.338333333333335
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bulacan",
+      "year": 2021,
+      "total": 13242.49,
+      "count": 12,
+      "average": 1103.5408333333332
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Pampanga",
+      "year": 2021,
+      "total": 12764.65,
+      "count": 12,
+      "average": 1063.7208333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Angeles",
+      "year": 2021,
+      "total": 8105.44,
+      "count": 12,
+      "average": 675.4533333333334
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Nueva Ecija",
+      "year": 2021,
+      "total": 5162.9,
+      "count": 12,
+      "average": 430.2416666666667
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bataan",
+      "year": 2021,
+      "total": 3847.61,
+      "count": 12,
+      "average": 320.63416666666666
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Tarlac",
+      "year": 2021,
+      "total": 3773.52,
+      "count": 12,
+      "average": 314.46
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Zambales",
+      "year": 2021,
+      "total": 1876.99,
+      "count": 12,
+      "average": 156.41583333333332
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Olongapo",
+      "year": 2021,
+      "total": 1768.04,
+      "count": 12,
+      "average": 147.33666666666667
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Aurora",
+      "year": 2021,
+      "total": 404.01,
+      "count": 12,
+      "average": 33.6675
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Laguna",
+      "year": 2021,
+      "total": 24775.88,
+      "count": 12,
+      "average": 2064.6566666666668
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Cavite",
+      "year": 2021,
+      "total": 22448.07,
+      "count": 12,
+      "average": 1870.6725
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Batangas",
+      "year": 2021,
+      "total": 16991.1,
+      "count": 12,
+      "average": 1415.925
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Rizal",
+      "year": 2021,
+      "total": 5343.46,
+      "count": 12,
+      "average": 445.28833333333336
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "City of Lucena",
+      "year": 2021,
+      "total": 3908.39,
+      "count": 12,
+      "average": 325.69916666666666
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Quezon",
+      "year": 2021,
+      "total": 609.82,
+      "count": 12,
+      "average": 50.818333333333335
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "City of Zamboanga",
+      "year": 2021,
+      "total": 2601.36,
+      "count": 12,
+      "average": 216.78
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Norte",
+      "year": 2021,
+      "total": 1754.62,
+      "count": 12,
+      "average": 146.21833333333333
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Sur",
+      "year": 2021,
+      "total": 1489.77,
+      "count": 12,
+      "average": 124.1475
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga Sibugay",
+      "year": 2021,
+      "total": 524.27,
+      "count": 12,
+      "average": 43.689166666666665
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Sur",
+      "year": 2021,
+      "total": 3794.52,
+      "count": 12,
+      "average": 316.21
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Albay",
+      "year": 2021,
+      "total": 3472.13,
+      "count": 12,
+      "average": 289.3441666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Sorsogon",
+      "year": 2021,
+      "total": 1023.27,
+      "count": 12,
+      "average": 85.2725
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Norte",
+      "year": 2021,
+      "total": 969.9,
+      "count": 12,
+      "average": 80.825
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Masbate",
+      "year": 2021,
+      "total": 882.42,
+      "count": 12,
+      "average": 73.535
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Catanduanes",
+      "year": 2021,
+      "total": 554.89,
+      "count": 12,
+      "average": 46.240833333333335
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "City of Iloilo (includes the province of Guimaras)",
+      "year": 2021,
+      "total": 6730.77,
+      "count": 12,
+      "average": 560.8975
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Aklan",
+      "year": 2021,
+      "total": 1285.72,
+      "count": 12,
+      "average": 107.14333333333333
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Capiz",
+      "year": 2021,
+      "total": 1214.99,
+      "count": 12,
+      "average": 101.24916666666667
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Iloilo",
+      "year": 2021,
+      "total": 1137.87,
+      "count": 12,
+      "average": 94.8225
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Antique",
+      "year": 2021,
+      "total": 725.61,
+      "count": 12,
+      "average": 60.4675
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "LTD Cebu",
+      "year": 2021,
+      "total": 26601.17,
+      "count": 12,
+      "average": 2216.764166666667
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "City of Cebu",
+      "year": 2021,
+      "total": 15639.45,
+      "count": 12,
+      "average": 1303.2875
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Cebu (includes Cities of Lapu-Lapu and Mandaue)",
+      "year": 2021,
+      "total": 14687.87,
+      "count": 12,
+      "average": 1223.9891666666667
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Bohol",
+      "year": 2021,
+      "total": 2503.98,
+      "count": 12,
+      "average": 208.665
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "City of Tacloban (includes the province of Biliran)",
+      "year": 2021,
+      "total": 3246.08,
+      "count": 12,
+      "average": 270.50666666666666
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Leyte",
+      "year": 2021,
+      "total": 1597.67,
+      "count": 12,
+      "average": 133.13916666666665
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Samar",
+      "year": 2021,
+      "total": 1051.9,
+      "count": 12,
+      "average": 87.65833333333333
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Northern Samar",
+      "year": 2021,
+      "total": 710.87,
+      "count": 12,
+      "average": 59.23916666666667
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Southern Leyte",
+      "year": 2021,
+      "total": 652.57,
+      "count": 12,
+      "average": 54.380833333333335
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Eastern Samar",
+      "year": 2021,
+      "total": 599.05,
+      "count": 12,
+      "average": 49.920833333333334
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "City of Cagayan de Oro",
+      "year": 2021,
+      "total": 5773.14,
+      "count": 12,
+      "average": 481.095
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Bukidnon",
+      "year": 2021,
+      "total": 2314.56,
+      "count": 12,
+      "average": 192.88
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Lanao del Norte (includes City of Iligan)",
+      "year": 2021,
+      "total": 1603.89,
+      "count": 12,
+      "average": 133.6575
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Occidental",
+      "year": 2021,
+      "total": 1267.12,
+      "count": 12,
+      "average": 105.59333333333333
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Oriental (includes the province of Camiguin)",
+      "year": 2021,
+      "total": 678.68,
+      "count": 12,
+      "average": 56.556666666666665
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "LTD Davao",
+      "year": 2021,
+      "total": 16941.52,
+      "count": 12,
+      "average": 1411.7933333333333
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "City of Davao",
+      "year": 2021,
+      "total": 12557.28,
+      "count": 12,
+      "average": 1046.44
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Norte and Davao de Oro",
+      "year": 2021,
+      "total": 3673.71,
+      "count": 12,
+      "average": 306.1425
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Sur and Davao Occidental",
+      "year": 2021,
+      "total": 1275.69,
+      "count": 12,
+      "average": 106.3075
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao Oriental",
+      "year": 2021,
+      "total": 747.61,
+      "count": 12,
+      "average": 62.30083333333334
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "City of General Santos (includes the province of Sarangani)",
+      "year": 2021,
+      "total": 2879.47,
+      "count": 12,
+      "average": 239.95583333333335
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "South Cotabato",
+      "year": 2021,
+      "total": 1781.62,
+      "count": 12,
+      "average": 148.46833333333333
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Cotabato",
+      "year": 2021,
+      "total": 1537.7,
+      "count": 12,
+      "average": 128.14166666666668
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Sultan Kudarat",
+      "year": 2021,
+      "total": 1134.93,
+      "count": 12,
+      "average": 94.5775
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Norte (includes City of Butuan)",
+      "year": 2021,
+      "total": 2527.03,
+      "count": 12,
+      "average": 210.58583333333334
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Norte and Dinagat Islands",
+      "year": 2021,
+      "total": 1259.2,
+      "count": 12,
+      "average": 104.93333333333334
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Sur",
+      "year": 2021,
+      "total": 1184.73,
+      "count": 12,
+      "average": 98.7275
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Sur",
+      "year": 2021,
+      "total": 967.67,
+      "count": 12,
+      "average": 80.63916666666667
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Maguindanao del Norte and Maguindanao del Sur",
+      "year": 2022,
+      "total": 2737.33,
+      "count": 12,
+      "average": 228.11083333333335
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Lanao del Sur",
+      "year": 2022,
+      "total": 851.2,
+      "count": 12,
+      "average": 70.93333333333334
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Sulu",
+      "year": 2022,
+      "total": 375.74,
+      "count": 12,
+      "average": 31.311666666666667
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Basilan (includes City of Isabela)",
+      "year": 2022,
+      "total": 312.59,
+      "count": 12,
+      "average": 26.049166666666668
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Tawi-tawi",
+      "year": 2022,
+      "total": 279.72,
+      "count": 12,
+      "average": 23.31
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "City of Baguio",
+      "year": 2022,
+      "total": 3790.33,
+      "count": 12,
+      "average": 315.86083333333335
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Benguet",
+      "year": 2022,
+      "total": 1291.1,
+      "count": 12,
+      "average": 107.59166666666667
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Apayao and Kalinga",
+      "year": 2022,
+      "total": 909.93,
+      "count": 12,
+      "average": 75.8275
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Abra",
+      "year": 2022,
+      "total": 752.8,
+      "count": 12,
+      "average": 62.733333333333334
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Mountain Province",
+      "year": 2022,
+      "total": 447.57,
+      "count": 12,
+      "average": 37.2975
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Ifugao",
+      "year": 2022,
+      "total": 421.66,
+      "count": 12,
+      "average": 35.138333333333335
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Palawan (includes City of Puerto Princesa)",
+      "year": 2022,
+      "total": 3789.36,
+      "count": 12,
+      "average": 315.78
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Oriental Mindoro",
+      "year": 2022,
+      "total": 2097.04,
+      "count": 12,
+      "average": 174.75333333333333
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Occidental Mindoro",
+      "year": 2022,
+      "total": 818.24,
+      "count": 12,
+      "average": 68.18666666666667
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Romblon",
+      "year": 2022,
+      "total": 475.67,
+      "count": 12,
+      "average": 39.63916666666667
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Marinduque",
+      "year": 2022,
+      "total": 320.78,
+      "count": 12,
+      "average": 26.731666666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Large Taxpayers Service",
+      "year": 2022,
+      "total": 1348726.98,
+      "count": 12,
+      "average": 112393.915
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Makati",
+      "year": 2022,
+      "total": 129541.57,
+      "count": 12,
+      "average": 10795.130833333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Quezon City",
+      "year": 2022,
+      "total": 87654.73,
+      "count": 12,
+      "average": 7304.560833333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Taguig and Pateros",
+      "year": 2022,
+      "total": 83402.68,
+      "count": 12,
+      "average": 6950.223333333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Manila",
+      "year": 2022,
+      "total": 52551.74,
+      "count": 12,
+      "average": 4379.3116666666665
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Pasig",
+      "year": 2022,
+      "total": 48253.56,
+      "count": 12,
+      "average": 4021.13
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Mandaluyong",
+      "year": 2022,
+      "total": 25943.36,
+      "count": 12,
+      "average": 2161.9466666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Pasay City",
+      "year": 2022,
+      "total": 24683.21,
+      "count": 12,
+      "average": 2056.9341666666664
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Para\u00f1aque",
+      "year": 2022,
+      "total": 18042.25,
+      "count": 12,
+      "average": 1503.5208333333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Muntinlupa",
+      "year": 2022,
+      "total": 15184.76,
+      "count": 12,
+      "average": 1265.3966666666668
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Marikina",
+      "year": 2022,
+      "total": 8462.69,
+      "count": 12,
+      "average": 705.2241666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Las Pi\u00f1as",
+      "year": 2022,
+      "total": 7519.36,
+      "count": 12,
+      "average": 626.6133333333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of San Juan",
+      "year": 2022,
+      "total": 6583.47,
+      "count": 12,
+      "average": 548.6225
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Caloocan",
+      "year": 2022,
+      "total": 6204.22,
+      "count": 12,
+      "average": 517.0183333333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Valenzuela",
+      "year": 2022,
+      "total": 5707.73,
+      "count": 12,
+      "average": 475.64416666666665
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Cities of Malabon and Navotas",
+      "year": 2022,
+      "total": 3742.1,
+      "count": 12,
+      "average": 311.84166666666664
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Occidental (includes City of Bacolod)",
+      "year": 2022,
+      "total": 9589.96,
+      "count": 12,
+      "average": 799.1633333333333
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Oriental and Siquijor",
+      "year": 2022,
+      "total": 3078.48,
+      "count": 12,
+      "average": 256.54
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Pangasinan",
+      "year": 2022,
+      "total": 8754.21,
+      "count": 12,
+      "average": 729.5175
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "La Union",
+      "year": 2022,
+      "total": 3527.88,
+      "count": 12,
+      "average": 293.99
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Sur",
+      "year": 2022,
+      "total": 2537.74,
+      "count": 12,
+      "average": 211.47833333333332
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Norte",
+      "year": 2022,
+      "total": 2171.16,
+      "count": 12,
+      "average": 180.93
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Isabela",
+      "year": 2022,
+      "total": 4671.74,
+      "count": 12,
+      "average": 389.31166666666667
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Cagayan and Batanes",
+      "year": 2022,
+      "total": 3906.65,
+      "count": 12,
+      "average": 325.5541666666667
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Nueva Vizcaya",
+      "year": 2022,
+      "total": 1375.92,
+      "count": 12,
+      "average": 114.66
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Quirino",
+      "year": 2022,
+      "total": 360.79,
+      "count": 12,
+      "average": 30.065833333333334
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Pampanga",
+      "year": 2022,
+      "total": 16146.79,
+      "count": 12,
+      "average": 1345.5658333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bulacan",
+      "year": 2022,
+      "total": 15833.68,
+      "count": 12,
+      "average": 1319.4733333333334
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Angeles",
+      "year": 2022,
+      "total": 11063.93,
+      "count": 12,
+      "average": 921.9941666666666
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Nueva Ecija",
+      "year": 2022,
+      "total": 6750.38,
+      "count": 12,
+      "average": 562.5316666666666
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bataan",
+      "year": 2022,
+      "total": 4773.83,
+      "count": 12,
+      "average": 397.81916666666666
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Tarlac",
+      "year": 2022,
+      "total": 4513.03,
+      "count": 12,
+      "average": 376.0858333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Zambales",
+      "year": 2022,
+      "total": 2940.86,
+      "count": 12,
+      "average": 245.07166666666666
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Olongapo",
+      "year": 2022,
+      "total": 2138.84,
+      "count": 12,
+      "average": 178.23666666666668
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Aurora",
+      "year": 2022,
+      "total": 472.16,
+      "count": 12,
+      "average": 39.346666666666664
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Laguna",
+      "year": 2022,
+      "total": 29832.89,
+      "count": 12,
+      "average": 2486.0741666666668
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Cavite",
+      "year": 2022,
+      "total": 27121.74,
+      "count": 12,
+      "average": 2260.145
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Batangas",
+      "year": 2022,
+      "total": 19038.46,
+      "count": 12,
+      "average": 1586.5383333333334
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Rizal",
+      "year": 2022,
+      "total": 6316.27,
+      "count": 12,
+      "average": 526.3558333333333
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "City of Lucena",
+      "year": 2022,
+      "total": 4798.18,
+      "count": 12,
+      "average": 399.84833333333336
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Quezon",
+      "year": 2022,
+      "total": 674.51,
+      "count": 12,
+      "average": 56.20916666666667
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "City of Zamboanga",
+      "year": 2022,
+      "total": 2994.83,
+      "count": 12,
+      "average": 249.56916666666666
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Norte",
+      "year": 2022,
+      "total": 2006.76,
+      "count": 12,
+      "average": 167.23
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Sur",
+      "year": 2022,
+      "total": 1725.95,
+      "count": 12,
+      "average": 143.82916666666668
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga Sibugay",
+      "year": 2022,
+      "total": 581.12,
+      "count": 12,
+      "average": 48.42666666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Sur",
+      "year": 2022,
+      "total": 4532.49,
+      "count": 12,
+      "average": 377.7075
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Albay",
+      "year": 2022,
+      "total": 4105.82,
+      "count": 12,
+      "average": 342.15166666666664
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Sorsogon",
+      "year": 2022,
+      "total": 1253.18,
+      "count": 12,
+      "average": 104.43166666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Masbate",
+      "year": 2022,
+      "total": 1077.77,
+      "count": 12,
+      "average": 89.81416666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Norte",
+      "year": 2022,
+      "total": 1076.45,
+      "count": 12,
+      "average": 89.70416666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Catanduanes",
+      "year": 2022,
+      "total": 760.23,
+      "count": 12,
+      "average": 63.3525
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "City of Iloilo (includes the province of Guimaras)",
+      "year": 2022,
+      "total": 8267.93,
+      "count": 12,
+      "average": 688.9941666666666
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Aklan",
+      "year": 2022,
+      "total": 1788.05,
+      "count": 12,
+      "average": 149.00416666666666
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Capiz",
+      "year": 2022,
+      "total": 1433.36,
+      "count": 12,
+      "average": 119.44666666666667
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Iloilo",
+      "year": 2022,
+      "total": 1347.42,
+      "count": 12,
+      "average": 112.285
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Antique",
+      "year": 2022,
+      "total": 887.97,
+      "count": 12,
+      "average": 73.9975
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "LTD Cebu",
+      "year": 2022,
+      "total": 32261.72,
+      "count": 12,
+      "average": 2688.4766666666665
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "City of Cebu",
+      "year": 2022,
+      "total": 18814.29,
+      "count": 12,
+      "average": 1567.8575
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Cebu (includes Cities of Lapu-Lapu and Mandaue)",
+      "year": 2022,
+      "total": 16796.13,
+      "count": 12,
+      "average": 1399.6775
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Bohol",
+      "year": 2022,
+      "total": 3001.93,
+      "count": 12,
+      "average": 250.16083333333333
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "City of Tacloban (includes the province of Biliran)",
+      "year": 2022,
+      "total": 3648.57,
+      "count": 12,
+      "average": 304.0475
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Leyte",
+      "year": 2022,
+      "total": 2002.8,
+      "count": 12,
+      "average": 166.9
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Samar",
+      "year": 2022,
+      "total": 1292.1,
+      "count": 12,
+      "average": 107.675
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Northern Samar",
+      "year": 2022,
+      "total": 830.55,
+      "count": 12,
+      "average": 69.2125
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Eastern Samar",
+      "year": 2022,
+      "total": 794.9,
+      "count": 12,
+      "average": 66.24166666666666
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Southern Leyte",
+      "year": 2022,
+      "total": 784.51,
+      "count": 12,
+      "average": 65.37583333333333
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "City of Cagayan de Oro",
+      "year": 2022,
+      "total": 6896.63,
+      "count": 12,
+      "average": 574.7191666666666
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Bukidnon",
+      "year": 2022,
+      "total": 2730.24,
+      "count": 12,
+      "average": 227.52
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Lanao del Norte (includes City of Iligan)",
+      "year": 2022,
+      "total": 1881.3,
+      "count": 12,
+      "average": 156.775
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Occidental",
+      "year": 2022,
+      "total": 1514.92,
+      "count": 12,
+      "average": 126.24333333333334
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Oriental (includes the province of Camiguin)",
+      "year": 2022,
+      "total": 805.68,
+      "count": 12,
+      "average": 67.14
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "LTD Davao",
+      "year": 2022,
+      "total": 18537.02,
+      "count": 12,
+      "average": 1544.7516666666668
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "City of Davao",
+      "year": 2022,
+      "total": 14967.39,
+      "count": 12,
+      "average": 1247.2825
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Norte and Davao de Oro",
+      "year": 2022,
+      "total": 4213.81,
+      "count": 12,
+      "average": 351.1508333333333
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Sur and Davao Occidental",
+      "year": 2022,
+      "total": 1586.54,
+      "count": 12,
+      "average": 132.21166666666667
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao Oriental",
+      "year": 2022,
+      "total": 957.91,
+      "count": 12,
+      "average": 79.82583333333334
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "City of General Santos (includes the province of Sarangani)",
+      "year": 2022,
+      "total": 3386.45,
+      "count": 12,
+      "average": 282.20416666666665
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "South Cotabato",
+      "year": 2022,
+      "total": 2375.36,
+      "count": 12,
+      "average": 197.94666666666666
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Cotabato",
+      "year": 2022,
+      "total": 1852.28,
+      "count": 12,
+      "average": 154.35666666666665
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Sultan Kudarat",
+      "year": 2022,
+      "total": 1351.83,
+      "count": 12,
+      "average": 112.6525
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Norte (includes City of Butuan)",
+      "year": 2022,
+      "total": 2978.4,
+      "count": 12,
+      "average": 248.2
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Norte and Dinagat Islands",
+      "year": 2022,
+      "total": 1562.56,
+      "count": 12,
+      "average": 130.21333333333334
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Sur",
+      "year": 2022,
+      "total": 1451.87,
+      "count": 12,
+      "average": 120.98916666666666
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Sur",
+      "year": 2022,
+      "total": 1209.84,
+      "count": 12,
+      "average": 100.82
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Maguindanao del Norte and Maguindanao del Sur",
+      "year": 2023,
+      "total": 3087.54,
+      "count": 12,
+      "average": 257.295
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Lanao del Sur",
+      "year": 2023,
+      "total": 958.94,
+      "count": 12,
+      "average": 79.91166666666666
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Basilan (includes City of Isabela)",
+      "year": 2023,
+      "total": 388.63,
+      "count": 12,
+      "average": 32.38583333333333
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Sulu",
+      "year": 2023,
+      "total": 327.95,
+      "count": 12,
+      "average": 27.329166666666666
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Tawi-tawi",
+      "year": 2023,
+      "total": 280.15,
+      "count": 12,
+      "average": 23.345833333333335
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "City of Baguio",
+      "year": 2023,
+      "total": 4641.06,
+      "count": 12,
+      "average": 386.755
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Apayao and Kalinga",
+      "year": 2023,
+      "total": 1547.4,
+      "count": 12,
+      "average": 128.95
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Abra",
+      "year": 2023,
+      "total": 1533.94,
+      "count": 12,
+      "average": 127.82833333333333
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Benguet",
+      "year": 2023,
+      "total": 1481.09,
+      "count": 12,
+      "average": 123.42416666666666
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Mountain Province",
+      "year": 2023,
+      "total": 608.52,
+      "count": 12,
+      "average": 50.71
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Ifugao",
+      "year": 2023,
+      "total": 549.64,
+      "count": 12,
+      "average": 45.803333333333335
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Palawan (includes City of Puerto Princesa)",
+      "year": 2023,
+      "total": 3974.79,
+      "count": 12,
+      "average": 331.2325
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Oriental Mindoro",
+      "year": 2023,
+      "total": 2497.14,
+      "count": 12,
+      "average": 208.095
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Occidental Mindoro",
+      "year": 2023,
+      "total": 1006.53,
+      "count": 12,
+      "average": 83.8775
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Romblon",
+      "year": 2023,
+      "total": 980.07,
+      "count": 12,
+      "average": 81.6725
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Marinduque",
+      "year": 2023,
+      "total": 635.44,
+      "count": 12,
+      "average": 52.95333333333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Large Taxpayers Service",
+      "year": 2023,
+      "total": 1457388.96,
+      "count": 12,
+      "average": 121449.08
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Makati",
+      "year": 2023,
+      "total": 132063.28,
+      "count": 12,
+      "average": 11005.273333333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Quezon City",
+      "year": 2023,
+      "total": 90422.63,
+      "count": 12,
+      "average": 7535.219166666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Taguig and Pateros",
+      "year": 2023,
+      "total": 73481.15,
+      "count": 12,
+      "average": 6123.429166666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Manila",
+      "year": 2023,
+      "total": 54901.28,
+      "count": 12,
+      "average": 4575.106666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Pasig",
+      "year": 2023,
+      "total": 45443.06,
+      "count": 12,
+      "average": 3786.9216666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Mandaluyong",
+      "year": 2023,
+      "total": 26779.39,
+      "count": 12,
+      "average": 2231.6158333333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Pasay City",
+      "year": 2023,
+      "total": 25055.76,
+      "count": 12,
+      "average": 2087.98
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Para\u00f1aque",
+      "year": 2023,
+      "total": 19074.94,
+      "count": 12,
+      "average": 1589.5783333333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Muntinlupa",
+      "year": 2023,
+      "total": 16205.24,
+      "count": 12,
+      "average": 1350.4366666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Marikina",
+      "year": 2023,
+      "total": 9452.87,
+      "count": 12,
+      "average": 787.7391666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of San Juan",
+      "year": 2023,
+      "total": 7501.44,
+      "count": 12,
+      "average": 625.12
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Caloocan",
+      "year": 2023,
+      "total": 7489.13,
+      "count": 12,
+      "average": 624.0941666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Las Pi\u00f1as",
+      "year": 2023,
+      "total": 6781.06,
+      "count": 12,
+      "average": 565.0883333333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Valenzuela",
+      "year": 2023,
+      "total": 6579.13,
+      "count": 12,
+      "average": 548.2608333333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Cities of Malabon and Navotas",
+      "year": 2023,
+      "total": 4206.47,
+      "count": 12,
+      "average": 350.5391666666667
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Occidental (includes City of Bacolod)",
+      "year": 2023,
+      "total": 10497.66,
+      "count": 12,
+      "average": 874.805
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Oriental and Siquijor",
+      "year": 2023,
+      "total": 3804.61,
+      "count": 12,
+      "average": 317.05083333333334
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Pangasinan",
+      "year": 2023,
+      "total": 8712.57,
+      "count": 12,
+      "average": 726.0475
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "La Union",
+      "year": 2023,
+      "total": 4580.35,
+      "count": 12,
+      "average": 381.6958333333333
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Norte",
+      "year": 2023,
+      "total": 3238.82,
+      "count": 12,
+      "average": 269.90166666666664
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Sur",
+      "year": 2023,
+      "total": 2800.8,
+      "count": 12,
+      "average": 233.4
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Isabela",
+      "year": 2023,
+      "total": 5559.08,
+      "count": 12,
+      "average": 463.25666666666666
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Cagayan and Batanes",
+      "year": 2023,
+      "total": 5074.76,
+      "count": 12,
+      "average": 422.89666666666665
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Nueva Vizcaya",
+      "year": 2023,
+      "total": 1774.44,
+      "count": 12,
+      "average": 147.87
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Quirino",
+      "year": 2023,
+      "total": 545.86,
+      "count": 12,
+      "average": 45.48833333333334
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bulacan",
+      "year": 2023,
+      "total": 17572.38,
+      "count": 12,
+      "average": 1464.365
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Pampanga",
+      "year": 2023,
+      "total": 14442.16,
+      "count": 12,
+      "average": 1203.5133333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Angeles",
+      "year": 2023,
+      "total": 11724.13,
+      "count": 12,
+      "average": 977.0108333333334
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Nueva Ecija",
+      "year": 2023,
+      "total": 6998.19,
+      "count": 12,
+      "average": 583.1825
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Tarlac",
+      "year": 2023,
+      "total": 5863.47,
+      "count": 12,
+      "average": 488.6225
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bataan",
+      "year": 2023,
+      "total": 5016.69,
+      "count": 12,
+      "average": 418.0575
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Olongapo",
+      "year": 2023,
+      "total": 2797.33,
+      "count": 12,
+      "average": 233.11083333333335
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Zambales",
+      "year": 2023,
+      "total": 2010.16,
+      "count": 12,
+      "average": 167.51333333333332
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Aurora",
+      "year": 2023,
+      "total": 815.0,
+      "count": 12,
+      "average": 67.91666666666667
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Laguna",
+      "year": 2023,
+      "total": 32477.14,
+      "count": 12,
+      "average": 2706.4283333333333
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Cavite",
+      "year": 2023,
+      "total": 29765.9,
+      "count": 12,
+      "average": 2480.491666666667
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Batangas",
+      "year": 2023,
+      "total": 21510.44,
+      "count": 12,
+      "average": 1792.5366666666666
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Rizal",
+      "year": 2023,
+      "total": 7311.99,
+      "count": 12,
+      "average": 609.3325
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "City of Lucena",
+      "year": 2023,
+      "total": 5897.02,
+      "count": 12,
+      "average": 491.41833333333335
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Quezon",
+      "year": 2023,
+      "total": 1232.91,
+      "count": 12,
+      "average": 102.7425
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "City of Zamboanga",
+      "year": 2023,
+      "total": 3616.44,
+      "count": 12,
+      "average": 301.37
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Norte",
+      "year": 2023,
+      "total": 2265.2,
+      "count": 12,
+      "average": 188.76666666666668
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Sur",
+      "year": 2023,
+      "total": 2073.83,
+      "count": 12,
+      "average": 172.81916666666666
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga Sibugay",
+      "year": 2023,
+      "total": 856.54,
+      "count": 12,
+      "average": 71.37833333333333
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Albay",
+      "year": 2023,
+      "total": 6220.87,
+      "count": 12,
+      "average": 518.4058333333334
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Sur",
+      "year": 2023,
+      "total": 5643.41,
+      "count": 12,
+      "average": 470.2841666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Sorsogon",
+      "year": 2023,
+      "total": 1988.08,
+      "count": 12,
+      "average": 165.67333333333335
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Masbate",
+      "year": 2023,
+      "total": 1391.91,
+      "count": 12,
+      "average": 115.9925
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Norte",
+      "year": 2023,
+      "total": 1319.69,
+      "count": 12,
+      "average": 109.97416666666666
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Catanduanes",
+      "year": 2023,
+      "total": 841.66,
+      "count": 12,
+      "average": 70.13833333333334
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "City of Iloilo (includes the province of Guimaras)",
+      "year": 2023,
+      "total": 9001.36,
+      "count": 12,
+      "average": 750.1133333333333
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Aklan",
+      "year": 2023,
+      "total": 2496.54,
+      "count": 12,
+      "average": 208.045
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Iloilo",
+      "year": 2023,
+      "total": 1718.94,
+      "count": 12,
+      "average": 143.245
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Capiz",
+      "year": 2023,
+      "total": 1695.12,
+      "count": 12,
+      "average": 141.26
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Antique",
+      "year": 2023,
+      "total": 1056.37,
+      "count": 12,
+      "average": 88.03083333333333
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "LTD Cebu",
+      "year": 2023,
+      "total": 39834.86,
+      "count": 12,
+      "average": 3319.5716666666667
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Cebu (includes Cities of Lapu-Lapu and Mandaue)",
+      "year": 2023,
+      "total": 19698.87,
+      "count": 12,
+      "average": 1641.5725
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "City of Cebu",
+      "year": 2023,
+      "total": 19163.51,
+      "count": 12,
+      "average": 1596.9591666666668
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Bohol",
+      "year": 2023,
+      "total": 3762.56,
+      "count": 12,
+      "average": 313.5466666666667
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "City of Tacloban (includes the province of Biliran)",
+      "year": 2023,
+      "total": 5294.07,
+      "count": 12,
+      "average": 441.1725
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Leyte",
+      "year": 2023,
+      "total": 2814.57,
+      "count": 12,
+      "average": 234.5475
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Samar",
+      "year": 2023,
+      "total": 1631.61,
+      "count": 12,
+      "average": 135.9675
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Northern Samar",
+      "year": 2023,
+      "total": 1212.03,
+      "count": 12,
+      "average": 101.0025
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Eastern Samar",
+      "year": 2023,
+      "total": 1104.6,
+      "count": 12,
+      "average": 92.05
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Southern Leyte",
+      "year": 2023,
+      "total": 1089.7,
+      "count": 12,
+      "average": 90.80833333333334
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "City of Cagayan de Oro",
+      "year": 2023,
+      "total": 8382.96,
+      "count": 12,
+      "average": 698.58
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Bukidnon",
+      "year": 2023,
+      "total": 3258.3,
+      "count": 12,
+      "average": 271.525
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Lanao del Norte (includes City of Iligan)",
+      "year": 2023,
+      "total": 2193.54,
+      "count": 12,
+      "average": 182.795
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Occidental",
+      "year": 2023,
+      "total": 1779.32,
+      "count": 12,
+      "average": 148.27666666666667
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Oriental (includes the province of Camiguin)",
+      "year": 2023,
+      "total": 1130.08,
+      "count": 12,
+      "average": 94.17333333333333
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "LTD Davao",
+      "year": 2023,
+      "total": 23615.25,
+      "count": 12,
+      "average": 1967.9375
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "City of Davao",
+      "year": 2023,
+      "total": 14906.02,
+      "count": 12,
+      "average": 1242.1683333333333
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Norte and Davao de Oro",
+      "year": 2023,
+      "total": 4635.9,
+      "count": 12,
+      "average": 386.325
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Sur and Davao Occidental",
+      "year": 2023,
+      "total": 2073.95,
+      "count": 12,
+      "average": 172.82916666666668
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao Oriental",
+      "year": 2023,
+      "total": 1423.14,
+      "count": 12,
+      "average": 118.595
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "City of General Santos (includes the province of Sarangani)",
+      "year": 2023,
+      "total": 5009.11,
+      "count": 12,
+      "average": 417.42583333333334
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "South Cotabato",
+      "year": 2023,
+      "total": 3256.53,
+      "count": 12,
+      "average": 271.3775
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Cotabato",
+      "year": 2023,
+      "total": 2231.83,
+      "count": 12,
+      "average": 185.98583333333335
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Sultan Kudarat",
+      "year": 2023,
+      "total": 1523.93,
+      "count": 12,
+      "average": 126.99416666666667
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Norte (includes City of Butuan)",
+      "year": 2023,
+      "total": 4331.68,
+      "count": 12,
+      "average": 360.97333333333336
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Norte and Dinagat Islands",
+      "year": 2023,
+      "total": 2275.45,
+      "count": 12,
+      "average": 189.62083333333334
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Sur",
+      "year": 2023,
+      "total": 1713.3,
+      "count": 12,
+      "average": 142.775
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Sur",
+      "year": 2023,
+      "total": 1643.53,
+      "count": 12,
+      "average": 136.96083333333334
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Maguindanao del Norte and Maguindanao del Sur",
+      "year": 2024,
+      "total": 3341.98,
+      "count": 12,
+      "average": 278.49833333333333
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Lanao del Sur",
+      "year": 2024,
+      "total": 990.86,
+      "count": 12,
+      "average": 82.57166666666667
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Basilan (includes City of Isabela)",
+      "year": 2024,
+      "total": 461.04,
+      "count": 12,
+      "average": 38.42
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Sulu",
+      "year": 2024,
+      "total": 374.37,
+      "count": 12,
+      "average": 31.1975
+    },
+    {
+      "region": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "area": "Tawi-tawi",
+      "year": 2024,
+      "total": 290.63,
+      "count": 12,
+      "average": 24.219166666666666
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "City of Baguio",
+      "year": 2024,
+      "total": 4753.24,
+      "count": 12,
+      "average": 396.10333333333335
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Benguet",
+      "year": 2024,
+      "total": 1875.48,
+      "count": 12,
+      "average": 156.29
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Apayao and Kalinga",
+      "year": 2024,
+      "total": 1500.21,
+      "count": 12,
+      "average": 125.0175
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Abra",
+      "year": 2024,
+      "total": 1484.84,
+      "count": 12,
+      "average": 123.73666666666666
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Mountain Province",
+      "year": 2024,
+      "total": 645.97,
+      "count": 12,
+      "average": 53.83083333333333
+    },
+    {
+      "region": "Cordillera Administrative Region (CAR)",
+      "area": "Ifugao",
+      "year": 2024,
+      "total": 539.71,
+      "count": 12,
+      "average": 44.975833333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Palawan (includes City of Puerto Princesa)",
+      "year": 2024,
+      "total": 4662.52,
+      "count": 12,
+      "average": 388.54333333333335
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Oriental Mindoro",
+      "year": 2024,
+      "total": 2765.53,
+      "count": 12,
+      "average": 230.46083333333334
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Romblon",
+      "year": 2024,
+      "total": 1135.83,
+      "count": 12,
+      "average": 94.6525
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Occidental Mindoro",
+      "year": 2024,
+      "total": 1127.88,
+      "count": 12,
+      "average": 93.99
+    },
+    {
+      "region": "MIMAROPA Region",
+      "area": "Marinduque",
+      "year": 2024,
+      "total": 628.44,
+      "count": 12,
+      "average": 52.37
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Large Taxpayers Service",
+      "year": 2024,
+      "total": 1633772.72,
+      "count": 12,
+      "average": 136147.72666666665
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Makati",
+      "year": 2024,
+      "total": 143494.85,
+      "count": 12,
+      "average": 11957.904166666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Quezon City",
+      "year": 2024,
+      "total": 106364.33,
+      "count": 12,
+      "average": 8863.694166666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Taguig and Pateros",
+      "year": 2024,
+      "total": 94123.05,
+      "count": 12,
+      "average": 7843.5875
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Manila",
+      "year": 2024,
+      "total": 60391.45,
+      "count": 12,
+      "average": 5032.620833333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Pasig",
+      "year": 2024,
+      "total": 57541.85,
+      "count": 12,
+      "average": 4795.154166666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Mandaluyong",
+      "year": 2024,
+      "total": 34105.33,
+      "count": 12,
+      "average": 2842.110833333333
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Pasay City",
+      "year": 2024,
+      "total": 26429.04,
+      "count": 12,
+      "average": 2202.42
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Para\u00f1aque",
+      "year": 2024,
+      "total": 21110.55,
+      "count": 12,
+      "average": 1759.2125
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Muntinlupa",
+      "year": 2024,
+      "total": 16665.43,
+      "count": 12,
+      "average": 1388.7858333333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Marikina",
+      "year": 2024,
+      "total": 11687.63,
+      "count": 12,
+      "average": 973.9691666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of San Juan",
+      "year": 2024,
+      "total": 9097.52,
+      "count": 12,
+      "average": 758.1266666666667
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Caloocan",
+      "year": 2024,
+      "total": 8245.06,
+      "count": 12,
+      "average": 687.0883333333334
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Valenzuela",
+      "year": 2024,
+      "total": 7861.38,
+      "count": 12,
+      "average": 655.115
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "City of Las Pi\u00f1as",
+      "year": 2024,
+      "total": 7097.51,
+      "count": 12,
+      "average": 591.4591666666666
+    },
+    {
+      "region": "National Capital Region (NCR)",
+      "area": "Cities of Malabon and Navotas",
+      "year": 2024,
+      "total": 4876.21,
+      "count": 12,
+      "average": 406.35083333333336
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Occidental (includes City of Bacolod)",
+      "year": 2024,
+      "total": 11793.37,
+      "count": 12,
+      "average": 982.7808333333334
+    },
+    {
+      "region": "Negros Island Region (NIR)",
+      "area": "Negros Oriental and Siquijor",
+      "year": 2024,
+      "total": 4514.18,
+      "count": 12,
+      "average": 376.1816666666667
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Pangasinan",
+      "year": 2024,
+      "total": 10952.33,
+      "count": 12,
+      "average": 912.6941666666667
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "La Union",
+      "year": 2024,
+      "total": 5745.76,
+      "count": 12,
+      "average": 478.81333333333333
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Norte",
+      "year": 2024,
+      "total": 3569.05,
+      "count": 12,
+      "average": 297.42083333333335
+    },
+    {
+      "region": "Region I (Ilocos Region)",
+      "area": "Ilocos Sur",
+      "year": 2024,
+      "total": 3384.41,
+      "count": 12,
+      "average": 282.0341666666667
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Isabela",
+      "year": 2024,
+      "total": 6838.34,
+      "count": 12,
+      "average": 569.8616666666667
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Cagayan and Batanes",
+      "year": 2024,
+      "total": 5444.83,
+      "count": 12,
+      "average": 453.73583333333335
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Nueva Vizcaya",
+      "year": 2024,
+      "total": 1952.79,
+      "count": 12,
+      "average": 162.7325
+    },
+    {
+      "region": "Region II (Cagayan Valley)",
+      "area": "Quirino",
+      "year": 2024,
+      "total": 641.78,
+      "count": 12,
+      "average": 53.48166666666667
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bulacan",
+      "year": 2024,
+      "total": 20501.05,
+      "count": 12,
+      "average": 1708.4208333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Pampanga",
+      "year": 2024,
+      "total": 19092.64,
+      "count": 12,
+      "average": 1591.0533333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Angeles",
+      "year": 2024,
+      "total": 15069.25,
+      "count": 12,
+      "average": 1255.7708333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Nueva Ecija",
+      "year": 2024,
+      "total": 8737.73,
+      "count": 12,
+      "average": 728.1441666666667
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Tarlac",
+      "year": 2024,
+      "total": 7232.09,
+      "count": 12,
+      "average": 602.6741666666667
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Bataan",
+      "year": 2024,
+      "total": 5745.54,
+      "count": 12,
+      "average": 478.795
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "City of Olongapo",
+      "year": 2024,
+      "total": 3585.04,
+      "count": 12,
+      "average": 298.75333333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Zambales",
+      "year": 2024,
+      "total": 2424.46,
+      "count": 12,
+      "average": 202.03833333333333
+    },
+    {
+      "region": "Region III (Central Luzon)",
+      "area": "Aurora",
+      "year": 2024,
+      "total": 828.75,
+      "count": 12,
+      "average": 69.0625
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Laguna",
+      "year": 2024,
+      "total": 36364.39,
+      "count": 12,
+      "average": 3030.3658333333333
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Cavite",
+      "year": 2024,
+      "total": 30926.59,
+      "count": 12,
+      "average": 2577.215833333333
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Batangas",
+      "year": 2024,
+      "total": 23833.3,
+      "count": 12,
+      "average": 1986.1083333333333
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Rizal",
+      "year": 2024,
+      "total": 8693.38,
+      "count": 12,
+      "average": 724.4483333333334
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "City of Lucena",
+      "year": 2024,
+      "total": 6627.56,
+      "count": 12,
+      "average": 552.2966666666666
+    },
+    {
+      "region": "Region IV-A (CALABARZON)",
+      "area": "Quezon",
+      "year": 2024,
+      "total": 1270.37,
+      "count": 12,
+      "average": 105.86416666666666
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "City of Zamboanga",
+      "year": 2024,
+      "total": 4270.96,
+      "count": 12,
+      "average": 355.91333333333336
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Norte",
+      "year": 2024,
+      "total": 2631.37,
+      "count": 12,
+      "average": 219.28083333333333
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga del Sur",
+      "year": 2024,
+      "total": 2174.83,
+      "count": 12,
+      "average": 181.23583333333335
+    },
+    {
+      "region": "Region IX (Zamboanga Peninsula)",
+      "area": "Zamboanga Sibugay",
+      "year": 2024,
+      "total": 959.58,
+      "count": 12,
+      "average": 79.965
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Albay",
+      "year": 2024,
+      "total": 7480.56,
+      "count": 12,
+      "average": 623.38
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Sur",
+      "year": 2024,
+      "total": 6529.44,
+      "count": 12,
+      "average": 544.12
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Sorsogon",
+      "year": 2024,
+      "total": 2235.96,
+      "count": 12,
+      "average": 186.33
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Masbate",
+      "year": 2024,
+      "total": 1504.49,
+      "count": 12,
+      "average": 125.37416666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Camarines Norte",
+      "year": 2024,
+      "total": 1500.89,
+      "count": 12,
+      "average": 125.07416666666667
+    },
+    {
+      "region": "Region V (Bicol Region)",
+      "area": "Catanduanes",
+      "year": 2024,
+      "total": 1001.65,
+      "count": 12,
+      "average": 83.47083333333333
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "City of Iloilo (includes the province of Guimaras)",
+      "year": 2024,
+      "total": 10399.13,
+      "count": 12,
+      "average": 866.5941666666666
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Aklan",
+      "year": 2024,
+      "total": 2668.24,
+      "count": 12,
+      "average": 222.35333333333332
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Iloilo",
+      "year": 2024,
+      "total": 2065.04,
+      "count": 12,
+      "average": 172.08666666666667
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Capiz",
+      "year": 2024,
+      "total": 1924.71,
+      "count": 12,
+      "average": 160.3925
+    },
+    {
+      "region": "Region VI (Western Visayas)",
+      "area": "Antique",
+      "year": 2024,
+      "total": 1260.01,
+      "count": 12,
+      "average": 105.00083333333333
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "LTD Cebu",
+      "year": 2024,
+      "total": 42696.48,
+      "count": 12,
+      "average": 3558.04
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "City of Cebu",
+      "year": 2024,
+      "total": 22809.56,
+      "count": 12,
+      "average": 1900.7966666666666
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Cebu (includes Cities of Lapu-Lapu and Mandaue)",
+      "year": 2024,
+      "total": 21920.74,
+      "count": 12,
+      "average": 1826.7283333333332
+    },
+    {
+      "region": "Region VII (Central Visayas)",
+      "area": "Bohol",
+      "year": 2024,
+      "total": 4451.11,
+      "count": 12,
+      "average": 370.92583333333334
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "City of Tacloban (includes the province of Biliran)",
+      "year": 2024,
+      "total": 6884.94,
+      "count": 12,
+      "average": 573.745
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Leyte",
+      "year": 2024,
+      "total": 3429.54,
+      "count": 12,
+      "average": 285.795
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Samar",
+      "year": 2024,
+      "total": 1749.54,
+      "count": 12,
+      "average": 145.795
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Northern Samar",
+      "year": 2024,
+      "total": 1404.52,
+      "count": 12,
+      "average": 117.04333333333334
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Eastern Samar",
+      "year": 2024,
+      "total": 1217.29,
+      "count": 12,
+      "average": 101.44083333333333
+    },
+    {
+      "region": "Region VIII (Eastern Visayas)",
+      "area": "Southern Leyte",
+      "year": 2024,
+      "total": 1098.18,
+      "count": 12,
+      "average": 91.515
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "City of Cagayan de Oro",
+      "year": 2024,
+      "total": 10043.01,
+      "count": 12,
+      "average": 836.9175
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Bukidnon",
+      "year": 2024,
+      "total": 3758.13,
+      "count": 12,
+      "average": 313.1775
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Lanao del Norte (includes City of Iligan)",
+      "year": 2024,
+      "total": 2344.63,
+      "count": 12,
+      "average": 195.38583333333332
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Occidental",
+      "year": 2024,
+      "total": 2156.81,
+      "count": 12,
+      "average": 179.73416666666665
+    },
+    {
+      "region": "Region X (Northern Mindanao)",
+      "area": "Misamis Oriental (includes the province of Camiguin)",
+      "year": 2024,
+      "total": 1327.15,
+      "count": 12,
+      "average": 110.59583333333333
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "LTD Davao",
+      "year": 2024,
+      "total": 27735.83,
+      "count": 12,
+      "average": 2311.3191666666667
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "City of Davao",
+      "year": 2024,
+      "total": 15695.3,
+      "count": 12,
+      "average": 1307.9416666666666
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Norte and Davao de Oro",
+      "year": 2024,
+      "total": 5204.36,
+      "count": 12,
+      "average": 433.69666666666666
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao del Sur and Davao Occidental",
+      "year": 2024,
+      "total": 2635.75,
+      "count": 12,
+      "average": 219.64583333333334
+    },
+    {
+      "region": "Region XI (Davao Region)",
+      "area": "Davao Oriental",
+      "year": 2024,
+      "total": 1441.46,
+      "count": 12,
+      "average": 120.12166666666667
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "City of General Santos (includes the province of Sarangani)",
+      "year": 2024,
+      "total": 5519.65,
+      "count": 12,
+      "average": 459.97083333333336
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "South Cotabato",
+      "year": 2024,
+      "total": 3737.55,
+      "count": 12,
+      "average": 311.4625
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Cotabato",
+      "year": 2024,
+      "total": 2551.12,
+      "count": 12,
+      "average": 212.59333333333333
+    },
+    {
+      "region": "Region XII (SOCCSKSARGEN)",
+      "area": "Sultan Kudarat",
+      "year": 2024,
+      "total": 1767.2,
+      "count": 12,
+      "average": 147.26666666666668
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Norte (includes City of Butuan)",
+      "year": 2024,
+      "total": 4910.41,
+      "count": 12,
+      "average": 409.2008333333333
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Norte and Dinagat Islands",
+      "year": 2024,
+      "total": 2528.43,
+      "count": 12,
+      "average": 210.7025
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Surigao del Sur",
+      "year": 2024,
+      "total": 1885.55,
+      "count": 12,
+      "average": 157.12916666666666
+    },
+    {
+      "region": "Region XIII (Caraga)",
+      "area": "Agusan del Sur",
+      "year": 2024,
+      "total": 1695.67,
+      "count": 12,
+      "average": 141.30583333333334
+    }
+  ]
+}
