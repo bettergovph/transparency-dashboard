@@ -70,6 +70,9 @@ def load_csv_with_year(csv_path: str, default_year: Optional[int]) -> Optional[p
 
     # Clean column names (strip whitespace and BOM)
     df.columns = df.columns.str.strip().str.replace('\ufeff', '')
+    
+    # Lowercase all column names
+    df.columns = df.columns.str.lower()
 
     # Look for existing year column (case-insensitive)
     year_col = None
@@ -182,6 +185,10 @@ def main():
     # Combine all dataframes
     print(f"Combining {len(dataframes)} dataframes...")
     combined = pd.concat(dataframes, ignore_index=True)
+    
+    # Add incrementing ID column as the first column
+    print("Generating incrementing IDs...")
+    combined.insert(0, 'id', range(1, len(combined) + 1))
 
     # Write to Parquet using pyarrow with snappy compression
     print(f"Writing Parquet: {output_path}")
