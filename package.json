@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "seed": "node seed-meilisearch.mjs"
+    "seed": "node seed-meilisearch.mjs",
+    "search:stats": "node scripts/search-stats.mjs"
   },
   "dependencies": {
     "@dr.pogodin/react-helmet": "^3.0.4",
