@@ -1,0 +1,39 @@
+{
+  "metadata": {
+    "title": "GAA Yearly Totals",
+    "source": "General Appropriations Act (SQL Version)",
+    "total_items": 6
+  },
+  "data": [
+    {
+      "year": 2020,
+      "count": 593491,
+      "amount": 4099988785.0
+    },
+    {
+      "year": 2021,
+      "count": 498342,
+      "amount": 4506000000.0
+    },
+    {
+      "year": 2022,
+      "count": 628670,
+      "amount": 5023600000.0
+    },
+    {
+      "year": 2023,
+      "count": 650367,
+      "amount": 5268000000.0
+    },
+    {
+      "year": 2024,
+      "count": 682814,
+      "amount": 5767600000.0
+    },
+    {
+      "year": 2025,
+      "count": 723105,
+      "amount": 6326324300.0
+    }
+  ]
+}

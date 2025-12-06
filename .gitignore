@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 .env
 **.parquet
-# *.csv
+data/gaa/data/*.csv
 csv_batches/
 philgeps.tar.gz
 data/import.py
