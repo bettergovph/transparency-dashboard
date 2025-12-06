@@ -7,6 +7,7 @@ import Footer from '../Footer'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { toSlug } from '@/lib/utils'
+import { formatGAAAmount } from '@/lib/formatGAAAmount'
 
 interface Department {
   id: string
@@ -48,15 +49,7 @@ const DepartmentsListPage = () => {
     }
   }
 
-  const formatCurrency = (value: number) => {
-    if (value >= 1_000_000_000_000) {
-      return `₱${(value / 1_000_000_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}T`
-    } else if (value >= 1_000_000_000) {
-      return `₱${(value / 1_000_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
-    } else {
-      return `₱${(value / 1_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`
-    }
-  }
+  const formatCurrency = (value: number) => formatGAAAmount(value)
 
   // Filter and sort departments
   const filteredDepartments = departments

@@ -3,12 +3,14 @@ export interface BudgetDocument {
   year: number;
   agency: string;
   uacs_dpt_dsc: string; // department
-  uacs_gy_dsc: string; // agency
+  uacs_agy_dsc: string; // agency
   dsc: string; // description
   amt: number; // amount
   uacs_oper_dsc: string; // operating_unit
   uacs_fundsubcat_dsc: string; // sub_category
+  uacs_exp_cd: string; // expense code
   uacs_exp_dsc: string; // exp
+  uacs_sobj_cd: string; // object code
   uacs_sobj_dsc: string; // object
   uacs_div_dsc: string; // division
 }

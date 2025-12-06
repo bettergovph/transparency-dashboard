@@ -23,6 +23,7 @@ import {
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { searchBudgetDocuments } from '@/lib/meilisearch'
 import type { BudgetDocument } from '@/types/budget'
 import { Link } from 'react-router-dom'
@@ -126,18 +127,7 @@ const BudgetBrowser = () => {
     }
   }
 
-  const formatCurrency = (value: number) => {
-    if (value >= 1_000_000_000_000) {
-      const trillions = value / 1_000_000_000_000
-      return `₱${trillions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}T`
-    } else if (value >= 1_000_000_000) {
-      const billions = value / 1_000_000_000
-      return `₱${billions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
-    } else {
-      const millions = value / 1_000_000
-      return `₱${millions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`
-    }
-  }
+  const formatCurrency = (value: number) => formatGAAAmount(value)
 
   // Calculate current year stats
   const yearData = yearlyTotals.find(y => y.year === selectedYear)
@@ -161,7 +151,7 @@ const BudgetBrowser = () => {
     const csvContent = [
       'Year,ID,Agency,Department,Description,Amount,Operating Unit',
       ...results.slice(0, 1000).map(doc =>
-        `${doc.year},"${doc.id}","${doc.uacs_gy_dsc}","${doc.uacs_dpt_dsc}","${doc.dsc}",${doc.amt},"${doc.uacs_oper_dsc}"`
+        `${doc.year},"${doc.id}","${doc.uacs_agy_dsc}","${doc.uacs_dpt_dsc}","${doc.dsc}",${doc.amt},"${doc.uacs_oper_dsc}"`
       )
     ].join('\n')
 
@@ -484,7 +474,7 @@ const BudgetBrowser = () => {
                                 <div className="truncate" title={doc.uacs_dpt_dsc}>{doc.uacs_dpt_dsc}</div>
                               </td>
                               <td className="px-3 py-2 text-xs text-gray-700 max-w-xs">
-                                <div className="truncate" title={doc.uacs_gy_dsc}>{doc.uacs_gy_dsc}</div>
+                                <div className="truncate" title={doc.uacs_agy_dsc}>{doc.uacs_agy_dsc}</div>
                               </td>
                               <td className="px-3 py-2 text-xs text-gray-700 max-w-md">
                                 <div className="truncate" title={doc.dsc}>{doc.dsc}</div>

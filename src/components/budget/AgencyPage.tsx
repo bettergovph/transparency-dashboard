@@ -6,6 +6,7 @@ import Navigation from '../Navigation'
 import Footer from '../Footer'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { toSlug } from '@/lib/utils'
+import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, BarChart, Bar } from 'recharts'
 
 interface Agency {
@@ -121,15 +122,7 @@ const AgencyPage = () => {
     }
   }
 
-  const formatCurrency = (value: number) => {
-    if (value >= 1_000_000_000_000) {
-      return `₱${(value / 1_000_000_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}T`
-    } else if (value >= 1_000_000_000) {
-      return `₱${(value / 1_000_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
-    } else {
-      return `₱${(value / 1_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`
-    }
-  }
+  const formatCurrency = (value: number) => formatGAAAmount(value)
 
   if (loading) {
     return (
@@ -530,7 +523,20 @@ const AgencyPage = () => {
                     const percentage = totalAmount > 0 ? (objectYearData.amount / totalAmount) * 100 : 0
 
                     return (
-                      <div key={`${object.id}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600">
+                      <Link
+                        key={`${object.id}-${index}`}
+                        to={`/budget/departments/${deptSlug}/${agencySlug}/objects/${toSlug(object.description)}`}
+                        state={{
+                          objectId: object.id,
+                          objectCode: object.object_code,
+                          objectName: object.description,
+                          agencyId,
+                          agencyName: agency.description,
+                          departmentId,
+                          departmentName
+                        }}
+                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600 hover:bg-indigo-50 hover:border-l-indigo-800 transition-all cursor-pointer"
+                      >
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-2">
@@ -558,9 +564,12 @@ const AgencyPage = () => {
                             <div className="text-lg font-bold text-indigo-600">
                               {formatCurrency(objectYearData.amount)}
                             </div>
+                            <div className="text-xs text-indigo-600 mt-1">
+                              View Details →
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     )
                   })}
                   {filteredObjects.length === 0 && (

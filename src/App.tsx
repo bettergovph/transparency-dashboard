@@ -13,6 +13,7 @@ import BudgetBrowser from './components/budget/BudgetBrowser'
 import DepartmentsListPage from './components/budget/DepartmentsListPage'
 import DepartmentPage from './components/budget/DepartmentPage'
 import AgencyPage from './components/budget/AgencyPage'
+import ObjectDetailPage from './components/budget/ObjectDetailPage'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/budget/departments" element={<DepartmentsListPage />} />
         <Route path="/budget/departments/:slug" element={<DepartmentPage />} />
         <Route path="/budget/departments/:deptSlug/agencies/:agencySlug" element={<AgencyPage />} />
+        <Route path="/budget/departments/:deptSlug/:agencySlug/objects/:objectSlug" element={<ObjectDetailPage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />

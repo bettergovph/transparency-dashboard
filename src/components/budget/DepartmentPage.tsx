@@ -6,6 +6,7 @@ import Navigation from '../Navigation'
 import Footer from '../Footer'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { toSlug } from '@/lib/utils'
+import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
 interface Agency {
@@ -80,15 +81,7 @@ const DepartmentPage = () => {
     }
   }
 
-  const formatCurrency = (value: number) => {
-    if (value >= 1_000_000_000_000) {
-      return `₱${(value / 1_000_000_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}T`
-    } else if (value >= 1_000_000_000) {
-      return `₱${(value / 1_000_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
-    } else {
-      return `₱${(value / 1_000_000).toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`
-    }
-  }
+  const formatCurrency = (value: number) => formatGAAAmount(value)
 
   if (loading) {
     return (
