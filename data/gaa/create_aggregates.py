@@ -331,9 +331,14 @@ def main():
         print(f"✗ Failed to load parquet file: {e}")
         sys.exit(1)
     
-    # Ensure amt column is numeric
+    # Ensure amt column is numeric (should already be numeric from gaa_csv_to_parquet.py)
     if 'amt' in df.columns:
-        df['amt'] = pd.to_numeric(df['amt'], errors='coerce').fillna(0)
+        if df['amt'].dtype == 'object':
+            print("⚠ WARNING: 'amt' column is object type (should be numeric from import)")
+            print("  Converting to numeric with error handling...")
+            df['amt'] = pd.to_numeric(df['amt'], errors='coerce').fillna(0)
+        else:
+            print(f"✓ 'amt' column is already numeric ({df['amt'].dtype})")
     else:
         print("✗ 'amt' column not found in parquet file")
         sys.exit(1)

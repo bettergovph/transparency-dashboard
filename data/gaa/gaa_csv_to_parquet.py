@@ -25,6 +25,44 @@ from typing import Optional, List
 import pandas as pd
 
 
+def clean_numeric_value(val: str) -> float:
+    """
+    Clean and convert numeric values from CSV to float.
+    
+    Handles:
+    - Commas in numbers (543,636)
+    - Parentheses for negatives ((4,450) = -4,450)
+    - Plain negative numbers (-301,259)
+    - Empty/null/nan values
+    - Special cases like " -   "
+    
+    Args:
+        val: String value from CSV
+        
+    Returns:
+        Cleaned float value, or 0.0 if invalid
+    """
+    if not isinstance(val, str):
+        return 0.0
+    
+    val = val.strip()
+    
+    # Handle empty, nan, or dash-only values
+    if val in ('', 'nan', 'NaN', '-', ' -   ', 'null', 'NULL'):
+        return 0.0
+    
+    # Handle accounting format with parentheses (negative)
+    if val.startswith('(') and val.endswith(')'):
+        val = '-' + val[1:-1].replace(',', '').replace(' ', '')
+    else:
+        val = val.replace(',', '').replace(' ', '')
+    
+    try:
+        return float(val)
+    except (ValueError, TypeError):
+        return 0.0
+
+
 def extract_year_from_filename(filename: str) -> Optional[int]:
     """
     Try to extract a 4-digit year (2000-2099) from the filename.
@@ -107,9 +145,16 @@ def load_csv_with_year(csv_path: str, default_year: Optional[int]) -> Optional[p
         return None
 
     # Convert all columns to strings except year to avoid Parquet type conversion issues
-    # This ensures consistent data types across all CSV files
+    # Exception: 'amt' column should be converted to float for proper aggregation
     for col in df.columns:
-        if col != 'year':
+        if col == 'year':
+            continue  # year is already int
+        elif col == 'amt':
+            # Clean and convert amt column to float
+            print(f"    Converting 'amt' column to numeric...")
+            df[col] = df[col].apply(clean_numeric_value)
+        else:
+            # Keep other columns as strings for consistency
             df[col] = df[col].astype(str)
 
     return df
