@@ -39,19 +39,23 @@ END
 def create_department_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, Any]]:
     """
     Create department aggregates grouped by year using SQL.
+    Groups by uacs_dpt_dsc (description) as the unique identifier since department codes are NOT unique.
     """
     print("  → Creating department aggregates...")
     
     query = f"""
     SELECT 
-        department,
         uacs_dpt_dsc,
+        MIN(department) as dept_code,
         year,
         COUNT(*) as count,
         SUM({CLEAN_AMT_SQL}) as amount
     FROM gaa_data
-    GROUP BY department, uacs_dpt_dsc, year
-    ORDER BY department, year
+    WHERE uacs_dpt_dsc IS NOT NULL 
+      AND uacs_dpt_dsc != 'nan'
+      AND uacs_dpt_dsc != ''
+    GROUP BY uacs_dpt_dsc, year
+    ORDER BY uacs_dpt_dsc, year
     """
     
     result = con.execute(query).fetchall()
@@ -59,30 +63,31 @@ def create_department_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[st
     # Build nested structure
     departments = {}
     for row in result:
-        dept_id = str(row[0])
-        dept_desc = row[1]
+        dept_desc = row[0]
+        dept_code = str(row[1])
         year = str(int(row[2]))
         count = int(row[3])
         amount = float(row[4])
         
-        if dept_id not in departments:
-            departments[dept_id] = {
-                'id': dept_id,
+        if dept_desc not in departments:
+            departments[dept_desc] = {
+                'id': dept_desc,  # Use description as ID
+                'code': dept_code,  # Store code for reference
                 'description': dept_desc,
                 'years': {}
             }
         
-        departments[dept_id]['years'][year] = {
+        departments[dept_desc]['years'][year] = {
             'count': count,
             'amount': amount
         }
     
-    result_list = sorted(departments.values(), key=lambda x: x['id'])
+    result_list = sorted(departments.values(), key=lambda x: x['description'])
     print(f"    ✓ Generated {len(result_list)} departments")
     
     # Print debug info for first department
     if result_list:
-        print(f"    DEBUG: First department: {result_list[0]['id']} - {result_list[0]['description']}")
+        print(f"    DEBUG: First department: {result_list[0]['code']} - {result_list[0]['description'][:50]}")
         print(f"    DEBUG: Years: {list(result_list[0]['years'].keys())}")
         first_year = list(result_list[0]['years'].keys())[0] if result_list[0]['years'] else None
         if first_year:
@@ -94,53 +99,66 @@ def create_department_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[st
 def create_agency_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, Any]]:
     """
     Create agency aggregates grouped by year using SQL.
+    Groups by uacs_dpt_dsc + uacs_agy_dsc as composite key since codes are NOT unique.
     """
     print("  → Creating agency aggregates...")
     
     query = f"""
     SELECT 
-        agency,
+        uacs_dpt_dsc,
         uacs_agy_dsc,
-        department,
+        MIN(department) as dept_code,
+        MIN(agency) as agency_code,
         year,
         COUNT(*) as count,
         SUM({CLEAN_AMT_SQL}) as amount
     FROM gaa_data
-    GROUP BY agency, uacs_agy_dsc, department, year
-    ORDER BY agency, year
+    WHERE uacs_dpt_dsc IS NOT NULL 
+      AND uacs_dpt_dsc != 'nan'
+      AND uacs_dpt_dsc != ''
+      AND uacs_agy_dsc IS NOT NULL 
+      AND uacs_agy_dsc != 'nan'
+      AND uacs_agy_dsc != ''
+    GROUP BY uacs_dpt_dsc, uacs_agy_dsc, year
+    ORDER BY uacs_dpt_dsc, uacs_agy_dsc, year
     """
     
     result = con.execute(query).fetchall()
     
-    # Build nested structure
+    # Build nested structure with description-based composite keys
     agencies = {}
     for row in result:
-        agency_id = str(row[0])
+        dept_desc = row[0]
         agency_desc = row[1]
-        dept_id = str(row[2])
-        year = str(int(row[3]))
-        count = int(row[4])
-        amount = float(row[5])
+        dept_code = str(row[2])
+        agency_code = str(row[3])
+        year = str(int(row[4]))
+        count = int(row[5])
+        amount = float(row[6])
         
-        if agency_id not in agencies:
-            agencies[agency_id] = {
-                'id': agency_id,
+        composite_id = f"{dept_desc}::{agency_desc}"  # Composite key using descriptions
+        
+        if composite_id not in agencies:
+            agencies[composite_id] = {
+                'id': composite_id,
+                'agency_code': agency_code,
                 'description': agency_desc,
-                'department_id': dept_id,
+                'department_id': dept_desc,  # Reference to department description
+                'department_code': dept_code,
                 'years': {}
             }
         
-        agencies[agency_id]['years'][year] = {
+        agencies[composite_id]['years'][year] = {
             'count': count,
             'amount': amount
         }
     
-    result_list = sorted(agencies.values(), key=lambda x: x['id'])
+    result_list = sorted(agencies.values(), key=lambda x: (x['department_id'], x['description']))
     print(f"    ✓ Generated {len(result_list)} agencies")
     
     # Print debug info
     if result_list:
-        print(f"    DEBUG: First agency: {result_list[0]['id']} - {result_list[0]['description']}")
+        print(f"    DEBUG: First agency: {result_list[0]['agency_code']} - {result_list[0]['description'][:40]}")
         first_year = list(result_list[0]['years'].keys())[0] if result_list[0]['years'] else None
         if first_year:
             print(f"    DEBUG: {first_year} - count: {result_list[0]['years'][first_year]['count']:,}, amount: {result_list[0]['years'][first_year]['amount']:,.2f}")
@@ -151,47 +169,50 @@ def create_agency_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, A
 def create_fund_subcategory_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, Any]]:
     """
     Create fund sub-category aggregates using SQL.
+    Groups by department_desc + agency_desc + fund_desc as composite key.
     """
     print("  → Creating fund sub-category aggregates...")
     
     query = f"""
     SELECT 
+        uacs_dpt_dsc,
+        uacs_agy_dsc,
         uacs_fundsubcat_dsc,
-        department,
-        agency,
         year,
         COUNT(*) as count,
         SUM({CLEAN_AMT_SQL}) as amount
     FROM gaa_data
-    WHERE uacs_fundsubcat_dsc IS NOT NULL 
-      AND uacs_fundsubcat_dsc != ''
-    GROUP BY uacs_fundsubcat_dsc, department, agency, year
-    ORDER BY department, agency, uacs_fundsubcat_dsc, year
+    WHERE uacs_dpt_dsc IS NOT NULL AND uacs_dpt_dsc != 'nan' AND uacs_dpt_dsc != ''
+      AND uacs_agy_dsc IS NOT NULL AND uacs_agy_dsc != 'nan' AND uacs_agy_dsc != ''
+      AND uacs_fundsubcat_dsc IS NOT NULL AND uacs_fundsubcat_dsc != 'nan' AND uacs_fundsubcat_dsc != ''
+    GROUP BY uacs_dpt_dsc, uacs_agy_dsc, uacs_fundsubcat_dsc, year
+    ORDER BY uacs_dpt_dsc, uacs_agy_dsc, uacs_fundsubcat_dsc, year
     """
     
     result = con.execute(query).fetchall()
     
-    # Build nested structure
+    # Build nested structure with description-based composite keys
     fund_subcats = {}
     for row in result:
-        fund_desc = row[0]
-        dept_id = str(row[1])
-        agency_id = str(row[2])
+        dept_desc = row[0]
+        agency_desc = row[1]
+        fund_desc = row[2]
         year = str(int(row[3]))
         count = int(row[4])
         amount = float(row[5])
         
-        key = f"{fund_desc}_{dept_id}_{agency_id}"
+        composite_id = f"{dept_desc}::{agency_desc}::{fund_desc}"  # Triple composite key
         
-        if key not in fund_subcats:
-            fund_subcats[key] = {
+        if composite_id not in fund_subcats:
+            fund_subcats[composite_id] = {
+                'id': composite_id,
                 'description': fund_desc,
-                'department_id': dept_id,
-                'agency_id': agency_id,
+                'department_id': dept_desc,
+                'agency_id': f"{dept_desc}::{agency_desc}",  # Reference to agency composite ID
                 'years': {}
             }
         
-        fund_subcats[key]['years'][year] = {
+        fund_subcats[composite_id]['years'][year] = {
             'count': count,
             'amount': amount
         }
@@ -205,55 +226,58 @@ def create_fund_subcategory_aggregates(con: duckdb.DuckDBPyConnection) -> List[D
 def create_expense_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, Any]]:
     """
     Create expense category aggregates using SQL.
+    Groups by department_desc + agency_desc + expense_desc as composite key.
     """
     print("  → Creating expense category aggregates...")
     
     query = f"""
     SELECT 
+        uacs_dpt_dsc,
+        uacs_agy_dsc,
         uacs_exp_cd,
         uacs_exp_dsc,
-        department,
-        agency,
         year,
         COUNT(*) as count,
         SUM({CLEAN_AMT_SQL}) as amount
     FROM gaa_data
-    WHERE uacs_exp_dsc IS NOT NULL 
-      AND uacs_exp_dsc != ''
-    GROUP BY uacs_exp_cd, uacs_exp_dsc, department, agency, year
-    ORDER BY department, agency, uacs_exp_cd, year
+    WHERE uacs_dpt_dsc IS NOT NULL AND uacs_dpt_dsc != 'nan' AND uacs_dpt_dsc != ''
+      AND uacs_agy_dsc IS NOT NULL AND uacs_agy_dsc != 'nan' AND uacs_agy_dsc != ''
+      AND uacs_exp_dsc IS NOT NULL AND uacs_exp_dsc != 'nan' AND uacs_exp_dsc != ''
+    GROUP BY uacs_dpt_dsc, uacs_agy_dsc, uacs_exp_cd, uacs_exp_dsc, year
+    ORDER BY uacs_dpt_dsc, uacs_agy_dsc, uacs_exp_cd, year
     """
     
     result = con.execute(query).fetchall()
     
-    # Build nested structure
+    # Build nested structure with description-based composite keys
     expenses = {}
     for row in result:
-        exp_id = str(row[0])
-        exp_desc = row[1]
-        dept_id = str(row[2])
-        agency_id = str(row[3])
+        dept_desc = row[0]
+        agency_desc = row[1]
+        exp_code = str(row[2])
+        exp_desc = row[3]
         year = str(int(row[4]))
         count = int(row[5])
         amount = float(row[6])
         
-        key = f"{exp_id}_{dept_id}_{agency_id}"
+        composite_id = f"{dept_desc}::{agency_desc}::{exp_desc}"  # Triple composite key
         
-        if key not in expenses:
-            expenses[key] = {
-                'id': exp_id,
+        if composite_id not in expenses:
+            expenses[composite_id] = {
+                'id': composite_id,
+                'expense_code': exp_code,
                 'description': exp_desc,
-                'department_id': dept_id,
-                'agency_id': agency_id,
+                'department_id': dept_desc,
+                'agency_id': f"{dept_desc}::{agency_desc}",  # Reference to agency composite ID
                 'years': {}
             }
         
-        expenses[key]['years'][year] = {
+        expenses[composite_id]['years'][year] = {
             'count': count,
             'amount': amount
         }
     
-    result_list = sorted(expenses.values(), key=lambda x: (x['department_id'], x['agency_id'], x['id']))
+    result_list = sorted(expenses.values(), key=lambda x: (x['department_id'], x['agency_id'], x['expense_code']))
     print(f"    ✓ Generated {len(result_list)} expense categories")
     
     return result_list
@@ -262,55 +286,58 @@ def create_expense_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, 
 def create_object_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, Any]]:
     """
     Create object aggregates using SQL.
+    Groups by department_desc + agency_desc + object_desc as composite key.
     """
     print("  → Creating object aggregates...")
     
     query = f"""
     SELECT 
+        uacs_dpt_dsc,
+        uacs_agy_dsc,
         uacs_sobj_cd,
         uacs_sobj_dsc,
-        department,
-        agency,
         year,
         COUNT(*) as count,
         SUM({CLEAN_AMT_SQL}) as amount
     FROM gaa_data
-    WHERE uacs_sobj_dsc IS NOT NULL 
-      AND uacs_sobj_dsc != ''
-    GROUP BY uacs_sobj_cd, uacs_sobj_dsc, department, agency, year
-    ORDER BY department, agency, uacs_sobj_cd, year
+    WHERE uacs_dpt_dsc IS NOT NULL AND uacs_dpt_dsc != 'nan' AND uacs_dpt_dsc != ''
+      AND uacs_agy_dsc IS NOT NULL AND uacs_agy_dsc != 'nan' AND uacs_agy_dsc != ''
+      AND uacs_sobj_dsc IS NOT NULL AND uacs_sobj_dsc != 'nan' AND uacs_sobj_dsc != ''
+    GROUP BY uacs_dpt_dsc, uacs_agy_dsc, uacs_sobj_cd, uacs_sobj_dsc, year
+    ORDER BY uacs_dpt_dsc, uacs_agy_dsc, uacs_sobj_cd, year
     """
     
     result = con.execute(query).fetchall()
     
-    # Build nested structure
+    # Build nested structure with description-based composite keys
     objects = {}
     for row in result:
-        obj_id = str(row[0])
-        obj_desc = row[1]
-        dept_id = str(row[2])
-        agency_id = str(row[3])
+        dept_desc = row[0]
+        agency_desc = row[1]
+        obj_code = str(row[2])
+        obj_desc = row[3]
         year = str(int(row[4]))
         count = int(row[5])
         amount = float(row[6])
         
-        key = f"{obj_id}_{dept_id}_{agency_id}"
+        composite_id = f"{dept_desc}::{agency_desc}::{obj_desc}"  # Triple composite key
         
-        if key not in objects:
-            objects[key] = {
-                'id': obj_id,
+        if composite_id not in objects:
+            objects[composite_id] = {
+                'id': composite_id,
+                'object_code': obj_code,
                 'description': obj_desc,
-                'department_id': dept_id,
-                'agency_id': agency_id,
+                'department_id': dept_desc,
+                'agency_id': f"{dept_desc}::{agency_desc}",  # Reference to agency composite ID
                 'years': {}
             }
         
-        objects[key]['years'][year] = {
+        objects[composite_id]['years'][year] = {
             'count': count,
             'amount': amount
         }
     
-    result_list = sorted(objects.values(), key=lambda x: (x['department_id'], x['agency_id'], x['id']))
+    result_list = sorted(objects.values(), key=lambda x: (x['department_id'], x['agency_id'], x['object_code']))
     print(f"    ✓ Generated {len(result_list)} objects")
     
     return result_list
@@ -400,26 +427,30 @@ def print_data_sample(con: duckdb.DuckDBPyConnection):
         print(f"      Agency: {row[3]} ({row[4]})")
         print(f"      Amount: {row[5]} (type: {row[6]})")
     
-    # Check for problematic values
+    # Check for problematic values (only relevant if amt is VARCHAR)
     print("\n  → Checking for problematic amt values:")
     
-    problem_query = """
-    SELECT DISTINCT amt
-    FROM gaa_data
-    WHERE TRY_CAST(REPLACE(REPLACE(REPLACE(TRIM(COALESCE(amt, '0')), ',', ''), ' ', ''), '-', '0') AS DOUBLE) IS NULL
-       OR amt LIKE '%-%'
-       OR amt = ''
-       OR amt IS NULL
-    LIMIT 20
-    """
-    
-    problem_values = con.execute(problem_query).fetchall()
-    if problem_values:
-        print(f"    Found {len(problem_values)} problematic values:")
-        for val in problem_values:
-            print(f"      '{val[0]}'")
+    # Check if amt is numeric type first
+    if type_results and type_results[0][0] in ('DOUBLE', 'FLOAT', 'INTEGER', 'BIGINT'):
+        print("    ✓ Skipping - amt is already numeric type")
     else:
-        print("    No problematic values found")
+        problem_query = """
+        SELECT DISTINCT amt
+        FROM gaa_data
+        WHERE TRY_CAST(REPLACE(REPLACE(REPLACE(TRIM(COALESCE(CAST(amt AS VARCHAR), '0')), ',', ''), ' ', ''), '-', '0') AS DOUBLE) IS NULL
+           OR CAST(amt AS VARCHAR) LIKE '%-%'
+           OR amt = ''
+           OR amt IS NULL
+        LIMIT 20
+        """
+        
+        problem_values = con.execute(problem_query).fetchall()
+        if problem_values:
+            print(f"    Found {len(problem_values)} problematic values:")
+            for val in problem_values:
+                print(f"      '{val[0]}'")
+        else:
+            print("    No problematic values found")
     
     # Check for data type issues
     print("\n  → Checking data types and statistics:")

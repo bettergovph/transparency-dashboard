@@ -9,24 +9,27 @@ import { toSlug } from '@/lib/utils'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, BarChart, Bar } from 'recharts'
 
 interface Agency {
-  id: string
+  id: string  // Composite key: "department_id-agency_code"
+  agency_code: string  // Original agency code
   description: string
   department_id: string
   years: Record<string, { count: number; amount: number }>
 }
 
 interface FundSubCategory {
+  id: string  // Composite key: "department_id-agency_code-description"
   description: string
   department_id: string
-  agency_id: string
+  agency_id: string  // References agency composite ID
   years: Record<string, { count: number; amount: number }>
 }
 
 interface Expense {
-  id: string
+  id: string  // Composite key: "department_id-agency_code-expense_code"
+  expense_code: string  // Original expense code
   description: string
   department_id: string
-  agency_id: string
+  agency_id: string  // References agency composite ID
   years: Record<string, { count: number; amount: number }>
 }
 
@@ -79,16 +82,20 @@ const AgencyPage = () => {
           setSelectedYear(years[0])
         }
 
-        // Filter fund subcategories and expenses for this agency
+        // Filter fund subcategories and expenses for this agency using composite ID
         const agencyFunds = fundData.data.filter((f: FundSubCategory) =>
-          f.department_id === foundAgency.department_id && f.agency_id === foundAgency.id
+          f.agency_id === foundAgency.id  // Match using composite agency ID
         )
         const agencyExpenses = expensesData.data.filter((e: Expense) =>
-          e.department_id === foundAgency.department_id && e.agency_id === foundAgency.id
+          e.agency_id === foundAgency.id  // Match using composite agency ID
         )
+
+        console.log(`Found ${agencyFunds.length} funds and ${agencyExpenses.length} expenses for agency ${foundAgency.id}`)
 
         setFundSubCategories(agencyFunds)
         setExpenses(agencyExpenses)
+      } else {
+        console.log('Agency not found:', { agencyId, agencySlug })
       }
 
       setLoading(false)
@@ -244,8 +251,8 @@ const AgencyPage = () => {
                   key={year}
                   onClick={() => setSelectedYear(year)}
                   className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
                     }`}
                 >
                   {year}
@@ -367,8 +374,8 @@ const AgencyPage = () => {
                 <button
                   onClick={() => setActiveTab('fund_subcategories')}
                   className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'fund_subcategories'
-                      ? 'border-b-2 border-blue-600 text-blue-600'
-                      : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-blue-600 text-blue-600'
+                    : 'text-gray-600 hover:text-gray-900'
                     }`}
                 >
                   Fund Sub-Categories ({filteredFunds.length})
@@ -376,8 +383,8 @@ const AgencyPage = () => {
                 <button
                   onClick={() => setActiveTab('expenses')}
                   className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'expenses'
-                      ? 'border-b-2 border-blue-600 text-blue-600'
-                      : 'text-gray-600 hover:text-gray-900'
+                    ? 'border-b-2 border-blue-600 text-blue-600'
+                    : 'text-gray-600 hover:text-gray-900'
                     }`}
                 >
                   Expense Categories ({filteredExpenses.length})
@@ -454,7 +461,7 @@ const AgencyPage = () => {
                             </div>
 
                             <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
-                              <span>Code: {expense.id} • {expenseYearData.count.toLocaleString()} items</span>
+                              <span>Code: {expense.expense_code} • {expenseYearData.count.toLocaleString()} items</span>
                               <span className="font-semibold">{percentage.toFixed(2)}%</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-1.5">

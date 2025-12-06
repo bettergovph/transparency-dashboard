@@ -81,9 +81,12 @@ def create_agency_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Create agency aggregates grouped by year, with parent department reference.
     
+    Note: Agency IDs are not unique across departments, so we use composite keys.
+    
     Returns list of:
     {
-      "id": agency_id,
+      "id": "department_id-agency_id" (composite key),
+      "agency_code": agency_id (original code),
       "description": agency_description,
       "department_id": parent_department_id,
       "years": { "2025": { "count": X, "amount": Y }, ... }
@@ -98,25 +101,29 @@ def create_agency_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     
     grouped.columns = ['agency', 'uacs_agy_dsc', 'department', 'year', 'count', 'amount']
     
-    # Build nested structure
+    # Build nested structure with composite keys
     agencies = {}
     for _, row in grouped.iterrows():
-        agency_id = str(row['agency'])
-        if agency_id not in agencies:
-            agencies[agency_id] = {
-                'id': agency_id,
+        dept_id = str(row['department'])
+        agency_code = str(row['agency'])
+        composite_id = f"{dept_id}-{agency_code}"  # Composite key
+        
+        if composite_id not in agencies:
+            agencies[composite_id] = {
+                'id': composite_id,
+                'agency_code': agency_code,
                 'description': row['uacs_agy_dsc'],
-                'department_id': str(row['department']),
+                'department_id': dept_id,
                 'years': {}
             }
         
         year = str(int(row['year']))
-        agencies[agency_id]['years'][year] = {
+        agencies[composite_id]['years'][year] = {
             'count': int(row['count']),
             'amount': float(row['amount'])
         }
     
-    result = sorted(agencies.values(), key=lambda x: x['id'])
+    result = sorted(agencies.values(), key=lambda x: (x['department_id'], x['agency_code']))
     print(f"    ✓ Generated {len(result)} agencies")
     return result
 
@@ -124,6 +131,7 @@ def create_agency_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
 def create_fund_subcategory_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Create fund sub-category aggregates with parent references.
+    Uses composite keys since fund subcategories may repeat across dept/agency combos.
     """
     print("  → Creating fund sub-category aggregates...")
     
@@ -138,22 +146,25 @@ def create_fund_subcategory_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]
     
     grouped.columns = ['uacs_fundsubcat_dsc', 'department', 'agency', 'year', 'count', 'amount']
     
-    # Build nested structure
+    # Build nested structure with composite keys
     fund_subcats = {}
     for _, row in grouped.iterrows():
-        fund_id = row['uacs_fundsubcat_dsc']
-        key = f"{fund_id}_{row['department']}_{row['agency']}"
+        dept_id = str(row['department'])
+        agency_code = str(row['agency'])
+        fund_desc = row['uacs_fundsubcat_dsc']
+        composite_id = f"{dept_id}-{agency_code}-{fund_desc}"  # Composite key
         
-        if key not in fund_subcats:
-            fund_subcats[key] = {
-                'description': fund_id,
-                'department_id': str(row['department']),
-                'agency_id': str(row['agency']),
+        if composite_id not in fund_subcats:
+            fund_subcats[composite_id] = {
+                'id': composite_id,
+                'description': fund_desc,
+                'department_id': dept_id,
+                'agency_id': f"{dept_id}-{agency_code}",  # Reference to agency composite ID
                 'years': {}
             }
         
         year = str(int(row['year']))
-        fund_subcats[key]['years'][year] = {
+        fund_subcats[composite_id]['years'][year] = {
             'count': int(row['count']),
             'amount': float(row['amount'])
         }
@@ -166,6 +177,7 @@ def create_fund_subcategory_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]
 def create_expense_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Create expense category aggregates with parent references.
+    Uses composite keys since expense codes may repeat across dept/agency combos.
     """
     print("  → Creating expense category aggregates...")
     
@@ -180,28 +192,31 @@ def create_expense_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     
     grouped.columns = ['uacs_exp_cd', 'uacs_exp_dsc', 'department', 'agency', 'year', 'count', 'amount']
     
-    # Build nested structure
+    # Build nested structure with composite keys
     expenses = {}
     for _, row in grouped.iterrows():
-        exp_id = str(row['uacs_exp_cd'])
-        key = f"{exp_id}_{row['department']}_{row['agency']}"
+        dept_id = str(row['department'])
+        agency_code = str(row['agency'])
+        exp_code = str(row['uacs_exp_cd'])
+        composite_id = f"{dept_id}-{agency_code}-{exp_code}"  # Composite key
         
-        if key not in expenses:
-            expenses[key] = {
-                'id': exp_id,
+        if composite_id not in expenses:
+            expenses[composite_id] = {
+                'id': composite_id,
+                'expense_code': exp_code,
                 'description': row['uacs_exp_dsc'],
-                'department_id': str(row['department']),
-                'agency_id': str(row['agency']),
+                'department_id': dept_id,
+                'agency_id': f"{dept_id}-{agency_code}",  # Reference to agency composite ID
                 'years': {}
             }
         
         year = str(int(row['year']))
-        expenses[key]['years'][year] = {
+        expenses[composite_id]['years'][year] = {
             'count': int(row['count']),
             'amount': float(row['amount'])
         }
     
-    result = sorted(expenses.values(), key=lambda x: (x['department_id'], x['agency_id'], x['id']))
+    result = sorted(expenses.values(), key=lambda x: (x['department_id'], x['agency_id'], x['expense_code']))
     print(f"    ✓ Generated {len(result)} expense categories")
     return result
 
@@ -209,6 +224,7 @@ def create_expense_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
 def create_object_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Create object aggregates with parent references.
+    Uses composite keys since object codes may repeat across dept/agency combos.
     """
     print("  → Creating object aggregates...")
     
@@ -223,28 +239,31 @@ def create_object_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     
     grouped.columns = ['uacs_sobj_cd', 'uacs_sobj_dsc', 'department', 'agency', 'year', 'count', 'amount']
     
-    # Build nested structure
+    # Build nested structure with composite keys
     objects = {}
     for _, row in grouped.iterrows():
-        obj_id = str(row['uacs_sobj_cd'])
-        key = f"{obj_id}_{row['department']}_{row['agency']}"
+        dept_id = str(row['department'])
+        agency_code = str(row['agency'])
+        obj_code = str(row['uacs_sobj_cd'])
+        composite_id = f"{dept_id}-{agency_code}-{obj_code}"  # Composite key
         
-        if key not in objects:
-            objects[key] = {
-                'id': obj_id,
+        if composite_id not in objects:
+            objects[composite_id] = {
+                'id': composite_id,
+                'object_code': obj_code,
                 'description': row['uacs_sobj_dsc'],
-                'department_id': str(row['department']),
-                'agency_id': str(row['agency']),
+                'department_id': dept_id,
+                'agency_id': f"{dept_id}-{agency_code}",  # Reference to agency composite ID
                 'years': {}
             }
         
         year = str(int(row['year']))
-        objects[key]['years'][year] = {
+        objects[composite_id]['years'][year] = {
             'count': int(row['count']),
             'amount': float(row['amount'])
         }
     
-    result = sorted(objects.values(), key=lambda x: (x['department_id'], x['agency_id'], x['id']))
+    result = sorted(objects.values(), key=lambda x: (x['department_id'], x['agency_id'], x['object_code']))
     print(f"    ✓ Generated {len(result)} objects")
     return result
 

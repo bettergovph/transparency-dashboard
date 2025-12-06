@@ -9,7 +9,8 @@ import { toSlug } from '@/lib/utils'
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts'
 
 interface Agency {
-  id: string
+  id: string  // Composite key: "department_id-agency_code"
+  agency_code: string  // Original agency code
   description: string
   department_id: string
   years: Record<string, { count: number; amount: number }>
@@ -40,35 +41,38 @@ const DepartmentPage = () => {
   const loadData = async () => {
     try {
       setLoading(true)
-      
+
       const [deptRes, agenciesRes] = await Promise.all([
         fetch('/data/gaa/aggregates/departments.json'),
         fetch('/data/gaa/aggregates/agencies.json')
       ])
-      
+
       const deptData = await deptRes.json()
       const agenciesData = await agenciesRes.json()
-      
+
       // Find the department
-      const foundDept = deptData.data.find((d: Department) => 
+      const foundDept = deptData.data.find((d: Department) =>
         d.id === departmentId || toSlug(d.description) === slug
       )
-      
+
       if (foundDept) {
         setDepartment(foundDept)
-        
+
         // Get years
         const years = Object.keys(foundDept.years).map(Number).sort((a, b) => b - a)
         setAvailableYears(years)
         if (years.length > 0) {
           setSelectedYear(years[0])
         }
-        
+
         // Filter agencies for this department
         const deptAgencies = agenciesData.data.filter((a: Agency) => a.department_id === foundDept.id)
+        console.log(`Found ${deptAgencies.length} agencies for department ${foundDept.id}:`, deptAgencies.slice(0, 3))
         setAgencies(deptAgencies)
+      } else {
+        console.log('Department not found:', { departmentId, slug, available: deptData.data.map((d: any) => ({ id: d.id, slug: toSlug(d.description) })).slice(0, 5) })
       }
-      
+
       setLoading(false)
     } catch (error) {
       console.error('Error loading data:', error)
@@ -134,6 +138,8 @@ const DepartmentPage = () => {
       return bAmount - aAmount
     })
 
+  console.log(`Filtered agencies for ${selectedYear}:`, filteredAgencies.length, 'out of', agencies.length)
+
   // Year-over-year data
   const yearOverYearData = availableYears
     .sort((a, b) => a - b)
@@ -189,7 +195,7 @@ const DepartmentPage = () => {
               <ArrowLeft className="h-4 w-4" />
               Back to all departments
             </Link>
-            
+
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 bg-blue-600 rounded-lg">
                 <Building2 className="h-6 w-6 text-white" />
@@ -206,11 +212,10 @@ const DepartmentPage = () => {
                 <button
                   key={year}
                   onClick={() => setSelectedYear(year)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                    selectedYear === year
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-white text-gray-700 hover:bg-gray-100'
-                  }`}
+                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-white text-gray-700 hover:bg-gray-100'
+                    }`}
                 >
                   {year}
                 </button>
@@ -325,13 +330,13 @@ const DepartmentPage = () => {
                 {filteredAgencies.map((agency, index) => {
                   const agencyYearData = agency.years[String(selectedYear)]
                   const percentage = totalAmount > 0 ? (agencyYearData.amount / totalAmount) * 100 : 0
-                  
+
                   return (
                     <Link
                       key={agency.id}
                       to={`/budget/departments/${slug}/agencies/${toSlug(agency.description)}`}
-                      state={{ 
-                        agencyId: agency.id, 
+                      state={{
+                        agencyId: agency.id,
                         agencyName: agency.description,
                         departmentId: department.id,
                         departmentName: department.description
@@ -349,7 +354,7 @@ const DepartmentPage = () => {
                                 {agency.description}
                               </h3>
                             </div>
-                            
+
                             <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
                               <span>Agency ID: {agency.id}</span>
                               <span className="font-semibold">{percentage.toFixed(2)}% of dept budget</span>
