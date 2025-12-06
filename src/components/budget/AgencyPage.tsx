@@ -53,44 +53,44 @@ const AgencyPage = () => {
   const loadData = async () => {
     try {
       setLoading(true)
-      
+
       const [agenciesRes, fundRes, expensesRes] = await Promise.all([
         fetch('/data/gaa/aggregates/agencies.json'),
         fetch('/data/gaa/aggregates/fund_subcategories.json'),
         fetch('/data/gaa/aggregates/expenses.json')
       ])
-      
+
       const agenciesData = await agenciesRes.json()
       const fundData = await fundRes.json()
       const expensesData = await expensesRes.json()
-      
+
       // Find the agency
-      const foundAgency = agenciesData.data.find((a: Agency) => 
+      const foundAgency = agenciesData.data.find((a: Agency) =>
         a.id === agencyId || toSlug(a.description) === agencySlug
       )
-      
+
       if (foundAgency) {
         setAgency(foundAgency)
-        
+
         // Get years
         const years = Object.keys(foundAgency.years).map(Number).sort((a, b) => b - a)
         setAvailableYears(years)
         if (years.length > 0) {
           setSelectedYear(years[0])
         }
-        
+
         // Filter fund subcategories and expenses for this agency
-        const agencyFunds = fundData.data.filter((f: FundSubCategory) => 
+        const agencyFunds = fundData.data.filter((f: FundSubCategory) =>
           f.department_id === foundAgency.department_id && f.agency_id === foundAgency.id
         )
-        const agencyExpenses = expensesData.data.filter((e: Expense) => 
+        const agencyExpenses = expensesData.data.filter((e: Expense) =>
           e.department_id === foundAgency.department_id && e.agency_id === foundAgency.id
         )
-        
+
         setFundSubCategories(agencyFunds)
         setExpenses(agencyExpenses)
       }
-      
+
       setLoading(false)
     } catch (error) {
       console.error('Error loading data:', error)
@@ -218,7 +218,7 @@ const AgencyPage = () => {
 
           {/* Header */}
           <div className="mb-8">
-            <Link 
+            <Link
               to={`/budget/departments/${deptSlug}`}
               state={{ departmentId, departmentName }}
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4"
@@ -226,7 +226,7 @@ const AgencyPage = () => {
               <ArrowLeft className="h-4 w-4" />
               Back to {departmentName}
             </Link>
-            
+
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 bg-green-600 rounded-lg">
                 <Building2 className="h-6 w-6 text-white" />
@@ -243,11 +243,10 @@ const AgencyPage = () => {
                 <button
                   key={year}
                   onClick={() => setSelectedYear(year)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                    selectedYear === year
+                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
                       ? 'bg-blue-600 text-white shadow-lg'
                       : 'bg-white text-gray-700 hover:bg-gray-100'
-                  }`}
+                    }`}
                 >
                   {year}
                 </button>
@@ -367,21 +366,19 @@ const AgencyPage = () => {
               <div className="flex items-center gap-4 border-b">
                 <button
                   onClick={() => setActiveTab('fund_subcategories')}
-                  className={`px-4 py-2 font-semibold text-sm transition-all ${
-                    activeTab === 'fund_subcategories'
+                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'fund_subcategories'
                       ? 'border-b-2 border-blue-600 text-blue-600'
                       : 'text-gray-600 hover:text-gray-900'
-                  }`}
+                    }`}
                 >
                   Fund Sub-Categories ({filteredFunds.length})
                 </button>
                 <button
                   onClick={() => setActiveTab('expenses')}
-                  className={`px-4 py-2 font-semibold text-sm transition-all ${
-                    activeTab === 'expenses'
+                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'expenses'
                       ? 'border-b-2 border-blue-600 text-blue-600'
                       : 'text-gray-600 hover:text-gray-900'
-                  }`}
+                    }`}
                 >
                   Expense Categories ({filteredExpenses.length})
                 </button>
@@ -393,7 +390,7 @@ const AgencyPage = () => {
                   {filteredFunds.map((fund, index) => {
                     const fundYearData = fund.years[String(selectedYear)]
                     const percentage = totalAmount > 0 ? (fundYearData.amount / totalAmount) * 100 : 0
-                    
+
                     return (
                       <div key={`${fund.description}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-purple-600">
                         <div className="flex items-center justify-between gap-4">
@@ -406,7 +403,7 @@ const AgencyPage = () => {
                                 {fund.description}
                               </h4>
                             </div>
-                            
+
                             <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
                               <span>{fundYearData.count.toLocaleString()} items</span>
                               <span className="font-semibold">{percentage.toFixed(2)}%</span>
@@ -442,7 +439,7 @@ const AgencyPage = () => {
                   {filteredExpenses.map((expense, index) => {
                     const expenseYearData = expense.years[String(selectedYear)]
                     const percentage = totalAmount > 0 ? (expenseYearData.amount / totalAmount) * 100 : 0
-                    
+
                     return (
                       <div key={`${expense.id}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-orange-600">
                         <div className="flex items-center justify-between gap-4">
@@ -455,7 +452,7 @@ const AgencyPage = () => {
                                 {expense.description}
                               </h4>
                             </div>
-                            
+
                             <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
                               <span>Code: {expense.id} • {expenseYearData.count.toLocaleString()} items</span>
                               <span className="font-semibold">{percentage.toFixed(2)}%</span>

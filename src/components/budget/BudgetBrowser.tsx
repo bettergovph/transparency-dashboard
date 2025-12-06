@@ -52,7 +52,7 @@ const BudgetBrowser = () => {
   const [loading, setLoading] = useState(false)
   const [isDataLoading, setIsDataLoading] = useState(true)
   const [selectedYear, setSelectedYear] = useState<number>(2025)
-  
+
   // Aggregate data
   const [yearlyTotals, setYearlyTotals] = useState<YearlyTotal[]>([])
   const [departments, setDepartments] = useState<Department[]>([])
@@ -62,13 +62,13 @@ const BudgetBrowser = () => {
   useEffect(() => {
     loadAggregateData()
   }, [])
-  
+
   useEffect(() => {
     if (availableYears.length > 0 && !selectedYear) {
       setSelectedYear(availableYears[0])
     }
   }, [availableYears, selectedYear])
-  
+
   useEffect(() => {
     if (selectedYear) {
       performSearch()
@@ -78,27 +78,27 @@ const BudgetBrowser = () => {
   const loadAggregateData = async () => {
     try {
       setIsDataLoading(true)
-      
+
       const [yearlyRes, departmentsRes, agenciesRes] = await Promise.all([
         fetch('/data/gaa/aggregates/yearly_totals.json'),
         fetch('/data/gaa/aggregates/departments.json'),
         fetch('/data/gaa/aggregates/agencies.json')
       ])
-      
+
       const yearlyData = await yearlyRes.json()
       const departmentsData = await departmentsRes.json()
       const agenciesData = await agenciesRes.json()
-      
+
       setYearlyTotals(yearlyData.data)
       setDepartments(departmentsData.data)
       setAgencies(agenciesData.data)
-      
+
       const years = yearlyData.data.map((y: YearlyTotal) => y.year).sort((a: number, b: number) => b - a)
       setAvailableYears(years)
       if (years.length > 0) {
         setSelectedYear(years[0])
       }
-      
+
       setIsDataLoading(false)
     } catch (error) {
       console.error('Error loading aggregate data:', error)
@@ -160,7 +160,7 @@ const BudgetBrowser = () => {
   const downloadCSV = () => {
     const csvContent = [
       'Year,ID,Agency,Department,Description,Amount,Operating Unit',
-      ...results.slice(0, 1000).map(doc => 
+      ...results.slice(0, 1000).map(doc =>
         `${doc.year},"${doc.id}","${doc.uacs_gy_dsc}","${doc.uacs_dpt_dsc}","${doc.dsc}",${doc.amt},"${doc.uacs_oper_dsc}"`
       )
     ].join('\n')
@@ -306,7 +306,7 @@ const BudgetBrowser = () => {
                   <div>
                     <h3 className="text-sm font-semibold text-amber-900 mb-1">Data Preview Notice</h3>
                     <p className="text-sm text-amber-800 mb-2">
-                      This is a preview showing the first 100 budget line items for {selectedYear}. 
+                      This is a preview showing the first 100 budget line items for {selectedYear}.
                       For detailed hierarchical browsing by department, agency, fund categories, and expenses,
                       visit the <Link to="/budget/departments" className="font-semibold underline hover:text-amber-900">Departments Browser</Link>.
                     </p>

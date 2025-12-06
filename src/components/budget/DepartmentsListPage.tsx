@@ -31,7 +31,7 @@ const DepartmentsListPage = () => {
       const response = await fetch('/data/gaa/aggregates/departments.json')
       const data = await response.json()
       setDepartments(data.data)
-      
+
       // Extract available years from first department
       if (data.data.length > 0) {
         const years = Object.keys(data.data[0].years).map(Number).sort((a, b) => b - a)
@@ -40,7 +40,7 @@ const DepartmentsListPage = () => {
           setSelectedYear(years[0])
         }
       }
-      
+
       setLoading(false)
     } catch (error) {
       console.error('Error loading departments:', error)
@@ -63,7 +63,7 @@ const DepartmentsListPage = () => {
     .filter(dept => {
       const hasDataForYear = dept.years[String(selectedYear)]?.amount > 0
       const matchesSearch = dept.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           dept.id.includes(searchQuery)
+        dept.id.includes(searchQuery)
       return hasDataForYear && matchesSearch
     })
     .sort((a, b) => {
@@ -124,11 +124,10 @@ const DepartmentsListPage = () => {
                 <button
                   key={year}
                   onClick={() => setSelectedYear(year)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${
-                    selectedYear === year
+                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
                       ? 'bg-blue-600 text-white shadow-lg'
                       : 'bg-white text-gray-700 hover:bg-gray-100'
-                  }`}
+                    }`}
                 >
                   {year}
                 </button>
@@ -194,7 +193,7 @@ const DepartmentsListPage = () => {
             {filteredDepartments.map((dept, index) => {
               const yearData = dept.years[String(selectedYear)]
               const percentage = totalBudget > 0 ? (yearData.amount / totalBudget) * 100 : 0
-              
+
               return (
                 <Link
                   key={dept.id}
@@ -216,7 +215,7 @@ const DepartmentsListPage = () => {
                               <p className="text-sm text-gray-500">Department ID: {dept.id}</p>
                             </div>
                           </div>
-                          
+
                           {/* Progress Bar */}
                           <div className="mt-3">
                             <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
