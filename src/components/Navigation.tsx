@@ -196,7 +196,7 @@ const Navigation = () => {
                     : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                     }`}
                 >
-                  <DollarSign className="h-4 w-4" />
+                  <span className="text-gray-700 mr-1">₱</span>
                   Budget
                   <ChevronDown className={`h-4 w-4 transition-transform ${budgetDropdownOpen ? 'rotate-180' : ''}`} />
                 </button>

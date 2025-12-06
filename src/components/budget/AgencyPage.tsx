@@ -51,6 +51,8 @@ const AgencyPage = () => {
   const departmentId = location.state?.departmentId
   const departmentName = location.state?.departmentName
 
+  // Get department info from either state or loaded data
+  const [department, setDepartment] = useState<{ id: string, description: string } | null>(null)
   const [agency, setAgency] = useState<Agency | null>(null)
   const [fundSubCategories, setFundSubCategories] = useState<FundSubCategory[]>([])
   const [expenses, setExpenses] = useState<Expense[]>([])
@@ -68,17 +70,19 @@ const AgencyPage = () => {
     try {
       setLoading(true)
 
-      const [agenciesRes, fundRes, expensesRes, objectsRes] = await Promise.all([
+      const [agenciesRes, fundRes, expensesRes, objectsRes, departmentsRes] = await Promise.all([
         fetch('/data/gaa/aggregates/agencies.json'),
         fetch('/data/gaa/aggregates/fund_subcategories.json'),
         fetch('/data/gaa/aggregates/expenses.json'),
-        fetch('/data/gaa/aggregates/objects.json')
+        fetch('/data/gaa/aggregates/objects.json'),
+        fetch('/data/gaa/aggregates/departments.json')
       ])
 
       const agenciesData = await agenciesRes.json()
       const fundData = await fundRes.json()
       const expensesData = await expensesRes.json()
       const objectsData = await objectsRes.json()
+      const departmentsData = await departmentsRes.json()
 
       // Find the agency
       const foundAgency = agenciesData.data.find((a: Agency) =>
@@ -87,6 +91,12 @@ const AgencyPage = () => {
 
       if (foundAgency) {
         setAgency(foundAgency)
+
+        // Find and set the department for breadcrumb
+        const foundDept = departmentsData.data.find((d: any) => d.id === foundAgency.department_id)
+        if (foundDept) {
+          setDepartment({ id: foundDept.id, description: foundDept.description })
+        }
 
         // Get years
         const years = Object.keys(foundAgency.years).map(Number).sort((a, b) => b - a)
@@ -233,8 +243,8 @@ const AgencyPage = () => {
             <ChevronRight className="h-4 w-4" />
             <Link to="/budget/departments" className="hover:text-blue-600">Departments</Link>
             <ChevronRight className="h-4 w-4" />
-            <Link to={`/budget/departments/${deptSlug}`} state={{ departmentId, departmentName }} className="hover:text-blue-600">
-              {departmentName}
+            <Link to={`/budget/departments/${deptSlug}`} state={{ departmentId: department?.id, departmentName: department?.description }} className="hover:text-blue-600">
+              {department?.description || departmentName || 'Department'}
             </Link>
             <ChevronRight className="h-4 w-4" />
             <span className="text-gray-900 font-medium">{agency.description}</span>

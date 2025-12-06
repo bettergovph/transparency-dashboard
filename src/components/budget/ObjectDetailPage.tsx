@@ -28,6 +28,53 @@ const ObjectDetailPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 50
 
+  // Load breadcrumb data
+  const [department, setDepartment] = useState<{ id: string, description: string } | null>(null)
+  const [agency, setAgency] = useState<{ id: string, description: string } | null>(null)
+
+  // Load department and agency data for breadcrumbs
+  useEffect(() => {
+    const loadBreadcrumbData = async () => {
+      try {
+        const [deptRes, agencyRes] = await Promise.all([
+          fetch('/data/gaa/aggregates/departments.json'),
+          fetch('/data/gaa/aggregates/agencies.json')
+        ])
+        const deptData = await deptRes.json()
+        const agencyData = await agencyRes.json()
+
+        // Find department by ID
+        if (departmentId) {
+          const foundDept = deptData.data.find((d: any) => d.id === departmentId)
+          if (foundDept) {
+            setDepartment({ id: foundDept.id, description: foundDept.description })
+          }
+        }
+
+        // Find agency by ID
+        if (agencyId) {
+          const foundAgency = agencyData.data.find((a: any) => a.id === agencyId)
+          if (foundAgency) {
+            setAgency({ id: foundAgency.id, description: foundAgency.description })
+            // Also set department if not already set
+            if (!department && !departmentId) {
+              const foundDept = deptData.data.find((d: any) => d.id === foundAgency.department_id)
+              if (foundDept) {
+                setDepartment({ id: foundDept.id, description: foundDept.description })
+              }
+            }
+          }
+        }
+      } catch (error) {
+        console.error('Error loading breadcrumb data:', error)
+      }
+    }
+
+    if (!department || !agency) {
+      loadBreadcrumbData()
+    }
+  }, [departmentId, agencyId, department, agency])
+
   useEffect(() => {
     loadData()
   }, [objectCode, selectedYear, currentPage])
@@ -129,16 +176,16 @@ const ObjectDetailPage = () => {
             <ChevronRight className="h-4 w-4" />
             <Link to="/budget/departments" className="hover:text-blue-600">Departments</Link>
             <ChevronRight className="h-4 w-4" />
-            <Link to={`/budget/departments/${deptSlug}`} state={{ departmentId, departmentName }} className="hover:text-blue-600">
-              {departmentName}
+            <Link to={`/budget/departments/${deptSlug}`} state={{ departmentId: department?.id, departmentName: department?.description }} className="hover:text-blue-600">
+              {department?.description || departmentName || 'Department'}
             </Link>
             <ChevronRight className="h-4 w-4" />
             <Link
               to={`/budget/departments/${deptSlug}/${agencySlug}`}
-              state={{ agencyId, agencyName, departmentId, departmentName }}
+              state={{ agencyId: agency?.id, agencyName: agency?.description, departmentId: department?.id, departmentName: department?.description }}
               className="hover:text-blue-600"
             >
-              {agencyName}
+              {agency?.description || agencyName || 'Agency'}
             </Link>
             <ChevronRight className="h-4 w-4" />
             <span className="text-gray-900 font-medium">{objectName}</span>
@@ -148,11 +195,11 @@ const ObjectDetailPage = () => {
           <div className="mb-8">
             <Link
               to={`/budget/departments/${deptSlug}/${agencySlug}`}
-              state={{ agencyId, agencyName, departmentId, departmentName }}
+              state={{ agencyId: agency?.id, agencyName: agency?.description, departmentId: department?.id, departmentName: department?.description }}
               className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4"
             >
               <ArrowLeft className="h-4 w-4" />
-              Back to {agencyName}
+              Back to {agency?.description || agencyName || 'Agency'}
             </Link>
 
             <div className="flex items-center gap-3 mb-4">
