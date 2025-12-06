@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Building2, ChevronRight, ArrowLeft, TrendingUp, DollarSign } from 'lucide-react'
+import { Building2, ChevronRight, ArrowLeft, TrendingUp, DollarSign, Package } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -33,6 +33,15 @@ interface Expense {
   years: Record<string, { count: number; amount: number }>
 }
 
+interface Object {
+  id: string  // Composite key: "department_desc::agency_desc::object_desc"
+  object_code: string  // Original object code
+  description: string
+  department_id: string
+  agency_id: string  // References agency composite ID
+  years: Record<string, { count: number; amount: number }>
+}
+
 const AgencyPage = () => {
   const { deptSlug, agencySlug } = useParams<{ deptSlug: string; agencySlug: string }>()
   const location = useLocation()
@@ -44,10 +53,11 @@ const AgencyPage = () => {
   const [agency, setAgency] = useState<Agency | null>(null)
   const [fundSubCategories, setFundSubCategories] = useState<FundSubCategory[]>([])
   const [expenses, setExpenses] = useState<Expense[]>([])
+  const [objects, setObjects] = useState<Object[]>([])
   const [loading, setLoading] = useState(true)
   const [selectedYear, setSelectedYear] = useState<number>(2025)
   const [availableYears, setAvailableYears] = useState<number[]>([])
-  const [activeTab, setActiveTab] = useState<'fund_subcategories' | 'expenses'>('fund_subcategories')
+  const [activeTab, setActiveTab] = useState<'fund_subcategories' | 'expenses' | 'objects'>('fund_subcategories')
 
   useEffect(() => {
     loadData()
@@ -57,15 +67,17 @@ const AgencyPage = () => {
     try {
       setLoading(true)
 
-      const [agenciesRes, fundRes, expensesRes] = await Promise.all([
+      const [agenciesRes, fundRes, expensesRes, objectsRes] = await Promise.all([
         fetch('/data/gaa/aggregates/agencies.json'),
         fetch('/data/gaa/aggregates/fund_subcategories.json'),
-        fetch('/data/gaa/aggregates/expenses.json')
+        fetch('/data/gaa/aggregates/expenses.json'),
+        fetch('/data/gaa/aggregates/objects.json')
       ])
 
       const agenciesData = await agenciesRes.json()
       const fundData = await fundRes.json()
       const expensesData = await expensesRes.json()
+      const objectsData = await objectsRes.json()
 
       // Find the agency
       const foundAgency = agenciesData.data.find((a: Agency) =>
@@ -82,18 +94,22 @@ const AgencyPage = () => {
           setSelectedYear(years[0])
         }
 
-        // Filter fund subcategories and expenses for this agency using composite ID
+        // Filter fund subcategories, expenses, and objects for this agency using composite ID
         const agencyFunds = fundData.data.filter((f: FundSubCategory) =>
           f.agency_id === foundAgency.id  // Match using composite agency ID
         )
         const agencyExpenses = expensesData.data.filter((e: Expense) =>
           e.agency_id === foundAgency.id  // Match using composite agency ID
         )
+        const agencyObjects = objectsData.data.filter((o: Object) =>
+          o.agency_id === foundAgency.id  // Match using composite agency ID
+        )
 
-        console.log(`Found ${agencyFunds.length} funds and ${agencyExpenses.length} expenses for agency ${foundAgency.id}`)
+        console.log(`Found ${agencyFunds.length} funds, ${agencyExpenses.length} expenses, and ${agencyObjects.length} objects for agency ${foundAgency.id}`)
 
         setFundSubCategories(agencyFunds)
         setExpenses(agencyExpenses)
+        setObjects(agencyObjects)
       } else {
         console.log('Agency not found:', { agencyId, agencySlug })
       }
@@ -165,6 +181,14 @@ const AgencyPage = () => {
 
   const filteredExpenses = expenses
     .filter(exp => exp.years[String(selectedYear)]?.amount > 0)
+    .sort((a, b) => {
+      const aAmount = a.years[String(selectedYear)]?.amount || 0
+      const bAmount = b.years[String(selectedYear)]?.amount || 0
+      return bAmount - aAmount
+    })
+
+  const filteredObjects = objects
+    .filter(obj => obj.years[String(selectedYear)]?.amount > 0)
     .sort((a, b) => {
       const aAmount = a.years[String(selectedYear)]?.amount || 0
       const bAmount = b.years[String(selectedYear)]?.amount || 0
@@ -301,13 +325,13 @@ const AgencyPage = () => {
 
             <Card className="border-l-4 border-l-orange-600">
               <CardHeader className="pb-3">
-                <CardDescription>Line Items</CardDescription>
+                <CardDescription>Objects</CardDescription>
                 <CardTitle className="text-2xl text-orange-600">
-                  {totalItems.toLocaleString()}
+                  {filteredObjects.length}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-xs text-gray-500">Budget allocations</p>
+                <p className="text-xs text-gray-500">Budget objects</p>
               </CardContent>
             </Card>
           </div>
@@ -367,10 +391,10 @@ const AgencyPage = () => {
             </Card>
           </div>
 
-          {/* Tabs for Fund Sub-Categories and Expenses */}
+          {/* Tabs for Fund Sub-Categories, Expenses, and Objects */}
           <Card>
             <CardHeader>
-              <div className="flex items-center gap-4 border-b">
+              <div className="flex items-center gap-4 border-b flex-wrap">
                 <button
                   onClick={() => setActiveTab('fund_subcategories')}
                   className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'fund_subcategories'
@@ -388,6 +412,15 @@ const AgencyPage = () => {
                     }`}
                 >
                   Expense Categories ({filteredExpenses.length})
+                </button>
+                <button
+                  onClick={() => setActiveTab('objects')}
+                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'objects'
+                    ? 'border-b-2 border-blue-600 text-blue-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                >
+                  Objects ({filteredObjects.length})
                 </button>
               </div>
             </CardHeader>
@@ -485,6 +518,55 @@ const AgencyPage = () => {
                     <div className="text-center py-8">
                       <TrendingUp className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                       <p className="text-gray-600">No expense categories found for {selectedYear}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {activeTab === 'objects' && (
+                <div className="space-y-2">
+                  {filteredObjects.map((object, index) => {
+                    const objectYearData = object.years[String(selectedYear)]
+                    const percentage = totalAmount > 0 ? (objectYearData.amount / totalAmount) * 100 : 0
+
+                    return (
+                      <div key={`${object.id}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600">
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 font-semibold text-xs">
+                                #{index + 1}
+                              </span>
+                              <h4 className="text-sm font-semibold text-gray-900">
+                                {object.description}
+                              </h4>
+                            </div>
+
+                            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                              <span>Code: {object.object_code} • {objectYearData.count.toLocaleString()} items</span>
+                              <span className="font-semibold">{percentage.toFixed(2)}%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5">
+                              <div
+                                className="bg-indigo-600 h-1.5 rounded-full"
+                                style={{ width: `${Math.min(percentage, 100)}%` }}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="text-right shrink-0">
+                            <div className="text-lg font-bold text-indigo-600">
+                              {formatCurrency(objectYearData.amount)}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                  {filteredObjects.length === 0 && (
+                    <div className="text-center py-8">
+                      <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600">No objects found for {selectedYear}</p>
                     </div>
                   )}
                 </div>
