@@ -1,5 +1,6 @@
 import { MeiliSearch } from 'meilisearch'
 import type { SearchDocument } from '@/types/search'
+import type { BudgetDocument } from '@/types/budget'
 
 const MEILISEARCH_HOST = import.meta.env.VITE_MEILISEARCH_HOST || 'http://localhost:7700'
 const MEILISEARCH_API_KEY = import.meta.env.VITE_MEILISEARCH_API_KEY || 'masterKey'
@@ -11,6 +12,7 @@ const client = new MeiliSearch({
 })
 
 export const searchIndex = client.index(MEILISEARCH_INDEX_NAME)
+export const budgetIndex = client.index('gaa')
 
 export interface SearchOptions {
   query: string;
@@ -102,6 +104,80 @@ export async function searchFilterOptions(
     }))
   } catch (error) {
     console.error(`Error searching ${filterType}:`, error)
+    return []
+  }
+}
+
+// Budget-specific search interfaces
+export interface BudgetSearchOptions {
+  query: string;
+  limit?: number;
+  offset?: number;
+  filter?: string;
+  sort?: string[];
+}
+
+export interface BudgetSearchResult {
+  hits: BudgetDocument[];
+  estimatedTotalHits: number;
+  processingTimeMs: number;
+  query: string;
+}
+
+export async function searchBudgetDocuments(options: BudgetSearchOptions): Promise<BudgetSearchResult> {
+  try {
+    const result = await budgetIndex.search(options.query, {
+      limit: options.limit || 10,
+      offset: options.offset || 0,
+      filter: options.filter,
+      sort: options.sort,
+      attributesToHighlight: ['*'],
+      highlightPreTag: '<mark>',
+      highlightPostTag: '</mark>',
+    })
+
+    return {
+      hits: result.hits as unknown as BudgetDocument[],
+      estimatedTotalHits: result.estimatedTotalHits,
+      processingTimeMs: result.processingTimeMs,
+      query: result.query,
+    }
+  } catch (error) {
+    console.error('Budget search error:', error)
+    throw new Error('Failed to search budget documents')
+  }
+}
+
+export async function searchBudgetFilterOptions(
+  field: string,
+  query: string,
+  limit: number = 20
+): Promise<FilterOption[]> {
+  try {
+    const result = await budgetIndex.search(query || '', {
+      limit,
+      attributesToRetrieve: [field],
+      facets: [field],
+    })
+
+    // Deduplicate results based on field value
+    const uniqueValues = new Set<string>()
+    const options: FilterOption[] = []
+
+    result.hits.forEach((hit: any) => {
+      const value = hit[field]
+      if (value && !uniqueValues.has(value)) {
+        uniqueValues.add(value)
+        options.push({
+          value,
+          label: value,
+        })
+      }
+    })
+
+    return options
+  } catch (error) {
+    console.error(`Error searching budget ${field}:`, error)
     return []
   }
 }

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, DollarSign } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -7,9 +7,11 @@ const Navigation = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [procurementDropdownOpen, setProcurementDropdownOpen] = useState(false)
   const [taxDropdownOpen, setTaxDropdownOpen] = useState(false)
+  const [budgetDropdownOpen, setBudgetDropdownOpen] = useState(false)
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
   const procurementDropdownRef = useRef<HTMLDivElement>(null)
   const taxDropdownRef = useRef<HTMLDivElement>(null)
+  const budgetDropdownRef = useRef<HTMLDivElement>(null)
   const projectsDropdownRef = useRef<HTMLDivElement>(null)
 
   const procurementItems = [
@@ -21,6 +23,10 @@ const Navigation = () => {
 
   const taxCollectionItems = [
     { path: '/bir', label: 'BIR Collection Statistics', icon: TrendingUp },
+  ]
+
+  const budgetItems = [
+    { path: '/budget', label: 'GAA Budget Browser', icon: DollarSign },
   ]
 
   const projectsDropdownItems = [
@@ -48,6 +54,10 @@ const Navigation = () => {
     return taxCollectionItems.some(item => isActive(item.path))
   }
 
+  const isBudgetActive = () => {
+    return budgetItems.some(item => isActive(item.path))
+  }
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -56,6 +66,9 @@ const Navigation = () => {
       }
       if (taxDropdownRef.current && !taxDropdownRef.current.contains(event.target as Node)) {
         setTaxDropdownOpen(false)
+      }
+      if (budgetDropdownRef.current && !budgetDropdownRef.current.contains(event.target as Node)) {
+        setBudgetDropdownOpen(false)
       }
       if (projectsDropdownRef.current && !projectsDropdownRef.current.contains(event.target as Node)) {
         setProjectsDropdownOpen(false)
@@ -174,6 +187,43 @@ const Navigation = () => {
                 )}
               </div>
 
+              {/* Budget Dropdown */}
+              <div className="relative" ref={budgetDropdownRef}>
+                <button
+                  onClick={() => setBudgetDropdownOpen(!budgetDropdownOpen)}
+                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isBudgetActive()
+                    ? 'border-b text-blue-600 font-bold'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    }`}
+                >
+                  <DollarSign className="h-4 w-4" />
+                  Budget
+                  <ChevronDown className={`h-4 w-4 transition-transform ${budgetDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {budgetDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                    {budgetItems.map((item) => {
+                      const Icon = item.icon
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors ${isActive(item.path)
+                            ? 'bg-blue-50 text-blue-600 font-semibold'
+                            : 'text-gray-700 hover:bg-gray-100'
+                            }`}
+                          onClick={() => setBudgetDropdownOpen(false)}
+                        >
+                          <Icon className="h-4 w-4" />
+                          {item.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+
               {/* Our Projects Dropdown */}
               <div className="relative" ref={projectsDropdownRef}>
                 <button
@@ -281,6 +331,32 @@ const Navigation = () => {
                 Tax Collection
               </div>
               {taxCollectionItems.map((item) => {
+                const Icon = item.icon
+                const active = isActive(item.path)
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 pl-10 text-sm transition-colors ${active
+                      ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                      : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.label}
+                  </Link>
+                )
+              })}
+            </div>
+
+            {/* Budget Section */}
+            <div className="border-t border-gray-200 mt-2 pt-2">
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                <DollarSign className="h-4 w-4" />
+                Budget
+              </div>
+              {budgetItems.map((item) => {
                 const Icon = item.icon
                 const active = isActive(item.path)
                 return (

@@ -9,6 +9,10 @@ import OrganizationsListPage from './components/OrganizationsListPage'
 import LocationsListPage from './components/LocationsListPage'
 import CategoriesListPage from './components/CategoriesListPage'
 import BIRDashboard from './components/BIRDashboard'
+import BudgetBrowser from './components/budget/BudgetBrowser'
+import DepartmentsListPage from './components/budget/DepartmentsListPage'
+import DepartmentPage from './components/budget/DepartmentPage'
+import AgencyPage from './components/budget/AgencyPage'
 
 function App() {
   return (
@@ -16,6 +20,10 @@ function App() {
       <Routes>
         <Route path="/" element={<EnhancedSearchInterface />} />
         <Route path="/bir" element={<BIRDashboard />} />
+        <Route path="/budget" element={<BudgetBrowser />} />
+        <Route path="/budget/departments" element={<DepartmentsListPage />} />
+        <Route path="/budget/departments/:slug" element={<DepartmentPage />} />
+        <Route path="/budget/departments/:deptSlug/agencies/:agencySlug" element={<AgencyPage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />
