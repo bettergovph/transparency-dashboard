@@ -27,6 +27,7 @@ const Navigation = () => {
 
   const budgetItems = [
     { path: '/budget', label: 'GAA Budget Browser', icon: DollarSign },
+    { path: '/budget/departments', label: 'Departments', icon: Building2 },
   ]
 
   const projectsDropdownItems = [

@@ -6,7 +6,8 @@ import {
   Building2,
   Download,
   AlertCircle,
-  ArrowRight
+  ArrowRight,
+  Search
 } from 'lucide-react'
 import {
   BarChart,
@@ -23,10 +24,12 @@ import {
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { searchBudgetDocuments } from '@/lib/meilisearch'
 import type { BudgetDocument } from '@/types/budget'
 import { Link } from 'react-router-dom'
+import { toSlug } from '@/lib/utils'
 
 // Type definitions
 interface YearlyTotal {
@@ -53,6 +56,7 @@ const BudgetBrowser = () => {
   const [loading, setLoading] = useState(false)
   const [isDataLoading, setIsDataLoading] = useState(true)
   const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [searchQuery, setSearchQuery] = useState('')
 
   // Aggregate data
   const [yearlyTotals, setYearlyTotals] = useState<YearlyTotal[]>([])
@@ -135,16 +139,22 @@ const BudgetBrowser = () => {
   const totalItems = yearData?.count || 0
 
   // Get top departments for current year
-  const topDepartments = departments
+  const filteredDepartments = departments
     .map(dept => ({
       id: dept.id,
       description: dept.description,
       amount: dept.years[String(selectedYear)]?.amount || 0,
       count: dept.years[String(selectedYear)]?.count || 0
     }))
-    .filter(d => d.amount > 0)
+    .filter(d => {
+      const hasData = d.amount > 0
+      const matchesSearch = d.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        d.id.includes(searchQuery)
+      return hasData && matchesSearch
+    })
     .sort((a, b) => b.amount - a.amount)
-    .slice(0, 10)
+
+  const topDepartments = filteredDepartments.slice(0, 10)
 
   // Download CSV function
   const downloadCSV = () => {
@@ -290,22 +300,21 @@ const BudgetBrowser = () => {
             {/* Content Area with Padding */}
             <div className="px-4 sm:px-6 lg:px-8 py-6">
               {/* Data Notice */}
-              <div className="bg-amber-50 border-l-4 border-amber-400 p-4 mb-4 rounded-r-lg max-w-[1800px] mx-auto">
+              <div className="bg-blue-50 border-l-4 border-blue-400 p-4 mb-4 rounded-r-lg max-w-[1800px] mx-auto">
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
+                  <AlertCircle className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
                   <div>
-                    <h3 className="text-sm font-semibold text-amber-900 mb-1">Data Preview Notice</h3>
-                    <p className="text-sm text-amber-800 mb-2">
-                      This is a preview showing the first 100 budget line items for {selectedYear}.
-                      For detailed hierarchical browsing by department, agency, fund categories, and expenses,
-                      visit the <Link to="/budget/departments" className="font-semibold underline hover:text-amber-900">Departments Browser</Link>.
+                    <h3 className="text-sm font-semibold text-blue-900 mb-1">Browse GAA Budget by Department</h3>
+                    <p className="text-sm text-blue-800 mb-2">
+                      Explore the {selectedYear} General Appropriations Act budget organized by government departments.
+                      Click any department to drill down into agencies, fund categories, expense categories, and detailed line items.
                     </p>
                     <Link
                       to="/budget/departments"
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-amber-900 hover:text-amber-950 bg-amber-100 px-3 py-2 rounded-lg transition-colors"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-blue-900 hover:text-blue-950 bg-blue-100 px-3 py-2 rounded-lg transition-colors"
                     >
                       <Building2 className="h-4 w-4" />
-                      Browse by Department
+                      View Full Departments Page
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -440,52 +449,102 @@ const BudgetBrowser = () => {
                 </Card>
               </div>
 
-              {/* Sample Data Table */}
+              {/* Departments List */}
               <Card className="max-w-[1800px] mx-auto">
                 <CardHeader>
-                  <CardTitle>Sample Budget Line Items ({selectedYear})</CardTitle>
-                  <CardDescription>
-                    First 100 budget allocations - sorted by ID
-                  </CardDescription>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <CardTitle>Government Departments ({selectedYear})</CardTitle>
+                      <CardDescription>
+                        Browse {filteredDepartments.length} departments - Click to explore agencies and budget details
+                      </CardDescription>
+                    </div>
+                    <Link
+                      to="/budget/departments"
+                      className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 px-4 py-2 rounded-lg transition-colors"
+                    >
+                      <Building2 className="h-4 w-4" />
+                      View All
+                      <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                  
+                  {/* Search Bar */}
+                  <div className="relative mt-4">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Search className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <Input
+                      type="text"
+                      placeholder="Search departments..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-10"
+                    />
+                  </div>
                 </CardHeader>
                 <CardContent>
                   {loading ? (
                     <div className="text-center py-8">
                       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
-                      <p className="text-sm text-gray-600">Loading budget data...</p>
+                      <p className="text-sm text-gray-600">Loading departments...</p>
                     </div>
                   ) : (
-                    <div className="overflow-x-auto">
-                      <table className="min-w-full divide-y divide-gray-200 text-xs">
-                        <thead className="bg-gray-50">
-                          <tr>
-                            <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase">ID</th>
-                            <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase">Department</th>
-                            <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase">Agency</th>
-                            <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase">Description</th>
-                            <th className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase">Amount</th>
-                          </tr>
-                        </thead>
-                        <tbody className="bg-white divide-y divide-gray-200">
-                          {results.map((doc) => (
-                            <tr key={doc.id} className="hover:bg-gray-50">
-                              <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-900">{doc.id}</td>
-                              <td className="px-3 py-2 text-xs text-gray-700 max-w-xs">
-                                <div className="truncate" title={doc.uacs_dpt_dsc}>{doc.uacs_dpt_dsc}</div>
-                              </td>
-                              <td className="px-3 py-2 text-xs text-gray-700 max-w-xs">
-                                <div className="truncate" title={doc.uacs_agy_dsc}>{doc.uacs_agy_dsc}</div>
-                              </td>
-                              <td className="px-3 py-2 text-xs text-gray-700 max-w-md">
-                                <div className="truncate" title={doc.dsc}>{doc.dsc}</div>
-                              </td>
-                              <td className="px-3 py-2 whitespace-nowrap text-xs font-semibold text-gray-900">
-                                {formatCurrency(doc.amt)}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+                    <div className="grid grid-cols-1 gap-4">
+                      {filteredDepartments.map((dept, index) => {
+                        const percentage = totalAmount > 0 ? (dept.amount / totalAmount) * 100 : 0
+
+                        return (
+                          <Link
+                            key={dept.id}
+                            to={`/budget/departments/${toSlug(dept.description)}`}
+                            state={{ departmentId: dept.id, departmentName: dept.description }}
+                          >
+                            <div className="p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-100 hover:shadow-lg transition-all cursor-pointer hover:border-blue-300">
+                              <div className="flex items-start justify-between gap-4">
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-3 mb-2">
+                                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm">
+                                      #{index + 1}
+                                    </span>
+                                    <h4 className="text-base font-semibold text-gray-900">
+                                      {dept.description}
+                                    </h4>
+                                  </div>
+
+                                  <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+                                    <span>ID: {dept.id} • {dept.count.toLocaleString()} budget items</span>
+                                    <span className="font-semibold">{percentage.toFixed(2)}% of total</span>
+                                  </div>
+                                  
+                                  <div className="w-full bg-gray-200 rounded-full h-2">
+                                    <div
+                                      className="bg-blue-600 h-2 rounded-full transition-all"
+                                      style={{ width: `${Math.min(percentage, 100)}%` }}
+                                    />
+                                  </div>
+                                </div>
+
+                                <div className="text-right shrink-0">
+                                  <div className="text-2xl font-bold text-blue-600">
+                                    {formatCurrency(dept.amount)}
+                                  </div>
+                                  <div className="text-sm text-blue-600 mt-1 flex items-center gap-1">
+                                    Explore <ArrowRight className="h-4 w-4" />
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </Link>
+                        )
+                      })}
+                      {filteredDepartments.length === 0 && (
+                        <div className="text-center py-12">
+                          <Building2 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                          <p className="text-gray-600 text-lg">No departments found</p>
+                          <p className="text-gray-500 text-sm mt-2">Try adjusting your search</p>
+                        </div>
+                      )}
                     </div>
                   )}
                 </CardContent>
