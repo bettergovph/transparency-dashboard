@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Building2, TrendingUp, ChevronRight, ArrowLeft } from 'lucide-react'
+import { Building2, TrendingUp } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
@@ -28,7 +28,6 @@ const DepartmentPage = () => {
   const { slug } = useParams<{ slug: string }>()
   const location = useLocation()
   const departmentId = location.state?.departmentId
-  const departmentName = location.state?.departmentName
 
   const [department, setDepartment] = useState<Department | null>(null)
   const [agencies, setAgencies] = useState<Agency[]>([])

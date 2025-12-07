@@ -24,10 +24,7 @@ import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
-import { searchBudgetDocuments } from '@/lib/meilisearch'
-import type { BudgetDocument } from '@/types/budget'
 import { Link } from 'react-router-dom'
 import { toSlug } from '@/lib/utils'
 
@@ -44,16 +41,7 @@ interface Department {
   years: Record<string, { count: number; amount: number }>
 }
 
-interface Agency {
-  id: string
-  description: string
-  department_id: string
-  years: Record<string, { count: number; amount: number }>
-}
-
 const BudgetBrowser = () => {
-  const [results, setResults] = useState<BudgetDocument[]>([])
-  const [loading, setLoading] = useState(false)
   const [isDataLoading, setIsDataLoading] = useState(true)
   const [selectedYear, setSelectedYear] = useState<number>(2025)
   const [searchQuery, setSearchQuery] = useState('')
@@ -61,7 +49,6 @@ const BudgetBrowser = () => {
   // Aggregate data
   const [yearlyTotals, setYearlyTotals] = useState<YearlyTotal[]>([])
   const [departments, setDepartments] = useState<Department[]>([])
-  const [agencies, setAgencies] = useState<Agency[]>([])
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
@@ -74,29 +61,20 @@ const BudgetBrowser = () => {
     }
   }, [availableYears, selectedYear])
 
-  useEffect(() => {
-    if (selectedYear) {
-      performSearch()
-    }
-  }, [selectedYear])
-
   const loadAggregateData = async () => {
     try {
       setIsDataLoading(true)
 
-      const [yearlyRes, departmentsRes, agenciesRes] = await Promise.all([
+      const [yearlyRes, departmentsRes] = await Promise.all([
         fetch('/data/gaa/aggregates/yearly_totals.json'),
-        fetch('/data/gaa/aggregates/departments.json'),
-        fetch('/data/gaa/aggregates/agencies.json')
+        fetch('/data/gaa/aggregates/departments.json')
       ])
 
       const yearlyData = await yearlyRes.json()
       const departmentsData = await departmentsRes.json()
-      const agenciesData = await agenciesRes.json()
 
       setYearlyTotals(yearlyData.data)
       setDepartments(departmentsData.data)
-      setAgencies(agenciesData.data)
 
       const years = yearlyData.data.map((y: YearlyTotal) => y.year).sort((a: number, b: number) => b - a)
       setAvailableYears(years)
@@ -108,26 +86,6 @@ const BudgetBrowser = () => {
     } catch (error) {
       console.error('Error loading aggregate data:', error)
       setIsDataLoading(false)
-    }
-  }
-
-  const performSearch = async () => {
-    setLoading(true)
-
-    try {
-      const searchResults = await searchBudgetDocuments({
-        query: '',
-        filter: `year = ${selectedYear}`,
-        limit: 100,
-        sort: ['id:asc']
-      })
-
-      setResults(searchResults.hits)
-    } catch (error) {
-      console.error('Search error:', error)
-      setResults([])
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -155,26 +113,6 @@ const BudgetBrowser = () => {
     .sort((a, b) => b.amount - a.amount)
 
   const topDepartments = filteredDepartments.slice(0, 10)
-
-  // Download CSV function
-  const downloadCSV = () => {
-    const csvContent = [
-      'Year,ID,Agency,Department,Description,Amount,Operating Unit',
-      ...results.slice(0, 1000).map(doc =>
-        `${doc.year},"${doc.id}","${doc.uacs_agy_dsc}","${doc.uacs_dpt_dsc}","${doc.dsc}",${doc.amt},"${doc.uacs_oper_dsc}"`
-      )
-    ].join('\n')
-
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
-    const link = document.createElement('a')
-    const url = URL.createObjectURL(blob)
-    link.setAttribute('href', url)
-    link.setAttribute('download', `GAA_Budget_${selectedYear}_Sample.csv`)
-    link.style.visibility = 'hidden'
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
-  }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
@@ -408,23 +346,17 @@ const BudgetBrowser = () => {
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <Search className="h-5 w-5 text-gray-400" />
                     </div>
-                    <Input
+                    <input
                       type="text"
                       placeholder="Search departments..."
                       value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
                     />
                   </div>
                 </CardHeader>
                 <CardContent>
-                  {loading ? (
-                    <div className="text-center py-8">
-                      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
-                      <p className="text-sm text-gray-600">Loading departments...</p>
-                    </div>
-                  ) : (
-                    <div className="grid grid-cols-1 gap-4">
+                  <div className="grid grid-cols-1 gap-4">
                       {filteredDepartments.map((dept, index) => {
                         const percentage = totalAmount > 0 ? (dept.amount / totalAmount) * 100 : 0
 
@@ -480,7 +412,6 @@ const BudgetBrowser = () => {
                         </div>
                       )}
                     </div>
-                  )}
                 </CardContent>
               </Card>
             </div>

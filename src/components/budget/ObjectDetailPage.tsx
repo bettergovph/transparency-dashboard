@@ -1,27 +1,23 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation, Link } from 'react-router-dom'
+import { useParams, useLocation } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Package, ChevronRight, ArrowLeft, TrendingUp, ChartBarStackedIcon, Calendar, Filter } from 'lucide-react'
+import { Package, ChartBarStacked, Calendar } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { searchBudgetDocuments } from '@/lib/meilisearch'
-import { toSlug } from '@/lib/utils'
 import type { BudgetDocument } from '@/types/budget'
 
 const ObjectDetailPage = () => {
   // Get route params (slugs are from URL, actual data comes from location.state)
   const { deptSlug: _deptSlug, agencySlug: _agencySlug } = useParams<{ deptSlug: string; agencySlug: string; objectSlug: string }>()
   const location = useLocation()
-  const objectId = location.state?.objectId
   const objectCode = location.state?.objectCode
   const objectName = location.state?.objectName
   const agencyId = location.state?.agencyId
   const agencyName = location.state?.agencyName
   const departmentId = location.state?.departmentId
-  const departmentName = location.state?.departmentName
 
   const [items, setItems] = useState<BudgetDocument[]>([])
   const [loading, setLoading] = useState(true)
@@ -268,7 +264,7 @@ const ObjectDetailPage = () => {
           <Card className="max-w-[1800px] mx-auto">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <ChartBarStackedIcon className="h-5 w-5 text-indigo-600" />
+                <ChartBarStacked className="h-5 w-5 text-indigo-600" />
                 Budget Line Items
               </CardTitle>
               <CardDescription>Detailed budget allocations for {objectName}</CardDescription>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Building2, ChevronRight, ArrowLeft, TrendingUp, ChartBarStackedIcon, Package } from 'lucide-react'
+import { Building2, TrendingUp, Package, ChartBarStacked } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
@@ -48,8 +48,6 @@ const AgencyPage = () => {
   const { deptSlug, agencySlug } = useParams<{ deptSlug: string; agencySlug: string }>()
   const location = useLocation()
   const agencyId = location.state?.agencyId
-  const agencyName = location.state?.agencyName
-  const departmentId = location.state?.departmentId
   const departmentName = location.state?.departmentName
 
   // Get department info from either state or loaded data
@@ -172,7 +170,6 @@ const AgencyPage = () => {
 
   const yearData = agency.years[String(selectedYear)]
   const totalAmount = yearData?.amount || 0
-  const totalItems = yearData?.count || 0
 
   // Filter items for selected year
   const filteredFunds = fundSubCategories
@@ -337,7 +334,7 @@ const AgencyPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <ChartBarStackedIcon className="h-5 w-5 text-green-600" />
+                  <ChartBarStacked className="h-5 w-5 text-green-600" />
                   Top 10 Fund Sub-Categories ({selectedYear})
                 </CardTitle>
                 <CardDescription>Largest funding sources</CardDescription>
@@ -496,7 +493,7 @@ const AgencyPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <ChartBarStackedIcon className="h-5 w-5 text-purple-600" />
+                  <ChartBarStacked className="h-5 w-5 text-purple-600" />
                   Fund Sub-Categories ({filteredFunds.length})
                 </CardTitle>
                 <CardDescription>Funding sources</CardDescription>
@@ -543,7 +540,7 @@ const AgencyPage = () => {
                   })}
                   {filteredFunds.length === 0 && (
                     <div className="text-center py-8">
-                      <ChartBarStackedIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <ChartBarStacked className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                       <p className="text-gray-600">No fund sub-categories found</p>
                     </div>
                   )}
@@ -742,7 +739,7 @@ const AgencyPage = () => {
                   })}
                   {filteredFunds.length === 0 && (
                     <div className="text-center py-8">
-                      <ChartBarStackedIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <ChartBarStacked className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                       <p className="text-gray-600">No fund sub-categories found for {selectedYear}</p>
                     </div>
                   )}
