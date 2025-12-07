@@ -236,7 +236,7 @@ const AgencyPage = () => {
       <Navigation />
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6 flex-wrap">
             <Link to="/budget" className="hover:text-blue-600">Budget</Link>
@@ -394,42 +394,153 @@ const AgencyPage = () => {
             </Card>
           </div>
 
-          {/* Tabs for Fund Sub-Categories, Expenses, and Objects */}
-          <Card>
-            <CardHeader>
-              <div className="flex items-center gap-4 border-b flex-wrap">
-                <button
-                  onClick={() => setActiveTab('fund_subcategories')}
-                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'fund_subcategories'
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                >
-                  Fund Sub-Categories ({filteredFunds.length})
-                </button>
-                <button
-                  onClick={() => setActiveTab('expenses')}
-                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'expenses'
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                >
-                  Expense Categories ({filteredExpenses.length})
-                </button>
-                <button
-                  onClick={() => setActiveTab('objects')}
-                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'objects'
-                    ? 'border-b-2 border-blue-600 text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                >
+          {/* Desktop: All Sections Visible, Mobile: Tabs */}
+          <div className="hidden lg:grid lg:grid-cols-3 gap-6">
+            {/* Objects Section */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Package className="h-5 w-5 text-indigo-600" />
                   Objects ({filteredObjects.length})
-                </button>
-              </div>
-            </CardHeader>
-            <CardContent>
-              {activeTab === 'fund_subcategories' && (
-                <div className="space-y-2">
+                </CardTitle>
+                <CardDescription>Budget allocation objects</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2 max-h-[600px] overflow-y-auto">
+                  {filteredObjects.map((object, index) => {
+                    const objectYearData = object.years[String(selectedYear)]
+                    const percentage = totalAmount > 0 ? (objectYearData.amount / totalAmount) * 100 : 0
+
+                    return (
+                      <Link
+                        key={`${object.id}-${index}`}
+                        to={`/budget/departments/${deptSlug}/${agencySlug}/objects/${toSlug(object.description)}`}
+                        state={{
+                          objectId: object.id,
+                          objectCode: object.object_code,
+                          objectName: object.description,
+                          agencyId,
+                          agencyName: agency.description,
+                          departmentId: department?.id,
+                          departmentName: department?.description
+                        }}
+                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600 hover:bg-indigo-50 hover:border-l-indigo-800 transition-all cursor-pointer"
+                      >
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 font-semibold text-xs">
+                                #{index + 1}
+                              </span>
+                              <h4 className="text-sm font-semibold text-gray-900 truncate">
+                                {object.description}
+                              </h4>
+                            </div>
+
+                            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                              <span className="truncate">Code: {object.object_code}</span>
+                              <span className="font-semibold">{percentage.toFixed(1)}%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5">
+                              <div
+                                className="bg-indigo-600 h-1.5 rounded-full"
+                                style={{ width: `${Math.min(percentage, 100)}%` }}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="text-right shrink-0">
+                            <div className="text-sm font-bold text-indigo-600">
+                              {formatCurrency(objectYearData.amount)}
+                            </div>
+                            <div className="text-xs text-indigo-600 mt-1">
+                              →
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                  {filteredObjects.length === 0 && (
+                    <div className="text-center py-8">
+                      <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600">No objects found</p>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Expenses Section */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="h-5 w-5 text-orange-600" />
+                  Expense Categories ({filteredExpenses.length})
+                </CardTitle>
+                <CardDescription>Expense classification</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2 max-h-[600px] overflow-y-auto">
+                  {filteredExpenses.map((expense, index) => {
+                    const expenseYearData = expense.years[String(selectedYear)]
+                    const percentage = totalAmount > 0 ? (expenseYearData.amount / totalAmount) * 100 : 0
+
+                    return (
+                      <div key={`${expense.id}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-orange-600">
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 text-orange-600 font-semibold text-xs">
+                                #{index + 1}
+                              </span>
+                              <h4 className="text-sm font-semibold text-gray-900 truncate">
+                                {expense.description}
+                              </h4>
+                            </div>
+
+                            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                              <span className="truncate">Code: {expense.expense_code}</span>
+                              <span className="font-semibold">{percentage.toFixed(1)}%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5">
+                              <div
+                                className="bg-orange-600 h-1.5 rounded-full"
+                                style={{ width: `${Math.min(percentage, 100)}%` }}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="text-right shrink-0">
+                            <div className="text-sm font-bold text-orange-600">
+                              {formatCurrency(expenseYearData.amount)}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                  {filteredExpenses.length === 0 && (
+                    <div className="text-center py-8">
+                      <TrendingUp className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600">No expenses found</p>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Fund Sub-Categories Section */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <DollarSign className="h-5 w-5 text-purple-600" />
+                  Fund Sub-Categories ({filteredFunds.length})
+                </CardTitle>
+                <CardDescription>Funding sources</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-2 max-h-[600px] overflow-y-auto">
                   {filteredFunds.map((fund, index) => {
                     const fundYearData = fund.years[String(selectedYear)]
                     const percentage = totalAmount > 0 ? (fundYearData.amount / totalAmount) * 100 : 0
@@ -442,14 +553,14 @@ const AgencyPage = () => {
                               <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 font-semibold text-xs">
                                 #{index + 1}
                               </span>
-                              <h4 className="text-sm font-semibold text-gray-900">
+                              <h4 className="text-sm font-semibold text-gray-900 truncate">
                                 {fund.description}
                               </h4>
                             </div>
 
                             <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
-                              <span>{fundYearData.count.toLocaleString()} items</span>
-                              <span className="font-semibold">{percentage.toFixed(2)}%</span>
+                              <span className="truncate">{fundYearData.count.toLocaleString()} items</span>
+                              <span className="font-semibold">{percentage.toFixed(1)}%</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-1.5">
                               <div
@@ -460,7 +571,7 @@ const AgencyPage = () => {
                           </div>
 
                           <div className="text-right shrink-0">
-                            <div className="text-lg font-bold text-purple-600">
+                            <div className="text-sm font-bold text-purple-600">
                               {formatCurrency(fundYearData.amount)}
                             </div>
                           </div>
@@ -471,7 +582,157 @@ const AgencyPage = () => {
                   {filteredFunds.length === 0 && (
                     <div className="text-center py-8">
                       <DollarSign className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600">No fund sub-categories found for {selectedYear}</p>
+                      <p className="text-gray-600">No fund sub-categories found</p>
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Mobile: Tabs */}
+          <Card className="lg:hidden">
+            <CardHeader>
+              <div className="flex items-center gap-4 border-b flex-wrap">
+                <button
+                  onClick={() => setActiveTab('objects')}
+                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'objects'
+                    ? 'border-b-2 border-indigo-600 text-indigo-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                >
+                  Objects ({filteredObjects.length})
+                </button>
+                <button
+                  onClick={() => setActiveTab('expenses')}
+                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'expenses'
+                    ? 'border-b-2 border-orange-600 text-orange-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                >
+                  Expenses ({filteredExpenses.length})
+                </button>
+                <button
+                  onClick={() => setActiveTab('fund_subcategories')}
+                  className={`px-4 py-2 font-semibold text-sm transition-all ${activeTab === 'fund_subcategories'
+                    ? 'border-b-2 border-purple-600 text-purple-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                >
+                  Categories ({filteredFunds.length})
+                </button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              {activeTab === 'objects' && (
+                <div className="space-y-2">
+                  {filteredObjects.map((object, index) => {
+                    const objectYearData = object.years[String(selectedYear)]
+                    const percentage = totalAmount > 0 ? (objectYearData.amount / totalAmount) * 100 : 0
+
+                    return (
+                      <Link
+                        key={`${object.id}-${index}`}
+                        to={`/budget/departments/${deptSlug}/${agencySlug}/objects/${toSlug(object.description)}`}
+                        state={{
+                          objectId: object.id,
+                          objectCode: object.object_code,
+                          objectName: object.description,
+                          agencyId,
+                          agencyName: agency.description,
+                          departmentId: department?.id,
+                          departmentName: department?.description
+                        }}
+                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600 hover:bg-indigo-50 hover:border-l-indigo-800 transition-all cursor-pointer"
+                      >
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 font-semibold text-xs">
+                                #{index + 1}
+                              </span>
+                              <h4 className="text-sm font-semibold text-gray-900">
+                                {object.description}
+                              </h4>
+                            </div>
+
+                            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                              <span>Code: {object.object_code} • {objectYearData.count.toLocaleString()} items</span>
+                              <span className="font-semibold">{percentage.toFixed(2)}%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5">
+                              <div
+                                className="bg-indigo-600 h-1.5 rounded-full"
+                                style={{ width: `${Math.min(percentage, 100)}%` }}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="text-right shrink-0">
+                            <div className="text-lg font-bold text-indigo-600">
+                              {formatCurrency(objectYearData.amount)}
+                            </div>
+                            <div className="text-xs text-indigo-600 mt-1">
+                              View Details →
+                            </div>
+                          </div>
+                        </div>
+                      </Link>
+                    )
+                  })}
+                  {filteredObjects.length === 0 && (
+                    <div className="text-center py-8">
+                      <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600">No objects found for {selectedYear}</p>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {activeTab === 'expenses' && (
+                <div className="space-y-2">
+                  {filteredExpenses.map((expense, index) => {
+                    const expenseYearData = expense.years[String(selectedYear)]
+                    const percentage = totalAmount > 0 ? (expenseYearData.amount / totalAmount) * 100 : 0
+
+                    return (
+                      <div key={`${expense.id}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-orange-600">
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 text-orange-600 font-semibold text-xs">
+                                #{index + 1}
+                              </span>
+                              <h4 className="text-sm font-semibold text-gray-900">
+                                {expense.description}
+                              </h4>
+                            </div>
+
+                            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
+                              <span>Code: {expense.expense_code} • {expenseYearData.count.toLocaleString()} items</span>
+                              <span className="font-semibold">{percentage.toFixed(2)}%</span>
+                            </div>
+                            <div className="w-full bg-gray-200 rounded-full h-1.5">
+                              <div
+                                className="bg-orange-600 h-1.5 rounded-full"
+                                style={{ width: `${Math.min(percentage, 100)}%` }}
+                              />
+                            </div>
+                          </div>
+
+                          <div className="text-right shrink-0">
+                            <div className="text-lg font-bold text-orange-600">
+                              {formatCurrency(expenseYearData.amount)}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                  {filteredExpenses.length === 0 && (
+                    <div className="text-center py-8">
+                      <TrendingUp className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600">No expense categories found for {selectedYear}</p>
                     </div>
                   )}
                 </div>
@@ -542,8 +803,8 @@ const AgencyPage = () => {
                           objectName: object.description,
                           agencyId,
                           agencyName: agency.description,
-                          departmentId,
-                          departmentName
+                          departmentId: department?.id,
+                          departmentName: department?.description
                         }}
                         className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600 hover:bg-indigo-50 hover:border-l-indigo-800 transition-all cursor-pointer"
                       >
