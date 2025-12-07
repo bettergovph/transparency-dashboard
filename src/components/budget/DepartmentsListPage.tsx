@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Building2, TrendingUp, Search } from 'lucide-react'
+import { Building2, TrendingUp, Search, ArrowRight } from 'lucide-react'
+import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
+import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { toSlug } from '@/lib/utils'
@@ -97,53 +99,25 @@ const DepartmentsListPage = () => {
 
       <Navigation />
 
-      <div className="min-h-screen from-blue-50 via-white to-green-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Header */}
-          <div className="mb-8">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-blue-600 rounded-lg">
-                <Building2 className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">Government Departments</h1>
-                <p className="text-gray-600 mt-1">Browse department budgets and drill down to agencies</p>
-              </div>
-            </div>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+        {/* Sticky Header */}
+        <BudgetHeader
+          title="Government Departments"
+          subtitle="Browse department budgets and drill down to agencies"
+          icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
+          availableYears={availableYears}
+          selectedYear={selectedYear}
+          onYearChange={setSelectedYear}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          searchPlaceholder="Search departments..."
+          showSearch={true}
+        />
 
-            {/* Year Tabs */}
-            <div className="flex flex-wrap gap-2 mb-4">
-              {availableYears.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => setSelectedYear(year)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                    }`}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-
-            {/* Search Bar */}
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                type="text"
-                placeholder="Search departments..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-          </div>
-
+        {/* Content Area with Padding */}
+        <div className="px-4 sm:px-6 lg:px-8 py-6">
           {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-[1800px] mx-auto">
             <Card>
               <CardHeader className="pb-3">
                 <CardDescription>Total Departments ({selectedYear})</CardDescription>
@@ -182,10 +156,26 @@ const DepartmentsListPage = () => {
           </div>
 
           {/* Departments Grid */}
-          <div className="grid grid-cols-1 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-[1800px] mx-auto">
             {filteredDepartments.map((dept, index) => {
               const yearData = dept.years[String(selectedYear)]
               const percentage = totalBudget > 0 ? (yearData.amount / totalBudget) * 100 : 0
+
+              // Prepare year-over-year data for chart
+              const chartData = availableYears
+                .map(year => ({
+                  year,
+                  amount: dept.years[String(year)]?.amount || 0
+                }))
+                .sort((a, b) => a.year - b.year)
+
+              // Calculate year-over-year change
+              const currentYearAmount = dept.years[String(selectedYear)]?.amount || 0
+              const previousYear = selectedYear - 1
+              const previousYearAmount = dept.years[String(previousYear)]?.amount || 0
+              const yoyChange = previousYearAmount > 0 
+                ? ((currentYearAmount - previousYearAmount) / previousYearAmount) * 100 
+                : 0
 
               return (
                 <Link
@@ -193,49 +183,105 @@ const DepartmentsListPage = () => {
                   to={`/budget/departments/${toSlug(dept.description)}`}
                   state={{ departmentId: dept.id, departmentName: dept.description }}
                 >
-                  <Card className="hover:shadow-lg transition-all cursor-pointer border-l-4 border-l-blue-600">
-                    <CardContent className="p-6">
-                      <div className="flex items-start justify-between gap-4 mt-4">
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-3 mb-2">
-                            <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-100 text-blue-600 font-semibold text-sm">
-                              #{index + 1}
-                            </span>
-                            <div className="flex-1 min-w-0">
-                              <h3 className="text-lg font-semibold text-gray-900 truncate">
-                                {dept.description}
-                              </h3>
-                              <p className="text-sm text-gray-500">Department ID: {dept.id}</p>
-                            </div>
-                          </div>
-
-                          {/* Progress Bar */}
-                          <div className="mt-3">
-                            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
-                              <span>Share of total budget</span>
-                              <span className="font-semibold">{percentage.toFixed(2)}%</span>
-                            </div>
-                            <div className="w-full bg-gray-200 rounded-full h-2">
-                              <div
-                                className="bg-blue-600 h-2 rounded-full transition-all"
-                                style={{ width: `${Math.min(percentage, 100)}%` }}
-                              />
-                            </div>
+                  <Card className="hover:shadow-xl transition-all cursor-pointer border-l-4 border-l-blue-600 h-full">
+                    <CardHeader className="pb-3">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                          <span className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-600 font-bold text-sm shrink-0">
+                            #{index + 1}
+                          </span>
+                          <div className="min-w-0 flex-1">
+                            <h3 className="text-base font-bold text-gray-900 line-clamp-2">
+                              {dept.description}
+                            </h3>
+                            <p className="text-xs text-gray-500 mt-0.5">ID: {dept.id}</p>
                           </div>
                         </div>
-
                         <div className="text-right shrink-0">
-                          <div className="text-2xl font-bold text-blue-600">
+                          <div className="text-xl font-bold text-blue-600">
                             {formatCurrency(yearData.amount)}
                           </div>
-                          <div className="text-sm text-gray-500 mt-1">
-                            {yearData.count.toLocaleString()} items
-                          </div>
-                          <div className="flex items-center gap-1 text-xs text-gray-500 mt-2">
-                            <TrendingUp className="h-3 w-3" />
-                            View agencies
+                          <div className="text-xs text-gray-500 mt-0.5">
+                            {selectedYear}
                           </div>
                         </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      {/* Year-over-Year Chart */}
+                      <div className="mb-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs font-semibold text-gray-600">Budget Trend (2020-2025)</span>
+                          {yoyChange !== 0 && (
+                            <span className={`text-xs font-semibold flex items-center gap-1 ${
+                              yoyChange > 0 ? 'text-green-600' : 'text-red-600'
+                            }`}>
+                              <TrendingUp className={`h-3 w-3 ${
+                                yoyChange < 0 ? 'rotate-180' : ''
+                              }`} />
+                              {yoyChange > 0 ? '+' : ''}{yoyChange.toFixed(1)}% YoY
+                            </span>
+                          )}
+                        </div>
+                        <ResponsiveContainer width="100%" height={80}>
+                          <LineChart data={chartData}>
+                            <XAxis 
+                              dataKey="year" 
+                              tick={{ fontSize: 10 }}
+                              stroke="#9ca3af"
+                            />
+                            <YAxis hide />
+                            <Tooltip 
+                              content={({ active, payload }) => {
+                                if (active && payload && payload.length) {
+                                  return (
+                                    <div className="bg-white px-2 py-1 border border-gray-200 rounded shadow-sm">
+                                      <p className="text-xs font-semibold">{payload[0].payload.year}</p>
+                                      <p className="text-xs text-blue-600">
+                                        {formatCurrency(payload[0].value as number)}
+                                      </p>
+                                    </div>
+                                  )
+                                }
+                                return null
+                              }}
+                            />
+                            <Line 
+                              type="monotone" 
+                              dataKey="amount" 
+                              stroke="#2563eb" 
+                              strokeWidth={2}
+                              dot={{ fill: '#2563eb', r: 3 }}
+                              activeDot={{ r: 5 }}
+                            />
+                          </LineChart>
+                        </ResponsiveContainer>
+                      </div>
+
+                      {/* Stats Row */}
+                      <div className="grid grid-cols-2 gap-3 mb-3">
+                        <div className="bg-gray-50 rounded-lg p-2">
+                          <p className="text-xs text-gray-500">Budget Items</p>
+                          <p className="text-sm font-bold text-gray-900">{yearData.count.toLocaleString()}</p>
+                        </div>
+                        <div className="bg-gray-50 rounded-lg p-2">
+                          <p className="text-xs text-gray-500">Share of Total</p>
+                          <p className="text-sm font-bold text-gray-900">{percentage.toFixed(2)}%</p>
+                        </div>
+                      </div>
+
+                      {/* Progress Bar */}
+                      <div className="w-full bg-gray-200 rounded-full h-2 mb-3">
+                        <div
+                          className="bg-gradient-to-r from-blue-500 to-blue-600 h-2 rounded-full transition-all"
+                          style={{ width: `${Math.min(percentage, 100)}%` }}
+                        />
+                      </div>
+
+                      {/* Action Button */}
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-gray-600">Click to explore agencies</span>
+                        <ArrowRight className="h-4 w-4 text-blue-600" />
                       </div>
                     </CardContent>
                   </Card>
@@ -245,6 +291,7 @@ const DepartmentsListPage = () => {
           </div>
 
           {filteredDepartments.length === 0 && (
+            <div className="col-span-full max-w-[1800px] mx-auto">
             <Card>
               <CardContent className="p-12 text-center">
                 <Building2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
@@ -254,6 +301,7 @@ const DepartmentsListPage = () => {
                 </p>
               </CardContent>
             </Card>
+            </div>
           )}
         </div>
       </div>

@@ -23,6 +23,7 @@ import {
 } from 'recharts'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
+import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
@@ -220,82 +221,19 @@ const BudgetBrowser = () => {
         <div className="flex">
           {/* Main Content */}
           <main className="flex-1 min-w-0">
-            {/* Sticky Header with Title and Year Tabs */}
-            <div className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
-              <div className="px-4 sm:px-6 lg:px-8 py-4">
-                <div className="flex items-center justify-between gap-4 max-w-[1800px] mx-auto">
-                  <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <div className="p-3 bg-blue-600 rounded-lg shrink-0">
-                      <DollarSign className="h-5 w-5 md:h-6 md:w-6 text-white" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <h1 className="text-lg sm:text-lg md:text-xl font-bold text-gray-900 truncate">
-                        GAA Budget Browser
-                      </h1>
-                      <p className="text-xs sm:text-sm text-gray-600 mt-0.5 truncate">
-                        General Appropriations Act (2020-2025)
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Year Tabs */}
-                  <div className="hidden lg:flex flex-col items-end shrink-0">
-                    <h3 className="text-xs font-semibold text-gray-500 uppercase mb-2">Select Year</h3>
-                    <div className="flex gap-2 items-center">
-                      {availableYears.map((year) => (
-                        <button
-                          key={year}
-                          onClick={() => setSelectedYear(year)}
-                          className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                            ? 'bg-blue-600 text-white shadow-lg'
-                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                            }`}
-                        >
-                          {year}
-                        </button>
-                      ))}
-                      <button
-                        onClick={downloadCSV}
-                        className="px-4 py-2 rounded-lg font-semibold text-sm bg-green-600 text-white hover:bg-green-700 transition-all shadow-lg flex items-center gap-2"
-                        title={`Download ${selectedYear} sample data as CSV`}
-                      >
-                        <Download className="h-4 w-4" />
-                        CSV
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Mobile Year Tabs */}
-                <div className="lg:hidden mt-4 max-w-[1800px] mx-auto">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xs font-semibold text-gray-500 uppercase">Select Year</h3>
-                    <button
-                      onClick={downloadCSV}
-                      className="px-3 py-1.5 rounded-lg font-semibold text-xs bg-green-600 text-white hover:bg-green-700 transition-all shadow flex items-center gap-1.5"
-                      title={`Download ${selectedYear} sample as CSV`}
-                    >
-                      <Download className="h-3.5 w-3.5" />
-                      CSV
-                    </button>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {availableYears.map((year) => (
-                      <button
-                        key={year}
-                        onClick={() => setSelectedYear(year)}
-                        className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                          ? 'bg-blue-600 text-white shadow-lg'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                          }`}
-                      >
-                        {year}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Sticky Header */}
+            <BudgetHeader
+              title="GAA Budget Browser"
+              subtitle="General Appropriations Act (2020-2025)"
+              icon={<DollarSign className="h-5 w-5 md:h-6 md:w-6 text-white" />}
+              availableYears={availableYears}
+              selectedYear={selectedYear}
+              onYearChange={setSelectedYear}
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              searchPlaceholder="Search departments..."
+              showSearch={true}
+            />
 
             {/* Content Area with Padding */}
             <div className="px-4 sm:px-6 lg:px-8 py-6">
