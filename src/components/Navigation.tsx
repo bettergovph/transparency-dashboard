@@ -357,7 +357,7 @@ const Navigation = () => {
             {/* Budget Section */}
             <div className="border-t border-gray-200 mt-2 pt-2">
               <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-2">
-                <DollarSign className="h-4 w-4" />
+                <ChartBarStackedIcon className="h-4 w-4" />
                 Budget
               </div>
               {budgetItems.map((item) => {

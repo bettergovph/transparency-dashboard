@@ -337,7 +337,7 @@ const AgencyPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-green-600" />
+                  <ChartBarStackedIcon className="h-5 w-5 text-green-600" />
                   Top 10 Fund Sub-Categories ({selectedYear})
                 </CardTitle>
                 <CardDescription>Largest funding sources</CardDescription>
@@ -496,7 +496,7 @@ const AgencyPage = () => {
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <DollarSign className="h-5 w-5 text-purple-600" />
+                  <ChartBarStackedIcon className="h-5 w-5 text-purple-600" />
                   Fund Sub-Categories ({filteredFunds.length})
                 </CardTitle>
                 <CardDescription>Funding sources</CardDescription>
@@ -543,7 +543,7 @@ const AgencyPage = () => {
                   })}
                   {filteredFunds.length === 0 && (
                     <div className="text-center py-8">
-                      <DollarSign className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <ChartBarStackedIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                       <p className="text-gray-600">No fund sub-categories found</p>
                     </div>
                   )}
@@ -742,7 +742,7 @@ const AgencyPage = () => {
                   })}
                   {filteredFunds.length === 0 && (
                     <div className="text-center py-8">
-                      <DollarSign className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <ChartBarStackedIcon className="h-12 w-12 text-gray-400 mx-auto mb-4" />
                       <p className="text-gray-600">No fund sub-categories found for {selectedYear}</p>
                     </div>
                   )}
