@@ -19,13 +19,13 @@ const SearchPage = () => {
   const [showFilters, setShowFilters] = useState(false)
   const [totalHits, setTotalHits] = useState(0)
   const [searchTime, setSearchTime] = useState(0)
-  
+
   // Filter states
   const [departmentFilter, setDepartmentFilter] = useState('')
   const [agencyFilter, setAgencyFilter] = useState('')
   const [minAmount, setMinAmount] = useState('')
   const [maxAmount, setMaxAmount] = useState('')
-  
+
   // Pagination
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 50
@@ -45,19 +45,19 @@ const SearchPage = () => {
     try {
       // Build filter string
       const filters: string[] = [`year = ${selectedYear}`]
-      
+
       if (departmentFilter) {
         filters.push(`uacs_dpt_dsc = "${departmentFilter}"`)
       }
-      
+
       if (agencyFilter) {
         filters.push(`uacs_agy_dsc = "${agencyFilter}"`)
       }
-      
+
       if (minAmount) {
         filters.push(`amt >= ${parseFloat(minAmount)}`)
       }
-      
+
       if (maxAmount) {
         filters.push(`amt <= ${parseFloat(maxAmount)}`)
       }
@@ -187,7 +187,7 @@ const SearchPage = () => {
                         </span>
                       )}
                     </button>
-                    
+
                     {hasActiveFilters && (
                       <button
                         type="button"
@@ -213,7 +213,7 @@ const SearchPage = () => {
                           onChange={(e) => setDepartmentFilter(e.target.value)}
                         />
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                           Agency
@@ -225,7 +225,7 @@ const SearchPage = () => {
                           onChange={(e) => setAgencyFilter(e.target.value)}
                         />
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                           Min Amount (in thousands)
@@ -237,7 +237,7 @@ const SearchPage = () => {
                           onChange={(e) => setMinAmount(e.target.value)}
                         />
                       </div>
-                      
+
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
                           Max Amount (in thousands)
@@ -269,7 +269,7 @@ const SearchPage = () => {
                     </>
                   )}
                 </div>
-                
+
                 {results.length > 0 && (
                   <button
                     onClick={downloadCSV}
@@ -421,7 +421,7 @@ const SearchPage = () => {
                     >
                       Previous
                     </button>
-                    
+
                     <div className="flex items-center gap-1">
                       {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
                         let pageNum
@@ -439,11 +439,10 @@ const SearchPage = () => {
                           <button
                             key={pageNum}
                             onClick={() => setCurrentPage(pageNum)}
-                            className={`px-3 py-2 rounded-lg font-semibold text-sm ${
-                              currentPage === pageNum
+                            className={`px-3 py-2 rounded-lg font-semibold text-sm ${currentPage === pageNum
                                 ? 'bg-blue-600 text-white'
                                 : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
-                            }`}
+                              }`}
                           >
                             {pageNum}
                           </button>

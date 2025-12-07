@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import {
-  DollarSign,
+  ChartBarStackedIcon,
   TrendingUp,
   Building2,
   Download,
   AlertCircle,
   ArrowRight,
-  Search
+  Search,
+  ChartBarStackedIcon
 } from 'lucide-react'
 import {
   BarChart,
@@ -225,7 +226,7 @@ const BudgetBrowser = () => {
             <BudgetHeader
               title="GAA Budget Browser"
               subtitle="General Appropriations Act (2020-2025)"
-              icon={<DollarSign className="h-5 w-5 md:h-6 md:w-6 text-white" />}
+              icon={<ChartBarStackedIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />}
               availableYears={availableYears}
               selectedYear={selectedYear}
               onYearChange={setSelectedYear}

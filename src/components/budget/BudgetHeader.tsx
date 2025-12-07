@@ -1,4 +1,3 @@
-import { Link, useLocation } from 'react-router-dom'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 
@@ -27,32 +26,18 @@ const BudgetHeader = ({
   searchPlaceholder = 'Search...',
   showSearch = true
 }: BudgetHeaderProps) => {
-  const location = useLocation()
-
-  const isActive = (path: string) => {
-    return location.pathname === path || location.pathname.startsWith(path + '/')
-  }
-
-  const navLinks = [
-    { path: '/budget', label: 'Overview' },
-    { path: '/budget/departments', label: 'Departments' },
-    { path: '/budget/regional', label: 'Regional' },
-    { path: '/budget/allocations', label: 'Allocations' },
-    { path: '/budget/search', label: 'Search' }
-  ]
-
   return (
     <div className="sticky top-0 z-10 bg-white border-b border-gray-200 shadow-sm">
       <div className="px-4 sm:px-6 lg:px-8 py-4">
-        {/* Title, Navigation, and Year Selection Row */}
-        <div className="flex items-center justify-between gap-6 max-w-[1800px] mx-auto">
+        {/* Desktop: Single Row with Title, Search, and Year Selection */}
+        <div className="hidden lg:flex items-center gap-4 max-w-[1800px] mx-auto">
           {/* Title Section */}
           <div className="flex items-center gap-3 shrink-0">
-            <div className="p-3 bg-blue-600 rounded-lg">
+            <div className="p-2 bg-blue-600 rounded-lg">
               {icon}
             </div>
             <div>
-              <h1 className="text-lg md:text-xl font-bold text-gray-900 whitespace-nowrap">
+              <h1 className="text-xl font-bold text-gray-900 whitespace-nowrap leading-tight">
                 {title}
               </h1>
               <p className="text-xs text-gray-600 whitespace-nowrap">
@@ -61,30 +46,31 @@ const BudgetHeader = ({
             </div>
           </div>
 
-          {/* Navigation Links - Desktop */}
-          <div className="hidden lg:flex items-center gap-6 flex-1 justify-center">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm font-semibold transition-colors whitespace-nowrap ${isActive(link.path)
-                  ? 'text-blue-600'
-                  : 'text-gray-600 hover:text-gray-900'
-                  }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+          {/* Search Bar */}
+          {showSearch && onSearchChange && (
+            <div className="flex-1 min-w-0 max-w-md">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder={searchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => onSearchChange(e.target.value)}
 
-          {/* Year Tabs - Desktop */}
-          <div className="hidden lg:flex items-center gap-2 shrink-0">
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Year Tabs */}
+          <div className="flex items-center gap-1.5 shrink-0 ml-auto">
             {availableYears.map((year) => (
               <button
                 key={year}
                 onClick={() => onYearChange(year)}
-                className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all whitespace-nowrap ${selectedYear === year
-                  ? 'bg-blue-600 text-white shadow-lg'
+                className={`px-3 py-1.5 rounded-md font-semibold text-sm transition-all whitespace-nowrap ${selectedYear === year
+                  ? 'bg-blue-600 text-white shadow-md'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
@@ -94,23 +80,39 @@ const BudgetHeader = ({
           </div>
         </div>
 
-        {/* Mobile: Navigation Links and Year Tabs */}
-        <div className="lg:hidden mt-4 max-w-[1800px] mx-auto">
-          {/* Navigation Links */}
-          <div className="flex items-center gap-4 mb-3 border-b border-gray-200 pb-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm font-semibold transition-colors ${isActive(link.path)
-                  ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
-                  : 'text-gray-600 hover:text-gray-900'
-                  }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+        {/* Mobile: Stacked Layout */}
+        <div className="lg:hidden max-w-[1800px] mx-auto">
+          {/* Title Section */}
+          <div className="flex items-center gap-3 mb-3">
+            <div className="p-2 bg-blue-600 rounded-lg">
+              {icon}
+            </div>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-base font-bold text-gray-900 truncate">
+                {title}
+              </h1>
+              <p className="text-xs text-gray-600 truncate">
+                {subtitle}
+              </p>
+            </div>
           </div>
+
+          {/* Search Bar */}
+          {showSearch && onSearchChange && (
+            <div className="mb-3" bg-white rounded-lg shadow-sm>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder={searchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => onSearchChange(e.target.value)}
+                  autoFocus
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
+                />
+              </div>
+            </div>
+          )}
 
           {/* Year Selection */}
           <div>
@@ -120,8 +122,8 @@ const BudgetHeader = ({
                 <button
                   key={year}
                   onClick={() => onYearChange(year)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                    ? 'bg-blue-600 text-white shadow-lg'
+                  className={`px-3 py-1.5 rounded-md font-semibold text-sm transition-all ${selectedYear === year
+                    ? 'bg-blue-600 text-white shadow-md'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
@@ -131,24 +133,6 @@ const BudgetHeader = ({
             </div>
           </div>
         </div>
-
-        {/* Search Bar */}
-        {showSearch && onSearchChange && (
-          <div className="mt-4 max-w-[1800px] mx-auto">
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <Search className="h-5 w-5 text-gray-400" />
-              </div>
-              <Input
-                type="text"
-                placeholder={searchPlaceholder}
-                value={searchQuery}
-                onChange={(e) => onSearchChange(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-          </div>
-        )}
       </div>
     </div>
   )

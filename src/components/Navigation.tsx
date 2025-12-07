@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, DollarSign } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, ChartBarStackedIcon } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -26,8 +26,11 @@ const Navigation = () => {
   ]
 
   const budgetItems = [
-    { path: '/budget', label: 'GAA Budget Browser', icon: DollarSign },
+    { path: '/budget', label: 'Overview', icon: ChartBarStackedIcon },
     { path: '/budget/departments', label: 'Departments', icon: Building2 },
+    { path: '/budget/regional', label: 'Regional', icon: MapPin },
+    { path: '/budget/allocations', label: 'Allocations', icon: Grid3x3 },
+    { path: '/budget/search', label: 'Search', icon: TrendingUp },
   ]
 
   const projectsDropdownItems = [

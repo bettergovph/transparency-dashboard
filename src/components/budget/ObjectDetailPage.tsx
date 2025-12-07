@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Package, ChevronRight, ArrowLeft, TrendingUp, DollarSign, Calendar, Filter } from 'lucide-react'
+import { Package, ChevronRight, ArrowLeft, TrendingUp, ChartBarStackedIcon, Calendar, Filter } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'

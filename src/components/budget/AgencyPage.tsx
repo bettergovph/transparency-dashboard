@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams, useLocation, Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Building2, ChevronRight, ArrowLeft, TrendingUp, DollarSign, Package } from 'lucide-react'
+import { Building2, ChevronRight, ArrowLeft, TrendingUp, ChartBarStackedIcon, Package } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
