@@ -139,9 +139,46 @@ const ObjectDetailPage = () => {
     }
   }
 
-  const formatCurrency = (value: number) => formatGAAAmount(value)
+  const formatCurrency = (value: number) => {
+    // Ensure value is a number
+    const numValue = typeof value === 'string' ? parseFloat(value) : value
+    if (isNaN(numValue)) return '₱0.00'
 
-  const totalAmount = items.reduce((sum, item) => sum + item.amt, 0)
+    // MeiliSearch data stores amounts in MILLIONS, so multiply by 1,000,000
+    const actualPesos = numValue * 1_000_000
+
+    if (actualPesos >= 1_000_000_000_000) {
+      return `₱${(actualPesos / 1_000_000_000_000).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}T`
+    } else if (actualPesos >= 1_000_000_000) {
+      return `₱${(actualPesos / 1_000_000_000).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}B`
+    } else if (actualPesos >= 1_000_000) {
+      return `₱${(actualPesos / 1_000_000).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}M`
+    } else if (actualPesos >= 1_000) {
+      return `₱${(actualPesos / 1_000).toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}K`
+    } else {
+      return `₱${actualPesos.toLocaleString('en-PH', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      })}`
+    }
+  }
+
+  const totalAmount = items.reduce((sum, item) => {
+    const amt = typeof item.amt === 'string' ? parseFloat(item.amt) : item.amt
+    return sum + (isNaN(amt) ? 0 : amt)
+  }, 0)
   const totalPages = Math.ceil(totalItems / itemsPerPage)
 
   if (loading && items.length === 0) {

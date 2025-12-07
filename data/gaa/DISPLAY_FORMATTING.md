@@ -1,14 +1,36 @@
 # GAA Amount Display - FINAL Solution
 
-## Key Discovery
+## CRITICAL: Two Different Data Sources with Different Scales
 
+### 1. Aggregate JSON Files (Thousands)
 **GAA aggregate values are stored in THOUSANDS of pesos.**
 
-### Example
-- Database/Aggregate value: `6,326,324,300`
+- **Source**: `/public/data/gaa/aggregates/*.json` (departments.json, agencies.json, etc.)
+- **Scale**: Values are in THOUSANDS of pesos
+- **Conversion**: Multiply by **1,000** to get actual pesos
+- **Used by**: BudgetBrowser, DepartmentsListPage, DepartmentPage, AgencyPage
+- **Function**: `formatGAAAmount()` in `src/lib/formatGAAAmount.ts`
+
+#### Example
+- Aggregate value: `6,326,324,300`
 - Meaning: 6,326,324,300 **thousand** pesos  
 - Actual amount: ₱6,326,324,300,000
 - Display: **₱6.33T** (trillion) ✅
+
+### 2. MeiliSearch/Parquet Data (Millions)
+**MeiliSearch data stores amounts in MILLIONS of pesos.**
+
+- **Source**: MeiliSearch index from `gaa.parquet`
+- **Scale**: Values are in MILLIONS of pesos (labeled "in millions" in source CSV)
+- **Conversion**: Multiply by **1,000,000** to get actual pesos
+- **Used by**: ObjectDetailPage (line item details)
+- **Function**: Custom formatting in ObjectDetailPage component
+
+#### Example
+- MeiliSearch value: `739.24`
+- Meaning: 739.24 **million** pesos
+- Actual amount: ₱739,240,000
+- Display: **₱739.24M** (million) ✅
 
 ## The Problem
 
@@ -131,16 +153,22 @@ Quick verification the fix works:
 
 ## Important Notes
 
-- **MeiliSearch data** also stores amounts in thousands - use same formatting
-- **Charts/graphs** should use `formatGAAAmount()` for axis labels
-- **CSV exports** should document that source values are in thousands
+- **Aggregates (JSON)** store amounts in **thousands** - use `formatGAAAmount()` (multiply by 1,000)
+- **MeiliSearch/Parquet** stores amounts in **millions** - multiply by 1,000,000 for display
+- **Why different scales?** Source CSV data is labeled "in millions", but aggregates sum these into thousands for efficiency
+- **Charts/graphs** should use appropriate formatting based on data source
+- **CSV exports** should document that source values are in millions
 - **API responses** should specify units or pre-format values
 
 ## Debugging
 
 If you see amounts that seem wrong:
-1. Check if you're using `formatGAAAmount()` - if not, values will be in thousands
-2. Verify you're not multiplying twice (once in data, once in display)
-3. Confirm aggregates vs raw data - aggregates are sums of thousands
+1. **Identify data source**: Aggregates (thousands) vs MeiliSearch (millions)
+2. **Aggregates**: Use `formatGAAAmount()` - multiplies by 1,000
+3. **MeiliSearch**: Multiply by 1,000,000 before formatting
+4. Verify you're not multiplying twice (once in data, once in display)
+5. Check if aggregates match MeiliSearch totals (they should when converted correctly)
 
-**Remember**: The rule is simple - aggregate values are in **thousands**, so always **multiply by 1,000** before displaying!
+**Remember**: 
+- **Aggregate values** are in **thousands** → multiply by **1,000**
+- **MeiliSearch values** are in **millions** → multiply by **1,000,000**
