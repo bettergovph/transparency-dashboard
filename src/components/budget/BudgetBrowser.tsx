@@ -406,7 +406,7 @@ const BudgetBrowser = () => {
                       <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
-                  
+
                   {/* Search Bar */}
                   <div className="relative mt-4">
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -454,7 +454,7 @@ const BudgetBrowser = () => {
                                     <span>ID: {dept.id} • {dept.count.toLocaleString()} budget items</span>
                                     <span className="font-semibold">{percentage.toFixed(2)}% of total</span>
                                   </div>
-                                  
+
                                   <div className="w-full bg-gray-200 rounded-full h-2">
                                     <div
                                       className="bg-blue-600 h-2 rounded-full transition-all"

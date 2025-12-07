@@ -173,8 +173,8 @@ const DepartmentsListPage = () => {
               const currentYearAmount = dept.years[String(selectedYear)]?.amount || 0
               const previousYear = selectedYear - 1
               const previousYearAmount = dept.years[String(previousYear)]?.amount || 0
-              const yoyChange = previousYearAmount > 0 
-                ? ((currentYearAmount - previousYearAmount) / previousYearAmount) * 100 
+              const yoyChange = previousYearAmount > 0
+                ? ((currentYearAmount - previousYearAmount) / previousYearAmount) * 100
                 : 0
 
               return (
@@ -213,25 +213,23 @@ const DepartmentsListPage = () => {
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-xs font-semibold text-gray-600">Budget Trend (2020-2025)</span>
                           {yoyChange !== 0 && (
-                            <span className={`text-xs font-semibold flex items-center gap-1 ${
-                              yoyChange > 0 ? 'text-green-600' : 'text-red-600'
-                            }`}>
-                              <TrendingUp className={`h-3 w-3 ${
-                                yoyChange < 0 ? 'rotate-180' : ''
-                              }`} />
+                            <span className={`text-xs font-semibold flex items-center gap-1 ${yoyChange > 0 ? 'text-green-600' : 'text-red-600'
+                              }`}>
+                              <TrendingUp className={`h-3 w-3 ${yoyChange < 0 ? 'rotate-180' : ''
+                                }`} />
                               {yoyChange > 0 ? '+' : ''}{yoyChange.toFixed(1)}% YoY
                             </span>
                           )}
                         </div>
                         <ResponsiveContainer width="100%" height={80}>
                           <LineChart data={chartData}>
-                            <XAxis 
-                              dataKey="year" 
+                            <XAxis
+                              dataKey="year"
                               tick={{ fontSize: 10 }}
                               stroke="#9ca3af"
                             />
                             <YAxis hide />
-                            <Tooltip 
+                            <Tooltip
                               content={({ active, payload }) => {
                                 if (active && payload && payload.length) {
                                   return (
@@ -246,10 +244,10 @@ const DepartmentsListPage = () => {
                                 return null
                               }}
                             />
-                            <Line 
-                              type="monotone" 
-                              dataKey="amount" 
-                              stroke="#2563eb" 
+                            <Line
+                              type="monotone"
+                              dataKey="amount"
+                              stroke="#2563eb"
                               strokeWidth={2}
                               dot={{ fill: '#2563eb', r: 3 }}
                               activeDot={{ r: 5 }}
@@ -292,15 +290,15 @@ const DepartmentsListPage = () => {
 
           {filteredDepartments.length === 0 && (
             <div className="col-span-full max-w-[1800px] mx-auto">
-            <Card>
-              <CardContent className="p-12 text-center">
-                <Building2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">No departments found</h3>
-                <p className="text-gray-600">
-                  {searchQuery ? 'Try adjusting your search terms' : `No departments with budget data for ${selectedYear}`}
-                </p>
-              </CardContent>
-            </Card>
+              <Card>
+                <CardContent className="p-12 text-center">
+                  <Building2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">No departments found</h3>
+                  <p className="text-gray-600">
+                    {searchQuery ? 'Try adjusting your search terms' : `No departments with budget data for ${selectedYear}`}
+                  </p>
+                </CardContent>
+              </Card>
             </div>
           )}
         </div>
