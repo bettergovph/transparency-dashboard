@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Filter, Download, ChevronDown, ChevronUp } from 'lucide-react'
 import Navigation from '../Navigation'
@@ -8,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { searchBudgetDocuments } from '@/lib/meilisearch'
+import { toSlug } from '@/lib/utils'
 import type { BudgetDocument } from '@/types/budget'
 
 const SearchPage = () => {
@@ -162,12 +164,13 @@ const SearchPage = () => {
                     <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                       <Search className="h-5 w-5 text-gray-400" />
                     </div>
-                    <Input
+                    <input
                       type="text"
                       placeholder="Search by description, department, agency, object, expense..."
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-10 text-base h-12"
+                      autoFocus
+                      className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded focus:outline-none focus:border-black focus:ring-1 focus:ring-black"
                     />
                   </div>
 
@@ -342,18 +345,35 @@ const SearchPage = () => {
                                 </div>
                               </td>
                               <td className="px-4 py-3">
-                                <p className="text-sm text-gray-700 line-clamp-2 max-w-xs">
-                                  {doc.uacs_dpt_dsc}
-                                </p>
+                                {doc.uacs_dpt_dsc && (
+                                  <Link
+                                    to={`/budget/departments/${toSlug(doc.uacs_dpt_dsc)}`}
+                                    state={{ departmentId: doc.uacs_dpt_dsc, departmentName: doc.uacs_dpt_dsc }}
+                                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline line-clamp-2 max-w-xs block"
+                                  >
+                                    {doc.uacs_dpt_dsc}
+                                  </Link>
+                                )}
                               </td>
                               <td className="px-4 py-3">
-                                <p className="text-sm text-gray-700 line-clamp-2 max-w-xs">
-                                  {doc.uacs_agy_dsc}
-                                </p>
+                                {doc.uacs_agy_dsc && (
+                                  <Link
+                                    to={`/budget/departments/${toSlug(doc.uacs_dpt_dsc || '')}/agencies/${toSlug(doc.uacs_agy_dsc)}`}
+                                    state={{
+                                      agencyId: doc.uacs_agy_dsc,
+                                      agencyName: doc.uacs_agy_dsc,
+                                      departmentId: doc.uacs_dpt_dsc,
+                                      departmentName: doc.uacs_dpt_dsc
+                                    }}
+                                    className="text-sm text-blue-600 hover:text-blue-800 hover:underline line-clamp-2 max-w-xs block"
+                                  >
+                                    {doc.uacs_agy_dsc}
+                                  </Link>
+                                )}
                               </td>
                               <td className="px-4 py-3 whitespace-nowrap text-right">
                                 <span className="text-sm font-bold text-blue-600">
-                                  {formatGAAAmount(doc.amt)}
+                                  {doc.amt != null && !isNaN(doc.amt) ? formatGAAAmount(doc.amt) : 'N/A'}
                                 </span>
                               </td>
                             </tr>
@@ -378,7 +398,7 @@ const SearchPage = () => {
                           </div>
                           <div className="text-right shrink-0">
                             <div className="text-lg font-bold text-blue-600">
-                              {formatGAAAmount(doc.amt)}
+                              {doc.amt != null && !isNaN(doc.amt) ? formatGAAAmount(doc.amt) : 'N/A'}
                             </div>
                           </div>
                         </div>
@@ -387,11 +407,36 @@ const SearchPage = () => {
                         <div className="space-y-2">
                           <div>
                             <p className="text-xs text-gray-500">Department</p>
-                            <p className="text-sm text-gray-900">{doc.uacs_dpt_dsc}</p>
+                            {doc.uacs_dpt_dsc ? (
+                              <Link
+                                to={`/budget/departments/${toSlug(doc.uacs_dpt_dsc)}`}
+                                state={{ departmentId: doc.uacs_dpt_dsc, departmentName: doc.uacs_dpt_dsc }}
+                                className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                              >
+                                {doc.uacs_dpt_dsc}
+                              </Link>
+                            ) : (
+                              <p className="text-sm text-gray-400">N/A</p>
+                            )}
                           </div>
                           <div>
                             <p className="text-xs text-gray-500">Agency</p>
-                            <p className="text-sm text-gray-900">{doc.uacs_agy_dsc}</p>
+                            {doc.uacs_agy_dsc ? (
+                              <Link
+                                to={`/budget/departments/${toSlug(doc.uacs_dpt_dsc || '')}/agencies/${toSlug(doc.uacs_agy_dsc)}`}
+                                state={{
+                                  agencyId: doc.uacs_agy_dsc,
+                                  agencyName: doc.uacs_agy_dsc,
+                                  departmentId: doc.uacs_dpt_dsc,
+                                  departmentName: doc.uacs_dpt_dsc
+                                }}
+                                className="text-sm text-blue-600 hover:text-blue-800 hover:underline"
+                              >
+                                {doc.uacs_agy_dsc}
+                              </Link>
+                            ) : (
+                              <p className="text-sm text-gray-400">N/A</p>
+                            )}
                           </div>
                           <div className="flex flex-wrap gap-2">
                             {doc.uacs_sobj_dsc && (
@@ -440,8 +485,8 @@ const SearchPage = () => {
                             key={pageNum}
                             onClick={() => setCurrentPage(pageNum)}
                             className={`px-3 py-2 rounded-lg font-semibold text-sm ${currentPage === pageNum
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
                               }`}
                           >
                             {pageNum}
@@ -473,7 +518,7 @@ const SearchPage = () => {
             ) : (
               <Card>
                 <CardContent className="p-12 text-center">
-                  <Search className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                  <Search className="h-12 w-12 text-gray-400 mx-auto mb-4 mt-8" />
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Start searching</h3>
                   <p className="text-gray-600">
                     Enter a search term above to find budget allocations
