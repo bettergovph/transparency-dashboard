@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Package, TrendingUp } from 'lucide-react'
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'
@@ -7,6 +8,7 @@ import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
+import { toSlug } from '@/lib/utils'
 
 interface ObjectData {
   id: string
@@ -28,6 +30,8 @@ interface ObjectsData {
 
 const AllocationsPage = () => {
   const [objectsData, setObjectsData] = useState<ObjectsData | null>(null)
+  const [departments, setDepartments] = useState<Map<string, { id: string; description: string }>>(new Map())
+  const [agencies, setAgencies] = useState<Map<string, { id: string; description: string; department_id: string }>>(new Map())
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedYear, setSelectedYear] = useState<number>(2025)
@@ -37,6 +41,7 @@ const AllocationsPage = () => {
 
   useEffect(() => {
     loadObjectsData()
+    loadMappingData()
   }, [])
 
   // Reset to page 1 when search or year changes
@@ -64,6 +69,33 @@ const AllocationsPage = () => {
     } catch (error) {
       console.error('Error loading objects data:', error)
       setLoading(false)
+    }
+  }
+
+  const loadMappingData = async () => {
+    try {
+      const [deptRes, agencyRes] = await Promise.all([
+        fetch('/data/gaa/aggregates/departments.json'),
+        fetch('/data/gaa/aggregates/agencies.json')
+      ])
+      const deptData = await deptRes.json()
+      const agencyData = await agencyRes.json()
+
+      // Create department map
+      const deptMap = new Map()
+      deptData.data.forEach((dept: any) => {
+        deptMap.set(dept.id, { id: dept.id, description: dept.description })
+      })
+      setDepartments(deptMap)
+
+      // Create agency map
+      const agencyMap = new Map()
+      agencyData.data.forEach((agency: any) => {
+        agencyMap.set(agency.id, { id: agency.id, description: agency.description, department_id: agency.department_id })
+      })
+      setAgencies(agencyMap)
+    } catch (error) {
+      console.error('Error loading mapping data:', error)
     }
   }
 
@@ -244,6 +276,9 @@ const AllocationsPage = () => {
                           ? ((yearData.amount - previousYearAmount) / previousYearAmount) * 100
                           : 0
 
+                        const department = departments.get(obj.department_id)
+                        const agency = agencies.get(obj.agency_id)
+
                         return (
                           <tr key={obj.id} className="hover:bg-gray-50 transition-colors">
                             <td className="px-6 py-4 whitespace-nowrap">
@@ -257,18 +292,50 @@ const AllocationsPage = () => {
                               </span>
                             </td>
                             <td className="px-6 py-4">
-                              <div className="max-w-md">
-                                <p className="text-sm font-medium text-gray-900 line-clamp-2">
-                                  {obj.description}
-                                </p>
-                              </div>
+                              {department && agency ? (
+                                <Link
+                                  to={`/budget/departments/${toSlug(department.description)}/agencies/${toSlug(agency.description)}/objects/${toSlug(obj.description)}`}
+                                  state={{
+                                    objectId: obj.id,
+                                    objectCode: obj.object_code,
+                                    objectName: obj.description,
+                                    agencyId: agency.id,
+                                    agencyName: agency.description,
+                                    departmentId: department.id,
+                                    departmentName: department.description
+                                  }}
+                                  className="block max-w-md"
+                                >
+                                  <p className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline line-clamp-2">
+                                    {obj.description}
+                                  </p>
+                                </Link>
+                              ) : (
+                                <div className="max-w-md">
+                                  <p className="text-sm font-medium text-gray-900 line-clamp-2">
+                                    {obj.description}
+                                  </p>
+                                </div>
+                              )}
                             </td>
                             <td className="px-6 py-4">
-                              <div className="max-w-xs">
-                                <p className="text-xs text-gray-600 line-clamp-2">
-                                  {obj.department_id}
-                                </p>
-                              </div>
+                              {department ? (
+                                <Link
+                                  to={`/budget/departments/${toSlug(department.description)}`}
+                                  state={{ departmentId: department.id, departmentName: department.description }}
+                                  className="block max-w-xs"
+                                >
+                                  <p className="text-xs text-blue-600 hover:text-blue-800 hover:underline line-clamp-2">
+                                    {department.description}
+                                  </p>
+                                </Link>
+                              ) : (
+                                <div className="max-w-xs">
+                                  <p className="text-xs text-gray-600 line-clamp-2">
+                                    {obj.department_id}
+                                  </p>
+                                </div>
+                              )}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-right">
                               <span className="text-sm font-bold text-blue-600">
@@ -331,6 +398,9 @@ const AllocationsPage = () => {
                   ? ((yearData.amount - previousYearAmount) / previousYearAmount) * 100
                   : 0
 
+                const department = departments.get(obj.department_id)
+                const agency = agencies.get(obj.agency_id)
+
                 return (
                   <Card key={obj.id} className="border-l-4 border-l-blue-600">
                     <CardHeader className="pb-3">
@@ -340,9 +410,28 @@ const AllocationsPage = () => {
                             #{globalRank}
                           </span>
                           <div className="min-w-0 flex-1">
-                            <h3 className="text-base font-bold text-gray-900 line-clamp-2">
-                              {obj.description}
-                            </h3>
+                            {department && agency ? (
+                              <Link
+                                to={`/budget/departments/${toSlug(department.description)}/agencies/${toSlug(agency.description)}/objects/${toSlug(obj.description)}`}
+                                state={{
+                                  objectId: obj.id,
+                                  objectCode: obj.object_code,
+                                  objectName: obj.description,
+                                  agencyId: agency.id,
+                                  agencyName: agency.description,
+                                  departmentId: department.id,
+                                  departmentName: department.description
+                                }}
+                              >
+                                <h3 className="text-base font-bold text-blue-600 hover:text-blue-800 hover:underline line-clamp-2">
+                                  {obj.description}
+                                </h3>
+                              </Link>
+                            ) : (
+                              <h3 className="text-base font-bold text-gray-900 line-clamp-2">
+                                {obj.description}
+                              </h3>
+                            )}
                             <p className="text-xs font-mono text-gray-500 mt-0.5 bg-gray-100 px-2 py-0.5 rounded inline-block">
                               {obj.object_code}
                             </p>
@@ -354,7 +443,16 @@ const AllocationsPage = () => {
                       <div className="space-y-3">
                         <div>
                           <p className="text-xs text-gray-500 mb-1">Department</p>
-                          <p className="text-sm text-gray-700 line-clamp-2">{obj.department_id}</p>
+                          {department ? (
+                            <Link
+                              to={`/budget/departments/${toSlug(department.description)}`}
+                              state={{ departmentId: department.id, departmentName: department.description }}
+                            >
+                              <p className="text-sm text-blue-600 hover:text-blue-800 hover:underline line-clamp-2">{department.description}</p>
+                            </Link>
+                          ) : (
+                            <p className="text-sm text-gray-700 line-clamp-2">{obj.department_id}</p>
+                          )}
                         </div>
 
                         <div className="grid grid-cols-2 gap-3">
@@ -449,8 +547,8 @@ const AllocationsPage = () => {
                         key={pageNum}
                         onClick={() => setCurrentPage(pageNum)}
                         className={`px-3 py-2 rounded-lg font-semibold text-sm ${currentPage === pageNum
-                            ? 'bg-blue-600 text-white'
-                            : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
                           }`}
                       >
                         {pageNum}

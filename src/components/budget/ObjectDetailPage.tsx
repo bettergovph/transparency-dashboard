@@ -4,13 +4,16 @@ import { Helmet } from '@dr.pogodin/react-helmet'
 import { Package, ChevronRight, ArrowLeft, TrendingUp, ChartBarStackedIcon, Calendar, Filter } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
+import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { searchBudgetDocuments } from '@/lib/meilisearch'
+import { toSlug } from '@/lib/utils'
 import type { BudgetDocument } from '@/types/budget'
 
 const ObjectDetailPage = () => {
-  const { deptSlug, agencySlug, objectSlug } = useParams<{ deptSlug: string; agencySlug: string; objectSlug: string }>()
+  // Get route params (slugs are from URL, actual data comes from location.state)
+  const { deptSlug: _deptSlug, agencySlug: _agencySlug } = useParams<{ deptSlug: string; agencySlug: string; objectSlug: string }>()
   const location = useLocation()
   const objectId = location.state?.objectId
   const objectCode = location.state?.objectCode
@@ -205,73 +208,25 @@ const ObjectDetailPage = () => {
 
       <Navigation />
 
-      <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6 flex-wrap">
-            <Link to="/budget" className="hover:text-blue-600">Budget</Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link to="/budget/departments" className="hover:text-blue-600">Departments</Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link to={`/budget/departments/${deptSlug}`} state={{ departmentId: department?.id, departmentName: department?.description }} className="hover:text-blue-600">
-              {department?.description || departmentName || 'Department'}
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link
-              to={`/budget/departments/${deptSlug}/${agencySlug}`}
-              state={{ agencyId: agency?.id, agencyName: agency?.description, departmentId: department?.id, departmentName: department?.description }}
-              className="hover:text-blue-600"
-            >
-              {agency?.description || agencyName || 'Agency'}
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-gray-900 font-medium">{objectName}</span>
-          </nav>
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+        {/* Sticky Header */}
+        <BudgetHeader
+          title={objectName || 'Object Details'}
+          subtitle={`Object Code: ${objectCode} · ${agency?.description || agencyName || 'Agency'}`}
+          icon={<Package className="h-5 w-5 md:h-6 md:w-6 text-white" />}
+          availableYears={availableYears}
+          selectedYear={selectedYear}
+          onYearChange={(year) => {
+            setSelectedYear(year)
+            setCurrentPage(1)
+          }}
+          showSearch={false}
+        />
 
-          {/* Header */}
-          <div className="mb-8">
-            <Link
-              to={`/budget/departments/${deptSlug}/${agencySlug}`}
-              state={{ agencyId: agency?.id, agencyName: agency?.description, departmentId: department?.id, departmentName: department?.description }}
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to {agency?.description || agencyName || 'Agency'}
-            </Link>
-
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-indigo-600 rounded-lg">
-                <Package className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">{objectName}</h1>
-                <p className="text-gray-600 mt-1">Object Code: {objectCode} • {agencyName}</p>
-              </div>
-            </div>
-
-            {/* Year Filter */}
-            <div className="flex flex-wrap gap-2 items-center">
-              <Filter className="h-4 w-4 text-gray-500" />
-              {availableYears.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => {
-                    setSelectedYear(year)
-                    setCurrentPage(1) // Reset to first page when changing year
-                  }}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                    }`}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div>
-
+        {/* Content Area with Padding */}
+        <div className="px-4 sm:px-6 lg:px-8 py-6">
           {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 max-w-[1800px] mx-auto">
             <Card className="border-l-4 border-l-indigo-600">
               <CardHeader className="pb-3">
                 <CardDescription>Total Amount ({selectedYear})</CardDescription>
@@ -310,10 +265,10 @@ const ObjectDetailPage = () => {
           </div>
 
           {/* Items List */}
-          <Card>
+          <Card className="max-w-[1800px] mx-auto">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <DollarSign className="h-5 w-5 text-indigo-600" />
+                <ChartBarStackedIcon className="h-5 w-5 text-indigo-600" />
                 Budget Line Items
               </CardTitle>
               <CardDescription>Detailed budget allocations for {objectName}</CardDescription>
