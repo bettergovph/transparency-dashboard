@@ -36,6 +36,7 @@ const BudgetHeader = ({
   const navLinks = [
     { path: '/budget', label: 'Overview' },
     { path: '/budget/departments', label: 'Departments' },
+    { path: '/budget/regional', label: 'Regional' },
     { path: '/budget/allocations', label: 'Allocations' }
   ]
 

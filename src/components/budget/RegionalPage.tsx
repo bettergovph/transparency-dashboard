@@ -31,7 +31,7 @@ interface RegionalData {
   data: YearData[]
 }
 
-const RegionalAllocationsPage = () => {
+const RegionalPage = () => {
   const [regionalData, setRegionalData] = useState<RegionalData | null>(null)
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
@@ -162,7 +162,7 @@ const RegionalAllocationsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Regional Allocations - GAA Budget Browser</title>
+        <title>Regional - GAA Budget Browser</title>
         <meta name="description" content="Explore Philippine national budget allocations by region from the General Appropriations Act (GAA)." />
       </Helmet>
 
@@ -171,7 +171,7 @@ const RegionalAllocationsPage = () => {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
         {/* Sticky Header */}
         <BudgetHeader
-          title="Regional Allocations"
+          title="Regional"
           subtitle="National budget allocation per region"
           icon={<MapPin className="h-5 w-5 md:h-6 md:w-6 text-white" />}
           availableYears={availableYears}
@@ -504,4 +504,4 @@ const RegionalAllocationsPage = () => {
   )
 }
 
-export default RegionalAllocationsPage
+export default RegionalPage
