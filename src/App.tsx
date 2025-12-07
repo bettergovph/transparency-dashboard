@@ -16,6 +16,7 @@ import AgencyPage from './components/budget/AgencyPage'
 import ObjectDetailPage from './components/budget/ObjectDetailPage'
 import RegionalPage from './components/budget/RegionalPage'
 import AllocationsPage from './components/budget/AllocationsPage'
+import SearchPage from './components/budget/SearchPage'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/budget/departments/:deptSlug/:agencySlug/objects/:objectSlug" element={<ObjectDetailPage />} />
         <Route path="/budget/regional" element={<RegionalPage />} />
         <Route path="/budget/allocations" element={<AllocationsPage />} />
+        <Route path="/budget/search" element={<SearchPage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />

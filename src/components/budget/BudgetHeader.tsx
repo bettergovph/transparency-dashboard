@@ -37,7 +37,8 @@ const BudgetHeader = ({
     { path: '/budget', label: 'Overview' },
     { path: '/budget/departments', label: 'Departments' },
     { path: '/budget/regional', label: 'Regional' },
-    { path: '/budget/allocations', label: 'Allocations' }
+    { path: '/budget/allocations', label: 'Allocations' },
+    { path: '/budget/search', label: 'Search' }
   ]
 
   return (
@@ -67,8 +68,8 @@ const BudgetHeader = ({
                 key={link.path}
                 to={link.path}
                 className={`text-sm font-semibold transition-colors whitespace-nowrap ${isActive(link.path)
-                    ? 'text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
+                  ? 'text-blue-600'
+                  : 'text-gray-600 hover:text-gray-900'
                   }`}
               >
                 {link.label}
@@ -83,8 +84,8 @@ const BudgetHeader = ({
                 key={year}
                 onClick={() => onYearChange(year)}
                 className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all whitespace-nowrap ${selectedYear === year
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'bg-blue-600 text-white shadow-lg'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
                 {year}
@@ -102,8 +103,8 @@ const BudgetHeader = ({
                 key={link.path}
                 to={link.path}
                 className={`text-sm font-semibold transition-colors ${isActive(link.path)
-                    ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
-                    : 'text-gray-600 hover:text-gray-900'
+                  ? 'text-blue-600 border-b-2 border-blue-600 pb-2'
+                  : 'text-gray-600 hover:text-gray-900'
                   }`}
               >
                 {link.label}
@@ -120,8 +121,8 @@ const BudgetHeader = ({
                   key={year}
                   onClick={() => onYearChange(year)}
                   className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    ? 'bg-blue-600 text-white shadow-lg'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                 >
                   {year}

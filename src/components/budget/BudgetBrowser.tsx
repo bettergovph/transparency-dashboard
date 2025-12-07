@@ -229,10 +229,7 @@ const BudgetBrowser = () => {
               availableYears={availableYears}
               selectedYear={selectedYear}
               onYearChange={setSelectedYear}
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-              searchPlaceholder="Search departments..."
-              showSearch={true}
+              showSearch={false}
             />
 
             {/* Content Area with Padding */}
