@@ -4,6 +4,7 @@ import { Helmet } from '@dr.pogodin/react-helmet'
 import { Building2, TrendingUp, ChevronRight, ArrowLeft } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
+import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { toSlug } from '@/lib/utils'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
@@ -172,52 +173,21 @@ const DepartmentPage = () => {
       <Navigation />
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6">
-            <Link to="/budget" className="hover:text-blue-600">Budget</Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link to="/budget/departments" className="hover:text-blue-600">Departments</Link>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-gray-900 font-medium">{department.description}</span>
-          </nav>
+        {/* Sticky Header */}
+        <BudgetHeader
+          title={department.description}
+          subtitle={`Department ID: ${department.id} · Browse agencies and allocations`}
+          icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
+          availableYears={availableYears}
+          selectedYear={selectedYear}
+          onYearChange={setSelectedYear}
+          showSearch={false}
+        />
 
-          {/* Header */}
-          <div className="mb-8">
-            <Link to="/budget/departments" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4">
-              <ArrowLeft className="h-4 w-4" />
-              Back to all departments
-            </Link>
-
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-blue-600 rounded-lg">
-                <Building2 className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">{department.description}</h1>
-                <p className="text-gray-600 mt-1">Department ID: {department.id}</p>
-              </div>
-            </div>
-
-            {/* Year Tabs */}
-            <div className="flex flex-wrap gap-2">
-              {availableYears.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => setSelectedYear(year)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                    }`}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div>
-
+        {/* Content Area with Padding */}
+        <div className="px-4 sm:px-6 lg:px-8 py-6">
           {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 max-w-[1800px] mx-auto">
             <Card className="border-l-4 border-l-blue-600">
               <CardHeader className="pb-3">
                 <CardDescription>Total Budget ({selectedYear})</CardDescription>
@@ -253,10 +223,22 @@ const DepartmentPage = () => {
                 <p className="text-xs text-gray-500">Budget allocations</p>
               </CardContent>
             </Card>
+
+            <Card className="border-l-4 border-l-orange-600">
+              <CardHeader className="pb-3">
+                <CardDescription>Active Agencies</CardDescription>
+                <CardTitle className="text-2xl text-orange-600">
+                  {filteredAgencies.length}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-xs text-gray-500">Under this department</p>
+              </CardContent>
+            </Card>
           </div>
 
           {/* Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 max-w-[1800px] mx-auto">
             {/* Year-over-Year Trend */}
             <Card>
               <CardHeader>
@@ -311,7 +293,7 @@ const DepartmentPage = () => {
           </div>
 
           {/* Agencies List */}
-          <Card>
+          <Card className="max-w-[1800px] mx-auto">
             <CardHeader>
               <CardTitle>Agencies ({selectedYear})</CardTitle>
               <CardDescription>

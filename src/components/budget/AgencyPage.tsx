@@ -4,6 +4,7 @@ import { Helmet } from '@dr.pogodin/react-helmet'
 import { Building2, ChevronRight, ArrowLeft, TrendingUp, DollarSign, Package } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
+import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { toSlug } from '@/lib/utils'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
@@ -236,60 +237,21 @@ const AgencyPage = () => {
       <Navigation />
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
-        <div className="w-full px-4 sm:px-6 lg:px-8 py-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-gray-600 mb-6 flex-wrap">
-            <Link to="/budget" className="hover:text-blue-600">Budget</Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link to="/budget/departments" className="hover:text-blue-600">Departments</Link>
-            <ChevronRight className="h-4 w-4" />
-            <Link to={`/budget/departments/${deptSlug}`} state={{ departmentId: department?.id, departmentName: department?.description }} className="hover:text-blue-600">
-              {department?.description || departmentName || 'Department'}
-            </Link>
-            <ChevronRight className="h-4 w-4" />
-            <span className="text-gray-900 font-medium">{agency.description}</span>
-          </nav>
+        {/* Sticky Header */}
+        <BudgetHeader
+          title={agency.description}
+          subtitle={`Agency ID: ${agency.id} · ${department?.description || departmentName || 'Department'}`}
+          icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
+          availableYears={availableYears}
+          selectedYear={selectedYear}
+          onYearChange={setSelectedYear}
+          showSearch={false}
+        />
 
-          {/* Header */}
-          <div className="mb-8">
-            <Link
-              to={`/budget/departments/${deptSlug}`}
-              state={{ departmentId, departmentName }}
-              className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 mb-4"
-            >
-              <ArrowLeft className="h-4 w-4" />
-              Back to {departmentName}
-            </Link>
-
-            <div className="flex items-center gap-3 mb-4">
-              <div className="p-3 bg-green-600 rounded-lg">
-                <Building2 className="h-6 w-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">{agency.description}</h1>
-                <p className="text-gray-600 mt-1">Agency ID: {agency.id} • {departmentName}</p>
-              </div>
-            </div>
-
-            {/* Year Tabs */}
-            <div className="flex flex-wrap gap-2">
-              {availableYears.map((year) => (
-                <button
-                  key={year}
-                  onClick={() => setSelectedYear(year)}
-                  className={`px-4 py-2 rounded-lg font-semibold text-sm transition-all ${selectedYear === year
-                    ? 'bg-blue-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                    }`}
-                >
-                  {year}
-                </button>
-              ))}
-            </div>
-          </div>
-
+        {/* Content Area with Padding */}
+        <div className="px-4 sm:px-6 lg:px-8 py-6">
           {/* Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 max-w-[1800px] mx-auto">
             <Card className="border-l-4 border-l-blue-600">
               <CardHeader className="pb-3">
                 <CardDescription>Total Budget ({selectedYear})</CardDescription>
@@ -340,7 +302,7 @@ const AgencyPage = () => {
           </div>
 
           {/* Charts */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 max-w-[1800px] mx-auto">
             {/* Year-over-Year Trend */}
             <Card>
               <CardHeader>
@@ -395,7 +357,7 @@ const AgencyPage = () => {
           </div>
 
           {/* Desktop: All Sections Visible, Mobile: Tabs */}
-          <div className="hidden lg:grid lg:grid-cols-3 gap-6">
+          <div className="hidden lg:grid lg:grid-cols-3 gap-6 max-w-[1800px] mx-auto">
             {/* Objects Section */}
             <Card>
               <CardHeader>
@@ -591,7 +553,7 @@ const AgencyPage = () => {
           </div>
 
           {/* Mobile: Tabs */}
-          <Card className="lg:hidden">
+          <Card className="lg:hidden max-w-[1800px] mx-auto">
             <CardHeader>
               <div className="flex items-center gap-4 border-b flex-wrap">
                 <button
@@ -738,115 +700,50 @@ const AgencyPage = () => {
                 </div>
               )}
 
-              {activeTab === 'expenses' && (
+              {activeTab === 'fund_subcategories' && (
                 <div className="space-y-2">
-                  {filteredExpenses.map((expense, index) => {
-                    const expenseYearData = expense.years[String(selectedYear)]
-                    const percentage = totalAmount > 0 ? (expenseYearData.amount / totalAmount) * 100 : 0
+                  {filteredFunds.map((fund, index) => {
+                    const fundYearData = fund.years[String(selectedYear)]
+                    const percentage = totalAmount > 0 ? (fundYearData.amount / totalAmount) * 100 : 0
 
                     return (
-                      <div key={`${expense.id}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-orange-600">
+                      <div key={`${fund.description}-${index}`} className="p-3 bg-gray-50 rounded-lg border-l-4 border-l-purple-600">
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-2">
-                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 text-orange-600 font-semibold text-xs">
+                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-100 text-purple-600 font-semibold text-xs">
                                 #{index + 1}
                               </span>
                               <h4 className="text-sm font-semibold text-gray-900">
-                                {expense.description}
+                                {fund.description}
                               </h4>
                             </div>
 
                             <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
-                              <span>Code: {expense.expense_code} • {expenseYearData.count.toLocaleString()} items</span>
+                              <span>{fundYearData.count.toLocaleString()} items</span>
                               <span className="font-semibold">{percentage.toFixed(2)}%</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-1.5">
                               <div
-                                className="bg-orange-600 h-1.5 rounded-full"
+                                className="bg-purple-600 h-1.5 rounded-full"
                                 style={{ width: `${Math.min(percentage, 100)}%` }}
                               />
                             </div>
                           </div>
 
                           <div className="text-right shrink-0">
-                            <div className="text-lg font-bold text-orange-600">
-                              {formatCurrency(expenseYearData.amount)}
+                            <div className="text-lg font-bold text-purple-600">
+                              {formatCurrency(fundYearData.amount)}
                             </div>
                           </div>
                         </div>
                       </div>
                     )
                   })}
-                  {filteredExpenses.length === 0 && (
+                  {filteredFunds.length === 0 && (
                     <div className="text-center py-8">
-                      <TrendingUp className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600">No expense categories found for {selectedYear}</p>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {activeTab === 'objects' && (
-                <div className="space-y-2">
-                  {filteredObjects.map((object, index) => {
-                    const objectYearData = object.years[String(selectedYear)]
-                    const percentage = totalAmount > 0 ? (objectYearData.amount / totalAmount) * 100 : 0
-
-                    return (
-                      <Link
-                        key={`${object.id}-${index}`}
-                        to={`/budget/departments/${deptSlug}/${agencySlug}/objects/${toSlug(object.description)}`}
-                        state={{
-                          objectId: object.id,
-                          objectCode: object.object_code,
-                          objectName: object.description,
-                          agencyId,
-                          agencyName: agency.description,
-                          departmentId: department?.id,
-                          departmentName: department?.description
-                        }}
-                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600 hover:bg-indigo-50 hover:border-l-indigo-800 transition-all cursor-pointer"
-                      >
-                        <div className="flex items-center justify-between gap-4">
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-2">
-                              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 font-semibold text-xs">
-                                #{index + 1}
-                              </span>
-                              <h4 className="text-sm font-semibold text-gray-900">
-                                {object.description}
-                              </h4>
-                            </div>
-
-                            <div className="flex items-center justify-between text-xs text-gray-600 mb-1">
-                              <span>Code: {object.object_code} • {objectYearData.count.toLocaleString()} items</span>
-                              <span className="font-semibold">{percentage.toFixed(2)}%</span>
-                            </div>
-                            <div className="w-full bg-gray-200 rounded-full h-1.5">
-                              <div
-                                className="bg-indigo-600 h-1.5 rounded-full"
-                                style={{ width: `${Math.min(percentage, 100)}%` }}
-                              />
-                            </div>
-                          </div>
-
-                          <div className="text-right shrink-0">
-                            <div className="text-lg font-bold text-indigo-600">
-                              {formatCurrency(objectYearData.amount)}
-                            </div>
-                            <div className="text-xs text-indigo-600 mt-1">
-                              View Details →
-                            </div>
-                          </div>
-                        </div>
-                      </Link>
-                    )
-                  })}
-                  {filteredObjects.length === 0 && (
-                    <div className="text-center py-8">
-                      <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600">No objects found for {selectedYear}</p>
+                      <DollarSign className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                      <p className="text-gray-600">No fund sub-categories found for {selectedYear}</p>
                     </div>
                   )}
                 </div>
