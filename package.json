@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "seed": "node seed-meilisearch.mjs",
-    "search:stats": "node scripts/search-stats.mjs"
+    "search:stats": "node scripts/search-stats.mjs",
+    "generate:sitemap": "cd data/gaa && python3 generate_sitemap.py --base-url https://yourdomain.com"
   },
   "dependencies": {
     "@dr.pogodin/react-helmet": "^3.0.4",
