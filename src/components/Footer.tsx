@@ -35,7 +35,6 @@ const Footer = () => {
               >
                 https://bir.gov.ph
               </a>,
-              ,
               <a
                 href="https://dbm.gov.ph"
                 target="_blank"

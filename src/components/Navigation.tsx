@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, ChartBarStackedIcon, Search as SearchIcon } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, ChartBarStackedIcon } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -15,7 +15,6 @@ const Navigation = () => {
   const projectsDropdownRef = useRef<HTMLDivElement>(null)
 
   const procurementItems = [
-    { path: '/search', label: 'Search', icon: SearchIcon },
     { path: '/contractors', label: 'Contractors', icon: Users },
     { path: '/organizations', label: 'Organizations', icon: Building2 },
     { path: '/locations', label: 'Locations', icon: MapPin },
@@ -39,6 +38,7 @@ const Navigation = () => {
     { label: '2026 Budget', url: 'https://2026-budget.bettergov.ph' },
     { label: 'Budget', url: 'https://budget.bettergov.ph' },
     { label: 'Research', url: 'https://visualizations.bettergov.ph' },
+    { label: 'Open Data', url: 'https://data.bettergov.ph' },
     { label: 'Bisto Proyekto', url: 'https://bisto.ph' },
     { label: 'Flood Control Projects', url: 'https://bettergov.ph/flood-control-projects' },
     { label: 'SALN Tracker', url: 'https://saln.bettergov.ph' }

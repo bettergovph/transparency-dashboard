@@ -1251,7 +1251,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                     </div>
                     <div className="bg-white rounded-lg p-4">
                       <TrendingUp className="h-6 w-6 text-purple-600 mb-2 mx-auto" />
-                      <p className="font-medium">Real-time Results</p>
+                      <p className="font-medium">Fast Results</p>
                       <p className="text-gray-600">Instant search with analytics</p>
                     </div>
                   </div>
