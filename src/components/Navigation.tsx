@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, ChartBarStackedIcon } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, ChartBarStackedIcon, Search as SearchIcon } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -15,6 +15,7 @@ const Navigation = () => {
   const projectsDropdownRef = useRef<HTMLDivElement>(null)
 
   const procurementItems = [
+    { path: '/search', label: 'Search', icon: SearchIcon },
     { path: '/contractors', label: 'Contractors', icon: Users },
     { path: '/organizations', label: 'Organizations', icon: Building2 },
     { path: '/locations', label: 'Locations', icon: MapPin },

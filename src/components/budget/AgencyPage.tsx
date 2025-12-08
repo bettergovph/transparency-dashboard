@@ -45,7 +45,7 @@ interface Object {
 }
 
 const AgencyPage = () => {
-  const { deptSlug, agencySlug } = useParams<{ deptSlug: string; agencySlug: string }>()
+  const { agencySlug } = useParams<{ deptSlug: string; agencySlug: string }>()
   const location = useLocation()
   const agencyId = location.state?.agencyId
   const departmentName = location.state?.departmentName
@@ -371,19 +371,9 @@ const AgencyPage = () => {
                     const percentage = totalAmount > 0 ? (objectYearData.amount / totalAmount) * 100 : 0
 
                     return (
-                      <Link
+                      <div
                         key={`${object.id}-${index}`}
-                        to={`/budget/departments/${deptSlug}/${agencySlug}/objects/${toSlug(object.description)}`}
-                        state={{
-                          objectId: object.id,
-                          objectCode: object.object_code,
-                          objectName: object.description,
-                          agencyId,
-                          agencyName: agency.description,
-                          departmentId: department?.id,
-                          departmentName: department?.description
-                        }}
-                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600 hover:bg-indigo-50 hover:border-l-indigo-800 transition-all cursor-pointer"
+                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600"
                       >
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex-1 min-w-0">
@@ -412,12 +402,9 @@ const AgencyPage = () => {
                             <div className="text-sm font-bold text-indigo-600">
                               {formatCurrency(objectYearData.amount)}
                             </div>
-                            <div className="text-xs text-indigo-600 mt-1">
-                              →
-                            </div>
                           </div>
                         </div>
-                      </Link>
+                      </div>
                     )
                   })}
                   {filteredObjects.length === 0 && (
@@ -590,19 +577,9 @@ const AgencyPage = () => {
                     const percentage = totalAmount > 0 ? (objectYearData.amount / totalAmount) * 100 : 0
 
                     return (
-                      <Link
+                      <div
                         key={`${object.id}-${index}`}
-                        to={`/budget/departments/${deptSlug}/${agencySlug}/objects/${toSlug(object.description)}`}
-                        state={{
-                          objectId: object.id,
-                          objectCode: object.object_code,
-                          objectName: object.description,
-                          agencyId,
-                          agencyName: agency.description,
-                          departmentId: department?.id,
-                          departmentName: department?.description
-                        }}
-                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600 hover:bg-indigo-50 hover:border-l-indigo-800 transition-all cursor-pointer"
+                        className="block p-3 bg-gray-50 rounded-lg border-l-4 border-l-indigo-600"
                       >
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex-1 min-w-0">
@@ -631,12 +608,9 @@ const AgencyPage = () => {
                             <div className="text-lg font-bold text-indigo-600">
                               {formatCurrency(objectYearData.amount)}
                             </div>
-                            <div className="text-xs text-indigo-600 mt-1">
-                              View Details →
-                            </div>
                           </div>
                         </div>
-                      </Link>
+                      </div>
                     )
                   })}
                   {filteredObjects.length === 0 && (

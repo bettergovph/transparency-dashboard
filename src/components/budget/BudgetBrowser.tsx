@@ -357,61 +357,61 @@ const BudgetBrowser = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="grid grid-cols-1 gap-4">
-                      {filteredDepartments.map((dept, index) => {
-                        const percentage = totalAmount > 0 ? (dept.amount / totalAmount) * 100 : 0
+                    {filteredDepartments.map((dept, index) => {
+                      const percentage = totalAmount > 0 ? (dept.amount / totalAmount) * 100 : 0
 
-                        return (
-                          <Link
-                            key={dept.id}
-                            to={`/budget/departments/${toSlug(dept.description)}`}
-                            state={{ departmentId: dept.id, departmentName: dept.description }}
-                          >
-                            <div className="p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-100 hover:shadow-lg transition-all cursor-pointer hover:border-blue-300">
-                              <div className="flex items-start justify-between gap-4">
-                                <div className="flex-1 min-w-0">
-                                  <div className="flex items-center gap-3 mb-2">
-                                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm">
-                                      #{index + 1}
-                                    </span>
-                                    <h4 className="text-base font-semibold text-gray-900">
-                                      {dept.description}
-                                    </h4>
-                                  </div>
-
-                                  <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
-                                    <span>ID: {dept.id} • {dept.count.toLocaleString()} budget items</span>
-                                    <span className="font-semibold">{percentage.toFixed(2)}% of total</span>
-                                  </div>
-
-                                  <div className="w-full bg-gray-200 rounded-full h-2">
-                                    <div
-                                      className="bg-blue-600 h-2 rounded-full transition-all"
-                                      style={{ width: `${Math.min(percentage, 100)}%` }}
-                                    />
-                                  </div>
+                      return (
+                        <Link
+                          key={dept.id}
+                          to={`/budget/departments/${toSlug(dept.description)}`}
+                          state={{ departmentId: dept.id, departmentName: dept.description }}
+                        >
+                          <div className="p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-100 hover:shadow-lg transition-all cursor-pointer hover:border-blue-300">
+                            <div className="flex items-start justify-between gap-4">
+                              <div className="flex-1 min-w-0">
+                                <div className="flex items-center gap-3 mb-2">
+                                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-bold text-sm">
+                                    #{index + 1}
+                                  </span>
+                                  <h4 className="text-base font-semibold text-gray-900">
+                                    {dept.description}
+                                  </h4>
                                 </div>
 
-                                <div className="text-right shrink-0">
-                                  <div className="text-2xl font-bold text-blue-600">
-                                    {formatCurrency(dept.amount)}
-                                  </div>
-                                  <div className="text-sm text-blue-600 mt-1 flex items-center gap-1">
-                                    Explore <ArrowRight className="h-4 w-4" />
-                                  </div>
+                                <div className="flex items-center justify-between text-sm text-gray-600 mb-2">
+                                  <span>ID: {dept.id} • {dept.count.toLocaleString()} budget items</span>
+                                  <span className="font-semibold">{percentage.toFixed(2)}% of total</span>
+                                </div>
+
+                                <div className="w-full bg-gray-200 rounded-full h-2">
+                                  <div
+                                    className="bg-blue-600 h-2 rounded-full transition-all"
+                                    style={{ width: `${Math.min(percentage, 100)}%` }}
+                                  />
+                                </div>
+                              </div>
+
+                              <div className="text-right shrink-0">
+                                <div className="text-2xl font-bold text-blue-600">
+                                  {formatCurrency(dept.amount)}
+                                </div>
+                                <div className="text-sm text-blue-600 mt-1 flex items-center gap-1">
+                                  Explore <ArrowRight className="h-4 w-4" />
                                 </div>
                               </div>
                             </div>
-                          </Link>
-                        )
-                      })}
-                      {filteredDepartments.length === 0 && (
-                        <div className="text-center py-12">
-                          <Building2 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                          <p className="text-gray-600 text-lg">No departments found</p>
-                          <p className="text-gray-500 text-sm mt-2">Try adjusting your search</p>
-                        </div>
-                      )}
-                    </div>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                    {filteredDepartments.length === 0 && (
+                      <div className="text-center py-12">
+                        <Building2 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                        <p className="text-gray-600 text-lg">No departments found</p>
+                        <p className="text-gray-500 text-sm mt-2">Try adjusting your search</p>
+                      </div>
+                    )}
+                  </div>
                 </CardContent>
               </Card>
             </div>

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// import HomePage from './components/HomePage'
 import EnhancedSearchInterface from './components/EnhancedSearchInterface'
 import AwardeePage from './components/AwardeePage'
 import OrganizationPage from './components/OrganizationPage'
@@ -22,6 +23,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<EnhancedSearchInterface />} />
         <Route path="/bir" element={<BIRDashboard />} />
         <Route path="/budget" element={<BudgetBrowser />} />

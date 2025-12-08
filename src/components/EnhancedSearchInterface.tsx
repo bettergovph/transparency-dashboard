@@ -1232,10 +1232,10 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                 <div className="bg-linear-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
                   <FileText className="h-16 w-16 text-blue-600 mx-auto mb-6" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Welcome to PHILGEPS Search
+                    Welcome to BetterGov's Transparency Dashboard
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Search through millions of government procurement records. Find awarded contracts and procurement information by reference ID, company name,
+                    Search through millions of government procurement and budget records. Find awarded contracts and procurement information by reference ID, company name,
                     or any keyword.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">

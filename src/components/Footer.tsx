@@ -34,6 +34,15 @@ const Footer = () => {
                 className="text-blue-400 hover:text-blue-300 transition-colors underline"
               >
                 https://bir.gov.ph
+              </a>,
+              ,
+              <a
+                href="https://dbm.gov.ph"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:text-blue-300 transition-colors underline"
+              >
+                https://dbm.gov.ph
               </a>
             </p>
             <p className="text-gray-400">
