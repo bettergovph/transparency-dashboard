@@ -12,6 +12,7 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, R
 
 interface Agency {
   id: string  // Composite key: "department_id-agency_code"
+  slug: string
   agency_code: string  // Original agency code
   description: string
   department_id: string
@@ -20,6 +21,7 @@ interface Agency {
 
 interface Department {
   id: string
+  slug: string
   description: string
   years: Record<string, { count: number; amount: number }>
 }
@@ -53,7 +55,7 @@ const DepartmentPage = () => {
 
       // Find the department
       const foundDept = deptData.data.find((d: Department) =>
-        d.id === departmentId || toSlug(d.description) === slug
+        d.id === departmentId || d.slug === slug
       )
 
       if (foundDept) {
@@ -308,7 +310,7 @@ const DepartmentPage = () => {
                   return (
                     <Link
                       key={agency.id}
-                      to={`/budget/departments/${slug}/agencies/${toSlug(agency.description)}`}
+                      to={`/budget/departments/${slug}/agencies/${agency.slug}`}
                       state={{
                         agencyId: agency.id,
                         agencyName: agency.description,

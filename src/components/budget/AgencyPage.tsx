@@ -12,6 +12,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 
 interface Agency {
   id: string  // Composite key: "department_id-agency_code"
+  slug: string
   agency_code: string  // Original agency code
   description: string
   department_id: string
@@ -85,7 +86,7 @@ const AgencyPage = () => {
 
       // Find the agency
       const foundAgency = agenciesData.data.find((a: Agency) =>
-        a.id === agencyId || toSlug(a.description) === agencySlug
+        a.id === agencyId || a.slug === agencySlug
       )
 
       if (foundAgency) {

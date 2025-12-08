@@ -12,6 +12,7 @@ import { formatGAAAmount } from '@/lib/formatGAAAmount'
 
 interface Department {
   id: string
+  slug: string
   description: string
   years: Record<string, { count: number; amount: number }>
 }
@@ -179,7 +180,7 @@ const DepartmentsListPage = () => {
               return (
                 <Link
                   key={dept.id}
-                  to={`/budget/departments/${toSlug(dept.description)}`}
+                  to={`/budget/departments/${dept.slug}`}
                   state={{ departmentId: dept.id, departmentName: dept.description }}
                 >
                   <Card className="hover:shadow-xl transition-all cursor-pointer border-l-4 border-l-blue-600 h-full">
