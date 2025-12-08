@@ -7,6 +7,7 @@
   "data": [
     {
       "id": "Allocations to Local Government Units (ALGU)",
+      "slug": "allocations-to-local-government-units-algu",
       "code": "36",
       "description": "Allocations to Local Government Units (ALGU)",
       "years": {
@@ -38,6 +39,7 @@
     },
     {
       "id": "Automatic Appropriations",
+      "slug": "automatic-appropriations",
       "code": "04",
       "description": "Automatic Appropriations",
       "years": {
@@ -69,6 +71,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)",
+      "slug": "budgetary-support-to-government-corporations-bsgc",
       "code": "35",
       "description": "Budgetary Support to Government Corporations (BSGC)",
       "years": {
@@ -100,6 +103,7 @@
     },
     {
       "id": "Civil Service Commission (CSC)",
+      "slug": "civil-service-commission-csc",
       "code": "30",
       "description": "Civil Service Commission (CSC)",
       "years": {
@@ -131,6 +135,7 @@
     },
     {
       "id": "Commission on Audit (COA)",
+      "slug": "commission-on-audit-coa",
       "code": "31",
       "description": "Commission on Audit (COA)",
       "years": {
@@ -162,6 +167,7 @@
     },
     {
       "id": "Commission on Elections (COMELEC)",
+      "slug": "commission-on-elections-comelec",
       "code": "32",
       "description": "Commission on Elections (COMELEC)",
       "years": {
@@ -193,6 +199,7 @@
     },
     {
       "id": "Commission on Human Rights (CHR)",
+      "slug": "commission-on-human-rights-chr",
       "code": "34",
       "description": "Commission on Human Rights (CHR)",
       "years": {
@@ -224,6 +231,7 @@
     },
     {
       "id": "Congress of the Philippines (CONGRESS)",
+      "slug": "congress-of-the-philippines-congress",
       "code": "01",
       "description": "Congress of the Philippines (CONGRESS)",
       "years": {
@@ -255,6 +263,7 @@
     },
     {
       "id": "Department of Agrarian Reform (DAR)",
+      "slug": "department-of-agrarian-reform-dar",
       "code": "04",
       "description": "Department of Agrarian Reform (DAR)",
       "years": {
@@ -286,6 +295,7 @@
     },
     {
       "id": "Department of Agriculture (DA)",
+      "slug": "department-of-agriculture-da",
       "code": "05",
       "description": "Department of Agriculture (DA)",
       "years": {
@@ -317,6 +327,7 @@
     },
     {
       "id": "Department of Budget and Management (DBM)",
+      "slug": "department-of-budget-and-management-dbm",
       "code": "06",
       "description": "Department of Budget and Management (DBM)",
       "years": {
@@ -348,6 +359,7 @@
     },
     {
       "id": "Department of Education (DepEd)",
+      "slug": "department-of-education-deped",
       "code": "07",
       "description": "Department of Education (DepEd)",
       "years": {
@@ -379,6 +391,7 @@
     },
     {
       "id": "Department of Energy (DOE)",
+      "slug": "department-of-energy-doe",
       "code": "09",
       "description": "Department of Energy (DOE)",
       "years": {
@@ -410,6 +423,7 @@
     },
     {
       "id": "Department of Environment and Natural Resources (DENR)",
+      "slug": "department-of-environment-and-natural-resources-denr",
       "code": "10",
       "description": "Department of Environment and Natural Resources (DENR)",
       "years": {
@@ -441,6 +455,7 @@
     },
     {
       "id": "Department of Finance (DOF)",
+      "slug": "department-of-finance-dof",
       "code": "11",
       "description": "Department of Finance (DOF)",
       "years": {
@@ -472,6 +487,7 @@
     },
     {
       "id": "Department of Foreign Affairs (DFA)",
+      "slug": "department-of-foreign-affairs-dfa",
       "code": "12",
       "description": "Department of Foreign Affairs (DFA)",
       "years": {
@@ -503,6 +519,7 @@
     },
     {
       "id": "Department of Health (DOH)",
+      "slug": "department-of-health-doh",
       "code": "13",
       "description": "Department of Health (DOH)",
       "years": {
@@ -534,6 +551,7 @@
     },
     {
       "id": "Department of Human Settlements and Urban Development (DHSUD)",
+      "slug": "department-of-human-settlements-and-urban-development-dhsud",
       "code": "39",
       "description": "Department of Human Settlements and Urban Development (DHSUD)",
       "years": {
@@ -565,6 +583,7 @@
     },
     {
       "id": "Department of Information and Communications Technology (DICT)",
+      "slug": "department-of-information-and-communications-technology-dict",
       "code": "37",
       "description": "Department of Information and Communications Technology (DICT)",
       "years": {
@@ -596,6 +615,7 @@
     },
     {
       "id": "Department of Justice (DOJ)",
+      "slug": "department-of-justice-doj",
       "code": "15",
       "description": "Department of Justice (DOJ)",
       "years": {
@@ -627,6 +647,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)",
+      "slug": "department-of-labor-and-employment-dole",
       "code": "16",
       "description": "Department of Labor and Employment (DOLE)",
       "years": {
@@ -658,6 +679,7 @@
     },
     {
       "id": "Department of Migrant Workers (DMW)",
+      "slug": "department-of-migrant-workers-dmw",
       "code": "40",
       "description": "Department of Migrant Workers (DMW)",
       "years": {
@@ -677,6 +699,7 @@
     },
     {
       "id": "Department of National Defense (DND)",
+      "slug": "department-of-national-defense-dnd",
       "code": "17",
       "description": "Department of National Defense (DND)",
       "years": {
@@ -708,6 +731,7 @@
     },
     {
       "id": "Department of Public Works and Highways (DPWH)",
+      "slug": "department-of-public-works-and-highways-dpwh",
       "code": "18",
       "description": "Department of Public Works and Highways (DPWH)",
       "years": {
@@ -739,6 +763,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)",
+      "slug": "department-of-science-and-technology-dost",
       "code": "19",
       "description": "Department of Science and Technology (DOST)",
       "years": {
@@ -770,6 +795,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)",
+      "slug": "department-of-social-welfare-and-development-dswd",
       "code": "20",
       "description": "Department of Social Welfare and Development (DSWD)",
       "years": {
@@ -801,6 +827,7 @@
     },
     {
       "id": "Department of Tourism (DOT)",
+      "slug": "department-of-tourism-dot",
       "code": "21",
       "description": "Department of Tourism (DOT)",
       "years": {
@@ -832,6 +859,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)",
+      "slug": "department-of-trade-and-industry-dti",
       "code": "22",
       "description": "Department of Trade and Industry (DTI)",
       "years": {
@@ -863,6 +891,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)",
+      "slug": "department-of-transportation-dotr",
       "code": "38",
       "description": "Department of Transportation (DOTr)",
       "years": {
@@ -894,6 +923,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)",
+      "slug": "department-of-the-interior-and-local-government-dilg",
       "code": "14",
       "description": "Department of the Interior and Local Government (DILG)",
       "years": {
@@ -925,6 +955,7 @@
     },
     {
       "id": "Joint Legislative-Executive Councils (JLEC)",
+      "slug": "joint-legislative-executive-councils-jlec",
       "code": "28",
       "description": "Joint Legislative-Executive Councils (JLEC)",
       "years": {
@@ -948,6 +979,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)",
+      "slug": "national-economic-and-development-authority-neda",
       "code": "24",
       "description": "National Economic and Development Authority (NEDA)",
       "years": {
@@ -979,6 +1011,7 @@
     },
     {
       "id": "New General Appropriations",
+      "slug": "new-general-appropriations",
       "code": "01",
       "description": "New General Appropriations",
       "years": {
@@ -1010,6 +1043,7 @@
     },
     {
       "id": "Office of the Ombudsman (OMB)",
+      "slug": "office-of-the-ombudsman-omb",
       "code": "33",
       "description": "Office of the Ombudsman (OMB)",
       "years": {
@@ -1041,6 +1075,7 @@
     },
     {
       "id": "Office of the President (OP)",
+      "slug": "office-of-the-president-op",
       "code": "02",
       "description": "Office of the President (OP)",
       "years": {
@@ -1072,6 +1107,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)",
+      "slug": "office-of-the-press-secretary-ops",
       "code": "25",
       "description": "Office of the Press Secretary (OPS)",
       "years": {
@@ -1083,6 +1119,7 @@
     },
     {
       "id": "Office of the Vice-President (OVP)",
+      "slug": "office-of-the-vice-president-ovp",
       "code": "03",
       "description": "Office of the Vice-President (OVP)",
       "years": {
@@ -1114,6 +1151,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)",
+      "slug": "other-executive-offices-oeos",
       "code": "26",
       "description": "Other Executive Offices (OEOs)",
       "years": {
@@ -1145,6 +1183,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)",
+      "slug": "presidential-communications-office-pco",
       "code": "25",
       "description": "Presidential Communications Office (PCO)",
       "years": {
@@ -1160,6 +1199,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)",
+      "slug": "presidential-communications-operations-office-pcoo",
       "code": "25",
       "description": "Presidential Communications Operations Office (PCOO)",
       "years": {
@@ -1179,6 +1219,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)",
+      "slug": "state-universities-and-colleges-sucs",
       "code": "08",
       "description": "State Universities and Colleges (SUCs)",
       "years": {
@@ -1210,6 +1251,7 @@
     },
     {
       "id": "The Judiciary (JUD)",
+      "slug": "the-judiciary-jud",
       "code": "29",
       "description": "The Judiciary (JUD)",
       "years": {

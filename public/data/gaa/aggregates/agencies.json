@@ -7,6 +7,7 @@
   "data": [
     {
       "id": "Allocations to Local Government Units (ALGU)::Bangsamoro Autonomous Region in Muslim Mindanao",
+      "slug": "bangsamoro-autonomous-region-in-muslim-mindanao",
       "agency_code": "002",
       "description": "Bangsamoro Autonomous Region in Muslim Mindanao",
       "department_id": "Allocations to Local Government Units (ALGU)",
@@ -24,6 +25,7 @@
     },
     {
       "id": "Allocations to Local Government Units (ALGU)::Metropolitan Manila Development Authority",
+      "slug": "metropolitan-manila-development-authority",
       "agency_code": "001",
       "description": "Metropolitan Manila Development Authority",
       "department_id": "Allocations to Local Government Units (ALGU)",
@@ -57,6 +59,7 @@
     },
     {
       "id": "Automatic Appropriations::Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "slug": "bangsamoro-autonomous-region-in-muslim-mindanao-barmm",
       "agency_code": "257",
       "description": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
       "department_id": "Automatic Appropriations",
@@ -90,6 +93,7 @@
     },
     {
       "id": "Automatic Appropriations::Customs duties and taxes, including tax expenditures",
+      "slug": "customs-duties-and-taxes-including-tax-expenditures",
       "agency_code": "105",
       "description": "Customs duties and taxes, including tax expenditures",
       "department_id": "Automatic Appropriations",
@@ -123,6 +127,7 @@
     },
     {
       "id": "Automatic Appropriations::Debt Interest Payments",
+      "slug": "debt-interest-payments",
       "agency_code": "110",
       "description": "Debt Interest Payments",
       "department_id": "Automatic Appropriations",
@@ -156,6 +161,7 @@
     },
     {
       "id": "Automatic Appropriations::Internal Revenue Allotment",
+      "slug": "internal-revenue-allotment",
       "agency_code": "251",
       "description": "Internal Revenue Allotment",
       "department_id": "Automatic Appropriations",
@@ -173,6 +179,7 @@
     },
     {
       "id": "Automatic Appropriations::National Tax Allotment",
+      "slug": "national-tax-allotment",
       "agency_code": "258",
       "description": "National Tax Allotment",
       "department_id": "Automatic Appropriations",
@@ -198,6 +205,7 @@
     },
     {
       "id": "Automatic Appropriations::Net Lending",
+      "slug": "net-lending",
       "agency_code": "280",
       "description": "Net Lending",
       "department_id": "Automatic Appropriations",
@@ -231,6 +239,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Aurora Pacific Economic Zone and Freeport Authority",
+      "slug": "aurora-pacific-economic-zone-and-freeport-authority",
       "agency_code": "042",
       "description": "Aurora Pacific Economic Zone and Freeport Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -264,6 +273,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Authority of the Freeport Area of Bataan",
+      "slug": "authority-of-the-freeport-area-of-bataan",
       "agency_code": "061",
       "description": "Authority of the Freeport Area of Bataan",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -297,6 +307,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Bangko Sentral ng Pilipinas",
+      "slug": "bangko-sentral-ng-pilipinas",
       "agency_code": "062",
       "description": "Bangko Sentral ng Pilipinas",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -322,6 +333,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Bases Conversion and Development Authority",
+      "slug": "bases-conversion-and-development-authority",
       "agency_code": "063",
       "description": "Bases Conversion and Development Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -355,6 +367,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Cagayan Economic Zone Authority",
+      "slug": "cagayan-economic-zone-authority",
       "agency_code": "064",
       "description": "Cagayan Economic Zone Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -388,6 +401,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Center for International Trade Expositions and Missions",
+      "slug": "center-for-international-trade-expositions-and-missions",
       "agency_code": "043",
       "description": "Center for International Trade Expositions and Missions",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -421,6 +435,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Civil Aviation Authority of the Philippines",
+      "slug": "civil-aviation-authority-of-the-philippines",
       "agency_code": "051",
       "description": "Civil Aviation Authority of the Philippines",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -450,6 +465,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Credit Information Corporation",
+      "slug": "credit-information-corporation",
       "agency_code": "066",
       "description": "Credit Information Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -483,6 +499,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Cultural Center of the Philippines",
+      "slug": "cultural-center-of-the-philippines",
       "agency_code": "067",
       "description": "Cultural Center of the Philippines",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -516,6 +533,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Davao International Airport Authority",
+      "slug": "davao-international-airport-authority",
       "agency_code": "092",
       "description": "Davao International Airport Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -545,6 +563,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Development Academy of the Philippines",
+      "slug": "development-academy-of-the-philippines",
       "agency_code": "068",
       "description": "Development Academy of the Philippines",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -578,6 +597,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Development Bank of the Philippines",
+      "slug": "development-bank-of-the-philippines",
       "agency_code": "069",
       "description": "Development Bank of the Philippines",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -607,6 +627,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Government Service Insurance System",
+      "slug": "government-service-insurance-system",
       "agency_code": "070",
       "description": "Government Service Insurance System",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -632,6 +653,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Home Guaranty Corporation",
+      "slug": "home-guaranty-corporation",
       "agency_code": "072",
       "description": "Home Guaranty Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -661,6 +683,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Intercontinental Broadcasting Corporation",
+      "slug": "intercontinental-broadcasting-corporation",
       "agency_code": "087",
       "description": "Intercontinental Broadcasting Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -694,6 +717,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Laguna Lake Development Authority",
+      "slug": "laguna-lake-development-authority",
       "agency_code": "020",
       "description": "Laguna Lake Development Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -723,6 +747,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Land Bank of the Philippines",
+      "slug": "land-bank-of-the-philippines",
       "agency_code": "001",
       "description": "Land Bank of the Philippines",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -752,6 +777,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Light Rail Transit Authority",
+      "slug": "light-rail-transit-authority",
       "agency_code": "052",
       "description": "Light Rail Transit Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -785,6 +811,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Local Water Utilities Administration",
+      "slug": "local-water-utilities-administration",
       "agency_code": "034",
       "description": "Local Water Utilities Administration",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -818,6 +845,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Lung Center of the Philippines",
+      "slug": "lung-center-of-the-philippines",
       "agency_code": "025",
       "description": "Lung Center of the Philippines",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -851,6 +879,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Metropolitan Waterworks and Sewerage System - Regulatory Office",
+      "slug": "metropolitan-waterworks-and-sewerage-system-regulatory-office",
       "agency_code": "035",
       "description": "Metropolitan Waterworks and Sewerage System - Regulatory Office",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -872,6 +901,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Dairy Authority",
+      "slug": "national-dairy-authority",
       "agency_code": "003",
       "description": "National Dairy Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -905,6 +935,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Electrification Administration",
+      "slug": "national-electrification-administration",
       "agency_code": "015",
       "description": "National Electrification Administration",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -938,6 +969,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Food Authority",
+      "slug": "national-food-authority",
       "agency_code": "004",
       "description": "National Food Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -971,6 +1003,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Home Mortgage Finance Corporation",
+      "slug": "national-home-mortgage-finance-corporation",
       "agency_code": "073",
       "description": "National Home Mortgage Finance Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1004,6 +1037,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Housing Authority",
+      "slug": "national-housing-authority",
       "agency_code": "074",
       "description": "National Housing Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1037,6 +1071,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Irrigation Administration",
+      "slug": "national-irrigation-administration",
       "agency_code": "005",
       "description": "National Irrigation Administration",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1070,6 +1105,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Kidney and Transplant Institute",
+      "slug": "national-kidney-and-transplant-institute",
       "agency_code": "026",
       "description": "National Kidney and Transplant Institute",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1103,6 +1139,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Power Corporation",
+      "slug": "national-power-corporation",
       "agency_code": "016",
       "description": "National Power Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1136,6 +1173,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::National Tobacco Administration",
+      "slug": "national-tobacco-administration",
       "agency_code": "007",
       "description": "National Tobacco Administration",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1169,6 +1207,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Nayong Pilipino Foundation",
+      "slug": "nayong-pilipino-foundation",
       "agency_code": "039",
       "description": "Nayong Pilipino Foundation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1198,6 +1237,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::People's Television Network, Inc.",
+      "slug": "peoples-television-network-inc",
       "agency_code": "059",
       "description": "People's Television Network, Inc.",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1231,6 +1271,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Aerospace Development Corporation",
+      "slug": "philippine-aerospace-development-corporation",
       "agency_code": "055",
       "description": "Philippine Aerospace Development Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1260,6 +1301,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Center for Economic Development",
+      "slug": "philippine-center-for-economic-development",
       "agency_code": "078",
       "description": "Philippine Center for Economic Development",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1293,6 +1335,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Childrens Medical Center",
+      "slug": "philippine-childrens-medical-center",
       "agency_code": "027",
       "description": "Philippine Childrens Medical Center",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1306,6 +1349,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine ChildrenÆs Medical Center",
+      "slug": "philippine-childrens-medical-center",
       "agency_code": "027",
       "description": "Philippine ChildrenÆs Medical Center",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1327,6 +1371,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Children’s Medical Center",
+      "slug": "philippine-childrens-medical-center",
       "agency_code": "027",
       "description": "Philippine Children’s Medical Center",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1344,6 +1389,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Coconut Authority",
+      "slug": "philippine-coconut-authority",
       "agency_code": "008",
       "description": "Philippine Coconut Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1377,6 +1423,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Crop Insurance Corporation",
+      "slug": "philippine-crop-insurance-corporation",
       "agency_code": "009",
       "description": "Philippine Crop Insurance Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1410,6 +1457,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Deposit Insurance Corporation",
+      "slug": "philippine-deposit-insurance-corporation",
       "agency_code": "023",
       "description": "Philippine Deposit Insurance Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1435,6 +1483,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Economic Zone Authority",
+      "slug": "philippine-economic-zone-authority",
       "agency_code": "046",
       "description": "Philippine Economic Zone Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1464,6 +1513,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Export-Import Credit Agency (formerly Trade and Investment Development Corporation of the Philippines)",
+      "slug": "philippine-export-import-credit-agency-formerly-trade-and-investment-development-corporation-of-the-philippines",
       "agency_code": "024",
       "description": "Philippine Export-Import Credit Agency (formerly Trade and Investment Development Corporation of the Philippines)",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1489,6 +1539,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Fisheries Development Authority",
+      "slug": "philippine-fisheries-development-authority",
       "agency_code": "010",
       "description": "Philippine Fisheries Development Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1522,6 +1573,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Guarantee Corporation",
+      "slug": "philippine-guarantee-corporation",
       "agency_code": "093",
       "description": "Philippine Guarantee Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1551,6 +1603,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Health Insurance Corporation",
+      "slug": "philippine-health-insurance-corporation",
       "agency_code": "028",
       "description": "Philippine Health Insurance Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1584,6 +1637,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Heart Center",
+      "slug": "philippine-heart-center",
       "agency_code": "029",
       "description": "Philippine Heart Center",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1617,6 +1671,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Institute for Development Studies",
+      "slug": "philippine-institute-for-development-studies",
       "agency_code": "058",
       "description": "Philippine Institute for Development Studies",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1650,6 +1705,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Institute of Traditional and Alternative Health Care",
+      "slug": "philippine-institute-of-traditional-and-alternative-health-care",
       "agency_code": "030",
       "description": "Philippine Institute of Traditional and Alternative Health Care",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1683,6 +1739,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine National Railways",
+      "slug": "philippine-national-railways",
       "agency_code": "056",
       "description": "Philippine National Railways",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1716,6 +1773,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Ports Authority",
+      "slug": "philippine-ports-authority",
       "agency_code": "057",
       "description": "Philippine Ports Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1741,6 +1799,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Postal Corporation",
+      "slug": "philippine-postal-corporation",
       "agency_code": "080",
       "description": "Philippine Postal Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1774,6 +1833,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Rice Research Institute",
+      "slug": "philippine-rice-research-institute",
       "agency_code": "011",
       "description": "Philippine Rice Research Institute",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1807,6 +1867,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Sugar Corporation",
+      "slug": "philippine-sugar-corporation",
       "agency_code": "012",
       "description": "Philippine Sugar Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1836,6 +1897,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Philippine Tax Academy",
+      "slug": "philippine-tax-academy",
       "agency_code": "090",
       "description": "Philippine Tax Academy",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1869,6 +1931,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Power Sector Assets and Liabilities Management Corporation",
+      "slug": "power-sector-assets-and-liabilities-management-corporation",
       "agency_code": "019",
       "description": "Power Sector Assets and Liabilities Management Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1898,6 +1961,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Small Business Corporation",
+      "slug": "small-business-corporation",
       "agency_code": "049",
       "description": "Small Business Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1931,6 +1995,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Social Housing Finance Corporation",
+      "slug": "social-housing-finance-corporation",
       "agency_code": "086",
       "description": "Social Housing Finance Corporation",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1964,6 +2029,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Social Security System",
+      "slug": "social-security-system",
       "agency_code": "081",
       "description": "Social Security System",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -1989,6 +2055,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Southern Philippines Development Authority",
+      "slug": "southern-philippines-development-authority",
       "agency_code": "082",
       "description": "Southern Philippines Development Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -2022,6 +2089,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Subic Bay Metropolitan Authority",
+      "slug": "subic-bay-metropolitan-authority",
       "agency_code": "083",
       "description": "Subic Bay Metropolitan Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -2055,6 +2123,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Sugar Regulatory Administration",
+      "slug": "sugar-regulatory-administration",
       "agency_code": "014",
       "description": "Sugar Regulatory Administration",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -2088,6 +2157,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Tourism Infrastructure and Enterprise Zone Authority",
+      "slug": "tourism-infrastructure-and-enterprise-zone-authority",
       "agency_code": "040",
       "description": "Tourism Infrastructure and Enterprise Zone Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -2121,6 +2191,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Tourism Promotions Board",
+      "slug": "tourism-promotions-board",
       "agency_code": "041",
       "description": "Tourism Promotions Board",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -2154,6 +2225,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Trade and Investment Development Corporation (Philippine Export-Import Credit Agency)",
+      "slug": "trade-and-investment-development-corporation-philippine-export-import-credit-agency",
       "agency_code": "024",
       "description": "Trade and Investment Development Corporation (Philippine Export-Import Credit Agency)",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -2167,6 +2239,7 @@
     },
     {
       "id": "Budgetary Support to Government Corporations (BSGC)::Zamboanga City Special Economic Zone Authority",
+      "slug": "zamboanga-city-special-economic-zone-authority",
       "agency_code": "084",
       "description": "Zamboanga City Special Economic Zone Authority",
       "department_id": "Budgetary Support to Government Corporations (BSGC)",
@@ -2200,6 +2273,7 @@
     },
     {
       "id": "Civil Service Commission (CSC)::Career Executive Service Board",
+      "slug": "career-executive-service-board",
       "agency_code": "002",
       "description": "Career Executive Service Board",
       "department_id": "Civil Service Commission (CSC)",
@@ -2233,6 +2307,7 @@
     },
     {
       "id": "Civil Service Commission (CSC)::Civil Service Commission",
+      "slug": "civil-service-commission",
       "agency_code": "001",
       "description": "Civil Service Commission",
       "department_id": "Civil Service Commission (CSC)",
@@ -2266,6 +2341,7 @@
     },
     {
       "id": "Commission on Audit (COA)::Commission on Audit (COA)",
+      "slug": "commission-on-audit-coa",
       "agency_code": "000",
       "description": "Commission on Audit (COA)",
       "department_id": "Commission on Audit (COA)",
@@ -2299,6 +2375,7 @@
     },
     {
       "id": "Commission on Elections (COMELEC)::Commission on Elections (COMELEC)",
+      "slug": "commission-on-elections-comelec",
       "agency_code": "000",
       "description": "Commission on Elections (COMELEC)",
       "department_id": "Commission on Elections (COMELEC)",
@@ -2332,6 +2409,7 @@
     },
     {
       "id": "Commission on Human Rights (CHR)::Commission on Human Rights (CHR)",
+      "slug": "commission-on-human-rights-chr",
       "agency_code": "001",
       "description": "Commission on Human Rights (CHR)",
       "department_id": "Commission on Human Rights (CHR)",
@@ -2365,6 +2443,7 @@
     },
     {
       "id": "Commission on Human Rights (CHR)::Human Rights Violations Victims' Memorial Commission",
+      "slug": "human-rights-violations-victims-memorial-commission",
       "agency_code": "003",
       "description": "Human Rights Violations Victims' Memorial Commission",
       "department_id": "Commission on Human Rights (CHR)",
@@ -2398,6 +2477,7 @@
     },
     {
       "id": "Congress of the Philippines (CONGRESS)::Commission on Appointments",
+      "slug": "commission-on-appointments",
       "agency_code": "003",
       "description": "Commission on Appointments",
       "department_id": "Congress of the Philippines (CONGRESS)",
@@ -2431,6 +2511,7 @@
     },
     {
       "id": "Congress of the Philippines (CONGRESS)::House of Representatives",
+      "slug": "house-of-representatives",
       "agency_code": "004",
       "description": "House of Representatives",
       "department_id": "Congress of the Philippines (CONGRESS)",
@@ -2464,6 +2545,7 @@
     },
     {
       "id": "Congress of the Philippines (CONGRESS)::House of Representatives Electoral Tribunal",
+      "slug": "house-of-representatives-electoral-tribunal",
       "agency_code": "005",
       "description": "House of Representatives Electoral Tribunal",
       "department_id": "Congress of the Philippines (CONGRESS)",
@@ -2497,6 +2579,7 @@
     },
     {
       "id": "Congress of the Philippines (CONGRESS)::Senate",
+      "slug": "senate",
       "agency_code": "001",
       "description": "Senate",
       "department_id": "Congress of the Philippines (CONGRESS)",
@@ -2530,6 +2613,7 @@
     },
     {
       "id": "Congress of the Philippines (CONGRESS)::Senate Electoral Tribunal",
+      "slug": "senate-electoral-tribunal",
       "agency_code": "002",
       "description": "Senate Electoral Tribunal",
       "department_id": "Congress of the Philippines (CONGRESS)",
@@ -2563,6 +2647,7 @@
     },
     {
       "id": "Department of Agrarian Reform (DAR)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Agrarian Reform (DAR)",
@@ -2596,6 +2681,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Agricultural Credit Policy Council",
+      "slug": "agricultural-credit-policy-council",
       "agency_code": "002",
       "description": "Agricultural Credit Policy Council",
       "department_id": "Department of Agriculture (DA)",
@@ -2629,6 +2715,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Bureau of Fisheries and Aquatic Resources",
+      "slug": "bureau-of-fisheries-and-aquatic-resources",
       "agency_code": "003",
       "description": "Bureau of Fisheries and Aquatic Resources",
       "department_id": "Department of Agriculture (DA)",
@@ -2662,6 +2749,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Fertilizer and Pesticide Authority",
+      "slug": "fertilizer-and-pesticide-authority",
       "agency_code": "005",
       "description": "Fertilizer and Pesticide Authority",
       "department_id": "Department of Agriculture (DA)",
@@ -2695,6 +2783,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::National Fisheries Research and Development Institute",
+      "slug": "national-fisheries-research-and-development-institute",
       "agency_code": "014",
       "description": "National Fisheries Research and Development Institute",
       "department_id": "Department of Agriculture (DA)",
@@ -2728,6 +2817,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::National Meat Inspection Service",
+      "slug": "national-meat-inspection-service",
       "agency_code": "009",
       "description": "National Meat Inspection Service",
       "department_id": "Department of Agriculture (DA)",
@@ -2761,6 +2851,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Agriculture (DA)",
@@ -2794,6 +2885,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Philippine Carabao Center",
+      "slug": "philippine-carabao-center",
       "agency_code": "010",
       "description": "Philippine Carabao Center",
       "department_id": "Department of Agriculture (DA)",
@@ -2827,6 +2919,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Philippine Center For Postharvest Development and Mechanization",
+      "slug": "philippine-center-for-postharvest-development-and-mechanization",
       "agency_code": "011",
       "description": "Philippine Center For Postharvest Development and Mechanization",
       "department_id": "Department of Agriculture (DA)",
@@ -2844,6 +2937,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Philippine Center for Post-Harvest Development and Mechanization",
+      "slug": "philippine-center-for-post-harvest-development-and-mechanization",
       "agency_code": "011",
       "description": "Philippine Center for Post-Harvest Development and Mechanization",
       "department_id": "Department of Agriculture (DA)",
@@ -2869,6 +2963,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Philippine Council for Agriculture and Fisheries  ",
+      "slug": "philippine-council-for-agriculture-and-fisheries",
       "agency_code": "013",
       "description": "Philippine Council for Agriculture and Fisheries  ",
       "department_id": "Department of Agriculture (DA)",
@@ -2902,6 +2997,7 @@
     },
     {
       "id": "Department of Agriculture (DA)::Philippine Fiber Industry Development Authority",
+      "slug": "philippine-fiber-industry-development-authority",
       "agency_code": "012",
       "description": "Philippine Fiber Industry Development Authority",
       "department_id": "Department of Agriculture (DA)",
@@ -2935,6 +3031,7 @@
     },
     {
       "id": "Department of Budget and Management (DBM)::Government Procurement Policy Board-Technical Support Office",
+      "slug": "government-procurement-policy-board-technical-support-office",
       "agency_code": "002",
       "description": "Government Procurement Policy Board-Technical Support Office",
       "department_id": "Department of Budget and Management (DBM)",
@@ -2968,6 +3065,7 @@
     },
     {
       "id": "Department of Budget and Management (DBM)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Budget and Management (DBM)",
@@ -3001,6 +3099,7 @@
     },
     {
       "id": "Department of Education (DepEd)::Early Childhood Care and Development Council",
+      "slug": "early-childhood-care-and-development-council",
       "agency_code": "006",
       "description": "Early Childhood Care and Development Council",
       "department_id": "Department of Education (DepEd)",
@@ -3034,6 +3133,7 @@
     },
     {
       "id": "Department of Education (DepEd)::National Academy of Sports",
+      "slug": "national-academy-of-sports",
       "agency_code": "007",
       "description": "National Academy of Sports",
       "department_id": "Department of Education (DepEd)",
@@ -3059,6 +3159,7 @@
     },
     {
       "id": "Department of Education (DepEd)::National Book Development Board",
+      "slug": "national-book-development-board",
       "agency_code": "002",
       "description": "National Book Development Board",
       "department_id": "Department of Education (DepEd)",
@@ -3092,6 +3193,7 @@
     },
     {
       "id": "Department of Education (DepEd)::National Council for Children's Television",
+      "slug": "national-council-for-childrens-television",
       "agency_code": "003",
       "description": "National Council for Children's Television",
       "department_id": "Department of Education (DepEd)",
@@ -3125,6 +3227,7 @@
     },
     {
       "id": "Department of Education (DepEd)::National Museum of the Philippines",
+      "slug": "national-museum-of-the-philippines",
       "agency_code": "004",
       "description": "National Museum of the Philippines",
       "department_id": "Department of Education (DepEd)",
@@ -3158,6 +3261,7 @@
     },
     {
       "id": "Department of Education (DepEd)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Education (DepEd)",
@@ -3191,6 +3295,7 @@
     },
     {
       "id": "Department of Education (DepEd)::Philippine High School for the Arts",
+      "slug": "philippine-high-school-for-the-arts",
       "agency_code": "005",
       "description": "Philippine High School for the Arts",
       "department_id": "Department of Education (DepEd)",
@@ -3224,6 +3329,7 @@
     },
     {
       "id": "Department of Energy (DOE)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Energy (DOE)",
@@ -3257,6 +3363,7 @@
     },
     {
       "id": "Department of Environment and Natural Resources (DENR)::Environmental Management Bureau",
+      "slug": "environmental-management-bureau",
       "agency_code": "002",
       "description": "Environmental Management Bureau",
       "department_id": "Department of Environment and Natural Resources (DENR)",
@@ -3290,6 +3397,7 @@
     },
     {
       "id": "Department of Environment and Natural Resources (DENR)::Mines and Geosciences Bureau",
+      "slug": "mines-and-geosciences-bureau",
       "agency_code": "003",
       "description": "Mines and Geosciences Bureau",
       "department_id": "Department of Environment and Natural Resources (DENR)",
@@ -3323,6 +3431,7 @@
     },
     {
       "id": "Department of Environment and Natural Resources (DENR)::National Mapping and Resource Information Authority",
+      "slug": "national-mapping-and-resource-information-authority",
       "agency_code": "004",
       "description": "National Mapping and Resource Information Authority",
       "department_id": "Department of Environment and Natural Resources (DENR)",
@@ -3356,6 +3465,7 @@
     },
     {
       "id": "Department of Environment and Natural Resources (DENR)::National Water Resources Board",
+      "slug": "national-water-resources-board",
       "agency_code": "005",
       "description": "National Water Resources Board",
       "department_id": "Department of Environment and Natural Resources (DENR)",
@@ -3389,6 +3499,7 @@
     },
     {
       "id": "Department of Environment and Natural Resources (DENR)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Environment and Natural Resources (DENR)",
@@ -3422,6 +3533,7 @@
     },
     {
       "id": "Department of Environment and Natural Resources (DENR)::Palawan Council for Sustainable Development Staff",
+      "slug": "palawan-council-for-sustainable-development-staff",
       "agency_code": "006",
       "description": "Palawan Council for Sustainable Development Staff",
       "department_id": "Department of Environment and Natural Resources (DENR)",
@@ -3455,6 +3567,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Bureau of Customs",
+      "slug": "bureau-of-customs",
       "agency_code": "002",
       "description": "Bureau of Customs",
       "department_id": "Department of Finance (DOF)",
@@ -3488,6 +3601,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Bureau of Internal Revenue",
+      "slug": "bureau-of-internal-revenue",
       "agency_code": "003",
       "description": "Bureau of Internal Revenue",
       "department_id": "Department of Finance (DOF)",
@@ -3521,6 +3635,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Bureau of Local Government Finance",
+      "slug": "bureau-of-local-government-finance",
       "agency_code": "004",
       "description": "Bureau of Local Government Finance",
       "department_id": "Department of Finance (DOF)",
@@ -3554,6 +3669,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Bureau of the Treasury",
+      "slug": "bureau-of-the-treasury",
       "agency_code": "005",
       "description": "Bureau of the Treasury",
       "department_id": "Department of Finance (DOF)",
@@ -3587,6 +3703,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Central Board of Assessment Appeals",
+      "slug": "central-board-of-assessment-appeals",
       "agency_code": "006",
       "description": "Central Board of Assessment Appeals",
       "department_id": "Department of Finance (DOF)",
@@ -3620,6 +3737,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Insurance Commission",
+      "slug": "insurance-commission",
       "agency_code": "008",
       "description": "Insurance Commission",
       "department_id": "Department of Finance (DOF)",
@@ -3653,6 +3771,7 @@
     },
     {
       "id": "Department of Finance (DOF)::National Tax Research Center",
+      "slug": "national-tax-research-center",
       "agency_code": "009",
       "description": "National Tax Research Center",
       "department_id": "Department of Finance (DOF)",
@@ -3686,6 +3805,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Finance (DOF)",
@@ -3719,6 +3839,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Privatization and Management Office",
+      "slug": "privatization-and-management-office",
       "agency_code": "010",
       "description": "Privatization and Management Office",
       "department_id": "Department of Finance (DOF)",
@@ -3752,6 +3873,7 @@
     },
     {
       "id": "Department of Finance (DOF)::Securities and Exchange Commission",
+      "slug": "securities-and-exchange-commission",
       "agency_code": "011",
       "description": "Securities and Exchange Commission",
       "department_id": "Department of Finance (DOF)",
@@ -3781,6 +3903,7 @@
     },
     {
       "id": "Department of Foreign Affairs (DFA)::Foreign Service Institute",
+      "slug": "foreign-service-institute",
       "agency_code": "002",
       "description": "Foreign Service Institute",
       "department_id": "Department of Foreign Affairs (DFA)",
@@ -3814,6 +3937,7 @@
     },
     {
       "id": "Department of Foreign Affairs (DFA)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Foreign Affairs (DFA)",
@@ -3847,6 +3971,7 @@
     },
     {
       "id": "Department of Foreign Affairs (DFA)::Presidential Commission on Visiting Forces",
+      "slug": "presidential-commission-on-visiting-forces",
       "agency_code": "005",
       "description": "Presidential Commission on Visiting Forces",
       "department_id": "Department of Foreign Affairs (DFA)",
@@ -3876,6 +4001,7 @@
     },
     {
       "id": "Department of Foreign Affairs (DFA)::Technical Cooperation Council of the Philippines",
+      "slug": "technical-cooperation-council-of-the-philippines",
       "agency_code": "003",
       "description": "Technical Cooperation Council of the Philippines",
       "department_id": "Department of Foreign Affairs (DFA)",
@@ -3909,6 +4035,7 @@
     },
     {
       "id": "Department of Foreign Affairs (DFA)::UNESCO National Commission of the Philippines",
+      "slug": "unesco-national-commission-of-the-philippines",
       "agency_code": "004",
       "description": "UNESCO National Commission of the Philippines",
       "department_id": "Department of Foreign Affairs (DFA)",
@@ -3942,6 +4069,7 @@
     },
     {
       "id": "Department of Health (DOH)::Commission on Population",
+      "slug": "commission-on-population",
       "agency_code": "002",
       "description": "Commission on Population",
       "department_id": "Department of Health (DOH)",
@@ -3971,6 +4099,7 @@
     },
     {
       "id": "Department of Health (DOH)::National Nutrition Council",
+      "slug": "national-nutrition-council",
       "agency_code": "003",
       "description": "National Nutrition Council",
       "department_id": "Department of Health (DOH)",
@@ -4004,6 +4133,7 @@
     },
     {
       "id": "Department of Health (DOH)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Health (DOH)",
@@ -4037,6 +4167,7 @@
     },
     {
       "id": "Department of Health (DOH)::Philippine National AIDS Council",
+      "slug": "philippine-national-aids-council",
       "agency_code": "004",
       "description": "Philippine National AIDS Council",
       "department_id": "Department of Health (DOH)",
@@ -4062,6 +4193,7 @@
     },
     {
       "id": "Department of Human Settlements and Urban Development (DHSUD)::Human Settlements Adjudication Commission",
+      "slug": "human-settlements-adjudication-commission",
       "agency_code": "002",
       "description": "Human Settlements Adjudication Commission",
       "department_id": "Department of Human Settlements and Urban Development (DHSUD)",
@@ -4095,6 +4227,7 @@
     },
     {
       "id": "Department of Human Settlements and Urban Development (DHSUD)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Human Settlements and Urban Development (DHSUD)",
@@ -4128,6 +4261,7 @@
     },
     {
       "id": "Department of Information and Communications Technology (DICT)::Cybercrime Investigation and Coordination Center",
+      "slug": "cybercrime-investigation-and-coordination-center",
       "agency_code": "004",
       "description": "Cybercrime Investigation and Coordination Center",
       "department_id": "Department of Information and Communications Technology (DICT)",
@@ -4161,6 +4295,7 @@
     },
     {
       "id": "Department of Information and Communications Technology (DICT)::National Privacy Commission",
+      "slug": "national-privacy-commission",
       "agency_code": "003",
       "description": "National Privacy Commission",
       "department_id": "Department of Information and Communications Technology (DICT)",
@@ -4194,6 +4329,7 @@
     },
     {
       "id": "Department of Information and Communications Technology (DICT)::National Telecommunications Commission",
+      "slug": "national-telecommunications-commission",
       "agency_code": "002",
       "description": "National Telecommunications Commission",
       "department_id": "Department of Information and Communications Technology (DICT)",
@@ -4227,6 +4363,7 @@
     },
     {
       "id": "Department of Information and Communications Technology (DICT)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Information and Communications Technology (DICT)",
@@ -4260,6 +4397,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Bureau of Corrections",
+      "slug": "bureau-of-corrections",
       "agency_code": "002",
       "description": "Bureau of Corrections",
       "department_id": "Department of Justice (DOJ)",
@@ -4293,6 +4431,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Bureau of Immigration",
+      "slug": "bureau-of-immigration",
       "agency_code": "003",
       "description": "Bureau of Immigration",
       "department_id": "Department of Justice (DOJ)",
@@ -4326,6 +4465,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Land Registration Authority",
+      "slug": "land-registration-authority",
       "agency_code": "004",
       "description": "Land Registration Authority",
       "department_id": "Department of Justice (DOJ)",
@@ -4359,6 +4499,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::National Bureau of Investigation",
+      "slug": "national-bureau-of-investigation",
       "agency_code": "005",
       "description": "National Bureau of Investigation",
       "department_id": "Department of Justice (DOJ)",
@@ -4392,6 +4533,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Office for Alternative Dispute Resolution",
+      "slug": "office-for-alternative-dispute-resolution",
       "agency_code": "011",
       "description": "Office for Alternative Dispute Resolution",
       "department_id": "Department of Justice (DOJ)",
@@ -4417,6 +4559,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Office of the Government Corporate Counsel",
+      "slug": "office-of-the-government-corporate-counsel",
       "agency_code": "006",
       "description": "Office of the Government Corporate Counsel",
       "department_id": "Department of Justice (DOJ)",
@@ -4450,6 +4593,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Justice (DOJ)",
@@ -4483,6 +4627,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Office of the Solicitor General",
+      "slug": "office-of-the-solicitor-general",
       "agency_code": "007",
       "description": "Office of the Solicitor General",
       "department_id": "Department of Justice (DOJ)",
@@ -4516,6 +4661,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Parole and Probation Administration",
+      "slug": "parole-and-probation-administration",
       "agency_code": "008",
       "description": "Parole and Probation Administration",
       "department_id": "Department of Justice (DOJ)",
@@ -4549,6 +4695,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Presidential Commission on Good Government",
+      "slug": "presidential-commission-on-good-government",
       "agency_code": "009",
       "description": "Presidential Commission on Good Government",
       "department_id": "Department of Justice (DOJ)",
@@ -4582,6 +4729,7 @@
     },
     {
       "id": "Department of Justice (DOJ)::Public Attorney's Office",
+      "slug": "public-attorneys-office",
       "agency_code": "010",
       "description": "Public Attorney's Office",
       "department_id": "Department of Justice (DOJ)",
@@ -4615,6 +4763,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::Institute for Labor Studies",
+      "slug": "institute-for-labor-studies",
       "agency_code": "002",
       "description": "Institute for Labor Studies",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4648,6 +4797,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::National Conciliation and Mediation Board",
+      "slug": "national-conciliation-and-mediation-board",
       "agency_code": "003",
       "description": "National Conciliation and Mediation Board",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4681,6 +4831,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::National Labor Relations Commission",
+      "slug": "national-labor-relations-commission",
       "agency_code": "004",
       "description": "National Labor Relations Commission",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4714,6 +4865,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::National Maritime Polytechnic",
+      "slug": "national-maritime-polytechnic",
       "agency_code": "005",
       "description": "National Maritime Polytechnic",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4747,6 +4899,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::National Wages and Productivity Commission",
+      "slug": "national-wages-and-productivity-commission",
       "agency_code": "006",
       "description": "National Wages and Productivity Commission",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4780,6 +4933,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4813,6 +4967,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::Overseas Workers Welfare Administration",
+      "slug": "overseas-workers-welfare-administration",
       "agency_code": "010",
       "description": "Overseas Workers Welfare Administration",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4846,6 +5001,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::Philippine Overseas Employment Administration",
+      "slug": "philippine-overseas-employment-administration",
       "agency_code": "007",
       "description": "Philippine Overseas Employment Administration",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4879,6 +5035,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::Professional Regulation Commission",
+      "slug": "professional-regulation-commission",
       "agency_code": "008",
       "description": "Professional Regulation Commission",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4912,6 +5069,7 @@
     },
     {
       "id": "Department of Labor and Employment (DOLE)::Technical Education and Skills Development Authority",
+      "slug": "technical-education-and-skills-development-authority",
       "agency_code": "009",
       "description": "Technical Education and Skills Development Authority",
       "department_id": "Department of Labor and Employment (DOLE)",
@@ -4933,6 +5091,7 @@
     },
     {
       "id": "Department of Migrant Workers (DMW)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Migrant Workers (DMW)",
@@ -4954,6 +5113,7 @@
     },
     {
       "id": "Department of Migrant Workers (DMW)::Overseas Workers Welfare Administration",
+      "slug": "overseas-workers-welfare-administration",
       "agency_code": "002",
       "description": "Overseas Workers Welfare Administration",
       "department_id": "Department of Migrant Workers (DMW)",
@@ -4975,6 +5135,7 @@
     },
     {
       "id": "Department of National Defense (DND)::General Headquarters, AFP and AFP-Wide Service Support Units (AFPWSSUs)",
+      "slug": "general-headquarters-afp-and-afp-wide-service-support-units-afpwssus",
       "agency_code": "010",
       "description": "General Headquarters, AFP and AFP-Wide Service Support Units (AFPWSSUs)",
       "department_id": "Department of National Defense (DND)",
@@ -5008,6 +5169,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Government Arsenal",
+      "slug": "government-arsenal",
       "agency_code": "002",
       "description": "Government Arsenal",
       "department_id": "Department of National Defense (DND)",
@@ -5041,6 +5203,7 @@
     },
     {
       "id": "Department of National Defense (DND)::National Defense College of the Philippines",
+      "slug": "national-defense-college-of-the-philippines",
       "agency_code": "003",
       "description": "National Defense College of the Philippines",
       "department_id": "Department of National Defense (DND)",
@@ -5074,6 +5237,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Office of Civil Defense",
+      "slug": "office-of-civil-defense",
       "agency_code": "004",
       "description": "Office of Civil Defense",
       "department_id": "Department of National Defense (DND)",
@@ -5107,6 +5271,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Office of the Secretary - Proper",
+      "slug": "office-of-the-secretary-proper",
       "agency_code": "001",
       "description": "Office of the Secretary - Proper",
       "department_id": "Department of National Defense (DND)",
@@ -5140,6 +5305,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Philippine Air Force ( Air Forces )",
+      "slug": "philippine-air-force-air-forces",
       "agency_code": "008",
       "description": "Philippine Air Force ( Air Forces )",
       "department_id": "Department of National Defense (DND)",
@@ -5173,6 +5339,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Philippine Army ( Land Forces )",
+      "slug": "philippine-army-land-forces",
       "agency_code": "007",
       "description": "Philippine Army ( Land Forces )",
       "department_id": "Department of National Defense (DND)",
@@ -5206,6 +5373,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Philippine Navy ( Naval Forces )",
+      "slug": "philippine-navy-naval-forces",
       "agency_code": "009",
       "description": "Philippine Navy ( Naval Forces )",
       "department_id": "Department of National Defense (DND)",
@@ -5239,6 +5407,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Philippine Veterans Affairs Office (PVAO) - Proper",
+      "slug": "philippine-veterans-affairs-office-pvao-proper",
       "agency_code": "005",
       "description": "Philippine Veterans Affairs Office (PVAO) - Proper",
       "department_id": "Department of National Defense (DND)",
@@ -5272,6 +5441,7 @@
     },
     {
       "id": "Department of National Defense (DND)::Veterans Memorial Medical Center",
+      "slug": "veterans-memorial-medical-center",
       "agency_code": "006",
       "description": "Veterans Memorial Medical Center",
       "department_id": "Department of National Defense (DND)",
@@ -5305,6 +5475,7 @@
     },
     {
       "id": "Department of Public Works and Highways (DPWH)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Public Works and Highways (DPWH)",
@@ -5338,6 +5509,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Advanced Science and Technology Institute",
+      "slug": "advanced-science-and-technology-institute",
       "agency_code": "002",
       "description": "Advanced Science and Technology Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5371,6 +5543,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Food and Nutrition Research Institute",
+      "slug": "food-and-nutrition-research-institute",
       "agency_code": "003",
       "description": "Food and Nutrition Research Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5404,6 +5577,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Forest Products Research and Development Institute",
+      "slug": "forest-products-research-and-development-institute",
       "agency_code": "004",
       "description": "Forest Products Research and Development Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5437,6 +5611,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Industrial Technology Development Institute",
+      "slug": "industrial-technology-development-institute",
       "agency_code": "005",
       "description": "Industrial Technology Development Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5470,6 +5645,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Metals Industry Research and Development Center",
+      "slug": "metals-industry-research-and-development-center",
       "agency_code": "007",
       "description": "Metals Industry Research and Development Center",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5503,6 +5679,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::National Academy of Science and Technology",
+      "slug": "national-academy-of-science-and-technology",
       "agency_code": "008",
       "description": "National Academy of Science and Technology",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5536,6 +5713,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::National Research Council of the Philippines",
+      "slug": "national-research-council-of-the-philippines",
       "agency_code": "009",
       "description": "National Research Council of the Philippines",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5569,6 +5747,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5602,6 +5781,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Atmospheric, Geophysical and Astronomical Services Administration",
+      "slug": "philippine-atmospheric-geophysical-and-astronomical-services-administration",
       "agency_code": "010",
       "description": "Philippine Atmospheric, Geophysical and Astronomical Services Administration",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5635,6 +5815,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development",
+      "slug": "philippine-council-for-agriculture-aquatic-and-natural-resources-research-and-development",
       "agency_code": "011",
       "description": "Philippine Council for Agriculture, Aquatic and Natural Resources Research and Development",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5668,6 +5849,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Council for Health Research and Development",
+      "slug": "philippine-council-for-health-research-and-development",
       "agency_code": "012",
       "description": "Philippine Council for Health Research and Development",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5701,6 +5883,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Council for Industry, Energy and Emerging Technology Research and Development (PCIEERD)",
+      "slug": "philippine-council-for-industry-energy-and-emerging-technology-research-and-development-pcieerd",
       "agency_code": "013",
       "description": "Philippine Council for Industry, Energy and Emerging Technology Research and Development (PCIEERD)",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5734,6 +5917,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Institute of Volcanology and Seismology",
+      "slug": "philippine-institute-of-volcanology-and-seismology",
       "agency_code": "014",
       "description": "Philippine Institute of Volcanology and Seismology",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5767,6 +5951,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Nuclear Research Institute",
+      "slug": "philippine-nuclear-research-institute",
       "agency_code": "015",
       "description": "Philippine Nuclear Research Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5800,6 +5985,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Science High School",
+      "slug": "philippine-science-high-school",
       "agency_code": "016",
       "description": "Philippine Science High School",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5821,6 +6007,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Science High School System",
+      "slug": "philippine-science-high-school-system",
       "agency_code": "016",
       "description": "Philippine Science High School System",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5842,6 +6029,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Philippine Textile Research Institute",
+      "slug": "philippine-textile-research-institute",
       "agency_code": "017",
       "description": "Philippine Textile Research Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5875,6 +6063,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Science Education Institute",
+      "slug": "science-education-institute",
       "agency_code": "018",
       "description": "Science Education Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5908,6 +6097,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Science and Technology Information Institute",
+      "slug": "science-and-technology-information-institute",
       "agency_code": "019",
       "description": "Science and Technology Information Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5941,6 +6131,7 @@
     },
     {
       "id": "Department of Science and Technology (DOST)::Technology Application and Promotion Institute",
+      "slug": "technology-application-and-promotion-institute",
       "agency_code": "020",
       "description": "Technology Application and Promotion Institute",
       "department_id": "Department of Science and Technology (DOST)",
@@ -5974,6 +6165,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::Council for the Welfare of Children",
+      "slug": "council-for-the-welfare-of-children",
       "agency_code": "002",
       "description": "Council for the Welfare of Children",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6007,6 +6199,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::Inter-Country Adoption Board",
+      "slug": "inter-country-adoption-board",
       "agency_code": "003",
       "description": "Inter-Country Adoption Board",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6040,6 +6233,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::Juvenile Justice and Welfare Council",
+      "slug": "juvenile-justice-and-welfare-council",
       "agency_code": "006",
       "description": "Juvenile Justice and Welfare Council",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6073,6 +6267,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::National Anti-Poverty Commission",
+      "slug": "national-anti-poverty-commission",
       "agency_code": "007",
       "description": "National Anti-Poverty Commission",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6106,6 +6301,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::National Authority for Child Care",
+      "slug": "national-authority-for-child-care",
       "agency_code": "010",
       "description": "National Authority for Child Care",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6127,6 +6323,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::National Commission on Indigenous Peoples",
+      "slug": "national-commission-on-indigenous-peoples",
       "agency_code": "008",
       "description": "National Commission on Indigenous Peoples",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6160,6 +6357,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::National Council on Disability Affairs",
+      "slug": "national-council-on-disability-affairs",
       "agency_code": "004",
       "description": "National Council on Disability Affairs",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6193,6 +6391,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6226,6 +6425,7 @@
     },
     {
       "id": "Department of Social Welfare and Development (DSWD)::Presidential Commission for the Urban Poor",
+      "slug": "presidential-commission-for-the-urban-poor",
       "agency_code": "009",
       "description": "Presidential Commission for the Urban Poor",
       "department_id": "Department of Social Welfare and Development (DSWD)",
@@ -6259,6 +6459,7 @@
     },
     {
       "id": "Department of Tourism (DOT)::Intramuros Administration",
+      "slug": "intramuros-administration",
       "agency_code": "002",
       "description": "Intramuros Administration",
       "department_id": "Department of Tourism (DOT)",
@@ -6292,6 +6493,7 @@
     },
     {
       "id": "Department of Tourism (DOT)::National Parks Development Committee",
+      "slug": "national-parks-development-committee",
       "agency_code": "003",
       "description": "National Parks Development Committee",
       "department_id": "Department of Tourism (DOT)",
@@ -6325,6 +6527,7 @@
     },
     {
       "id": "Department of Tourism (DOT)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Tourism (DOT)",
@@ -6358,6 +6561,7 @@
     },
     {
       "id": "Department of Tourism (DOT)::Philippine Commission on Sports Scuba Diving",
+      "slug": "philippine-commission-on-sports-scuba-diving",
       "agency_code": "004",
       "description": "Philippine Commission on Sports Scuba Diving",
       "department_id": "Department of Tourism (DOT)",
@@ -6379,6 +6583,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)::Board of Investments",
+      "slug": "board-of-investments",
       "agency_code": "002",
       "description": "Board of Investments",
       "department_id": "Department of Trade and Industry (DTI)",
@@ -6412,6 +6617,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)::Construction Industry Authority of the Philippines (CIAP)",
+      "slug": "construction-industry-authority-of-the-philippines-ciap",
       "agency_code": "007",
       "description": "Construction Industry Authority of the Philippines (CIAP)",
       "department_id": "Department of Trade and Industry (DTI)",
@@ -6445,6 +6651,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)::Cooperative Development Authority",
+      "slug": "cooperative-development-authority",
       "agency_code": "008",
       "description": "Cooperative Development Authority",
       "department_id": "Department of Trade and Industry (DTI)",
@@ -6478,6 +6685,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)::Design Center of the Philippines",
+      "slug": "design-center-of-the-philippines",
       "agency_code": "006",
       "description": "Design Center of the Philippines",
       "department_id": "Department of Trade and Industry (DTI)",
@@ -6511,6 +6719,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Trade and Industry (DTI)",
@@ -6544,6 +6753,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)::Philippine Trade Training Center",
+      "slug": "philippine-trade-training-center",
       "agency_code": "005",
       "description": "Philippine Trade Training Center",
       "department_id": "Department of Trade and Industry (DTI)",
@@ -6577,6 +6787,7 @@
     },
     {
       "id": "Department of Trade and Industry (DTI)::Technical Education and Skills Development Authority",
+      "slug": "technical-education-and-skills-development-authority",
       "agency_code": "009",
       "description": "Technical Education and Skills Development Authority",
       "department_id": "Department of Trade and Industry (DTI)",
@@ -6610,6 +6821,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)::Civil Aeronautics Board",
+      "slug": "civil-aeronautics-board",
       "agency_code": "002",
       "description": "Civil Aeronautics Board",
       "department_id": "Department of Transportation (DOTr)",
@@ -6643,6 +6855,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)::Maritime Industry Authority (MARINA)",
+      "slug": "maritime-industry-authority-marina",
       "agency_code": "003",
       "description": "Maritime Industry Authority (MARINA)",
       "department_id": "Department of Transportation (DOTr)",
@@ -6676,6 +6889,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)::Office for Transportation Security",
+      "slug": "office-for-transportation-security",
       "agency_code": "005",
       "description": "Office for Transportation Security",
       "department_id": "Department of Transportation (DOTr)",
@@ -6709,6 +6923,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)::Office of Transportation Cooperatives",
+      "slug": "office-of-transportation-cooperatives",
       "agency_code": "004",
       "description": "Office of Transportation Cooperatives",
       "department_id": "Department of Transportation (DOTr)",
@@ -6742,6 +6957,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of Transportation (DOTr)",
@@ -6775,6 +6991,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)::Philippine Coast Guard",
+      "slug": "philippine-coast-guard",
       "agency_code": "006",
       "description": "Philippine Coast Guard",
       "department_id": "Department of Transportation (DOTr)",
@@ -6808,6 +7025,7 @@
     },
     {
       "id": "Department of Transportation (DOTr)::Toll Regulatory Board",
+      "slug": "toll-regulatory-board",
       "agency_code": "007",
       "description": "Toll Regulatory Board",
       "department_id": "Department of Transportation (DOTr)",
@@ -6841,6 +7059,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::Bureau of Fire Protection",
+      "slug": "bureau-of-fire-protection",
       "agency_code": "002",
       "description": "Bureau of Fire Protection",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -6874,6 +7093,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::Bureau of Jail Management and Penology",
+      "slug": "bureau-of-jail-management-and-penology",
       "agency_code": "003",
       "description": "Bureau of Jail Management and Penology",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -6907,6 +7127,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::Local Government Academy",
+      "slug": "local-government-academy",
       "agency_code": "004",
       "description": "Local Government Academy",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -6940,6 +7161,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::National Commission on Muslim Filipinos (Office on Muslim Affairs)",
+      "slug": "national-commission-on-muslim-filipinos-office-on-muslim-affairs",
       "agency_code": "008",
       "description": "National Commission on Muslim Filipinos (Office on Muslim Affairs)",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -6973,6 +7195,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::National Police Commission",
+      "slug": "national-police-commission",
       "agency_code": "005",
       "description": "National Police Commission",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -7006,6 +7229,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::National Youth Commission",
+      "slug": "national-youth-commission",
       "agency_code": "009",
       "description": "National Youth Commission",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -7039,6 +7263,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -7072,6 +7297,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::Philippine Commission on Women (National Commission on the Role of Filipino Women)",
+      "slug": "philippine-commission-on-women-national-commission-on-the-role-of-filipino-women",
       "agency_code": "010",
       "description": "Philippine Commission on Women (National Commission on the Role of Filipino Women)",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -7105,6 +7331,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::Philippine National Police",
+      "slug": "philippine-national-police",
       "agency_code": "006",
       "description": "Philippine National Police",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -7138,6 +7365,7 @@
     },
     {
       "id": "Department of the Interior and Local Government (DILG)::Philippine Public Safety College",
+      "slug": "philippine-public-safety-college",
       "agency_code": "007",
       "description": "Philippine Public Safety College",
       "department_id": "Department of the Interior and Local Government (DILG)",
@@ -7171,6 +7399,7 @@
     },
     {
       "id": "Joint Legislative-Executive Councils (JLEC)::Legislative-Executive Development Advisory Council",
+      "slug": "legislative-executive-development-advisory-council",
       "agency_code": "001",
       "description": "Legislative-Executive Development Advisory Council",
       "department_id": "Joint Legislative-Executive Councils (JLEC)",
@@ -7196,6 +7425,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Commission on Population and Development",
+      "slug": "commission-on-population-and-development",
       "agency_code": "009",
       "description": "Commission on Population and Development",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7229,6 +7459,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Office of the Director-General",
+      "slug": "office-of-the-director-general",
       "agency_code": "001",
       "description": "Office of the Director-General",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7246,6 +7477,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Office of the Secretary",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
       "description": "Office of the Secretary",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7271,6 +7503,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Philippine National Volunteer Service Coordinating Agency",
+      "slug": "philippine-national-volunteer-service-coordinating-agency",
       "agency_code": "004",
       "description": "Philippine National Volunteer Service Coordinating Agency",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7304,6 +7537,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Philippine Statistical Research and Training Institute (formerly Statistical Research and Training Center)",
+      "slug": "philippine-statistical-research-and-training-institute-formerly-statistical-research-and-training-center",
       "agency_code": "006",
       "description": "Philippine Statistical Research and Training Institute (formerly Statistical Research and Training Center)",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7337,6 +7571,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Philippine Statistics Authority",
+      "slug": "philippine-statistics-authority",
       "agency_code": "008",
       "description": "Philippine Statistics Authority",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7370,6 +7605,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Public-Private Partnership Center of the Philippines",
+      "slug": "public-private-partnership-center-of-the-philippines",
       "agency_code": "005",
       "description": "Public-Private Partnership Center of the Philippines",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7403,6 +7639,7 @@
     },
     {
       "id": "National Economic and Development Authority (NEDA)::Tariff Commission",
+      "slug": "tariff-commission",
       "agency_code": "007",
       "description": "Tariff Commission",
       "department_id": "National Economic and Development Authority (NEDA)",
@@ -7436,6 +7673,7 @@
     },
     {
       "id": "New General Appropriations::BSGC - Others",
+      "slug": "bsgc-others",
       "agency_code": "412",
       "description": "BSGC - Others",
       "department_id": "New General Appropriations",
@@ -7469,6 +7707,7 @@
     },
     {
       "id": "New General Appropriations::Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
+      "slug": "bangsamoro-autonomous-region-in-muslim-mindanao-barmm",
       "agency_code": "257",
       "description": "Bangsamoro Autonomous Region in Muslim Mindanao (BARMM)",
       "department_id": "New General Appropriations",
@@ -7502,6 +7741,7 @@
     },
     {
       "id": "New General Appropriations::Barangay Officials Death Benefits",
+      "slug": "barangay-officials-death-benefits",
       "agency_code": "256",
       "description": "Barangay Officials Death Benefits",
       "department_id": "New General Appropriations",
@@ -7535,6 +7775,7 @@
     },
     {
       "id": "New General Appropriations::Contingent Fund",
+      "slug": "contingent-fund",
       "agency_code": "402",
       "description": "Contingent Fund",
       "department_id": "New General Appropriations",
@@ -7568,6 +7809,7 @@
     },
     {
       "id": "New General Appropriations::Local Government Support Fund (formerly Financial Subsidy to LGUs)",
+      "slug": "local-government-support-fund-formerly-financial-subsidy-to-lgus",
       "agency_code": "254",
       "description": "Local Government Support Fund (formerly Financial Subsidy to LGUs)",
       "department_id": "New General Appropriations",
@@ -7601,6 +7843,7 @@
     },
     {
       "id": "New General Appropriations::Miscellaneous Personnel Benefits Fund",
+      "slug": "miscellaneous-personnel-benefits-fund",
       "agency_code": "406",
       "description": "Miscellaneous Personnel Benefits Fund",
       "department_id": "New General Appropriations",
@@ -7634,6 +7877,7 @@
     },
     {
       "id": "New General Appropriations::National Disaster Risk Reduction and Management Fund ( Calamity Fund )",
+      "slug": "national-disaster-risk-reduction-and-management-fund-calamity-fund",
       "agency_code": "401",
       "description": "National Disaster Risk Reduction and Management Fund ( Calamity Fund )",
       "department_id": "New General Appropriations",
@@ -7667,6 +7911,7 @@
     },
     {
       "id": "New General Appropriations::Pension and Gratuity Fund",
+      "slug": "pension-and-gratuity-fund",
       "agency_code": "407",
       "description": "Pension and Gratuity Fund",
       "department_id": "New General Appropriations",
@@ -7700,6 +7945,7 @@
     },
     {
       "id": "New General Appropriations::Revised AFP Modernization Program",
+      "slug": "revised-afp-modernization-program",
       "agency_code": "416",
       "description": "Revised AFP Modernization Program",
       "department_id": "New General Appropriations",
@@ -7721,6 +7967,7 @@
     },
     {
       "id": "New General Appropriations::Special Shares of LGUs in the Proceeds of Fire Code Fees",
+      "slug": "special-shares-of-lgus-in-the-proceeds-of-fire-code-fees",
       "agency_code": "255",
       "description": "Special Shares of LGUs in the Proceeds of Fire Code Fees",
       "department_id": "New General Appropriations",
@@ -7754,6 +8001,7 @@
     },
     {
       "id": "New General Appropriations::Special Shares of LGUs in the Proceeds of National Taxes",
+      "slug": "special-shares-of-lgus-in-the-proceeds-of-national-taxes",
       "agency_code": "252",
       "description": "Special Shares of LGUs in the Proceeds of National Taxes",
       "department_id": "New General Appropriations",
@@ -7787,6 +8035,7 @@
     },
     {
       "id": "Office of the Ombudsman (OMB)::Office of the Ombudsman",
+      "slug": "office-of-the-ombudsman",
       "agency_code": "000",
       "description": "Office of the Ombudsman",
       "department_id": "Office of the Ombudsman (OMB)",
@@ -7820,6 +8069,7 @@
     },
     {
       "id": "Office of the President (OP)::The President's Offices",
+      "slug": "the-presidents-offices",
       "agency_code": "001",
       "description": "The President's Offices",
       "department_id": "Office of the President (OP)",
@@ -7853,6 +8103,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)::Bureau of Broadcast Services",
+      "slug": "bureau-of-broadcast-services",
       "agency_code": "002",
       "description": "Bureau of Broadcast Services",
       "department_id": "Office of the Press Secretary (OPS)",
@@ -7866,6 +8117,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)::Bureau of Communications Services",
+      "slug": "bureau-of-communications-services",
       "agency_code": "003",
       "description": "Bureau of Communications Services",
       "department_id": "Office of the Press Secretary (OPS)",
@@ -7879,6 +8131,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)::National Printing Office",
+      "slug": "national-printing-office",
       "agency_code": "004",
       "description": "National Printing Office",
       "department_id": "Office of the Press Secretary (OPS)",
@@ -7892,6 +8145,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)::News and Information Bureau",
+      "slug": "news-and-information-bureau",
       "agency_code": "005",
       "description": "News and Information Bureau",
       "department_id": "Office of the Press Secretary (OPS)",
@@ -7905,6 +8159,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)::Office of the Press Secretary (Proper)",
+      "slug": "office-of-the-press-secretary-proper",
       "agency_code": "001",
       "description": "Office of the Press Secretary (Proper)",
       "department_id": "Office of the Press Secretary (OPS)",
@@ -7918,6 +8173,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)::Philippine Information Agency",
+      "slug": "philippine-information-agency",
       "agency_code": "006",
       "description": "Philippine Information Agency",
       "department_id": "Office of the Press Secretary (OPS)",
@@ -7931,6 +8187,7 @@
     },
     {
       "id": "Office of the Press Secretary (OPS)::Presidential Broadcast Staff (RTVM)",
+      "slug": "presidential-broadcast-staff-rtvm",
       "agency_code": "007",
       "description": "Presidential Broadcast Staff (RTVM)",
       "department_id": "Office of the Press Secretary (OPS)",
@@ -7944,6 +8201,7 @@
     },
     {
       "id": "Office of the Vice-President (OVP)::Office of the Vice-President (OVP)",
+      "slug": "office-of-the-vice-president-ovp",
       "agency_code": "000",
       "description": "Office of the Vice-President (OVP)",
       "department_id": "Office of the Vice-President (OVP)",
@@ -7977,6 +8235,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Anti-Money Laundering Council",
+      "slug": "anti-money-laundering-council",
       "agency_code": "001",
       "description": "Anti-Money Laundering Council",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8010,6 +8269,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Anti-Red Tape Authority",
+      "slug": "anti-red-tape-authority",
       "agency_code": "043",
       "description": "Anti-Red Tape Authority",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8043,6 +8303,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Climate Change Commission",
+      "slug": "climate-change-commission",
       "agency_code": "002",
       "description": "Climate Change Commission",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8076,6 +8337,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Commission on Filipinos Overseas",
+      "slug": "commission-on-filipinos-overseas",
       "agency_code": "003",
       "description": "Commission on Filipinos Overseas",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8109,6 +8371,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Commission on Higher Education",
+      "slug": "commission-on-higher-education",
       "agency_code": "004",
       "description": "Commission on Higher Education",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8142,6 +8405,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Commission on the Filipino Language",
+      "slug": "commission-on-the-filipino-language",
       "agency_code": "005",
       "description": "Commission on the Filipino Language",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8175,6 +8439,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Dangerous Drugs Board  ",
+      "slug": "dangerous-drugs-board",
       "agency_code": "006",
       "description": "Dangerous Drugs Board  ",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8208,6 +8473,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Energy Regulatory Commission",
+      "slug": "energy-regulatory-commission",
       "agency_code": "008",
       "description": "Energy Regulatory Commission",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8241,6 +8507,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Film Development Council of the Philippines",
+      "slug": "film-development-council-of-the-philippines",
       "agency_code": "009",
       "description": "Film Development Council of the Philippines",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8274,6 +8541,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Games and Amusements Board",
+      "slug": "games-and-amusements-board",
       "agency_code": "010",
       "description": "Games and Amusements Board",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8307,6 +8575,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Governance Commission for Government-Owned or Controlled Corporations",
+      "slug": "governance-commission-for-government-owned-or-controlled-corporations",
       "agency_code": "011",
       "description": "Governance Commission for Government-Owned or Controlled Corporations",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8340,6 +8609,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Housing and Land Use Regulatory Board",
+      "slug": "housing-and-land-use-regulatory-board",
       "agency_code": "012",
       "description": "Housing and Land Use Regulatory Board",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8369,6 +8639,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Housing and Urban Development Coordinating Council",
+      "slug": "housing-and-urban-development-coordinating-council",
       "agency_code": "013",
       "description": "Housing and Urban Development Coordinating Council",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8398,6 +8669,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Marawi Compensation Board",
+      "slug": "marawi-compensation-board",
       "agency_code": "047",
       "description": "Marawi Compensation Board",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8415,6 +8687,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Metropolitan Baguio City, La Trinidad, Itogon, Sablan, Tuba, and Tublay Development Authority",
+      "slug": "metropolitan-baguio-city-la-trinidad-itogon-sablan-tuba-and-tublay-development-authority",
       "agency_code": "049",
       "description": "Metropolitan Baguio City, La Trinidad, Itogon, Sablan, Tuba, and Tublay Development Authority",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8432,6 +8705,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Metropolitan Davao Development Authority",
+      "slug": "metropolitan-davao-development-authority",
       "agency_code": "048",
       "description": "Metropolitan Davao Development Authority",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8449,6 +8723,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Mindanao Development Authority",
+      "slug": "mindanao-development-authority",
       "agency_code": "014",
       "description": "Mindanao Development Authority",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8482,6 +8757,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Movie and Television Review and Classification Board",
+      "slug": "movie-and-television-review-and-classification-board",
       "agency_code": "015",
       "description": "Movie and Television Review and Classification Board",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8515,6 +8791,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Amnesty Commission",
+      "slug": "national-amnesty-commission",
       "agency_code": "050",
       "description": "National Amnesty Commission",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8528,6 +8805,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Archives of the Philippines",
+      "slug": "national-archives-of-the-philippines",
       "agency_code": "020",
       "description": "National Archives of the Philippines",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8561,6 +8839,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Commission for Culture and the Arts-Proper",
+      "slug": "national-commission-for-culture-and-the-arts-proper",
       "agency_code": "017",
       "description": "National Commission for Culture and the Arts-Proper",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8594,6 +8873,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Commission of Senior Citizens",
+      "slug": "national-commission-of-senior-citizens",
       "agency_code": "045",
       "description": "National Commission of Senior Citizens",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8623,6 +8903,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Commission on Indigenous Peoples",
+      "slug": "national-commission-on-indigenous-peoples",
       "agency_code": "021",
       "description": "National Commission on Indigenous Peoples",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8636,6 +8917,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Historical Commission of the Philippines",
+      "slug": "national-historical-commission-of-the-philippines",
       "agency_code": "018",
       "description": "National Historical Commission of the Philippines",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8669,6 +8951,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Intelligence Coordinating Agency",
+      "slug": "national-intelligence-coordinating-agency",
       "agency_code": "023",
       "description": "National Intelligence Coordinating Agency",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8702,6 +8985,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Library of the Philippines",
+      "slug": "national-library-of-the-philippines",
       "agency_code": "019",
       "description": "National Library of the Philippines",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8735,6 +9019,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::National Security Council",
+      "slug": "national-security-council",
       "agency_code": "024",
       "description": "National Security Council",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8768,6 +9053,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Office of the Presidential Adviser on Peace, Reconciliation and Unity",
+      "slug": "office-of-the-presidential-adviser-on-peace-reconciliation-and-unity",
       "agency_code": "026",
       "description": "Office of the Presidential Adviser on Peace, Reconciliation and Unity",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8789,6 +9075,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Office of the Presidential Adviser on the Peace Process",
+      "slug": "office-of-the-presidential-adviser-on-the-peace-process",
       "agency_code": "026",
       "description": "Office of the Presidential Adviser on the Peace Process",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8810,6 +9097,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Optical Media Board",
+      "slug": "optical-media-board",
       "agency_code": "027",
       "description": "Optical Media Board",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8843,6 +9131,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Pasig River Rehabilitation Commission",
+      "slug": "pasig-river-rehabilitation-commission",
       "agency_code": "028",
       "description": "Pasig River Rehabilitation Commission",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8872,6 +9161,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Philippine Competition Commission",
+      "slug": "philippine-competition-commission",
       "agency_code": "038",
       "description": "Philippine Competition Commission",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8905,6 +9195,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Philippine Drug Enforcement Agency",
+      "slug": "philippine-drug-enforcement-agency",
       "agency_code": "030",
       "description": "Philippine Drug Enforcement Agency",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8938,6 +9229,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Philippine Information Agency",
+      "slug": "philippine-information-agency",
       "agency_code": "046",
       "description": "Philippine Information Agency",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8959,6 +9251,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Philippine Racing Commission",
+      "slug": "philippine-racing-commission",
       "agency_code": "031",
       "description": "Philippine Racing Commission",
       "department_id": "Other Executive Offices (OEOs)",
@@ -8992,6 +9285,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Philippine Space Agency",
+      "slug": "philippine-space-agency",
       "agency_code": "044",
       "description": "Philippine Space Agency",
       "department_id": "Other Executive Offices (OEOs)",
@@ -9021,6 +9315,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Philippine Sports Commission",
+      "slug": "philippine-sports-commission",
       "agency_code": "032",
       "description": "Philippine Sports Commission",
       "department_id": "Other Executive Offices (OEOs)",
@@ -9054,6 +9349,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Presidential Legislative Liaison Office",
+      "slug": "presidential-legislative-liaison-office",
       "agency_code": "035",
       "description": "Presidential Legislative Liaison Office",
       "department_id": "Other Executive Offices (OEOs)",
@@ -9087,6 +9383,7 @@
     },
     {
       "id": "Other Executive Offices (OEOs)::Presidential Management Staff",
+      "slug": "presidential-management-staff",
       "agency_code": "036",
       "description": "Presidential Management Staff",
       "department_id": "Other Executive Offices (OEOs)",
@@ -9120,6 +9417,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)::Bureau of Communications Services",
+      "slug": "bureau-of-communications-services",
       "agency_code": "003",
       "description": "Bureau of Communications Services",
       "department_id": "Presidential Communications Office (PCO)",
@@ -9137,6 +9435,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)::National Printing Office",
+      "slug": "national-printing-office",
       "agency_code": "004",
       "description": "National Printing Office",
       "department_id": "Presidential Communications Office (PCO)",
@@ -9154,6 +9453,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)::News and Information Bureau",
+      "slug": "news-and-information-bureau",
       "agency_code": "005",
       "description": "News and Information Bureau",
       "department_id": "Presidential Communications Office (PCO)",
@@ -9171,6 +9471,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)::Philippine Information Agency",
+      "slug": "philippine-information-agency",
       "agency_code": "006",
       "description": "Philippine Information Agency",
       "department_id": "Presidential Communications Office (PCO)",
@@ -9188,6 +9489,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)::Presidential Broadcast Service-Bureau of Broadcast Services",
+      "slug": "presidential-broadcast-service-bureau-of-broadcast-services",
       "agency_code": "002",
       "description": "Presidential Broadcast Service-Bureau of Broadcast Services",
       "department_id": "Presidential Communications Office (PCO)",
@@ -9205,6 +9507,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)::Presidential Broadcast Staff (RTVM)",
+      "slug": "presidential-broadcast-staff-rtvm",
       "agency_code": "007",
       "description": "Presidential Broadcast Staff (RTVM)",
       "department_id": "Presidential Communications Office (PCO)",
@@ -9222,6 +9525,7 @@
     },
     {
       "id": "Presidential Communications Office (PCO)::Presidential Communications Office (Proper)",
+      "slug": "presidential-communications-office-proper",
       "agency_code": "001",
       "description": "Presidential Communications Office (Proper)",
       "department_id": "Presidential Communications Office (PCO)",
@@ -9239,6 +9543,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)::Bureau of Broadcast Services",
+      "slug": "bureau-of-broadcast-services",
       "agency_code": "002",
       "description": "Bureau of Broadcast Services",
       "department_id": "Presidential Communications Operations Office (PCOO)",
@@ -9260,6 +9565,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)::Bureau of Communications Services",
+      "slug": "bureau-of-communications-services",
       "agency_code": "003",
       "description": "Bureau of Communications Services",
       "department_id": "Presidential Communications Operations Office (PCOO)",
@@ -9281,6 +9587,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)::National Printing Office",
+      "slug": "national-printing-office",
       "agency_code": "004",
       "description": "National Printing Office",
       "department_id": "Presidential Communications Operations Office (PCOO)",
@@ -9302,6 +9609,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)::News and Information Bureau",
+      "slug": "news-and-information-bureau",
       "agency_code": "005",
       "description": "News and Information Bureau",
       "department_id": "Presidential Communications Operations Office (PCOO)",
@@ -9323,6 +9631,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)::Philippine Information Agency",
+      "slug": "philippine-information-agency",
       "agency_code": "006",
       "description": "Philippine Information Agency",
       "department_id": "Presidential Communications Operations Office (PCOO)",
@@ -9344,6 +9653,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)::Presidential Broadcast Staff (RTVM)",
+      "slug": "presidential-broadcast-staff-rtvm",
       "agency_code": "007",
       "description": "Presidential Broadcast Staff (RTVM)",
       "department_id": "Presidential Communications Operations Office (PCOO)",
@@ -9365,6 +9675,7 @@
     },
     {
       "id": "Presidential Communications Operations Office (PCOO)::Presidential Communications Operations Office (Proper)",
+      "slug": "presidential-communications-operations-office-proper",
       "agency_code": "001",
       "description": "Presidential Communications Operations Office (Proper)",
       "department_id": "Presidential Communications Operations Office (PCOO)",
@@ -9386,6 +9697,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Abra State Institute of Science and Technology",
+      "slug": "abra-state-institute-of-science-and-technology",
       "agency_code": "015",
       "description": "Abra State Institute of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9411,6 +9723,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Abra State Institute of Sciences and Technology",
+      "slug": "abra-state-institute-of-sciences-and-technology",
       "agency_code": "015",
       "description": "Abra State Institute of Sciences and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9428,6 +9741,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Adiong Memorial Polytechnic State College",
+      "slug": "adiong-memorial-polytechnic-state-college",
       "agency_code": "108",
       "description": "Adiong Memorial Polytechnic State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9453,6 +9767,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Adiong Memorial State College",
+      "slug": "adiong-memorial-state-college",
       "agency_code": "108",
       "description": "Adiong Memorial State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9470,6 +9785,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Agusan del Sur State College of Agriculture and Technology",
+      "slug": "agusan-del-sur-state-college-of-agriculture-and-technology",
       "agency_code": "104",
       "description": "Agusan del Sur State College of Agriculture and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9503,6 +9819,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Aklan State University",
+      "slug": "aklan-state-university",
       "agency_code": "058",
       "description": "Aklan State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9536,6 +9853,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Apayao State College",
+      "slug": "apayao-state-college",
       "agency_code": "016",
       "description": "Apayao State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9569,6 +9887,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Aurora State College of Technology",
+      "slug": "aurora-state-college-of-technology",
       "agency_code": "026",
       "description": "Aurora State College of Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9602,6 +9921,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Basilan State College",
+      "slug": "basilan-state-college",
       "agency_code": "109",
       "description": "Basilan State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9635,6 +9955,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Bataan Peninsula State University",
+      "slug": "bataan-peninsula-state-university",
       "agency_code": "027",
       "description": "Bataan Peninsula State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9668,6 +9989,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Batanes State College",
+      "slug": "batanes-state-college",
       "agency_code": "021",
       "description": "Batanes State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9701,6 +10023,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Batangas State University",
+      "slug": "batangas-state-university",
       "agency_code": "038",
       "description": "Batangas State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9734,6 +10057,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Benguet State University",
+      "slug": "benguet-state-university",
       "agency_code": "017",
       "description": "Benguet State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9767,6 +10091,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Bicol State College of Applied Sciences and Technology",
+      "slug": "bicol-state-college-of-applied-sciences-and-technology",
       "agency_code": "050",
       "description": "Bicol State College of Applied Sciences and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9800,6 +10125,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Bicol University",
+      "slug": "bicol-university",
       "agency_code": "049",
       "description": "Bicol University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9833,6 +10159,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Biliran Province State University",
+      "slug": "biliran-province-state-university",
       "agency_code": "077",
       "description": "Biliran Province State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9866,6 +10193,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Bohol Island State University",
+      "slug": "bohol-island-state-university",
       "agency_code": "069",
       "description": "Bohol Island State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9899,6 +10227,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Bukidnon State University",
+      "slug": "bukidnon-state-university",
       "agency_code": "089",
       "description": "Bukidnon State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9932,6 +10261,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Bulacan Agricultural State College",
+      "slug": "bulacan-agricultural-state-college",
       "agency_code": "028",
       "description": "Bulacan Agricultural State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9965,6 +10295,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Bulacan State University",
+      "slug": "bulacan-state-university",
       "agency_code": "029",
       "description": "Bulacan State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -9998,6 +10329,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Cagayan State University",
+      "slug": "cagayan-state-university",
       "agency_code": "022",
       "description": "Cagayan State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10031,6 +10363,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Camarines Norte State College",
+      "slug": "camarines-norte-state-college",
       "agency_code": "051",
       "description": "Camarines Norte State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10064,6 +10397,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Camarines Sur Polytechnic Colleges",
+      "slug": "camarines-sur-polytechnic-colleges",
       "agency_code": "052",
       "description": "Camarines Sur Polytechnic Colleges",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10097,6 +10431,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Camiguin Polytechnic State College",
+      "slug": "camiguin-polytechnic-state-college",
       "agency_code": "090",
       "description": "Camiguin Polytechnic State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10130,6 +10465,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Capiz State University",
+      "slug": "capiz-state-university",
       "agency_code": "059",
       "description": "Capiz State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10163,6 +10499,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Caraga State University",
+      "slug": "caraga-state-university",
       "agency_code": "105",
       "description": "Caraga State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10196,6 +10533,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Carlos C. Hilado Memorial State College",
+      "slug": "carlos-c-hilado-memorial-state-college",
       "agency_code": "060",
       "description": "Carlos C. Hilado Memorial State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10217,6 +10555,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Carlos Hilado Memorial State University",
+      "slug": "carlos-hilado-memorial-state-university",
       "agency_code": "060",
       "description": "Carlos Hilado Memorial State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10238,6 +10577,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Catanduanes State University",
+      "slug": "catanduanes-state-university",
       "agency_code": "053",
       "description": "Catanduanes State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10271,6 +10611,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Cavite State University",
+      "slug": "cavite-state-university",
       "agency_code": "039",
       "description": "Cavite State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10304,6 +10645,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Cebu Normal University",
+      "slug": "cebu-normal-university",
       "agency_code": "070",
       "description": "Cebu Normal University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10337,6 +10679,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Cebu Technological University",
+      "slug": "cebu-technological-university",
       "agency_code": "071",
       "description": "Cebu Technological University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10370,6 +10713,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Central Bicol State University of Agriculture",
+      "slug": "central-bicol-state-university-of-agriculture",
       "agency_code": "054",
       "description": "Central Bicol State University of Agriculture",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10403,6 +10747,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Central Luzon State University",
+      "slug": "central-luzon-state-university",
       "agency_code": "030",
       "description": "Central Luzon State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10436,6 +10781,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Central Mindanao University",
+      "slug": "central-mindanao-university",
       "agency_code": "091",
       "description": "Central Mindanao University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10469,6 +10815,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Central Philippines State University",
+      "slug": "central-philippines-state-university",
       "agency_code": "063",
       "description": "Central Philippines State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10502,6 +10849,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Compostela Valley State College",
+      "slug": "compostela-valley-state-college",
       "agency_code": "114",
       "description": "Compostela Valley State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10519,6 +10867,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Cotabato City State Polytechnic College",
+      "slug": "cotabato-city-state-polytechnic-college",
       "agency_code": "100",
       "description": "Cotabato City State Polytechnic College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10536,6 +10885,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Cotabato Foundation College of Science and Technology",
+      "slug": "cotabato-foundation-college-of-science-and-technology",
       "agency_code": "101",
       "description": "Cotabato Foundation College of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10569,6 +10919,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Cotabato State University",
+      "slug": "cotabato-state-university",
       "agency_code": "100",
       "description": "Cotabato State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10594,6 +10945,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Davao Oriental State College of Science and Technology",
+      "slug": "davao-oriental-state-college-of-science-and-technology",
       "agency_code": "097",
       "description": "Davao Oriental State College of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10611,6 +10963,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Davao Oriental State University",
+      "slug": "davao-oriental-state-university",
       "agency_code": "097",
       "description": "Davao Oriental State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10636,6 +10989,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Davao de Oro State College",
+      "slug": "davao-de-oro-state-college",
       "agency_code": "114",
       "description": "Davao de Oro State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10661,6 +11015,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Davao del Norte State College",
+      "slug": "davao-del-norte-state-college",
       "agency_code": "096",
       "description": "Davao del Norte State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10694,6 +11049,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Davao del Sur State College",
+      "slug": "davao-del-sur-state-college",
       "agency_code": "115",
       "description": "Davao del Sur State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10723,6 +11079,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Don Honorio Ventura State University",
+      "slug": "don-honorio-ventura-state-university",
       "agency_code": "031",
       "description": "Don Honorio Ventura State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10756,6 +11113,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Don Mariano Marcos Memorial State University",
+      "slug": "don-mariano-marcos-memorial-state-university",
       "agency_code": "009",
       "description": "Don Mariano Marcos Memorial State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10789,6 +11147,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Dr. Emilio B. Espinosa, Sr. Memorial State College of Agriculture and Technology",
+      "slug": "dr-emilio-b-espinosa-sr-memorial-state-college-of-agriculture-and-technology",
       "agency_code": "055",
       "description": "Dr. Emilio B. Espinosa, Sr. Memorial State College of Agriculture and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10822,6 +11181,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Eastern Samar State University",
+      "slug": "eastern-samar-state-university",
       "agency_code": "074",
       "description": "Eastern Samar State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10855,6 +11215,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Eastern Visayas State University",
+      "slug": "eastern-visayas-state-university",
       "agency_code": "075",
       "description": "Eastern Visayas State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10888,6 +11249,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Eulogio 'Amang' Rodriguez Institute of Science and Technology",
+      "slug": "eulogio-amang-rodriguez-institute-of-science-and-technology",
       "agency_code": "001",
       "description": "Eulogio 'Amang' Rodriguez Institute of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10921,6 +11283,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Guimaras State College",
+      "slug": "guimaras-state-college",
       "agency_code": "061",
       "description": "Guimaras State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10946,6 +11309,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Guimaras State University",
+      "slug": "guimaras-state-university",
       "agency_code": "061",
       "description": "Guimaras State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10963,6 +11327,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Ifugao State University",
+      "slug": "ifugao-state-university",
       "agency_code": "018",
       "description": "Ifugao State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -10996,6 +11361,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Ilocos Sur Polytechnic State College",
+      "slug": "ilocos-sur-polytechnic-state-college",
       "agency_code": "010",
       "description": "Ilocos Sur Polytechnic State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11029,6 +11395,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Iloilo Science and Technology University",
+      "slug": "iloilo-science-and-technology-university",
       "agency_code": "067",
       "description": "Iloilo Science and Technology University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11062,6 +11429,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Iloilo State College of Fisheries",
+      "slug": "iloilo-state-college-of-fisheries",
       "agency_code": "062",
       "description": "Iloilo State College of Fisheries",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11083,6 +11451,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Iloilo State University of Fisheries Science and Technology",
+      "slug": "iloilo-state-university-of-fisheries-science-and-technology",
       "agency_code": "062",
       "description": "Iloilo State University of Fisheries Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11100,6 +11469,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Iloilo State University of Science and Technology",
+      "slug": "iloilo-state-university-of-science-and-technology",
       "agency_code": "062",
       "description": "Iloilo State University of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11113,6 +11483,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Isabela State University",
+      "slug": "isabela-state-university",
       "agency_code": "023",
       "description": "Isabela State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11146,6 +11517,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::J. H. Cerilles State College",
+      "slug": "j-h-cerilles-state-college",
       "agency_code": "084",
       "description": "J. H. Cerilles State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11179,6 +11551,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Jose Rizal Memorial State University",
+      "slug": "jose-rizal-memorial-state-university",
       "agency_code": "085",
       "description": "Jose Rizal Memorial State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11212,6 +11585,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Kalinga State University",
+      "slug": "kalinga-state-university",
       "agency_code": "019",
       "description": "Kalinga State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11245,6 +11619,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Laguna State Polytechnic University",
+      "slug": "laguna-state-polytechnic-university",
       "agency_code": "040",
       "description": "Laguna State Polytechnic University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11278,6 +11653,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Leyte Normal University",
+      "slug": "leyte-normal-university",
       "agency_code": "076",
       "description": "Leyte Normal University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11311,6 +11687,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::MSU-Iligan Institute of Technology",
+      "slug": "msu-iligan-institute-of-technology",
       "agency_code": "093",
       "description": "MSU-Iligan Institute of Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11344,6 +11721,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::MSU-Tawi-Tawi College of Technology and Oceanography",
+      "slug": "msu-tawi-tawi-college-of-technology-and-oceanography",
       "agency_code": "111",
       "description": "MSU-Tawi-Tawi College of Technology and Oceanography",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11377,6 +11755,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Mariano Marcos State University",
+      "slug": "mariano-marcos-state-university",
       "agency_code": "011",
       "description": "Mariano Marcos State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11410,6 +11789,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Marikina Polytechnic College",
+      "slug": "marikina-polytechnic-college",
       "agency_code": "002",
       "description": "Marikina Polytechnic College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11443,6 +11823,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Marinduque State College",
+      "slug": "marinduque-state-college",
       "agency_code": "043",
       "description": "Marinduque State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11472,6 +11853,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Marinduque State University",
+      "slug": "marinduque-state-university",
       "agency_code": "043",
       "description": "Marinduque State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11485,6 +11867,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Mindanao State University",
+      "slug": "mindanao-state-university",
       "agency_code": "110",
       "description": "Mindanao State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11518,6 +11901,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Mindoro State College of Agriculture and Technology",
+      "slug": "mindoro-state-college-of-agriculture-and-technology",
       "agency_code": "044",
       "description": "Mindoro State College of Agriculture and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11535,6 +11919,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Mindoro State University",
+      "slug": "mindoro-state-university",
       "agency_code": "044",
       "description": "Mindoro State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11560,6 +11945,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Mountain Province State Polytechnic College",
+      "slug": "mountain-province-state-polytechnic-college",
       "agency_code": "020",
       "description": "Mountain Province State Polytechnic College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11589,6 +11975,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Mountain Province State University",
+      "slug": "mountain-province-state-university",
       "agency_code": "020",
       "description": "Mountain Province State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11602,6 +11989,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Negros Oriental State University",
+      "slug": "negros-oriental-state-university",
       "agency_code": "072",
       "description": "Negros Oriental State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11635,6 +12023,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::North Eastern Mindanao State University",
+      "slug": "north-eastern-mindanao-state-university",
       "agency_code": "106",
       "description": "North Eastern Mindanao State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11656,6 +12045,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::North Luzon Philippines State College",
+      "slug": "north-luzon-philippines-state-college",
       "agency_code": "012",
       "description": "North Luzon Philippines State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11689,6 +12079,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Northern Bukidnon State College",
+      "slug": "northern-bukidnon-state-college",
       "agency_code": "116",
       "description": "Northern Bukidnon State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11718,6 +12109,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Northern Iloilo Polytechnic State College",
+      "slug": "northern-iloilo-polytechnic-state-college",
       "agency_code": "064",
       "description": "Northern Iloilo Polytechnic State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11735,6 +12127,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Northern Iloilo State University",
+      "slug": "northern-iloilo-state-university",
       "agency_code": "064",
       "description": "Northern Iloilo State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11760,6 +12153,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Northern Negros State College of Science and Technology",
+      "slug": "northern-negros-state-college-of-science-and-technology",
       "agency_code": "065",
       "description": "Northern Negros State College of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11789,6 +12183,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Northwest Samar State University",
+      "slug": "northwest-samar-state-university",
       "agency_code": "078",
       "description": "Northwest Samar State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11822,6 +12217,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Northwestern Mindanao State College of Science and Technology",
+      "slug": "northwestern-mindanao-state-college-of-science-and-technology",
       "agency_code": "095",
       "description": "Northwestern Mindanao State College of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11855,6 +12251,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Nueva Ecija University of Science and Technology",
+      "slug": "nueva-ecija-university-of-science-and-technology",
       "agency_code": "032",
       "description": "Nueva Ecija University of Science and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11888,6 +12285,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Nueva Vizcaya State University",
+      "slug": "nueva-vizcaya-state-university",
       "agency_code": "024",
       "description": "Nueva Vizcaya State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11921,6 +12319,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Occidental Mindoro State College",
+      "slug": "occidental-mindoro-state-college",
       "agency_code": "045",
       "description": "Occidental Mindoro State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11954,6 +12353,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Palawan State University",
+      "slug": "palawan-state-university",
       "agency_code": "046",
       "description": "Palawan State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -11987,6 +12387,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Palompon Institute of Technology",
+      "slug": "palompon-institute-of-technology",
       "agency_code": "079",
       "description": "Palompon Institute of Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12016,6 +12417,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Palompon Polytechnic State University",
+      "slug": "palompon-polytechnic-state-university",
       "agency_code": "079",
       "description": "Palompon Polytechnic State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12029,6 +12431,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Pampanga State Agricultural University",
+      "slug": "pampanga-state-agricultural-university",
       "agency_code": "033",
       "description": "Pampanga State Agricultural University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12062,6 +12465,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Pangasinan State University",
+      "slug": "pangasinan-state-university",
       "agency_code": "013",
       "description": "Pangasinan State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12095,6 +12499,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Partido State University",
+      "slug": "partido-state-university",
       "agency_code": "056",
       "description": "Partido State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12128,6 +12533,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Philippine Energy Research and Policy Institute",
+      "slug": "philippine-energy-research-and-policy-institute",
       "agency_code": "119",
       "description": "Philippine Energy Research and Policy Institute",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12145,6 +12551,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Philippine Merchant Marine Academy",
+      "slug": "philippine-merchant-marine-academy",
       "agency_code": "034",
       "description": "Philippine Merchant Marine Academy",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12178,6 +12585,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Philippine Normal University",
+      "slug": "philippine-normal-university",
       "agency_code": "003",
       "description": "Philippine Normal University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12211,6 +12619,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Philippine State College of Aeronautics",
+      "slug": "philippine-state-college-of-aeronautics",
       "agency_code": "004",
       "description": "Philippine State College of Aeronautics",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12244,6 +12653,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Polytechnic University of the Philippines",
+      "slug": "polytechnic-university-of-the-philippines",
       "agency_code": "005",
       "description": "Polytechnic University of the Philippines",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12277,6 +12687,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::President Ramon Magsaysay State University",
+      "slug": "president-ramon-magsaysay-state-university",
       "agency_code": "035",
       "description": "President Ramon Magsaysay State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12310,6 +12721,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Quirino State University",
+      "slug": "quirino-state-university",
       "agency_code": "025",
       "description": "Quirino State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12343,6 +12755,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Rizal Technological University",
+      "slug": "rizal-technological-university",
       "agency_code": "006",
       "description": "Rizal Technological University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12376,6 +12789,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Romblon State University",
+      "slug": "romblon-state-university",
       "agency_code": "047",
       "description": "Romblon State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12409,6 +12823,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Samar State University",
+      "slug": "samar-state-university",
       "agency_code": "080",
       "description": "Samar State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12442,6 +12857,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Siquijor State College",
+      "slug": "siquijor-state-college",
       "agency_code": "073",
       "description": "Siquijor State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12475,6 +12891,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Sorsogon State College",
+      "slug": "sorsogon-state-college",
       "agency_code": "057",
       "description": "Sorsogon State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12492,6 +12909,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Sorsogon State University",
+      "slug": "sorsogon-state-university",
       "agency_code": "057",
       "description": "Sorsogon State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12517,6 +12935,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::South Cotabato State College",
+      "slug": "south-cotabato-state-college",
       "agency_code": "117",
       "description": "South Cotabato State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12546,6 +12965,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Southern Leyte State University",
+      "slug": "southern-leyte-state-university",
       "agency_code": "081",
       "description": "Southern Leyte State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12579,6 +12999,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Southern Luzon State University",
+      "slug": "southern-luzon-state-university",
       "agency_code": "041",
       "description": "Southern Luzon State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12612,6 +13033,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Southern Philippines Agri-Business and Marine and Aquatic School of Technology",
+      "slug": "southern-philippines-agri-business-and-marine-and-aquatic-school-of-technology",
       "agency_code": "098",
       "description": "Southern Philippines Agri-Business and Marine and Aquatic School of Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12645,6 +13067,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::State University of Northern Negros",
+      "slug": "state-university-of-northern-negros",
       "agency_code": "065",
       "description": "State University of Northern Negros",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12658,6 +13081,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Sultan Kudarat State University",
+      "slug": "sultan-kudarat-state-university",
       "agency_code": "102",
       "description": "Sultan Kudarat State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12691,6 +13115,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Sulu State College",
+      "slug": "sulu-state-college",
       "agency_code": "112",
       "description": "Sulu State College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12724,6 +13149,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Surigao State College of Technology",
+      "slug": "surigao-state-college-of-technology",
       "agency_code": "107",
       "description": "Surigao State College of Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12745,6 +13171,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Surigao del Norte State University",
+      "slug": "surigao-del-norte-state-university",
       "agency_code": "107",
       "description": "Surigao del Norte State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12766,6 +13193,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Surigao del Sur State University",
+      "slug": "surigao-del-sur-state-university",
       "agency_code": "106",
       "description": "Surigao del Sur State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12787,6 +13215,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Tarlac Agricultural University",
+      "slug": "tarlac-agricultural-university",
       "agency_code": "036",
       "description": "Tarlac Agricultural University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12820,6 +13249,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Tarlac State University",
+      "slug": "tarlac-state-university",
       "agency_code": "037",
       "description": "Tarlac State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12853,6 +13283,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Tawi-Tawi Regional Agricultural College",
+      "slug": "tawi-tawi-regional-agricultural-college",
       "agency_code": "113",
       "description": "Tawi-Tawi Regional Agricultural College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12886,6 +13317,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Technological University of the Philippines",
+      "slug": "technological-university-of-the-philippines",
       "agency_code": "007",
       "description": "Technological University of the Philippines",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12919,6 +13351,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Antique",
+      "slug": "university-of-antique",
       "agency_code": "066",
       "description": "University of Antique",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12952,6 +13385,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Eastern Philippines",
+      "slug": "university-of-eastern-philippines",
       "agency_code": "082",
       "description": "University of Eastern Philippines",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -12985,6 +13419,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Northern Philippines",
+      "slug": "university-of-northern-philippines",
       "agency_code": "014",
       "description": "University of Northern Philippines",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13018,6 +13453,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Rizal System",
+      "slug": "university-of-rizal-system",
       "agency_code": "042",
       "description": "University of Rizal System",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13051,6 +13487,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Science and Technology of Southern Philippines",
+      "slug": "university-of-science-and-technology-of-southern-philippines",
       "agency_code": "120",
       "description": "University of Science and Technology of Southern Philippines",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13064,6 +13501,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Science and Technology of Southern Philippines - Cagayan de Oro Campus",
+      "slug": "university-of-science-and-technology-of-southern-philippines-cagayan-de-oro-campus",
       "agency_code": "092",
       "description": "University of Science and Technology of Southern Philippines - Cagayan de Oro Campus",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13097,6 +13535,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Science and Technology of Southern Philippines - Claveria Campus",
+      "slug": "university-of-science-and-technology-of-southern-philippines-claveria-campus",
       "agency_code": "094",
       "description": "University of Science and Technology of Southern Philippines - Claveria Campus",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13130,6 +13569,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Southeastern Philippines",
+      "slug": "university-of-southeastern-philippines",
       "agency_code": "099",
       "description": "University of Southeastern Philippines",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13163,6 +13603,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of Southern Mindanao",
+      "slug": "university-of-southern-mindanao",
       "agency_code": "103",
       "description": "University of Southern Mindanao",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13196,6 +13637,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::University of the Philippines System",
+      "slug": "university-of-the-philippines-system",
       "agency_code": "008",
       "description": "University of the Philippines System",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13229,6 +13671,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Visayas State University",
+      "slug": "visayas-state-university",
       "agency_code": "083",
       "description": "Visayas State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13262,6 +13705,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::West Visayas State University",
+      "slug": "west-visayas-state-university",
       "agency_code": "068",
       "description": "West Visayas State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13295,6 +13739,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Western Mindanao State University",
+      "slug": "western-mindanao-state-university",
       "agency_code": "086",
       "description": "Western Mindanao State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13328,6 +13773,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Western Philippines University",
+      "slug": "western-philippines-university",
       "agency_code": "048",
       "description": "Western Philippines University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13361,6 +13807,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Zamboanga City State Polytechnic College",
+      "slug": "zamboanga-city-state-polytechnic-college",
       "agency_code": "087",
       "description": "Zamboanga City State Polytechnic College",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13382,6 +13829,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Zamboanga Peninsula Polytechnic State University",
+      "slug": "zamboanga-peninsula-polytechnic-state-university",
       "agency_code": "087",
       "description": "Zamboanga Peninsula Polytechnic State University",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13403,6 +13851,7 @@
     },
     {
       "id": "State Universities and Colleges (SUCs)::Zamboanga State College of Marine Sciences and Technology",
+      "slug": "zamboanga-state-college-of-marine-sciences-and-technology",
       "agency_code": "088",
       "description": "Zamboanga State College of Marine Sciences and Technology",
       "department_id": "State Universities and Colleges (SUCs)",
@@ -13436,6 +13885,7 @@
     },
     {
       "id": "The Judiciary (JUD)::Court of Appeals",
+      "slug": "court-of-appeals",
       "agency_code": "004",
       "description": "Court of Appeals",
       "department_id": "The Judiciary (JUD)",
@@ -13469,6 +13919,7 @@
     },
     {
       "id": "The Judiciary (JUD)::Court of Tax Appeals",
+      "slug": "court-of-tax-appeals",
       "agency_code": "005",
       "description": "Court of Tax Appeals",
       "department_id": "The Judiciary (JUD)",
@@ -13502,6 +13953,7 @@
     },
     {
       "id": "The Judiciary (JUD)::Presidential Electoral Tribunal",
+      "slug": "presidential-electoral-tribunal",
       "agency_code": "002",
       "description": "Presidential Electoral Tribunal",
       "department_id": "The Judiciary (JUD)",
@@ -13535,6 +13987,7 @@
     },
     {
       "id": "The Judiciary (JUD)::Sandiganbayan",
+      "slug": "sandiganbayan",
       "agency_code": "003",
       "description": "Sandiganbayan",
       "department_id": "The Judiciary (JUD)",
@@ -13568,6 +14021,7 @@
     },
     {
       "id": "The Judiciary (JUD)::Supreme Court of the Philippines and the Lower Courts",
+      "slug": "supreme-court-of-the-philippines-and-the-lower-courts",
       "agency_code": "001",
       "description": "Supreme Court of the Philippines and the Lower Courts",
       "department_id": "The Judiciary (JUD)",
