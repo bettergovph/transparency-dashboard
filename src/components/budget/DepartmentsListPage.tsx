@@ -7,7 +7,6 @@ import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { toSlug } from '@/lib/utils'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
 
 interface Department {

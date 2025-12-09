@@ -6,7 +6,6 @@ import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { toSlug } from '@/lib/utils'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, BarChart, Bar } from 'recharts'
 
@@ -234,7 +233,7 @@ const AgencyPage = () => {
 
       <Navigation />
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <div className="min-h-screen from-blue-50 via-white to-green-50">
         {/* Sticky Header */}
         <BudgetHeader
           title={agency.description}
