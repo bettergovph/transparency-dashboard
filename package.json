@@ -10,7 +10,10 @@
     "preview": "vite preview",
     "seed": "node seed-meilisearch.mjs",
     "search:stats": "node scripts/search-stats.mjs",
-    "generate:sitemap": "cd data/gaa && python3 generate_sitemap.py --base-url https://yourdomain.com"
+    "generate:sitemap": "cd data/gaa && python3 generate_sitemap.py --base-url https://transparency.bettergov.ph",
+    "generate:sitemap:procurement": "node scripts/generate-procurement-sitemap.mjs --base-url https://transparency.bettergov.ph",
+    "generate:sitemap:index": "node scripts/generate-sitemap-index.mjs --base-url https://transparency.bettergov.ph",
+    "generate:sitemaps:all": "npm run generate:sitemap && npm run generate:sitemap:procurement && npm run generate:sitemap:index"
   },
   "dependencies": {
     "@dr.pogodin/react-helmet": "^3.0.4",
