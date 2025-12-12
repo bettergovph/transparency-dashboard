@@ -5,7 +5,6 @@ import { Search } from 'lucide-react'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import { filterIndices } from '@/lib/meilisearch'
-import { toSlug } from '@/lib/utils'
 
 const ContractorsPage = () => {
   const [contractors, setContractors] = useState<Array<{ name: string; count: number; total: number; startDate?: string; endDate?: string }>>([])

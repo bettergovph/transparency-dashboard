@@ -12,7 +12,6 @@ import type { SearchDocument } from '@/types/search'
 import SearchGuide from './SearchGuide'
 import Navigation from './Navigation'
 import Footer from './Footer'
-import { toSlug } from '@/lib/utils'
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 
 interface EnhancedSearchInterfaceProps {

@@ -5,7 +5,6 @@ import { Search } from 'lucide-react'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import { filterIndices } from '@/lib/meilisearch'
-import { toSlug } from '@/lib/utils'
 
 const CategoriesListPage = () => {
   const [categories, setCategories] = useState<Array<{ name: string; count: number; total: number }>>([])
