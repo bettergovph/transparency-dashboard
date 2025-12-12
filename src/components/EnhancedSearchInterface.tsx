@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Filter, FileText, TrendingUp, ChevronLeft, ChevronRight, X, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -28,6 +28,8 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   enableDeduplication = true,
   limit = 1000
 }) => {
+  const location = useLocation()
+  const isRootPath = location.pathname === '/'
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchDocument[]>([])
   const [loading, setLoading] = useState(false)
@@ -92,18 +94,21 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   }, [filterType, filterValue])
   useEffect(() => {
     if (filterType && filterValue) {
+      // Strip any surrounding quotes from filterValue
+      const cleanValue = filterValue.replace(/^['"]|['"]$/g, '')
+      
       switch (filterType) {
         case 'awardee':
-          setSelectedAwardees([filterValue])
+          setSelectedAwardees([cleanValue])
           break
         case 'organization':
-          setSelectedOrganizations([filterValue])
+          setSelectedOrganizations([cleanValue])
           break
         case 'location':
-          setSelectedAreas([filterValue])
+          setSelectedAreas([cleanValue])
           break
         case 'category':
-          setSelectedCategory(filterValue)
+          setSelectedCategory(cleanValue)
           break
       }
     }
@@ -547,7 +552,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
         <meta property="og:title" content={filterValue ? `${filterValue} - PhilGEPS Contract Browser` : 'PhilGEPS Contract Browser'} />
         <meta property="og:description" content={filterValue ? `Government contracts for ${filterValue}` : 'Search Philippine government procurement records'} />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href={filterValue ? `https://philgeps.bettergov.ph/${filterType}s/${toSlug(filterValue)}` : 'https://philgeps.bettergov.ph/'} />
+        <link rel="canonical" href={filterValue ? `https://philgeps.bettergov.ph/${filterType}s/${encodeURIComponent(filterValue)}` : 'https://philgeps.bettergov.ph/'} />
       </Helmet>
       {/* Header Section */}
       <Navigation />
@@ -1080,7 +1085,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                             </td>
                             <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                               <Link
-                                to={`/awardees/${toSlug(doc.awardee_name)}`}
+                                to={`/awardees/${encodeURIComponent(doc.awardee_name)}`}
                                 className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
                                 title={doc.awardee_name}
                               >
@@ -1089,7 +1094,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                             </td>
                             <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                               <Link
-                                to={`/organizations/${toSlug(doc.organization_name)}`}
+                                to={`/organizations/${encodeURIComponent(doc.organization_name)}`}
                                 className="truncate text-blue-600 hover:text-blue-800 underline text-left transition-colors cursor-pointer block"
                                 title={doc.organization_name}
                               >
@@ -1101,7 +1106,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
                               <Link
-                                to={`/categories/${toSlug(doc.business_category)}`}
+                                to={`/categories/${encodeURIComponent(doc.business_category)}`}
                                 className="text-blue-600 hover:text-blue-800 underline transition-colors cursor-pointer"
                                 title={doc.business_category}
                               >
@@ -1226,7 +1231,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
           )}
 
           {/* Welcome State */}
-          {!query && !loading && results.length === 0 && (
+          {isRootPath && !query && !loading && results.length === 0 && (
             <div className="text-center py-16">
               <div className="max-w-2xl mx-auto">
                 <div className="bg-linear-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">

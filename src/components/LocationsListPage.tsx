@@ -218,7 +218,7 @@ const LocationsListPage = () => {
                     <div className="flex items-start gap-2 mb-2">
                       <span className="text-xs font-mono text-gray-500 shrink-0 w-8">#{index + 1}</span>
                       <Link
-                        to={`/locations/${toSlug(location.name)}`}
+                        to={`/locations/${encodeURIComponent(location.name)}`}
                         className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors flex-1 text-left"
                       >
                         {location.name}
@@ -262,7 +262,7 @@ const LocationsListPage = () => {
                         </td>
                         <td className="px-6 py-4">
                           <Link
-                            to={`/locations/${toSlug(location.name)}`}
+                            to={`/locations/${encodeURIComponent(location.name)}`}
                             className="text-base text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                           >
                             {location.name}

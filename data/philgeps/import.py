@@ -57,10 +57,18 @@ with open(CSV_FILE, 'r', encoding='utf-8') as f:
         print(f"Imported {total_imported} records...")
 
 
-index.update_settings({"searchableAttributes": ["*"], 
-                       "filterableAttributes": ["awardee_name", "organization_name", 
-                                                "area_of_delivery", "business_category"], 
-                       "sortableAttributes": ["contract_amount"]})
+index.update_settings({
+    "searchableAttributes": ["*"], 
+    "filterableAttributes": [
+        "awardee_name", 
+        "organization_name", 
+        "area_of_delivery", 
+        "business_category"
+    ], 
+    "sortableAttributes": ["contract_amount"],
+    "separatorTokens": [" ", "-", "|", "/"],
+    "nonSeparatorTokens": [".", "&", ",", "'", "(", ")"]
+})
 
 
 print(f"\n✓ Successfully imported {total_imported} records into '{MEILISEARCH_INDEX}' index")
