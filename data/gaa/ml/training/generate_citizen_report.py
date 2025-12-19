@@ -49,6 +49,10 @@ def load_actual_data(parquet_path: Path) -> pd.DataFrame:
     if 'amt' in df.columns:
         df['amt'] = df['amt'] * 1000
     
+    # Convert year column to regular Python int
+    if 'year' in df.columns:
+        df['year'] = df['year'].astype(int)
+    
     # Filter out Automatic Appropriations and New General Appropriations
     if 'uacs_dpt_dsc' in df.columns:
         before_count = len(df)
@@ -61,7 +65,7 @@ def load_actual_data(parquet_path: Path) -> pd.DataFrame:
             print(f"  Filtered out {filtered_count:,} records (Automatic/New General Appropriations)")
     
     print(f"  Loaded {len(df)} records")
-    print(f"  Years: {sorted(df['year'].unique())}")
+    print(f"  Years: {sorted(df['year'].unique().tolist())}")
     
     return df
 
@@ -79,6 +83,10 @@ def load_predictions(predictions_dir: Path, prediction_type: str):
     latest_file = sorted(files)[-1]
     print(f"\nLoading {prediction_type} predictions from {latest_file.name}...")
     df = pd.read_parquet(latest_file)
+    
+    # Convert year column to regular Python int
+    if 'year' in df.columns:
+        df['year'] = df['year'].astype(int)
     
     # IMPORTANT: Predictions are also stored in thousands
     # Multiply by 1000 to get actual peso amounts
@@ -238,8 +246,8 @@ def generate_forecast_section(df_forecast, df_actual):
     
     # Historical Trend Chart
     if historical_trend is not None and len(historical_trend) > 0:
-        years = historical_trend.index.tolist()
-        amounts = historical_trend.values.tolist()
+        years = [int(y) for y in historical_trend.index.tolist()]  # Convert to regular Python int
+        amounts = [float(a) for a in historical_trend.values.tolist()]  # Convert to regular Python float
         
         # Add forecast year
         years.append(forecast_year)
@@ -471,44 +479,47 @@ def generate_anomalies_section(df_anomalies, df_actual):
     anomaly_rate = (total_anomalies / total_records * 100) if total_records > 0 else 0
     
     html = f"""
-        <section id="anomalies" class="bg-white rounded-lg shadow-lg p-8 mb-8">
-            <h2 class="text-3xl font-bold text-blue-600 mb-6 pb-4 border-b-2 border-gray-200">🔍 Unusual Budget Allocations Found</h2>
+        <section id="anomalies" class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-gray-900">🔍 Unusual Budget Allocations Found</h2>
             
             <!-- Methodology Section -->
-            <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-lg p-6 mb-8">
-                <h3 class="text-2xl font-semibold mb-4">🔬 How We Detected Anomalies</h3>
-                <p class="text-lg leading-relaxed mb-4">
+            <div class="bg-gray-900 text-white rounded-lg p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-3 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    How We Detected Anomalies
+                </h3>
+                <p class="text-sm text-gray-300 mb-3">
                     Our system uses two powerful detection methods to find unusual budget patterns:
                 </p>
-                <div class="grid md:grid-cols-2 gap-4">
-                    <div class="bg-white bg-opacity-20 rounded p-4">
-                        <h4 class="font-semibold text-lg mb-2">🤖 1. Machine Learning (Isolation Forest)</h4>
-                        <p class="text-sm">
-                            An AI algorithm that learns what "normal" budgets look like across all departments, 
-                            then identifies items that significantly deviate from these patterns.
+                <div class="grid md:grid-cols-2 gap-3 text-sm">
+                    <div class="bg-gray-800 bg-opacity-50 rounded p-3">
+                        <h4 class="font-semibold mb-2">🤖 1. Machine Learning (Isolation Forest)</h4>
+                        <p class="text-gray-300 text-xs">
+                            AI algorithm that learns normal budget patterns and identifies significant deviations.
                         </p>
                     </div>
-                    <div class="bg-white bg-opacity-20 rounded p-4">
-                        <h4 class="font-semibold text-lg mb-2">📊 2. Statistical Analysis (Z-Score)</h4>
-                        <p class="text-sm">
-                            Mathematical analysis that calculates how far each budget item is from the typical 
-                            average. Items more than 3 standard deviations away are flagged.
+                    <div class="bg-gray-800 bg-opacity-50 rounded p-3">
+                        <h4 class="font-semibold mb-2">📊 2. Statistical Analysis (Z-Score)</h4>
+                        <p class="text-gray-300 text-xs">
+                            Mathematical analysis flagging items more than 3 standard deviations from average.
                         </p>
                     </div>
                 </div>
-                <p class="mt-4 text-sm opacity-90">
-                    <strong>Important:</strong> An anomaly doesn't mean wrongdoing - it could indicate new programs, emergency responses, or policy changes that deserve public attention.
-                </p>
+                <div class="mt-3 text-xs text-gray-400">
+                    <strong>Note:</strong> An anomaly indicates unusual patterns, not necessarily wrongdoing.
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 border-l-4 border-yellow-600">
-                    <div class="text-gray-600 text-sm font-medium mb-2">Unusual Allocations Detected</div>
-                    <div class="text-3xl font-bold text-yellow-600">{total_anomalies:,}</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div class="stat-card bg-white border-2 border-gray-900 rounded-lg p-5">
+                    <div class="text-gray-600 text-xs font-medium mb-1 uppercase tracking-wide">Unusual Allocations</div>
+                    <div class="text-3xl font-bold text-gray-900">{total_anomalies:,}</div>
                 </div>
-                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 border-l-4 border-orange-600">
-                    <div class="text-gray-600 text-sm font-medium mb-2">Percentage of All Budgets</div>
-                    <div class="text-3xl font-bold text-orange-600">{anomaly_rate:.1f}%</div>
+                <div class="stat-card bg-white border-2 border-gray-900 rounded-lg p-5">
+                    <div class="text-gray-600 text-xs font-medium mb-1 uppercase tracking-wide">Anomaly Rate</div>
+                    <div class="text-3xl font-bold text-gray-900">{anomaly_rate:.1f}%</div>
                 </div>
             </div>
     """
@@ -526,126 +537,198 @@ def generate_anomalies_section(df_anomalies, df_actual):
         type_counts = df_anomalies['anomaly_type'].value_counts()
         type_labels = type_counts.index.tolist()
         type_values = type_counts.values.tolist()
-        colors = ['#EF4444', '#F59E0B', '#10B981', '#3B82F6', '#8B5CF6']
         
         html += f"""
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4">🎯 Types of Unusual Patterns Found</h3>
+            <h3 class="text-lg font-semibold text-gray-900 mb-3">🎯 Types of Unusual Patterns</h3>
             
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
-                <p class="text-gray-700"><strong>What each pattern means:</strong> These categories help classify why a budget item was flagged. Understanding the type of anomaly helps determine whether it needs investigation or is simply a normal policy change.</p>
+            <div class="bg-gray-50 border-l-4 border-gray-900 p-4 mb-4 text-sm">
+                <p class="text-gray-700"><strong>What each pattern means:</strong> These categories help classify why a budget item was flagged.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-6 mb-6">
-                <div class="chart-container bg-white p-4 rounded-lg border border-gray-200">
-                    <canvas id="anomalyTypeChart"></canvas>
-                </div>
-                <div class="bg-gray-50 p-6 rounded-lg">
-                    <h4 class="font-semibold text-lg mb-4 text-gray-800">Pattern Explanations</h4>
+            <div class="grid md:grid-cols-2 gap-4 mb-6">
         """
         
         for atype, count in type_counts.items():
             description = type_descriptions.get(atype, 'Unusual pattern detected')
             pct = (count / total_anomalies) * 100
             html += f"""
-                    <div class="mb-4 pb-4 border-b border-gray-200 last:border-0">
-                        <div class="flex justify-between items-start mb-1">
-                            <span class="font-medium text-gray-800">{atype.replace('_', ' ').title()}</span>
-                            <span class="text-blue-600 font-bold">{count} ({pct:.1f}%)</span>
-                        </div>
-                        <p class="text-sm text-gray-600">{description}</p>
+                <div class="bg-white border border-gray-300 rounded-lg p-4 hover:border-gray-900 transition-colors">
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="font-semibold text-gray-900">{atype.replace('_', ' ').title()}</span>
+                        <span class="text-gray-900 font-bold text-lg">{count}</span>
                     </div>
+                    <p class="text-xs text-gray-600 mb-1">{description}</p>
+                    <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                        <div class="bg-gray-900 h-2 rounded-full" style="width: {pct}%"></div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">{pct:.1f}% of all anomalies</p>
+                </div>
             """
         
-        html += f"""
-                </div>
+        html += """
             </div>
-            
-            <script>
-                const anomalyTypeCtx = document.getElementById('anomalyTypeChart').getContext('2d');
-                new Chart(anomalyTypeCtx, {{
-                    type: 'doughnut',
-                    data: {{
-                        labels: {[t.replace('_', ' ').title() for t in type_labels]},
-                        datasets: [{{
-                            data: {type_values},
-                            backgroundColor: {colors[:len(type_values)]},
-                            borderWidth: 2,
-                            borderColor: '#fff'
-                        }}]
-                    }},
-                    options: {{
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {{
-                            legend: {{
-                                position: 'bottom',
-                                labels: {{
-                                    font: {{ size: 12 }},
-                                    padding: 15
-                                }}
-                            }},
-                            tooltip: {{
-                                callbacks: {{
-                                    label: function(context) {{
-                                        const label = context.label || '';
-                                        const value = context.parsed;
-                                        const total = context.dataset.data.reduce((a, b) => a + b, 0);
-                                        const percentage = ((value / total) * 100).toFixed(1);
-                                        return label + ': ' + value + ' (' + percentage + '%)';
-                                    }}
-                                }}
-                            }}
-                        }}
-                    }}
-                }});
-            </script>
         """
     
-    # Top departments with anomalies
-    if 'uacs_dpt_dsc' in df_anomalies.columns:
-        dept_anomalies = df_anomalies.groupby('uacs_dpt_dsc').size().nlargest(10).reset_index(name='count')
+    # Interactive Anomalies List
+    html += f"""
+        <h3 class="text-lg font-semibold text-gray-900 mb-3 mt-6">📝 Complete List of Anomalies</h3>
         
-        html += """
-            <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">⚠️ Departments with Most Unusual Allocations</h3>
-            
-            <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-6 mb-6">
-                <div class="flex items-start">
-                    <div class="text-3xl mr-4">⚠️</div>
-                    <div>
-                        <h4 class="font-bold text-yellow-800 text-lg mb-2">Areas for Closer Review</h4>
-                        <p class="text-gray-700">These departments had the most budget items flagged as unusual. This doesn't necessarily indicate problems, but citizens and oversight bodies may want to review these more carefully to understand why these allocations differ from normal patterns.</p>
-                    </div>
-                </div>
+        <div class="bg-gray-50 border-l-4 border-gray-900 p-4 mb-4 text-sm">
+            <p class="text-gray-700"><strong>Interactive Table:</strong> Browse all {total_anomalies:,} detected anomalies. Click column headers to sort, or use the search box to filter by department or agency name.</p>
+        </div>
+        
+        <!-- Search and Filter Controls -->
+        <div class="mb-4 flex flex-col md:flex-row gap-3">
+            <div class="flex-1">
+                <input 
+                    type="text" 
+                    id="anomalySearch" 
+                    placeholder="Search by department or agency name..." 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900"
+                    onkeyup="filterAnomalies()"
+                />
             </div>
-            
-            <div class="overflow-x-auto">
-                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
-                    <thead class="bg-yellow-600 text-white">
-                        <tr>
-                            <th class="px-6 py-4 text-left text-sm font-semibold">Rank</th>
-                            <th class="px-6 py-4 text-left text-sm font-semibold">Department</th>
-                            <th class="px-6 py-4 text-right text-sm font-semibold">Unusual Items Found</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-        """
-        
-        for idx, row in dept_anomalies.iterrows():
-            html += f"""
-                        <tr class="hover:bg-yellow-50 transition-colors">
-                            <td class="px-6 py-4 text-sm text-gray-600">{idx + 1}</td>
-                            <td class="px-6 py-4 text-sm font-medium text-gray-900">{row['uacs_dpt_dsc']}</td>
-                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">{row['count']}</td>
-                        </tr>
-            """
-        
-        html += """
-                    </tbody>
-                </table>
+            <div>
+                <select 
+                    id="anomalyTypeFilter" 
+                    class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900"
+                    onchange="filterAnomalies()"
+                >
+                    <option value="">All Types</option>
+    """
+    
+    if 'anomaly_type' in df_anomalies.columns:
+        for atype in df_anomalies['anomaly_type'].unique():
+            html += f'<option value="{atype}">{atype.replace("_", " ").title()}</option>'
+    
+    html += """
+                </select>
             </div>
+            <div>
+                <select 
+                    id="yearFilter" 
+                    class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900"
+                    onchange="filterAnomalies()"
+                >
+                    <option value="">All Years</option>
+    """
+    
+    for year in sorted([int(y) for y in df_anomalies['year'].unique()], reverse=True):
+        html += f'<option value="{year}">{year}</option>'
+    
+    html += """
+                </select>
+            </div>
+        </div>
+        
+        <!-- Anomalies Table -->
+        <div class="overflow-x-auto border border-gray-200 rounded-lg">
+            <table id="anomaliesTable" class="min-w-full bg-white">
+                <thead class="bg-gray-900 text-white">
+                    <tr>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide cursor-pointer hover:bg-gray-800" onclick="sortTable(0)">Year ↕</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide cursor-pointer hover:bg-gray-800" onclick="sortTable(1)">Department ↕</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide cursor-pointer hover:bg-gray-800" onclick="sortTable(2)">Agency ↕</th>
+                        <th class="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide cursor-pointer hover:bg-gray-800" onclick="sortTable(3)">Amount ↕</th>
+                        <th class="px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide cursor-pointer hover:bg-gray-800" onclick="sortTable(4)">Type ↕</th>
+                        <th class="px-4 py-3 text-right text-xs font-semibold uppercase tracking-wide cursor-pointer hover:bg-gray-800" onclick="sortTable(5)">Score ↕</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+    """
+    
+    # Sort by anomaly score (most anomalous first)
+    df_display = df_anomalies.copy()
+    if 'anomaly_score' in df_display.columns:
+        df_display = df_display.sort_values('anomaly_score', ascending=True).head(1000)  # Show top 1000
+    
+    for _, row in df_display.iterrows():
+        dept_name = row.get('uacs_dpt_dsc', 'N/A')
+        agency_name = row.get('uacs_agy_dsc', 'N/A')
+        amount = row.get('amt', 0)
+        year = row.get('year', 'N/A')
+        anomaly_type = row.get('anomaly_type', 'other').replace('_', ' ').title() if 'anomaly_type' in row else 'N/A'
+        score = row.get('anomaly_score', 0) if 'anomaly_score' in row else 0
+        
+        html += f"""
+                    <tr class="hover:bg-gray-50 transition-colors">
+                        <td class="px-4 py-3 text-sm text-gray-900">{year}</td>
+                        <td class="px-4 py-3 text-sm text-gray-900 font-medium">{dept_name[:60]}{'...' if len(str(dept_name)) > 60 else ''}</td>
+                        <td class="px-4 py-3 text-sm text-gray-600">{agency_name[:50]}{'...' if len(str(agency_name)) > 50 else ''}</td>
+                        <td class="px-4 py-3 text-sm text-gray-900 font-semibold text-right">{format_peso(amount)}</td>
+                        <td class="px-4 py-3 text-sm"><span class="px-2 py-1 bg-gray-100 text-gray-800 rounded text-xs">{anomaly_type}</span></td>
+                        <td class="px-4 py-3 text-sm text-gray-600 text-right">{score:.3f}</td>
+                    </tr>
         """
     
     html += """
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="mt-4 text-sm text-gray-600 text-center">
+            Showing top 1,000 most significant anomalies. Lower anomaly scores indicate more unusual patterns.
+        </div>
+        
+        <script>
+            function filterAnomalies() {
+                const searchInput = document.getElementById('anomalySearch').value.toLowerCase();
+                const typeFilter = document.getElementById('anomalyTypeFilter').value;
+                const yearFilter = document.getElementById('yearFilter').value;
+                const table = document.getElementById('anomaliesTable');
+                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    const row = rows[i];
+                    const year = row.cells[0].textContent;
+                    const dept = row.cells[1].textContent.toLowerCase();
+                    const agency = row.cells[2].textContent.toLowerCase();
+                    const type = row.cells[4].textContent.trim();
+                    
+                    let showRow = true;
+                    
+                    // Search filter
+                    if (searchInput && !dept.includes(searchInput) && !agency.includes(searchInput)) {
+                        showRow = false;
+                    }
+                    
+                    // Type filter
+                    if (typeFilter && !type.toLowerCase().includes(typeFilter.toLowerCase().replace('_', ' '))) {
+                        showRow = false;
+                    }
+                    
+                    // Year filter
+                    if (yearFilter && year !== yearFilter) {
+                        showRow = false;
+                    }
+                    
+                    row.style.display = showRow ? '' : 'none';
+                }
+            }
+            
+            function sortTable(columnIndex) {
+                const table = document.getElementById('anomaliesTable');
+                const tbody = table.getElementsByTagName('tbody')[0];
+                const rows = Array.from(tbody.getElementsByTagName('tr'));
+                
+                rows.sort((a, b) => {
+                    let aVal = a.cells[columnIndex].textContent.trim();
+                    let bVal = b.cells[columnIndex].textContent.trim();
+                    
+                    // Handle numeric columns
+                    if (columnIndex === 0 || columnIndex === 5) {
+                        aVal = parseFloat(aVal.replace(/[^0-9.-]/g, ''));
+                        bVal = parseFloat(bVal.replace(/[^0-9.-]/g, ''));
+                    }
+                    
+                    if (aVal < bVal) return -1;
+                    if (aVal > bVal) return 1;
+                    return 0;
+                });
+                
+                rows.forEach(row => tbody.appendChild(row));
+            }
+        </script>
         </section>
     """
     
@@ -1028,7 +1111,40 @@ def main():
         f.write(html)
     
     print(f"✓ Citizen-friendly report saved to: {output_path}")
-    print(f"\nYou can open it in any web browser to view the report.")
+    
+    # Generate PDF version using headless browser (renders JS charts and CSS)
+    pdf_path = output_path.with_suffix('.pdf')
+    try:
+        from playwright.sync_api import sync_playwright
+        print(f"Generating PDF version (with charts)...")
+        
+        # Convert to absolute file:// URL
+        html_url = f"file://{output_path.absolute()}"
+        
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page()
+            page.goto(html_url, wait_until='networkidle')
+            
+            # Wait for charts to render
+            page.wait_for_timeout(2000)
+            
+            # Generate PDF
+            page.pdf(
+                path=str(pdf_path),
+                format='A4',
+                print_background=True,
+                margin={'top': '1cm', 'right': '1cm', 'bottom': '1cm', 'left': '1cm'}
+            )
+            browser.close()
+        
+        print(f"✓ PDF report saved to: {pdf_path}")
+    except ImportError:
+        print(f"⚠ PDF generation skipped (install playwright: pip install playwright && playwright install chromium)")
+    except Exception as e:
+        print(f"⚠ PDF generation failed: {e}")
+    
+    print(f"\nYou can open the HTML in any web browser or share the PDF.")
     
     return 0
 

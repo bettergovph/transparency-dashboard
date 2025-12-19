@@ -169,12 +169,48 @@ def detect_outliers(df: pd.DataFrame, group_cols: list) -> pd.DataFrame:
     return df
 
 
+def aggregate_budget_data(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Aggregate budget data to department+agency+year level for forecasting.
+    This is critical - ML models should predict at aggregated level, not line items.
+    """
+    
+    print("\nAggregating data to department+agency+year level...")
+    print(f"  Original rows: {len(df):,}")
+    
+    # Get department and agency descriptions (take first non-null)
+    desc_cols = ['uacs_dpt_dsc', 'uacs_agy_dsc']
+    
+    # Aggregate by department, agency, year
+    agg_df = df.groupby(['department', 'agency', 'year']).agg({
+        'amt': 'sum',
+        'uacs_dpt_dsc': 'first',
+        'uacs_agy_dsc': 'first'
+    }).reset_index()
+    
+    # Rename amt to indicate it's aggregated
+    agg_df = agg_df.rename(columns={'amt': 'amt'})
+    
+    print(f"  Aggregated rows: {len(agg_df):,}")
+    print(f"  Unique years: {sorted(agg_df['year'].unique())}")
+    
+    # Verify totals match
+    for year in sorted(df['year'].unique()):
+        orig_total = df[df['year'] == year]['amt'].sum()
+        agg_total = agg_df[agg_df['year'] == year]['amt'].sum()
+        print(f"  Year {year}: Original={orig_total:,.0f}, Aggregated={agg_total:,.0f}, Match={abs(orig_total-agg_total)<1}")
+    
+    return agg_df
+
+
 def main():
     parser = argparse.ArgumentParser(description='Engineer features from GAA budget data')
     parser.add_argument('--input', required=True, help='Input Parquet file (gaa.parquet)')
     parser.add_argument('--output', required=True, help='Output features Parquet file')
     parser.add_argument('--group-level', default='agency', choices=['department', 'agency'],
                         help='Grouping level for time series features')
+    parser.add_argument('--aggregate', action='store_true', default=True,
+                        help='Aggregate data to department+agency+year level (recommended for forecasting)')
     
     args = parser.parse_args()
     
@@ -183,6 +219,10 @@ def main():
     
     print(f"Original shape: {df.shape}")
     print(f"Columns: {df.columns.tolist()}")
+    
+    # IMPORTANT: Aggregate to department+agency+year level for proper forecasting
+    if args.aggregate:
+        df = aggregate_budget_data(df)
     
     # Define grouping columns based on level
     if args.group_level == 'agency':
@@ -215,7 +255,6 @@ def main():
     df['feature_engineering_date'] = datetime.now().isoformat()
     
     print(f"\nFinal shape: {df.shape}")
-    print(f"New features added: {df.shape[1] - pd.read_parquet(args.input).shape[1]}")
     
     # Save to Parquet
     print(f"\nSaving features to {args.output}...")
@@ -226,7 +265,16 @@ def main():
     
     print("✓ Feature engineering complete!")
     print(f"\nFeature summary:")
-    print(df.describe())
+    print(f"  Total records: {len(df):,}")
+    print(f"  Unique departments: {df['department'].nunique()}")
+    print(f"  Unique agencies: {df['agency'].nunique()}")
+    print(f"  Years: {sorted(df['year'].unique())}")
+    
+    # Print yearly totals to verify
+    print("\nYearly budget totals (in thousands):")
+    for year in sorted(df['year'].unique()):
+        total = df[df['year'] == year]['amt'].sum()
+        print(f"  {year}: {total:,.0f} = {total * 1000 / 1e12:.2f}T")
 
 
 if __name__ == '__main__':

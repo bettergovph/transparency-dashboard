@@ -220,9 +220,9 @@ def main():
     # Select only anomalies for output
     anomaly_results = anomaly_df[anomaly_df['is_anomaly'] == 1].copy()
     
-    # Select relevant columns for output
+    # Select relevant columns for output (include description columns for citizen report)
     output_cols = [
-        'id', 'year', 'department', 'agency', 'amt',
+        'year', 'department', 'agency', 'uacs_dpt_dsc', 'uacs_agy_dsc', 'amt',
         'anomaly_score', 'z_score', 'anomaly_type',
         'is_anomaly', 'ml_anomaly', 'statistical_anomaly',
         'yoy_growth_rate', 'dept_share_of_total',

@@ -30,6 +30,7 @@ def prepare_features_for_forecast(df: pd.DataFrame, target_col: str = 'amt') -> 
     """Prepare features and target for forecasting."""
     
     # Select relevant features for forecasting
+    # These features work with aggregated department+agency+year data
     feature_cols = [
         'years_since_start',
         'yoy_growth_rate',
@@ -38,20 +39,31 @@ def prepare_features_for_forecast(df: pd.DataFrame, target_col: str = 'amt') -> 
         'amt_lag_1', 'amt_lag_2', 'amt_lag_3',
         'amt_rolling_mean_2y', 'amt_rolling_mean_3y',
         'amt_rolling_std_2y', 'amt_rolling_std_3y',
-        'department_encoded', 'agency_encoded',
-        'uacs_exp_cd_encoded', 'fundcd_encoded'
+        'department_encoded', 'agency_encoded'
     ]
     
-    # Filter to only include rows with complete data (no NaN in lags)
+    # Filter to only include rows with complete lag data (need at least 3 years history)
     df_complete = df.dropna(subset=['amt_lag_1', 'amt_lag_2', 'amt_lag_3'])
+    
+    print(f"\nData preparation:")
+    print(f"  Total rows: {len(df):,}")
+    print(f"  Rows with complete lags: {len(df_complete):,}")
+    
+    # Verify yearly totals for sanity check
+    print("\n  Yearly totals in training data (thousands):")
+    for year in sorted(df_complete['year'].unique()):
+        total = df_complete[df_complete['year'] == year]['amt'].sum()
+        print(f"    {year}: {total:,.0f} = {total * 1000 / 1e12:.2f}T")
     
     # Select features that exist in the dataframe
     available_features = [col for col in feature_cols if col in df_complete.columns]
     
+    print(f"\n  Using {len(available_features)} features: {available_features}")
+    
     X = df_complete[available_features]
     y = df_complete[target_col]
     
-    return X, y, available_features
+    return X, y, available_features, df_complete
 
 
 def train_linear_model(X_train, y_train, X_test, y_test):
@@ -171,7 +183,7 @@ def main():
     
     # Prepare features
     print("\nPreparing features for forecasting...")
-    X, y, feature_names = prepare_features_for_forecast(df)
+    X, y, feature_names, df_complete = prepare_features_for_forecast(df)
     
     print(f"Features shape: {X.shape}")
     print(f"Target shape: {y.shape}")
