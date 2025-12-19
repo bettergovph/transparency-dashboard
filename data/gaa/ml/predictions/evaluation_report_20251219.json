@@ -1,0 +1,21 @@
+{
+  "evaluation_date": "2025-12-19T08:13:33.357609",
+  "actual_data_file": "../gaa.parquet",
+  "predictions_directory": "predictions",
+  "anomalies": {
+    "total_anomalies": 188760,
+    "years_covered": 6,
+    "anomaly_types": {}
+  },
+  "clusters": {
+    "n_clusters": 5,
+    "n_entities": 475,
+    "cluster_sizes": {
+      "0": 429,
+      "4": 42,
+      "3": 2,
+      "1": 1,
+      "2": 1
+    }
+  }
+}

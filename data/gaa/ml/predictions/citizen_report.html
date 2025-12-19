@@ -1,0 +1,768 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Philippine Budget Analysis Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 20px 0;
+        }
+        .stat-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="w-full">
+
+        <!-- Top Navigation Bar -->
+        <nav class="bg-black text-white border-b border-gray-800">
+            <div class="px-8 py-4">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold tracking-tight">🇵🇭 Philippine Budget Analysis Dashboard</h1>
+                        <p class="text-gray-400 text-sm mt-1">Real-time insights into government spending</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-sm text-gray-400">Last Updated</div>
+                        <div class="text-lg font-semibold">Dec 19, 2025</div>
+                        <div class="text-xs text-gray-500">08:33 AM</div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Main Content -->
+        <div class="px-8 py-6">
+            <!-- Introduction Panel -->
+            <div class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 mb-6">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <svg class="w-12 h-12 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-xl font-bold text-gray-900 mb-3">About This Dashboard</h2>
+                        <p class="text-gray-700 mb-3">
+                            This dashboard uses <strong>artificial intelligence and data analysis</strong> to provide transparent insights into Philippine government budget allocations based on the <strong>General Appropriations Act (GAA)</strong>.
+                        </p>
+                        <div class="grid md:grid-cols-3 gap-4 text-sm">
+                            <div class="flex items-start space-x-2">
+                                <span class="text-gray-900 font-semibold">•</span>
+                                <span class="text-gray-600">Predict future budget needs using historical trends</span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <span class="text-gray-900 font-semibold">•</span>
+                                <span class="text-gray-600">Identify unusual spending patterns for public oversight</span>
+                            </div>
+                            <div class="flex items-start space-x-2">
+                                <span class="text-gray-900 font-semibold">•</span>
+                                <span class="text-gray-600">Group agencies by spending behavior for comparison</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 p-3 bg-gray-50 border-l-4 border-gray-900 rounded">
+                            <p class="text-sm text-gray-800"><strong>💡 Why Transparency Matters:</strong> Your tax money, your right to know. This data empowers citizens to engage in informed discussions about public finances.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+        <section id="forecast" class="bg-white border border-gray-200 rounded-lg shadow-sm p-6 mb-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-gray-900">📊 Budget Forecast for 2026</h2>
+            
+            <!-- Methodology Section -->
+            <div class="bg-gray-900 text-white rounded-lg p-6 mb-6">
+                <h3 class="text-lg font-semibold mb-3 flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                    How We Made This Prediction
+                </h3>
+                <p class="text-sm text-gray-300 mb-3">
+                    Our computer model analyzed <strong>years of historical budget data</strong> to identify patterns in government spending. 
+                    The prediction for 2026 is based on:
+                </p>
+                <div class="grid md:grid-cols-2 gap-3 text-sm">
+                    <div class="flex items-start space-x-2">
+                        <span class="text-white">•</span>
+                        <span class="text-gray-300"><strong>Historical Trends:</strong> Budget growth/decline patterns</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <span class="text-white">•</span>
+                        <span class="text-gray-300"><strong>Department Patterns:</strong> Typical spending behavior</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <span class="text-white">•</span>
+                        <span class="text-gray-300"><strong>YoY Changes:</strong> Rate of budget increases</span>
+                    </div>
+                    <div class="flex items-start space-x-2">
+                        <span class="text-white">•</span>
+                        <span class="text-gray-300"><strong>Economic Indicators:</strong> Spending vs total budget</span>
+                    </div>
+                </div>
+                <div class="mt-3 text-xs text-gray-400">
+                    <strong>Technology:</strong> XGBoost Machine Learning Algorithm
+                </div>
+            </div>
+
+            <!-- Key Statistics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <div class="stat-card bg-white border-2 border-gray-900 rounded-lg p-5">
+                    <div class="text-gray-600 text-xs font-medium mb-1 uppercase tracking-wide">Total Predicted Budget</div>
+                    <div class="text-3xl font-bold text-gray-900">₱9.07 Trillion</div>
+                </div>
+                <div class="stat-card bg-white border-2 border-gray-900 rounded-lg p-5">
+                    <div class="text-gray-600 text-xs font-medium mb-1 uppercase tracking-wide">Agencies Analyzed</div>
+                    <div class="text-3xl font-bold text-gray-900">723,039</div>
+                </div>
+                <div class="stat-card bg-white border-2 border-gray-900 rounded-lg p-5">
+                    <div class="text-gray-600 text-xs font-medium mb-1 uppercase tracking-wide">Confidence Level</div>
+                    <div class="text-3xl font-bold text-gray-900">High</div>
+                </div>
+            </div>
+    
+            <!-- Historical Trend Chart -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">📈 Budget Trend: History vs Prediction</h3>
+                <div class="bg-gray-50 border-l-4 border-gray-900 p-4 mb-4 text-sm">
+                    <p class="text-gray-700"><strong>What you're seeing:</strong> This chart shows actual government budgets from previous years (in black) and our prediction for 2026 (in gray). The trend line helps visualize how the budget has changed over time.</p>
+                </div>
+                <div class="chart-container bg-white p-4 border border-gray-200 rounded-lg">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+            
+            <script>
+                const trendCtx = document.getElementById('trendChart').getContext('2d');
+                new Chart(trendCtx, {
+                    type: 'line',
+                    data: {
+                        labels: [2020, 2021, 2022, 2023, 2024, 2025, np.int64(2026)],
+                        datasets: [{
+                            label: 'Actual Budget',
+                            data: [2644806048000.0, 2876280424000.0, 3150429025000.0, 3432686744000.0, 3802076881000.0, 3926379880000.0],
+                            borderColor: 'rgb(0, 0, 0)',
+                            backgroundColor: 'rgba(0, 0, 0, 0.05)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }, {
+                            label: '2026 Prediction',
+                            data: [null, null, null, 9073290379264.0],
+                            borderColor: 'rgb(107, 114, 128)',
+                            backgroundColor: 'rgba(107, 114, 128, 0.1)',
+                            borderWidth: 3,
+                            borderDash: [10, 5],
+                            fill: false,
+                            pointRadius: 8,
+                            pointHoverRadius: 10
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: {
+                                    font: { size: 14 }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        const value = context.parsed.y;
+                                        if (value >= 1000000000000) {
+                                            label += '₱' + (value / 1000000000000).toFixed(2) + ' Trillion';
+                                        } else if (value >= 1000000000) {
+                                            label += '₱' + (value / 1000000000).toFixed(2) + ' Billion';
+                                        } else {
+                                            label += '₱' + value.toLocaleString();
+                                        }
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: false,
+                                ticks: {
+                                    callback: function(value) {
+                                        if (value >= 1000000000000) {
+                                            return '₱' + (value / 1000000000000).toFixed(1) + 'T';
+                                        } else if (value >= 1000000000) {
+                                            return '₱' + (value / 1000000000).toFixed(1) + 'B';
+                                        }
+                                        return '₱' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+        
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">🏛️ Top 10 Departments by Predicted Budget</h3>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                <p class="text-gray-700"><strong>Why this matters:</strong> These are the government departments expected to receive the most funding. This shows where the government plans to focus its resources - whether on education, infrastructure, healthcare, defense, or other priorities.</p>
+            </div>
+            
+            <div class="chart-container bg-white p-4 rounded-lg border border-gray-200 mb-6">
+                <canvas id="deptChart"></canvas>
+            </div>
+            
+            <script>
+                const deptCtx = document.getElementById('deptChart').getContext('2d');
+                new Chart(deptCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Department of Education (DepEd)', 'Department of Health (DOH)', 'Department of the Interior and Local Government (D...', 'Department of Social Welfare and Development (DSWD...', 'Department of Public Works and Highways (DPWH)', 'Department of National Defense (DND)', 'Other Executive Offices (OEOs)', 'Department of Labor and Employment (DOLE)', 'Budgetary Support to Government Corporations (BSGC...', 'Department of Agriculture (DA)'],
+                        datasets: [{
+                            label: 'Predicted Budget',
+                            data: [1489119215616.0, 1188710449152.0, 1154769092608.0, 1137099407360.0, 930067120128.0, 604874407936.0, 599611342848.0, 582287032320.0, 555434901504.0, 143520808960.0],
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderColor: 'rgb(59, 130, 246)',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        indexAxis: 'y',
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const value = context.parsed.x;
+                                        if (value >= 1000000000000) {
+                                            return '₱' + (value / 1000000000000).toFixed(2) + ' Trillion';
+                                        } else if (value >= 1000000000) {
+                                            return '₱' + (value / 1000000000).toFixed(2) + ' Billion';
+                                        }
+                                        return '₱' + value.toLocaleString();
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    callback: function(value) {
+                                        if (value >= 1000000000000) {
+                                            return '₱' + (value / 1000000000000).toFixed(1) + 'T';
+                                        } else if (value >= 1000000000) {
+                                            return '₱' + (value / 1000000000).toFixed(1) + 'B';
+                                        }
+                                        return '₱' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead class="bg-blue-600 text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold">Rank</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold">Department</th>
+                            <th class="px-6 py-4 text-right text-sm font-semibold">Predicted Budget</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+    
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">1</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Education (DepEd)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱1.49 Trillion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">2</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Health (DOH)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱1.19 Trillion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">3</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of the Interior and Local Government (DILG)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱1.15 Trillion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">4</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Social Welfare and Development (DSWD)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱1.14 Trillion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">5</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Public Works and Highways (DPWH)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱930.07 Billion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">6</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of National Defense (DND)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱604.87 Billion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">7</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Other Executive Offices (OEOs)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱599.61 Billion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">8</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Labor and Employment (DOLE)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱582.29 Billion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">9</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Budgetary Support to Government Corporations (BSGC)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱555.43 Billion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">10</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Agriculture (DA)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-blue-600 text-right">₱143.52 Billion</td>
+                        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    
+        <section id="anomalies" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-3xl font-bold text-blue-600 mb-6 pb-4 border-b-2 border-gray-200">🔍 Unusual Budget Allocations Found</h2>
+            
+            <!-- Methodology Section -->
+            <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-lg p-6 mb-8">
+                <h3 class="text-2xl font-semibold mb-4">🔬 How We Detected Anomalies</h3>
+                <p class="text-lg leading-relaxed mb-4">
+                    Our system uses two powerful detection methods to find unusual budget patterns:
+                </p>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-white bg-opacity-20 rounded p-4">
+                        <h4 class="font-semibold text-lg mb-2">🤖 1. Machine Learning (Isolation Forest)</h4>
+                        <p class="text-sm">
+                            An AI algorithm that learns what "normal" budgets look like across all departments, 
+                            then identifies items that significantly deviate from these patterns.
+                        </p>
+                    </div>
+                    <div class="bg-white bg-opacity-20 rounded p-4">
+                        <h4 class="font-semibold text-lg mb-2">📊 2. Statistical Analysis (Z-Score)</h4>
+                        <p class="text-sm">
+                            Mathematical analysis that calculates how far each budget item is from the typical 
+                            average. Items more than 3 standard deviations away are flagged.
+                        </p>
+                    </div>
+                </div>
+                <p class="mt-4 text-sm opacity-90">
+                    <strong>Important:</strong> An anomaly doesn't mean wrongdoing - it could indicate new programs, emergency responses, or policy changes that deserve public attention.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 border-l-4 border-yellow-600">
+                    <div class="text-gray-600 text-sm font-medium mb-2">Unusual Allocations Detected</div>
+                    <div class="text-3xl font-bold text-yellow-600">188,363</div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 border-l-4 border-orange-600">
+                    <div class="text-gray-600 text-sm font-medium mb-2">Percentage of All Budgets</div>
+                    <div class="text-3xl font-bold text-orange-600">5.0%</div>
+                </div>
+            </div>
+    
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">⚠️ Departments with Most Unusual Allocations</h3>
+            
+            <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-6 mb-6">
+                <div class="flex items-start">
+                    <div class="text-3xl mr-4">⚠️</div>
+                    <div>
+                        <h4 class="font-bold text-yellow-800 text-lg mb-2">Areas for Closer Review</h4>
+                        <p class="text-gray-700">These departments had the most budget items flagged as unusual. This doesn't necessarily indicate problems, but citizens and oversight bodies may want to review these more carefully to understand why these allocations differ from normal patterns.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead class="bg-yellow-600 text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold">Rank</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold">Department</th>
+                            <th class="px-6 py-4 text-right text-sm font-semibold">Unusual Items Found</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+        
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">1</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Public Works and Highways (DPWH)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">68807</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">2</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Education (DepEd)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">37775</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">3</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">State Universities and Colleges (SUCs)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">9516</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">4</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Environment and Natural Resources (DENR)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">7141</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">5</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Health (DOH)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">6322</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">6</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Agriculture (DA)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">6235</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">7</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of National Defense (DND)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">4885</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">8</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of the Interior and Local Government (DILG)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">4159</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">9</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Social Welfare and Development (DSWD)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">3134</td>
+                        </tr>
+            
+                        <tr class="hover:bg-yellow-50 transition-colors">
+                            <td class="px-6 py-4 text-sm text-gray-600">10</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Department of Finance (DOF)</td>
+                            <td class="px-6 py-4 text-sm font-bold text-yellow-600 text-right">3108</td>
+                        </tr>
+            
+                    </tbody>
+                </table>
+            </div>
+        
+        </section>
+    
+        <section id="clusters" class="bg-white rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-3xl font-bold text-blue-600 mb-6 pb-4 border-b-2 border-gray-200">📈 Spending Pattern Groups</h2>
+            
+            <!-- Methodology Section -->
+            <div class="bg-gradient-to-r from-purple-500 to-pink-600 text-white rounded-lg p-6 mb-8">
+                <h3 class="text-2xl font-semibold mb-4">🔬 How We Grouped Agencies</h3>
+                <p class="text-lg leading-relaxed mb-4">
+                    We used a machine learning technique called <strong>K-means Clustering</strong> to group government agencies based on their spending behavior. The analysis considered:
+                </p>
+                <ul class="list-disc list-inside space-y-2 ml-4">
+                    <li><strong>Total Budget Size:</strong> How much each agency typically receives</li>
+                    <li><strong>Growth Patterns:</strong> Whether their budgets tend to increase, decrease, or stay stable</li>
+                    <li><strong>Budget Share:</strong> What percentage of the total government budget they receive</li>
+                    <li><strong>Spending Stability:</strong> Whether their allocations are consistent or vary significantly</li>
+                </ul>
+                <p class="mt-4 text-sm opacity-90">
+                    <strong>Why group agencies?</strong> Grouping helps identify agencies with similar spending behavior, making it easier to compare efficiency, detect unusual patterns, and understand government priorities.
+                </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 border-l-4 border-purple-600 mb-8">
+                <div class="text-gray-600 text-sm font-medium mb-2">Number of Spending Groups Found</div>
+                <div class="text-3xl font-bold text-purple-600">5</div>
+                <p class="text-gray-600 text-sm mt-2">Agencies were automatically categorized into 5 distinct groups based on their budget characteristics</p>
+            </div>
+    
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4">🏛️ Spending Groups Overview</h3>
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                <p class="text-gray-700"><strong>Understanding the groups:</strong> Each group represents agencies that share similar budget patterns. This helps identify which agencies are comparable and can reveal insights about government structure and priorities.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+                <div class="chart-container bg-white p-4 rounded-lg border border-gray-200">
+                    <h4 class="text-center font-semibold text-gray-700 mb-2">Total Budget by Group</h4>
+                    <canvas id="clusterBudgetChart"></canvas>
+                </div>
+                <div class="chart-container bg-white p-4 rounded-lg border border-gray-200">
+                    <h4 class="text-center font-semibold text-gray-700 mb-2">Number of Agencies per Group</h4>
+                    <canvas id="clusterCountChart"></canvas>
+                </div>
+            </div>
+            
+            <script>
+                // Budget Chart
+                const clusterBudgetCtx = document.getElementById('clusterBudgetChart').getContext('2d');
+                new Chart(clusterBudgetCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['High Budget - Stable Growth', 'Large Departments', 'Medium Budget - Variable Growth', 'Small Specialized Agencies', 'Low Budget - Rapid Growth'],
+                        datasets: [{
+                            label: 'Total Budget',
+                            data: [15724874181000.0, 9082196437000.0, 3595914688000.0, 1391138245000.0, 1197389534000.0],
+                            backgroundColor: [
+                                'rgba(139, 92, 246, 0.7)',
+                                'rgba(59, 130, 246, 0.7)',
+                                'rgba(16, 185, 129, 0.7)',
+                                'rgba(245, 158, 11, 0.7)',
+                                'rgba(239, 68, 68, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgb(139, 92, 246)',
+                                'rgb(59, 130, 246)',
+                                'rgb(16, 185, 129)',
+                                'rgb(245, 158, 11)',
+                                'rgb(239, 68, 68)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const value = context.parsed.y;
+                                        if (value >= 1000000000000) {
+                                            return '₱' + (value / 1000000000000).toFixed(2) + ' Trillion';
+                                        } else if (value >= 1000000000) {
+                                            return '₱' + (value / 1000000000).toFixed(2) + ' Billion';
+                                        }
+                                        return '₱' + value.toLocaleString();
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        if (value >= 1000000000000) {
+                                            return '₱' + (value / 1000000000000).toFixed(1) + 'T';
+                                        } else if (value >= 1000000000) {
+                                            return '₱' + (value / 1000000000).toFixed(1) + 'B';
+                                        }
+                                        return '₱' + value;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Count Chart
+                const clusterCountCtx = document.getElementById('clusterCountChart').getContext('2d');
+                new Chart(clusterCountCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['High Budget - Stable Growth', 'Large Departments', 'Medium Budget - Variable Growth', 'Small Specialized Agencies', 'Low Budget - Rapid Growth'],
+                        datasets: [{
+                            data: [429, 2, 1, 42, 1],
+                            backgroundColor: [
+                                'rgba(139, 92, 246, 0.8)',
+                                'rgba(59, 130, 246, 0.8)',
+                                'rgba(16, 185, 129, 0.8)',
+                                'rgba(245, 158, 11, 0.8)',
+                                'rgba(239, 68, 68, 0.8)'
+                            ],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    font: { size: 11 },
+                                    padding: 10
+                                }
+                            }
+                        }
+                    }
+                });
+            </script>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead class="bg-purple-600 text-white">
+                        <tr>
+                            <th class="px-6 py-4 text-left text-sm font-semibold">Group</th>
+                            <th class="px-6 py-4 text-center text-sm font-semibold">Number of Agencies</th>
+                            <th class="px-6 py-4 text-right text-sm font-semibold">Total Budget</th>
+                            <th class="px-6 py-4 text-right text-sm font-semibold">Average per Agency</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+    
+                        <tr class="hover:bg-purple-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-bold text-gray-900">High Budget - Stable Growth</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-center">429</td>
+                            <td class="px-6 py-4 text-sm font-bold text-purple-600 text-right">₱15.72 Trillion</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-right">₱36.65 Billion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-purple-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-bold text-gray-900">Large Departments</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-center">2</td>
+                            <td class="px-6 py-4 text-sm font-bold text-purple-600 text-right">₱9.08 Trillion</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-right">₱4.54 Trillion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-purple-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-bold text-gray-900">Medium Budget - Variable Growth</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-center">1</td>
+                            <td class="px-6 py-4 text-sm font-bold text-purple-600 text-right">₱3.60 Trillion</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-right">₱3.60 Trillion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-purple-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-bold text-gray-900">Small Specialized Agencies</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-center">42</td>
+                            <td class="px-6 py-4 text-sm font-bold text-purple-600 text-right">₱1.39 Trillion</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-right">₱33.12 Billion</td>
+                        </tr>
+        
+                        <tr class="hover:bg-purple-50 transition-colors">
+                            <td class="px-6 py-4 text-sm font-bold text-gray-900">Low Budget - Rapid Growth</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-center">1</td>
+                            <td class="px-6 py-4 text-sm font-bold text-purple-600 text-right">₱1.20 Trillion</td>
+                            <td class="px-6 py-4 text-sm text-gray-600 text-right">₱1.20 Trillion</td>
+                        </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    
+        <section id="conclusion" class="bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-lg shadow-lg p-8 mb-8">
+            <h2 class="text-3xl font-bold mb-6">💡 What Can You Do With This Information?</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="text-3xl mr-3">👥</span>
+                        As a Citizen
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Ask questions about government spending priorities and policy decisions</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Compare predictions with actual allocations to hold officials accountable</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Identify areas where unusual spending might need investigation</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Engage in informed public discourse about the national budget</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Share this report with your community to promote awareness</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white bg-opacity-20 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <span class="text-3xl mr-3">📝</span>
+                        For Journalists & Advocates
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Use anomaly detections as leads for investigative reporting</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Compare department budgets to understand policy priorities</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Track trends over time to identify shifts in government focus</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Educate the public on budget transparency and accountability</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="mr-2">•</span>
+                            <span>Advocate for evidence-based policy discussions</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-6 p-4 bg-white bg-opacity-30 rounded-lg">
+                <p class="text-lg"><strong>⚠️ Important Reminder:</strong> This analysis is a tool to promote transparency and civic engagement. It should be used alongside other information sources, official government reports, and expert analysis. The predictions and anomaly detections are based on statistical patterns and should not be taken as definitive proof of wrongdoing or inefficiency.</p>
+            </div>
+        </section>
+    
+        <footer class="mt-12 pt-8 border-t-2 border-gray-300 text-center">
+            <div class="bg-gray-100 rounded-lg p-6 mb-4">
+                <p class="text-gray-700 text-lg mb-2"><strong>📊 Data Source</strong></p>
+                <p class="text-gray-600">This report was generated using machine learning analysis of Philippine Government <strong>General Appropriations Act (GAA)</strong> data.</p>
+                <p class="text-gray-600 mt-2">Technologies used: XGBoost, Isolation Forest, K-means Clustering, Python, Chart.js</p>
+            </div>
+            <p class="text-gray-500 text-sm">For questions or feedback about this analysis, please contact your local government transparency advocates or budget oversight organizations.</p>
+            <p class="text-gray-400 text-xs mt-4">&copy; {datetime.now().year} - Transparency Dashboard Project</p>
+        </footer>
+    
+    </div>
+</body>
+</html>
