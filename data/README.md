@@ -26,7 +26,7 @@ Use DuckDB to extract and prepare the aggregated data using the provided SQL scr
 
 ```bash
 cd data/philgeps
-duckdb < philgeps-extract.sql
+duckdb < philgeps.parquet
 ```
 
 This will create the necessary parquet files for aggregated data (area_of_deliveries, awardees, business_categories, organizations).
@@ -133,6 +133,18 @@ You should see all 5 indexes listed.
 - **Permission errors**: Verify you're using the master API key, not a read-only key
 - **Import fails**: Check that CSV files were generated correctly in step 2
 - **Memory issues**: Consider using the `--batch-size` parameter to reduce memory usage
+
+## Step 8: Generate OC4IDS Data
+
+You can generate an [OC4IDS](https://standard.open-contracting.org/infrastructure/) (Open Contracting for Infrastructure Data Standard) compliant JSON dataset from the PhilGEPS data. This filters for construction and infrastructure-related projects.
+
+```bash
+cd data
+duckdb < convert_oc4ids.sql
+```
+
+This will create `philgeps/oc4ids.json` (approx. 1GB).
+
 
 ## Notes
 
