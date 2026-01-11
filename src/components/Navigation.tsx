@@ -23,6 +23,7 @@ const Navigation = () => {
 
   const taxCollectionItems = [
     { path: '/bir', label: 'BIR Collection Statistics', icon: TrendingUp },
+    { path: '/treasury', label: 'Treasury Cash Operations', icon: Coins },
   ]
 
   const budgetItems = [
