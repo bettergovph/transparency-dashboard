@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Helmet } from '@dr.pogodin/react-helmet'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import {
   TrendingUp,
   TrendingDown,
@@ -83,11 +84,13 @@ const COLORS = [
 
 const MONTH_ORDER = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
-const TreasuryDashboard = () => {
+const TreasuryByYear = () => {
+  const { year: yearParam } = useParams<{ year: string }>()
+  const navigate = useNavigate()
   const [data, setData] = useState<TreasuryRecord[]>([])
   const [yearSummaries, setYearSummaries] = useState<YearSummary[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2024)
+  const [selectedYear, setSelectedYear] = useState<number>(yearParam ? parseInt(yearParam) : 2024)
   const [availableYears, setAvailableYears] = useState<number[]>([])
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
   const [selectedLineItem, setSelectedLineItem] = useState<YearlyRow | null>(null)
@@ -96,6 +99,22 @@ const TreasuryDashboard = () => {
   useEffect(() => {
     loadData()
   }, [])
+
+  // Update selected year when URL param changes
+  useEffect(() => {
+    if (yearParam && availableYears.length > 0) {
+      const year = parseInt(yearParam)
+      if (availableYears.includes(year)) {
+        setSelectedYear(year)
+      }
+    }
+  }, [yearParam, availableYears])
+
+  const handleYearChange = (year: number) => {
+    setSelectedYear(year)
+    navigate(`/treasury/year/${year}`)
+    setIsMobileSidebarOpen(false)
+  }
 
   const loadData = async () => {
     try {
@@ -128,7 +147,11 @@ const TreasuryDashboard = () => {
       // Calculate year summaries
       const years = [...new Set(records.map(r => r.year))].sort((a, b) => b - a)
       setAvailableYears(years)
-      setSelectedYear(years[0])
+      
+      // Only set selected year if not already set from URL param
+      if (!yearParam && years.length > 0) {
+        setSelectedYear(years[0])
+      }
       
       const summaries = years.map(year => {
         const yearData = records.filter(r => r.year === year)
@@ -390,15 +413,18 @@ const TreasuryDashboard = () => {
             </div>
 
             <div className="p-4">
-              <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3 hidden lg:block">Select Year</h3>
+              <Link
+                to="/treasury"
+                className="flex items-center gap-2 px-3 py-2 mb-4 text-sm font-medium text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+              >
+                ← Overview
+              </Link>
+              <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3">Select Year</h3>
               <nav className="space-y-1">
                 {availableYears.map((year) => (
                   <button
                     key={year}
-                    onClick={() => {
-                      setSelectedYear(year)
-                      setIsMobileSidebarOpen(false)
-                    }}
+                    onClick={() => handleYearChange(year)}
                     className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-all ${
                       selectedYear === year
                         ? 'bg-blue-600 text-white font-semibold shadow-sm'
@@ -760,38 +786,7 @@ const TreasuryDashboard = () => {
                   </Card>
                 )}
 
-                {/* Surplus/Deficit Trend */}
-                <Card className="lg:col-span-2">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-blue-600" />
-                      Surplus/(Deficit) Trend
-                    </CardTitle>
-                    <CardDescription>
-                      Fiscal balance over the years
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ResponsiveContainer width="100%" height={350}>
-                      <LineChart data={yearSummaries}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                        <XAxis dataKey="year" tick={{ fontSize: 12 }} />
-                        <YAxis tickFormatter={(value) => formatCurrency(value)} tick={{ fontSize: 12 }} />
-                        <Tooltip content={<CustomTooltip />} />
-                        <Legend />
-                        <Line
-                          type="monotone"
-                          dataKey="surplus"
-                          stroke="#3b82f6"
-                          strokeWidth={3}
-                          name="Surplus/(Deficit)"
-                          dot={{ fill: '#3b82f6', r: 6 }}
-                          activeDot={{ r: 8 }}
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </CardContent>
-                </Card>
+               
               </div>
             </div>
           </main>
@@ -901,4 +896,4 @@ const TreasuryDashboard = () => {
   )
 }
 
-export default TreasuryDashboard
+export default TreasuryByYear

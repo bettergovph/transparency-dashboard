@@ -11,7 +11,7 @@ import LocationsListPage from './components/LocationsListPage'
 import CategoriesListPage from './components/CategoriesListPage'
 import BIRDashboard from './components/BIRDashboard'
 import TreasuryOverview from './components/TreasuryOverview'
-import TreasuryDashboard from './components/TreasuryDashboard'
+import TreasuryByYear from './components/TreasuryByYear'
 import BudgetBrowser from './components/budget/BudgetBrowser'
 import DepartmentsListPage from './components/budget/DepartmentsListPage'
 import DepartmentPage from './components/budget/DepartmentPage'
@@ -29,7 +29,7 @@ function App() {
         <Route path="/" element={<EnhancedSearchInterface />} />
         <Route path="/bir" element={<BIRDashboard />} />
         <Route path="/treasury" element={<TreasuryOverview />} />
-        <Route path="/treasury/browser" element={<TreasuryDashboard />} />
+        <Route path="/treasury/year/:year" element={<TreasuryByYear />} />
         <Route path="/budget" element={<BudgetBrowser />} />
         <Route path="/budget/departments" element={<DepartmentsListPage />} />
         <Route path="/budget/departments/:slug" element={<DepartmentPage />} />

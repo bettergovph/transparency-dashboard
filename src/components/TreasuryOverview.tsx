@@ -5,7 +5,8 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
-  X
+  X,
+  Menu
 } from 'lucide-react'
 import {
   LineChart,
@@ -71,6 +72,8 @@ const TreasuryOverview = () => {
   const [data, setData] = useState<TreasuryRecord[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [latestYear, setLatestYear] = useState<number>(2024)
+  const [availableYears, setAvailableYears] = useState<number[]>([])
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false)
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['rev-0']))
   const [selectedLineItem, setSelectedLineItem] = useState<LineItemRow | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -157,6 +160,7 @@ const TreasuryOverview = () => {
 
       setData(records)
       const years = [...new Set(records.map(r => r.year))].sort((a, b) => b - a)
+      setAvailableYears(years)
       if (years.length > 0) setLatestYear(years[0])
       setIsLoading(false)
     } catch (error) {
@@ -319,35 +323,89 @@ const TreasuryOverview = () => {
       <Navigation />
 
       <div className="min-h-screen bg-gray-50">
-        {/* Header */}
-        <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between py-4">
-              <div>
-                <h1 className="text-xl font-bold text-gray-900">Treasury Cash Operations</h1>
-                <p className="text-sm text-gray-500 mt-0.5">Historical Data from 1986 to {latestYear}</p>
-              </div>
-              <Link
-                to="/treasury/browser"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+        <div className="flex">
+          {/* Mobile Sidebar Backdrop */}
+          {isMobileSidebarOpen && (
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 z-20 lg:hidden"
+              onClick={() => setIsMobileSidebarOpen(false)}
+            />
+          )}
+
+          {/* Sidebar - Year Navigation */}
+          <aside
+            className={`
+              fixed lg:sticky top-0 z-30 lg:z-0
+              w-64 bg-white border-r border-gray-200 h-screen
+              overflow-y-auto
+              transition-transform duration-300 ease-in-out
+              lg:translate-x-0
+              ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+            `}
+          >
+            {/* Mobile Close Button */}
+            <div className="lg:hidden flex items-center justify-between p-4 border-b border-gray-200">
+              <h2 className="font-semibold text-gray-900">Browse by Year</h2>
+              <button
+                onClick={() => setIsMobileSidebarOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
               >
-                Detailed Browser
-                <ChevronRight className="h-4 w-4" />
-              </Link>
+                <X className="h-5 w-5 text-gray-600" />
+              </button>
             </div>
-          </div>
-        </div>
+
+            <div className="p-4">
+              <div className="mb-4 pb-4 border-b border-gray-100">
+                <p className="text-xs text-gray-500 uppercase font-semibold mb-2">Overview</p>
+                <div className="bg-blue-50 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium">
+                  All Years (1986–{latestYear})
+                </div>
+              </div>
+              <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3">Browse by Year</h3>
+              <nav className="space-y-1">
+                {availableYears.map((year) => (
+                  <Link
+                    key={year}
+                    to={`/treasury/year/${year}`}
+                    className="block w-full text-left px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-all"
+                  >
+                    {year}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+          </aside>
+
+          {/* Main Content */}
+          <main className="flex-1 min-w-0">
+            {/* Header */}
+            <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+              <div className="px-4 sm:px-6 lg:px-8 py-4">
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => setIsMobileSidebarOpen(true)}
+                    className="lg:hidden p-2 hover:bg-gray-100 rounded-lg transition-colors shrink-0"
+                  >
+                    <Menu className="h-5 w-5 text-gray-600" />
+                  </button>
+                  <div>
+                    <h1 className="text-xl font-bold text-gray-900">Treasury Cash Operations</h1>
+                    <p className="text-sm text-gray-500 mt-0.5">Historical Data from 1986 to {latestYear}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
 
         {/* Key Metrics Charts */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between mb-5">
-            <div>
-              <h2 className="text-lg font-semibold text-gray-900">Key Fiscal Metrics</h2>
-              <p className="text-sm text-gray-500 mt-0.5">Click any chart to view detailed historical data</p>
-            </div>
-            <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">1986–{latestYear}</span>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="px-4 sm:px-6 lg:px-8 py-6">
+              <div className="flex items-center justify-between mb-5">
+                <div>
+                  <h2 className="text-lg font-semibold text-gray-900">Key Fiscal Metrics</h2>
+                  <p className="text-sm text-gray-500 mt-0.5">Click any chart to view detailed historical data</p>
+                </div>
+                <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">1986–{latestYear}</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
             {specificItems.map((config) => {
               const trendData = getSpecificItemTrend(config)
               const latestTotal = getSpecificItemLatestTotal(config)
@@ -646,6 +704,8 @@ const TreasuryOverview = () => {
               </div>
             </div>
           </div>
+        </div>
+          </main>
         </div>
       </div>
 
