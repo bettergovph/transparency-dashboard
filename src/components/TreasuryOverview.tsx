@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Link } from 'react-router-dom'
 import {
-  TrendingUp,
   ChevronRight,
   ChevronDown,
   ChevronUp,
@@ -75,6 +74,8 @@ const TreasuryOverview = () => {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['rev-0']))
   const [selectedLineItem, setSelectedLineItem] = useState<LineItemRow | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [selectedMetric, setSelectedMetric] = useState<SpecificItemConfig | null>(null)
+  const [isMetricModalOpen, setIsMetricModalOpen] = useState(false)
 
   useEffect(() => {
     loadData()
@@ -98,6 +99,16 @@ const TreasuryOverview = () => {
   const closeModal = () => {
     setIsModalOpen(false)
     setSelectedLineItem(null)
+  }
+
+  const handleMetricClick = (config: SpecificItemConfig) => {
+    setSelectedMetric(config)
+    setIsMetricModalOpen(true)
+  }
+
+  const closeMetricModal = () => {
+    setIsMetricModalOpen(false)
+    setSelectedMetric(null)
   }
 
   const getHistoricalData = (row: LineItemRow) => {
@@ -241,8 +252,6 @@ const TreasuryOverview = () => {
     return { name: subcat, lineItems, chartData, latestTotals, total }
   })
 
-  const totalRevenue = revenueData.reduce((sum, cat) => sum + cat.total, 0)
-
   // Specific line items to expose as individual charts
   const specificItems: SpecificItemConfig[] = [
     { label: 'BIR', category: 'Revenues', subcategory: 'Tax Revenues', line_item: 'BIR', color: '#3b82f6' },
@@ -309,18 +318,18 @@ const TreasuryOverview = () => {
 
       <Navigation />
 
-      <div className="min-h-screen bg-white">
+      <div className="min-h-screen bg-gray-50">
         {/* Header */}
-        <div className="border-b border-gray-100 sticky top-0 bg-white z-10">
-          <div className="px-6 py-4">
-            <div className="flex items-center justify-between">
+        <div className="bg-white border-b border-gray-200 sticky top-0 z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between py-4">
               <div>
-                <h1 className="text-lg font-semibold text-gray-900">Treasury Dashboard</h1>
-                <p className="text-xs text-gray-500 mt-0.5">Cash Operations Report ({latestYear})</p>
+                <h1 className="text-xl font-bold text-gray-900">Treasury Cash Operations</h1>
+                <p className="text-sm text-gray-500 mt-0.5">Historical Data from 1986 to {latestYear}</p>
               </div>
               <Link
                 to="/treasury/browser"
-                className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-900"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
               >
                 Detailed Browser
                 <ChevronRight className="h-4 w-4" />
@@ -329,68 +338,56 @@ const TreasuryOverview = () => {
           </div>
         </div>
 
-        {/* Summary Stats - Full Width */}
-        <div className="px-6 py-4 border-b border-gray-100">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            <div className="border border-gray-100 rounded-lg p-3">
-              <p className="text-xs text-gray-500 uppercase tracking-wide">Total Revenue</p>
-              <p className="text-xl font-semibold text-gray-900 mt-1">{formatCurrency(totalRevenue)}</p>
-            </div>
-            <div className="border border-gray-100 rounded-lg p-3">
-              <p className="text-xs text-gray-500 uppercase tracking-wide">Total Expenditures</p>
-              <p className="text-xl font-semibold text-gray-900 mt-1">{formatCurrency(totalExpenditures)}</p>
-            </div>
-            {revenueData.slice(0, 4).map((cat) => (
-              <div key={cat.name} className="border border-gray-100 rounded-lg p-3">
-                <p className="text-xs text-gray-500 uppercase tracking-wide truncate" title={cat.name}>{cat.name}</p>
-                <p className="text-xl font-semibold text-gray-900 mt-1">{formatCurrency(cat.total)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* Key Metrics Charts */}
-        <div className="px-6 py-6 border-b border-gray-100">
-          <div className="flex items-center gap-2 mb-4">
-            <TrendingUp className="h-4 w-4 text-gray-400" />
-            <h2 className="text-sm font-semibold text-gray-900">Key Metrics Trends</h2>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h2 className="text-lg font-semibold text-gray-900">Key Fiscal Metrics</h2>
+              <p className="text-sm text-gray-500 mt-0.5">Click any chart to view detailed historical data</p>
+            </div>
+            <span className="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">1986–{latestYear}</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {specificItems.map((config) => {
               const trendData = getSpecificItemTrend(config)
               const latestTotal = getSpecificItemLatestTotal(config)
               const isNegativeAllowed = config.category === 'Surplus/(-)Deficit' || config.category === 'Financing'
               return (
-                <Card key={config.label} className="border border-gray-100">
-                  <div className="p-3 border-b border-gray-50">
+                <Card
+                  key={config.label}
+                  className="bg-white border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all cursor-pointer group"
+                  onClick={() => handleMetricClick(config)}
+                >
+                  <div className="p-4 border-b border-gray-100">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2.5">
                         <div
-                          className="w-2 h-2 rounded-full"
+                          className="w-3 h-3 rounded-full"
                           style={{ backgroundColor: config.color }}
                         />
-                        <span className="text-sm font-medium text-gray-900">{config.label}</span>
+                        <span className="text-sm font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">{config.label}</span>
                       </div>
-                      <span className={`text-sm font-semibold ${latestTotal < 0 ? 'text-red-600' : 'text-gray-900'}`}>
+                      <span className={`text-sm font-bold ${latestTotal < 0 ? 'text-red-600' : 'text-gray-900'}`}>
                         {latestTotal < 0 ? '-' : ''}{formatCurrency(Math.abs(latestTotal))}
                       </span>
                     </div>
-                    <p className="text-xs text-gray-400 mt-0.5">
-                      {config.category}{config.subcategory ? ` > ${config.subcategory}` : ''}
+                    <p className="text-xs text-gray-400 mt-1">
+                      {config.category}{config.subcategory ? ` › ${config.subcategory}` : ''}
                     </p>
                   </div>
-                  <CardContent className="p-3">
-                    <ResponsiveContainer width="100%" height={120}>
+                  <CardContent className="p-4">
+                    <ResponsiveContainer width="100%" height={100}>
                       <LineChart data={trendData} margin={{ top: 5, right: 5, left: 0, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="2 2" stroke="#f3f4f6" vertical={false} />
                         <XAxis
                           dataKey="year"
                           type="number"
                           scale="linear"
                           domain={['dataMin', 'dataMax']}
                           tick={{ fontSize: 9, fill: '#9ca3af' }}
-                          tickFormatter={(v) => v.toString().slice(-2)}
+                          tickFormatter={(v) => `'${v.toString().slice(-2)}`}
                           interval="preserveStartEnd"
+                          axisLine={false}
+                          tickLine={false}
                         />
                         <YAxis
                           tickFormatter={(v) => {
@@ -399,17 +396,19 @@ const TreasuryOverview = () => {
                             return `${v.toFixed(0)}M`
                           }}
                           tick={{ fontSize: 9, fill: '#9ca3af' }}
-                          width={35}
+                          width={32}
                           domain={isNegativeAllowed ? ['auto', 'auto'] : [0, 'auto']}
+                          axisLine={false}
+                          tickLine={false}
                         />
                         <Tooltip
                           content={({ active, payload, label }) => {
                             if (active && payload?.length) {
                               const value = payload[0].value as number
                               return (
-                                <div className="bg-white border border-gray-100 rounded-md shadow-lg p-2 text-xs">
-                                  <p className="font-medium text-gray-900">{label}</p>
-                                  <p className={`font-semibold ${value < 0 ? 'text-red-600' : ''}`} style={{ color: value >= 0 ? config.color : undefined }}>
+                                <div className="bg-gray-900 text-white rounded-md shadow-lg px-2.5 py-1.5 text-xs">
+                                  <p className="font-medium">{label}</p>
+                                  <p className="font-bold">
                                     {value < 0 ? '-' : ''}{formatCurrency(Math.abs(value))}
                                   </p>
                                 </div>
@@ -421,9 +420,9 @@ const TreasuryOverview = () => {
                         <Line
                           dataKey="total"
                           stroke={config.color}
-                          strokeWidth={1.5}
+                          strokeWidth={2}
                           dot={false}
-                          activeDot={{ r: 3 }}
+                          activeDot={{ r: 4, strokeWidth: 0 }}
                         />
                       </LineChart>
                     </ResponsiveContainer>
@@ -435,15 +434,16 @@ const TreasuryOverview = () => {
         </div>
 
         {/* Main Content - Full Width */}
-        <div className="px-6 py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            {/* Revenues Column */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-gray-400" />
-                <h2 className="text-sm font-semibold text-gray-900">Revenues</h2>
-                <span className="text-xs text-gray-400">({revenueData.length} categories)</span>
-              </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Revenues Column */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-1 h-5 bg-green-500 rounded-full"></div>
+                  <h2 className="text-base font-semibold text-gray-900">Revenue Breakdown</h2>
+                  <span className="text-xs text-gray-400 ml-auto">{revenueData.length} categories</span>
+                </div>
 
               {revenueData.map((category, catIndex) => {
                 const isExpanded = expandedSections.has(`rev-${catIndex}`)
@@ -547,15 +547,15 @@ const TreasuryOverview = () => {
                   </Card>
                 )
               })}
-            </div>
-
-            {/* Expenditures Column */}
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <TrendingUp className="h-4 w-4 text-gray-400" />
-                <h2 className="text-sm font-semibold text-gray-900">Expenditures</h2>
-                <span className="text-xs text-gray-400">({expenditureLineItems.length} categories)</span>
               </div>
+
+              {/* Expenditures Column */}
+              <div className="space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="w-1 h-5 bg-red-500 rounded-full"></div>
+                  <h2 className="text-base font-semibold text-gray-900">Expenditure Breakdown</h2>
+                  <span className="text-xs text-gray-400 ml-auto">{expenditureLineItems.length} categories</span>
+                </div>
 
               <Card className="border border-gray-100">
                 <CardContent className="p-3">
@@ -643,12 +643,119 @@ const TreasuryOverview = () => {
                   })}
                 </div>
               </Card>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <Footer />
+
+      {/* Metric Detail Modal */}
+      {isMetricModalOpen && selectedMetric && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60" onClick={closeMetricModal}>
+          <div className="bg-white rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="sticky top-0 bg-white border-b border-gray-200 px-6 py-4 flex items-center justify-between">
+              <div>
+                <div className="flex items-center gap-3">
+                  <div
+                    className="w-4 h-4 rounded-full"
+                    style={{ backgroundColor: selectedMetric.color }}
+                  />
+                  <h2 className="text-xl font-bold text-gray-900">
+                    {selectedMetric.label}
+                  </h2>
+                </div>
+                <p className="text-sm text-gray-500 mt-1">
+                  {selectedMetric.category}{selectedMetric.subcategory ? ` › ${selectedMetric.subcategory}` : ''} • 1986–{latestYear}
+                </p>
+              </div>
+              <button
+                onClick={closeMetricModal}
+                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                aria-label="Close modal"
+              >
+                <X className="h-6 w-6 text-gray-600" />
+              </button>
+            </div>
+
+            <div className="p-6">
+              {/* Large Historical Chart */}
+              <div className="bg-gray-50 rounded-lg p-4">
+                <ResponsiveContainer width="100%" height={400}>
+                  <LineChart data={getSpecificItemTrend(selectedMetric)} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                    <XAxis
+                      dataKey="year"
+                      tick={{ fontSize: 12 }}
+                    />
+                    <YAxis
+                      tickFormatter={(v) => {
+                        const abs = Math.abs(v)
+                        if (abs >= 1000) return `₱${(v / 1000).toFixed(1)}B`
+                        return `₱${v.toFixed(0)}M`
+                      }}
+                      tick={{ fontSize: 12 }}
+                      width={80}
+                      domain={selectedMetric.category === 'Surplus/(-)Deficit' || selectedMetric.category === 'Financing' ? ['auto', 'auto'] : [0, 'auto']}
+                    />
+                    <Tooltip
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          const value = payload[0].value as number
+                          return (
+                            <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-3">
+                              <p className="font-semibold text-gray-900">{label}</p>
+                              <p className={`text-lg font-bold ${value < 0 ? 'text-red-600' : ''}`} style={{ color: value >= 0 ? selectedMetric.color : undefined }}>
+                                {value < 0 ? '-' : ''}{formatCurrency(Math.abs(value))}
+                              </p>
+                            </div>
+                          )
+                        }
+                        return null
+                      }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="total"
+                      stroke={selectedMetric.color}
+                      strokeWidth={3}
+                      name={selectedMetric.label}
+                      dot={{ fill: selectedMetric.color, r: 4 }}
+                      activeDot={{ r: 6, strokeWidth: 0 }}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Data Table */}
+              <div className="mt-6">
+                <h3 className="text-sm font-semibold text-gray-900 mb-3">Yearly Values</h3>
+                <div className="overflow-x-auto max-h-64">
+                  <table className="min-w-full divide-y divide-gray-200 text-sm">
+                    <thead className="bg-gray-50 sticky top-0">
+                      <tr>
+                        <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Year</th>
+                        <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-200">
+                      {getSpecificItemTrend(selectedMetric).slice().reverse().map((item) => (
+                        <tr key={item.year} className="hover:bg-gray-50">
+                          <td className="px-4 py-2 font-medium text-gray-900">{item.year}</td>
+                          <td className={`px-4 py-2 text-right font-mono font-semibold ${item.total < 0 ? 'text-red-600' : 'text-gray-900'}`}>
+                            {item.total < 0 ? '-' : ''}{formatCurrency(Math.abs(item.total))}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Historical Trend Modal */}
       {isModalOpen && selectedLineItem && (
