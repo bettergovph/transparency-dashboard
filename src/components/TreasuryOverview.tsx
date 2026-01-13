@@ -256,16 +256,26 @@ const TreasuryOverview = () => {
     { label: 'Surplus/(-)Deficit', category: 'Surplus/(-)Deficit', subcategory: '', line_item: '', color: '#6366f1' },
   ]
 
+  // Helper to match category with variations (e.g., Surplus/(-)Deficit vs Surplus/(Deficit))
+  const matchCategory = (recordCategory: string, configCategory: string) => {
+    if (recordCategory === configCategory) return true
+    // Handle Surplus/Deficit variations
+    if (configCategory === 'Surplus/(-)Deficit') {
+      return recordCategory === 'Surplus/(-)Deficit' || recordCategory === 'Surplus/(Deficit)'
+    }
+    return false
+  }
+
   const getSpecificItemTrend = (config: SpecificItemConfig) => {
     const years = [...new Set(data.map(r => r.year))].sort((a, b) => a - b)
     return years.map(year => {
       const yearData = data.filter(r => {
         if (config.line_item) {
-          return r.year === year && r.category === config.category && r.subcategory === config.subcategory && r.line_item === config.line_item
+          return r.year === year && matchCategory(r.category, config.category) && r.subcategory === config.subcategory && r.line_item === config.line_item
         } else if (config.subcategory) {
-          return r.year === year && r.category === config.category && r.subcategory === config.subcategory && r.line_item === ''
+          return r.year === year && matchCategory(r.category, config.category) && r.subcategory === config.subcategory && r.line_item === ''
         } else {
-          return r.year === year && r.category === config.category && r.subcategory === '' && r.line_item === ''
+          return r.year === year && matchCategory(r.category, config.category) && r.subcategory === '' && r.line_item === ''
         }
       })
       const total = yearData.reduce((sum, r) => sum + r.value, 0)
@@ -276,11 +286,11 @@ const TreasuryOverview = () => {
   const getSpecificItemLatestTotal = (config: SpecificItemConfig) => {
     const latestData = data.filter(r => {
       if (config.line_item) {
-        return r.year === latestYear && r.category === config.category && r.subcategory === config.subcategory && r.line_item === config.line_item
+        return r.year === latestYear && matchCategory(r.category, config.category) && r.subcategory === config.subcategory && r.line_item === config.line_item
       } else if (config.subcategory) {
-        return r.year === latestYear && r.category === config.category && r.subcategory === config.subcategory && r.line_item === ''
+        return r.year === latestYear && matchCategory(r.category, config.category) && r.subcategory === config.subcategory && r.line_item === ''
       } else {
-        return r.year === latestYear && r.category === config.category && r.subcategory === '' && r.line_item === ''
+        return r.year === latestYear && matchCategory(r.category, config.category) && r.subcategory === '' && r.line_item === ''
       }
     })
     return latestData.reduce((sum, r) => sum + r.value, 0)
