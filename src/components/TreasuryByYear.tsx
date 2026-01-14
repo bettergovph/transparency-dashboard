@@ -307,8 +307,8 @@ const TreasuryByYear = () => {
   const formatCurrency = (value: number) => {
     const millions = value / 1000
     if (millions >= 1000) {
-      const billions = millions / 1000
-      return `₱${billions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
+      const trillions = millions / 1000
+      return `₱${trillions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}T`
     }
     return `₱${millions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}M`
   }

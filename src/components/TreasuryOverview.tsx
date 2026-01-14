@@ -226,7 +226,7 @@ const TreasuryOverview = () => {
 
   const formatCurrency = (value: number) => {
     const millions = value / 1000
-    if (millions >= 1000) return `₱${(millions / 1000).toFixed(1)}B`
+    if (millions >= 1000) return `₱${(millions / 1000).toFixed(1)}T`
     return `₱${millions.toFixed(1)}M`
   }
 
@@ -449,7 +449,7 @@ const TreasuryOverview = () => {
                         <YAxis
                           tickFormatter={(v) => {
                             const abs = Math.abs(v)
-                            if (abs >= 1000) return `${(v / 1000).toFixed(0)}B`
+                            if (abs >= 1000) return `${(v / 1000).toFixed(0)}T`
                             return `${v.toFixed(0)}M`
                           }}
                           tick={{ fontSize: 9, fill: '#9ca3af' }}
@@ -536,7 +536,7 @@ const TreasuryOverview = () => {
                               interval="preserveStartEnd"
                             />
                             <YAxis
-                              tickFormatter={(v) => `${(v / 1000).toFixed(0)}B`}
+                              tickFormatter={(v) => `${(v / 1000).toFixed(0)}T`}
                               tick={{ fontSize: 9, fill: '#9ca3af' }}
                               width={40}
                             />
@@ -629,7 +629,7 @@ const TreasuryOverview = () => {
                         interval="preserveStartEnd"
                       />
                       <YAxis
-                        tickFormatter={(v) => `${(v / 1000).toFixed(0)}B`}
+                        tickFormatter={(v) => `${(v / 1000).toFixed(0)}T`}
                         tick={{ fontSize: 9, fill: '#9ca3af' }}
                         width={40}
                       />
@@ -751,7 +751,7 @@ const TreasuryOverview = () => {
                     <YAxis
                       tickFormatter={(v) => {
                         const abs = Math.abs(v)
-                        if (abs >= 1000) return `₱${(v / 1000).toFixed(1)}B`
+                        if (abs >= 1000) return `₱${(v / 1000).toFixed(1)}T`
                         return `₱${v.toFixed(0)}M`
                       }}
                       tick={{ fontSize: 12 }}
