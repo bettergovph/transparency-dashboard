@@ -24,6 +24,9 @@ import DPWHBrowser from './components/dpwh/DPWHBrowser'
 import DPWHCategoriesPage from './components/dpwh/DPWHCategoriesPage'
 import DPWHRegionsPage from './components/dpwh/DPWHRegionsPage'
 import DPWHProvincesPage from './components/dpwh/DPWHProvincesPage'
+import DPWHCategoryPage from './components/dpwh/DPWHCategoryPage'
+import DPWHRegionPage from './components/dpwh/DPWHRegionPage'
+import DPWHProvincePage from './components/dpwh/DPWHProvincePage'
 
 function App() {
   return (
@@ -44,8 +47,11 @@ function App() {
         <Route path="/budget/search" element={<SearchPage />} />
         <Route path="/dpwh" element={<DPWHBrowser />} />
         <Route path="/dpwh/categories" element={<DPWHCategoriesPage />} />
+        <Route path="/dpwh/categories/:slug" element={<DPWHCategoryPage />} />
         <Route path="/dpwh/regions" element={<DPWHRegionsPage />} />
+        <Route path="/dpwh/regions/:slug" element={<DPWHRegionPage />} />
         <Route path="/dpwh/provinces" element={<DPWHProvincesPage />} />
+        <Route path="/dpwh/provinces/:slug" element={<DPWHProvincePage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />

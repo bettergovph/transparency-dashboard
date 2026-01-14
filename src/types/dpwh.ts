@@ -3,28 +3,29 @@ export interface DPWHProject {
   contractId: string
   description: string
   category: string
+  componentCategories?: string[]
   status: string
-  region: string
-  province: string
-  municipality: string
-  barangay: string
+  location: {
+    region: string
+    province: string
+    municipality?: string
+    barangay?: string
+  }
   contractor: string
   programName: string
+  sourceOfFunds?: string
   budget: number
   amountPaid: number
   progress: number
   isLive: boolean
-  year: number
+  livestreamUrl?: string
+  infraYear: number
   reportCount: number
-  dateContractSigning?: string
-  dateContractApproval?: string
-  dateNoticeOfAward?: string
-  dateNoticeOfProceed?: string
-  dateStartOfConstruction?: string
-  dateTargetCompletion?: string
-  dateActualCompletion?: string
+  startDate?: string
+  completionDate?: string
   latitude?: number
   longitude?: number
+  hasSatelliteImage?: boolean
 }
 
 // Aggregate data structures

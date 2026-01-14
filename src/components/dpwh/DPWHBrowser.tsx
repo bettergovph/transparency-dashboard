@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -8,7 +9,13 @@ import Footer from '../Footer'
 import { dpwhIndex } from '@/lib/meilisearch'
 import type { DPWHProject, DPWHAggregateResponse, DPWHRegionAggregate, DPWHProvinceAggregate } from '@/types/dpwh'
 
-const DPWHBrowser: React.FC = () => {
+interface DPWHBrowserProps {
+  filterType?: 'category' | 'region' | 'province'
+  filterValue?: string
+}
+
+const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) => {
+  const [searchParams] = useSearchParams()
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<DPWHProject[]>([])
   const [loading, setLoading] = useState(false)
@@ -26,7 +33,7 @@ const DPWHBrowser: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
   
   // Sort
-  const [tableSortField, setTableSortField] = useState<keyof DPWHProject | null>(null)
+  const [tableSortField, setTableSortField] = useState<keyof DPWHProject | 'province' | 'year' | null>(null)
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
   
   // Aggregates for filters
@@ -40,6 +47,24 @@ const DPWHBrowser: React.FC = () => {
   useEffect(() => {
     loadAggregates()
   }, [])
+
+  // Initialize filters from URL or props
+  useEffect(() => {
+    if (filterType && filterValue) {
+      const decodedValue = decodeURIComponent(filterValue)
+      switch (filterType) {
+        case 'category':
+          setSelectedCategories([decodedValue])
+          break
+        case 'region':
+          setSelectedRegions([decodedValue])
+          break
+        case 'province':
+          setSelectedProvinces([decodedValue])
+          break
+      }
+    }
+  }, [filterType, filterValue])
 
   const loadAggregates = async () => {
     try {
@@ -98,17 +123,17 @@ const DPWHBrowser: React.FC = () => {
     const filterParts: string[] = []
 
     if (selectedYears.length > 0) {
-      const yearFilters = selectedYears.map(year => `year = ${year}`).join(' OR ')
+      const yearFilters = selectedYears.map(year => `infraYear = ${year}`).join(' OR ')
       filterParts.push(`(${yearFilters})`)
     }
 
     if (selectedRegions.length > 0) {
-      const regionFilters = selectedRegions.map(region => `region = "${region}"`).join(' OR ')
+      const regionFilters = selectedRegions.map(region => `location.region = "${region}"`).join(' OR ')
       filterParts.push(`(${regionFilters})`)
     }
 
     if (selectedProvinces.length > 0) {
-      const provinceFilters = selectedProvinces.map(province => `province = "${province}"`).join(' OR ')
+      const provinceFilters = selectedProvinces.map(province => `location.province = "${province}"`).join(' OR ')
       filterParts.push(`(${provinceFilters})`)
     }
 
@@ -138,6 +163,19 @@ const DPWHBrowser: React.FC = () => {
     return new Intl.NumberFormat('en-PH').format(num)
   }
 
+  const formatDate = (dateString?: string) => {
+    if (!dateString) return 'N/A'
+    try {
+      return new Date(dateString).toLocaleDateString('en-PH', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      })
+    } catch {
+      return 'N/A'
+    }
+  }
+
   // Pagination calculations
   const totalPages = Math.ceil(results.length / resultsPerPage)
   const startIndex = (currentPage - 1) * resultsPerPage
@@ -146,10 +184,22 @@ const DPWHBrowser: React.FC = () => {
   // Apply table sorting if active
   const sortedResults = tableSortField
     ? [...results].sort((a, b) => {
-        const aValue = a[tableSortField]
-        const bValue = b[tableSortField]
+        let aValue: any
+        let bValue: any
+        
+        // Handle nested location fields and renamed fields
+        if (tableSortField === 'province') {
+          aValue = a.location?.province
+          bValue = b.location?.province
+        } else if (tableSortField === 'year') {
+          aValue = a.infraYear
+          bValue = b.infraYear
+        } else {
+          aValue = a[tableSortField as keyof DPWHProject]
+          bValue = b[tableSortField as keyof DPWHProject]
+        }
 
-        if (tableSortField === 'budget' || tableSortField === 'amountPaid' || tableSortField === 'progress') {
+        if (tableSortField === 'budget' || tableSortField === 'amountPaid' || tableSortField === 'progress' || tableSortField === 'year') {
           const aNum = parseFloat(String(aValue || 0))
           const bNum = parseFloat(String(bValue || 0))
           return tableSortDirection === 'asc' ? aNum - bNum : bNum - aNum
@@ -182,16 +232,16 @@ const DPWHBrowser: React.FC = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
-  const handleTableSort = (field: keyof DPWHProject) => {
+  const handleTableSort = (field: keyof DPWHProject | 'province' | 'year') => {
     if (tableSortField === field) {
       setTableSortDirection(tableSortDirection === 'asc' ? 'desc' : 'asc')
     } else {
-      setTableSortField(field)
+      setTableSortField(field as any)
       setTableSortDirection('asc')
     }
   }
 
-  const getSortIcon = (field: keyof DPWHProject) => {
+  const getSortIcon = (field: keyof DPWHProject | 'province' | 'year') => {
     if (tableSortField !== field) return null
     return tableSortDirection === 'asc' ? ' ↑' : ' ↓'
   }
@@ -250,8 +300,8 @@ const DPWHBrowser: React.FC = () => {
   return (
     <div className="max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden flex flex-col">
       <Helmet>
-        <title>DPWH Projects Browser - Transparency Dashboard</title>
-        <meta name="description" content="Search and browse DPWH infrastructure projects. Find roads, bridges, flood control, and building projects across the Philippines." />
+        <title>{filterValue ? `${decodeURIComponent(filterValue)} - DPWH Projects` : 'DPWH Projects Browser'} - Transparency Dashboard</title>
+        <meta name="description" content={filterValue ? `View DPWH infrastructure projects for ${decodeURIComponent(filterValue)}` : 'Search and browse DPWH infrastructure projects. Find roads, bridges, flood control, and building projects across the Philippines.'} />
         <meta name="keywords" content="DPWH, infrastructure, projects, roads, bridges, Philippines" />
       </Helmet>
       
@@ -263,10 +313,15 @@ const DPWHBrowser: React.FC = () => {
           <div className="mb-6">
             <div className="flex items-center gap-3 mb-2">
               <HardHat className="h-8 w-8 text-blue-600" />
-              <h1 className="text-3xl font-bold text-gray-900">DPWH Projects Browser</h1>
+              <h1 className="text-3xl font-bold text-gray-900">
+                {filterValue ? decodeURIComponent(filterValue) : 'DPWH Projects Browser'}
+              </h1>
             </div>
             <p className="text-gray-600">
-              Search and filter infrastructure projects from the Department of Public Works and Highways
+              {filterValue 
+                ? `Showing all projects for ${filterType}: ${decodeURIComponent(filterValue)}`
+                : 'Search and filter infrastructure projects from the Department of Public Works and Highways'
+              }
             </p>
           </div>
 
@@ -564,6 +619,18 @@ const DPWHBrowser: React.FC = () => {
                           </th>
                           <th
                             className="px-3 py-2 text-right text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('amountPaid')}
+                          >
+                            Amount Paid{getSortIcon('amountPaid')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-center text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
+                            onClick={() => handleTableSort('year')}
+                          >
+                            Year{getSortIcon('year')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-right text-[10px] font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100"
                             onClick={() => handleTableSort('progress')}
                           >
                             Progress{getSortIcon('progress')}
@@ -573,6 +640,16 @@ const DPWHBrowser: React.FC = () => {
                             onClick={() => handleTableSort('status')}
                           >
                             Status{getSortIcon('status')}
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider"
+                          >
+                            Start Date
+                          </th>
+                          <th
+                            className="px-3 py-2 text-left text-[10px] font-medium text-gray-500 uppercase tracking-wider"
+                          >
+                            Completion Date
                           </th>
                         </tr>
                       </thead>
@@ -596,10 +673,16 @@ const DPWHBrowser: React.FC = () => {
                               </div>
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
-                              {project.province}
+                              {project.location?.province}
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-right text-xs font-semibold text-gray-900">
                               {formatCurrency(project.budget)}
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-right text-xs text-gray-600">
+                              {formatCurrency(project.amountPaid)}
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-center text-xs text-gray-700">
+                              {project.infraYear}
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-right text-xs text-gray-600">
                               {project.progress.toFixed(1)}%
@@ -613,6 +696,12 @@ const DPWHBrowser: React.FC = () => {
                               }`}>
                                 {project.status}
                               </span>
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-600">
+                              {formatDate(project.startDate)}
+                            </td>
+                            <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-600">
+                              {formatDate(project.completionDate)}
                             </td>
                           </tr>
                         ))}
