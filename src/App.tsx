@@ -20,6 +20,10 @@ import ObjectDetailPage from './components/budget/ObjectDetailPage'
 import RegionalPage from './components/budget/RegionalPage'
 import AllocationsPage from './components/budget/AllocationsPage'
 import SearchPage from './components/budget/SearchPage'
+import DPWHBrowser from './components/dpwh/DPWHBrowser'
+import DPWHCategoriesPage from './components/dpwh/DPWHCategoriesPage'
+import DPWHRegionsPage from './components/dpwh/DPWHRegionsPage'
+import DPWHProvincesPage from './components/dpwh/DPWHProvincesPage'
 
 function App() {
   return (
@@ -38,6 +42,10 @@ function App() {
         <Route path="/budget/regional" element={<RegionalPage />} />
         <Route path="/budget/allocations" element={<AllocationsPage />} />
         <Route path="/budget/search" element={<SearchPage />} />
+        <Route path="/dpwh" element={<DPWHBrowser />} />
+        <Route path="/dpwh/categories" element={<DPWHCategoriesPage />} />
+        <Route path="/dpwh/regions" element={<DPWHRegionsPage />} />
+        <Route path="/dpwh/provinces" element={<DPWHProvincesPage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />

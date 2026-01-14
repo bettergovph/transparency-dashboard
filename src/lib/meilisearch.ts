@@ -13,6 +13,7 @@ const client = new MeiliSearch({
 
 export const searchIndex = client.index(MEILISEARCH_INDEX_NAME)
 export const budgetIndex = client.index('gaa')
+export const dpwhIndex = client.index('dpwh')
 
 export interface SearchOptions {
   query: string;

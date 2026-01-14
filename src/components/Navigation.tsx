@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, ChartBarStackedIcon } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, Briefcase, ChartBarStackedIcon, HardHat } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -8,10 +8,12 @@ const Navigation = () => {
   const [procurementDropdownOpen, setProcurementDropdownOpen] = useState(false)
   const [taxDropdownOpen, setTaxDropdownOpen] = useState(false)
   const [budgetDropdownOpen, setBudgetDropdownOpen] = useState(false)
+  const [dpwhDropdownOpen, setDpwhDropdownOpen] = useState(false)
   const [projectsDropdownOpen, setProjectsDropdownOpen] = useState(false)
   const procurementDropdownRef = useRef<HTMLDivElement>(null)
   const taxDropdownRef = useRef<HTMLDivElement>(null)
   const budgetDropdownRef = useRef<HTMLDivElement>(null)
+  const dpwhDropdownRef = useRef<HTMLDivElement>(null)
   const projectsDropdownRef = useRef<HTMLDivElement>(null)
 
   const procurementItems = [
@@ -32,6 +34,13 @@ const Navigation = () => {
     { path: '/budget/regional', label: 'Regional', icon: MapPin },
     { path: '/budget/allocations', label: 'Allocations', icon: Grid3x3 },
     { path: '/budget/search', label: 'Search', icon: TrendingUp },
+  ]
+
+  const dpwhItems = [
+    { path: '/dpwh', label: 'Search Projects', icon: TrendingUp },
+    { path: '/dpwh/categories', label: 'Categories', icon: Grid3x3 },
+    { path: '/dpwh/regions', label: 'Regions', icon: MapPin },
+    { path: '/dpwh/provinces', label: 'Provinces', icon: Building2 },
   ]
 
   const projectsDropdownItems = [
@@ -64,6 +73,10 @@ const Navigation = () => {
     return budgetItems.some(item => isActive(item.path))
   }
 
+  const isDpwhActive = () => {
+    return dpwhItems.some(item => isActive(item.path))
+  }
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -75,6 +88,9 @@ const Navigation = () => {
       }
       if (budgetDropdownRef.current && !budgetDropdownRef.current.contains(event.target as Node)) {
         setBudgetDropdownOpen(false)
+      }
+      if (dpwhDropdownRef.current && !dpwhDropdownRef.current.contains(event.target as Node)) {
+        setDpwhDropdownOpen(false)
       }
       if (projectsDropdownRef.current && !projectsDropdownRef.current.contains(event.target as Node)) {
         setProjectsDropdownOpen(false)
@@ -230,6 +246,43 @@ const Navigation = () => {
                 )}
               </div>
 
+              {/* DPWH Dropdown */}
+              <div className="relative" ref={dpwhDropdownRef}>
+                <button
+                  onClick={() => setDpwhDropdownOpen(!dpwhDropdownOpen)}
+                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isDpwhActive()
+                    ? 'border-b text-blue-600 font-bold'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                    }`}
+                >
+                  <HardHat className="h-4 w-4" />
+                  DPWH
+                  <ChevronDown className={`h-4 w-4 transition-transform ${dpwhDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+
+                {dpwhDropdownOpen && (
+                  <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                    {dpwhItems.map((item) => {
+                      const Icon = item.icon
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          className={`flex items-center gap-3 px-4 py-2 text-sm transition-colors ${isActive(item.path)
+                            ? 'bg-blue-50 text-blue-600 font-semibold'
+                            : 'text-gray-700 hover:bg-gray-100'
+                            }`}
+                          onClick={() => setDpwhDropdownOpen(false)}
+                        >
+                          <Icon className="h-4 w-4" />
+                          {item.label}
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+
               {/* Our Projects Dropdown */}
               <div className="relative" ref={projectsDropdownRef}>
                 <button
@@ -363,6 +416,32 @@ const Navigation = () => {
                 Budget
               </div>
               {budgetItems.map((item) => {
+                const Icon = item.icon
+                const active = isActive(item.path)
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 pl-10 text-sm transition-colors ${active
+                      ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                      : 'text-gray-700 hover:bg-gray-50'
+                      }`}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.label}
+                  </Link>
+                )
+              })}
+            </div>
+
+            {/* DPWH Section */}
+            <div className="border-t border-gray-200 mt-2 pt-2">
+              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider flex items-center gap-2">
+                <HardHat className="h-4 w-4" />
+                DPWH
+              </div>
+              {dpwhItems.map((item) => {
                 const Icon = item.icon
                 const active = isActive(item.path)
                 return (
