@@ -1,0 +1,167 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DPWH Project",
+  "description": "Schema for DPWH infrastructure project data",
+  "type": "object",
+  "required": [
+    "contractId",
+    "description",
+    "category",
+    "componentCategories",
+    "status",
+    "budget",
+    "amountPaid",
+    "progress",
+    "location",
+    "contractor",
+    "startDate",
+    "infraYear",
+    "programName",
+    "sourceOfFunds",
+    "isLive",
+    "latitude",
+    "longitude",
+    "reportCount",
+    "hasSatelliteImage"
+  ],
+  "properties": {
+    "contractId": {
+      "type": "string",
+      "description": "Unique contract identifier",
+      "pattern": "^[0-9]{2}[A-Z]{2}[0-9]{4}$",
+      "examples": ["21NA0052", "23LF0026", "25DI0029"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed description of the project"
+    },
+    "category": {
+      "type": "string",
+      "description": "Primary infrastructure category",
+      "examples": [
+        "Roads",
+        "Bridges",
+        "Buildings and Facilities",
+        "Water Provision and Storage",
+        "Flood Control Structures"
+      ]
+    },
+    "componentCategories": {
+      "type": "string",
+      "description": "Component categories (may contain multiple comma-separated values)"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current project status",
+      "enum": [
+        "Completed",
+        "On-Going",
+        "Not Started",
+        "For Procurement",
+        "Terminated"
+      ]
+    },
+    "budget": {
+      "type": "number",
+      "description": "Total project budget in PHP",
+      "minimum": 0
+    },
+    "amountPaid": {
+      "type": "number",
+      "description": "Amount paid so far in PHP",
+      "minimum": 0
+    },
+    "progress": {
+      "type": "number",
+      "description": "Project completion percentage",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "location": {
+      "type": "object",
+      "description": "Geographic location details",
+      "required": ["province", "region"],
+      "properties": {
+        "province": {
+          "type": "string",
+          "description": "Province or District Engineering Office"
+        },
+        "region": {
+          "type": "string",
+          "description": "Philippine region",
+          "pattern": "^Region (I{1,3}|IV-[AB]|V|VI{1,3}|IX|X{1,3}|XI{1,3}|CAR|NCR|BARMM)$"
+        }
+      }
+    },
+    "contractor": {
+      "type": "string",
+      "description": "Name of the contractor (may include contractor ID in parentheses)"
+    },
+    "startDate": {
+      "type": "string",
+      "description": "Project start date",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "completionDate": {
+      "type": ["string", "null"],
+      "description": "Project completion date (null if not completed)",
+      "format": "date",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "infraYear": {
+      "type": "string",
+      "description": "Infrastructure year",
+      "pattern": "^[0-9]{4}$"
+    },
+    "programName": {
+      "type": "string",
+      "description": "Program name",
+      "examples": ["Regular Infra", "Outside Infra"]
+    },
+    "sourceOfFunds": {
+      "type": "string",
+      "description": "Source of funding details"
+    },
+    "isLive": {
+      "type": "boolean",
+      "description": "Whether the project has a live stream"
+    },
+    "livestreamUrl": {
+      "type": ["string", "null"],
+      "description": "URL of the live stream (null if not available)",
+      "format": "uri"
+    },
+    "livestreamVideoId": {
+      "type": ["string", "null"],
+      "description": "Video ID of the live stream (null if not available)"
+    },
+    "livestreamDetectedAt": {
+      "type": ["string", "null"],
+      "description": "Timestamp when live stream was detected (null if not detected)",
+      "format": "date-time"
+    },
+    "latitude": {
+      "type": "number",
+      "description": "Latitude coordinate",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "longitude": {
+      "type": "number",
+      "description": "Longitude coordinate",
+      "minimum": -180,
+      "maximum": 180
+    },
+    "reportCount": {
+      "type": "integer",
+      "description": "Number of reports filed for this project",
+      "minimum": 0
+    },
+    "hasSatelliteImage": {
+      "type": "boolean",
+      "description": "Whether satellite imagery is available for this project"
+    }
+  },
+  "additionalProperties": false
+}

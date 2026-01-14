@@ -19,7 +19,11 @@
     "gaa:import": "cd data/gaa && python3 import_gaa.py --parquet-file gaa.parquet --index-name gaa --batch-size 10000",
     "gaa:configure-search": "cd data/gaa && bash configure_meilisearch.sh",
     "gaa:pipeline": "npm run gaa:csv-to-parquet && npm run gaa:create-aggregates && npm run gaa:import && npm run gaa:configure-search",
-    "gaa:reload": "npm run gaa:import && npm run gaa:configure-search"
+    "gaa:reload": "npm run gaa:import && npm run gaa:configure-search",
+    "dpwh:import": "cd data/dpwh && python3 import_dpwh.py --parquet-file dpwh_transparency_data.parquet --index-name dpwh --batch-size 5000",
+    "dpwh:configure-search": "cd data/dpwh && bash configure_meilisearch.sh",
+    "dpwh:pipeline": "npm run dpwh:import && npm run dpwh:configure-search",
+    "dpwh:reload": "npm run dpwh:import && npm run dpwh:configure-search"
   },
   "dependencies": {
     "@dr.pogodin/react-helmet": "^3.0.4",
