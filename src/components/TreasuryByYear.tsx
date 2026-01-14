@@ -305,12 +305,12 @@ const TreasuryByYear = () => {
 
   // Format currency (values are in thousands)
   const formatCurrency = (value: number) => {
-    const billions = value / 1000000
-    if (billions >= 1000) {
-      const trillions = billions / 1000
-      return `₱${trillions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}T`
+    const millions = value / 1000
+    if (millions >= 1000) {
+      const billions = millions / 1000
+      return `₱${billions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}T`
     }
-    return `₱${billions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
+    return `₱${millions.toLocaleString('en-PH', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}B`
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
