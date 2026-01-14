@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -665,15 +665,27 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
                               </div>
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
-                              {project.category}
+                              <Link
+                                to={`/dpwh/categories/${encodeURIComponent(project.category)}`}
+                                className="text-blue-600 hover:text-blue-800 hover:underline"
+                              >
+                                {project.category}
+                              </Link>
                             </td>
                             <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                               <div className="truncate" title={project.contractor}>
-                                {project.contractor}
+                                <span className="text-blue-600 hover:text-blue-800 hover:underline cursor-pointer">
+                                  {project.contractor}
+                                </span>
                               </div>
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
-                              {project.location?.province}
+                              <Link
+                                to={`/dpwh/provinces/${encodeURIComponent(project.location?.province || '')}`}
+                                className="text-blue-600 hover:text-blue-800 hover:underline"
+                              >
+                                {project.location?.province}
+                              </Link>
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-right text-xs font-semibold text-gray-900">
                               {formatCurrency(project.budget)}
