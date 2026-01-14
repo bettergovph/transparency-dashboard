@@ -1,0 +1,163 @@
+{
+  "metadata": {
+    "title": "DPWH Years",
+    "source": "Department of Public Works and Highways",
+    "generated_at": "2026-01-14T19:44:54.161434",
+    "total_items": 11,
+    "total_projects": 248220,
+    "total_budget": 6379081440395.461,
+    "total_paid": 0.0,
+    "avg_progress": 92.22502292321327
+  },
+  "data": [
+    {
+      "year": "2016",
+      "project_count": 21215,
+      "total_budget": 393331102433.92,
+      "total_paid": 0.0,
+      "avg_budget": 18540235.79702663,
+      "avg_progress": 99.37801084138582,
+      "statuses": {
+        "Completed": 20986,
+        "On-Going": 39,
+        "Terminated": 190
+      }
+    },
+    {
+      "year": "2017",
+      "project_count": 26387,
+      "total_budget": 467542925361.92,
+      "total_paid": 0.0,
+      "avg_budget": 17718684.403756395,
+      "avg_progress": 99.61961496191306,
+      "statuses": {
+        "Completed": 26172,
+        "On-Going": 62,
+        "Terminated": 153
+      }
+    },
+    {
+      "year": "2018",
+      "project_count": 26621,
+      "total_budget": 641565461712.76,
+      "total_paid": 0.0,
+      "avg_budget": 24099976.023168176,
+      "avg_progress": 99.46688366327336,
+      "statuses": {
+        "Completed": 26264,
+        "On-Going": 185,
+        "Terminated": 172
+      }
+    },
+    {
+      "year": "2019",
+      "project_count": 22922,
+      "total_budget": 411514621364.82,
+      "total_paid": 0.0,
+      "avg_budget": 17952823.547893725,
+      "avg_progress": 99.60467411220661,
+      "statuses": {
+        "Completed": 22607,
+        "On-Going": 245,
+        "Terminated": 70
+      }
+    },
+    {
+      "year": "2020",
+      "project_count": 21864,
+      "total_budget": 490857215962.03,
+      "total_paid": 0.0,
+      "avg_budget": 22450476.39782428,
+      "avg_progress": 99.53526390413464,
+      "statuses": {
+        "Completed": 21415,
+        "Not Yet Started": 1,
+        "On-Going": 350,
+        "Terminated": 98
+      }
+    },
+    {
+      "year": "2021",
+      "project_count": 23174,
+      "total_budget": 482740041563.21,
+      "total_paid": 0.0,
+      "avg_budget": 20831105.616777856,
+      "avg_progress": 99.36455122119617,
+      "statuses": {
+        "Completed": 22547,
+        "Not Yet Started": 1,
+        "On-Going": 530,
+        "Terminated": 96
+      }
+    },
+    {
+      "year": "2022",
+      "project_count": 23153,
+      "total_budget": 739061850427.42,
+      "total_paid": 0.0,
+      "avg_budget": 31920781.342695117,
+      "avg_progress": 98.41487755366475,
+      "statuses": {
+        "Completed": 21877,
+        "Not Yet Started": 4,
+        "On-Going": 1186,
+        "Terminated": 86
+      }
+    },
+    {
+      "year": "2023",
+      "project_count": 25997,
+      "total_budget": 900440094518.56,
+      "total_paid": 0.0,
+      "avg_budget": 34636307.82469362,
+      "avg_progress": 96.26680155402546,
+      "statuses": {
+        "Completed": 22172,
+        "Not Yet Started": 23,
+        "On-Going": 3766,
+        "Terminated": 36
+      }
+    },
+    {
+      "year": "2024",
+      "project_count": 30569,
+      "total_budget": 1059299931428.91,
+      "total_paid": 0.0,
+      "avg_budget": 34652750.54561517,
+      "avg_progress": 83.02010533547057,
+      "statuses": {
+        "Completed": 17378,
+        "For Procurement": 2250,
+        "Not Yet Started": 125,
+        "On-Going": 10790,
+        "Terminated": 26
+      }
+    },
+    {
+      "year": "2025",
+      "project_count": 26051,
+      "total_budget": 792728195621.91,
+      "total_paid": 0.0,
+      "avg_budget": 30429856.651257534,
+      "avg_progress": 54.74182334651261,
+      "statuses": {
+        "Completed": 3691,
+        "For Procurement": 4082,
+        "Not Yet Started": 699,
+        "On-Going": 17577,
+        "Terminated": 2
+      }
+    },
+    {
+      "year": "2026",
+      "project_count": 267,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 267
+      }
+    }
+  ]
+}

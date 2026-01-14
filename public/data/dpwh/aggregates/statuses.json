@@ -1,0 +1,54 @@
+{
+  "metadata": {
+    "title": "DPWH Statuses",
+    "source": "Department of Public Works and Highways",
+    "generated_at": "2026-01-14T19:44:54.163345",
+    "total_items": 5,
+    "total_projects": 248220,
+    "total_budget": 6379081440395.461,
+    "total_paid": 0.0,
+    "avg_progress": 92.22502292321327
+  },
+  "data": [
+    {
+      "status": "Completed",
+      "project_count": 205109,
+      "total_budget": 4568720242819.89,
+      "total_paid": 0.0,
+      "avg_budget": 22274596.64285765,
+      "avg_progress": 99.99222467078481
+    },
+    {
+      "status": "On-Going",
+      "project_count": 34730,
+      "total_budget": 1766484326087.45,
+      "total_paid": 0.0,
+      "avg_budget": 50863355.19975381,
+      "avg_progress": 67.52964238410595
+    },
+    {
+      "status": "Not Yet Started",
+      "project_count": 853,
+      "total_budget": 33551335932.86,
+      "total_paid": 0.0,
+      "avg_budget": 39333336.38084408,
+      "avg_progress": 0.0
+    },
+    {
+      "status": "Terminated",
+      "project_count": 929,
+      "total_budget": 10325535555.26,
+      "total_paid": 0.0,
+      "avg_budget": 11114677.669817008,
+      "avg_progress": 40.350376749192684
+    },
+    {
+      "status": "For Procurement",
+      "project_count": 6599,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0
+    }
+  ]
+}

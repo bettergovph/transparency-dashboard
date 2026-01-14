@@ -22,7 +22,8 @@
     "gaa:reload": "npm run gaa:import && npm run gaa:configure-search",
     "dpwh:import": "cd data/dpwh && python3 import_dpwh.py --parquet-file dpwh_transparency_data.parquet --index-name dpwh --batch-size 5000",
     "dpwh:configure-search": "cd data/dpwh && bash configure_meilisearch.sh",
-    "dpwh:pipeline": "npm run dpwh:import && npm run dpwh:configure-search",
+    "dpwh:create-aggregates": "cd data/dpwh && python3 create_aggregates.py --parquet-file dpwh_transparency_data.parquet --output-dir ../../public/data/dpwh/aggregates",
+    "dpwh:pipeline": "npm run dpwh:create-aggregates && npm run dpwh:import && npm run dpwh:configure-search",
     "dpwh:reload": "npm run dpwh:import && npm run dpwh:configure-search"
   },
   "dependencies": {
