@@ -1,4 +1,4 @@
-import { Github } from 'lucide-react'
+import { Github } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -7,18 +7,25 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {/* Left Side */}
           <div className="text-sm flex gap-4">
-            <img src="https://bettergov.ph/logos/svg/BetterGov_Icon-White.svg" alt="BetterGov" width="48" height="48" />
-            <p className="font-semibold text-white mb-2">BetterGov.ph
+            <img
+              src="https://bettergov.ph/logos/svg/BetterGov_Icon-White.svg"
+              alt="BetterGov"
+              width="48"
+              height="48"
+            />
+            <p className="font-semibold text-white mb-2">
+              BetterGov.ph
               <p className="text-gray-400">
-                A community portal providing Philippine citizens, businesses, and visitors with information and services.
+                A community portal providing Philippine citizens, businesses,
+                and visitors with information and services.
               </p>
             </p>
           </div>
 
           {/* Center */}
           <div className="text-sm text-center flex flex-col align-middle justify-center">
-            <p className="text-gray-400">
-              Data source:{' '}
+            <p className="text-gray-400">Data source: </p>
+            <p>
               <a
                 href="https://philgeps.gov.ph"
                 target="_blank"
@@ -26,7 +33,9 @@ const Footer = () => {
                 className="text-blue-400 hover:text-blue-300 transition-colors underline"
               >
                 https://philgeps.gov.ph
-              </a>,
+              </a>
+              <span className="hidden lg:inline">, </span>
+              <br className="lg:hidden" />
               <a
                 href="https://bir.gov.ph"
                 target="_blank"
@@ -34,7 +43,9 @@ const Footer = () => {
                 className="text-blue-400 hover:text-blue-300 transition-colors underline"
               >
                 https://bir.gov.ph
-              </a>,
+              </a>
+              <span className="hidden lg:inline">, </span>
+              <br className="lg:hidden" />
               <a
                 href="https://dbm.gov.ph"
                 target="_blank"
@@ -44,11 +55,17 @@ const Footer = () => {
                 https://dbm.gov.ph
               </a>
             </p>
-            <p className="text-gray-400">
+            <p className="text-gray-400 mt-2">
               All content is public domain unless otherwise specified.
             </p>
-            <p>
-              <a href='https://bettergov.ph/terms-of-service' target='_blank' rel='noopener noreferrer'>Terms of Service</a>
+            <p className="mt-2">
+              <a
+                href="https://bettergov.ph/terms-of-service"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Terms of Service
+              </a>
             </p>
           </div>
 
@@ -67,7 +84,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
