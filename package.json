@@ -13,7 +13,13 @@
     "generate:sitemap": "cd data/gaa && python3 generate_sitemap.py --base-url https://transparency.bettergov.ph",
     "generate:sitemap:procurement": "node scripts/generate-procurement-sitemap.mjs --base-url https://transparency.bettergov.ph",
     "generate:sitemap:index": "node scripts/generate-sitemap-index.mjs --base-url https://transparency.bettergov.ph",
-    "generate:sitemaps:all": "npm run generate:sitemap && npm run generate:sitemap:procurement && npm run generate:sitemap:index"
+    "generate:sitemaps:all": "npm run generate:sitemap && npm run generate:sitemap:procurement && npm run generate:sitemap:index",
+    "gaa:csv-to-parquet": "cd data/gaa && python3 gaa_csv_to_parquet.py --csv-dir data --output gaa.parquet",
+    "gaa:create-aggregates": "cd data/gaa && python3 create_aggregates.py --parquet-file gaa.parquet --output-dir ../../public/data/gaa/aggregates",
+    "gaa:import": "cd data/gaa && python3 import_gaa.py --parquet-file gaa.parquet --index-name gaa --batch-size 10000",
+    "gaa:configure-search": "cd data/gaa && bash configure_meilisearch.sh",
+    "gaa:pipeline": "npm run gaa:csv-to-parquet && npm run gaa:create-aggregates && npm run gaa:import && npm run gaa:configure-search",
+    "gaa:reload": "npm run gaa:import && npm run gaa:configure-search"
   },
   "dependencies": {
     "@dr.pogodin/react-helmet": "^3.0.4",

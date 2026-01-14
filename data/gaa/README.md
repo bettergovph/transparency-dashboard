@@ -21,11 +21,33 @@ data/gaa/
 
 ## Data Pipeline Workflow
 
+### Quick Start with npm Scripts
+
+Run the entire pipeline from the project root:
+
+```bash
+# Full pipeline: CSV → Parquet → Aggregates → MeiliSearch
+npm run gaa:pipeline
+
+# Or run individual steps:
+npm run gaa:csv-to-parquet      # Step 1: Convert CSV to Parquet
+npm run gaa:create-aggregates   # Step 2: Generate JSON aggregates
+npm run gaa:import              # Step 3: Import to MeiliSearch
+npm run gaa:configure-search    # Step 4: Configure MeiliSearch index
+
+# Quick reload (skip CSV/aggregates, just reload search):
+npm run gaa:reload
+```
+
 ### Step 1: Convert CSV to Parquet
 
 Combines all yearly CSV files into a single Parquet file with an `id` column and `year` column:
 
 ```bash
+# Using npm script (recommended)
+npm run gaa:csv-to-parquet
+
+# Or directly with Python
 python gaa_csv_to_parquet.py --csv-dir data --output gaa.parquet
 ```
 
@@ -47,6 +69,10 @@ python gaa_csv_to_parquet.py --csv-dir data --output gaa.parquet
 Creates hierarchical JSON aggregates for the frontend:
 
 ```bash
+# Using npm script (recommended)
+npm run gaa:create-aggregates
+
+# Or directly with Python
 python create_aggregates.py --parquet-file gaa.parquet --output-dir ../../public/data/gaa/aggregates
 ```
 
@@ -79,19 +105,35 @@ python create_aggregates.py --parquet-file gaa.parquet --output-dir ../../public
 }
 ```
 
-### Step 3: Import to MeiliSearch (Optional)
+### Step 3: Import to MeiliSearch
 
 Import the Parquet data to MeiliSearch for full-text search:
 
 ```bash
+# Using npm script (recommended)
+npm run gaa:import
+
+# Or directly with Python
 python import_gaa.py --parquet-file gaa.parquet --index-name gaa
+```
+
+### Step 4: Configure MeiliSearch Index
+
+Configure searchable, filterable, and sortable attributes:
+
+```bash
+# Using npm script (recommended)
+npm run gaa:configure-search
+
+# Or directly with bash
+bash configure_meilisearch.sh
 ```
 
 **Configuration:**
 - Index name: `gaa`
-- Searchable attributes: All fields
+- Searchable attributes: All description fields
 - Filterable attributes: `year`, `department`, `agency`, etc.
-- Sortable attributes: `id`, `amt`, `year`
+- Sortable attributes: `year`, `amt`
 
 ## Field Mapping Reference
 

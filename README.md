@@ -145,11 +145,41 @@ The data loading process includes:
 
 ### Available Scripts
 
+#### Development & Build
 ```bash
 npm run dev      # Start development server
 npm run build    # Build for production
 npm run lint     # Run ESLint
 npm run preview  # Preview production build
+```
+
+#### GAA Budget Data Pipeline
+```bash
+# Full pipeline: CSV → Parquet → Aggregates → MeiliSearch
+npm run gaa:pipeline
+
+# Individual steps:
+npm run gaa:csv-to-parquet      # Convert CSV files to Parquet
+npm run gaa:create-aggregates   # Generate JSON aggregates
+npm run gaa:import              # Import to MeiliSearch
+npm run gaa:configure-search    # Configure MeiliSearch index
+
+# Quick reload (skip CSV/aggregates):
+npm run gaa:reload              # Re-import and configure search only
+```
+
+#### Sitemap Generation
+```bash
+npm run generate:sitemap             # Generate budget sitemap
+npm run generate:sitemap:procurement # Generate procurement sitemap
+npm run generate:sitemap:index       # Generate sitemap index
+npm run generate:sitemaps:all        # Generate all sitemaps
+```
+
+#### Search & Data
+```bash
+npm run seed            # Seed MeiliSearch with sample data
+npm run search:stats    # Display search statistics
 ```
 
 ### Project Structure
