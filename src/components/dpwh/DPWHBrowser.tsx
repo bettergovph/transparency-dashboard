@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -49,8 +49,26 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     loadAggregates()
   }, [])
 
-  // Initialize filters from URL or props
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  // Initialize filters from URL query params or props
   useEffect(() => {
+    // First check URL params
+    const urlQuery = searchParams.get('q')
+    const urlYears = searchParams.get('years')
+    const urlRegions = searchParams.get('regions')
+    const urlProvinces = searchParams.get('provinces')
+    const urlCategories = searchParams.get('categories')
+    const urlStatuses = searchParams.get('statuses')
+
+    if (urlQuery) setQuery(urlQuery)
+    if (urlYears) setSelectedYears(urlYears.split(','))
+    if (urlRegions) setSelectedRegions(urlRegions.split(','))
+    if (urlProvinces) setSelectedProvinces(urlProvinces.split(','))
+    if (urlCategories) setSelectedCategories(urlCategories.split(','))
+    if (urlStatuses) setSelectedStatuses(urlStatuses.split(','))
+
+    // Then apply prop-based filters (for filtered views)
     if (filterType && filterValue) {
       const decodedValue = decodeURIComponent(filterValue)
       switch (filterType) {
@@ -69,6 +87,23 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
       }
     }
   }, [filterType, filterValue])
+
+  // Update URL when filters change (only when not using prop-based filters)
+  useEffect(() => {
+    // Skip URL updates when using prop-based filters (embedded mode)
+    if (filterType && filterValue) return
+
+    const params = new URLSearchParams()
+    
+    if (query) params.set('q', query)
+    if (selectedYears.length > 0) params.set('years', selectedYears.join(','))
+    if (selectedRegions.length > 0) params.set('regions', selectedRegions.join(','))
+    if (selectedProvinces.length > 0) params.set('provinces', selectedProvinces.join(','))
+    if (selectedCategories.length > 0) params.set('categories', selectedCategories.join(','))
+    if (selectedStatuses.length > 0) params.set('statuses', selectedStatuses.join(','))
+
+    setSearchParams(params, { replace: true })
+  }, [query, selectedYears, selectedRegions, selectedProvinces, selectedCategories, selectedStatuses, filterType, filterValue])
 
   const loadAggregates = async () => {
     try {
