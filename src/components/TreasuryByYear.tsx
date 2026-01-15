@@ -11,7 +11,6 @@ import {
   X,
   Download,
   Wallet,
-  DollarSign,
   ArrowUpCircle,
   ArrowDownCircle
 } from 'lucide-react'
@@ -629,8 +628,7 @@ const TreasuryByYear = () => {
 
                 <Card className="border-l-4 border-l-purple-600">
                   <CardHeader className="pb-3">
-                    <CardDescription className="flex items-center gap-2">
-                      <DollarSign className="h-4 w-4" />
+                    <CardDescription className="flex items-center gap-2">                      
                       Net Financing
                     </CardDescription>
                     <CardTitle className="text-2xl text-purple-600">

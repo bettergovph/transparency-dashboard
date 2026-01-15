@@ -21,6 +21,7 @@ import RegionalPage from './components/budget/RegionalPage'
 import AllocationsPage from './components/budget/AllocationsPage'
 import SearchPage from './components/budget/SearchPage'
 import DPWHBrowser from './components/dpwh/DPWHBrowser'
+import DPWHOverview from './components/dpwh/DPWHOverview'
 import DPWHCategoriesPage from './components/dpwh/DPWHCategoriesPage'
 import DPWHRegionsPage from './components/dpwh/DPWHRegionsPage'
 import DPWHProvincesPage from './components/dpwh/DPWHProvincesPage'
@@ -49,6 +50,7 @@ function App() {
         <Route path="/budget/allocations" element={<AllocationsPage />} />
         <Route path="/budget/search" element={<SearchPage />} />
         <Route path="/dpwh" element={<DPWHBrowser />} />
+        <Route path="/dpwh/overview" element={<DPWHOverview />} />
         <Route path="/dpwh/categories" element={<DPWHCategoriesPage />} />
         <Route path="/dpwh/categories/:slug" element={<DPWHCategoryPage />} />
         <Route path="/dpwh/regions" element={<DPWHRegionsPage />} />

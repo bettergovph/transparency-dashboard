@@ -88,11 +88,8 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     }
   }, [filterType, filterValue])
 
-  // Update URL when filters change (only when not using prop-based filters)
+  // Update URL when filters change
   useEffect(() => {
-    // Skip URL updates when using prop-based filters (embedded mode)
-    if (filterType && filterValue) return
-
     const params = new URLSearchParams()
     
     if (query) params.set('q', query)
@@ -103,7 +100,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     if (selectedStatuses.length > 0) params.set('statuses', selectedStatuses.join(','))
 
     setSearchParams(params, { replace: true })
-  }, [query, selectedYears, selectedRegions, selectedProvinces, selectedCategories, selectedStatuses, filterType, filterValue])
+  }, [query, selectedYears, selectedRegions, selectedProvinces, selectedCategories, selectedStatuses])
 
   const loadAggregates = async () => {
     try {
@@ -416,13 +413,13 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
           {/* Header - only show when not embedded */}
           {!embedded && (
             <div className="mb-6">
-              <div className="flex items-center gap-3 mb-2">
+              <div className="flex items-center gap-3">
                 <HardHat className="h-8 w-8 text-blue-600" />
-                <h1 className="text-3xl font-bold text-gray-900">
+                <h1 className="text-2xl font-bold text-gray-900">
                   {filterValue ? decodeURIComponent(filterValue) : 'DPWH Projects Browser'}
                 </h1>
               </div>
-              <p className="text-gray-600">
+              <p className="text-gray-600 text-md">
                 {filterValue
                   ? `Showing all projects for ${filterType}: ${decodeURIComponent(filterValue)}`
                   : 'Search and filter infrastructure projects from the DPWH. Data from DPWH\'s transparency portal.'

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Users, ChevronLeft, ChevronRight } from 'lucide-react'
 import Navigation from '../Navigation'
@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button'
 import type { DPWHAggregateResponse, DPWHContractorAggregate } from '@/types/dpwh'
 
 const DPWHContractorsPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams()
+  
   const [contractors, setContractors] = useState<DPWHContractorAggregate[]>([])
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<'budget' | 'count'>('budget')
@@ -17,6 +19,31 @@ const DPWHContractorsPage = () => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1)
   const [resultsPerPage, setResultsPerPage] = useState(20)
+
+  // Initialize from URL params
+  useEffect(() => {
+    const urlQuery = searchParams.get('q')
+    const urlSort = searchParams.get('sort')
+    const urlPage = searchParams.get('page')
+    const urlLimit = searchParams.get('limit')
+
+    if (urlQuery) setSearchQuery(urlQuery)
+    if (urlSort === 'budget' || urlSort === 'count') setSortBy(urlSort)
+    if (urlPage) setCurrentPage(parseInt(urlPage, 10))
+    if (urlLimit) setResultsPerPage(parseInt(urlLimit, 10))
+  }, [])
+
+  // Update URL when params change
+  useEffect(() => {
+    const params = new URLSearchParams()
+    
+    if (searchQuery) params.set('q', searchQuery)
+    if (sortBy !== 'budget') params.set('sort', sortBy)
+    if (currentPage > 1) params.set('page', currentPage.toString())
+    if (resultsPerPage !== 20) params.set('limit', resultsPerPage.toString())
+
+    setSearchParams(params, { replace: true })
+  }, [searchQuery, sortBy, currentPage, resultsPerPage])
 
   useEffect(() => {
     loadContractors()

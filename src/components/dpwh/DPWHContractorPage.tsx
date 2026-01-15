@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Users, TrendingUp, MapPin, Calendar, DollarSign, Grid3x3 } from 'lucide-react'
+import { Users, TrendingUp, MapPin, Calendar } from 'lucide-react'
 import {
   BarChart,
   Bar,
@@ -167,7 +167,6 @@ const DPWHContractorPage = () => {
           <Card className="border-l-4 border-l-blue-600">
             <CardHeader className="pb-3">
               <CardDescription className="flex items-center gap-2">
-                <Grid3x3 className="h-4 w-4" />
                 Total Projects
               </CardDescription>
               <CardTitle className="text-2xl text-blue-600">
@@ -182,7 +181,6 @@ const DPWHContractorPage = () => {
           <Card className="border-l-4 border-l-green-600">
             <CardHeader className="pb-3">
               <CardDescription className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4" />
                 Total Budget
               </CardDescription>
               <CardTitle className="text-2xl text-green-600">
@@ -196,8 +194,7 @@ const DPWHContractorPage = () => {
 
           <Card className="border-l-4 border-l-purple-600">
             <CardHeader className="pb-3">
-              <CardDescription className="flex items-center gap-2">
-                <DollarSign className="h-4 w-4" />
+              <CardDescription className="flex items-center gap-2">                
                 Amount Paid
               </CardDescription>
               <CardTitle className="text-2xl text-purple-600">
