@@ -25,7 +25,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   filterType,
   filterValue,
   enableDeduplication = true,
-  limit = 1000
+  limit = 10000
 }) => {
   const location = useLocation()
   const isRootPath = location.pathname === '/'

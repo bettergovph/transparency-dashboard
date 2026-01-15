@@ -46,6 +46,7 @@ eval $CURL_CMD \
   "filterableAttributes": [
     "contractId",
     "category",
+    "contractor",
     "componentCategories",
     "status",
     "location.province",

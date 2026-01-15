@@ -120,7 +120,7 @@ const ObjectDetailPage = () => {
         const yearsResult = await searchBudgetDocuments({
           query: '',
           filter: yearsFilterString,
-          limit: 1000,
+          limit: 10000,
         })
         const years = Array.from(new Set(yearsResult.hits.map(item => item.year))).sort((a, b) => b - a)
         setAvailableYears(years)

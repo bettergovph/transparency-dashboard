@@ -84,6 +84,19 @@ curl -X PUT "${MEILISEARCH_HOST}/indexes/${INDEX_NAME}/settings/displayed-attrib
 
 echo -e "\n"
 
+# Configure pagination settings for larger result sets
+echo "Configuring pagination settings..."
+curl -X PATCH "${MEILISEARCH_HOST}/indexes/${INDEX_NAME}/settings" \
+  -H "Authorization: Bearer ${MEILISEARCH_API_KEY}" \
+  -H 'Content-Type: application/json' \
+  --data-binary '{
+    "pagination": {
+      "maxTotalHits": 10000
+    }
+  }'
+
+echo -e "\n"
+
 # Get current settings to verify
 echo "Verifying current settings..."
 curl -X GET "${MEILISEARCH_HOST}/indexes/${INDEX_NAME}/settings" \

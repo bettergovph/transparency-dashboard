@@ -10,7 +10,7 @@ import { dpwhIndex } from '@/lib/meilisearch'
 import type { DPWHProject, DPWHAggregateResponse, DPWHRegionAggregate, DPWHProvinceAggregate } from '@/types/dpwh'
 
 interface DPWHBrowserProps {
-  filterType?: 'category' | 'region' | 'province'
+  filterType?: 'category' | 'region' | 'province' | 'contractor'
   filterValue?: string
 }
 
@@ -62,6 +62,9 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
         case 'province':
           setSelectedProvinces([decodedValue])
           break
+        case 'contractor':
+          // Contractor filter will be applied via Meilisearch query
+          break
       }
     }
   }, [filterType, filterValue])
@@ -107,7 +110,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
       
       const searchResults = await dpwhIndex.search(query || '', {
         filter: filters,
-        limit: 1000
+        limit: 10000
       })
 
       setResults(searchResults.hits as any[])
@@ -145,6 +148,12 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
     if (selectedStatuses.length > 0) {
       const statusFilters = selectedStatuses.map(status => `status = "${status}"`).join(' OR ')
       filterParts.push(`(${statusFilters})`)
+    }
+
+    // Handle contractor filter from URL
+    if (filterType === 'contractor' && filterValue) {
+      const decodedContractor = decodeURIComponent(filterValue)
+      filterParts.push(`contractor = "${decodedContractor}"`)
     }
 
     return filterParts.length > 0 ? filterParts.join(' AND ') : undefined
@@ -674,9 +683,12 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
                             </td>
                             <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                               <div className="truncate" title={project.contractor}>
-                                <span className="text-blue-600 hover:text-blue-800 hover:underline cursor-pointer">
+                                <Link
+                                  to={`/dpwh/contractors/${encodeURIComponent(project.contractor)}`}
+                                  className="text-blue-600 hover:text-blue-800 hover:underline"
+                                >
                                   {project.contractor}
-                                </span>
+                                </Link>
                               </div>
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">

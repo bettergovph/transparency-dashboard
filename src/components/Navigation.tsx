@@ -41,6 +41,7 @@ const Navigation = () => {
     { path: '/dpwh/categories', label: 'Categories', icon: Grid3x3 },
     { path: '/dpwh/regions', label: 'Regions', icon: MapPin },
     { path: '/dpwh/provinces', label: 'Provinces', icon: Building2 },
+    { path: '/dpwh/contractors', label: 'Contractors', icon: Users },
   ]
 
   const projectsDropdownItems = [
