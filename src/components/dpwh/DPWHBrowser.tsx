@@ -12,9 +12,10 @@ import type { DPWHProject, DPWHAggregateResponse, DPWHRegionAggregate, DPWHProvi
 interface DPWHBrowserProps {
   filterType?: 'category' | 'region' | 'province' | 'contractor'
   filterValue?: string
+  embedded?: boolean // When true, skips Navigation, Footer, Helmet, and header
 }
 
-const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) => {
+const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embedded = false }) => {
 
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<DPWHProject[]>([])
@@ -307,32 +308,36 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
     : provinces
 
   return (
-    <div className="max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden flex flex-col">
-      <Helmet>
-        <title>{filterValue ? `${decodeURIComponent(filterValue)} - DPWH Projects` : 'DPWH Projects Browser'} - Transparency Dashboard</title>
-        <meta name="description" content={filterValue ? `View DPWH infrastructure projects for ${decodeURIComponent(filterValue)}` : 'Search and browse DPWH infrastructure projects. Find roads, bridges, flood control, and building projects across the Philippines.'} />
-        <meta name="keywords" content="DPWH, infrastructure, projects, roads, bridges, Philippines" />
-      </Helmet>
+    <div className={embedded ? '' : 'max-w-full min-h-screen from-gray-50 to-white overflow-x-hidden flex flex-col'}>
+      {!embedded && (
+        <Helmet>
+          <title>{filterValue ? `${decodeURIComponent(filterValue)} - DPWH Projects` : 'DPWH Projects Browser'} - Transparency Dashboard</title>
+          <meta name="description" content={filterValue ? `View DPWH infrastructure projects for ${decodeURIComponent(filterValue)}` : 'Search and browse DPWH infrastructure projects. Find roads, bridges, flood control, and building projects across the Philippines.'} />
+          <meta name="keywords" content="DPWH, infrastructure, projects, roads, bridges, Philippines" />
+        </Helmet>
+      )}
       
-      <Navigation />
+      {!embedded && <Navigation />}
 
-      <div className="flex flex-1 overflow-x-hidden">
-        <div className="flex-1 mx-auto max-w-full overflow-x-hidden px-3 sm:px-4 lg:px-6 py-4">
-          {/* Header */}
-          <div className="mb-6">
-            <div className="flex items-center gap-3 mb-2">
-              <HardHat className="h-8 w-8 text-blue-600" />
-              <h1 className="text-3xl font-bold text-gray-900">
-                {filterValue ? decodeURIComponent(filterValue) : 'DPWH Projects Browser'}
-              </h1>
+      <div className={embedded ? '' : 'flex flex-1 overflow-x-hidden'}>
+        <div className={embedded ? '' : 'flex-1 mx-auto max-w-full overflow-x-hidden px-3 sm:px-4 lg:px-6 py-4'}>
+          {/* Header - only show when not embedded */}
+          {!embedded && (
+            <div className="mb-6">
+              <div className="flex items-center gap-3 mb-2">
+                <HardHat className="h-8 w-8 text-blue-600" />
+                <h1 className="text-3xl font-bold text-gray-900">
+                  {filterValue ? decodeURIComponent(filterValue) : 'DPWH Projects Browser'}
+                </h1>
+              </div>
+              <p className="text-gray-600">
+                {filterValue 
+                  ? `Showing all projects for ${filterType}: ${decodeURIComponent(filterValue)}`
+                  : 'Search and filter infrastructure projects from the Department of Public Works and Highways'
+                }
+              </p>
             </div>
-            <p className="text-gray-600">
-              {filterValue 
-                ? `Showing all projects for ${filterType}: ${decodeURIComponent(filterValue)}`
-                : 'Search and filter infrastructure projects from the Department of Public Works and Highways'
-              }
-            </p>
-          </div>
+          )}
 
           {/* Search and Filters Section */}
           <div className="bg-white rounded-lg shadow p-2 mb-3 overflow-visible">
@@ -574,12 +579,12 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
           )}
 
           {/* Loading State */}
-          {loading && (
+          {/* {loading && (
             <div className="bg-white rounded-lg shadow p-8 text-center">
               <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
               <p className="mt-2 text-gray-600">Searching projects...</p>
             </div>
-          )}
+          )} */}
 
           {/* Results Table */}
           {!loading && results.length > 0 && (
@@ -859,7 +864,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) =>
         </div>
       </div>
       
-      <Footer />
+      {!embedded && <Footer />}
     </div>
   )
 }

@@ -29,6 +29,7 @@ import DPWHRegionPage from './components/dpwh/DPWHRegionPage'
 import DPWHProvincePage from './components/dpwh/DPWHProvincePage'
 import DPWHContractorsPage from './components/dpwh/DPWHContractorsPage'
 import DPWHContractorPage from './components/dpwh/DPWHContractorPage'
+import DPWHContractorProjectsPage from './components/dpwh/DPWHContractorProjectsPage'
 
 function App() {
   return (
@@ -56,6 +57,7 @@ function App() {
         <Route path="/dpwh/provinces/:slug" element={<DPWHProvincePage />} />
         <Route path="/dpwh/contractors" element={<DPWHContractorsPage />} />
         <Route path="/dpwh/contractors/:slug" element={<DPWHContractorPage />} />
+        <Route path="/dpwh/contractors/:slug/projects" element={<DPWHContractorProjectsPage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />
