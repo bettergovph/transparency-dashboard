@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react'
-import { useSearchParams, Link } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -15,7 +15,7 @@ interface DPWHBrowserProps {
 }
 
 const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue }) => {
-  const [searchParams] = useSearchParams()
+
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<DPWHProject[]>([])
   const [loading, setLoading] = useState(false)
