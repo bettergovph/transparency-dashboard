@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat } from 'lucide-react'
+import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Navigation from '../Navigation'
@@ -21,22 +21,22 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   const [results, setResults] = useState<DPWHProject[]>([])
   const [loading, setLoading] = useState(false)
   const [showFilters, setShowFilters] = useState(true)
-  
+
   // Filter states
   const [selectedYears, setSelectedYears] = useState<string[]>([])
   const [selectedRegions, setSelectedRegions] = useState<string[]>([])
   const [selectedProvinces, setSelectedProvinces] = useState<string[]>([])
   const [selectedCategories, setSelectedCategories] = useState<string[]>([])
   const [selectedStatuses, setSelectedStatuses] = useState<string[]>([])
-  
+
   // Pagination
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentPage, setCurrentPage] = useState(1)
-  
+
   // Sort
   const [tableSortField, setTableSortField] = useState<keyof DPWHProject | 'province' | 'year' | null>(null)
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
-  
+
   // Aggregates for filters
   const [regions, setRegions] = useState<DPWHRegionAggregate[]>([])
   const [provinces, setProvinces] = useState<DPWHProvinceAggregate[]>([])
@@ -77,11 +77,11 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
         fetch('/data/dpwh/aggregates/provinces.json'),
         fetch('/data/dpwh/aggregates/categories.json')
       ])
-      
+
       const regionsData: DPWHAggregateResponse<DPWHRegionAggregate> = await regionsRes.json()
       const provincesData: DPWHAggregateResponse<DPWHProvinceAggregate> = await provincesRes.json()
       const categoriesData = await categoriesRes.json()
-      
+
       setRegions(regionsData.data)
       setProvinces(provincesData.data)
       setAvailableCategories(categoriesData.data.map((c: any) => c.category))
@@ -108,7 +108,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
 
     try {
       const filters = buildFilters()
-      
+
       const searchResults = await dpwhIndex.search(query || '', {
         filter: filters,
         limit: 10000
@@ -186,6 +186,63 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     }
   }
 
+  // Download functions
+  const downloadJSON = () => {
+    const data = sortedResults.map(p => ({
+      contractId: p.contractId,
+      description: p.description,
+      category: p.category,
+      contractor: p.contractor,
+      region: p.location?.region,
+      province: p.location?.province,
+      budget: p.budget,
+      amountPaid: p.amountPaid,
+      year: p.infraYear,
+      progress: p.progress,
+      status: p.status,
+      startDate: p.startDate,
+      completionDate: p.completionDate
+    }))
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `dpwh-projects-${new Date().toISOString().split('T')[0]}.json`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
+  const downloadCSV = () => {
+    const headers = ['Contract ID', 'Description', 'Category', 'Contractor', 'Region', 'Province', 'Budget', 'Amount Paid', 'Year', 'Progress', 'Status', 'Start Date', 'Completion Date']
+    const rows = sortedResults.map(p => [
+      p.contractId,
+      `"${(p.description || '').replace(/"/g, '""')}"`,
+      `"${(p.category || '').replace(/"/g, '""')}"`,
+      `"${(p.contractor || '').replace(/"/g, '""')}"`,
+      `"${(p.location?.region || '').replace(/"/g, '""')}"`,
+      `"${(p.location?.province || '').replace(/"/g, '""')}"`,
+      p.budget,
+      p.amountPaid,
+      p.infraYear,
+      p.progress,
+      p.status,
+      p.startDate || '',
+      p.completionDate || ''
+    ])
+    const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n')
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `dpwh-projects-${new Date().toISOString().split('T')[0]}.csv`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+    URL.revokeObjectURL(url)
+  }
+
   // Pagination calculations
   const totalPages = Math.ceil(results.length / resultsPerPage)
   const startIndex = (currentPage - 1) * resultsPerPage
@@ -194,47 +251,47 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   // Apply table sorting if active
   const sortedResults = tableSortField
     ? [...results].sort((a, b) => {
-        let aValue: any
-        let bValue: any
-        
-        // Handle nested location fields and renamed fields
-        if (tableSortField === 'province') {
-          aValue = a.location?.province
-          bValue = b.location?.province
-        } else if (tableSortField === 'year') {
-          aValue = a.infraYear
-          bValue = b.infraYear
-        } else {
-          aValue = a[tableSortField as keyof DPWHProject]
-          bValue = b[tableSortField as keyof DPWHProject]
-        }
+      let aValue: any
+      let bValue: any
 
-        if (tableSortField === 'budget' || tableSortField === 'amountPaid' || tableSortField === 'progress' || tableSortField === 'year') {
-          const aNum = parseFloat(String(aValue || 0))
-          const bNum = parseFloat(String(bValue || 0))
-          return tableSortDirection === 'asc' ? aNum - bNum : bNum - aNum
-        }
+      // Handle nested location fields and renamed fields
+      if (tableSortField === 'province') {
+        aValue = a.location?.province
+        bValue = b.location?.province
+      } else if (tableSortField === 'year') {
+        aValue = a.infraYear
+        bValue = b.infraYear
+      } else {
+        aValue = a[tableSortField as keyof DPWHProject]
+        bValue = b[tableSortField as keyof DPWHProject]
+      }
 
-        if (typeof aValue === 'number' && typeof bValue === 'number') {
-          return tableSortDirection === 'asc' ? aValue - bValue : bValue - aValue
-        }
+      if (tableSortField === 'budget' || tableSortField === 'amountPaid' || tableSortField === 'progress' || tableSortField === 'year') {
+        const aNum = parseFloat(String(aValue || 0))
+        const bNum = parseFloat(String(bValue || 0))
+        return tableSortDirection === 'asc' ? aNum - bNum : bNum - aNum
+      }
 
-        const aString = String(aValue || '').toLowerCase()
-        const bString = String(bValue || '').toLowerCase()
+      if (typeof aValue === 'number' && typeof bValue === 'number') {
+        return tableSortDirection === 'asc' ? aValue - bValue : bValue - aValue
+      }
 
-        if (tableSortDirection === 'asc') {
-          return aString.localeCompare(bString)
-        } else {
-          return bString.localeCompare(aString)
-        }
-      })
+      const aString = String(aValue || '').toLowerCase()
+      const bString = String(bValue || '').toLowerCase()
+
+      if (tableSortDirection === 'asc') {
+        return aString.localeCompare(bString)
+      } else {
+        return bString.localeCompare(aString)
+      }
+    })
     : results
 
   const paginatedResults = sortedResults.slice(startIndex, endIndex)
 
   const totalBudget = results.reduce((sum, doc) => sum + (doc.budget || 0), 0)
-  const avgProgress = results.length > 0 
-    ? results.reduce((sum, doc) => sum + (doc.progress || 0), 0) / results.length 
+  const avgProgress = results.length > 0
+    ? results.reduce((sum, doc) => sum + (doc.progress || 0), 0) / results.length
     : 0
 
   const handlePageChange = (page: number) => {
@@ -316,7 +373,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
           <meta name="keywords" content="DPWH, infrastructure, projects, roads, bridges, Philippines" />
         </Helmet>
       )}
-      
+
       {!embedded && <Navigation />}
 
       <div className={embedded ? '' : 'flex flex-1 overflow-x-hidden'}>
@@ -331,7 +388,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                 </h1>
               </div>
               <p className="text-gray-600">
-                {filterValue 
+                {filterValue
                   ? `Showing all projects for ${filterType}: ${decodeURIComponent(filterValue)}`
                   : 'Search and filter infrastructure projects from the Department of Public Works and Highways'
                 }
@@ -562,33 +619,45 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
             )}
           </div>
 
-          {/* Results Summary */}
-          {!loading && results.length > 0 && (
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                <h2 className="text-base font-semibold text-black">
-                  Results {query && `for "${query}"`}
-                </h2>
-                <div className="flex items-center gap-2 text-[10px] text-gray-600 sm:border-l border-gray-300 sm:pl-3">
-                  <span><strong>{formatNumber(results.length)}</strong> projects</span>
-                  <span><strong>{formatCurrency(totalBudget)}</strong></span>
-                  <span><strong>{avgProgress.toFixed(1)}%</strong> avg progress</span>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Loading State */}
-          {/* {loading && (
-            <div className="bg-white rounded-lg shadow p-8 text-center">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
-              <p className="mt-2 text-gray-600">Searching projects...</p>
-            </div>
-          )} */}
-
           {/* Results Table */}
           {!loading && results.length > 0 && (
             <div className="space-y-3">
+              {/* Results header with count and download buttons */}
+              <div className="flex items-center justify-between bg-white rounded-lg shadow px-3 py-2">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
+                    <h2 className="text-base font-semibold text-black">
+                      Results {query && `for "${query}"`}
+                    </h2>
+                    <div className="flex items-center gap-2 text-[10px] text-gray-600 sm:border-l border-gray-300 sm:pl-3">
+                      <span><strong>{formatNumber(results.length)}</strong> projects</span>
+                      <span><strong>{formatCurrency(totalBudget)}</strong></span>
+                      <span><strong>{avgProgress.toFixed(1)}%</strong> avg progress</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={downloadJSON}
+                    className="text-[10px] h-6 px-2 gap-1"
+                  >
+                    <Download className="h-3 w-3" />
+                    JSON
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={downloadCSV}
+                    className="text-[10px] h-6 px-2 gap-1"
+                  >
+                    <Download className="h-3 w-3" />
+                    CSV
+                  </Button>
+                </div>
+              </div>
+
               <div className="bg-white rounded-lg shadow overflow-hidden">
                 <div className="overflow-x-auto">
                   <div className="inline-block min-w-full align-middle">
@@ -717,12 +786,11 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                               {project.progress.toFixed(1)}%
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-xs">
-                              <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-medium ${
-                                project.status === 'Completed' ? 'bg-green-100 text-green-800' :
+                              <span className={`inline-flex px-2 py-0.5 rounded-full text-[10px] font-medium ${project.status === 'Completed' ? 'bg-green-100 text-green-800' :
                                 project.status === 'On-Going' ? 'bg-blue-100 text-blue-800' :
-                                project.status === 'For Procurement' ? 'bg-yellow-100 text-yellow-800' :
-                                'bg-gray-100 text-gray-800'
-                              }`}>
+                                  project.status === 'For Procurement' ? 'bg-yellow-100 text-yellow-800' :
+                                    'bg-gray-100 text-gray-800'
+                                }`}>
                                 {project.status}
                               </span>
                             </td>
@@ -752,6 +820,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                     >
                       Previous
                     </Button>
+                    <span className="text-xs text-gray-700 self-center">Page {currentPage} of {totalPages}</span>
                     <Button
                       variant="outline"
                       onClick={() => handlePageChange(currentPage + 1)}
@@ -761,56 +830,47 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                       Next
                     </Button>
                   </div>
-                  <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-                    <div>
-                      <p className="text-xs text-gray-700">
-                        Showing <span className="font-medium">{startIndex + 1}</span> to{' '}
-                        <span className="font-medium">{Math.min(endIndex, results.length)}</span> of{' '}
-                        <span className="font-medium">{results.length}</span> results
-                      </p>
-                    </div>
-                    <div>
-                      <nav className="inline-flex rounded-md shadow-sm" aria-label="Pagination">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handlePageChange(currentPage - 1)}
-                          disabled={currentPage === 1}
-                          className="rounded-r-none text-xs h-7 px-2"
-                        >
-                          <ChevronLeft className="h-3 w-3" />
-                        </Button>
-                        {getPageNumbers().map((page, index) => (
-                          page === '...' ? (
-                            <span
-                              key={`ellipsis-${index}`}
-                              className="inline-flex items-center px-2 py-1 text-xs font-semibold text-gray-700 border border-gray-300 bg-white"
-                            >
-                              ...
-                            </span>
-                          ) : (
-                            <Button
-                              key={page}
-                              variant={currentPage === page ? 'default' : 'outline'}
-                              size="sm"
-                              onClick={() => handlePageChange(page as number)}
-                              className="rounded-none text-xs h-7 px-3 min-w-8"
-                            >
-                              {page}
-                            </Button>
-                          )
-                        ))}
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => handlePageChange(currentPage + 1)}
-                          disabled={currentPage === totalPages}
-                          className="rounded-l-none text-xs h-7 px-2"
-                        >
-                          <ChevronRight className="h-3 w-3" />
-                        </Button>
-                      </nav>
-                    </div>
+                  <div className="hidden sm:flex sm:flex-1 sm:items-center sm:justify-end">
+                    <nav className="inline-flex rounded-md shadow-sm" aria-label="Pagination">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handlePageChange(currentPage - 1)}
+                        disabled={currentPage === 1}
+                        className="rounded-r-none text-xs h-7 px-2"
+                      >
+                        <ChevronLeft className="h-3 w-3" />
+                      </Button>
+                      {getPageNumbers().map((page, index) => (
+                        page === '...' ? (
+                          <span
+                            key={`ellipsis-${index}`}
+                            className="inline-flex items-center px-2 py-1 text-xs font-semibold text-gray-700 border border-gray-300 bg-white"
+                          >
+                            ...
+                          </span>
+                        ) : (
+                          <Button
+                            key={page}
+                            variant={currentPage === page ? 'default' : 'outline'}
+                            size="sm"
+                            onClick={() => handlePageChange(page as number)}
+                            className="rounded-none text-xs h-7 px-3 min-w-8"
+                          >
+                            {page}
+                          </Button>
+                        )
+                      ))}
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handlePageChange(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                        className="rounded-l-none text-xs h-7 px-2"
+                      >
+                        <ChevronRight className="h-3 w-3" />
+                      </Button>
+                    </nav>
                   </div>
                 </div>
               )}
@@ -863,7 +923,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
           )}
         </div>
       </div>
-      
+
       {!embedded && <Footer />}
     </div>
   )

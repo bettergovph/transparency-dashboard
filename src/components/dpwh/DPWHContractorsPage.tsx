@@ -46,8 +46,8 @@ const DPWHContractorsPage = () => {
 
   // Filter and sort contractors
   const filteredContractors = contractors
-    .filter(con => 
-      searchQuery === '' || 
+    .filter(con =>
+      searchQuery === '' ||
       con.contractor.toLowerCase().includes(searchQuery.toLowerCase())
     )
     .sort((a, b) => {
@@ -66,7 +66,7 @@ const DPWHContractorsPage = () => {
       </Helmet>
       <Navigation />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
+      <div className="max-w-7xl w-auto md:min-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-2">
@@ -99,21 +99,19 @@ const DPWHContractorsPage = () => {
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setSortBy('budget')}
-                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
-                  sortBy === 'budget'
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
-                }`}
+                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${sortBy === 'budget'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  }`}
               >
                 By Total Budget
               </button>
               <button
                 onClick={() => setSortBy('count')}
-                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${
-                  sortBy === 'count'
-                    ? 'border-blue-600 text-blue-600'
-                    : 'border-transparent text-gray-600 hover:text-gray-900'
-                }`}
+                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 ${sortBy === 'count'
+                  ? 'border-blue-600 text-blue-600'
+                  : 'border-transparent text-gray-600 hover:text-gray-900'
+                  }`}
               >
                 By Project Count
               </button>
@@ -124,62 +122,56 @@ const DPWHContractorsPage = () => {
           </div>
 
           {/* Contractors Table */}
-          {isLoading ? (
-            <div className="p-8 text-center">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
-              <p className="mt-2 text-gray-600">Loading contractors...</p>
-            </div>
-          ) : (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Contractor
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Projects
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Total Budget
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Avg Budget
-                    </th>
-                    <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Avg Progress
-                    </th>
+
+          <div className="overflow-x-auto">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Contractor
+                  </th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Projects
+                  </th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Total Budget
+                  </th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Avg Budget
+                  </th>
+                  <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Avg Progress
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {filteredContractors.map((contractor) => (
+                  <tr key={contractor.contractor} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4">
+                      <Link
+                        to={`/dpwh/contractors/${encodeURIComponent(contractor.contractor)}`}
+                        className="text-blue-600 hover:text-blue-800 font-medium"
+                      >
+                        {contractor.contractor}
+                      </Link>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900">
+                      {formatNumber(contractor.project_count)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold text-gray-900">
+                      {formatCurrency(contractor.total_budget)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-600">
+                      {formatCurrency(contractor.avg_budget)}
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-600">
+                      {contractor.avg_progress.toFixed(1)}%
+                    </td>
                   </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredContractors.map((contractor) => (
-                    <tr key={contractor.contractor} className="hover:bg-gray-50 transition-colors">
-                      <td className="px-6 py-4">
-                        <Link
-                          to={`/dpwh/contractors/${encodeURIComponent(contractor.contractor)}`}
-                          className="text-blue-600 hover:text-blue-800 font-medium"
-                        >
-                          {contractor.contractor}
-                        </Link>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-900">
-                        {formatNumber(contractor.project_count)}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-semibold text-gray-900">
-                        {formatCurrency(contractor.total_budget)}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-600">
-                        {formatCurrency(contractor.avg_budget)}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-600">
-                        {contractor.avg_progress.toFixed(1)}%
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          )}
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
 
