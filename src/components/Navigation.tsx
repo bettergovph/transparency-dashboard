@@ -37,10 +37,10 @@ const Navigation = () => {
   ]
 
   const dpwhItems = [
-    { path: '/dpwh', label: 'Search Projects', icon: TrendingUp },
-    { path: '/dpwh/categories', label: 'Categories', icon: Grid3x3 },
-    { path: '/dpwh/regions', label: 'Regions', icon: MapPin },
-    { path: '/dpwh/provinces', label: 'Provinces', icon: Building2 },
+    { path: '/dpwh', label: 'Browse Projects', icon: TrendingUp },
+    // { path: '/dpwh/categories', label: 'Categories', icon: Grid3x3 },
+    // { path: '/dpwh/regions', label: 'Regions', icon: MapPin },
+    // { path: '/dpwh/provinces', label: 'Provinces', icon: Building2 },
     { path: '/dpwh/contractors', label: 'Contractors', icon: Users },
   ]
 

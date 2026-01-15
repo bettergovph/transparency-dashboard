@@ -20,7 +20,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<DPWHProject[]>([])
   const [loading, setLoading] = useState(false)
-  const [showFilters, setShowFilters] = useState(false)
+  const [showFilters, setShowFilters] = useState(true)
   
   // Filter states
   const [selectedYears, setSelectedYears] = useState<string[]>([])
