@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Search, Users } from 'lucide-react'
+import { Search, Users, ChevronLeft, ChevronRight } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
+import { Button } from '@/components/ui/button'
 import type { DPWHAggregateResponse, DPWHContractorAggregate } from '@/types/dpwh'
 
 const DPWHContractorsPage = () => {
@@ -12,6 +13,10 @@ const DPWHContractorsPage = () => {
   const [sortBy, setSortBy] = useState<'budget' | 'count'>('budget')
   const [isLoading, setIsLoading] = useState(true)
   const [metadata, setMetadata] = useState<any>(null)
+  
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1)
+  const [resultsPerPage, setResultsPerPage] = useState(20)
 
   useEffect(() => {
     loadContractors()
@@ -56,6 +61,48 @@ const DPWHContractorsPage = () => {
       }
       return b.project_count - a.project_count
     })
+
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredContractors.length / resultsPerPage)
+  const startIndex = (currentPage - 1) * resultsPerPage
+  const endIndex = startIndex + resultsPerPage
+  const paginatedContractors = filteredContractors.slice(startIndex, endIndex)
+
+  // Reset to page 1 when search/sort changes
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchQuery, sortBy, resultsPerPage])
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = []
+    const maxVisiblePages = 5
+
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) pages.push(i)
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) pages.push(i)
+        pages.push('...')
+        pages.push(totalPages)
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1)
+        pages.push('...')
+        for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i)
+      } else {
+        pages.push(1)
+        pages.push('...')
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i)
+        pages.push('...')
+        pages.push(totalPages)
+      }
+    }
+    return pages
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -116,14 +163,30 @@ const DPWHContractorsPage = () => {
                 By Project Count
               </button>
             </div>
-            <p className="text-gray-600">
-              {filteredContractors.length} contractor{filteredContractors.length !== 1 ? 's' : ''}
-            </p>
+            <div className="flex items-center gap-4">
+              <select
+                value={resultsPerPage}
+                onChange={(e) => setResultsPerPage(Number(e.target.value))}
+                className="border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-black"
+              >
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
+              <p className="text-sm text-gray-600">
+                Showing {startIndex + 1}-{Math.min(endIndex, filteredContractors.length)} of {formatNumber(filteredContractors.length)}
+              </p>
+            </div>
           </div>
 
           {/* Contractors Table */}
-
-          <div className="overflow-x-auto">
+          {isLoading ? (
+            <div className="p-8 text-center">
+              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-600 border-r-transparent"></div>
+              <p className="mt-2 text-gray-600">Loading contractors...</p>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
@@ -145,7 +208,7 @@ const DPWHContractorsPage = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {filteredContractors.map((contractor) => (
+                {paginatedContractors.map((contractor) => (
                   <tr key={contractor.contractor} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4">
                       <Link
@@ -171,7 +234,67 @@ const DPWHContractorsPage = () => {
                 ))}
               </tbody>
             </table>
-          </div>
+            </div>
+          )}
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+              <div className="flex sm:hidden items-center gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  size="sm"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <span className="text-sm text-gray-700">Page {currentPage} of {totalPages}</span>
+                <Button
+                  variant="outline"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  size="sm"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+              <div className="hidden sm:flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={currentPage === 1}
+                >
+                  <ChevronLeft className="h-4 w-4 mr-1" />
+                  Previous
+                </Button>
+                {getPageNumbers().map((page, index) => (
+                  page === '...' ? (
+                    <span key={`ellipsis-${index}`} className="px-2 text-gray-500">...</span>
+                  ) : (
+                    <Button
+                      key={page}
+                      variant={currentPage === page ? 'default' : 'outline'}
+                      size="sm"
+                      onClick={() => handlePageChange(page as number)}
+                    >
+                      {page}
+                    </Button>
+                  )
+                ))}
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                  <ChevronRight className="h-4 w-4 ml-1" />
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
