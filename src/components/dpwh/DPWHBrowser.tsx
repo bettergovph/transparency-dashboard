@@ -390,7 +390,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
               <p className="text-gray-600">
                 {filterValue
                   ? `Showing all projects for ${filterType}: ${decodeURIComponent(filterValue)}`
-                  : 'Search and filter infrastructure projects from the Department of Public Works and Highways'
+                  : 'Search and filter infrastructure projects from the DPWH. Data from DPWH\'s transparency portal.'
                 }
               </p>
             </div>
