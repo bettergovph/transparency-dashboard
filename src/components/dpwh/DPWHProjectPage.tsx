@@ -16,7 +16,9 @@ import {
   XCircle,
   Video,
   Image as ImageIcon,
-  Download
+  Download,
+  ChevronRight,
+  Home
 } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
@@ -259,7 +261,26 @@ const DPWHProjectPage = () => {
       </Helmet>
       <Navigation />
 
-      <div className="px-4 sm:px-6 lg:px-8 py-8 flex-1 max-w-7xl mx-auto w-full">
+      <div className="px-4 sm:px-6 lg:px-8 py-4 sm:py-8 flex-1 max-w-7xl mx-auto w-full">
+        {/* Breadcrumb Navigation */}
+        <nav className="flex items-center gap-2 text-xs sm:text-sm text-gray-600 mb-4 overflow-x-auto pb-2">
+          <Link to="/dpwh" className="flex items-center gap-1 hover:text-blue-600 transition-colors whitespace-nowrap">
+            <Home className="h-3 w-3 sm:h-4 sm:w-4" />
+            <span className="hidden sm:inline">DPWH Projects</span>
+            <span className="sm:hidden">Projects</span>
+          </Link>
+          <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 flex-shrink-0" />
+          <Link 
+            to={`/dpwh/categories/${encodeURIComponent(project.category)}`}
+            className="hover:text-blue-600 transition-colors whitespace-nowrap truncate max-w-[120px] sm:max-w-none"
+            title={project.category}
+          >
+            {project.category}
+          </Link>
+          <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-gray-400 flex-shrink-0" />
+          <span className="text-gray-900 font-medium truncate">{project.contractId}</span>
+        </nav>
+
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-start justify-between mb-4">
