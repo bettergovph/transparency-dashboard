@@ -107,17 +107,17 @@ const Navigation = () => {
   return (
     <nav className="bg-white shadow-sm">
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-24">
-          <div className="flex items-center gap-8">
+        <div className="flex items-center justify-between h-16 lg:h-24">
+          <div className="flex items-center gap-4 lg:gap-8">
             {/* Logo and Title */}
-            <div className="flex items-center gap-3 md:gap-8">
+            <div className="flex items-center gap-2 sm:gap-3 lg:gap-8">
               <img
                 src="https://bettergov.ph/logos/svg/BetterGov_Icon-Primary.svg"
                 alt="BetterGov.ph Logo"
-                className="h-8 w-8 md:h-12 md:w-12"
+                className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12"
               />
               <Link to="/">
-                <h1 className="text-sm md:text-lg font-bold text-black font-figtree">
+                <h1 className="text-xs sm:text-sm lg:text-lg font-bold text-black font-figtree">
                   Transparency Dashboard
                 </h1>
                 <p className="text-gray-600 text-xs hidden sm:block">by BetterGov.ph</p>
@@ -125,14 +125,15 @@ const Navigation = () => {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1">
               {/* Home */}
               <Link
                 to="/"
-                className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isActive('/')
-                  ? 'border-b text-blue-600 font-bold'
-                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                  }`}
+                className={`flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-md transition-colors ${
+                  isActive('/')
+                    ? 'border-b text-blue-600 font-bold'
+                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                }`}
               >
                 <Home className="h-4 w-4" />
                 Home
@@ -142,10 +143,11 @@ const Navigation = () => {
               <div className="relative" ref={procurementDropdownRef}>
                 <button
                   onClick={() => setProcurementDropdownOpen(!procurementDropdownOpen)}
-                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isProcurementActive()
-                    ? 'border-b text-blue-600 font-bold'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                    }`}
+                  className={`flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-md transition-colors ${
+                    isProcurementActive()
+                      ? 'border-b text-blue-600 font-bold'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
                 >
                   <ShoppingCart className="h-4 w-4" />
                   Procurement
@@ -179,10 +181,11 @@ const Navigation = () => {
               <div className="relative" ref={taxDropdownRef}>
                 <button
                   onClick={() => setTaxDropdownOpen(!taxDropdownOpen)}
-                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isTaxCollectionActive()
-                    ? 'border-b text-blue-600 font-bold'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                    }`}
+                  className={`flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-md transition-colors ${
+                    isTaxCollectionActive()
+                      ? 'border-b text-blue-600 font-bold'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
                 >
                   <Coins className="h-4 w-4" />
                   Tax Collection
@@ -216,10 +219,11 @@ const Navigation = () => {
               <div className="relative" ref={budgetDropdownRef}>
                 <button
                   onClick={() => setBudgetDropdownOpen(!budgetDropdownOpen)}
-                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isBudgetActive()
-                    ? 'border-b text-blue-600 font-bold'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                    }`}
+                  className={`flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-md transition-colors ${
+                    isBudgetActive()
+                      ? 'border-b text-blue-600 font-bold'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
                 >
                   <span className="text-gray-700 mr-1">₱</span>
                   Budget
@@ -253,10 +257,11 @@ const Navigation = () => {
               <div className="relative" ref={dpwhDropdownRef}>
                 <button
                   onClick={() => setDpwhDropdownOpen(!dpwhDropdownOpen)}
-                  className={`flex items-center gap-2 md:px-3 lg:px-4 py-2 md:text-sm lg:text-md transition-colors ${isDpwhActive()
-                    ? 'border-b text-blue-600 font-bold'
-                    : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
-                    }`}
+                  className={`flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-md transition-colors ${
+                    isDpwhActive()
+                      ? 'border-b text-blue-600 font-bold'
+                      : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
                 >
                   <HardHat className="h-4 w-4" />
                   DPWH
@@ -290,7 +295,7 @@ const Navigation = () => {
               <div className="relative" ref={projectsDropdownRef}>
                 <button
                   onClick={() => setProjectsDropdownOpen(!projectsDropdownOpen)}
-                  className="flex items-center gap-2 md:px-3 lg:px-4 py-2  md:text-sm lg:text-md  text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                  className="flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
                 >
                   <Briefcase className="h-4 w-4" />
                   Our Projects
@@ -323,16 +328,16 @@ const Navigation = () => {
               href="https://www.facebook.com/BetterGovPh"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden md:flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:text-blue-600 transition-colors"
+              className="hidden lg:flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:text-blue-600 transition-colors"
             >
               <Facebook className="h-4 w-4" />
               Follow us on Facebook
             </a>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile/Tablet Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? (
@@ -344,9 +349,9 @@ const Navigation = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile/Tablet Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-2">
+          <div className="lg:hidden border-t border-gray-200 py-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
             {/* Home */}
             <Link
               to="/"
