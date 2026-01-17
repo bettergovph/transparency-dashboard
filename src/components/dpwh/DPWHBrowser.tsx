@@ -920,7 +920,12 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                         {paginatedResults.map((project) => (
                           <tr key={project.contractId} className="hover:bg-gray-50 transition-colors">
                             <td className="px-3 py-2 whitespace-nowrap text-xs font-medium text-blue-600">
-                              {project.contractId}
+                              <Link
+                                to={`/dpwh/projects/${project.contractId}`}
+                                className="hover:underline"
+                              >
+                                {project.contractId}
+                              </Link>
                             </td>
                             <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
                               <div className="truncate group relative" title={project.description}>

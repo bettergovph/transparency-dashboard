@@ -31,6 +31,7 @@ import DPWHProvincePage from './components/dpwh/DPWHProvincePage'
 import DPWHContractorsPage from './components/dpwh/DPWHContractorsPage'
 import DPWHContractorPage from './components/dpwh/DPWHContractorPage'
 import DPWHContractorProjectsPage from './components/dpwh/DPWHContractorProjectsPage'
+import DPWHProjectPage from './components/dpwh/DPWHProjectPage'
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
         <Route path="/dpwh/contractors" element={<DPWHContractorsPage />} />
         <Route path="/dpwh/contractors/:slug" element={<DPWHContractorPage />} />
         <Route path="/dpwh/contractors/:slug/projects" element={<DPWHContractorProjectsPage />} />
+        <Route path="/dpwh/projects/:contractId" element={<DPWHProjectPage />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />
