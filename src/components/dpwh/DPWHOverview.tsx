@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { HardHat, TrendingUp, Building2, MapPin } from 'lucide-react'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, Area, AreaChart } from 'recharts'
+import { HardHat, Building2, MapPin } from 'lucide-react'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell, LineChart, Line, Area, AreaChart } from 'recharts'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 
@@ -64,6 +64,8 @@ const DPWHOverview = () => {
   const [categories, setCategories] = useState<CategoryData[]>([])
   const [metadata, setMetadata] = useState<any>(null)
   const [loading, setLoading] = useState(true)
+  const [selectedYear, setSelectedYear] = useState<string>('all')
+  const [availableYears, setAvailableYears] = useState<string[]>([])
 
   useEffect(() => {
     loadData()
@@ -89,6 +91,13 @@ const DPWHOverview = () => {
       setStatuses(statusesData.data)
       setCategories(categoriesData.data.slice(0, 10)) // Top 10 categories
       setMetadata(yearsData.metadata)
+      
+      // Set available years for navigation
+      const yearList = yearsData.data
+        .filter(y => y.year !== '2026')
+        .map(y => y.year)
+        .sort((a, b) => parseInt(b) - parseInt(a))
+      setAvailableYears(yearList)
     } catch (error) {
       console.error('Error loading data:', error)
     } finally {
@@ -131,6 +140,27 @@ const DPWHOverview = () => {
   const totalBudget = metadata?.total_budget || 0
   const avgProgress = metadata?.avg_progress || 0
 
+  // Filter data based on selected year
+  const filteredYears = selectedYear === 'all' ? years : years.filter(y => y.year === selectedYear)
+  const currentYearData = selectedYear === 'all' ? null : years.find(y => y.year === selectedYear)
+  
+  // Use current year stats if a year is selected, otherwise use overall stats
+  const displayProjects = selectedYear === 'all' ? totalProjects : (currentYearData?.project_count || 0)
+  const displayBudget = selectedYear === 'all' ? totalBudget : (currentYearData?.total_budget || 0)
+  const displayProgress = selectedYear === 'all' ? avgProgress : (currentYearData?.avg_progress || 0)
+  
+  // Filter statuses for selected year
+  const displayStatuses = selectedYear === 'all' 
+    ? statuses 
+    : currentYearData?.statuses 
+      ? Object.entries(currentYearData.statuses).map(([status, count]) => ({
+          status,
+          project_count: count,
+          total_budget: 0,
+          avg_progress: 0
+        }))
+      : []
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <Helmet>
@@ -148,160 +178,208 @@ const DPWHOverview = () => {
             <h1 className="text-3xl font-bold text-gray-900">DPWH Infrastructure Overview</h1>
           </div>
           <p className="text-gray-600">
-            {metadata ? `${formatNumber(totalProjects)} projects · ${formatCompact(totalBudget)} total budget · ${avgProgress.toFixed(1)}% avg progress` : 'Loading...'}
+            {selectedYear === 'all' 
+              ? `${formatNumber(displayProjects)} projects · ${formatCompact(displayBudget)} total budget · ${displayProgress.toFixed(1)}% avg progress`
+              : `${formatNumber(displayProjects)} projects in ${selectedYear} · ${formatCompact(displayBudget)} budget · ${displayProgress.toFixed(1)}% avg progress`
+            }
           </p>
         </div>
 
+        {/* Year Navigation */}
+        <div className="bg-white rounded-lg shadow-sm p-4 mb-6">
+          <div className="flex items-center gap-2 overflow-x-auto">
+            <button
+              onClick={() => setSelectedYear('all')}
+              className={`px-4 py-2 text-sm font-medium rounded transition-colors whitespace-nowrap ${
+                selectedYear === 'all'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+            >
+              All Years
+            </button>
+            {availableYears.map((year) => (
+              <button
+                key={year}
+                onClick={() => setSelectedYear(year)}
+                className={`px-4 py-2 text-sm font-medium rounded transition-colors whitespace-nowrap ${
+                  selectedYear === year
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {year}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Key Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <p className="text-sm text-gray-600 mb-1">Total Projects</p>
-            <p className="text-2xl font-bold text-gray-900">{formatNumber(totalProjects)}</p>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4">
+          <div className="bg-white rounded-lg shadow-sm p-3">
+            <p className="text-xs text-gray-600 mb-1">Total Projects</p>
+            <p className="text-xl font-bold text-gray-900">{formatNumber(displayProjects)}</p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <p className="text-sm text-gray-600 mb-1">Total Budget</p>
-            <p className="text-2xl font-bold text-gray-900">{formatCompact(totalBudget)}</p>
+          <div className="bg-white rounded-lg shadow-sm p-3">
+            <p className="text-xs text-gray-600 mb-1">Total Budget</p>
+            <p className="text-xl font-bold text-gray-900">{formatCompact(displayBudget)}</p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <p className="text-sm text-gray-600 mb-1">Avg Progress</p>
-            <p className="text-2xl font-bold text-gray-900">{avgProgress.toFixed(1)}%</p>
+          <div className="bg-white rounded-lg shadow-sm p-3">
+            <p className="text-xs text-gray-600 mb-1">Avg Progress</p>
+            <p className="text-xl font-bold text-gray-900">{displayProgress.toFixed(1)}%</p>
           </div>
 
-          <div className="bg-white rounded-lg shadow-sm p-4">
-            <p className="text-sm text-gray-600 mb-1">Regions</p>
-            <p className="text-2xl font-bold text-gray-900">{regions.length}</p>
+          <div className="bg-white rounded-lg shadow-sm p-3">
+            <p className="text-xs text-gray-600 mb-1">{selectedYear === 'all' ? 'Regions' : 'Year'}</p>
+            <p className="text-xl font-bold text-gray-900">{selectedYear === 'all' ? regions.length : selectedYear}</p>
           </div>
         </div>
 
         {/* Project Status Distribution */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Project Status Distribution</h2>
+        <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
+          <h2 className="text-base font-bold text-gray-900 mb-3">Project Status Distribution</h2>
+          {displayStatuses.length > 0 ? (
             <ResponsiveContainer width="100%" height={300}>
-              <PieChart>
-                <Pie
-                  data={statuses as any}
-                  dataKey="project_count"
-                  nameKey="status"
-                  cx="50%"
-                  cy="50%"
-                  outerRadius={100}
-                  label={(entry: any) => `${entry.status} (${(entry.percent * 100).toFixed(1)}%)`}
-                  labelLine={{ stroke: '#94a3b8', strokeWidth: 1 }}                  
-                >
-                  {statuses.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={STATUS_COLORS[entry.status] || CHART_COLORS[index % CHART_COLORS.length]} />
-                  ))}
-                </Pie>
-                <Tooltip formatter={(value: any) => formatNumber(value)} />
-              </PieChart>
-            </ResponsiveContainer>
-            <div className="grid grid-cols-2 gap-3 mt-4">
-              {statuses.map((status) => (
-                <div key={status.status} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                  <div className="flex items-center">
-                    <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: STATUS_COLORS[status.status] }}></div>
-                    <span className="text-xs font-medium text-gray-700">{status.status}</span>
-                  </div>
-                  <span className="text-sm font-bold text-gray-900">{formatNumber(status.project_count)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-sm p-6">
-            <h2 className="text-lg font-bold text-gray-900 mb-4">Budget by Status</h2>
-            <ResponsiveContainer width="100%" height={300}>
-              <BarChart data={statuses} layout="vertical">
+              <BarChart data={displayStatuses}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis type="number" tickFormatter={(value) => formatCompact(value)} />
-                <YAxis dataKey="status" type="category" width={120} />
-                <Tooltip formatter={(value: any) => formatCurrency(value)} />
-                <Bar dataKey="total_budget" radius={[0, 8, 8, 0]}>
-                  {statuses.map((entry, index) => (
+                <XAxis dataKey="status" />
+                <YAxis tickFormatter={(value) => formatNumber(value)} />
+                <Tooltip formatter={(value: any) => formatNumber(value)} />
+                <Bar dataKey="project_count" radius={[8, 8, 0, 0]}>
+                  {displayStatuses.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={STATUS_COLORS[entry.status] || CHART_COLORS[index % CHART_COLORS.length]} />
                   ))}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
-          </div>
+          ) : (
+            <div className="flex items-center justify-center h-48 text-gray-500 text-sm">
+              No status data available for this year
+            </div>
+          )}
         </div>
+
+        {/* Budget by Status and Top Categories - Only show for all years */}
+        {selectedYear === 'all' && (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+            <div className="bg-white rounded-lg shadow-sm p-4">
+              <h2 className="text-base font-bold text-gray-900 mb-3">Budget by Status</h2>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={displayStatuses} layout="vertical">
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis type="number" tickFormatter={(value) => formatCompact(value)} />
+                  <YAxis dataKey="status" type="category" width={120} />
+                  <Tooltip formatter={(value: any) => formatCurrency(value)} />
+                  <Bar dataKey="total_budget" radius={[0, 8, 8, 0]}>
+                    {displayStatuses.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={STATUS_COLORS[entry.status] || CHART_COLORS[index % CHART_COLORS.length]} />
+                    ))}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+
+            <div className="bg-white rounded-lg shadow-sm p-4">
+              <h2 className="text-base font-bold text-gray-900 mb-3">Top Project Categories</h2>
+              <ResponsiveContainer width="100%" height={300}>
+                <BarChart data={categories} layout="vertical">
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis type="number" tickFormatter={(value) => formatNumber(value)} />
+                  <YAxis dataKey="category" type="category" width={150} />
+                  <Tooltip 
+                    formatter={(value: any, name: string) => {
+                      if (name === 'project_count') return [formatNumber(value), 'Projects']
+                      if (name === 'total_budget') return [formatCurrency(value), 'Budget']
+                      return value
+                    }}
+                  />
+                  <Bar dataKey="project_count" fill="#3b82f6" radius={[0, 8, 8, 0]} name="Projects" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
 
         {/* Budget and Projects by Year */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Budget and Projects Over Time</h2>
-          <ResponsiveContainer width="100%" height={400}>
-            <AreaChart data={years}>
-              <defs>
-                <linearGradient id="colorBudget" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.1}/>
-                </linearGradient>
-                <linearGradient id="colorProjects" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
-                  <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.1}/>
-                </linearGradient>
-              </defs>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="year" />
-              <YAxis yAxisId="left" tickFormatter={(value) => formatCompact(value)} />
-              <YAxis yAxisId="right" orientation="right" tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`} />
-              <Tooltip 
-                formatter={(value: any, name: string) => {
-                  if (name === 'total_budget') return [formatCurrency(value), 'Total Budget']
-                  if (name === 'project_count') return [formatNumber(value), 'Projects']
-                  return value
-                }}
-              />
-              <Legend />
-              <Area yAxisId="left" type="monotone" dataKey="total_budget" stroke="#3b82f6" fillOpacity={1} fill="url(#colorBudget)" name="Total Budget" />
-              <Area yAxisId="right" type="monotone" dataKey="project_count" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorProjects)" name="Projects" />
-            </AreaChart>
-          </ResponsiveContainer>
-        </div>
+        {selectedYear === 'all' && (
+          <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
+            <h2 className="text-base font-bold text-gray-900 mb-3">Budget and Projects Over Time</h2>
+            <ResponsiveContainer width="100%" height={350}>
+              <AreaChart data={filteredYears}>
+                <defs>
+                  <linearGradient id="colorBudget" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0.1}/>
+                  </linearGradient>
+                  <linearGradient id="colorProjects" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.8}/>
+                    <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0.1}/>
+                  </linearGradient>
+                </defs>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="year" />
+                <YAxis yAxisId="left" tickFormatter={(value) => formatCompact(value)} />
+                <YAxis yAxisId="right" orientation="right" tickFormatter={(value) => `${(value / 1000).toFixed(0)}k`} />
+                <Tooltip 
+                  formatter={(value: any, name: string) => {
+                    if (name === 'total_budget') return [formatCurrency(value), 'Total Budget']
+                    if (name === 'project_count') return [formatNumber(value), 'Projects']
+                    return value
+                  }}
+                />
+                <Legend />
+                <Area yAxisId="left" type="monotone" dataKey="total_budget" stroke="#3b82f6" fillOpacity={1} fill="url(#colorBudget)" name="Total Budget" />
+                <Area yAxisId="right" type="monotone" dataKey="project_count" stroke="#8b5cf6" fillOpacity={1} fill="url(#colorProjects)" name="Projects" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+        )}
 
         {/* Progress Trend */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Average Progress by Year</h2>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={years}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis dataKey="year" />
-              <YAxis domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
-              <Tooltip formatter={(value: any) => `${Number(value).toFixed(1)}%`} />
-              <Legend />
-              <Line type="monotone" dataKey="avg_progress" stroke="#3b82f6" strokeWidth={3} name="Avg Progress" dot={{ fill: '#3b82f6', r: 5 }} />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
+        {selectedYear === 'all' && (
+          <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
+            <h2 className="text-base font-bold text-gray-900 mb-3">Average Progress by Year</h2>
+            <ResponsiveContainer width="100%" height={250}>
+              <LineChart data={filteredYears}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis dataKey="year" />
+                <YAxis domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
+                <Tooltip formatter={(value: any) => `${Number(value).toFixed(1)}%`} />
+                <Legend />
+                <Line type="monotone" dataKey="avg_progress" stroke="#3b82f6" strokeWidth={3} name="Avg Progress" dot={{ fill: '#3b82f6', r: 5 }} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+        )}
 
-        {/* Top Categories */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Top Project Categories</h2>
-          <ResponsiveContainer width="100%" height={400}>
-            <BarChart data={categories} layout="vertical">
-              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-              <XAxis type="number" tickFormatter={(value) => formatNumber(value)} />
-              <YAxis dataKey="category" type="category" width={200} />
-              <Tooltip 
-                formatter={(value: any, name: string) => {
-                  if (name === 'project_count') return [formatNumber(value), 'Projects']
-                  if (name === 'total_budget') return [formatCurrency(value), 'Budget']
-                  return value
-                }}
-              />
-              <Legend />
-              <Bar dataKey="project_count" fill="#3b82f6" radius={[0, 8, 8, 0]} name="Projects" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        {/* Top Categories - Only show when not showing all years view */}
+        {selectedYear !== 'all' && (
+          <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
+            <h2 className="text-base font-bold text-gray-900 mb-3">Top Project Categories</h2>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={categories} layout="vertical">
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis type="number" tickFormatter={(value) => formatNumber(value)} />
+                <YAxis dataKey="category" type="category" width={150} />
+                <Tooltip 
+                  formatter={(value: any, name: string) => {
+                    if (name === 'project_count') return [formatNumber(value), 'Projects']
+                    if (name === 'total_budget') return [formatCurrency(value), 'Budget']
+                    return value
+                  }}
+                />
+                <Bar dataKey="project_count" fill="#3b82f6" radius={[0, 8, 8, 0]} name="Projects" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        )}
 
         {/* Top Regions */}
-        <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Top 10 Regions by Budget</h2>
-          <ResponsiveContainer width="100%" height={400}>
+        <div className="bg-white rounded-lg shadow-sm p-4 mb-4">
+          <h2 className="text-base font-bold text-gray-900 mb-3">Top 10 Regions by Budget</h2>
+          <ResponsiveContainer width="100%" height={350}>
             <BarChart data={regions.slice(0, 10)}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis dataKey="region" angle={-45} textAnchor="end" height={120} />
@@ -314,24 +392,24 @@ const DPWHOverview = () => {
               </Bar>
             </BarChart>
           </ResponsiveContainer>
-          <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
             {regions.slice(0, 6).map((region, index) => (
               <Link
                 key={region.region}
                 to={`/dpwh/regions/${encodeURIComponent(region.region)}`}
-                className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
               >
                 <div className="flex items-center">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-blue-600 text-white font-bold text-sm mr-3">
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center bg-blue-600 text-white font-bold text-xs mr-2">
                     {index + 1}
                   </div>
                   <div>
-                    <p className="font-semibold text-gray-900">{region.region}</p>
+                    <p className="text-sm font-semibold text-gray-900">{region.region}</p>
                     <p className="text-xs text-gray-500">{formatNumber(region.project_count)} projects</p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-bold text-gray-900">{formatCompact(region.total_budget)}</p>
+                  <p className="text-sm font-bold text-gray-900">{formatCompact(region.total_budget)}</p>
                   <p className="text-xs text-gray-500">{region.avg_progress.toFixed(1)}% progress</p>
                 </div>
               </Link>
@@ -340,32 +418,32 @@ const DPWHOverview = () => {
         </div>
 
         {/* Quick Links */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <Link
             to="/dpwh"
-            className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow border-l-4 border-blue-600"
+            className="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow border-l-4 border-blue-600"
           >
-            <HardHat className="h-8 w-8 text-blue-600 mb-3" />
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Browse All Projects</h3>
-            <p className="text-sm text-gray-600">Search and filter through all infrastructure projects</p>
+            <HardHat className="h-6 w-6 text-blue-600 mb-2" />
+            <h3 className="text-base font-bold text-gray-900 mb-1">Browse All Projects</h3>
+            <p className="text-xs text-gray-600">Search and filter through all infrastructure projects</p>
           </Link>
 
           <Link
             to="/dpwh/regions"
-            className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow border-l-4 border-blue-600"
+            className="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow border-l-4 border-blue-600"
           >
-            <MapPin className="h-8 w-8 text-blue-600 mb-3" />
-            <h3 className="text-lg font-bold text-gray-900 mb-2">View by Region</h3>
-            <p className="text-sm text-gray-600">Explore projects across different regions</p>
+            <MapPin className="h-6 w-6 text-blue-600 mb-2" />
+            <h3 className="text-base font-bold text-gray-900 mb-1">View by Region</h3>
+            <p className="text-xs text-gray-600">Explore projects across different regions</p>
           </Link>
 
           <Link
             to="/dpwh/contractors"
-            className="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow border-l-4 border-blue-600"
+            className="bg-white rounded-lg shadow-sm p-4 hover:shadow-md transition-shadow border-l-4 border-blue-600"
           >
-            <Building2 className="h-8 w-8 text-blue-600 mb-3" />
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Browse Contractors</h3>
-            <p className="text-sm text-gray-600">View contractor statistics and projects</p>
+            <Building2 className="h-6 w-6 text-blue-600 mb-2" />
+            <h3 className="text-base font-bold text-gray-900 mb-1">Browse Contractors</h3>
+            <p className="text-xs text-gray-600">View contractor statistics and projects</p>
           </Link>
         </div>
       </div>
