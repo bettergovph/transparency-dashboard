@@ -19,40 +19,10 @@ export const ourProjects = [
         label: 'Open Data Portal',
         href: 'https://data.bettergov.ph',
         target: '_blank',
-      },
-      {
-        label: 'Petitions',
-        href: 'https://petition.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Tax Directory',
-        href: 'https://taxdirectory.bettergov.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Philgeps',
-        href: 'https://philgeps.bettergov.ph',
-        target: '_blank',
-      },
+      },     
       {
         label: 'SALN Tracker',
         href: 'https://saln.bettergov.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Hotlines',
-        href: 'https://hotlines.bettergov.ph',
-        target: '_blank',
-      },
-      {
-        label: 'Open Bayan',
-        href: 'https://www.openbayan.org',
-        target: '_blank',
-      },
-      {
-        label: 'Open Congress API',
-        href: 'https://open-congress-api.bettergov.ph',
         target: '_blank',
       },
       {
@@ -82,20 +52,19 @@ export const footerNavigation = {
       ],
     },
     {
-      title: 'Services',
+      title: 'Browse',
       links: [
-        { label: 'All Services', href: 'https://bettergov.ph/services' },
-        { label: 'Service Directory', href: 'https://bettergov.ph/services' },
-        { label: 'Websites', href: 'https://bettergov.ph/services/websites' },
-        { label: 'Forex', href: 'https://bettergov.ph/data/forex' },
-        { label: 'Weather', href: 'https://bettergov.ph/data/weather' },
-        { label: 'Hotlines', href: 'https://bettergov.ph/philippines/hotlines' },
-        { label: 'Holidays', href: 'https://bettergov.ph/philippines/holidays' },
-        { label: 'Flood Control Projects', href: 'https://bettergov.ph/flood-control-projects' },
+        { label: 'Procurement', href: '/procurement' },
+        { label: 'Budget', href: '/budget' },
+        { label: 'DPWH Projects', href: '/dpwh' },
+        { label: 'DPWH Contractors', href: '/dpwh/contractors' },
+        { label: 'General Appropriations Act', href: '/gaa' },
+        { label: 'BIR Collections', href: '/bir' },
+        { label: 'Treasury', href: '/treasury' },        
       ],
     },
     {
-      title: 'Our Projects',
+      title: 'Other Transparency Projects',
       links: ourProjects[0].children,
     },
     {

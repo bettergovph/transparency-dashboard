@@ -822,7 +822,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                       onClick={() => setActiveTab('results')}
                       className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
                         activeTab === 'results'
-                          ? 'border-b-2 border-blue-600 text-blue-600 -mb-[11px]'
+                          ? 'border-b-2 border-blue-600 text-blue-600'
                           : 'text-gray-600 hover:text-gray-900'
                       }`}
                     >
