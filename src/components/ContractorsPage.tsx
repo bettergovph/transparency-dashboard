@@ -107,7 +107,7 @@ const ContractorsPage = () => {
       </Helmet>
       <Navigation />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
+      <div className="w-auto lg:w-7xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Contractors Directory</h1>
           <p className="text-gray-600">
