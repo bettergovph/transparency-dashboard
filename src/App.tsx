@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-// import HomePage from './components/HomePage'
+import DataHighlights from './components/DataHighlights'
 import EnhancedSearchInterface from './components/EnhancedSearchInterface'
 import AwardeePage from './components/AwardeePage'
 import OrganizationPage from './components/OrganizationPage'
@@ -37,8 +37,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
-        <Route path="/" element={<EnhancedSearchInterface />} />
+        <Route path="/" element={<DataHighlights />} />
+        <Route path="/procurement" element={<EnhancedSearchInterface />} />
         <Route path="/bir" element={<BIRDashboard />} />
         <Route path="/treasury" element={<TreasuryOverview />} />
         <Route path="/treasury/year/:year" element={<TreasuryByYear />} />

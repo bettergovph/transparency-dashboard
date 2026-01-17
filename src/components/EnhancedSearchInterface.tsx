@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Search, Filter, FileText, TrendingUp, ChevronLeft, ChevronRight, X, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -28,6 +28,7 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   limit = 10000
 }) => {
   const location = useLocation()
+  const [searchParams] = useSearchParams()
   const isRootPath = location.pathname === '/'
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchDocument[]>([])
@@ -49,6 +50,14 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
   const [selectedAreas, setSelectedAreas] = useState<string[]>([])
   const [selectedAwardees, setSelectedAwardees] = useState<string[]>([])
   const [selectedOrganizations, setSelectedOrganizations] = useState<string[]>([])
+
+  // Set query from URL parameter on mount
+  useEffect(() => {
+    const urlQuery = searchParams.get('q')
+    if (urlQuery) {
+      setQuery(urlQuery)
+    }
+  }, [searchParams])
 
   // Fetch precomputed stats for categories, locations, and organizations
   useEffect(() => {
@@ -1229,47 +1238,18 @@ const EnhancedSearchInterface: React.FC<EnhancedSearchInterfaceProps> = ({
             </div>
           )}
 
-          {/* Welcome State */}
-          {isRootPath && !query && !loading && results.length === 0 && (
+          {/* Welcome State - No longer used for landing page */}
+          {!query && !loading && results.length === 0 && (
             <div className="text-center py-16">
               <div className="max-w-2xl mx-auto">
-                <div className="bg-linear-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-8">
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
                   <FileText className="h-16 w-16 text-blue-600 mx-auto mb-6" />
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Welcome to BetterGov's Transparency Dashboard
+                    Search Procurement Records
                   </h3>
                   <p className="text-gray-600 mb-6">
-                    Search through millions of government procurement and budget records. Find awarded contracts and procurement information by reference ID, company name,
-                    or any keyword.
+                    Use the search bar above to find government contracts, awards, and procurement information.
                   </p>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
-                    <div className="bg-white rounded-lg p-4">
-                      <Search className="h-6 w-6 text-blue-600 mb-2 mx-auto" />
-                      <p className="font-medium">Smart Search</p>
-                      <p className="text-gray-600">Find records across all fields</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4">
-                      <Filter className="h-6 w-6 text-green-600 mb-2 mx-auto" />
-                      <p className="font-medium">Advanced Filters</p>
-                      <p className="text-gray-600">Filter by category and date</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-4">
-                      <TrendingUp className="h-6 w-6 text-purple-600 mb-2 mx-auto" />
-                      <p className="font-medium">Fast Results</p>
-                      <p className="text-gray-600">Instant search with analytics</p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Data Disclaimer */}
-                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-left">
-                  <p className="font-semibold text-yellow-800 mb-2">⚠️ Data Disclaimer:</p>
-                  <ul className="text-gray-700 space-y-1">
-                    <li>• Data coverage period: <strong>2000-2025</strong></li>
-                    <li>• Data is subject to change and may contain inaccuracies</li>
-                    <li>• Some contracts may have duplicates; we've done our best to clean the data</li>
-                    <li>• This is an unofficial community resource for transparency and research purposes</li>
-                  </ul>
                 </div>
               </div>
             </div>
