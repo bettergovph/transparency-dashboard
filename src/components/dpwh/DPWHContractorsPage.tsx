@@ -140,7 +140,7 @@ const DPWHContractorsPage = () => {
       </Helmet>
       <Navigation />
 
-      <div className="max-w-7xl w-auto md:min-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
+      <div className="w-auto lg:w-7xl lg:max-w-7xl md:mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center gap-3 mb-2">
