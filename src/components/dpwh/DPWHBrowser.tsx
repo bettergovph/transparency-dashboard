@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table, MapPin as MapPinIcon, Users, Loader2 } from 'lucide-react'
+import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table, MapPin as MapPinIcon, Users, Loader2, ChevronDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Navigation from '../Navigation'
@@ -41,12 +41,13 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
 
   // Tabs
-  const [activeTab, setActiveTab] = useState<'results' | 'visualizations' | 'map' | 'contractors'>('results')
+  const [activeTab, setActiveTab] = useState<'results' | 'visualizations' | 'map' | 'contractors' | 'regions'>('results')
+  const [expandedRegions, setExpandedRegions] = useState<Set<string>>(new Set())
 
   // Aggregates for filters
   const [regions, setRegions] = useState<DPWHRegionAggregate[]>([])
   const [provinces, setProvinces] = useState<DPWHProvinceAggregate[]>([])
-  const [availableYears] = useState<number[]>([2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026])
+  const [availableYears] = useState<number[]>([2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026].reverse())
   const [availableStatuses] = useState<string[]>(['Completed', 'On-Going', 'For Procurement', 'Not Yet Started', 'Terminated'])
   const [availableCategories, setAvailableCategories] = useState<string[]>([])
 
@@ -66,7 +67,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     const urlProvinces = searchParams.get('provinces')
     const urlCategories = searchParams.get('categories')
     const urlStatuses = searchParams.get('statuses')
-    const urlView = searchParams.get('view') as 'results' | 'visualizations' | 'map' | 'contractors' | null
+    const urlView = searchParams.get('view') as 'results' | 'visualizations' | 'map' | 'contractors' | 'regions' | null
 
     if (urlQuery) setQuery(urlQuery)
     if (urlYears) setSelectedYears(urlYears.split(','))
@@ -74,7 +75,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     if (urlProvinces) setSelectedProvinces(urlProvinces.split(','))
     if (urlCategories) setSelectedCategories(urlCategories.split(','))
     if (urlStatuses) setSelectedStatuses(urlStatuses.split(','))
-    if (urlView && ['results', 'visualizations', 'map', 'contractors'].includes(urlView)) {
+    if (urlView && ['results', 'visualizations', 'map', 'contractors', 'regions'].includes(urlView)) {
       setActiveTab(urlView)
     }
 
@@ -435,6 +436,34 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
       .sort((a, b) => b.budget - a.budget)
       .slice(0, 10)
 
+    // Hierarchical Regions with Provinces (for Regions tab)
+    const regionHierarchy = Array.from(regionMap.entries())
+      .map(([region, regionData]) => {
+        // Get all provinces for this region
+        const provincesInRegion = results
+          .filter(p => p.location?.region === region)
+          .reduce((acc, p) => {
+            const province = p.location?.province || 'Unknown'
+            const existing = acc.get(province) || { count: 0, budget: 0 }
+            acc.set(province, {
+              count: existing.count + 1,
+              budget: existing.budget + (p.budget || 0)
+            })
+            return acc
+          }, new Map<string, { count: number; budget: number }>())
+        
+        const provinces = Array.from(provincesInRegion.entries())
+          .map(([province, data]) => ({ province, ...data }))
+          .sort((a, b) => b.budget - a.budget)
+
+        return {
+          region,
+          ...regionData,
+          provinces
+        }
+      })
+      .sort((a, b) => b.budget - a.budget)
+
     return {
       topRegions,
       topContractors,
@@ -442,7 +471,8 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
       topCategories,
       statusDistribution,
       yearDistribution,
-      topProvinces
+      topProvinces,
+      regionHierarchy
     }
   }, [results])
 
@@ -783,81 +813,209 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
           {/* Combined Tabs and Results Header */}
           {!loading && results.length > 0 && (
             <div className="bg-white rounded-lg shadow mb-3">
-              <div className="flex items-center justify-between border-b px-3 py-2">
-                {/* Left: Tabs */}
-                <div className="flex">
-                  <button
-                    onClick={() => setActiveTab('results')}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors ${
-                      activeTab === 'results'
-                        ? 'border-b-2 border-blue-600 text-blue-600 -mb-[1px]'
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <Table className="h-4 w-4" />
-                    Results
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('visualizations')}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors ${
-                      activeTab === 'visualizations'
-                        ? 'border-b-2 border-blue-600 text-blue-600 -mb-[1px]'
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <BarChart3 className="h-4 w-4" />
-                    Visualizations
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('map')}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors ${
-                      activeTab === 'map'
-                        ? 'border-b-2 border-blue-600 text-blue-600 -mb-[1px]'
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <MapPinIcon className="h-4 w-4" />
-                    Map
-                  </button>
-                  <button
-                    onClick={() => setActiveTab('contractors')}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors ${
-                      activeTab === 'contractors'
-                        ? 'border-b-2 border-blue-600 text-blue-600 -mb-[1px]'
-                        : 'text-gray-600 hover:text-gray-900'
-                    }`}
-                  >
-                    <Users className="h-4 w-4" />
-                    Contractors
-                  </button>
+              <div className="px-2 sm:px-3 py-2">
+                {/* Desktop: Single row with tabs and info */}
+                <div className="hidden lg:flex items-center justify-between border-b pb-2">
+                  {/* Left: Tabs */}
+                  <div className="flex gap-1">
+                    <button
+                      onClick={() => setActiveTab('results')}
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                        activeTab === 'results'
+                          ? 'border-b-2 border-blue-600 text-blue-600 -mb-[11px]'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      <Table className="h-4 w-4" />
+                      <span>Results</span>
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('visualizations')}
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                        activeTab === 'visualizations'
+                          ? 'border-b-2 border-blue-600 text-blue-600'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      <BarChart3 className="h-4 w-4" />
+                      <span>Charts</span>
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('map')}
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                        activeTab === 'map'
+                          ? 'border-b-2 border-blue-600 text-blue-600'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      <MapPinIcon className="h-4 w-4" />
+                      <span>Map</span>
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('contractors')}
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                        activeTab === 'contractors'
+                          ? 'border-b-2 border-blue-600 text-blue-600'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      <Users className="h-4 w-4" />
+                      <span>Contractors</span>
+                    </button>
+                    <button
+                      onClick={() => setActiveTab('regions')}
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors whitespace-nowrap ${
+                        activeTab === 'regions'
+                          ? 'border-b-2 border-blue-600 text-blue-600'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      <MapPinIcon className="h-4 w-4" />
+                      <span>Regions</span>
+                    </button>
+                  </div>
+
+                  {/* Right: Results info and downloads */}
+                  <div className="flex items-center gap-3">
+                    {/* Results limit notice */}
+                    {results.length >= 10000 && (
+                      <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 border border-yellow-200 rounded text-[10px] text-yellow-800">
+                        <span className="font-medium">⚠</span>
+                        <span>Results limited to 10,000. Refine filters.</span>
+                      </div>
+                    )}
+                    
+                    <div className="flex items-center gap-2 text-[10px] text-gray-600">
+                      <span><strong>{formatNumber(results.length)}</strong> projects</span>
+                      <span>•</span>
+                      <span><strong>{formatCurrency(totalBudget)}</strong></span>
+                      <span>•</span>
+                      <span><strong>{avgProgress.toFixed(1)}%</strong> avg</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={downloadJSON}
+                        className="text-[10px] h-6 px-2 gap-1"
+                      >
+                        <Download className="h-3 w-3" />
+                        <span>JSON</span>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={downloadCSV}
+                        className="text-[10px] h-6 px-2 gap-1"
+                      >
+                        <Download className="h-3 w-3" />
+                        <span>CSV</span>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
 
-                {/* Right: Results info and download buttons */}
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-2 text-[10px] text-gray-600">
-                    <span><strong>{formatNumber(results.length)}</strong> projects</span>
-                    <span><strong>{formatCurrency(totalBudget)}</strong></span>
-                    <span><strong>{avgProgress.toFixed(1)}%</strong> avg progress</span>
+                {/* Mobile/Tablet: Two rows */}
+                <div className="lg:hidden">
+                  {/* Tabs Row */}
+                  <div className="flex items-center justify-between border-b overflow-x-auto pb-2 -mx-2 px-2">
+                    <div className="flex gap-1 min-w-max">
+                      <button
+                        onClick={() => setActiveTab('results')}
+                        className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                          activeTab === 'results'
+                            ? 'border-b-2 border-blue-600 text-blue-600 -mb-[11px]'
+                            : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                      >
+                        <Table className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        <span className="hidden sm:inline">Results</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('visualizations')}
+                        className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                          activeTab === 'visualizations'
+                            ? 'border-b-2 border-blue-600 text-blue-600 -mb-[11px]'
+                            : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                      >
+                        <BarChart3 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        <span className="hidden sm:inline">Charts</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('map')}
+                        className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                          activeTab === 'map'
+                            ? 'border-b-2 border-blue-600 text-blue-600 -mb-[11px]'
+                            : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                      >
+                        <MapPinIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        <span className="hidden sm:inline">Map</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('contractors')}
+                        className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                          activeTab === 'contractors'
+                            ? 'border-b-2 border-blue-600 text-blue-600 -mb-[11px]'
+                            : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                      >
+                        <Users className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        <span className="hidden sm:inline">Contractors</span>
+                      </button>
+                      <button
+                        onClick={() => setActiveTab('regions')}
+                        className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium transition-colors whitespace-nowrap ${
+                          activeTab === 'regions'
+                            ? 'border-b-2 border-blue-600 text-blue-600 -mb-[11px]'
+                            : 'text-gray-600 hover:text-gray-900'
+                        }`}
+                      >
+                        <MapPinIcon className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                        <span className="hidden sm:inline">Regions</span>
+                      </button>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={downloadJSON}
-                      className="text-[10px] h-6 px-2 gap-1"
-                    >
-                      <Download className="h-3 w-3" />
-                      JSON
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={downloadCSV}
-                      className="text-[10px] h-6 px-2 gap-1"
-                    >
-                      <Download className="h-3 w-3" />
-                      CSV
-                    </Button>
+
+                  {/* Info Row */}
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-2">
+                    {/* Results limit notice */}
+                    {results.length >= 10000 && (
+                      <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 border border-yellow-200 rounded text-[10px] text-yellow-800">
+                        <span className="font-medium">⚠</span>
+                        <span>Results limited to 10,000 items only. <span className="hidden md:inline">Refine filters for complete data.</span></span>
+                      </div>
+                    )}
+
+                    {/* Results info and download buttons */}
+                    <div className="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 flex-1">
+                      <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] text-gray-600">
+                        <span><strong>{formatNumber(results.length)}</strong> <span className="hidden sm:inline">projects</span></span>
+                        <span className="hidden sm:inline">•</span>
+                        <span className="hidden md:inline"><strong>{formatCurrency(totalBudget)}</strong></span>
+                      </div>
+                      <div className="flex items-center gap-1 sm:gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={downloadJSON}
+                          className="text-[10px] h-6 px-1.5 sm:px-2 gap-0.5 sm:gap-1"
+                        >
+                          <Download className="h-3 w-3" />
+                          <span className="hidden sm:inline">JSON</span>
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={downloadCSV}
+                          className="text-[10px] h-6 px-1.5 sm:px-2 gap-0.5 sm:gap-1"
+                        >
+                          <Download className="h-3 w-3" />
+                          <span className="hidden sm:inline">CSV</span>
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1202,6 +1360,154 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                               </div>
                             </td>
                           </tr>
+                        )
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Regions Tab */}
+          {!loading && results.length > 0 && activeTab === 'regions' && aggregates && (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <div className="p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-xl font-bold text-gray-900">Regions & Provinces</h2>
+                  <div className="flex items-center gap-3">
+                    <button
+                      onClick={() => setExpandedRegions(new Set(aggregates.regionHierarchy.map(r => r.region)))}
+                      className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                    >
+                      Expand All
+                    </button>
+                    <button
+                      onClick={() => setExpandedRegions(new Set())}
+                      className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                    >
+                      Collapse All
+                    </button>
+                    <p className="text-sm text-gray-600">
+                      {aggregates.regionHierarchy.length} regions
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="overflow-x-auto">
+                  <table className="min-w-full text-xs">
+                    <thead className="bg-gray-50 sticky top-0">
+                      <tr>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          #
+                        </th>
+                        <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Region / Province
+                        </th>
+                        <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Projects
+                        </th>
+                        <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Total Budget
+                        </th>
+                        <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          Share
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white">
+                      {aggregates.regionHierarchy.map((region, regionIndex) => {
+                        const isExpanded = expandedRegions.has(region.region)
+                        const regionShare = (region.budget / totalBudget) * 100
+                        
+                        return (
+                          <React.Fragment key={region.region}>
+                            {/* Region Row */}
+                            <tr className="border-b border-gray-200 bg-blue-50 hover:bg-blue-100 transition-colors">
+                              <td className="px-4 py-3 whitespace-nowrap text-sm text-gray-500 font-medium">
+                                {regionIndex + 1}
+                              </td>
+                              <td className="px-4 py-3 text-sm">
+                                <button
+                                  onClick={() => {
+                                    const newExpanded = new Set(expandedRegions)
+                                    if (isExpanded) {
+                                      newExpanded.delete(region.region)
+                                    } else {
+                                      newExpanded.add(region.region)
+                                    }
+                                    setExpandedRegions(newExpanded)
+                                  }}
+                                  className="flex items-center gap-2 w-full text-left font-bold text-gray-900 hover:text-blue-600 transition-colors"
+                                >
+                                  {isExpanded ? (
+                                    <ChevronDown className="h-4 w-4 flex-shrink-0" />
+                                  ) : (
+                                    <ChevronRight className="h-4 w-4 flex-shrink-0" />
+                                  )}
+                                  <span>{region.region}</span>
+                                  <span className="text-xs text-gray-500 font-normal">({region.provinces.length} provinces)</span>
+                                </button>
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900 font-semibold">
+                                {formatNumber(region.count)}
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-bold text-gray-900">
+                                {formatCurrency(region.budget)}
+                              </td>
+                              <td className="px-4 py-3 whitespace-nowrap text-center text-sm">
+                                <div className="flex items-center justify-center gap-2">
+                                  <div className="w-20 bg-gray-200 rounded-full h-2">
+                                    <div 
+                                      className="bg-blue-600 h-2 rounded-full" 
+                                      style={{ width: `${Math.min(regionShare, 100)}%` }}
+                                    />
+                                  </div>
+                                  <span className="text-gray-700 font-medium">{regionShare.toFixed(2)}%</span>
+                                </div>
+                              </td>
+                            </tr>
+                            
+                            {/* Province Rows (only if expanded) */}
+                            {isExpanded && region.provinces.map((province, provinceIndex) => {
+                              const provinceShare = (province.budget / totalBudget) * 100
+                              
+                              return (
+                                <tr key={`${region.region}-${province.province}`} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                  <td className="px-4 py-2 whitespace-nowrap text-xs text-gray-400">
+                                    {regionIndex + 1}.{provinceIndex + 1}
+                                  </td>
+                                  <td className="px-4 py-2 text-sm">
+                                    <div className="flex items-center gap-2 pl-8">
+                                      <Link
+                                        to={`/dpwh/provinces/${encodeURIComponent(province.province)}`}
+                                        className="text-blue-600 hover:text-blue-800 hover:underline"
+                                      >
+                                        {province.province}
+                                      </Link>
+                                    </div>
+                                  </td>
+                                  <td className="px-4 py-2 whitespace-nowrap text-right text-sm text-gray-700">
+                                    {formatNumber(province.count)}
+                                  </td>
+                                  <td className="px-4 py-2 whitespace-nowrap text-right text-sm text-gray-900">
+                                    {formatCurrency(province.budget)}
+                                  </td>
+                                  <td className="px-4 py-2 whitespace-nowrap text-center text-sm">
+                                    <div className="flex items-center justify-center gap-2">
+                                      <div className="w-20 bg-gray-200 rounded-full h-2">
+                                        <div 
+                                          className="bg-green-500 h-2 rounded-full" 
+                                          style={{ width: `${Math.min(provinceShare, 100)}%` }}
+                                        />
+                                      </div>
+                                      <span className="text-gray-600">{provinceShare.toFixed(2)}%</span>
+                                    </div>
+                                  </td>
+                                </tr>
+                              )
+                            })}
+                          </React.Fragment>
                         )
                       })}
                     </tbody>
