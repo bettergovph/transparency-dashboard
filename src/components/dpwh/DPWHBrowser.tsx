@@ -775,8 +775,13 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                               {project.contractId}
                             </td>
                             <td className="px-3 py-2 text-xs text-gray-900 max-w-xs">
-                              <div className="truncate" title={project.description}>
+                              <div className="truncate group relative" title={project.description}>
                                 {project.description}
+                                <div className="hidden group-hover:block absolute z-50 left-0 top-full mt-1 w-96 max-w-screen-sm bg-gray-900 text-white text-xs rounded-lg shadow-lg p-3 pointer-events-none">
+                                  <div className="whitespace-normal break-words">
+                                    {project.description}
+                                  </div>
+                                </div>
                               </div>
                             </td>
                             <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-700">
