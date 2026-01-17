@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download } from 'lucide-react'
+import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import { dpwhIndex } from '@/lib/meilisearch'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from 'recharts'
 import type { DPWHProject, DPWHAggregateResponse, DPWHRegionAggregate, DPWHProvinceAggregate } from '@/types/dpwh'
 
 interface DPWHBrowserProps {
@@ -36,6 +37,9 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   // Sort
   const [tableSortField, setTableSortField] = useState<keyof DPWHProject | 'province' | 'year' | null>(null)
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
+
+  // Tabs
+  const [activeTab, setActiveTab] = useState<'results' | 'visualizations'>('results')
 
   // Aggregates for filters
   const [regions, setRegions] = useState<DPWHRegionAggregate[]>([])
@@ -325,6 +329,124 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   const avgProgress = results.length > 0
     ? results.reduce((sum, doc) => sum + (doc.progress || 0), 0) / results.length
     : 0
+
+  // Compute aggregates from search results for visualizations
+  const aggregates = useMemo(() => {
+    if (results.length === 0) return null
+
+    // Top Regions
+    const regionMap = new Map<string, { count: number; budget: number }>()
+    results.forEach(p => {
+      const region = p.location?.region || 'Unknown'
+      const existing = regionMap.get(region) || { count: 0, budget: 0 }
+      regionMap.set(region, {
+        count: existing.count + 1,
+        budget: existing.budget + (p.budget || 0)
+      })
+    })
+    const topRegions = Array.from(regionMap.entries())
+      .map(([region, data]) => ({ region, ...data }))
+      .sort((a, b) => b.budget - a.budget)
+      .slice(0, 10)
+
+    // Top Contractors
+    const contractorMap = new Map<string, { count: number; budget: number }>()
+    results.forEach(p => {
+      const contractor = p.contractor || 'Unknown'
+      const existing = contractorMap.get(contractor) || { count: 0, budget: 0 }
+      contractorMap.set(contractor, {
+        count: existing.count + 1,
+        budget: existing.budget + (p.budget || 0)
+      })
+    })
+    const topContractors = Array.from(contractorMap.entries())
+      .map(([contractor, data]) => ({ contractor, ...data }))
+      .sort((a, b) => b.budget - a.budget)
+      .slice(0, 10)
+
+    // Top Categories
+    const categoryMap = new Map<string, { count: number; budget: number }>()
+    results.forEach(p => {
+      const category = p.category || 'Unknown'
+      const existing = categoryMap.get(category) || { count: 0, budget: 0 }
+      categoryMap.set(category, {
+        count: existing.count + 1,
+        budget: existing.budget + (p.budget || 0)
+      })
+    })
+    const topCategories = Array.from(categoryMap.entries())
+      .map(([category, data]) => ({ category, ...data }))
+      .sort((a, b) => b.budget - a.budget)
+      .slice(0, 10)
+
+    // Status Distribution
+    const statusMap = new Map<string, { count: number; budget: number }>()
+    results.forEach(p => {
+      const status = p.status || 'Unknown'
+      const existing = statusMap.get(status) || { count: 0, budget: 0 }
+      statusMap.set(status, {
+        count: existing.count + 1,
+        budget: existing.budget + (p.budget || 0)
+      })
+    })
+    const statusDistribution = Array.from(statusMap.entries())
+      .map(([status, data]) => ({ status, ...data }))
+      .sort((a, b) => b.count - a.count)
+
+    // Year Distribution
+    const yearMap = new Map<string, { count: number; budget: number }>()
+    results.forEach(p => {
+      const year = String(p.infraYear || 'Unknown')
+      const existing = yearMap.get(year) || { count: 0, budget: 0 }
+      yearMap.set(year, {
+        count: existing.count + 1,
+        budget: existing.budget + (p.budget || 0)
+      })
+    })
+    const yearDistribution = Array.from(yearMap.entries())
+      .map(([year, data]) => ({ year, ...data }))
+      .sort((a, b) => a.year.localeCompare(b.year))
+
+    // Top Provinces
+    const provinceMap = new Map<string, { count: number; budget: number }>()
+    results.forEach(p => {
+      const province = p.location?.province || 'Unknown'
+      const existing = provinceMap.get(province) || { count: 0, budget: 0 }
+      provinceMap.set(province, {
+        count: existing.count + 1,
+        budget: existing.budget + (p.budget || 0)
+      })
+    })
+    const topProvinces = Array.from(provinceMap.entries())
+      .map(([province, data]) => ({ province, ...data }))
+      .sort((a, b) => b.budget - a.budget)
+      .slice(0, 10)
+
+    return {
+      topRegions,
+      topContractors,
+      topCategories,
+      statusDistribution,
+      yearDistribution,
+      topProvinces
+    }
+  }, [results])
+
+  const formatCompact = (num: number) => {
+    if (num >= 1e9) return `₱${(num / 1e9).toFixed(1)}B`
+    if (num >= 1e6) return `₱${(num / 1e6).toFixed(1)}M`
+    if (num >= 1e3) return `₱${(num / 1e3).toFixed(1)}K`
+    return formatCurrency(num)
+  }
+
+  const CHART_COLORS = ['#3b82f6', '#60a5fa', '#93c5fd', '#dbeafe', '#1e40af', '#1e3a8a', '#2563eb', '#3b82f6', '#60a5fa', '#93c5fd']
+  const STATUS_COLORS: Record<string, string> = {
+    'Completed': '#10b981',
+    'On-Going': '#3b82f6',
+    'For Procurement': '#f59e0b',
+    'Not Yet Started': '#6b7280',
+    'Terminated': '#ef4444'
+  }
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
@@ -651,45 +773,71 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
             )}
           </div>
 
-          {/* Results Table */}
+          {/* Combined Tabs and Results Header */}
           {!loading && results.length > 0 && (
-            <div className="space-y-3">
-              {/* Results header with count and download buttons */}
-              <div className="flex items-center justify-between bg-white rounded-lg shadow px-3 py-2">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-2">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3">
-                    <h2 className="text-base font-semibold text-black">
-                      Results {query && `for "${query}"`}
-                    </h2>
-                    <div className="flex items-center gap-2 text-[10px] text-gray-600 sm:border-l border-gray-300 sm:pl-3">
-                      <span><strong>{formatNumber(results.length)}</strong> projects</span>
-                      <span><strong>{formatCurrency(totalBudget)}</strong></span>
-                      <span><strong>{avgProgress.toFixed(1)}%</strong> avg progress</span>
-                    </div>
+            <div className="bg-white rounded-lg shadow mb-3">
+              <div className="flex items-center justify-between border-b px-3 py-2">
+                {/* Left: Tabs */}
+                <div className="flex">
+                  <button
+                    onClick={() => setActiveTab('results')}
+                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors ${
+                      activeTab === 'results'
+                        ? 'border-b-2 border-blue-600 text-blue-600 -mb-[1px]'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    <Table className="h-4 w-4" />
+                    Results
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('visualizations')}
+                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors ${
+                      activeTab === 'visualizations'
+                        ? 'border-b-2 border-blue-600 text-blue-600 -mb-[1px]'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    <BarChart3 className="h-4 w-4" />
+                    Visualizations
+                  </button>
+                </div>
+
+                {/* Right: Results info and download buttons */}
+                <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-2 text-[10px] text-gray-600">
+                    <span><strong>{formatNumber(results.length)}</strong> projects</span>
+                    <span><strong>{formatCurrency(totalBudget)}</strong></span>
+                    <span><strong>{avgProgress.toFixed(1)}%</strong> avg progress</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={downloadJSON}
+                      className="text-[10px] h-6 px-2 gap-1"
+                    >
+                      <Download className="h-3 w-3" />
+                      JSON
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={downloadCSV}
+                      className="text-[10px] h-6 px-2 gap-1"
+                    >
+                      <Download className="h-3 w-3" />
+                      CSV
+                    </Button>
                   </div>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={downloadJSON}
-                    className="text-[10px] h-6 px-2 gap-1"
-                  >
-                    <Download className="h-3 w-3" />
-                    JSON
-                  </Button>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={downloadCSV}
-                    className="text-[10px] h-6 px-2 gap-1"
-                  >
-                    <Download className="h-3 w-3" />
-                    CSV
-                  </Button>
-                </div>
               </div>
+            </div>
+          )}
 
+          {/* Results Table */}
+          {!loading && results.length > 0 && activeTab === 'results' && (
+            <div className="space-y-3">
               <div className="bg-white rounded-lg shadow overflow-hidden">
                 <div className="overflow-x-auto">
                   <div className="inline-block min-w-full align-middle">
@@ -909,6 +1057,158 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                       </Button>
                     </nav>
                   </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Visualizations Tab */}
+          {!loading && results.length > 0 && activeTab === 'visualizations' && aggregates && (
+            <div className="space-y-4">
+              {/* Summary Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
+                <div className="bg-white rounded-lg shadow-sm p-3">
+                  <p className="text-xs text-gray-600 mb-1">Total Projects</p>
+                  <p className="text-xl font-bold text-gray-900">{formatNumber(results.length)}</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-sm p-3">
+                  <p className="text-xs text-gray-600 mb-1">Total Budget</p>
+                  <p className="text-xl font-bold text-gray-900">{formatCompact(totalBudget)}</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-sm p-3">
+                  <p className="text-xs text-gray-600 mb-1">Avg Progress</p>
+                  <p className="text-xl font-bold text-gray-900">{avgProgress.toFixed(1)}%</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-sm p-3">
+                  <p className="text-xs text-gray-600 mb-1">Regions</p>
+                  <p className="text-xl font-bold text-gray-900">{aggregates.topRegions.length}</p>
+                </div>
+              </div>
+
+              {/* Status Distribution */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div className="bg-white rounded-lg shadow-sm p-4">
+                  <h3 className="text-base font-bold text-gray-900 mb-3">Status Distribution</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={aggregates.statusDistribution}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                      <XAxis dataKey="status" angle={-45} textAnchor="end" height={80} tick={{ fontSize: 11 }} />
+                      <YAxis tickFormatter={(value) => formatNumber(value)} tick={{ fontSize: 11 }} />
+                      <Tooltip formatter={(value: any) => formatNumber(value)} />
+                      <Bar dataKey="count" radius={[8, 8, 0, 0]}>
+                        {aggregates.statusDistribution.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={STATUS_COLORS[entry.status] || CHART_COLORS[index % CHART_COLORS.length]} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+
+                <div className="bg-white rounded-lg shadow-sm p-4">
+                  <h3 className="text-base font-bold text-gray-900 mb-3">Budget by Status</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <PieChart>
+                      <Pie
+                        data={aggregates.statusDistribution}
+                        dataKey="budget"
+                        nameKey="status"
+                        cx="50%"
+                        cy="50%"
+                        outerRadius={100}
+                        label={(entry: any) => `${entry.status}: ${formatCompact(entry.budget)}`}
+                        labelLine={{ stroke: '#94a3b8', strokeWidth: 1 }}
+                      >
+                        {aggregates.statusDistribution.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={STATUS_COLORS[entry.status] || CHART_COLORS[index % CHART_COLORS.length]} />
+                        ))}
+                      </Pie>
+                      <Tooltip formatter={(value: any) => formatCurrency(value)} />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+
+              {/* Top Regions */}
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h3 className="text-base font-bold text-gray-900 mb-3">Top 10 Regions by Budget</h3>
+                <ResponsiveContainer width="100%" height={350}>
+                  <BarChart data={aggregates.topRegions}>
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                    <XAxis dataKey="region" angle={-45} textAnchor="end" height={120} tick={{ fontSize: 11 }} />
+                    <YAxis tickFormatter={(value) => formatCompact(value)} tick={{ fontSize: 11 }} />
+                    <Tooltip formatter={(value: any) => formatCurrency(value)} />
+                    <Bar dataKey="budget" radius={[8, 8, 0, 0]}>
+                      {aggregates.topRegions.map((_, index) => (
+                        <Cell key={`cell-${index}`} fill={CHART_COLORS[index % CHART_COLORS.length]} />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Top Contractors */}
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h3 className="text-base font-bold text-gray-900 mb-3">Top 10 Contractors by Budget</h3>
+                <ResponsiveContainer width="100%" height={350}>
+                  <BarChart data={aggregates.topContractors} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                    <XAxis type="number" tickFormatter={(value) => formatCompact(value)} tick={{ fontSize: 11 }} />
+                    <YAxis dataKey="contractor" type="category" width={200} tick={{ fontSize: 11 }} />
+                    <Tooltip formatter={(value: any) => formatCurrency(value)} />
+                    <Bar dataKey="budget" fill="#3b82f6" radius={[0, 8, 8, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Top Categories */}
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h3 className="text-base font-bold text-gray-900 mb-3">Top 10 Categories by Budget</h3>
+                <ResponsiveContainer width="100%" height={350}>
+                  <BarChart data={aggregates.topCategories} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                    <XAxis type="number" tickFormatter={(value) => formatCompact(value)} tick={{ fontSize: 11 }} />
+                    <YAxis dataKey="category" type="category" width={200} tick={{ fontSize: 11 }} />
+                    <Tooltip formatter={(value: any) => formatCurrency(value)} />
+                    <Bar dataKey="budget" fill="#3b82f6" radius={[0, 8, 8, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Top Provinces */}
+              <div className="bg-white rounded-lg shadow-sm p-4">
+                <h3 className="text-base font-bold text-gray-900 mb-3">Top 10 Provinces by Budget</h3>
+                <ResponsiveContainer width="100%" height={350}>
+                  <BarChart data={aggregates.topProvinces} layout="vertical">
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                    <XAxis type="number" tickFormatter={(value) => formatCompact(value)} tick={{ fontSize: 11 }} />
+                    <YAxis dataKey="province" type="category" width={150} tick={{ fontSize: 11 }} />
+                    <Tooltip formatter={(value: any) => formatCurrency(value)} />
+                    <Bar dataKey="budget" fill="#3b82f6" radius={[0, 8, 8, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+
+              {/* Year Distribution */}
+              {aggregates.yearDistribution.length > 1 && (
+                <div className="bg-white rounded-lg shadow-sm p-4">
+                  <h3 className="text-base font-bold text-gray-900 mb-3">Projects and Budget by Year</h3>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <BarChart data={aggregates.yearDistribution}>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                      <XAxis dataKey="year" tick={{ fontSize: 11 }} />
+                      <YAxis yAxisId="left" tickFormatter={(value) => formatNumber(value)} tick={{ fontSize: 11 }} />
+                      <YAxis yAxisId="right" orientation="right" tickFormatter={(value) => formatCompact(value)} tick={{ fontSize: 11 }} />
+                      <Tooltip 
+                        formatter={(value: any, name: string) => {
+                          if (name === 'count') return [formatNumber(value), 'Projects']
+                          if (name === 'budget') return [formatCurrency(value), 'Budget']
+                          return value
+                        }}
+                      />
+                      <Bar yAxisId="left" dataKey="count" fill="#3b82f6" radius={[8, 8, 0, 0]} name="Projects" />
+                      <Bar yAxisId="right" dataKey="budget" fill="#60a5fa" radius={[8, 8, 0, 0]} name="Budget" />
+                    </BarChart>
+                  </ResponsiveContainer>
                 </div>
               )}
             </div>
