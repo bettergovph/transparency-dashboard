@@ -65,6 +65,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     const urlProvinces = searchParams.get('provinces')
     const urlCategories = searchParams.get('categories')
     const urlStatuses = searchParams.get('statuses')
+    const urlView = searchParams.get('view') as 'results' | 'visualizations' | 'map' | null
 
     if (urlQuery) setQuery(urlQuery)
     if (urlYears) setSelectedYears(urlYears.split(','))
@@ -72,6 +73,9 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     if (urlProvinces) setSelectedProvinces(urlProvinces.split(','))
     if (urlCategories) setSelectedCategories(urlCategories.split(','))
     if (urlStatuses) setSelectedStatuses(urlStatuses.split(','))
+    if (urlView && ['results', 'visualizations', 'map'].includes(urlView)) {
+      setActiveTab(urlView)
+    }
 
     // Then apply prop-based filters (for filtered views)
     if (filterType && filterValue) {
@@ -93,7 +97,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     }
   }, [filterType, filterValue])
 
-  // Update URL when filters change
+  // Update URL when filters or view mode change
   useEffect(() => {
     const params = new URLSearchParams()
     
@@ -103,9 +107,10 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     if (selectedProvinces.length > 0) params.set('provinces', selectedProvinces.join(','))
     if (selectedCategories.length > 0) params.set('categories', selectedCategories.join(','))
     if (selectedStatuses.length > 0) params.set('statuses', selectedStatuses.join(','))
+    if (activeTab !== 'results') params.set('view', activeTab) // Only add if not default
 
     setSearchParams(params, { replace: true })
-  }, [query, selectedYears, selectedRegions, selectedProvinces, selectedCategories, selectedStatuses])
+  }, [query, selectedYears, selectedRegions, selectedProvinces, selectedCategories, selectedStatuses, activeTab])
 
   const loadAggregates = async () => {
     try {
