@@ -161,7 +161,10 @@ const MapView = ({ projects }: MapViewProps) => {
         map.fitBounds([
           [bounds.minLat, bounds.minLng],
           [bounds.maxLat, bounds.maxLng]
-        ], { padding: [50, 50] })
+        ], { 
+          padding: [50, 50],
+          maxZoom: 12 // Limit max zoom to keep pins visible
+        })
       }
     }, [map, bounds])
     
@@ -238,7 +241,8 @@ const MapView = ({ projects }: MapViewProps) => {
         <MapContainer
           key={mapKey}
           center={mapCenter}
-          zoom={6}
+          zoom={7}
+          scrollWheelZoom={true}
           style={{ height: '100%', width: '100%' }}
           className="z-0"
         >
@@ -270,7 +274,7 @@ const MapView = ({ projects }: MapViewProps) => {
                     <p className="text-xs text-gray-900 mb-2 line-clamp-3">
                       {project.description}
                     </p>
-                    <div className="space-y-1 text-xs">
+                    <div className="space-y-1 text-xs mb-3">
                       <div className="flex justify-between">
                         <span className="text-gray-600">Budget:</span>
                         <span className="font-semibold">{formatCurrency(project.budget)}</span>
@@ -295,6 +299,12 @@ const MapView = ({ projects }: MapViewProps) => {
                         <p className="text-gray-900">{project.location.province}, {project.location.region}</p>
                       </div>
                     </div>
+                    <Link
+                      to={`/dpwh/projects/${project.contractId}`}
+                      className="block w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-medium py-2 px-4 rounded transition-colors"
+                    >
+                      View Details
+                    </Link>
                   </div>
                 </Popup>
               </Marker>
@@ -393,48 +403,7 @@ const MapView = ({ projects }: MapViewProps) => {
           </div>
         </div>
         </div>
-      )}
-
-      {/* Map Integration Guide - Only show when not in fullscreen */}
-      {!isFullscreen && (
-      <div className="border-t border-gray-200 bg-gray-50 px-4 py-3">
-        <details className="text-xs text-gray-600">
-          <summary className="cursor-pointer font-medium text-gray-900 hover:text-gray-700">
-            Developer Guide: Integrating Real Map
-          </summary>
-          <div className="mt-3 space-y-2 text-xs">
-            <p className="font-semibold text-gray-900">Recommended: Mapbox GL JS with Supercluster</p>
-            <pre className="bg-gray-900 text-gray-100 p-3 rounded overflow-x-auto">
-{`npm install mapbox-gl react-map-gl supercluster
-
-// Example implementation:
-import Map, { Marker, Popup } from 'react-map-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
-
-<Map
-  mapboxAccessToken={YOUR_TOKEN}
-  initialViewState={{
-    longitude: ${mapCenter[1]},
-    latitude: ${mapCenter[0]},
-    zoom: 6
-  }}
-  style={{ width: '100%', height: 600 }}
-  mapStyle="mapbox://styles/mapbox/streets-v12"
->
-  {displayedProjects.map(project => (
-    <Marker
-      key={project.contractId}
-      longitude={project.longitude}
-      latitude={project.latitude}
-      color={getStatusColor(project.status)}
-    />
-  ))}
-</Map>`}
-            </pre>
-          </div>
-        </details>
-      </div>
-      )}
+      )}    
     </div>
     </>
   )
