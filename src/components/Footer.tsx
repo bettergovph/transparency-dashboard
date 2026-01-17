@@ -6,13 +6,13 @@ export const ourProjects = [
     href: '#',
     children: [
       {
-        label: '2026 Budget Tracker',
+        label: '2026 GAA Budget Report',
         href: 'https://2026-budget.bettergov.ph',
         target: '_blank',
       },
       {
-        label: 'Budget Tracker',
-        href: 'https://budget.bettergov.ph',
+        label: 'Bisto.ph - Report Projects',
+        href: 'https://bisto.ph',
         target: '_blank',
       },
       {
@@ -173,13 +173,7 @@ const Footer = () => {
                 className='text-gray-400 hover:text-white text-sm transition-colors'
               >
                 Contribute at GitHub
-              </Link>
-              <Link
-                to='/sitemap'
-                className='text-gray-400 hover:text-white text-sm transition-colors'
-              >
-                Sitemap
-              </Link>
+              </Link>           
             </div>
           </div>
         </div>
