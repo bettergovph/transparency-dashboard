@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table } from 'lucide-react'
+import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table, MapPin as MapPinIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Navigation from '../Navigation'
@@ -9,6 +9,7 @@ import Footer from '../Footer'
 import { dpwhIndex } from '@/lib/meilisearch'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie } from 'recharts'
 import type { DPWHProject, DPWHAggregateResponse, DPWHRegionAggregate, DPWHProvinceAggregate } from '@/types/dpwh'
+import MapView from './DPWHMapView'
 
 interface DPWHBrowserProps {
   filterType?: 'category' | 'region' | 'province' | 'contractor'
@@ -39,7 +40,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   const [tableSortDirection, setTableSortDirection] = useState<'asc' | 'desc'>('asc')
 
   // Tabs
-  const [activeTab, setActiveTab] = useState<'results' | 'visualizations'>('results')
+  const [activeTab, setActiveTab] = useState<'results' | 'visualizations' | 'map'>('results')
 
   // Aggregates for filters
   const [regions, setRegions] = useState<DPWHRegionAggregate[]>([])
@@ -801,6 +802,17 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                     <BarChart3 className="h-4 w-4" />
                     Visualizations
                   </button>
+                  <button
+                    onClick={() => setActiveTab('map')}
+                    className={`flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors ${
+                      activeTab === 'map'
+                        ? 'border-b-2 border-blue-600 text-blue-600 -mb-[1px]'
+                        : 'text-gray-600 hover:text-gray-900'
+                    }`}
+                  >
+                    <MapPinIcon className="h-4 w-4" />
+                    Map
+                  </button>
                 </div>
 
                 {/* Right: Results info and download buttons */}
@@ -1231,6 +1243,13 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                   Try adjusting your search terms or filters.
                 </p>
               </div>
+            </div>
+          )}
+
+          {/* Map Tab */}
+          {!loading && results.length > 0 && activeTab === 'map' && (
+            <div className="bg-white rounded-lg shadow overflow-hidden">
+              <MapView projects={results} />
             </div>
           )}
 
