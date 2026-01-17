@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table, MapPin as MapPinIcon, Users } from 'lucide-react'
+import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table, MapPin as MapPinIcon, Users, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Navigation from '../Navigation'
@@ -22,6 +22,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<DPWHProject[]>([])
   const [loading, setLoading] = useState(false)
+  const [isSearching, setIsSearching] = useState(false)
   const [showFilters, setShowFilters] = useState(true)
 
   // Filter states
@@ -132,13 +133,18 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
     }
   }
 
-  // Perform search with filters
+  // Perform search with filters (debounced)
   useEffect(() => {
+    // Show searching indicator immediately
+    setIsSearching(true)
+    
     const delayDebounceFn = setTimeout(() => {
       performSearch()
-    }, 300)
+    }, 500) // 500ms debounce
 
-    return () => clearTimeout(delayDebounceFn)
+    return () => {
+      clearTimeout(delayDebounceFn)
+    }
   }, [query, selectedYears, selectedRegions, selectedProvinces, selectedCategories, selectedStatuses])
 
   useEffect(() => {
@@ -162,6 +168,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
       setResults([])
     } finally {
       setLoading(false)
+      setIsSearching(false)
     }
   }
 
@@ -547,7 +554,11 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
             <div className="flex items-center gap-2 mb-2">
               <div className="relative flex-1">
                 <div className="absolute inset-y-0 left-0 pl-2 flex items-center pointer-events-none z-10">
-                  <Search className="h-3 w-3 text-gray-400" />
+                  {isSearching && !loading ? (
+                    <Loader2 className="h-3 w-3 text-blue-600 animate-spin" />
+                  ) : (
+                    <Search className="h-3 w-3 text-gray-400" />
+                  )}
                 </div>
                 <Input
                   type="text"
@@ -558,6 +569,11 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                   className="pl-8! pr-2 py-1.5 text-xs border border-gray-800 rounded focus:border-black focus:ring-1 focus:ring-black"
                   style={{ paddingLeft: '2rem' }}
                 />
+                {isSearching && !loading && (
+                  <div className="absolute inset-y-0 right-0 pr-2 flex items-center pointer-events-none">
+                    <span className="text-[10px] text-gray-500 italic">searching...</span>
+                  </div>
+                )}
               </div>
             </div>
 
