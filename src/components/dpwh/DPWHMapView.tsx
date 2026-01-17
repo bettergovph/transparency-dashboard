@@ -188,11 +188,12 @@ const MapView = ({ projects }: MapViewProps) => {
       {isFullscreen && <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleFullscreen} />}
       <div className={`${isFullscreen ? 'fixed top-16 left-0 right-0 bottom-0 z-50 bg-white' : 'relative'}`}>
       {/* Info Banner */}
-      <div className="bg-blue-50 border-b border-blue-200 px-4 py-3 flex items-center justify-between">
-        <div className="flex items-start gap-4 flex-1">
-          <div className="flex items-start gap-2 flex-1">
+      <div className="bg-blue-50 border-b border-blue-200 px-4 py-3">
+        <div className="flex items-center justify-center gap-4 flex-wrap">
+          {/* Left: Project Info */}
+          <div className="flex items-start gap-2 flex-1 min-w-0">
             <AlertCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
-            <div className="text-sm">
+            <div className="text-sm min-w-0">
               <p className="font-medium text-blue-900">
                 Showing {displayedProjects.length.toLocaleString()} of {projectsWithCoords.length.toLocaleString()} projects with location data
               </p>
@@ -206,34 +207,38 @@ const MapView = ({ projects }: MapViewProps) => {
               </p>
             </div>
           </div>
-          {displayedProjects.length < projectsWithCoords.length && (
-            <button
-              onClick={handleIncreaseLimit}
-              className="px-3 py-1.5 bg-blue-600 text-white text-xs font-medium rounded hover:bg-blue-700 transition-colors flex-shrink-0"
-            >
-              Show {Math.min(1000, projectsWithCoords.length - displayedProjects.length)} More
-            </button>
-          )}
+          
+          {/* Center: Fullscreen Toggle Button */}
+          <button
+            onClick={toggleFullscreen}
+            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm transition-all flex items-center gap-2 flex-shrink-0"
+            title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+          >
+            {isFullscreen ? (
+              <>
+                <Minimize2 className="h-4 w-4" />
+                <span className="text-sm">Exit Fullscreen</span>
+              </>
+            ) : (
+              <>
+                <Maximize2 className="h-4 w-4" />
+                <span className="text-sm">Fullscreen Map</span>
+              </>
+            )}
+          </button>
+
+          {/* Right: Show More Button */}
+          <div className="flex-1 flex justify-end min-w-0">
+            {displayedProjects.length < projectsWithCoords.length && (
+              <button
+                onClick={handleIncreaseLimit}
+                className="px-4 py-2 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 text-sm font-medium rounded-lg transition-colors flex-shrink-0"
+              >
+                Show {Math.min(1000, projectsWithCoords.length - displayedProjects.length)} More
+              </button>
+            )}
+          </div>
         </div>
-        
-        {/* Fullscreen Toggle Button */}
-        <button
-          onClick={toggleFullscreen}
-          className="ml-4 p-2 hover:bg-blue-100 rounded-lg transition-colors flex items-center gap-2 text-blue-900 flex-shrink-0"
-          title={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
-        >
-          {isFullscreen ? (
-            <>
-              <Minimize2 className="h-5 w-5" />
-              <span className="text-xs font-medium hidden sm:inline">Exit Fullscreen</span>
-            </>
-          ) : (
-            <>
-              <Maximize2 className="h-5 w-5" />
-              <span className="text-xs font-medium hidden sm:inline">Fullscreen</span>
-            </>
-          )}
-        </button>
       </div>
 
       {/* Map Container */}
@@ -255,7 +260,7 @@ const MapView = ({ projects }: MapViewProps) => {
           {/* Render markers with clustering */}
           <MarkerClusterGroup
             chunkedLoading
-            maxClusterRadius={50}
+            maxClusterRadius={2}
           >
             {displayedProjects.map((project) => (
               <Marker
