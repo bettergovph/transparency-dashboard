@@ -1,12 +1,203 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Search } from 'lucide-react'
+import { Search, Loader2, FileText, Building2, HardHat, Users, MapPin } from 'lucide-react'
 import Navigation from './Navigation'
 import Footer from './Footer'
+import { searchIndex, budgetIndex, dpwhIndex, awardeesIndex, areasIndex, organizationsIndex } from '@/lib/meilisearch'
+
+interface SearchResult {
+  type: 'procurement' | 'budget' | 'dpwh' | 'awardee' | 'area' | 'organization'
+  title: string
+  subtitle?: string
+  link: string
+}
 
 const DataHighlights = () => {
   const [searchQuery, setSearchQuery] = useState('')
+  const [isSearching, setIsSearching] = useState(false)
+  const [showDropdown, setShowDropdown] = useState(false)
+  const [previewResults, setPreviewResults] = useState<SearchResult[]>([])
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const searchRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const navigate = useNavigate()
+
+  // Convert name to URL slug
+  const toSlug = (text: string): string => {
+    return text
+      .toLowerCase()
+    //   .replace(/[^a-z0-9\s-]/g, '') // Remove special chars
+    //   .replace(/\s+/g, '-')         // Replace spaces with hyphens
+    //   .replace(/-+/g, '-')          // Replace multiple hyphens with single
+    //   .trim()
+    //   .replace(/^-+|-+$/g, '')      // Remove leading/trailing hyphens
+  }
+
+  // Click outside handler
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
+        setShowDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  // Fetch preview results as user types
+  useEffect(() => {
+    const fetchPreviewResults = async () => {
+      if (!searchQuery.trim()) {
+        setPreviewResults([])
+        setShowDropdown(false)
+        return
+      }
+
+      setIsSearching(true)
+
+      try {
+        const [procurementResults, budgetResults, dpwhResults, awardeeResults, areaResults, organizationResults] = await Promise.all([
+          searchIndex.search(searchQuery.trim(), { limit: 2 }),
+          budgetIndex.search(searchQuery.trim(), { limit: 2 }),
+          dpwhIndex.search(searchQuery.trim(), { limit: 2 }),
+          awardeesIndex.search(searchQuery.trim(), { limit: 2 }),
+          areasIndex.search(searchQuery.trim(), { limit: 2 }),
+          organizationsIndex.search(searchQuery.trim(), { limit: 2 })
+        ])
+
+        const results: SearchResult[] = []
+
+        // Add procurement results
+        procurementResults.hits.slice(0, 2).forEach((hit: any) => {
+          results.push({
+            type: 'procurement',
+            title: hit.award_title || hit.awardee_name || 'Untitled',
+            subtitle: hit.organization_name || hit.awardee_name,
+            link: `/procurement?q=${encodeURIComponent(searchQuery.trim())}`
+          })
+        })
+
+        // Add awardee/contractor results
+        awardeeResults.hits.slice(0, 2).forEach((hit: any) => {
+          const awardee_name = hit.awardee_name || 'Contractor'
+          results.push({
+            type: 'awardee',
+            title: awardee_name,
+            subtitle: `${hit.count || 0} contracts • ₱${(hit.total || 0).toLocaleString()}`,
+            link: `/awardees/${toSlug(awardee_name)}`
+          })
+        })
+
+        // Add area/location results
+        areaResults.hits.slice(0, 2).forEach((hit: any) => {
+          const area = hit.area_of_delivery || 'Location'
+          results.push({
+            type: 'area',
+            title: area,
+            subtitle: `${hit.count || 0} contracts • ₱${(hit.total || 0).toLocaleString()}`,
+            link: `/locations/${toSlug(area)}`
+          })
+        })
+
+        // Add organization results
+        organizationResults.hits.slice(0, 2).forEach((hit: any) => {
+          const org_name = hit.organization_name || 'Organization'
+          results.push({
+            type: 'organization',
+            title: org_name,
+            subtitle: `${hit.count || 0} contracts • ₱${(hit.total || 0).toLocaleString()}`,
+            link: `/organizations/${toSlug(org_name)}`
+          })
+        })
+
+        // Add budget results
+        budgetResults.hits.slice(0, 2).forEach((hit: any) => {
+          results.push({
+            type: 'budget',
+            title: hit.dsc || hit.uacs_agy_dsc || 'Budget Item',
+            subtitle: hit.uacs_dpt_dsc || 'Department',
+            link: `/budget/search?q=${encodeURIComponent(searchQuery.trim())}`
+          })
+        })
+
+        // Add DPWH results
+        dpwhResults.hits.slice(0, 2).forEach((hit: any) => {
+          results.push({
+            type: 'dpwh',
+            title: hit.description || 'Infrastructure Project',
+            subtitle: hit.location?.province || hit.location?.region || 'Location',
+            link: `/dpwh?q=${encodeURIComponent(searchQuery.trim())}`
+          })
+        })
+
+        setPreviewResults(results)
+        setShowDropdown(results.length > 0)
+        setSelectedIndex(0)
+      } catch (error) {
+        console.error('Preview search error:', error)
+        setPreviewResults([])
+      } finally {
+        setIsSearching(false)
+      }
+    }
+
+    const debounceTimer = setTimeout(fetchPreviewResults, 300)
+    return () => clearTimeout(debounceTimer)
+  }, [searchQuery])
+
+  // Keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showDropdown || previewResults.length === 0) return
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault()
+      setSelectedIndex((prev) => (prev + 1) % previewResults.length)
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault()
+      setSelectedIndex((prev) => (prev - 1 + previewResults.length) % previewResults.length)
+    } else if (e.key === 'Enter' && selectedIndex >= 0) {
+      e.preventDefault()
+      navigate(previewResults[selectedIndex].link)
+      setShowDropdown(false)
+    } else if (e.key === 'Escape') {
+      setShowDropdown(false)
+    }
+  }
+
+  const getIcon = (type: 'procurement' | 'budget' | 'dpwh' | 'awardee' | 'area' | 'organization') => {
+    switch (type) {
+      case 'procurement':
+        return <FileText className="h-4 w-4 text-blue-500" />
+      case 'awardee':
+        return <Users className="h-4 w-4 text-blue-600" />
+      case 'area':
+        return <MapPin className="h-4 w-4 text-blue-400" />
+      case 'organization':
+        return <Building2 className="h-4 w-4 text-blue-700" />
+      case 'budget':
+        return <Building2 className="h-4 w-4 text-purple-500" />
+      case 'dpwh':
+        return <HardHat className="h-4 w-4 text-orange-500" />
+    }
+  }
+
+  const getTypeLabel = (type: 'procurement' | 'budget' | 'dpwh' | 'awardee' | 'area' | 'organization') => {
+    switch (type) {
+      case 'procurement':
+        return 'Procurement'
+      case 'awardee':
+        return 'Contractor'
+      case 'area':
+        return 'Location'
+      case 'organization':
+        return 'Organization'
+      case 'budget':
+        return 'Budget'
+      case 'dpwh':
+        return 'Infrastructure'
+    }
+  }
 
   const datasets = [
     {
@@ -46,11 +237,41 @@ const DataHighlights = () => {
     tax: '₱11.4T'
   }
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (searchQuery.trim()) {
-      // Navigate to procurement search with query
+    if (!searchQuery.trim()) return
+
+    setIsSearching(true)
+    
+    try {
+      // Search across all indices simultaneously
+      const [procurementResults, budgetResults, dpwhResults] = await Promise.all([
+        searchIndex.search(searchQuery.trim(), { limit: 5 }),
+        budgetIndex.search(searchQuery.trim(), { limit: 5 }),
+        dpwhIndex.search(searchQuery.trim(), { limit: 5 })
+      ])
+
+      // Determine which index has the most results
+      const resultCounts = {
+        procurement: procurementResults.estimatedTotalHits || 0,
+        budget: budgetResults.estimatedTotalHits || 0,
+        dpwh: dpwhResults.estimatedTotalHits || 0
+      }
+
+      // Navigate to the index with most results
+      if (resultCounts.procurement >= resultCounts.budget && resultCounts.procurement >= resultCounts.dpwh) {
+        navigate(`/procurement?q=${encodeURIComponent(searchQuery.trim())}`)
+      } else if (resultCounts.budget >= resultCounts.dpwh) {
+        navigate(`/budget/search?q=${encodeURIComponent(searchQuery.trim())}`)
+      } else {
+        navigate(`/dpwh?q=${encodeURIComponent(searchQuery.trim())}`)
+      }
+    } catch (error) {
+      console.error('Search error:', error)
+      // Fallback to procurement search
       navigate(`/procurement?q=${encodeURIComponent(searchQuery.trim())}`)
+    } finally {
+      setIsSearching(false)
     }
   }
 
@@ -72,18 +293,73 @@ const DataHighlights = () => {
             
             {/* Search Box */}
             <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
-              <div className="relative">
+              <div ref={searchRef} className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Search className="h-5 w-5 text-gray-400" />
+                  {isSearching ? (
+                    <Loader2 className="h-5 w-5 text-gray-400 animate-spin" />
+                  ) : (
+                    <Search className="h-5 w-5 text-gray-400" />
+                  )}
                 </div>
                 <input
+                  ref={inputRef}
                   type="text"
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search procurement records, contracts, companies..."
+                  onKeyDown={handleKeyDown}
+                  onFocus={() => previewResults.length > 0 && setShowDropdown(true)}
+                  placeholder="Search across all datasets - procurement, budget, infrastructure..."
+                  autoComplete="off"
                   className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-base"
                 />
+
+                {/* Dropdown Results */}
+                {showDropdown && previewResults.length > 0 && (
+                  <div className="absolute z-50 w-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 max-h-96 overflow-y-auto text-left">
+                    <div className="p-2">
+                      {previewResults.map((result, index) => (
+                        <Link
+                          key={index}
+                          to={result.link}
+                          onClick={() => setShowDropdown(false)}
+                          className={`flex items-start gap-3 p-3 rounded-lg transition-colors ${
+                            index === selectedIndex
+                              ? 'bg-blue-50'
+                              : 'hover:bg-gray-50'
+                          }`}
+                        >
+                          <div className="flex-shrink-0 mt-0.5">
+                            {getIcon(result.type)}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-xs font-medium text-gray-500">
+                                {getTypeLabel(result.type)}
+                              </span>
+                            </div>
+                            <p className="text-sm font-medium text-gray-900 truncate">
+                              {result.title}
+                            </p>
+                            {result.subtitle && (
+                              <p className="text-xs text-gray-500 truncate">
+                                {result.subtitle}
+                              </p>
+                            )}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                    <div className="border-t border-gray-200 p-3 bg-gray-50">
+                      <p className="text-xs text-gray-600 text-center">
+                        Press <kbd className="px-1.5 py-0.5 text-xs font-semibold text-gray-800 bg-white border border-gray-200 rounded">Enter</kbd> to see all results
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
+              <p className="text-xs text-gray-500 mt-2">
+                Press Enter to search across procurement, budget, and infrastructure records
+              </p>
             </form>
           </div>
 
@@ -152,7 +428,6 @@ const DataHighlights = () => {
           <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm">
             <p className="font-semibold text-yellow-800 mb-2">⚠️ Data Disclaimer:</p>
             <ul className="text-gray-700 space-y-1">
-              <li>• Data coverage period: <strong>2000-2025</strong></li>
               <li>• Data is subject to change and may contain inaccuracies</li>
               <li>• Some contracts may have duplicates; we've done our best to clean the data</li>
               <li>• This is an unofficial community resource for transparency and research purposes</li>
