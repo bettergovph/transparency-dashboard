@@ -38,6 +38,7 @@ const Navigation = () => {
 
   const dpwhItems = [
     { path: '/dpwh', label: 'Browse Projects', icon: TrendingUp },
+    { path: '/dpwh/overview', label: 'Overview', icon: Building2 },    
     // { path: '/dpwh/categories', label: 'Categories', icon: Grid3x3 },
     // { path: '/dpwh/regions', label: 'Regions', icon: MapPin },
     // { path: '/dpwh/provinces', label: 'Provinces', icon: Building2 },
