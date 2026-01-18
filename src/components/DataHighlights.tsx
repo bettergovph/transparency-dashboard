@@ -231,7 +231,7 @@ const DataHighlights = () => {
   ]
 
   const totalValue = {
-    procurement: '₱2.5T+',
+    procurement: '₱16T+',
     budget: '₱31.4T',
     infrastructure: '₱6.4T',
     tax: '₱11.4T'

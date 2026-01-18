@@ -1,0 +1,187 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Transparency Dashboard Collections Schema",
+  "description": "Complete schema definition for all collections used in the Transparency Dashboard. Optimized for TypeScript types and Cosmos Ignite scaffolding.",
+  "version": "2.0.0",
+  "collections": [
+    {
+      "collection": "philgeps",
+      "description": "PhilGEPS government procurement contracts and awards",
+      "objectName": "ProcurementContract",
+      "recordCount": "~2.5M",
+      "schema": {
+        "id": "string",
+        "reference_id": "string",
+        "contract_no": "string",
+        "award_title": "string",
+        "notice_title": "string",
+        "awardee_name": "string",
+        "organization_name": "string",
+        "area_of_delivery": "string",
+        "business_category": "string",
+        "contract_amount": "number",
+        "award_date": "string",
+        "award_status": "string"
+      }
+    },
+    {
+      "collection": "philgeps_area_of_deliveries",
+      "description": "Aggregated location/area of delivery data",
+      "objectName": "AreaOfDelivery",
+      "recordCount": "~thousands",
+      "schema": {
+        "area_of_delivery": "string",
+        "count": "uint",
+        "total": "number",
+        "start_date": "string",
+        "end_date": "string"
+      }
+    },
+    {
+      "collection": "philgeps_awardees",
+      "description": "Aggregated contractor/awardee data",
+      "objectName": "Awardee",
+      "recordCount": "~100k+",
+      "schema": {
+        "awardee_name": "string",
+        "count": "uint",
+        "total": "number",
+        "start_date": "string",
+        "end_date": "string"
+      }
+    },
+    {
+      "collection": "philgeps_business_categories",
+      "description": "Aggregated business category data",
+      "objectName": "BusinessCategory",
+      "recordCount": "~hundreds",
+      "schema": {
+        "business_category": "string",
+        "count": "uint",
+        "total": "number",
+        "start_date": "string",
+        "end_date": "string"
+      }
+    },
+    {
+      "collection": "philgeps_organizations",
+      "description": "Aggregated procuring organization data",
+      "objectName": "Organization",
+      "recordCount": "~thousands",
+      "schema": {
+        "organization_name": "string",
+        "count": "uint",
+        "total": "number",
+        "start_date": "string",
+        "end_date": "string"
+      }
+    },
+    {
+      "collection": "gaa",
+      "description": "General Appropriations Act - National Budget line items",
+      "objectName": "BudgetLineItem",
+      "recordCount": "~millions",
+      "schema": {
+        "id": "string",
+        "year": "uint",
+        "agency": "string",
+        "department": "string",
+        "uacs_dpt_dsc": "string",
+        "uacs_agy_dsc": "string",
+        "dsc": "string",
+        "amt": "number",
+        "uacs_oper_dsc": "string",
+        "uacs_fundsubcat_dsc": "string",
+        "uacs_exp_cd": "string",
+        "uacs_exp_dsc": "string",
+        "uacs_sobj_cd": "string",
+        "uacs_sobj_dsc": "string",
+        "uacs_div_dsc": "string"
+      }
+    },
+    {
+      "collection": "dpwh",
+      "description": "DPWH Infrastructure Projects with complete procurement and monitoring data",
+      "objectName": "DPWHProject",
+      "recordCount": "~248k",
+      "schema": {
+        "contractId": "string",
+        "description": "string",
+        "category": "string",
+        "status": "string",
+        "budget": "number",
+        "amountPaid": "number",
+        "progress": "number",
+        "region": "string",
+        "province": "string",
+        "infraType": "string",
+        "contractor": "string",
+        "startDate": "string",
+        "completionDate": "string | null",
+        "infraYear": "string",
+        "contractEffectivityDate": "string",
+        "expiryDate": "string",
+        "nysReason": "string | null",
+        "programName": "string",
+        "sourceOfFunds": "string",
+        "isVerifiedByDpwh": "bool",
+        "isVerifiedByPublic": "bool",
+        "isLive": "bool",
+        "livestreamUrl": "string | null",
+        "livestreamVideoId": "string | null",
+        "livestreamDetectedAt": "string | null",
+        "latitude": "number",
+        "longitude": "number",
+        "coordinatesVerified": "bool",
+        "components": "Component[]",
+        "winnerNames": "string",
+        "bidders": "Bidder[]",
+        "procurementContractName": "string",
+        "procurementAbc": "string",
+        "procurementStatus": "string",
+        "procurementFundingInstrument": "string",
+        "procurementAdvertisementDate": "string",
+        "procurementBidSubmissionDeadline": "string",
+        "procurementDateOfAward": "string",
+        "procurementAwardAmount": "string",
+        "linkAdvertisement": "string",
+        "linkContractAgreement": "string",
+        "linkNoticeOfAward": "string",
+        "linkNoticeToProceed": "string",
+        "linkProgramOfWork": "string",
+        "linkEngineeringDesign": "string",
+        "totalImages": "uint",
+        "latestImageDate": "string",
+        "hasImages": "bool"
+      },
+      "nestedObjects": {
+        "Component": {
+          "componentId": "string",
+          "description": "string",
+          "infraType": "string",
+          "typeOfWork": "string",
+          "region": "string",
+          "province": "string",
+          "latitude": "number",
+          "longitude": "number",
+          "coordinatesSource": "string",
+          "locationVerified": "bool"
+        },
+        "Bidder": {
+          "name": "string",
+          "pcabId": "string",
+          "participation": "number",
+          "isWinner": "bool"
+        }
+      }
+    }
+  ],
+  "notes": [
+    "Schema optimized for TypeScript type generation and Cosmos Ignite scaffolding",
+    "Types: string, number, uint (unsigned integer), bool, arrays denoted with []",
+    "Nullable types denoted with | null",
+    "Nested objects defined separately in nestedObjects section",
+    "All amounts in Philippine Peso (PHP) unless otherwise specified",
+    "Dates stored as ISO 8601 strings (YYYY-MM-DD or full datetime)"
+  ]
+}
