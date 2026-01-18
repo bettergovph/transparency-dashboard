@@ -684,7 +684,21 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
               <div className="mt-3 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 pt-3 border-t">
                 {/* Year Filter */}
                 <div>
+                  <div className="flex justify-between">
                   <label className="block text-[10px] font-medium text-gray-700 mb-1">Year</label>
+                  <button
+                    onClick={() => {
+                      if (selectedYears.length === availableYears.length) {
+                        setSelectedYears([])
+                      } else {
+                        setSelectedYears(availableYears.map(String))
+                      }
+                    }}
+                    className="block text-[10px] font-medium text-blue-700 mb-1 hover:text-blue-900 cursor-pointer"
+                  >
+                    {selectedYears.length === availableYears.length ? 'clear all' : 'select all'}
+                  </button>
+                  </div>
                   <div className="max-h-32 overflow-y-auto border rounded p-2 space-y-1">
                     {availableYears.map(year => (
                       <label key={year} className="flex items-center text-xs">
@@ -708,7 +722,22 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
 
                 {/* Region Filter */}
                 <div>
-                  <label className="block text-[10px] font-medium text-gray-700 mb-1">Region</label>
+                  <div className="flex justify-between">
+                    <label className="block text-[10px] font-medium text-gray-700 mb-1">Region</label>
+                    <button
+                      onClick={() => {
+                        if (selectedRegions.length === regions.length) {
+                          setSelectedRegions([])
+                          setSelectedProvinces([]) // Clear provinces too
+                        } else {
+                          setSelectedRegions(regions.map(r => r.region))
+                        }
+                      }}
+                      className="block text-[10px] font-medium text-blue-700 mb-1 hover:text-blue-900 cursor-pointer"
+                    >
+                      {selectedRegions.length === regions.length ? 'clear all' : 'select all'}
+                    </button>
+                  </div>
                   <div className="max-h-32 overflow-y-auto border rounded p-2 space-y-1">
                     {regions.map(region => (
                       <label key={region.region} className="flex items-center text-xs">
@@ -737,7 +766,21 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
 
                 {/* Province Filter */}
                 <div>
-                  <label className="block text-[10px] font-medium text-gray-700 mb-1">Province</label>
+                  <div className="flex justify-between">
+                    <label className="block text-[10px] font-medium text-gray-700 mb-1">Province</label>
+                    <button
+                      onClick={() => {
+                        if (selectedProvinces.length === filteredProvinces.length) {
+                          setSelectedProvinces([])
+                        } else {
+                          setSelectedProvinces(filteredProvinces.map(p => p.province))
+                        }
+                      }}
+                      className="block text-[10px] font-medium text-blue-700 mb-1 hover:text-blue-900 cursor-pointer"
+                    >
+                      {selectedProvinces.length === filteredProvinces.length ? 'clear all' : 'select all'}
+                    </button>
+                  </div>
                   <div className="max-h-32 overflow-y-auto border rounded p-2 space-y-1">
                     {filteredProvinces.map(province => (
                       <label key={province.province} className="flex items-center text-xs">
@@ -761,7 +804,22 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
 
                 {/* Category Filter */}
                 <div>
-                  <label className="block text-[10px] font-medium text-gray-700 mb-1">Category</label>
+                  <div className="flex justify-between">
+                    <label className="block text-[10px] font-medium text-gray-700 mb-1">Category</label>
+                    <button
+                      onClick={() => {
+                        const displayedCategories = availableCategories.slice(0, 20)
+                        if (selectedCategories.length === displayedCategories.length) {
+                          setSelectedCategories([])
+                        } else {
+                          setSelectedCategories(displayedCategories)
+                        }
+                      }}
+                      className="block text-[10px] font-medium text-blue-700 mb-1 hover:text-blue-900 cursor-pointer"
+                    >
+                      {selectedCategories.length === availableCategories.slice(0, 20).length ? 'clear all' : 'select all'}
+                    </button>
+                  </div>
                   <div className="max-h-32 overflow-y-auto border rounded p-2 space-y-1">
                     {availableCategories.slice(0, 20).map(category => (
                       <label key={category} className="flex items-center text-xs">
@@ -785,7 +843,21 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
 
                 {/* Status Filter */}
                 <div>
-                  <label className="block text-[10px] font-medium text-gray-700 mb-1">Status</label>
+                  <div className="flex justify-between">
+                    <label className="block text-[10px] font-medium text-gray-700 mb-1">Status</label>
+                    <button
+                      onClick={() => {
+                        if (selectedStatuses.length === availableStatuses.length) {
+                          setSelectedStatuses([])
+                        } else {
+                          setSelectedStatuses([...availableStatuses])
+                        }
+                      }}
+                      className="block text-[10px] font-medium text-blue-700 mb-1 hover:text-blue-900 cursor-pointer"
+                    >
+                      {selectedStatuses.length === availableStatuses.length ? 'clear all' : 'select all'}
+                    </button>
+                  </div>
                   <div className="max-h-32 overflow-y-auto border rounded p-2 space-y-1">
                     {availableStatuses.map(status => (
                       <label key={status} className="flex items-center text-xs">
