@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
-import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table, MapPin as MapPinIcon, Users, Loader2, ChevronDown } from 'lucide-react'
+import { Search, Filter, ChevronLeft, ChevronRight, X, HardHat, Download, BarChart3, Table, MapPin as MapPinIcon, Users, Loader2, ChevronDown, LoaderIcon } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import Navigation from '../Navigation'
@@ -883,7 +883,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
           </div>
 
           {/* Combined Tabs and Results Header */}
-          {!loading && results.length > 0 && (
+          {results.length > 0 && (
             <div className="bg-white rounded-lg shadow mb-3">
               <div className="px-2 sm:px-3 py-2">
                 {/* Desktop: Single row with tabs and info */}
@@ -945,6 +945,10 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                       <MapPinIcon className="h-4 w-4" />
                       <span>Regions</span>
                     </button>
+
+                    <div className="flex items-center gap-1">
+                      {loading && <div className="flex items-center gap-1 text-gray-500 text-xs"><LoaderIcon className='h-4 w-4 animate-spin' />updating...</div>}
+                    </div>
                   </div>
 
                   {/* Right: Results info and downloads */}
@@ -953,7 +957,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                     {results.length >= 10000 && (
                       <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 border border-yellow-200 rounded text-[10px] text-yellow-800">
                         <span className="font-medium">⚠</span>
-                        <span>Results limited to 10,000. Refine filters.</span>
+                        <span>Search results limited to 10,000 only. Refine filters.</span>
                       </div>
                     )}
                     
@@ -1056,7 +1060,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
                     {results.length >= 10000 && (
                       <div className="flex items-center gap-1 px-2 py-1 bg-yellow-50 border border-yellow-200 rounded text-[10px] text-yellow-800">
                         <span className="font-medium">⚠</span>
-                        <span>Results limited to 10,000 items only. <span className="hidden md:inline">Refine filters for complete data.</span></span>
+                        <span>Search results limited to 10,000 items only. <span className="hidden md:inline">Refine filters for complete data.</span></span>
                       </div>
                     )}
 
@@ -1095,7 +1099,7 @@ const DPWHBrowser: React.FC<DPWHBrowserProps> = ({ filterType, filterValue, embe
           )}
 
           {/* Results Table */}
-          {!loading && results.length > 0 && activeTab === 'results' && (
+          {results.length > 0 && activeTab === 'results' && (
             <div className="space-y-3">
               <div className="bg-white rounded-lg shadow overflow-hidden">
                 <div className="overflow-x-auto">
