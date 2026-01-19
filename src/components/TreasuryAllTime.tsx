@@ -657,13 +657,13 @@ const TreasuryAllTime = () => {
                                         ) : yearlyBreakdown.length > 0 ? (
                                           <div className="space-y-1">
                                             <div className="text-xs font-semibold text-gray-600 mb-2">Yearly Breakdown:</div>
-                                            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+                                            <div className="grid grid-flow-col grid-rows-[repeat(10,auto)] sm:grid-rows-[repeat(8,auto)] md:grid-rows-[repeat(7,auto)] lg:grid-rows-[repeat(7,auto)] gap-x-6 gap-y-1">
                                               {yearlyBreakdown.map((yearData) => (
                                                 <div
                                                   key={yearData.year}
-                                                  className="flex justify-between items-center bg-white px-3 py-2 rounded border border-gray-200"
+                                                  className="flex justify-between items-center py-1.5 border-b border-gray-200"
                                                 >
-                                                  <span className="text-xs font-medium text-gray-700">{yearData.year}:</span>
+                                                  <span className="text-xs font-medium text-gray-700 mr-3">{yearData.year}</span>
                                                   <span className={`text-xs font-semibold ${yearData.value < 0 ? 'text-red-600' : 'text-green-600'}`}>
                                                     {formatCurrency(yearData.value)}
                                                   </span>
