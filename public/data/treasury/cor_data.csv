@@ -258,7 +258,7 @@ year,month,category,subcategory,line_item,value
 2024,May,Expenditures,,Net Lending,45
 2024,Jun,Expenditures,,Net Lending,85
 2024,Jul,Expenditures,,Net Lending,-1143
-2024,Aug,Expenditures,,Net Lending,0
+2024,Aug,Expenditures,,Net Lending,1
 2024,Sep,Expenditures,,Net Lending,3115
 2024,Oct,Expenditures,,Net Lending,3053
 2024,Nov,Expenditures,,Net Lending,44
@@ -275,18 +275,18 @@ year,month,category,subcategory,line_item,value
 2024,Oct,Expenditures,,NG Disbursements,311047
 2024,Nov,Expenditures,,NG Disbursements,362513
 2024,Dec,Expenditures,,NG Disbursements,485320
-2024,Jan,Surplus/(-)Deficit,,,87951
-2024,Feb,Surplus/(-)Deficit,,,-164677
-2024,Mar,Surplus/(-)Deficit,,,-195918
-2024,Apr,Surplus/(-)Deficit,,,42728
-2024,May,Surplus/(-)Deficit,,,-174911
-2024,Jun,Surplus/(-)Deficit,,,-209080
-2024,Jul,Surplus/(-)Deficit,,,-28845
-2024,Aug,Surplus/(-)Deficit,,,-54206
-2024,Sep,Surplus/(-)Deficit,,,-273266
-2024,Oct,Surplus/(-)Deficit,,,6340
-2024,Nov,Surplus/(-)Deficit,,,-212973
-2024,Dec,Surplus/(-)Deficit,,,-329501
+2024,Jan,Surplus/Deficit,,,87951
+2024,Feb,Surplus/Deficit,,,-164677
+2024,Mar,Surplus/Deficit,,,-195918
+2024,Apr,Surplus/Deficit,,,42728
+2024,May,Surplus/Deficit,,,-174911
+2024,Jun,Surplus/Deficit,,,-209080
+2024,Jul,Surplus/Deficit,,,-28845
+2024,Aug,Surplus/Deficit,,,-54206
+2024,Sep,Surplus/Deficit,,,-273266
+2024,Oct,Surplus/Deficit,,,6340
+2024,Nov,Surplus/Deficit,,,-212973
+2024,Dec,Surplus/Deficit,,,-329501
 2024,Jan,Financing,,,118474
 2024,Feb,Financing,,,417634
 2024,Mar,Financing,,,-255314
@@ -659,18 +659,18 @@ year,month,category,subcategory,line_item,value
 2023,Oct,Expenditures,,NG Disbursements,272257
 2023,Nov,Expenditures,,NG Disbursements,289124
 2023,Dec,Expenditures,,NG Disbursements,506658
-2023,Jan,Surplus/(-)Deficit,,,45749.25
-2023,Feb,Surplus/(-)Deficit,,,-106373
-2023,Mar,Surplus/(-)Deficit,,,-210261
-2023,Apr,Surplus/(-)Deficit,,,66797.81
-2023,May,Surplus/(-)Deficit,,,-122231
-2023,Jun,Surplus/(-)Deficit,,,-225398
-2023,Jul,Surplus/(-)Deficit,,,-47814
-2023,Aug,Surplus/(-)Deficit,,,-133003
-2023,Sep,Surplus/(-)Deficit,,,-250941
-2023,Oct,Surplus/(-)Deficit,,,-34402
-2023,Nov,Surplus/(-)Deficit,,,-93254
-2023,Dec,Surplus/(-)Deficit,,,-400956
+2023,Jan,Surplus/Deficit,,,45749.25
+2023,Feb,Surplus/Deficit,,,-106373
+2023,Mar,Surplus/Deficit,,,-210261
+2023,Apr,Surplus/Deficit,,,66797.81
+2023,May,Surplus/Deficit,,,-122231
+2023,Jun,Surplus/Deficit,,,-225398
+2023,Jul,Surplus/Deficit,,,-47814
+2023,Aug,Surplus/Deficit,,,-133003
+2023,Sep,Surplus/Deficit,,,-250941
+2023,Oct,Surplus/Deficit,,,-34402
+2023,Nov,Surplus/Deficit,,,-93254
+2023,Dec,Surplus/Deficit,,,-400956
 2023,Jan,Financing,,,366002
 2023,Feb,Financing,,,33692
 2023,Mar,Financing,,,156329
@@ -1043,18 +1043,18 @@ year,month,category,subcategory,line_item,value
 2022,Oct,Expenditures,,NG Disbursements,220576
 2022,Nov,Expenditures,,NG Disbursements,328849
 2022,Dec,Expenditures,,NG Disbursements,449578
-2022,Jan,Surplus/(-)Deficit,,,-23382
-2022,Feb,Surplus/(-)Deficit,,,-105800
-2022,Mar,Surplus/(-)Deficit,,,-187666
-2022,Apr,Surplus/(-)Deficit,,,4936
-2022,May,Surplus/(-)Deficit,,,-146785
-2022,Jun,Surplus/(-)Deficit,,,-215523
-2022,Jul,Surplus/(-)Deficit,,,-86763
-2022,Aug,Surplus/(-)Deficit,,,-72036
-2022,Sep,Surplus/(-)Deficit,,,-179760
-2022,Oct,Surplus/(-)Deficit,,,-99061
-2022,Nov,Surplus/(-)Deficit,,,-123929
-2022,Dec,Surplus/(-)Deficit,,,-378366
+2022,Jan,Surplus/Deficit,,,-23382
+2022,Feb,Surplus/Deficit,,,-105800
+2022,Mar,Surplus/Deficit,,,-187666
+2022,Apr,Surplus/Deficit,,,4936
+2022,May,Surplus/Deficit,,,-146785
+2022,Jun,Surplus/Deficit,,,-215523
+2022,Jul,Surplus/Deficit,,,-86763
+2022,Aug,Surplus/Deficit,,,-72036
+2022,Sep,Surplus/Deficit,,,-179760
+2022,Oct,Surplus/Deficit,,,-99061
+2022,Nov,Surplus/Deficit,,,-123929
+2022,Dec,Surplus/Deficit,,,-378366
 2022,Jan,Financing,,,288843
 2022,Feb,Financing,,,50928
 2022,Mar,Financing,,,578047
@@ -1427,18 +1427,18 @@ year,month,category,subcategory,line_item,value
 2021,Oct,Expenditures,,NG Disbursements,212118
 2021,Nov,Expenditures,,NG Disbursements,296726
 2021,Dec,Expenditures,,NG Disbursements,418842
-2021,Jan,Surplus/(-)Deficit,,,-14060
-2021,Feb,Surplus/(-)Deficit,,,-115969.54000000004
-2021,Mar,Surplus/(-)Deficit,,,-191442
-2021,Apr,Surplus/(-)Deficit,,,-44426
-2021,May,Surplus/(-)Deficit,,,-200306.48
-2021,Jun,Surplus/(-)Deficit,,,-149862
-2021,Jul,Surplus/(-)Deficit,,,-121186
-2021,Aug,Surplus/(-)Deficit,,,-120936
-2021,Sep,Surplus/(-)Deficit,,,-180916
-2021,Oct,Surplus/(-)Deficit,,,-64290
-2021,Nov,Surplus/(-)Deficit,,,-128701
-2021,Dec,Surplus/(-)Deficit,,,-338005
+2021,Jan,Surplus/Deficit,,,-14060
+2021,Feb,Surplus/Deficit,,,-115969.54000000004
+2021,Mar,Surplus/Deficit,,,-191442
+2021,Apr,Surplus/Deficit,,,-44426
+2021,May,Surplus/Deficit,,,-200306.48
+2021,Jun,Surplus/Deficit,,,-149862
+2021,Jul,Surplus/Deficit,,,-121186
+2021,Aug,Surplus/Deficit,,,-120936
+2021,Sep,Surplus/Deficit,,,-180916
+2021,Oct,Surplus/Deficit,,,-64290
+2021,Nov,Surplus/Deficit,,,-128701
+2021,Dec,Surplus/Deficit,,,-338005
 2021,Jan,Financing,,,537542
 2021,Feb,Financing,,,51781
 2021,Mar,Financing,,,396642
@@ -1788,17 +1788,17 @@ year,month,category,subcategory,line_item,value
 2020,Oct,Expenditures,,NG Disbursements,192960
 2020,Nov,Expenditures,,NG Disbursements,255352
 2020,Dec,Expenditures,,NG Disbursements,390568
-2020,Jan,Surplus/(-)Deficit,,,23045
-2020,Feb,Surplus/(-)Deficit,,,-37595
-2020,Apr,Surplus/(-)Deficit,,,-273881.17
-2020,May,Surplus/(-)Deficit,,,-202136
-2020,Jun,Surplus/(-)Deficit,,,1766
-2020,Jul,Surplus/(-)Deficit,,,-140208
-2020,Aug,Surplus/(-)Deficit,,,-40074
-2020,Sep,Surplus/(-)Deficit,,,-138525.17
-2020,Oct,Surplus/(-)Deficit,,,-61362
-2020,Nov,Surplus/(-)Deficit,,,-128278
-2020,Dec,Surplus/(-)Deficit,,,-302590
+2020,Jan,Surplus/Deficit,,,23045
+2020,Feb,Surplus/Deficit,,,-37595
+2020,Apr,Surplus/Deficit,,,-273881.17
+2020,May,Surplus/Deficit,,,-202136
+2020,Jun,Surplus/Deficit,,,1766
+2020,Jul,Surplus/Deficit,,,-140208
+2020,Aug,Surplus/Deficit,,,-40074
+2020,Sep,Surplus/Deficit,,,-138525.17
+2020,Oct,Surplus/Deficit,,,-61362
+2020,Nov,Surplus/Deficit,,,-128278
+2020,Dec,Surplus/Deficit,,,-302590
 2020,Jan,Financing,,,20682
 2020,Feb,Financing,,,349963
 2020,Apr,Financing,,,136287
@@ -2163,18 +2163,18 @@ year,month,category,subcategory,line_item,value
 2019,Oct,Expenditures,,NG Disbursements,226892
 2019,Nov,Expenditures,,NG Disbursements,283026
 2019,Dec,Expenditures,,NG Disbursements,381660
-2019,Jan,Surplus/(-)Deficit,,,44537
-2019,Feb,Surplus/(-)Deficit,,,-76372.65
-2019,Mar,Surplus/(-)Deficit,,,-58409
-2019,Apr,Surplus/(-)Deficit,,,86872
-2019,May,Surplus/(-)Deficit,,,2564
-2019,Jun,Surplus/(-)Deficit,,,-41838
-2019,Jul,Surplus/(-)Deficit,,,-75296
-2019,Aug,Surplus/(-)Deficit,,,-2488
-2019,Sep,Surplus/(-)Deficit,,,-178557
-2019,Oct,Surplus/(-)Deficit,,,-49262
-2019,Nov,Surplus/(-)Deficit,,,-60883
-2019,Dec,Surplus/(-)Deficit,,,-251103
+2019,Jan,Surplus/Deficit,,,44537
+2019,Feb,Surplus/Deficit,,,-76372.65
+2019,Mar,Surplus/Deficit,,,-58409
+2019,Apr,Surplus/Deficit,,,86872
+2019,May,Surplus/Deficit,,,2564
+2019,Jun,Surplus/Deficit,,,-41838
+2019,Jul,Surplus/Deficit,,,-75296
+2019,Aug,Surplus/Deficit,,,-2488
+2019,Sep,Surplus/Deficit,,,-178557
+2019,Oct,Surplus/Deficit,,,-49262
+2019,Nov,Surplus/Deficit,,,-60883
+2019,Dec,Surplus/Deficit,,,-251103
 2019,Jan,Financing,,,217100
 2019,Feb,Financing,,,-14146.18
 2019,Mar,Financing,,,308218
@@ -2547,18 +2547,18 @@ year,month,category,subcategory,line_item,value
 2018,Oct,Expenditures,,NG Disbursements,236920
 2018,Nov,Expenditures,,NG Disbursements,220245
 2018,Dec,Expenditures,,NG Disbursements,233219
-2018,Jan,Surplus/(-)Deficit,,,10191.022999999986
-2018,Feb,Surplus/(-)Deficit,,,-51669.424
-2018,Mar,Surplus/(-)Deficit,,,-110693.33299999998
-2018,Apr,Surplus/(-)Deficit,,,46315.26000000001
-2018,May,Surplus/(-)Deficit,,,-32873.013999999996
-2018,Jun,Surplus/(-)Deficit,,,-54287.88199999998
-2018,Jul,Surplus/(-)Deficit,,,-86383.051
-2018,Aug,Surplus/(-)Deficit,,,-2587.271000000008
-2018,Sep,Surplus/(-)Deficit,,,-96247.351
-2018,Oct,Surplus/(-)Deficit,,,-59864.99799999999
-2018,Nov,Surplus/(-)Deficit,,,-39117.834
-2018,Dec,Surplus/(-)Deficit,,,-81041.81099999999
+2018,Jan,Surplus/Deficit,,,10191.022999999986
+2018,Feb,Surplus/Deficit,,,-51669.424
+2018,Mar,Surplus/Deficit,,,-110693.33299999998
+2018,Apr,Surplus/Deficit,,,46315.26000000001
+2018,May,Surplus/Deficit,,,-32873.013999999996
+2018,Jun,Surplus/Deficit,,,-54287.88199999998
+2018,Jul,Surplus/Deficit,,,-86383.051
+2018,Aug,Surplus/Deficit,,,-2587.271000000008
+2018,Sep,Surplus/Deficit,,,-96247.351
+2018,Oct,Surplus/Deficit,,,-59864.99799999999
+2018,Nov,Surplus/Deficit,,,-39117.834
+2018,Dec,Surplus/Deficit,,,-81041.81099999999
 2018,Jan,Financing,,,5669
 2018,Feb,Financing,,,54479
 2018,Mar,Financing,,,44993
@@ -2931,18 +2931,18 @@ year,month,category,subcategory,line_item,value
 2017,Oct,Expenditures,,NG Disbursements,151812
 2017,Nov,Expenditures,,NG Disbursements,178686
 2017,Dec,Expenditures,,NG Disbursements,236265
-2017,Jan,Surplus/(-)Deficit,,,2221.5469999999914
-2017,Feb,Surplus/(-)Deficit,,,-23724
-2017,Mar,Surplus/(-)Deficit,,,-61471
-2017,Apr,Surplus/(-)Deficit,,,52797
-2017,May,Surplus/(-)Deficit,,,-33421
-2017,Jun,Surplus/(-)Deficit,,,-90873
-2017,Jul,Surplus/(-)Deficit,,,-50512
-2017,Aug,Surplus/(-)Deficit,,,28808
-2017,Sep,Surplus/(-)Deficit,,,-36892
-2017,Oct,Surplus/(-)Deficit,,,-21800
-2017,Nov,Surplus/(-)Deficit,,,-8623
-2017,Dec,Surplus/(-)Deficit,,,-107147.82
+2017,Jan,Surplus/Deficit,,,2221.5469999999914
+2017,Feb,Surplus/Deficit,,,-23724
+2017,Mar,Surplus/Deficit,,,-61471
+2017,Apr,Surplus/Deficit,,,52797
+2017,May,Surplus/Deficit,,,-33421
+2017,Jun,Surplus/Deficit,,,-90873
+2017,Jul,Surplus/Deficit,,,-50512
+2017,Aug,Surplus/Deficit,,,28808
+2017,Sep,Surplus/Deficit,,,-36892
+2017,Oct,Surplus/Deficit,,,-21800
+2017,Nov,Surplus/Deficit,,,-8623
+2017,Dec,Surplus/Deficit,,,-107147.82
 2017,Jan,Financing,,,11474
 2017,Feb,Financing,,,69888
 2017,Mar,Financing,,,-19036
@@ -3315,18 +3315,18 @@ year,month,category,subcategory,line_item,value
 2016,Oct,Expenditures,,NG Disbursements,118779
 2016,Nov,Expenditures,,NG Disbursements,152828
 2016,Dec,Expenditures,,NG Disbursements,206753
-2016,Jan,Surplus/(-)Deficit,,,-3474.4530000000086
-2016,Feb,Surplus/(-)Deficit,,,-34625.869999999995
-2016,Mar,Surplus/(-)Deficit,,,-74388
-2016,Apr,Surplus/(-)Deficit,,,55022
-2016,May,Surplus/(-)Deficit,,,-17656
-2016,Jun,Surplus/(-)Deficit,,,-45194
-2016,Jul,Surplus/(-)Deficit,,,-50667
-2016,Aug,Surplus/(-)Deficit,,,32607
-2016,Sep,Surplus/(-)Deficit,,,-75327
-2016,Oct,Surplus/(-)Deficit,,,-2345
-2016,Nov,Surplus/(-)Deficit,,,-19145
-2016,Dec,Surplus/(-)Deficit,,,-118229
+2016,Jan,Surplus/Deficit,,,-3474.4530000000086
+2016,Feb,Surplus/Deficit,,,-34625.869999999995
+2016,Mar,Surplus/Deficit,,,-74388
+2016,Apr,Surplus/Deficit,,,55022
+2016,May,Surplus/Deficit,,,-17656
+2016,Jun,Surplus/Deficit,,,-45194
+2016,Jul,Surplus/Deficit,,,-50667
+2016,Aug,Surplus/Deficit,,,32607
+2016,Sep,Surplus/Deficit,,,-75327
+2016,Oct,Surplus/Deficit,,,-2345
+2016,Nov,Surplus/Deficit,,,-19145
+2016,Dec,Surplus/Deficit,,,-118229
 2016,Jan,Financing,,,-73303
 2016,Feb,Financing,,,22973
 2016,Mar,Financing,,,21396
@@ -3699,18 +3699,18 @@ year,month,category,subcategory,line_item,value
 2015,Oct,Expenditures,,NG Disbursements,129009
 2015,Nov,Expenditures,,NG Disbursements,118625
 2015,Dec,Expenditures,,NG Disbursements,166849
-2015,Jan,Surplus/(-)Deficit,,,-6472
-2015,Feb,Surplus/(-)Deficit,,,-9673
-2015,Mar,Surplus/(-)Deficit,,,-17372
-2015,Apr,Surplus/(-)Deficit,,,52599
-2015,May,Surplus/(-)Deficit,,,67337
-2015,Jun,Surplus/(-)Deficit,,,-72673
-2015,Jul,Surplus/(-)Deficit,,,-32198
-2015,Aug,Surplus/(-)Deficit,,,15040
-2015,Sep,Surplus/(-)Deficit,,,-22140
-2015,Oct,Surplus/(-)Deficit,,,-27022
-2015,Nov,Surplus/(-)Deficit,,,6029
-2015,Dec,Surplus/(-)Deficit,,,-75144
+2015,Jan,Surplus/Deficit,,,-6472
+2015,Feb,Surplus/Deficit,,,-9673
+2015,Mar,Surplus/Deficit,,,-17372
+2015,Apr,Surplus/Deficit,,,52599
+2015,May,Surplus/Deficit,,,67337
+2015,Jun,Surplus/Deficit,,,-72673
+2015,Jul,Surplus/Deficit,,,-32198
+2015,Aug,Surplus/Deficit,,,15040
+2015,Sep,Surplus/Deficit,,,-22140
+2015,Oct,Surplus/Deficit,,,-27022
+2015,Nov,Surplus/Deficit,,,6029
+2015,Dec,Surplus/Deficit,,,-75144
 2015,Jan,Financing,,,42387
 2015,Feb,Financing,,,10017
 2015,Mar,Financing,,,2878
@@ -4095,18 +4095,18 @@ year,month,category,subcategory,line_item,value
 2014,Oct,Expenditures,,NG Disbursements,107216
 2014,Nov,Expenditures,,NG Disbursements,97570
 2014,Dec,Expenditures,,NG Disbursements,135256
-2014,Jan,Surplus/(-)Deficit,,,-34218
-2014,Feb,Surplus/(-)Deficit,,,-9718
-2014,Mar,Surplus/(-)Deficit,,,-40186
-2014,Apr,Surplus/(-)Deficit,,,80852
-2014,May,Surplus/(-)Deficit,,,11782
-2014,Jun,Surplus/(-)Deficit,,,-62486
-2014,Jul,Surplus/(-)Deficit,,,-1762
-2014,Aug,Surplus/(-)Deficit,,,29865
-2014,Sep,Surplus/(-)Deficit,,,-5198
-2014,Oct,Surplus/(-)Deficit,,,-2530
-2014,Nov,Surplus/(-)Deficit,,,6824
-2014,Dec,Surplus/(-)Deficit,,,-46317
+2014,Jan,Surplus/Deficit,,,-34218
+2014,Feb,Surplus/Deficit,,,-9718
+2014,Mar,Surplus/Deficit,,,-40186
+2014,Apr,Surplus/Deficit,,,80852
+2014,May,Surplus/Deficit,,,11782
+2014,Jun,Surplus/Deficit,,,-62486
+2014,Jul,Surplus/Deficit,,,-1762
+2014,Aug,Surplus/Deficit,,,29865
+2014,Sep,Surplus/Deficit,,,-5198
+2014,Oct,Surplus/Deficit,,,-2530
+2014,Nov,Surplus/Deficit,,,6824
+2014,Dec,Surplus/Deficit,,,-46317
 2014,Jan,Financing,,,-124903
 2014,Feb,Financing,,,20488
 2014,Mar,Financing,,,28813
@@ -4479,18 +4479,18 @@ year,month,category,subcategory,line_item,value
 2013,Oct,Expenditures,,NG Disbursements,95569
 2013,Nov,Expenditures,,NG Disbursements,100952
 2013,Dec,Expenditures,,NG Disbursements,112200
-2013,Jan,Surplus/(-)Deficit,,,-19531
-2013,Feb,Surplus/(-)Deficit,,,-11749
-2013,Mar,Surplus/(-)Deficit,,,-35198
-2013,Apr,Surplus/(-)Deficit,,,36803
-2013,May,Surplus/(-)Deficit,,,-13164
-2013,Jun,Surplus/(-)Deficit,,,-8451
-2013,Jul,Surplus/(-)Deficit,,,-53222
-2013,Aug,Surplus/(-)Deficit,,,21901
-2013,Sep,Surplus/(-)Deficit,,,-18616
-2013,Oct,Surplus/(-)Deficit,,,-11237
-2013,Nov,Surplus/(-)Deficit,,,1000
-2013,Dec,Surplus/(-)Deficit,,,-52598
+2013,Jan,Surplus/Deficit,,,-19531
+2013,Feb,Surplus/Deficit,,,-11749
+2013,Mar,Surplus/Deficit,,,-35198
+2013,Apr,Surplus/Deficit,,,36803
+2013,May,Surplus/Deficit,,,-13164
+2013,Jun,Surplus/Deficit,,,-8451
+2013,Jul,Surplus/Deficit,,,-53222
+2013,Aug,Surplus/Deficit,,,21901
+2013,Sep,Surplus/Deficit,,,-18616
+2013,Oct,Surplus/Deficit,,,-11237
+2013,Nov,Surplus/Deficit,,,1000
+2013,Dec,Surplus/Deficit,,,-52598
 2013,Jan,Financing,,,-57444
 2013,Feb,Financing,,,-6189
 2013,Mar,Financing,,,-47856
@@ -4863,18 +4863,18 @@ year,month,category,subcategory,line_item,value
 2012,Oct,Expenditures,,NG Disbursements,87850
 2012,Nov,Expenditures,,NG Disbursements,117139
 2012,Dec,Expenditures,,NG Disbursements,141128
-2012,Jan,Surplus/(-)Deficit,,,-15943.179000000004
-2012,Feb,Surplus/(-)Deficit,,,10655.426000000007
-2012,Mar,Surplus/(-)Deficit,,,-28621.785000000003
-2012,Apr,Surplus/(-)Deficit,,,31024.168000000005
-2012,May,Surplus/(-)Deficit,,,-19859.263000000006
-2012,Jun,Surplus/(-)Deficit,,,-11638.462
-2012,Jul,Surplus/(-)Deficit,,,-39248.86800000002
-2012,Aug,Surplus/(-)Deficit,,,2522.5739999999932
-2012,Sep,Surplus/(-)Deficit,,,-32833.67999999999
-2012,Oct,Surplus/(-)Deficit,,,-11663.825000000012
-2012,Nov,Surplus/(-)Deficit,,,-11474.739000000001
-2012,Dec,Surplus/(-)Deficit,,,-115744.97899999999
+2012,Jan,Surplus/Deficit,,,-15943.179000000004
+2012,Feb,Surplus/Deficit,,,10655.426000000007
+2012,Mar,Surplus/Deficit,,,-28621.785000000003
+2012,Apr,Surplus/Deficit,,,31024.168000000005
+2012,May,Surplus/Deficit,,,-19859.263000000006
+2012,Jun,Surplus/Deficit,,,-11638.462
+2012,Jul,Surplus/Deficit,,,-39248.86800000002
+2012,Aug,Surplus/Deficit,,,2522.5739999999932
+2012,Sep,Surplus/Deficit,,,-32833.67999999999
+2012,Oct,Surplus/Deficit,,,-11663.825000000012
+2012,Nov,Surplus/Deficit,,,-11474.739000000001
+2012,Dec,Surplus/Deficit,,,-115744.97899999999
 2012,Jan,Financing,,,75607
 2012,Feb,Financing,,,-42513
 2012,Mar,Financing,,,182640
@@ -5247,18 +5247,18 @@ year,month,category,subcategory,line_item,value
 2011,Oct,Expenditures,,NG Disbursements,58404
 2011,Nov,Expenditures,,NG Disbursements,88835
 2011,Dec,Expenditures,,NG Disbursements,134666
-2011,Jan,Surplus/(-)Deficit,,,13424
-2011,Feb,Surplus/(-)Deficit,,,-21490
-2011,Mar,Surplus/(-)Deficit,,,-18131
-2011,Apr,Surplus/(-)Deficit,,,26258
-2011,May,Surplus/(-)Deficit,,,-9601
-2011,Jun,Surplus/(-)Deficit,,,-7691
-2011,Jul,Surplus/(-)Deficit,,,-26482
-2011,Aug,Surplus/(-)Deficit,,,9220
-2011,Sep,Surplus/(-)Deficit,,,-18501
-2011,Oct,Surplus/(-)Deficit,,,-21257
-2011,Nov,Surplus/(-)Deficit,,,-22003
-2011,Dec,Surplus/(-)Deficit,,,-101500
+2011,Jan,Surplus/Deficit,,,13424
+2011,Feb,Surplus/Deficit,,,-21490
+2011,Mar,Surplus/Deficit,,,-18131
+2011,Apr,Surplus/Deficit,,,26258
+2011,May,Surplus/Deficit,,,-9601
+2011,Jun,Surplus/Deficit,,,-7691
+2011,Jul,Surplus/Deficit,,,-26482
+2011,Aug,Surplus/Deficit,,,9220
+2011,Sep,Surplus/Deficit,,,-18501
+2011,Oct,Surplus/Deficit,,,-21257
+2011,Nov,Surplus/Deficit,,,-22003
+2011,Dec,Surplus/Deficit,,,-101500
 2011,Jan,Financing,,,11001
 2011,Feb,Financing,,,-71790
 2011,Mar,Financing,,,63458
@@ -5631,18 +5631,18 @@ year,month,category,subcategory,line_item,value
 2010,Oct,Expenditures,,NG Disbursements,58588
 2010,Nov,Expenditures,,NG Disbursements,68584
 2010,Dec,Expenditures,,NG Disbursements,90828
-2010,Jan,Surplus/(-)Deficit,,,-37125
-2010,Feb,Surplus/(-)Deficit,,,-33188
-2010,Mar,Surplus/(-)Deficit,,,-63866
-2010,Apr,Surplus/(-)Deficit,,,2599
-2010,May,Surplus/(-)Deficit,,,-30527
-2010,Jun,Surplus/(-)Deficit,,,-34622
-2010,Jul,Surplus/(-)Deficit,,,-32694
-2010,Aug,Surplus/(-)Deficit,,,1319
-2010,Sep,Surplus/(-)Deficit,,,-31684
-2010,Oct,Surplus/(-)Deficit,,,-10514
-2010,Nov,Surplus/(-)Deficit,,,482
-2010,Dec,Surplus/(-)Deficit,,,-44638
+2010,Jan,Surplus/Deficit,,,-37125
+2010,Feb,Surplus/Deficit,,,-33188
+2010,Mar,Surplus/Deficit,,,-63866
+2010,Apr,Surplus/Deficit,,,2599
+2010,May,Surplus/Deficit,,,-30527
+2010,Jun,Surplus/Deficit,,,-34622
+2010,Jul,Surplus/Deficit,,,-32694
+2010,Aug,Surplus/Deficit,,,1319
+2010,Sep,Surplus/Deficit,,,-31684
+2010,Oct,Surplus/Deficit,,,-10514
+2010,Nov,Surplus/Deficit,,,482
+2010,Dec,Surplus/Deficit,,,-44638
 2010,Jan,Financing,,,31152
 2010,Feb,Financing,,,-74357
 2010,Mar,Financing,,,164877
@@ -6015,18 +6015,18 @@ year,month,category,subcategory,line_item,value
 2009,Oct,Expenditures,,NG Disbursements,74512
 2009,Nov,Expenditures,,NG Disbursements,64347
 2009,Dec,Expenditures,,NG Disbursements,87723
-2009,Jan,Surplus/(-)Deficit,,,-38054
-2009,Feb,Surplus/(-)Deficit,,,-28993
-2009,Mar,Surplus/(-)Deficit,,,-52639
-2009,Apr,Surplus/(-)Deficit,,,7904
-2009,May,Surplus/(-)Deficit,,,-11384
-2009,Jun,Surplus/(-)Deficit,,,-30247
-2009,Jul,Surplus/(-)Deficit,,,-34630
-2009,Aug,Surplus/(-)Deficit,,,-21981
-2009,Sep,Surplus/(-)Deficit,,,-27512
-2009,Oct,Surplus/(-)Deficit,,,-28545
-2009,Nov,Surplus/(-)Deficit,,,-6442
-2009,Dec,Surplus/(-)Deficit,,,-26009
+2009,Jan,Surplus/Deficit,,,-38054
+2009,Feb,Surplus/Deficit,,,-28993
+2009,Mar,Surplus/Deficit,,,-52639
+2009,Apr,Surplus/Deficit,,,7904
+2009,May,Surplus/Deficit,,,-11384
+2009,Jun,Surplus/Deficit,,,-30247
+2009,Jul,Surplus/Deficit,,,-34630
+2009,Aug,Surplus/Deficit,,,-21981
+2009,Sep,Surplus/Deficit,,,-27512
+2009,Oct,Surplus/Deficit,,,-28545
+2009,Nov,Surplus/Deficit,,,-6442
+2009,Dec,Surplus/Deficit,,,-26009
 2009,Jan,Financing,,,51771
 2009,Feb,Financing,,,-83728
 2009,Mar,Financing,,,43893
@@ -6399,18 +6399,18 @@ year,month,category,subcategory,line_item,value
 2008,Oct,Expenditures,,NG Disbursements,57346
 2008,Nov,Expenditures,,NG Disbursements,67150
 2008,Dec,Expenditures,,NG Disbursements,88994
-2008,Jan,Surplus/(-)Deficit,,,-13935
-2008,Feb,Surplus/(-)Deficit,,,-18998
-2008,Mar,Surplus/(-)Deficit,,,-18626
-2008,Apr,Surplus/(-)Deficit,,,25762
-2008,May,Surplus/(-)Deficit,,,7026
-2008,Jun,Surplus/(-)Deficit,,,769
-2008,Jul,Surplus/(-)Deficit,,,-15429
-2008,Aug,Surplus/(-)Deficit,,,1683
-2008,Sep,Surplus/(-)Deficit,,,-21628
-2008,Oct,Surplus/(-)Deficit,,,-8959
-2008,Nov,Surplus/(-)Deficit,,,-4340
-2008,Dec,Surplus/(-)Deficit,,,-1442
+2008,Jan,Surplus/Deficit,,,-13935
+2008,Feb,Surplus/Deficit,,,-18998
+2008,Mar,Surplus/Deficit,,,-18626
+2008,Apr,Surplus/Deficit,,,25762
+2008,May,Surplus/Deficit,,,7026
+2008,Jun,Surplus/Deficit,,,769
+2008,Jul,Surplus/Deficit,,,-15429
+2008,Aug,Surplus/Deficit,,,1683
+2008,Sep,Surplus/Deficit,,,-21628
+2008,Oct,Surplus/Deficit,,,-8959
+2008,Nov,Surplus/Deficit,,,-4340
+2008,Dec,Surplus/Deficit,,,-1442
 2008,Jan,Financing,,,24143
 2008,Feb,Financing,,,38143
 2008,Mar,Financing,,,32724
@@ -6783,18 +6783,18 @@ year,month,category,subcategory,line_item,value
 2007,Oct,Expenditures,,NG Disbursements,48872
 2007,Nov,Expenditures,,NG Disbursements,58257
 2007,Dec,Expenditures,,NG Disbursements,70195
-2007,Jan,Surplus/(-)Deficit,,,-29715
-2007,Feb,Surplus/(-)Deficit,,,11109
-2007,Mar,Surplus/(-)Deficit,,,-33362
-2007,Apr,Surplus/(-)Deficit,,,11952
-2007,May,Surplus/(-)Deficit,,,-1747
-2007,Jun,Surplus/(-)Deficit,,,782
-2007,Jul,Surplus/(-)Deficit,,,1595
-2007,Aug,Surplus/(-)Deficit,,,13897
-2007,Sep,Surplus/(-)Deficit,,,-14521
-2007,Oct,Surplus/(-)Deficit,,,-1478
-2007,Nov,Surplus/(-)Deficit,,,54093
-2007,Dec,Surplus/(-)Deficit,,,-25046
+2007,Jan,Surplus/Deficit,,,-29715
+2007,Feb,Surplus/Deficit,,,11109
+2007,Mar,Surplus/Deficit,,,-33362
+2007,Apr,Surplus/Deficit,,,11952
+2007,May,Surplus/Deficit,,,-1747
+2007,Jun,Surplus/Deficit,,,782
+2007,Jul,Surplus/Deficit,,,1595
+2007,Aug,Surplus/Deficit,,,13897
+2007,Sep,Surplus/Deficit,,,-14521
+2007,Oct,Surplus/Deficit,,,-1478
+2007,Nov,Surplus/Deficit,,,54093
+2007,Dec,Surplus/Deficit,,,-25046
 2007,Jan,Financing,,,32882
 2007,Feb,Financing,,,32090
 2007,Mar,Financing,,,24827
@@ -7179,18 +7179,18 @@ year,month,category,subcategory,line_item,value
 2006,Oct,Expenditures,,NG Disbursements,44447
 2006,Nov,Expenditures,,NG Disbursements,52682
 2006,Dec,Expenditures,,NG Disbursements,64804
-2006,Jan,Surplus/(-)Deficit,,,-15445
-2006,Feb,Surplus/(-)Deficit,,,-24958
-2006,Mar,Surplus/(-)Deficit,,,-27207
-2006,Apr,Surplus/(-)Deficit,,,17642
-2006,May,Surplus/(-)Deficit,,,5811
-2006,Jun,Surplus/(-)Deficit,,,12653
-2006,Jul,Surplus/(-)Deficit,,,-17010
-2006,Aug,Surplus/(-)Deficit,,,14334
-2006,Sep,Surplus/(-)Deficit,,,-16229
-2006,Oct,Surplus/(-)Deficit,,,-5842
-2006,Nov,Surplus/(-)Deficit,,,-2069
-2006,Dec,Surplus/(-)Deficit,,,-6471
+2006,Jan,Surplus/Deficit,,,-15445
+2006,Feb,Surplus/Deficit,,,-24958
+2006,Mar,Surplus/Deficit,,,-27207
+2006,Apr,Surplus/Deficit,,,17642
+2006,May,Surplus/Deficit,,,5811
+2006,Jun,Surplus/Deficit,,,12653
+2006,Jul,Surplus/Deficit,,,-17010
+2006,Aug,Surplus/Deficit,,,14334
+2006,Sep,Surplus/Deficit,,,-16229
+2006,Oct,Surplus/Deficit,,,-5842
+2006,Nov,Surplus/Deficit,,,-2069
+2006,Dec,Surplus/Deficit,,,-6471
 2006,Jan,Financing,,,97375
 2006,Feb,Financing,,,5137
 2006,Mar,Financing,,,20255
@@ -7563,18 +7563,18 @@ year,month,category,subcategory,line_item,value
 2005,Oct,Expenditures,,NG Disbursements,36636
 2005,Nov,Expenditures,,NG Disbursements,41829
 2005,Dec,Expenditures,,NG Disbursements,46193
-2005,Jan,Surplus/(-)Deficit,,,-16502
-2005,Feb,Surplus/(-)Deficit,,,-23551
-2005,Mar,Surplus/(-)Deficit,,,-23413
-2005,Apr,Surplus/(-)Deficit,,,3339
-2005,May,Surplus/(-)Deficit,,,-7630
-2005,Jun,Surplus/(-)Deficit,,,246
-2005,Jul,Surplus/(-)Deficit,,,-15061
-2005,Aug,Surplus/(-)Deficit,,,1751
-2005,Sep,Surplus/(-)Deficit,,,-27657
-2005,Oct,Surplus/(-)Deficit,,,-7064
-2005,Nov,Surplus/(-)Deficit,,,-7289
-2005,Dec,Surplus/(-)Deficit,,,-23947
+2005,Jan,Surplus/Deficit,,,-16502
+2005,Feb,Surplus/Deficit,,,-23551
+2005,Mar,Surplus/Deficit,,,-23413
+2005,Apr,Surplus/Deficit,,,3339
+2005,May,Surplus/Deficit,,,-7630
+2005,Jun,Surplus/Deficit,,,246
+2005,Jul,Surplus/Deficit,,,-15061
+2005,Aug,Surplus/Deficit,,,1751
+2005,Sep,Surplus/Deficit,,,-27657
+2005,Oct,Surplus/Deficit,,,-7064
+2005,Nov,Surplus/Deficit,,,-7289
+2005,Dec,Surplus/Deficit,,,-23947
 2005,Jan,Financing,,,33331
 2005,Feb,Financing,,,90286
 2005,Mar,Financing,,,-432
@@ -7959,18 +7959,18 @@ year,month,category,subcategory,line_item,value
 2004,Oct,Expenditures,,NG Disbursements,31470
 2004,Nov,Expenditures,,NG Disbursements,41264
 2004,Dec,Expenditures,,NG Disbursements,49738
-2004,Jan,Surplus/(-)Deficit,,,-16117
-2004,Feb,Surplus/(-)Deficit,,,-18450
-2004,Mar,Surplus/(-)Deficit,,,-22280
-2004,Apr,Surplus/(-)Deficit,,,-7824
-2004,May,Surplus/(-)Deficit,,,-12682
-2004,Jun,Surplus/(-)Deficit,,,-2767
-2004,Jul,Surplus/(-)Deficit,,,-19292
-2004,Aug,Surplus/(-)Deficit,,,-11670
-2004,Sep,Surplus/(-)Deficit,,,-30825
-2004,Oct,Surplus/(-)Deficit,,,-5819
-2004,Nov,Surplus/(-)Deficit,,,-12494
-2004,Dec,Surplus/(-)Deficit,,,-26837
+2004,Jan,Surplus/Deficit,,,-16117
+2004,Feb,Surplus/Deficit,,,-18450
+2004,Mar,Surplus/Deficit,,,-22280
+2004,Apr,Surplus/Deficit,,,-7824
+2004,May,Surplus/Deficit,,,-12682
+2004,Jun,Surplus/Deficit,,,-2767
+2004,Jul,Surplus/Deficit,,,-19292
+2004,Aug,Surplus/Deficit,,,-11670
+2004,Sep,Surplus/Deficit,,,-30825
+2004,Oct,Surplus/Deficit,,,-5819
+2004,Nov,Surplus/Deficit,,,-12494
+2004,Dec,Surplus/Deficit,,,-26837
 2004,Jan,Financing,,,25743
 2004,Feb,Financing,,,13889
 2004,Mar,Financing,,,17288
@@ -8319,18 +8319,18 @@ year,month,category,subcategory,line_item,value
 2003,Oct,Expenditures,,NG Disbursements,34439
 2003,Nov,Expenditures,,NG Disbursements,36312
 2003,Dec,Expenditures,,NG Disbursements,48756
-2003,Jan,Surplus/(Deficit),,,-13948
-2003,Feb,Surplus/(Deficit),,,-17694
-2003,Mar,Surplus/(Deficit),,,-27237
-2003,Apr,Surplus/(Deficit),,,-6584
-2003,May,Surplus/(Deficit),,,-9896
-2003,Jun,Surplus/(Deficit),,,-4217
-2003,Jul,Surplus/(Deficit),,,-15819
-2003,Aug,Surplus/(Deficit),,,-18170
-2003,Sep,Surplus/(Deficit),,,-29138
-2003,Oct,Surplus/(Deficit),,,-21171
-2003,Nov,Surplus/(Deficit),,,-8330
-2003,Dec,Surplus/(Deficit),,,-27664
+2003,Jan,Surplus/Deficit,,,-13948
+2003,Feb,Surplus/Deficit,,,-17694
+2003,Mar,Surplus/Deficit,,,-27237
+2003,Apr,Surplus/Deficit,,,-6584
+2003,May,Surplus/Deficit,,,-9896
+2003,Jun,Surplus/Deficit,,,-4217
+2003,Jul,Surplus/Deficit,,,-15819
+2003,Aug,Surplus/Deficit,,,-18170
+2003,Sep,Surplus/Deficit,,,-29138
+2003,Oct,Surplus/Deficit,,,-21171
+2003,Nov,Surplus/Deficit,,,-8330
+2003,Dec,Surplus/Deficit,,,-27664
 2003,Jan,Financing,,,23521
 2003,Feb,Financing,,,6864
 2003,Mar,Financing,,,18311
@@ -8679,18 +8679,18 @@ year,month,category,subcategory,line_item,value
 2002,Oct,Expenditures,,NG Disbursements,32098
 2002,Nov,Expenditures,,NG Disbursements,38429
 2002,Dec,Expenditures,,NG Disbursements,45206
-2002,Jan,Surplus/(Deficit),,,-14979
-2002,Feb,Surplus/(Deficit),,,-20962
-2002,Mar,Surplus/(Deficit),,,-25267
-2002,Apr,Surplus/(Deficit),,,-21756
-2002,May,Surplus/(Deficit),,,-24576
-2002,Jun,Surplus/(Deficit),,,-12178
-2002,Jul,Surplus/(Deficit),,,-12127
-2002,Aug,Surplus/(Deficit),,,-12188
-2002,Sep,Surplus/(Deficit),,,-22440
-2002,Oct,Surplus/(Deficit),,,-21094
-2002,Nov,Surplus/(Deficit),,,-12987
-2002,Dec,Surplus/(Deficit),,,-10187
+2002,Jan,Surplus/Deficit,,,-14979
+2002,Feb,Surplus/Deficit,,,-20962
+2002,Mar,Surplus/Deficit,,,-25267
+2002,Apr,Surplus/Deficit,,,-21756
+2002,May,Surplus/Deficit,,,-24576
+2002,Jun,Surplus/Deficit,,,-12178
+2002,Jul,Surplus/Deficit,,,-12127
+2002,Aug,Surplus/Deficit,,,-12188
+2002,Sep,Surplus/Deficit,,,-22440
+2002,Oct,Surplus/Deficit,,,-21094
+2002,Nov,Surplus/Deficit,,,-12987
+2002,Dec,Surplus/Deficit,,,-10187
 2002,Jan,Financing,,,47429
 2002,Feb,Financing,,,4123
 2002,Mar,Financing,,,47797
@@ -9015,18 +9015,18 @@ year,month,category,subcategory,line_item,value
 2001,Oct,Expenditures,,NG Disbursements,34452
 2001,Nov,Expenditures,,NG Disbursements,37367
 2001,Dec,Expenditures,,NG Disbursements,34164
-2001,Jan,Surplus/(Deficit),,,-6386
-2001,Feb,Surplus/(Deficit),,,-12597
-2001,Mar,Surplus/(Deficit),,,-18942
-2001,Apr,Surplus/(Deficit),,,9846
-2001,May,Surplus/(Deficit),,,-30247
-2001,Jun,Surplus/(Deficit),,,-19496
-2001,Jul,Surplus/(Deficit),,,-4764
-2001,Aug,Surplus/(Deficit),,,-16941
-2001,Sep,Surplus/(Deficit),,,-22625
-2001,Oct,Surplus/(Deficit),,,-11167
-2001,Nov,Surplus/(Deficit),,,-11309
-2001,Dec,Surplus/(Deficit),,,-2395
+2001,Jan,Surplus/Deficit,,,-6386
+2001,Feb,Surplus/Deficit,,,-12597
+2001,Mar,Surplus/Deficit,,,-18942
+2001,Apr,Surplus/Deficit,,,9846
+2001,May,Surplus/Deficit,,,-30247
+2001,Jun,Surplus/Deficit,,,-19496
+2001,Jul,Surplus/Deficit,,,-4764
+2001,Aug,Surplus/Deficit,,,-16941
+2001,Sep,Surplus/Deficit,,,-22625
+2001,Oct,Surplus/Deficit,,,-11167
+2001,Nov,Surplus/Deficit,,,-11309
+2001,Dec,Surplus/Deficit,,,-2395
 2001,Jan,Financing,,,39306
 2001,Feb,Financing,,,7650
 2001,Mar,Financing,,,9545
@@ -9351,18 +9351,18 @@ year,month,category,subcategory,line_item,value
 2000,Oct,Expenditures,,NG Disbursements,32577
 2000,Nov,Expenditures,,NG Disbursements,37296
 2000,Dec,Expenditures,,NG Disbursements,44755
-2000,Jan,Surplus/(Deficit),,,-114
-2000,Feb,Surplus/(Deficit),,,-8918
-2000,Mar,Surplus/(Deficit),,,-13281
-2000,Apr,Surplus/(Deficit),,,9030
-2000,May,Surplus/(Deficit),,,-20828
-2000,Jun,Surplus/(Deficit),,,-13583
-2000,Jul,Surplus/(Deficit),,,-12015
-2000,Aug,Surplus/(Deficit),,,-10078
-2000,Sep,Surplus/(Deficit),,,-13196
-2000,Oct,Surplus/(Deficit),,,-12558
-2000,Nov,Surplus/(Deficit),,,-18897
-2000,Dec,Surplus/(Deficit),,,-19774
+2000,Jan,Surplus/Deficit,,,-114
+2000,Feb,Surplus/Deficit,,,-8918
+2000,Mar,Surplus/Deficit,,,-13281
+2000,Apr,Surplus/Deficit,,,9030
+2000,May,Surplus/Deficit,,,-20828
+2000,Jun,Surplus/Deficit,,,-13583
+2000,Jul,Surplus/Deficit,,,-12015
+2000,Aug,Surplus/Deficit,,,-10078
+2000,Sep,Surplus/Deficit,,,-13196
+2000,Oct,Surplus/Deficit,,,-12558
+2000,Nov,Surplus/Deficit,,,-18897
+2000,Dec,Surplus/Deficit,,,-19774
 2000,Jan,Financing,,,10716
 2000,Feb,Financing,,,14430
 2000,Mar,Financing,,,70730
@@ -9675,18 +9675,18 @@ year,month,category,subcategory,line_item,value
 1999,Oct,Expenditures,,Net Lending,-70
 1999,Nov,Expenditures,,Net Lending,169
 1999,Dec,Expenditures,,Net Lending,-5624
-1999,Jan,Surplus/(Deficit),,,-1859
-1999,Feb,Surplus/(Deficit),,,-7947
-1999,Mar,Surplus/(Deficit),,,-23657
-1999,Apr,Surplus/(Deficit),,,11440
-1999,May,Surplus/(Deficit),,,-23293
-1999,Jun,Surplus/(Deficit),,,-7148
-1999,Jul,Surplus/(Deficit),,,-8069
-1999,Aug,Surplus/(Deficit),,,-11424
-1999,Sep,Surplus/(Deficit),,,-15581
-1999,Oct,Surplus/(Deficit),,,-9266
-1999,Nov,Surplus/(Deficit),,,-13351
-1999,Dec,Surplus/(Deficit),,,-1503
+1999,Jan,Surplus/Deficit,,,-1859
+1999,Feb,Surplus/Deficit,,,-7947
+1999,Mar,Surplus/Deficit,,,-23657
+1999,Apr,Surplus/Deficit,,,11440
+1999,May,Surplus/Deficit,,,-23293
+1999,Jun,Surplus/Deficit,,,-7148
+1999,Jul,Surplus/Deficit,,,-8069
+1999,Aug,Surplus/Deficit,,,-11424
+1999,Sep,Surplus/Deficit,,,-15581
+1999,Oct,Surplus/Deficit,,,-9266
+1999,Nov,Surplus/Deficit,,,-13351
+1999,Dec,Surplus/Deficit,,,-1503
 1999,Jan,Financing,,,50412
 1999,Feb,Financing,,,21489
 1999,Mar,Financing,,,39566
@@ -9999,18 +9999,18 @@ year,month,category,subcategory,line_item,value
 1998,Oct,Expenditures,,Net Lending,276
 1998,Nov,Expenditures,,Net Lending,-251
 1998,Dec,Expenditures,,Net Lending,137
-1998,Jan,Surplus/(Deficit),,,1870
-1998,Feb,Surplus/(Deficit),,,-7335
-1998,Mar,Surplus/(Deficit),,,-6303
-1998,Apr,Surplus/(Deficit),,,13771
-1998,May,Surplus/(Deficit),,,-17448
-1998,Jun,Surplus/(Deficit),,,-8558
-1998,Jul,Surplus/(Deficit),,,10430
-1998,Aug,Surplus/(Deficit),,,-9130
-1998,Sep,Surplus/(Deficit),,,-2999
-1998,Oct,Surplus/(Deficit),,,292
-1998,Nov,Surplus/(Deficit),,,-14822
-1998,Dec,Surplus/(Deficit),,,-9749
+1998,Jan,Surplus/Deficit,,,1870
+1998,Feb,Surplus/Deficit,,,-7335
+1998,Mar,Surplus/Deficit,,,-6303
+1998,Apr,Surplus/Deficit,,,13771
+1998,May,Surplus/Deficit,,,-17448
+1998,Jun,Surplus/Deficit,,,-8558
+1998,Jul,Surplus/Deficit,,,10430
+1998,Aug,Surplus/Deficit,,,-9130
+1998,Sep,Surplus/Deficit,,,-2999
+1998,Oct,Surplus/Deficit,,,292
+1998,Nov,Surplus/Deficit,,,-14822
+1998,Dec,Surplus/Deficit,,,-9749
 1998,Jan,Financing,,,599
 1998,Feb,Financing,,,34
 1998,Mar,Financing,,,-3008
@@ -10310,18 +10310,18 @@ year,month,category,subcategory,line_item,value
 1997,Oct,Expenditures,,Net Lending,198
 1997,Nov,Expenditures,,Net Lending,163
 1997,Dec,Expenditures,,Net Lending,459
-1997,Jan,Surplus/(Deficit),,,-3182
-1997,Feb,Surplus/(Deficit),,,-368
-1997,Mar,Surplus/(Deficit),,,2881
-1997,Apr,Surplus/(Deficit),,,18011
-1997,May,Surplus/(Deficit),,,-12425
-1997,Jun,Surplus/(Deficit),,,-1096
-1997,Jul,Surplus/(Deficit),,,1885
-1997,Aug,Surplus/(Deficit),,,2094
-1997,Sep,Surplus/(Deficit),,,-3237
-1997,Oct,Surplus/(Deficit),,,-6923
-1997,Nov,Surplus/(Deficit),,,-5621
-1997,Dec,Surplus/(Deficit),,,9545
+1997,Jan,Surplus/Deficit,,,-3182
+1997,Feb,Surplus/Deficit,,,-368
+1997,Mar,Surplus/Deficit,,,2881
+1997,Apr,Surplus/Deficit,,,18011
+1997,May,Surplus/Deficit,,,-12425
+1997,Jun,Surplus/Deficit,,,-1096
+1997,Jul,Surplus/Deficit,,,1885
+1997,Aug,Surplus/Deficit,,,2094
+1997,Sep,Surplus/Deficit,,,-3237
+1997,Oct,Surplus/Deficit,,,-6923
+1997,Nov,Surplus/Deficit,,,-5621
+1997,Dec,Surplus/Deficit,,,9545
 1997,Jan,Financing,,,-5487
 1997,Feb,Financing,,,3489
 1997,Mar,Financing,,,-3769
@@ -10622,18 +10622,18 @@ year,month,category,subcategory,line_item,value
 1996,Oct,Expenditures,,Net Lending,-19
 1996,Nov,Expenditures,,Net Lending,237
 1996,Dec,Expenditures,,Net Lending,-336
-1996,Jan,Surplus/(Deficit),,,220
-1996,Feb,Surplus/(Deficit),,,-5950
-1996,Mar,Surplus/(Deficit),,,4159
-1996,Apr,Surplus/(Deficit),,,15237
-1996,May,Surplus/(Deficit),,,-1112
-1996,Jun,Surplus/(Deficit),,,-3134
-1996,Jul,Surplus/(Deficit),,,-4796
-1996,Aug,Surplus/(Deficit),,,2333
-1996,Sep,Surplus/(Deficit),,,216
-1996,Oct,Surplus/(Deficit),,,-640
-1996,Nov,Surplus/(Deficit),,,3800
-1996,Dec,Surplus/(Deficit),,,-4077
+1996,Jan,Surplus/Deficit,,,220
+1996,Feb,Surplus/Deficit,,,-5950
+1996,Mar,Surplus/Deficit,,,4159
+1996,Apr,Surplus/Deficit,,,15237
+1996,May,Surplus/Deficit,,,-1112
+1996,Jun,Surplus/Deficit,,,-3134
+1996,Jul,Surplus/Deficit,,,-4796
+1996,Aug,Surplus/Deficit,,,2333
+1996,Sep,Surplus/Deficit,,,216
+1996,Oct,Surplus/Deficit,,,-640
+1996,Nov,Surplus/Deficit,,,3800
+1996,Dec,Surplus/Deficit,,,-4077
 1996,Jan,Financing,,,12427
 1996,Feb,Financing,,,3186
 1996,Mar,Financing,,,-4021
@@ -10934,18 +10934,18 @@ year,month,category,subcategory,line_item,value
 1995,Oct,Expenditures,,Net Lending,476
 1995,Nov,Expenditures,,Net Lending,1042
 1995,Dec,Expenditures,,Net Lending,398
-1995,Jan,Surplus/(Deficit),,,-1153
-1995,Feb,Surplus/(Deficit),,,5521
-1995,Mar,Surplus/(Deficit),,,1101
-1995,Apr,Surplus/(Deficit),,,11281
-1995,May,Surplus/(Deficit),,,-5914
-1995,Jun,Surplus/(Deficit),,,-1366
-1995,Jul,Surplus/(Deficit),,,-2854
-1995,Aug,Surplus/(Deficit),,,-363
-1995,Sep,Surplus/(Deficit),,,1681
-1995,Oct,Surplus/(Deficit),,,2131
-1995,Nov,Surplus/(Deficit),,,331
-1995,Dec,Surplus/(Deficit),,,678
+1995,Jan,Surplus/Deficit,,,-1153
+1995,Feb,Surplus/Deficit,,,5521
+1995,Mar,Surplus/Deficit,,,1101
+1995,Apr,Surplus/Deficit,,,11281
+1995,May,Surplus/Deficit,,,-5914
+1995,Jun,Surplus/Deficit,,,-1366
+1995,Jul,Surplus/Deficit,,,-2854
+1995,Aug,Surplus/Deficit,,,-363
+1995,Sep,Surplus/Deficit,,,1681
+1995,Oct,Surplus/Deficit,,,2131
+1995,Nov,Surplus/Deficit,,,331
+1995,Dec,Surplus/Deficit,,,678
 1995,Jan,Financing,,,-17234
 1995,Feb,Financing,,,-4432
 1995,Mar,Financing,,,14008
@@ -11246,18 +11246,18 @@ year,month,category,subcategory,line_item,value
 1994,Oct,Expenditures,,Net Lending,1650
 1994,Nov,Expenditures,,Net Lending,1266
 1994,Dec,Expenditures,,Net Lending,620
-1994,Jan,Surplus/(Deficit),,,589
-1994,Feb,Surplus/(Deficit),,,-2373
-1994,Mar,Surplus/(Deficit),,,9740
-1994,Apr,Surplus/(Deficit),,,14943
-1994,May,Surplus/(Deficit),,,-2730
-1994,Jun,Surplus/(Deficit),,,-8110
-1994,Jul,Surplus/(Deficit),,,-3913
-1994,Aug,Surplus/(Deficit),,,-572
-1994,Sep,Surplus/(Deficit),,,-1898
-1994,Oct,Surplus/(Deficit),,,8763
-1994,Nov,Surplus/(Deficit),,,10964
-1994,Dec,Surplus/(Deficit),,,-9117
+1994,Jan,Surplus/Deficit,,,589
+1994,Feb,Surplus/Deficit,,,-2373
+1994,Mar,Surplus/Deficit,,,9740
+1994,Apr,Surplus/Deficit,,,14943
+1994,May,Surplus/Deficit,,,-2730
+1994,Jun,Surplus/Deficit,,,-8110
+1994,Jul,Surplus/Deficit,,,-3913
+1994,Aug,Surplus/Deficit,,,-572
+1994,Sep,Surplus/Deficit,,,-1898
+1994,Oct,Surplus/Deficit,,,8763
+1994,Nov,Surplus/Deficit,,,10964
+1994,Dec,Surplus/Deficit,,,-9117
 1994,Jan,Financing,,,-309
 1994,Feb,Financing,,,13749
 1994,Mar,Financing,,,-1513
@@ -11582,18 +11582,18 @@ year,month,category,subcategory,line_item,value
 1993,Oct,Expenditures,,Net Lending,321
 1993,Nov,Expenditures,,Net Lending,385
 1993,Dec,Expenditures,,Net Lending,298
-1993,Jan,Surplus/(Deficit),,,5788
-1993,Feb,Surplus/(Deficit),,,-7815
-1993,Mar,Surplus/(Deficit),,,-8299
-1993,Apr,Surplus/(Deficit),,,4371
-1993,May,Surplus/(Deficit),,,-2490
-1993,Jun,Surplus/(Deficit),,,-3926
-1993,Jul,Surplus/(Deficit),,,855
-1993,Aug,Surplus/(Deficit),,,-2007
-1993,Sep,Surplus/(Deficit),,,-3362
-1993,Oct,Surplus/(Deficit),,,1416
-1993,Nov,Surplus/(Deficit),,,-2732
-1993,Dec,Surplus/(Deficit),,,-3690
+1993,Jan,Surplus/Deficit,,,5788
+1993,Feb,Surplus/Deficit,,,-7815
+1993,Mar,Surplus/Deficit,,,-8299
+1993,Apr,Surplus/Deficit,,,4371
+1993,May,Surplus/Deficit,,,-2490
+1993,Jun,Surplus/Deficit,,,-3926
+1993,Jul,Surplus/Deficit,,,855
+1993,Aug,Surplus/Deficit,,,-2007
+1993,Sep,Surplus/Deficit,,,-3362
+1993,Oct,Surplus/Deficit,,,1416
+1993,Nov,Surplus/Deficit,,,-2732
+1993,Dec,Surplus/Deficit,,,-3690
 1993,Jan,Financing,,,22362
 1993,Feb,Financing,,,22206
 1993,Mar,Financing,,,28028
@@ -11918,18 +11918,18 @@ year,month,category,subcategory,line_item,value
 1992,Oct,Expenditures,,Net Lending,155
 1992,Nov,Expenditures,,Net Lending,321
 1992,Dec,Expenditures,,Net Lending,269
-1992,Jan,Surplus/(Deficit),,,-505
-1992,Feb,Surplus/(Deficit),,,-2799
-1992,Mar,Surplus/(Deficit),,,8330
-1992,Apr,Surplus/(Deficit),,,4940
-1992,May,Surplus/(Deficit),,,-5738
-1992,Jun,Surplus/(Deficit),,,-335
-1992,Jul,Surplus/(Deficit),,,-1792
-1992,Aug,Surplus/(Deficit),,,-427
-1992,Sep,Surplus/(Deficit),,,-7236
-1992,Oct,Surplus/(Deficit),,,1530
-1992,Nov,Surplus/(Deficit),,,-9057
-1992,Dec,Surplus/(Deficit),,,-2877
+1992,Jan,Surplus/Deficit,,,-505
+1992,Feb,Surplus/Deficit,,,-2799
+1992,Mar,Surplus/Deficit,,,8330
+1992,Apr,Surplus/Deficit,,,4940
+1992,May,Surplus/Deficit,,,-5738
+1992,Jun,Surplus/Deficit,,,-335
+1992,Jul,Surplus/Deficit,,,-1792
+1992,Aug,Surplus/Deficit,,,-427
+1992,Sep,Surplus/Deficit,,,-7236
+1992,Oct,Surplus/Deficit,,,1530
+1992,Nov,Surplus/Deficit,,,-9057
+1992,Dec,Surplus/Deficit,,,-2877
 1992,Jan,Financing,,,18021
 1992,Feb,Financing,,,27156
 1992,Mar,Financing,,,20457
@@ -12254,18 +12254,18 @@ year,month,category,subcategory,line_item,value
 1991,Oct,Expenditures,,Net Lending,1226
 1991,Nov,Expenditures,,Net Lending,-1371
 1991,Dec,Expenditures,,Net Lending,31
-1991,Jan,Surplus/(Deficit),,,4926
-1991,Feb,Surplus/(Deficit),,,-833
-1991,Mar,Surplus/(Deficit),,,-1565
-1991,Apr,Surplus/(Deficit),,,1900
-1991,May,Surplus/(Deficit),,,-4645
-1991,Jun,Surplus/(Deficit),,,-4284
-1991,Jul,Surplus/(Deficit),,,-2800
-1991,Aug,Surplus/(Deficit),,,-1372
-1991,Sep,Surplus/(Deficit),,,-3636
-1991,Oct,Surplus/(Deficit),,,-4780
-1991,Nov,Surplus/(Deficit),,,-7479
-1991,Dec,Surplus/(Deficit),,,-1781
+1991,Jan,Surplus/Deficit,,,4926
+1991,Feb,Surplus/Deficit,,,-833
+1991,Mar,Surplus/Deficit,,,-1565
+1991,Apr,Surplus/Deficit,,,1900
+1991,May,Surplus/Deficit,,,-4645
+1991,Jun,Surplus/Deficit,,,-4284
+1991,Jul,Surplus/Deficit,,,-2800
+1991,Aug,Surplus/Deficit,,,-1372
+1991,Sep,Surplus/Deficit,,,-3636
+1991,Oct,Surplus/Deficit,,,-4780
+1991,Nov,Surplus/Deficit,,,-7479
+1991,Dec,Surplus/Deficit,,,-1781
 1991,Jan,Financing,,,-5284
 1991,Feb,Financing,,,10114
 1991,Mar,Financing,,,2468
@@ -12590,18 +12590,18 @@ year,month,category,subcategory,line_item,value
 1990,Oct,Expenditures,,Net Lending,267
 1990,Nov,Expenditures,,Net Lending,-533
 1990,Dec,Expenditures,,Net Lending,-98
-1990,Jan,Surplus/(Deficit),,,-4696
-1990,Feb,Surplus/(Deficit),,,-4490
-1990,Mar,Surplus/(Deficit),,,-676
-1990,Apr,Surplus/(Deficit),,,3337
-1990,May,Surplus/(Deficit),,,-5635
-1990,Jun,Surplus/(Deficit),,,-6834
-1990,Jul,Surplus/(Deficit),,,-5138
-1990,Aug,Surplus/(Deficit),,,-3744
-1990,Sep,Surplus/(Deficit),,,-2263
-1990,Oct,Surplus/(Deficit),,,-1695
-1990,Nov,Surplus/(Deficit),,,-2904
-1990,Dec,Surplus/(Deficit),,,-2456
+1990,Jan,Surplus/Deficit,,,-4696
+1990,Feb,Surplus/Deficit,,,-4490
+1990,Mar,Surplus/Deficit,,,-676
+1990,Apr,Surplus/Deficit,,,3337
+1990,May,Surplus/Deficit,,,-5635
+1990,Jun,Surplus/Deficit,,,-6834
+1990,Jul,Surplus/Deficit,,,-5138
+1990,Aug,Surplus/Deficit,,,-3744
+1990,Sep,Surplus/Deficit,,,-2263
+1990,Oct,Surplus/Deficit,,,-1695
+1990,Nov,Surplus/Deficit,,,-2904
+1990,Dec,Surplus/Deficit,,,-2456
 1990,Jan,Financing,,,12006
 1990,Feb,Financing,,,-4113
 1990,Mar,Financing,,,3009
@@ -12914,18 +12914,18 @@ year,month,category,subcategory,line_item,value
 1989,Oct,Expenditures,,Net Lending,1079
 1989,Nov,Expenditures,,Net Lending,29
 1989,Dec,Expenditures,,Net Lending,707
-1989,Jan,Surplus/(Deficit),,,-2348
-1989,Feb,Surplus/(Deficit),,,-3630
-1989,Mar,Surplus/(Deficit),,,-3681
-1989,Apr,Surplus/(Deficit),,,1273
-1989,May,Surplus/(Deficit),,,-1966
-1989,Jun,Surplus/(Deficit),,,-1243
-1989,Jul,Surplus/(Deficit),,,1042
-1989,Aug,Surplus/(Deficit),,,2530
-1989,Sep,Surplus/(Deficit),,,1310
-1989,Oct,Surplus/(Deficit),,,195
-1989,Nov,Surplus/(Deficit),,,-5050
-1989,Dec,Surplus/(Deficit),,,-8000
+1989,Jan,Surplus/Deficit,,,-2348
+1989,Feb,Surplus/Deficit,,,-3630
+1989,Mar,Surplus/Deficit,,,-3681
+1989,Apr,Surplus/Deficit,,,1273
+1989,May,Surplus/Deficit,,,-1966
+1989,Jun,Surplus/Deficit,,,-1243
+1989,Jul,Surplus/Deficit,,,1042
+1989,Aug,Surplus/Deficit,,,2530
+1989,Sep,Surplus/Deficit,,,1310
+1989,Oct,Surplus/Deficit,,,195
+1989,Nov,Surplus/Deficit,,,-5050
+1989,Dec,Surplus/Deficit,,,-8000
 1989,Jan,Financing,,,4540
 1989,Feb,Financing,,,2011
 1989,Mar,Financing,,,6829
@@ -13238,18 +13238,18 @@ year,month,category,subcategory,line_item,value
 1988,Oct,Expenditures,,Net Lending,375
 1988,Nov,Expenditures,,Net Lending,665
 1988,Dec,Expenditures,,Net Lending,-516
-1988,Jan,Surplus/(Deficit),,,-1517
-1988,Feb,Surplus/(Deficit),,,-1627
-1988,Mar,Surplus/(Deficit),,,-5019
-1988,Apr,Surplus/(Deficit),,,2970
-1988,May,Surplus/(Deficit),,,-941
-1988,Jun,Surplus/(Deficit),,,-2842
-1988,Jul,Surplus/(Deficit),,,236
-1988,Aug,Surplus/(Deficit),,,-3716
-1988,Sep,Surplus/(Deficit),,,-3185
-1988,Oct,Surplus/(Deficit),,,-119
-1988,Nov,Surplus/(Deficit),,,-15
-1988,Dec,Surplus/(Deficit),,,-7431
+1988,Jan,Surplus/Deficit,,,-1517
+1988,Feb,Surplus/Deficit,,,-1627
+1988,Mar,Surplus/Deficit,,,-5019
+1988,Apr,Surplus/Deficit,,,2970
+1988,May,Surplus/Deficit,,,-941
+1988,Jun,Surplus/Deficit,,,-2842
+1988,Jul,Surplus/Deficit,,,236
+1988,Aug,Surplus/Deficit,,,-3716
+1988,Sep,Surplus/Deficit,,,-3185
+1988,Oct,Surplus/Deficit,,,-119
+1988,Nov,Surplus/Deficit,,,-15
+1988,Dec,Surplus/Deficit,,,-7431
 1988,Jan,Financing,,,2351
 1988,Feb,Financing,,,8797
 1988,Mar,Financing,,,15994
@@ -13574,18 +13574,18 @@ year,month,category,subcategory,line_item,value
 1987,Oct,Expenditures,,Net Lending,1124
 1987,Nov,Expenditures,,Net Lending,717
 1987,Dec,Expenditures,,Net Lending,-758
-1987,Jan,Surplus/(Deficit),,,-1582
-1987,Feb,Surplus/(Deficit),,,-1141
-1987,Mar,Surplus/(Deficit),,,-4630
-1987,Apr,Surplus/(Deficit),,,4
-1987,May,Surplus/(Deficit),,,-4233
-1987,Jun,Surplus/(Deficit),,,847
-1987,Jul,Surplus/(Deficit),,,-1797
-1987,Aug,Surplus/(Deficit),,,-980
-1987,Sep,Surplus/(Deficit),,,-1414
-1987,Oct,Surplus/(Deficit),,,1697
-1987,Nov,Surplus/(Deficit),,,-3479
-1987,Dec,Surplus/(Deficit),,,15
+1987,Jan,Surplus/Deficit,,,-1582
+1987,Feb,Surplus/Deficit,,,-1141
+1987,Mar,Surplus/Deficit,,,-4630
+1987,Apr,Surplus/Deficit,,,4
+1987,May,Surplus/Deficit,,,-4233
+1987,Jun,Surplus/Deficit,,,847
+1987,Jul,Surplus/Deficit,,,-1797
+1987,Aug,Surplus/Deficit,,,-980
+1987,Sep,Surplus/Deficit,,,-1414
+1987,Oct,Surplus/Deficit,,,1697
+1987,Nov,Surplus/Deficit,,,-3479
+1987,Dec,Surplus/Deficit,,,15
 1987,Jan,Financing,,,3216
 1987,Feb,Financing,,,3978
 1987,Mar,Financing,,,11522
@@ -13886,18 +13886,18 @@ year,month,category,subcategory,line_item,value
 1986,Oct,Expenditures,,Net Lending,3093
 1986,Nov,Expenditures,,Net Lending,3216
 1986,Dec,Expenditures,,Net Lending,-2313
-1986,Jan,Surplus/(Deficit),,,-3127
-1986,Feb,Surplus/(Deficit),,,-3216
-1986,Mar,Surplus/(Deficit),,,-3762
-1986,Apr,Surplus/(Deficit),,,1177
-1986,May,Surplus/(Deficit),,,-1101
-1986,Jun,Surplus/(Deficit),,,-312
-1986,Jul,Surplus/(Deficit),,,-369
-1986,Aug,Surplus/(Deficit),,,-1397
-1986,Sep,Surplus/(Deficit),,,-708
-1986,Oct,Surplus/(Deficit),,,-2833
-1986,Nov,Surplus/(Deficit),,,-5506
-1986,Dec,Surplus/(Deficit),,,-10098
+1986,Jan,Surplus/Deficit,,,-3127
+1986,Feb,Surplus/Deficit,,,-3216
+1986,Mar,Surplus/Deficit,,,-3762
+1986,Apr,Surplus/Deficit,,,1177
+1986,May,Surplus/Deficit,,,-1101
+1986,Jun,Surplus/Deficit,,,-312
+1986,Jul,Surplus/Deficit,,,-369
+1986,Aug,Surplus/Deficit,,,-1397
+1986,Sep,Surplus/Deficit,,,-708
+1986,Oct,Surplus/Deficit,,,-2833
+1986,Nov,Surplus/Deficit,,,-5506
+1986,Dec,Surplus/Deficit,,,-10098
 1986,Jan,Financing,,,-1798
 1986,Feb,Financing,,,5801
 1986,Mar,Financing,,,-954

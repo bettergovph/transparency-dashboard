@@ -1,0 +1,369 @@
+{
+  "metadata": {
+    "title": "Treasury All-Time Aggregates",
+    "source": "Bureau of Treasury - Cash Operations Report (COR)",
+    "description": "Total values for each line item aggregated across all years and months",
+    "generated_at": "2026-01-19T12:02:08.854786",
+    "date_range": {
+      "start_year": 1986,
+      "end_year": 2024,
+      "total_years": 39
+    },
+    "total_line_items": 54,
+    "scale": "Values in thousands of Philippine Pesos",
+    "note": "To get actual PHP amounts, multiply values by 1,000",
+    "category_summary": [
+      {
+        "category": "Budgetary Change-In-Cash",
+        "total": 1234377.29,
+        "line_item_count": 1
+      },
+      {
+        "category": "Expenditures",
+        "total": 122268495.84,
+        "line_item_count": 9
+      },
+      {
+        "category": "Financing",
+        "total": 65599234.55,
+        "line_item_count": 12
+      },
+      {
+        "category": "Revenues",
+        "total": 150565775.21,
+        "line_item_count": 31
+      },
+      {
+        "category": "Surplus/Deficit",
+        "total": -12427091.84,
+        "line_item_count": 1
+      }
+    ]
+  },
+  "data": [
+    {
+      "category": "Revenues",
+      "subcategory": "",
+      "line_item": "",
+      "total": 49964918.07
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "",
+      "total": 44315415.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "BIR",
+      "total": 33728697.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "BIR - Documentary Stamp",
+      "total": 207091.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "BIR - Tax Expenditures",
+      "total": 192700.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "BOC",
+      "total": 10191903.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "BOC - Tax Expenditures",
+      "total": 243111.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "Other Offices",
+      "total": 254384.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "",
+      "total": 5649502.07
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "BTr Income",
+      "total": 2739757.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Fees and Charges*",
+      "total": 65215.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Privatization",
+      "total": 328296.81
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Income from Malampaya",
+      "total": 390655.64
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Other non-tax**",
+      "total": 255302.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Grants",
+      "total": 30081.08
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "",
+      "total": 62392009.92
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "Allotment to LGUs",
+      "total": 10956016.0
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "Interest Payments",
+      "total": 9217586.88
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "Tax Expenditures",
+      "total": 716980.16
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "Subsidy",
+      "total": 2050708.05
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "Equity",
+      "total": 209321.0
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "Net Lending",
+      "total": 326518.12
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "NG Disbursements",
+      "total": 36395769.71
+    },
+    {
+      "category": "Surplus/Deficit",
+      "subcategory": "",
+      "line_item": "",
+      "total": -12427091.84
+    },
+    {
+      "category": "Financing",
+      "subcategory": "",
+      "line_item": "",
+      "total": 13661469.13
+    },
+    {
+      "category": "Financing",
+      "subcategory": "External (Net)",
+      "line_item": "",
+      "total": 3759398.13
+    },
+    {
+      "category": "Financing",
+      "subcategory": "External (Net)",
+      "line_item": "External (Gross)",
+      "total": 7243010.71
+    },
+    {
+      "category": "Financing",
+      "subcategory": "External (Net)",
+      "line_item": "Less: Amortization",
+      "total": 1895768.58
+    },
+    {
+      "category": "Financing",
+      "subcategory": "Domestic (Net)",
+      "line_item": "",
+      "total": 9894411.0
+    },
+    {
+      "category": "Financing",
+      "subcategory": "Domestic (Net)",
+      "line_item": "Domestic (Gross)",
+      "total": 18729702.0
+    },
+    {
+      "category": "Financing",
+      "subcategory": "Domestic (Net)",
+      "line_item": "Less: Amortization***",
+      "total": 1018036.0
+    },
+    {
+      "category": "Budgetary Change-In-Cash",
+      "subcategory": "",
+      "line_item": "",
+      "total": 1234377.29
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Fees and Charges",
+      "total": 422760.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Other non-tax",
+      "total": 758306.26
+    },
+    {
+      "category": "Financing",
+      "subcategory": "Domestic (Net)",
+      "line_item": "Less: Amortization2/ R/",
+      "total": 2760884.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "Other Offices **",
+      "total": 17512.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Fees and Charges  **",
+      "total": 21351.0
+    },
+    {
+      "category": "Financing",
+      "subcategory": "Domestic (Net)",
+      "line_item": "Less: Amortization 2/ R/",
+      "total": 494441.0
+    },
+    {
+      "category": "Financing",
+      "subcategory": "External (Net)",
+      "line_item": "Less: Payments",
+      "total": 1587844.0
+    },
+    {
+      "category": "Financing",
+      "subcategory": "Domestic (Net)",
+      "line_item": "Less:  Amortization 2/ R/",
+      "total": 3928698.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "Others",
+      "total": 122919.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Marcos Wealth",
+      "total": 17212.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Others",
+      "total": 175056.61
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Fees and Other Charges",
+      "total": 282422.67
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "o.w.  Doc. Stamp Tax",
+      "total": 1998.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "o.w.  Tax Expenditures",
+      "total": 11109.0
+    },
+    {
+      "category": "Financing",
+      "subcategory": "Domestic (Net)",
+      "line_item": "Less: Amortization",
+      "total": 625572.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "o.w. Doc. Stamp Tax",
+      "total": 8193.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Tax Revenues",
+      "line_item": "o.w. Tax Expenditures",
+      "total": 6821.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "CARP",
+      "total": 382.0
+    },
+    {
+      "category": "Expenditures",
+      "subcategory": "",
+      "line_item": "Tax  Expenditures",
+      "total": 3586.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Fees & Other Charges",
+      "total": 132406.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Economic Support Fund",
+      "total": 20116.0
+    },
+    {
+      "category": "Revenues",
+      "subcategory": "Non-tax Revenues",
+      "line_item": "Sale of Assets",
+      "total": 10182.0
+    }
+  ]
+}

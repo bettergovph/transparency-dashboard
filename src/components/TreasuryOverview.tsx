@@ -356,9 +356,15 @@ const TreasuryOverview = () => {
             <div className="p-4">
               <div className="mb-4 pb-4 border-b border-gray-100">
                 <p className="text-xs text-gray-500 uppercase font-semibold mb-2">Overview</p>
-                <div className="bg-blue-50 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium">
+                <div className="bg-blue-50 text-blue-700 px-3 py-2 rounded-lg text-sm font-medium mb-2">
                   All Years (1986–{latestYear})
                 </div>
+                <Link
+                  to="/treasury/alltime"
+                  className="block px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-gray-100 transition-all"
+                >
+                  📊 All-Time Totals
+                </Link>
               </div>
               <h3 className="text-xs font-semibold text-gray-500 uppercase mb-3">Browse by Year</h3>
               <nav className="space-y-1">
