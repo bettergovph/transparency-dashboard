@@ -34,7 +34,7 @@ const AllocationsPage = () => {
   const [agencies, setAgencies] = useState<Map<string, { id: string; description: string; department_id: string }>>(new Map())
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 50

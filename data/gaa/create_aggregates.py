@@ -245,11 +245,14 @@ def create_object_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Create object aggregates with parent references.
     Uses composite keys since object codes may repeat across dept/agency combos.
+    
+    Note: The parquet file is pre-normalized by gaa_csv_to_parquet.py,
+    so all years use uacs_sobj_cd/uacs_sobj_dsc consistently.
     """
     print("  → Creating object aggregates...")
     
     # Filter out null/empty object descriptions
-    df_filtered = df[df['uacs_sobj_dsc'].notna() & (df['uacs_sobj_dsc'] != '')]
+    df_filtered = df[df['uacs_sobj_dsc'].notna() & (df['uacs_sobj_dsc'] != '') & (df['uacs_sobj_dsc'] != 'nan')]
     
     grouped = df_filtered.groupby([
         'uacs_sobj_cd', 'uacs_sobj_dsc', 'department', 'agency', 'year'
