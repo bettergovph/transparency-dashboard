@@ -231,7 +231,7 @@ const RegionalPage = () => {
           <div className="mb-6 max-w-[1800px] mx-auto">
             <Card>
               <CardHeader>
-                <CardTitle>National Budget Trend (2020-2025)</CardTitle>
+                <CardTitle>National Budget Trend (2020-2026)</CardTitle>
                 <CardDescription>Total budget allocation across all regions</CardDescription>
               </CardHeader>
               <CardContent>

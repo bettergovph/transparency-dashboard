@@ -210,7 +210,7 @@ const DepartmentsListPage = () => {
                       {/* Year-over-Year Chart */}
                       <div className="mb-4">
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-xs font-semibold text-gray-600">Budget Trend (2020-2025)</span>
+                          <span className="text-xs font-semibold text-gray-600">Budget Trend (2020-2026)</span>
                           {yoyChange !== 0 && (
                             <span className={`text-xs font-semibold flex items-center gap-1 ${yoyChange > 0 ? 'text-green-600' : 'text-red-600'
                               }`}>

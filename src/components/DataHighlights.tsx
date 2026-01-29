@@ -210,7 +210,7 @@ const DataHighlights = () => {
     {
       title: 'Budget Line Items',
       count: '3.8 Million',
-      description: 'GAA budget allocations (2020-2025)',
+      description: 'GAA budget allocations (2020-2026)',
       link: '/budget',
       linkText: 'Browse Budget'
     },

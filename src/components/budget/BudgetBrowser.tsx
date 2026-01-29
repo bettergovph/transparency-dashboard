@@ -161,7 +161,7 @@ const BudgetBrowser = () => {
             {/* Sticky Header */}
             <BudgetHeader
               title="GAA Budget Browser"
-              subtitle="General Appropriations Act (2020-2025)"
+              subtitle="General Appropriations Act (2020-2026)"
               icon={<ChartBarStackedIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />}
               availableYears={availableYears}
               selectedYear={selectedYear}
@@ -245,7 +245,7 @@ const BudgetBrowser = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-indigo-600" />
-                      Year-over-Year Budget Trend (2020-2025)
+                      Year-over-Year Budget Trend (2020-2026)
                     </CardTitle>
                     <CardDescription>
                       Total national budget appropriations by year

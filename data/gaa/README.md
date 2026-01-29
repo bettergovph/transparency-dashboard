@@ -154,7 +154,7 @@ Each entity has an ID field and a corresponding description field:
 ### Complete Field List
 
 - `id` - Auto-generated incrementing ID
-- `year` - Budget year (2020-2025)
+- `year` - Budget year (2020-2026)
 - `department` - Department ID
 - `uacs_dpt_dsc` - Department description
 - `agency` - Agency ID

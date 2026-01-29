@@ -23,7 +23,7 @@ The script will automatically load environment variables from `.env` and configu
 
 These fields can be used in filter queries:
 
-- `year` - Budget year (2020-2025)
+- `year` - Budget year (2020-2026)
 - `department` - Department code
 - `uacs_dpt_dsc` - Department description
 - `agency` - Agency code
