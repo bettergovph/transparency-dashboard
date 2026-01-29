@@ -32,3 +32,4 @@ csv_batches/
 philgeps.tar.gz
 data/import.py
 data/bir/bir_collections.sql
+data/.venv
