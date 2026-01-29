@@ -43,7 +43,7 @@ interface Department {
 
 const BudgetBrowser = () => {
   const [isDataLoading, setIsDataLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [searchQuery, setSearchQuery] = useState('')
 
   // Aggregate data

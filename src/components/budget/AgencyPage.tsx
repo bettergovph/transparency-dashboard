@@ -57,7 +57,7 @@ const AgencyPage = () => {
   const [expenses, setExpenses] = useState<Expense[]>([])
   const [objects, setObjects] = useState<Object[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
   const [activeTab, setActiveTab] = useState<'fund_subcategories' | 'expenses' | 'objects'>('fund_subcategories')
 

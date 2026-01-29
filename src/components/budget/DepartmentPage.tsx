@@ -34,7 +34,7 @@ const DepartmentPage = () => {
   const [department, setDepartment] = useState<Department | null>(null)
   const [agencies, setAgencies] = useState<Agency[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
@@ -65,7 +65,7 @@ const DepartmentPage = () => {
         const years = Object.keys(foundDept.years).map(Number).sort((a, b) => b - a)
         setAvailableYears(years.reverse())
         if (years.length > 0) {
-          setSelectedYear(years[0])
+          setSelectedYear(2026)
         }
 
         // Filter agencies for this department

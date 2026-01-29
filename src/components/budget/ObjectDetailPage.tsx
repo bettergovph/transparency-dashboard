@@ -22,7 +22,7 @@ const ObjectDetailPage = () => {
   const [items, setItems] = useState<BudgetDocument[]>([])
   const [loading, setLoading] = useState(true)
   const [totalItems, setTotalItems] = useState(0)
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 50

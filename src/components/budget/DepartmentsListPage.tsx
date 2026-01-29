@@ -20,7 +20,7 @@ const DepartmentsListPage = () => {
   const [departments, setDepartments] = useState<Department[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const DepartmentsListPage = () => {
       // Extract available years from first department
       if (data.data.length > 0) {
         const years = Object.keys(data.data[0].years).map(Number).sort((a, b) => b - a)
-        setAvailableYears(years.reverse())
+        setAvailableYears(years)
         if (years.length > 0) {
           setSelectedYear(years[0])
         }

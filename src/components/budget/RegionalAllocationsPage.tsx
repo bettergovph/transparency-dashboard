@@ -35,7 +35,7 @@ const RegionalAllocationsPage = () => {
   const [regionalData, setRegionalData] = useState<RegionalData | null>(null)
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
