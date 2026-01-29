@@ -27,11 +27,27 @@ Usage:
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Dict, Any, List
 
 import pandas as pd
+
+
+def to_slug(text: str) -> str:
+    """Convert text to SEO-friendly slug with lowercase and hyphens."""
+    # Convert to lowercase
+    slug = text.lower()
+    # Replace spaces with hyphens
+    slug = slug.replace(' ', '-')
+    # Remove special characters (keep only alphanumeric and hyphens)
+    slug = re.sub(r'[^a-z0-9-]', '', slug)
+    # Replace multiple consecutive hyphens with single hyphen
+    slug = re.sub(r'-+', '-', slug)
+    # Strip hyphens from start and end
+    slug = slug.strip('-')
+    return slug
 
 
 def create_department_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
@@ -62,6 +78,7 @@ def create_department_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
         if dept_id not in departments:
             departments[dept_id] = {
                 'id': dept_id,
+                'slug': to_slug(row['uacs_dpt_dsc']),
                 'description': row['uacs_dpt_dsc'],
                 'years': {}
             }
@@ -111,6 +128,7 @@ def create_agency_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
         if composite_id not in agencies:
             agencies[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(row['uacs_agy_dsc']),
                 'agency_code': agency_code,
                 'description': row['uacs_agy_dsc'],
                 'department_id': dept_id,
@@ -157,6 +175,7 @@ def create_fund_subcategory_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]
         if composite_id not in fund_subcats:
             fund_subcats[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(fund_desc),
                 'description': fund_desc,
                 'department_id': dept_id,
                 'agency_id': f"{dept_id}-{agency_code}",  # Reference to agency composite ID
@@ -203,6 +222,7 @@ def create_expense_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
         if composite_id not in expenses:
             expenses[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(row['uacs_exp_dsc']),
                 'expense_code': exp_code,
                 'description': row['uacs_exp_dsc'],
                 'department_id': dept_id,
@@ -250,6 +270,7 @@ def create_object_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
         if composite_id not in objects:
             objects[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(row['uacs_sobj_dsc']),
                 'object_code': obj_code,
                 'description': row['uacs_sobj_dsc'],
                 'department_id': dept_id,
