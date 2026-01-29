@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { MapPin, TrendingUp } from 'lucide-react'
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip, BarChart, Bar, CartesianGrid } from 'recharts'
@@ -32,15 +33,23 @@ interface RegionalData {
 }
 
 const RegionalPage = () => {
+  const { year } = useParams<{ year: string }>()
+  const navigate = useNavigate()
   const [regionalData, setRegionalData] = useState<RegionalData | null>(null)
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedYear, setSelectedYear] = useState<number>(2026)
+  const [selectedYear, setSelectedYear] = useState<number>(year ? parseInt(year) : 2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
     loadRegionalData()
   }, [])
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(parseInt(year))
+    }
+  }, [year])
 
   const loadRegionalData = async () => {
     try {
@@ -52,7 +61,7 @@ const RegionalPage = () => {
       // Extract available years
       const years = data.data.map(d => d.year).sort((a, b) => b - a)
       setAvailableYears(years)
-      if (years.length > 0) {
+      if (!year && years.length > 0) {
         setSelectedYear(years[0])
       }
 
@@ -176,7 +185,10 @@ const RegionalPage = () => {
           icon={<MapPin className="h-5 w-5 md:h-6 md:w-6 text-white" />}
           availableYears={availableYears}
           selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
+          onYearChange={(newYear) => {
+            setSelectedYear(newYear)
+            navigate(`/budget/${newYear}/regional`)
+          }}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           searchPlaceholder="Search regions..."

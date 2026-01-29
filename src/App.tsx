@@ -45,12 +45,14 @@ function App() {
         <Route path="/treasury/alltime" element={<TreasuryAllTime />} />
         <Route path="/treasury/year/:year" element={<TreasuryByYear />} />
         <Route path="/budget" element={<BudgetBrowser />} />
-        <Route path="/budget/departments" element={<DepartmentsListPage />} />
-        <Route path="/budget/departments/:slug" element={<DepartmentPage />} />
-        <Route path="/budget/departments/:deptSlug/agencies/:agencySlug" element={<AgencyPage />} />
-        <Route path="/budget/departments/:deptSlug/:agencySlug/objects/:objectSlug" element={<ObjectDetailPage />} />
+        <Route path="/budget/:year/departments" element={<DepartmentsListPage />} />
+        <Route path="/budget/:year/departments/:slug" element={<DepartmentPage />} />
+        <Route path="/budget/:year/departments/:deptSlug/agencies/:agencySlug" element={<AgencyPage />} />
+        <Route path="/budget/:year/departments/:deptSlug/:agencySlug/objects/:objectSlug" element={<ObjectDetailPage />} />
+        <Route path="/budget/:year/regional" element={<RegionalPage />} />
+        <Route path="/budget/:year/allocations" element={<AllocationsPage />} />
+
         <Route path="/budget/regional" element={<RegionalPage />} />
-        <Route path="/budget/allocations" element={<AllocationsPage />} />
         <Route path="/budget/search" element={<SearchPage />} />
         <Route path="/dpwh" element={<DPWHBrowser />} />
         <Route path="/dpwh/overview" element={<DPWHOverview />} />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation, Link } from 'react-router-dom'
+import { useParams, useLocation, Link, useNavigate } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Building2, TrendingUp } from 'lucide-react'
 import Navigation from '../Navigation'
@@ -27,19 +27,26 @@ interface Department {
 }
 
 const DepartmentPage = () => {
-  const { slug } = useParams<{ slug: string }>()
+  const { slug, year } = useParams<{ slug: string; year: string }>()
+  const navigate = useNavigate()
   const location = useLocation()
   const departmentId = location.state?.departmentId
 
   const [department, setDepartment] = useState<Department | null>(null)
   const [agencies, setAgencies] = useState<Agency[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2026)
+  const [selectedYear, setSelectedYear] = useState<number>(year ? parseInt(year) : 2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
     loadData()
   }, [departmentId])
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(parseInt(year))
+    }
+  }, [year])
 
   const loadData = async () => {
     try {
@@ -64,9 +71,9 @@ const DepartmentPage = () => {
         // Get years
         const years = Object.keys(foundDept.years).map(Number).sort((a, b) => b - a)
         setAvailableYears(years.reverse())
-        if (years.length > 0) {
-          setSelectedYear(2026)
-        }
+        // if (!year && years.length > 0) {
+        //   setSelectedYear(years[0])
+        // }
 
         // Filter agencies for this department
         const deptAgencies = agenciesData.data.filter((a: Agency) => a.department_id === foundDept.id)
@@ -109,7 +116,7 @@ const DepartmentPage = () => {
             <CardContent className="p-8 text-center">
               <Building2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Department not found</h3>
-              <Link to="/budget/departments" className="text-blue-600 hover:text-blue-800">
+              <Link to={`/budget/${selectedYear}/departments`} className="text-blue-600 hover:text-blue-800">
                 ← Back to departments
               </Link>
             </CardContent>
@@ -181,7 +188,7 @@ const DepartmentPage = () => {
           icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
           availableYears={availableYears.reverse()}
           selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
+          onYearChange={(newYear) => navigate(`/budget/${newYear}/departments/${slug}`)}
           showSearch={false}
         />
 
@@ -310,7 +317,7 @@ const DepartmentPage = () => {
                   return (
                     <Link
                       key={agency.id}
-                      to={`/budget/departments/${slug}/agencies/${agency.slug}`}
+                      to={`/budget/${selectedYear}/departments/${slug}/agencies/${agency.slug}`}
                       state={{
                         agencyId: agency.id,
                         agencyName: agency.description,

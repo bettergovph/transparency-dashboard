@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation } from 'react-router-dom'
+import { useParams, useLocation, useNavigate } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Package, ChartBarStacked, Calendar } from 'lucide-react'
 import Navigation from '../Navigation'
@@ -11,7 +11,8 @@ import type { BudgetDocument } from '@/types/budget'
 
 const ObjectDetailPage = () => {
   // Get route params (slugs are from URL, actual data comes from location.state)
-  const { deptSlug: _deptSlug, agencySlug: _agencySlug } = useParams<{ deptSlug: string; agencySlug: string; objectSlug: string }>()
+  const { deptSlug, agencySlug, objectSlug, year } = useParams<{ deptSlug: string; agencySlug: string; objectSlug: string; year: string }>()
+  const navigate = useNavigate()
   const location = useLocation()
   const objectCode = location.state?.objectCode
   const objectName = location.state?.objectName
@@ -22,7 +23,7 @@ const ObjectDetailPage = () => {
   const [items, setItems] = useState<BudgetDocument[]>([])
   const [loading, setLoading] = useState(true)
   const [totalItems, setTotalItems] = useState(0)
-  const [selectedYear, setSelectedYear] = useState<number>(2026)
+  const [selectedYear, setSelectedYear] = useState<number>(year ? parseInt(year) : 2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 50
@@ -77,6 +78,12 @@ const ObjectDetailPage = () => {
   useEffect(() => {
     loadData()
   }, [objectCode, selectedYear, currentPage])
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(parseInt(year))
+    }
+  }, [year])
 
   const loadData = async () => {
     if (!objectCode) return
@@ -212,8 +219,8 @@ const ObjectDetailPage = () => {
           icon={<Package className="h-5 w-5 md:h-6 md:w-6 text-white" />}
           availableYears={availableYears}
           selectedYear={selectedYear}
-          onYearChange={(year) => {
-            setSelectedYear(year)
+          onYearChange={(newYear) => {
+            navigate(`/budget/${newYear}/departments/${deptSlug}/${agencySlug}/objects/${objectSlug}`)
             setCurrentPage(1)
           }}
           showSearch={false}

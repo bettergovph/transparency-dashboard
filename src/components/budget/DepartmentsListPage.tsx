@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Building2, TrendingUp, ArrowRight } from 'lucide-react'
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'
@@ -17,15 +17,23 @@ interface Department {
 }
 
 const DepartmentsListPage = () => {
+  const { year } = useParams<{ year: string }>()
+  const navigate = useNavigate()
   const [departments, setDepartments] = useState<Department[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedYear, setSelectedYear] = useState<number>(2026)
+  const [selectedYear, setSelectedYear] = useState<number>(year ? parseInt(year) : 2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
     loadDepartments()
   }, [])
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(parseInt(year))
+    }
+  }, [year])
 
   const loadDepartments = async () => {
     try {
@@ -38,7 +46,7 @@ const DepartmentsListPage = () => {
       if (data.data.length > 0) {
         const years = Object.keys(data.data[0].years).map(Number).sort((a, b) => b - a)
         setAvailableYears(years)
-        if (years.length > 0) {
+        if (!year && years.length > 0) {
           setSelectedYear(years[0])
         }
       }
@@ -106,7 +114,7 @@ const DepartmentsListPage = () => {
           icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
           availableYears={availableYears}
           selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
+          onYearChange={(newYear) => navigate(`/budget/${newYear}/departments`)}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           searchPlaceholder="Search departments..."
@@ -179,7 +187,7 @@ const DepartmentsListPage = () => {
               return (
                 <Link
                   key={dept.id}
-                  to={`/budget/departments/${dept.slug}`}
+                  to={`/budget/${selectedYear}/departments/${dept.slug}`}
                   state={{ departmentId: dept.id, departmentName: dept.description }}
                 >
                   <Card className="hover:shadow-xl transition-all cursor-pointer border-l-4 border-l-blue-600 h-full">

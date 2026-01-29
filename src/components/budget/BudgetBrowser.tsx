@@ -182,7 +182,7 @@ const BudgetBrowser = () => {
                       Click any department to drill down into agencies, fund categories, expense categories, and detailed line items.
                     </p>
                     <Link
-                      to="/budget/departments"
+                      to={`/budget/${selectedYear}/departments`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-blue-900 hover:text-blue-950 bg-blue-100 px-3 py-2 rounded-lg transition-colors"
                     >
                       <Building2 className="h-4 w-4" />
@@ -332,7 +332,7 @@ const BudgetBrowser = () => {
                       </CardDescription>
                     </div>
                     <Link
-                      to="/budget/departments"
+                      to={`/budget/${selectedYear}/departments`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 px-4 py-2 rounded-lg transition-colors"
                     >
                       <Building2 className="h-4 w-4" />
@@ -363,7 +363,7 @@ const BudgetBrowser = () => {
                       return (
                         <Link
                           key={dept.id}
-                          to={`/budget/departments/${toSlug(dept.description)}`}
+                          to={`/budget/${selectedYear}/departments/${toSlug(dept.description)}`}
                           state={{ departmentId: dept.id, departmentName: dept.description }}
                         >
                           <div className="p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-100 hover:shadow-lg transition-all cursor-pointer hover:border-blue-300">

@@ -29,9 +29,9 @@ const Navigation = () => {
 
   const budgetItems = [
     { path: '/budget', label: 'Overview', icon: ChartBarStackedIcon },
-    { path: '/budget/departments', label: 'Departments', icon: Building2 },
+    { path: '/budget/2026/departments', label: 'Departments', icon: Building2 },
     { path: '/budget/regional', label: 'Regional', icon: MapPin },
-    { path: '/budget/allocations', label: 'Allocations', icon: Grid3x3 },
+    { path: '/budget/2026/allocations', label: 'Allocations', icon: Grid3x3 },
     { path: '/budget/search', label: 'Search', icon: TrendingUp },
   ]
 
