@@ -147,6 +147,7 @@ async function getIndexStats(client) {
 
         if (settings.sortableAttributes && settings.sortableAttributes.length > 0) {
           log(`  Sortable Attributes: ${settings.sortableAttributes.length}`, 'white');
+          log(`    ${settings.sortableAttributes.join(', ')}`, 'dim');
         }
 
         log(`  Primary Key: ${index.primaryKey || 'Not set'}`, 'white');
