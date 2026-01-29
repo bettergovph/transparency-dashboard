@@ -1,8 +1,8 @@
 {
   "metadata": {
     "title": "GAA Yearly Totals",
-    "source": "General Appropriations Act (SQL Version)",
-    "total_items": 6
+    "source": "General Appropriations Act",
+    "total_items": 7
   },
   "data": [
     {
@@ -34,6 +34,11 @@
       "year": 2025,
       "count": 723105,
       "amount": 6326324300.0
+    },
+    {
+      "year": 2026,
+      "count": 761607,
+      "amount": 6793162000.0
     }
   ]
 }
