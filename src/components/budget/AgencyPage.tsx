@@ -99,7 +99,7 @@ const AgencyPage = () => {
 
         // Get years
         const years = Object.keys(foundAgency.years).map(Number).sort((a, b) => b - a)
-        setAvailableYears(years)
+        setAvailableYears(years.reverse())
         if (years.length > 0) {
           setSelectedYear(years[0])
         }

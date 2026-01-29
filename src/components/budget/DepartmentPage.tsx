@@ -63,7 +63,7 @@ const DepartmentPage = () => {
 
         // Get years
         const years = Object.keys(foundDept.years).map(Number).sort((a, b) => b - a)
-        setAvailableYears(years)
+        setAvailableYears(years.reverse())
         if (years.length > 0) {
           setSelectedYear(years[0])
         }
@@ -179,7 +179,7 @@ const DepartmentPage = () => {
           title={department.description}
           subtitle={`Department ID: ${department.id} · Browse agencies and allocations`}
           icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
-          availableYears={availableYears}
+          availableYears={availableYears.reverse()}
           selectedYear={selectedYear}
           onYearChange={setSelectedYear}
           showSearch={false}

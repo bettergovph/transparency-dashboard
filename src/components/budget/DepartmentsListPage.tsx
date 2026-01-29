@@ -37,7 +37,7 @@ const DepartmentsListPage = () => {
       // Extract available years from first department
       if (data.data.length > 0) {
         const years = Object.keys(data.data[0].years).map(Number).sort((a, b) => b - a)
-        setAvailableYears(years)
+        setAvailableYears(years.reverse())
         if (years.length > 0) {
           setSelectedYear(years[0])
         }
