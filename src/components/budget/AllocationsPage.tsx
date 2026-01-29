@@ -35,7 +35,7 @@ const AllocationsPage = () => {
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedYear, setSelectedYear] = useState<number>(2026)
-  const [availableYears, setAvailableYears] = useState<number[]>([])
+  const [availableYears, setAvailableYears] = useState<number[]>([2026, 2025, 2024, 2023, 2022, 2021, 2020])
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 50
 
@@ -56,9 +56,13 @@ const AllocationsPage = () => {
       const data: ObjectsData = await response.json()
       setObjectsData(data)
 
-      // Extract available years from first object
+      // Extract available years from all objects
       if (data.data.length > 0) {
-        const years = Object.keys(data.data[0].years).map(Number).sort((a, b) => b - a)
+        const allYears = new Set<number>()
+        data.data.forEach(obj => {
+          Object.keys(obj.years).forEach(year => allYears.add(Number(year)))
+        })
+        const years = Array.from(allYears).sort((a, b) => b - a)
         setAvailableYears(years)
         if (years.length > 0) {
           setSelectedYear(years[0])
