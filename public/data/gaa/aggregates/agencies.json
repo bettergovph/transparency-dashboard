@@ -198,32 +198,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 5,
-          "amount": 0.0
+          "count": 14,
+          "amount": 29093329.0
         },
         "2021": {
           "count": 12,
           "amount": 28269833.0
         },
         "2022": {
-          "count": 6,
-          "amount": 0.0
+          "count": 14,
+          "amount": 26256956.0
         },
         "2023": {
-          "count": 6,
-          "amount": 0.0
+          "count": 14,
+          "amount": 33588409.0
         },
         "2024": {
-          "count": 6,
-          "amount": 0.0
+          "count": 14,
+          "amount": 34643787.0
         },
         "2025": {
-          "count": 6,
-          "amount": 0.0
+          "count": 14,
+          "amount": 32655520.0
         },
         "2026": {
-          "count": 6,
-          "amount": 0.0
+          "count": 14,
+          "amount": 31724961.0
         }
       }
     },
@@ -235,32 +235,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 8,
-          "amount": 0.0
+          "count": 14,
+          "amount": 28852461.0
         },
         "2021": {
           "count": 8,
           "amount": 35225219.0
         },
         "2022": {
-          "count": 11,
-          "amount": 0.0
+          "count": 18,
+          "amount": 17964996.0
         },
         "2023": {
-          "count": 11,
-          "amount": 0.0
+          "count": 18,
+          "amount": 16497836.0
         },
         "2024": {
-          "count": 11,
-          "amount": 0.0
+          "count": 20,
+          "amount": 18250090.0
         },
         "2025": {
-          "count": 15,
-          "amount": 0.0
+          "count": 20,
+          "amount": 22999970.0
         },
         "2026": {
-          "count": 15,
-          "amount": 0.0
+          "count": 20,
+          "amount": 57872578.0
         }
       }
     },
@@ -272,32 +272,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 3,
-          "amount": 0.0
+          "count": 4,
+          "amount": 365463.0
         },
         "2021": {
           "count": 4,
           "amount": 458580.0
         },
         "2022": {
-          "count": 3,
-          "amount": 0.0
+          "count": 4,
+          "amount": 629492.0
         },
         "2023": {
-          "count": 3,
-          "amount": 0.0
+          "count": 4,
+          "amount": 710324.0
         },
         "2024": {
-          "count": 3,
-          "amount": 0.0
+          "count": 4,
+          "amount": 774315.0
         },
         "2025": {
-          "count": 3,
-          "amount": 0.0
+          "count": 4,
+          "amount": 1111052.0
         },
         "2026": {
-          "count": 3,
-          "amount": 0.0
+          "count": 4,
+          "amount": 1405731.0
         }
       }
     },
@@ -309,28 +309,28 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 4,
-          "amount": 0.0
+          "count": 5,
+          "amount": 50000.0
         },
         "2021": {
           "count": 4,
           "amount": 50000.0
         },
         "2022": {
-          "count": 4,
-          "amount": 0.0
+          "count": 5,
+          "amount": 50000.0
         },
         "2023": {
-          "count": 4,
-          "amount": 0.0
+          "count": 5,
+          "amount": 50000.0
         },
         "2024": {
-          "count": 4,
-          "amount": 0.0
+          "count": 5,
+          "amount": 50000.0
         },
         "2025": {
-          "count": 4,
-          "amount": 0.0
+          "count": 5,
+          "amount": 50000.0
         }
       }
     },
@@ -342,32 +342,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 3,
-          "amount": 0.0
+          "count": 5,
+          "amount": 7000000.0
         },
         "2021": {
           "count": 5,
           "amount": 8613514.0
         },
         "2022": {
-          "count": 3,
-          "amount": 0.0
+          "count": 5,
+          "amount": 7788032.0
         },
         "2023": {
-          "count": 3,
-          "amount": 0.0
+          "count": 5,
+          "amount": 9594982.0
         },
         "2024": {
-          "count": 3,
-          "amount": 0.0
+          "count": 5,
+          "amount": 10082959.0
         },
         "2025": {
-          "count": 3,
-          "amount": 0.0
+          "count": 5,
+          "amount": 10989878.0
         },
         "2026": {
-          "count": 3,
-          "amount": 0.0
+          "count": 5,
+          "amount": 10590087.0
         }
       }
     },
@@ -379,32 +379,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 3,
-          "amount": 0.0
+          "count": 8,
+          "amount": 16000000.0
         },
         "2021": {
           "count": 6,
           "amount": 20000000.0
         },
         "2022": {
-          "count": 4,
-          "amount": 0.0
+          "count": 8,
+          "amount": 20000000.0
         },
         "2023": {
-          "count": 4,
-          "amount": 0.0
+          "count": 9,
+          "amount": 20500000.0
         },
         "2024": {
-          "count": 4,
-          "amount": 0.0
+          "count": 9,
+          "amount": 20500000.0
         },
         "2025": {
-          "count": 5,
-          "amount": 0.0
+          "count": 8,
+          "amount": 21000000.0
         },
         "2026": {
-          "count": 5,
-          "amount": 0.0
+          "count": 9,
+          "amount": 39822355.0
         }
       }
     },
@@ -416,32 +416,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 2,
-          "amount": 0.0
+          "count": 4,
+          "amount": 13000000.0
         },
         "2021": {
           "count": 4,
           "amount": 13000000.0
         },
         "2022": {
-          "count": 2,
-          "amount": 0.0
+          "count": 4,
+          "amount": 7000000.0
         },
         "2023": {
-          "count": 2,
-          "amount": 0.0
+          "count": 4,
+          "amount": 13000000.0
         },
         "2024": {
-          "count": 2,
-          "amount": 0.0
+          "count": 4,
+          "amount": 13000000.0
         },
         "2025": {
-          "count": 2,
-          "amount": 0.0
+          "count": 4,
+          "amount": 13000000.0
         },
         "2026": {
-          "count": 2,
-          "amount": 0.0
+          "count": 4,
+          "amount": 13000000.0
         }
       }
     },
@@ -453,32 +453,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 3,
-          "amount": 0.0
+          "count": 12,
+          "amount": 56578765.0
         },
         "2021": {
           "count": 10,
           "amount": 29273591.0
         },
         "2022": {
-          "count": 4,
-          "amount": 0.0
+          "count": 14,
+          "amount": 27718939.0
         },
         "2023": {
-          "count": 3,
-          "amount": 0.0
+          "count": 17,
+          "amount": 26641479.0
         },
         "2024": {
-          "count": 4,
-          "amount": 0.0
+          "count": 24,
+          "amount": 29677112.0
         },
         "2025": {
-          "count": 10,
-          "amount": 0.0
+          "count": 19,
+          "amount": 109127872.0
         },
         "2026": {
-          "count": 12,
-          "amount": 0.0
+          "count": 21,
+          "amount": 77047627.0
         }
       }
     },
@@ -490,32 +490,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 3,
-          "amount": 0.0
+          "count": 14,
+          "amount": 116194791.0
         },
         "2021": {
           "count": 13,
           "amount": 152893651.0
         },
         "2022": {
-          "count": 3,
-          "amount": 0.0
+          "count": 13,
+          "amount": 183944069.0
         },
         "2023": {
-          "count": 3,
-          "amount": 0.0
+          "count": 14,
+          "amount": 176657191.0
         },
         "2024": {
-          "count": 3,
-          "amount": 0.0
+          "count": 15,
+          "amount": 142956826.0
         },
         "2025": {
-          "count": 3,
-          "amount": 0.0
+          "count": 15,
+          "amount": 144724175.0
         },
         "2026": {
-          "count": 3,
-          "amount": 0.0
+          "count": 16,
+          "amount": 165518761.0
         }
       }
     },
@@ -527,32 +527,32 @@
       "department_id": "01",
       "years": {
         "2020": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28606.0
         },
         "2021": {
           "count": 3,
           "amount": 28606.0
         },
         "2022": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28606.0
         },
         "2023": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28606.0
         },
         "2024": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28606.0
         },
         "2025": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28606.0
         },
         "2026": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28606.0
         }
       }
     },
@@ -564,20 +564,20 @@
       "department_id": "01",
       "years": {
         "2023": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 27500000.0
         },
         "2024": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 40000000.0
         },
         "2025": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 35000000.0
         },
         "2026": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 40000000.0
         }
       }
     },
@@ -738,32 +738,32 @@
       "department_id": "04",
       "years": {
         "2020": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 14500000.0
         },
         "2021": {
           "count": 2,
           "amount": 14500000.0
         },
         "2022": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 14500000.0
         },
         "2023": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 14500000.0
         },
         "2024": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 14500000.0
         },
         "2025": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 14500000.0
         },
         "2026": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 14500000.0
         }
       }
     },
@@ -775,32 +775,32 @@
       "department_id": "04",
       "years": {
         "2020": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 450964000.0
         },
         "2021": {
           "count": 3,
           "amount": 531544000.0
         },
         "2022": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 512585000.0
         },
         "2023": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 582320000.0
         },
         "2024": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 670471000.0
         },
         "2025": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 848030688.0
         },
         "2026": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 950000000.0
         }
       }
     },
@@ -812,8 +812,8 @@
       "department_id": "04",
       "years": {
         "2020": {
-          "count": 1,
-          "amount": 0.0
+          "count": 17,
+          "amount": 648921246.0
         },
         "2021": {
           "count": 2,
@@ -829,32 +829,32 @@
       "department_id": "04",
       "years": {
         "2020": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 63634076.0
         },
         "2021": {
           "count": 2,
           "amount": 71669833.0
         },
         "2022": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 66963635.0
         },
         "2023": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 64755501.0
         },
         "2024": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 70513225.0
         },
         "2025": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 83421790.0
         },
         "2026": {
-          "count": 1,
-          "amount": 0.0
+          "count": 2,
+          "amount": 93982398.0
         }
       }
     },
@@ -866,24 +866,24 @@
       "department_id": "04",
       "years": {
         "2022": {
-          "count": 1,
-          "amount": 0.0
+          "count": 18,
+          "amount": 959041250.0
         },
         "2023": {
-          "count": 1,
-          "amount": 0.0
+          "count": 18,
+          "amount": 820268928.0
         },
         "2024": {
-          "count": 1,
-          "amount": 0.0
+          "count": 19,
+          "amount": 871375199.0
         },
         "2025": {
-          "count": 1,
-          "amount": 0.0
+          "count": 18,
+          "amount": 1034604869.0
         },
         "2026": {
-          "count": 1,
-          "amount": 0.0
+          "count": 19,
+          "amount": 1190509672.0
         }
       }
     },
@@ -895,32 +895,32 @@
       "department_id": "04",
       "years": {
         "2020": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 10000000.0
         },
         "2021": {
           "count": 3,
           "amount": 28700000.0
         },
         "2022": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28700000.0
         },
         "2023": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28700000.0
         },
         "2024": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28700000.0
         },
         "2025": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28700000.0
         },
         "2026": {
-          "count": 2,
-          "amount": 0.0
+          "count": 3,
+          "amount": 28700000.0
         }
       }
     },
@@ -1148,23 +1148,11 @@
     },
     {
       "id": "05-011",
-      "slug": "philippine-center-for-postharvest-development-and-mechanization",
+      "slug": "philippine-center-for-post-harvest-development-and-mechanization",
       "agency_code": "011",
-      "description": "Philippine Center For Postharvest Development and Mechanization",
+      "description": "Philippine Center for Post-Harvest Development and Mechanization",
       "department_id": "05",
       "years": {
-        "2024": {
-          "count": 218,
-          "amount": 440321.0
-        },
-        "2025": {
-          "count": 212,
-          "amount": 447127.0
-        },
-        "2026": {
-          "count": 204,
-          "amount": 488900.0
-        },
         "2020": {
           "count": 297,
           "amount": 345966.0
@@ -1180,6 +1168,18 @@
         "2023": {
           "count": 225,
           "amount": 377412.0
+        },
+        "2024": {
+          "count": 218,
+          "amount": 440321.0
+        },
+        "2025": {
+          "count": 212,
+          "amount": 447127.0
+        },
+        "2026": {
+          "count": 204,
+          "amount": 488900.0
         }
       }
     },
@@ -1745,15 +1745,11 @@
     },
     {
       "id": "08-004",
-      "slug": "national-aviation-academy-of-the-philippines",
+      "slug": "philippine-state-college-of-aeronautics",
       "agency_code": "004",
-      "description": "National Aviation Academy of the Philippines",
+      "description": "Philippine State College of Aeronautics",
       "department_id": "08",
       "years": {
-        "2026": {
-          "count": 108,
-          "amount": 542269.0
-        },
         "2020": {
           "count": 123,
           "amount": 184888.0
@@ -1777,6 +1773,10 @@
         "2025": {
           "count": 105,
           "amount": 504652.0
+        },
+        "2026": {
+          "count": 108,
+          "amount": 542269.0
         }
       }
     },
@@ -2152,9 +2152,9 @@
     },
     {
       "id": "08-015",
-      "slug": "abra-state-institute-of-science-and-technology",
+      "slug": "abra-state-institute-of-sciences-and-technology",
       "agency_code": "015",
-      "description": "Abra State Institute of Science and Technology",
+      "description": "Abra State Institute of Sciences and Technology",
       "department_id": "08",
       "years": {
         "2020": {
@@ -2350,6 +2350,10 @@
           "count": 132,
           "amount": 484282.0
         },
+        "2022": {
+          "count": 176,
+          "amount": 392210.0
+        },
         "2023": {
           "count": 174,
           "amount": 403128.0
@@ -2361,10 +2365,6 @@
         "2025": {
           "count": 194,
           "amount": 1475941.0
-        },
-        "2022": {
-          "count": 176,
-          "amount": 392210.0
         },
         "2026": {
           "count": 199,
@@ -3225,9 +3225,9 @@
     },
     {
       "id": "08-044",
-      "slug": "mindoro-state-college-of-agriculture-and-technology",
+      "slug": "mindoro-state-university",
       "agency_code": "044",
-      "description": "Mindoro State College of Agriculture and Technology",
+      "description": "Mindoro State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -3706,9 +3706,9 @@
     },
     {
       "id": "08-057",
-      "slug": "sorsogon-state-college",
+      "slug": "sorsogon-state-university",
       "agency_code": "057",
-      "description": "Sorsogon State College",
+      "description": "Sorsogon State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -3817,9 +3817,9 @@
     },
     {
       "id": "08-060",
-      "slug": "carlos-c-hilado-memorial-state-college",
+      "slug": "carlos-hilado-memorial-state-university",
       "agency_code": "060",
-      "description": "Carlos C. Hilado Memorial State College",
+      "description": "Carlos Hilado Memorial State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -3854,9 +3854,9 @@
     },
     {
       "id": "08-061",
-      "slug": "guimaras-state-college",
+      "slug": "guimaras-state-university",
       "agency_code": "061",
-      "description": "Guimaras State College",
+      "description": "Guimaras State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -3891,9 +3891,9 @@
     },
     {
       "id": "08-062",
-      "slug": "iloilo-state-college-of-fisheries",
+      "slug": "iloilo-state-university-of-fisheries-science-and-technology",
       "agency_code": "062",
-      "description": "Iloilo State College of Fisheries",
+      "description": "Iloilo State University of Fisheries Science and Technology",
       "department_id": "08",
       "years": {
         "2020": {
@@ -3903,6 +3903,10 @@
         "2021": {
           "count": 169,
           "amount": 408388.0
+        },
+        "2022": {
+          "count": 289,
+          "amount": 465752.0
         },
         "2023": {
           "count": 293,
@@ -3919,10 +3923,6 @@
         "2026": {
           "count": 298,
           "amount": 634964.0
-        },
-        "2022": {
-          "count": 289,
-          "amount": 465752.0
         }
       }
     },
@@ -3965,9 +3965,9 @@
     },
     {
       "id": "08-064",
-      "slug": "northern-iloilo-polytechnic-state-college",
+      "slug": "northern-iloilo-state-university",
       "agency_code": "064",
-      "description": "Northern Iloilo Polytechnic State College",
+      "description": "Northern Iloilo State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -4520,9 +4520,9 @@
     },
     {
       "id": "08-079",
-      "slug": "palompon-institute-of-technology",
+      "slug": "palompon-polytechnic-state-university",
       "agency_code": "079",
-      "description": "Palompon Institute of Technology",
+      "description": "Palompon Polytechnic State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -4532,6 +4532,10 @@
         "2021": {
           "count": 154,
           "amount": 265079.0
+        },
+        "2022": {
+          "count": 194,
+          "amount": 274963.0
         },
         "2023": {
           "count": 195,
@@ -4548,10 +4552,6 @@
         "2026": {
           "count": 208,
           "amount": 478430.0
-        },
-        "2022": {
-          "count": 194,
-          "amount": 274963.0
         }
       }
     },
@@ -4816,9 +4816,9 @@
     },
     {
       "id": "08-087",
-      "slug": "zamboanga-city-state-polytechnic-college",
+      "slug": "zamboanga-peninsula-polytechnic-state-university",
       "agency_code": "087",
-      "description": "Zamboanga City State Polytechnic College",
+      "description": "Zamboanga Peninsula Polytechnic State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -5186,9 +5186,9 @@
     },
     {
       "id": "08-097",
-      "slug": "davao-oriental-state-college-of-science-and-technology",
+      "slug": "davao-oriental-state-university",
       "agency_code": "097",
-      "description": "Davao Oriental State College of Science and Technology",
+      "description": "Davao Oriental State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -5297,9 +5297,9 @@
     },
     {
       "id": "08-100",
-      "slug": "cotabato-city-state-polytechnic-college",
+      "slug": "cotabato-state-university",
       "agency_code": "100",
-      "description": "Cotabato City State Polytechnic College",
+      "description": "Cotabato State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -5524,6 +5524,18 @@
       "description": "North Eastern Mindanao State University",
       "department_id": "08",
       "years": {
+        "2020": {
+          "count": 170,
+          "amount": 455809.0
+        },
+        "2021": {
+          "count": 137,
+          "amount": 465883.0
+        },
+        "2022": {
+          "count": 206,
+          "amount": 778633.0
+        },
         "2023": {
           "count": 198,
           "amount": 737814.0
@@ -5539,26 +5551,14 @@
         "2026": {
           "count": 244,
           "amount": 1479700.0
-        },
-        "2020": {
-          "count": 170,
-          "amount": 455809.0
-        },
-        "2021": {
-          "count": 137,
-          "amount": 465883.0
-        },
-        "2022": {
-          "count": 206,
-          "amount": 778633.0
         }
       }
     },
     {
       "id": "08-107",
-      "slug": "surigao-state-college-of-technology",
+      "slug": "surigao-del-norte-state-university",
       "agency_code": "107",
-      "description": "Surigao State College of Technology",
+      "description": "Surigao del Norte State University",
       "department_id": "08",
       "years": {
         "2020": {
@@ -5815,9 +5815,9 @@
     },
     {
       "id": "08-114",
-      "slug": "compostela-valley-state-college",
+      "slug": "davao-de-oro-state-college",
       "agency_code": "114",
-      "description": "Compostela Valley State College",
+      "description": "Davao de Oro State College",
       "department_id": "08",
       "years": {
         "2020": {
@@ -9017,9 +9017,9 @@
     },
     {
       "id": "19-016",
-      "slug": "philippine-science-high-school",
+      "slug": "philippine-science-high-school-system",
       "agency_code": "016",
-      "description": "Philippine Science High School",
+      "description": "Philippine Science High School System",
       "department_id": "19",
       "years": {
         "2020": {
@@ -9931,9 +9931,9 @@
     },
     {
       "id": "24-001",
-      "slug": "office-of-the-director-general",
+      "slug": "office-of-the-secretary",
       "agency_code": "001",
-      "description": "Office of the Director-General",
+      "description": "Office of the Secretary",
       "department_id": "24",
       "years": {
         "2020": {
@@ -10190,11 +10190,23 @@
     },
     {
       "id": "25-001",
-      "slug": "office-of-the-press-secretary-proper",
+      "slug": "presidential-communications-office-proper",
       "agency_code": "001",
-      "description": "Office of the Press Secretary (Proper)",
+      "description": "Presidential Communications Office (Proper)",
       "department_id": "25",
       "years": {
+        "2020": {
+          "count": 105,
+          "amount": 509097.0
+        },
+        "2021": {
+          "count": 87,
+          "amount": 502276.0
+        },
+        "2022": {
+          "count": 96,
+          "amount": 840622.0
+        },
         "2023": {
           "count": 92,
           "amount": 507411.0
@@ -10210,18 +10222,6 @@
         "2026": {
           "count": 90,
           "amount": 972020.0
-        },
-        "2020": {
-          "count": 105,
-          "amount": 509097.0
-        },
-        "2021": {
-          "count": 87,
-          "amount": 502276.0
-        },
-        "2022": {
-          "count": 96,
-          "amount": 840622.0
         }
       }
     },
@@ -11203,6 +11203,18 @@
       "description": "Office of the Presidential Adviser on Peace, Reconciliation and Unity",
       "department_id": "26",
       "years": {
+        "2020": {
+          "count": 789,
+          "amount": 1828757.0
+        },
+        "2021": {
+          "count": 119,
+          "amount": 2100946.0
+        },
+        "2022": {
+          "count": 721,
+          "amount": 1991030.0
+        },
         "2023": {
           "count": 754,
           "amount": 1961164.0
@@ -11218,18 +11230,6 @@
         "2026": {
           "count": 764,
           "amount": 8133437.0
-        },
-        "2020": {
-          "count": 789,
-          "amount": 1828757.0
-        },
-        "2021": {
-          "count": 119,
-          "amount": 2100946.0
-        },
-        "2022": {
-          "count": 721,
-          "amount": 1991030.0
         }
       }
     },
@@ -12785,11 +12785,15 @@
     },
     {
       "id": "35-024",
-      "slug": "philippine-export-import-credit-agency-formerly-trade-and-investment-development-corporation-of-the-philippines",
+      "slug": "trade-and-investment-development-corporation-philippine-export-import-credit-agency",
       "agency_code": "024",
-      "description": "Philippine Export-Import Credit Agency (formerly Trade and Investment Development Corporation of the Philippines)",
+      "description": "Trade and Investment Development Corporation (Philippine Export-Import Credit Agency)",
       "department_id": "35",
       "years": {
+        "2020": {
+          "count": 5,
+          "amount": 500000.0
+        },
         "2022": {
           "count": 6,
           "amount": 0.0
@@ -12809,10 +12813,6 @@
         "2026": {
           "count": 6,
           "amount": 0.0
-        },
-        "2020": {
-          "count": 5,
-          "amount": 500000.0
         }
       }
     },
@@ -12894,7 +12894,7 @@
       "id": "35-027",
       "slug": "philippine-childrens-medical-center",
       "agency_code": "027",
-      "description": "Philippine Childrens Medical Center",
+      "description": "Philippine Children’s Medical Center",
       "department_id": "35",
       "years": {
         "2020": {

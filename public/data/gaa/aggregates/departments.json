@@ -11,32 +11,32 @@
       "description": "Congress of the Philippines (CONGRESS)",
       "years": {
         "2020": {
-          "count": 36,
-          "amount": 0.0
+          "count": 648,
+          "amount": 294486116.0
         },
         "2021": {
-          "count": 69,
-          "amount": 287812994.0
+          "count": 552,
+          "amount": 316870750.0
         },
         "2022": {
-          "count": 42,
-          "amount": 0.0
+          "count": 583,
+          "amount": 322628979.0
         },
         "2023": {
-          "count": 42,
-          "amount": 0.0
+          "count": 614,
+          "amount": 364579212.0
         },
         "2024": {
-          "count": 44,
-          "amount": 0.0
+          "count": 580,
+          "amount": 354059846.0
         },
         "2025": {
-          "count": 55,
-          "amount": 0.0
+          "count": 620,
+          "amount": 441503446.0
         },
         "2026": {
-          "count": 53,
-          "amount": 0.0
+          "count": 589,
+          "amount": 476440976.0
         }
       }
     },
@@ -54,16 +54,16 @@
           "amount": 8238691.0
         },
         "2022": {
-          "count": 23,
-          "amount": 0.0
+          "count": 486,
+          "amount": 8235511.0
         },
         "2023": {
-          "count": 23,
-          "amount": 0.0
+          "count": 485,
+          "amount": 9091722.0
         },
         "2024": {
-          "count": 5,
-          "amount": 0.0
+          "count": 446,
+          "amount": 10707927.0
         },
         "2025": {
           "count": 493,
@@ -116,32 +116,32 @@
       "description": "Automatic Appropriations",
       "years": {
         "2020": {
-          "count": 7,
-          "amount": 0.0
+          "count": 17324,
+          "amount": 1197545664.0
         },
         "2021": {
-          "count": 14702,
-          "amount": 8866462.0
+          "count": 14714,
+          "amount": 1350773044.0
         },
         "2022": {
-          "count": 7,
-          "amount": 0.0
+          "count": 15110,
+          "amount": 1592227769.0
         },
         "2023": {
-          "count": 7,
-          "amount": 0.0
+          "count": 15261,
+          "amount": 1521859080.0
         },
         "2024": {
-          "count": 7,
-          "amount": 0.0
+          "count": 15517,
+          "amount": 1664138910.0
         },
         "2025": {
-          "count": 7,
-          "amount": 0.0
+          "count": 15821,
+          "amount": 2020358496.0
         },
         "2026": {
-          "count": 7,
-          "amount": 0.0
+          "count": 15630,
+          "amount": 2295852725.0
         }
       }
     },
@@ -777,13 +777,9 @@
     },
     {
       "id": "24",
-      "slug": "department-of-economy-planning-and-development-depdev",
-      "description": "Department of Economy, Planning, and Development (DEPDev)",
+      "slug": "national-economic-and-development-authority-neda",
+      "description": "National Economic and Development Authority (NEDA)",
       "years": {
-        "2026": {
-          "count": 8219,
-          "amount": 13951130.0
-        },
         "2020": {
           "count": 8461,
           "amount": 12132306.0
@@ -807,14 +803,30 @@
         "2025": {
           "count": 8294,
           "amount": 12634992.0
+        },
+        "2026": {
+          "count": 8219,
+          "amount": 13951130.0
         }
       }
     },
     {
       "id": "25",
-      "slug": "office-of-the-press-secretary-ops",
-      "description": "Office of the Press Secretary (OPS)",
+      "slug": "presidential-communications-office-pco",
+      "description": "Presidential Communications Office (PCO)",
       "years": {
+        "2020": {
+          "count": 1057,
+          "amount": 1757722.0
+        },
+        "2021": {
+          "count": 810,
+          "amount": 1617825.0
+        },
+        "2022": {
+          "count": 855,
+          "amount": 2019061.0
+        },
         "2023": {
           "count": 815,
           "amount": 1130587.0
@@ -830,18 +842,6 @@
         "2026": {
           "count": 862,
           "amount": 2549948.0
-        },
-        "2020": {
-          "count": 1057,
-          "amount": 1757722.0
-        },
-        "2021": {
-          "count": 810,
-          "amount": 1617825.0
-        },
-        "2022": {
-          "count": 855,
-          "amount": 2019061.0
         }
       }
     },
