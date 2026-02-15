@@ -1,0 +1,338 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://philgeps.local/schema/philgeps-ocds-release.json",
+  "title": "OCDS Release (PhilGEPS-mapped)",
+  "description": "Minimal Open Contracting Data Standard (OCDS) release schema for transforming PhilGEPS award records from data/philgeps/philgeps.parquet into OCDS-compatible JSON.",
+  "type": "object",
+  "required": [
+    "ocid",
+    "id",
+    "date",
+    "tag",
+    "initiationType",
+    "tender",
+    "buyer",
+    "awards"
+  ],
+  "properties": {
+    "ocid": {
+      "type": "string",
+      "description": "Open Contracting ID for this contracting process. Recommended pattern: 'ocds-philgeps-{reference_id}'.",
+      "examples": [
+        "ocds-philgeps-9412345"
+      ],
+      "x-philgeps-source": "reference_id"
+    },
+    "id": {
+      "type": "string",
+      "description": "Identifier for this specific release within the contracting process.",
+      "examples": [
+        "ocds-philgeps-9412345-2023-07-15-award"
+      ],
+      "x-philgeps-derived": true
+    },
+    "date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time this release was generated. Typically derived from the PhilGEPS award_date.",
+      "examples": [
+        "2023-07-15T10:30:00Z"
+      ],
+      "x-philgeps-source": "award_date"
+    },
+    "tag": {
+      "type": "array",
+      "description": "Array of tags identifying the nature of this release. For PhilGEPS award extracts this will usually contain 'award'.",
+      "items": {
+        "type": "string",
+        "enum": ["tender", "award", "contract", "implementation"]
+      },
+      "minItems": 1,
+      "examples": [["award"]]
+    },
+    "language": {
+      "type": "string",
+      "description": "The default language of the data using ISO639-1 codes.",
+      "default": "en",
+      "examples": ["en"]
+    },
+    "initiationType": {
+      "type": "string",
+      "enum": ["tender"],
+      "description": "Describes the process used to initiate the contracting process. PhilGEPS records are public tenders.",
+      "default": "tender"
+    },
+    "buyer": {
+      "$ref": "#/definitions/OrganizationReference",
+      "description": "The buying organization for this contracting process.",
+      "x-philgeps-source": "organization_name"
+    },
+    "parties": {
+      "type": "array",
+      "description": "All organizations and other participants referenced in this release (e.g., buyer and suppliers).",
+      "items": {
+        "$ref": "#/definitions/Organization"
+      },
+      "minItems": 1
+    },
+    "tender": {
+      "$ref": "#/definitions/Tender",
+      "description": "Details of the call for tenders / original PhilGEPS notice."
+    },
+    "awards": {
+      "type": "array",
+      "description": "Information about award(s) for this contracting process, derived from PhilGEPS award records.",
+      "items": {
+        "$ref": "#/definitions/Award"
+      },
+      "minItems": 1
+    },
+    "contracts": {
+      "type": "array",
+      "description": "Contract objects derived from PhilGEPS contract information, if available (contract_no, contract_amount, award_date).",
+      "items": {
+        "$ref": "#/definitions/Contract"
+      }
+    }
+  },
+  "definitions": {
+    "Organization": {
+      "type": "object",
+      "description": "An organization or other participant in the contracting process.",
+      "required": ["id", "name", "roles"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "An identifier for this organization within the OCDS dataset. For PhilGEPS, this may be a slug or hash of the name.",
+          "examples": [
+            "PH-BUYER-001",
+            "PH-SUPPLIER-XYZ-CONSTRUCTION-INC"
+          ],
+          "x-philgeps-derived": true
+        },
+        "name": {
+          "type": "string",
+          "description": "The common name of the organization.",
+          "examples": [
+            "Department of Public Works and Highways - Region IV-A",
+            "XYZ Construction, Inc."
+          ],
+          "x-philgeps-source": "organization_name | awardee_name"
+        },
+        "roles": {
+          "type": "array",
+          "description": "The party's role(s) in the contracting process.",
+          "items": {
+            "type": "string",
+            "enum": ["buyer", "supplier", "tenderer", "procuringEntity"]
+          },
+          "minItems": 1,
+          "examples": [["buyer"], ["supplier"]]
+        }
+      },
+      "additionalProperties": true
+    },
+    "OrganizationReference": {
+      "type": "object",
+      "description": "A reference to an organization by identifier.",
+      "required": ["id", "name"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier of the referenced organization, matching Organization.id.",
+          "x-philgeps-derived": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the referenced organization, matching Organization.name.",
+          "x-philgeps-source": "organization_name | awardee_name"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Value": {
+      "type": "object",
+      "description": "Monetary value with currency.",
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total value in the specified currency.",
+          "examples": [1500000.0, 25000000.5],
+          "x-philgeps-source": "contract_amount"
+        },
+        "currency": {
+          "type": "string",
+          "description": "Currency code (ISO 4217).",
+          "default": "PHP",
+          "examples": ["PHP"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Tender": {
+      "type": "object",
+      "description": "Information about the original call for tender / opportunity.",
+      "required": ["id", "title"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier for this tender. For PhilGEPS this normally corresponds to reference_id.",
+          "examples": ["9412345"],
+          "x-philgeps-source": "reference_id"
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the procurement as published.",
+          "examples": [
+            "Supply and Delivery of ICT Equipment",
+            "Construction of Two-Storey School Building"
+          ],
+          "x-philgeps-source": "notice_title"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the tender in the OCDS lifecycle.",
+          "examples": ["complete", "active"],
+          "x-philgeps-derived": true
+        },
+        "procuringEntity": {
+          "$ref": "#/definitions/OrganizationReference",
+          "description": "The entity managing the procurement, usually the same as buyer.",
+          "x-philgeps-source": "organization_name"
+        }
+      },
+      "additionalProperties": true
+    },
+    "Award": {
+      "type": "object",
+      "description": "Information about an award, where a contract is awarded to a supplier.",
+      "required": ["id", "title", "status", "date", "value", "suppliers"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier for this award.",
+          "examples": ["9412345-1"],
+          "x-philgeps-derived": true
+        },
+        "title": {
+          "type": "string",
+          "description": "Award title.",
+          "examples": [
+            "Procurement of Office Supplies",
+            "Road Rehabilitation along National Highway"
+          ],
+          "x-philgeps-source": "award_title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Additional details about the award.",
+          "x-philgeps-source": "award_title | notice_title"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the award (e.g., active, cancelled).",
+          "examples": ["active", "cancelled"],
+          "x-philgeps-source": "award_status"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date of the award decision.",
+          "examples": ["2023-07-15T10:30:00Z"],
+          "x-philgeps-source": "award_date"
+        },
+        "value": {
+          "$ref": "#/definitions/Value"
+        },
+        "suppliers": {
+          "type": "array",
+          "description": "Organization(s) receiving the award.",
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          },
+          "minItems": 1,
+          "x-philgeps-source": "awardee_name"
+        },
+        "contractNumber": {
+          "type": "string",
+          "description": "Contract number associated with this award, if available.",
+          "examples": ["2023-ABC-042"],
+          "x-philgeps-source": "contract_no"
+        },
+        "items": {
+          "type": "array",
+          "description": "Optional high-level description of the items being procured.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "description": {
+                "type": "string",
+                "description": "Item description.",
+                "x-philgeps-source": "award_title | notice_title"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "Contract": {
+      "type": "object",
+      "description": "Information about a contract signed following an award.",
+      "required": ["id", "awardID", "title", "value"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Identifier for this contract.",
+          "examples": ["2023-ABC-042"],
+          "x-philgeps-source": "contract_no"
+        },
+        "awardID": {
+          "type": "string",
+          "description": "The identifier of the related award.",
+          "x-philgeps-derived": true
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the contract.",
+          "x-philgeps-source": "award_title"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the contract in its lifecycle.",
+          "examples": ["active", "terminated"],
+          "x-philgeps-derived": true
+        },
+        "period": {
+          "type": "object",
+          "description": "Contract period if known.",
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date-time"
+            }
+          },
+          "additionalProperties": false
+        },
+        "dateSigned": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Date the contract was signed. In PhilGEPS extracts this often matches the award_date.",
+          "x-philgeps-source": "award_date"
+        },
+        "value": {
+          "$ref": "#/definitions/Value"
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
