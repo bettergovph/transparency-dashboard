@@ -31,7 +31,10 @@ curl -X PUT "${MEILISEARCH_HOST}/indexes/${INDEX_NAME}/settings/filterable-attri
     "uacs_dpt_dsc",
     "agency",
     "uacs_agy_dsc",
+    "prexc_fpap_id",
+    "operunit",
     "uacs_oper_dsc",
+    "fundcd",
     "uacs_fundsubcat_dsc",
     "uacs_exp_cd",
     "uacs_exp_dsc",
@@ -81,6 +84,19 @@ curl -X PUT "${MEILISEARCH_HOST}/indexes/${INDEX_NAME}/settings/displayed-attrib
   --data-binary '[
     "*"
   ]'
+
+echo -e "\n"
+
+# Configure pagination settings for larger result sets
+echo "Configuring pagination settings..."
+curl -X PATCH "${MEILISEARCH_HOST}/indexes/${INDEX_NAME}/settings" \
+  -H "Authorization: Bearer ${MEILISEARCH_API_KEY}" \
+  -H 'Content-Type: application/json' \
+  --data-binary '{
+    "pagination": {
+      "maxTotalHits": 10000
+    }
+  }'
 
 echo -e "\n"
 

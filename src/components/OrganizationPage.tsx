@@ -1,12 +1,11 @@
 import { useParams } from 'react-router-dom'
 import EnhancedSearchInterface from './EnhancedSearchInterface'
-import { fromSlug } from '@/lib/utils'
 
 const OrganizationPage = () => {
   const { slug } = useParams<{ slug: string }>()
 
-  // Convert slug back to readable name
-  const organizationName = slug ? fromSlug(slug) : ''
+  // Decode URL-encoded name (no slug conversion - preserve special characters)
+  const organizationName = slug ? decodeURIComponent(slug) : ''
 
   return (
     <EnhancedSearchInterface 

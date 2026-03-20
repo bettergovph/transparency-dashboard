@@ -23,9 +23,13 @@ dist-ssr
 *.sln
 *.sw?
 .env
-**.parquet
+data/gaa/**/**.parquet
+data/bir/**/**.parquet
+data/philgeps/**.parquet
+data/**/**.parquet
 data/gaa/data/*.csv
 csv_batches/
 philgeps.tar.gz
 data/import.py
 data/bir/bir_collections.sql
+data/.venv

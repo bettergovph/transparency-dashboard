@@ -12,6 +12,7 @@ Usage:
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Dict, Any, List
@@ -21,6 +22,21 @@ try:
 except ImportError:
     print("✗ DuckDB is required. Install with: pip install duckdb")
     sys.exit(1)
+
+
+def to_slug(text: str) -> str:
+    """Convert text to SEO-friendly slug with lowercase and hyphens."""
+    # Convert to lowercase
+    slug = text.lower()
+    # Replace spaces with hyphens
+    slug = slug.replace(' ', '-')
+    # Remove special characters (keep only alphanumeric and hyphens)
+    slug = re.sub(r'[^a-z0-9-]', '', slug)
+    # Replace multiple consecutive hyphens with single hyphen
+    slug = re.sub(r'-+', '-', slug)
+    # Strip hyphens from start and end
+    slug = slug.strip('-')
+    return slug
 
 
 # SQL function to clean and convert amt values
@@ -72,6 +88,7 @@ def create_department_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[st
         if dept_desc not in departments:
             departments[dept_desc] = {
                 'id': dept_desc,  # Use description as ID
+                'slug': to_slug(dept_desc),  # URL-safe slug
                 'code': dept_code,  # Store code for reference
                 'description': dept_desc,
                 'years': {}
@@ -141,6 +158,7 @@ def create_agency_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, A
         if composite_id not in agencies:
             agencies[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(agency_desc),  # URL-safe slug
                 'agency_code': agency_code,
                 'description': agency_desc,
                 'department_id': dept_desc,  # Reference to department description
@@ -206,6 +224,7 @@ def create_fund_subcategory_aggregates(con: duckdb.DuckDBPyConnection) -> List[D
         if composite_id not in fund_subcats:
             fund_subcats[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(fund_desc),  # URL-safe slug
                 'description': fund_desc,
                 'department_id': dept_desc,
                 'agency_id': f"{dept_desc}::{agency_desc}",  # Reference to agency composite ID
@@ -265,6 +284,7 @@ def create_expense_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, 
         if composite_id not in expenses:
             expenses[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(exp_desc),  # URL-safe slug
                 'expense_code': exp_code,
                 'description': exp_desc,
                 'department_id': dept_desc,
@@ -325,6 +345,7 @@ def create_object_aggregates(con: duckdb.DuckDBPyConnection) -> List[Dict[str, A
         if composite_id not in objects:
             objects[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(obj_desc),  # URL-safe slug
                 'object_code': obj_code,
                 'description': obj_desc,
                 'department_id': dept_desc,

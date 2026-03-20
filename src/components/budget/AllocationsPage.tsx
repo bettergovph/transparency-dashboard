@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Package, TrendingUp } from 'lucide-react'
 import { LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip } from 'recharts'
@@ -29,12 +29,14 @@ interface ObjectsData {
 }
 
 const AllocationsPage = () => {
+  const { year } = useParams<{ year: string }>()
+  const navigate = useNavigate()
   const [objectsData, setObjectsData] = useState<ObjectsData | null>(null)
   const [departments, setDepartments] = useState<Map<string, { id: string; description: string }>>(new Map())
   const [agencies, setAgencies] = useState<Map<string, { id: string; description: string; department_id: string }>>(new Map())
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(year ? parseInt(year) : 2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 50
@@ -43,6 +45,12 @@ const AllocationsPage = () => {
     loadObjectsData()
     loadMappingData()
   }, [])
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(parseInt(year))
+    }
+  }, [year])
 
   // Reset to page 1 when search or year changes
   useEffect(() => {
@@ -56,11 +64,15 @@ const AllocationsPage = () => {
       const data: ObjectsData = await response.json()
       setObjectsData(data)
 
-      // Extract available years from first object
+      // Extract available years from all objects
       if (data.data.length > 0) {
-        const years = Object.keys(data.data[0].years).map(Number).sort((a, b) => b - a)
+        const allYears = new Set<number>()
+        data.data.forEach(obj => {
+          Object.keys(obj.years).forEach(year => allYears.add(Number(year)))
+        })
+        const years = Array.from(allYears).sort((a, b) => b - a)
         setAvailableYears(years)
-        if (years.length > 0) {
+        if (!year && years.length > 0) {
           setSelectedYear(years[0])
         }
       }
@@ -167,7 +179,7 @@ const AllocationsPage = () => {
           icon={<Package className="h-5 w-5 md:h-6 md:w-6 text-white" />}
           availableYears={availableYears}
           selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
+          onYearChange={(newYear) => navigate(`/budget/${newYear}/allocations`)}
           searchQuery={searchQuery}
           onSearchChange={setSearchQuery}
           searchPlaceholder="Search by object, code, department, or agency..."

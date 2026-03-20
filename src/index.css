@@ -211,3 +211,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-gray-400;
 }
+
+.leaflet-container a.text-white {
+  color: white;
+}

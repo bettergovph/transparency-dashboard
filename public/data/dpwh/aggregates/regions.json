@@ -1,0 +1,572 @@
+{
+  "metadata": {
+    "title": "DPWH Regions",
+    "source": "Department of Public Works and Highways",
+    "generated_at": "2026-01-14T19:44:54.111734",
+    "total_items": 18,
+    "total_projects": 248220,
+    "total_budget": 6379081440395.461,
+    "total_paid": 0.0,
+    "avg_progress": 92.22502292321327
+  },
+  "data": [
+    {
+      "region": "Region III",
+      "province_count": 17,
+      "project_count": 25407,
+      "total_budget": 668094891020.81,
+      "total_paid": 0.0,
+      "avg_budget": 26295701.61848349,
+      "avg_progress": 92.18646081788484,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 8792
+        },
+        {
+          "category": "Roads",
+          "count": 8647
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 5393
+        },
+        {
+          "category": "Bridges",
+          "count": 1045
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 348
+        }
+      ]
+    },
+    {
+      "region": "Region IV-A",
+      "province_count": 17,
+      "project_count": 25124,
+      "total_budget": 607713660933.93,
+      "total_paid": 0.0,
+      "avg_budget": 24188571.124579288,
+      "avg_progress": 90.62518946027701,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 9222
+        },
+        {
+          "category": "Roads",
+          "count": 8837
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 3435
+        },
+        {
+          "category": "Bridges",
+          "count": 1141
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 779
+        }
+      ]
+    },
+    {
+      "region": "Region V",
+      "province_count": 16,
+      "project_count": 16396,
+      "total_budget": 520582167374.46,
+      "total_paid": 0.0,
+      "avg_budget": 31750559.122618932,
+      "avg_progress": 90.591058794828,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 5753
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 5474
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 2789
+        },
+        {
+          "category": "Bridges",
+          "count": 745
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 560
+        }
+      ]
+    },
+    {
+      "region": "Region X",
+      "province_count": 15,
+      "project_count": 15606,
+      "total_budget": 464113472151.75,
+      "total_paid": 0.0,
+      "avg_budget": 29739425.35894848,
+      "avg_progress": 95.06932846341151,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 5959
+        },
+        {
+          "category": "Roads",
+          "count": 5703
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1154
+        },
+        {
+          "category": "Bridges",
+          "count": 1086
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 721
+        }
+      ]
+    },
+    {
+      "region": "Region XI",
+      "province_count": 12,
+      "project_count": 14211,
+      "total_budget": 442146401551.05,
+      "total_paid": 0.0,
+      "avg_budget": 31112968.936109353,
+      "avg_progress": 94.67275631553022,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 5802
+        },
+        {
+          "category": "Roads",
+          "count": 4992
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1294
+        },
+        {
+          "category": "Bridges",
+          "count": 580
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 501
+        }
+      ]
+    },
+    {
+      "region": "National Capital Region",
+      "province_count": 10,
+      "project_count": 16906,
+      "total_budget": 438199063989.18,
+      "total_paid": 0.0,
+      "avg_budget": 25919736.42429788,
+      "avg_progress": 90.31352241807642,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 6749
+        },
+        {
+          "category": "Roads",
+          "count": 4442
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 3913
+        },
+        {
+          "category": "Bridges",
+          "count": 497
+        },
+        {
+          "category": "GAA 2016 Locally Funded Projects",
+          "count": 197
+        }
+      ]
+    },
+    {
+      "region": "Region VIII",
+      "province_count": 15,
+      "project_count": 15507,
+      "total_budget": 389619999966.55,
+      "total_paid": 0.0,
+      "avg_budget": 25125427.224256787,
+      "avg_progress": 90.63751467079383,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 5711
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 4931
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1911
+        },
+        {
+          "category": "Bridges",
+          "count": 1107
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 504
+        }
+      ]
+    },
+    {
+      "region": "Region I",
+      "province_count": 11,
+      "project_count": 17887,
+      "total_budget": 348686181325.64,
+      "total_paid": 0.0,
+      "avg_budget": 19493832.4663521,
+      "avg_progress": 89.98264270140325,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 6427
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 5689
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 3488
+        },
+        {
+          "category": "Bridges",
+          "count": 1151
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 277
+        }
+      ]
+    },
+    {
+      "region": "Region IV-B",
+      "province_count": 9,
+      "project_count": 10998,
+      "total_budget": 348132699802.48,
+      "total_paid": 0.0,
+      "avg_budget": 31654182.560691033,
+      "avg_progress": 92.48404346244772,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 4085
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 3777
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1462
+        },
+        {
+          "category": "Bridges",
+          "count": 760
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 361
+        }
+      ]
+    },
+    {
+      "region": "Region XIII",
+      "province_count": 10,
+      "project_count": 9253,
+      "total_budget": 303020037373.1,
+      "total_paid": 0.0,
+      "avg_budget": 32748301.888371337,
+      "avg_progress": 93.66129795741921,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 3627
+        },
+        {
+          "category": "Roads",
+          "count": 3073
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 854
+        },
+        {
+          "category": "Bridges",
+          "count": 569
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 226
+        }
+      ]
+    },
+    {
+      "region": "Region VII",
+      "province_count": 12,
+      "project_count": 13883,
+      "total_budget": 301689119018.38,
+      "total_paid": 0.0,
+      "avg_budget": 21730830.441430528,
+      "avg_progress": 92.78683929986313,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 5366
+        },
+        {
+          "category": "Roads",
+          "count": 5127
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1552
+        },
+        {
+          "category": "Bridges",
+          "count": 595
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 360
+        }
+      ]
+    },
+    {
+      "region": "Region II",
+      "province_count": 12,
+      "project_count": 14183,
+      "total_budget": 283194223209.95,
+      "total_paid": 0.0,
+      "avg_budget": 19967159.501512375,
+      "avg_progress": 91.84553126983008,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 5365
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 5063
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1616
+        },
+        {
+          "category": "Bridges",
+          "count": 770
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 334
+        }
+      ]
+    },
+    {
+      "region": "Cordillera Administrative Region",
+      "province_count": 13,
+      "project_count": 9922,
+      "total_budget": 258491554810.21,
+      "total_paid": 0.0,
+      "avg_budget": 26052363.91959383,
+      "avg_progress": 92.10573573876235,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 4710
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 2244
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1240
+        },
+        {
+          "category": "Bridges",
+          "count": 509
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 345
+        }
+      ]
+    },
+    {
+      "region": "Region VI",
+      "province_count": 12,
+      "project_count": 13038,
+      "total_budget": 258015647336.83,
+      "total_paid": 0.0,
+      "avg_budget": 19789511.223870993,
+      "avg_progress": 92.8146042337782,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 5868
+        },
+        {
+          "category": "Roads",
+          "count": 4481
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1066
+        },
+        {
+          "category": "Bridges",
+          "count": 618
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 311
+        }
+      ]
+    },
+    {
+      "region": "Region XII",
+      "province_count": 10,
+      "project_count": 10374,
+      "total_budget": 223450628051.82,
+      "total_paid": 0.0,
+      "avg_budget": 21539486.02774436,
+      "avg_progress": 95.89827356853672,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 4866
+        },
+        {
+          "category": "Roads",
+          "count": 3170
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 808
+        },
+        {
+          "category": "Bridges",
+          "count": 441
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 299
+        }
+      ]
+    },
+    {
+      "region": "Region IX",
+      "province_count": 12,
+      "project_count": 9295,
+      "total_budget": 219690825654.32,
+      "total_paid": 0.0,
+      "avg_budget": 23635376.61692523,
+      "avg_progress": 90.97033243679397,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 3558
+        },
+        {
+          "category": "Roads",
+          "count": 3503
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 770
+        },
+        {
+          "category": "Bridges",
+          "count": 480
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 420
+        }
+      ]
+    },
+    {
+      "region": "Negros Island Region",
+      "province_count": 11,
+      "project_count": 9933,
+      "total_budget": 158100996259.4,
+      "total_paid": 0.0,
+      "avg_budget": 15916741.795973018,
+      "avg_progress": 95.89946843853821,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 4346
+        },
+        {
+          "category": "Roads",
+          "count": 3450
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 943
+        },
+        {
+          "category": "Bridges",
+          "count": 452
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 359
+        }
+      ]
+    },
+    {
+      "region": "Central Office",
+      "province_count": 6,
+      "project_count": 297,
+      "total_budget": 146139870565.6,
+      "total_paid": 0.0,
+      "avg_budget": 492053436.2478115,
+      "avg_progress": 84.92771043771043,
+      "top_categories": [
+        {
+          "category": "Flood Control and Drainage",
+          "count": 178
+        },
+        {
+          "category": "Roads",
+          "count": 48
+        },
+        {
+          "category": "Bridges",
+          "count": 12
+        },
+        {
+          "category": "Bridges, Roads",
+          "count": 12
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 12
+        }
+      ]
+    }
+  ]
+}

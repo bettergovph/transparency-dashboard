@@ -35,7 +35,7 @@ const RegionalAllocationsPage = () => {
   const [regionalData, setRegionalData] = useState<RegionalData | null>(null)
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
@@ -231,7 +231,7 @@ const RegionalAllocationsPage = () => {
           <div className="mb-6 max-w-[1800px] mx-auto">
             <Card>
               <CardHeader>
-                <CardTitle>National Budget Trend (2020-2025)</CardTitle>
+                <CardTitle>National Budget Trend (2020-2026)</CardTitle>
                 <CardDescription>Total budget allocation across all regions</CardDescription>
               </CardHeader>
               <CardContent>

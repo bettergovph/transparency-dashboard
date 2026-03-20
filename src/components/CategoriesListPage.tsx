@@ -5,7 +5,6 @@ import { Search } from 'lucide-react'
 import Navigation from './Navigation'
 import Footer from './Footer'
 import { filterIndices } from '@/lib/meilisearch'
-import { toSlug } from '@/lib/utils'
 
 const CategoriesListPage = () => {
   const [categories, setCategories] = useState<Array<{ name: string; count: number; total: number }>>([])
@@ -86,7 +85,7 @@ const CategoriesListPage = () => {
       </Helmet>
       <Navigation />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
+      <div className="w-auto lg:w-7xl max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
         <div className="mb-6">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Business Categories Directory</h1>
           <p className="text-gray-600">
@@ -173,7 +172,7 @@ const CategoriesListPage = () => {
                     <div className="flex items-start gap-2 mb-2">
                       <span className="text-xs font-mono text-gray-500 shrink-0 w-8">#{index + 1}</span>
                       <Link
-                        to={`/categories/${toSlug(category.name)}`}
+                        to={`/categories/${encodeURIComponent(category.name)}`}
                         className="text-sm font-medium text-blue-600 hover:text-blue-800 hover:underline transition-colors flex-1 text-left"
                       >
                         {category.name}
@@ -212,7 +211,7 @@ const CategoriesListPage = () => {
                         </td>
                         <td className="px-6 py-4">
                           <Link
-                            to={`/categories/${toSlug(category.name)}`}
+                            to={`/categories/${encodeURIComponent(category.name)}`}
                             className="text-base text-blue-600 hover:text-blue-800 hover:underline transition-colors"
                           >
                             {category.name}

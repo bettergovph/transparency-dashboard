@@ -27,6 +27,7 @@ Usage:
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Dict, Any, List
@@ -34,9 +35,55 @@ from typing import Dict, Any, List
 import pandas as pd
 
 
+def to_slug(text: str) -> str:
+    """Convert text to SEO-friendly slug with lowercase and hyphens."""
+    # Convert to lowercase
+    slug = text.lower()
+    # Replace spaces with hyphens
+    slug = slug.replace(' ', '-')
+    # Remove special characters (keep only alphanumeric and hyphens)
+    slug = re.sub(r'[^a-z0-9-]', '', slug)
+    # Replace multiple consecutive hyphens with single hyphen
+    slug = re.sub(r'-+', '-', slug)
+    # Strip hyphens from start and end
+    slug = slug.strip('-')
+    return slug
+
+
+def is_department_name(desc: str) -> bool:
+    """
+    Check if a description looks like a department/agency name.
+    Philippine government entities typically use pattern: "Entity Name (ABBREV)"
+    or start with "Department of", "Office of", etc.
+    """
+    if not desc or str(desc).lower() == 'nan':
+        return False
+    desc = str(desc)
+    # Check for common patterns
+    patterns = [
+        '(' in desc and ')' in desc,  # Has abbreviation like "Office of the President (OP)"
+        desc.startswith('Department of'),
+        desc.startswith('Office of'),
+        desc.startswith('Commission on'),
+        desc.startswith('The '),
+        'University' in desc or 'College' in desc,
+        'Congress' in desc,
+        'Judiciary' in desc,
+        'Automatic Appropriations' in desc,  # Special case - this IS a dept name
+        'Budgetary Support' in desc,
+        'Allocations to' in desc,
+    ]
+    return any(patterns)
+
+
 def create_department_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Create department aggregates grouped by year.
+    
+    Note: Aggregates by department ID only (not description) to handle cases
+    where the same department has multiple description variations in the data.
+    Uses smart selection: prefers descriptions that look like department names,
+    falls back to highest amount if no department-like name found.
     
     Returns list of:
     {
@@ -47,22 +94,49 @@ def create_department_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     print("  → Creating department aggregates...")
     
-    # Group by department and year
-    grouped = df.groupby(['department', 'uacs_dpt_dsc', 'year']).agg({
+    # First, find the best description for each department
+    # Priority: 1) Department-like names by amount, 2) Any name by amount
+    dept_descriptions = {}
+    for dept_id in df['department'].unique():
+        dept_data = df[df['department'] == dept_id]
+        # Get total amount by description
+        desc_amounts = dept_data.groupby('uacs_dpt_dsc')['amt'].sum().sort_values(ascending=False)
+        
+        # First pass: look for department-like names
+        for desc, amount in desc_amounts.items():
+            if is_department_name(desc):
+                dept_descriptions[str(dept_id)] = str(desc)
+                break
+        
+        # Fallback: use highest amount non-nan description
+        if str(dept_id) not in dept_descriptions:
+            for desc, amount in desc_amounts.items():
+                if desc and str(desc).lower() != 'nan' and str(desc).strip():
+                    dept_descriptions[str(dept_id)] = str(desc)
+                    break
+        
+        # Final fallback
+        if str(dept_id) not in dept_descriptions:
+            dept_descriptions[str(dept_id)] = str(dept_data['uacs_dpt_dsc'].iloc[0])
+    
+    # Group by department and year only (aggregate across all description variations)
+    grouped = df.groupby(['department', 'year']).agg({
         'amt': ['count', 'sum']
     }).reset_index()
     
     # Flatten multi-level columns
-    grouped.columns = ['department', 'uacs_dpt_dsc', 'year', 'count', 'amount']
+    grouped.columns = ['department', 'year', 'count', 'amount']
     
     # Build nested structure
     departments = {}
     for _, row in grouped.iterrows():
         dept_id = str(row['department'])
         if dept_id not in departments:
+            description = dept_descriptions.get(dept_id, dept_id)
             departments[dept_id] = {
                 'id': dept_id,
-                'description': row['uacs_dpt_dsc'],
+                'slug': to_slug(description),
+                'description': description,
                 'years': {}
             }
         
@@ -82,6 +156,8 @@ def create_agency_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     Create agency aggregates grouped by year, with parent department reference.
     
     Note: Agency IDs are not unique across departments, so we use composite keys.
+    Aggregates by department+agency ID only (not description) to handle cases
+    where the same agency has multiple description variations in the data.
     
     Returns list of:
     {
@@ -94,12 +170,37 @@ def create_agency_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     print("  → Creating agency aggregates...")
     
-    # Group by agency, department, and year
-    grouped = df.groupby(['agency', 'uacs_agy_dsc', 'department', 'year']).agg({
+    # First, find the best description for each agency
+    # Priority: 1) Agency-like names by amount, 2) Any name by amount
+    agency_descriptions = {}
+    for (dept_id, agency_code), group in df.groupby(['department', 'agency']):
+        composite_id = f"{dept_id}-{agency_code}"
+        # Get total amount by description
+        desc_amounts = group.groupby('uacs_agy_dsc')['amt'].sum().sort_values(ascending=False)
+        
+        # First pass: look for agency-like names (reuse department name checker)
+        for desc, amount in desc_amounts.items():
+            if is_department_name(desc):  # Same patterns work for agencies
+                agency_descriptions[composite_id] = str(desc)
+                break
+        
+        # Fallback: use highest amount non-nan description
+        if composite_id not in agency_descriptions:
+            for desc, amount in desc_amounts.items():
+                if desc and str(desc).lower() != 'nan' and str(desc).strip():
+                    agency_descriptions[composite_id] = str(desc)
+                    break
+        
+        # Final fallback
+        if composite_id not in agency_descriptions:
+            agency_descriptions[composite_id] = str(group['uacs_agy_dsc'].iloc[0])
+    
+    # Group by agency, department, and year only (aggregate across all description variations)
+    grouped = df.groupby(['agency', 'department', 'year']).agg({
         'amt': ['count', 'sum']
     }).reset_index()
     
-    grouped.columns = ['agency', 'uacs_agy_dsc', 'department', 'year', 'count', 'amount']
+    grouped.columns = ['agency', 'department', 'year', 'count', 'amount']
     
     # Build nested structure with composite keys
     agencies = {}
@@ -109,10 +210,12 @@ def create_agency_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
         composite_id = f"{dept_id}-{agency_code}"  # Composite key
         
         if composite_id not in agencies:
+            description = agency_descriptions.get(composite_id, agency_code)
             agencies[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(description),
                 'agency_code': agency_code,
-                'description': row['uacs_agy_dsc'],
+                'description': description,
                 'department_id': dept_id,
                 'years': {}
             }
@@ -157,6 +260,7 @@ def create_fund_subcategory_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]
         if composite_id not in fund_subcats:
             fund_subcats[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(fund_desc),
                 'description': fund_desc,
                 'department_id': dept_id,
                 'agency_id': f"{dept_id}-{agency_code}",  # Reference to agency composite ID
@@ -203,6 +307,7 @@ def create_expense_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
         if composite_id not in expenses:
             expenses[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(row['uacs_exp_dsc']),
                 'expense_code': exp_code,
                 'description': row['uacs_exp_dsc'],
                 'department_id': dept_id,
@@ -225,11 +330,14 @@ def create_object_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Create object aggregates with parent references.
     Uses composite keys since object codes may repeat across dept/agency combos.
+    
+    Note: The parquet file is pre-normalized by gaa_csv_to_parquet.py,
+    so all years use uacs_sobj_cd/uacs_sobj_dsc consistently.
     """
     print("  → Creating object aggregates...")
     
     # Filter out null/empty object descriptions
-    df_filtered = df[df['uacs_sobj_dsc'].notna() & (df['uacs_sobj_dsc'] != '')]
+    df_filtered = df[df['uacs_sobj_dsc'].notna() & (df['uacs_sobj_dsc'] != '') & (df['uacs_sobj_dsc'] != 'nan')]
     
     grouped = df_filtered.groupby([
         'uacs_sobj_cd', 'uacs_sobj_dsc', 'department', 'agency', 'year'
@@ -250,6 +358,7 @@ def create_object_aggregates(df: pd.DataFrame) -> List[Dict[str, Any]]:
         if composite_id not in objects:
             objects[composite_id] = {
                 'id': composite_id,
+                'slug': to_slug(row['uacs_sobj_dsc']),
                 'object_code': obj_code,
                 'description': row['uacs_sobj_dsc'],
                 'department_id': dept_id,

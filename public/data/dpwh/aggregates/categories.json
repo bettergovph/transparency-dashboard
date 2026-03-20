@@ -1,0 +1,2113 @@
+{
+  "metadata": {
+    "title": "DPWH Categories",
+    "source": "Department of Public Works and Highways",
+    "generated_at": "2026-01-14T19:44:54.106741",
+    "total_items": 180,
+    "total_projects": 248220,
+    "total_budget": 6379081440395.461,
+    "total_paid": 0.0,
+    "avg_progress": 92.22502292321327
+  },
+  "data": [
+    {
+      "category": "Roads",
+      "project_count": 87524,
+      "total_budget": 2679030431232.56,
+      "total_paid": 0.0,
+      "avg_budget": 30609095.005170695,
+      "avg_progress": 93.06851377907773,
+      "statuses": {
+        "Completed": 73354,
+        "For Procurement": 2069,
+        "Not Yet Started": 193,
+        "On-Going": 11623,
+        "Terminated": 285
+      }
+    },
+    {
+      "category": "Flood Control and Drainage",
+      "project_count": 33866,
+      "total_budget": 1586224208465.16,
+      "total_paid": 0.0,
+      "avg_budget": 46838251.00292801,
+      "avg_progress": 92.36553209708852,
+      "statuses": {
+        "Completed": 27405,
+        "For Procurement": 829,
+        "Not Yet Started": 96,
+        "On-Going": 5405,
+        "Terminated": 131
+      }
+    },
+    {
+      "category": "Buildings and Facilities",
+      "project_count": 91345,
+      "total_budget": 945187995610.47,
+      "total_paid": 0.0,
+      "avg_budget": 10347451.919759922,
+      "avg_progress": 96.38062455525754,
+      "statuses": {
+        "Completed": 82650,
+        "For Procurement": 2,
+        "Not Yet Started": 264,
+        "On-Going": 8089,
+        "Terminated": 340
+      }
+    },
+    {
+      "category": "Bridges",
+      "project_count": 12558,
+      "total_budget": 382386035666.41,
+      "total_paid": 0.0,
+      "avg_budget": 30449596.72451107,
+      "avg_progress": 92.20939480809047,
+      "statuses": {
+        "Completed": 10509,
+        "For Procurement": 262,
+        "Not Yet Started": 48,
+        "On-Going": 1634,
+        "Terminated": 105
+      }
+    },
+    {
+      "category": "Bridges, Roads",
+      "project_count": 705,
+      "total_budget": 99524525252.22,
+      "total_paid": 0.0,
+      "avg_budget": 141169539.36485106,
+      "avg_progress": 88.99655319148935,
+      "statuses": {
+        "Completed": 490,
+        "Not Yet Started": 4,
+        "On-Going": 200,
+        "Terminated": 11
+      }
+    },
+    {
+      "category": "GAA 2025 SSP",
+      "project_count": 3264,
+      "total_budget": 92780794780.95,
+      "total_paid": 0.0,
+      "avg_budget": 28425488.597104777,
+      "avg_progress": 62.79731924019608,
+      "statuses": {
+        "Completed": 316,
+        "Not Yet Started": 146,
+        "On-Going": 2802
+      }
+    },
+    {
+      "category": "GAA 2025 OO-1",
+      "project_count": 1257,
+      "total_budget": 75167708856.42,
+      "total_paid": 0.0,
+      "avg_budget": 59799291.05522673,
+      "avg_progress": 67.01221161495624,
+      "statuses": {
+        "Completed": 88,
+        "Not Yet Started": 21,
+        "On-Going": 1148
+      }
+    },
+    {
+      "category": "GAA 2025 OO-2",
+      "project_count": 791,
+      "total_budget": 61790677664.22,
+      "total_paid": 0.0,
+      "avg_budget": 78117165.18864729,
+      "avg_progress": 72.78792667509482,
+      "statuses": {
+        "Completed": 47,
+        "Not Yet Started": 7,
+        "On-Going": 736,
+        "Terminated": 1
+      }
+    },
+    {
+      "category": "Water Provision and Storage",
+      "project_count": 6745,
+      "total_budget": 48899621975.76,
+      "total_paid": 0.0,
+      "avg_budget": 7249758.632432913,
+      "avg_progress": 94.92341141586361,
+      "statuses": {
+        "Completed": 5908,
+        "For Procurement": 146,
+        "Not Yet Started": 10,
+        "On-Going": 672,
+        "Terminated": 9
+      }
+    },
+    {
+      "category": "GAA 2016 MFO-1",
+      "project_count": 648,
+      "total_budget": 38282539228.09,
+      "total_paid": 0.0,
+      "avg_budget": 59077992.63594135,
+      "avg_progress": 98.73773148148149,
+      "statuses": {
+        "Completed": 633,
+        "On-Going": 1,
+        "Terminated": 14
+      }
+    },
+    {
+      "category": "GAA 2017 MFO-1",
+      "project_count": 556,
+      "total_budget": 34309001445.45,
+      "total_paid": 0.0,
+      "avg_budget": 61706837.132104315,
+      "avg_progress": 99.5066726618705,
+      "statuses": {
+        "Completed": 547,
+        "On-Going": 3,
+        "Terminated": 6
+      }
+    },
+    {
+      "category": "GAA 2024 OO-1",
+      "project_count": 365,
+      "total_budget": 32902107487.59,
+      "total_paid": 0.0,
+      "avg_budget": 90142760.2399726,
+      "avg_progress": 84.17197260273973,
+      "statuses": {
+        "Completed": 66,
+        "Not Yet Started": 1,
+        "On-Going": 298
+      }
+    },
+    {
+      "category": "GAA 2024 SSP",
+      "project_count": 492,
+      "total_budget": 29166362963.46,
+      "total_paid": 0.0,
+      "avg_budget": 59281225.5354878,
+      "avg_progress": 80.48247967479675,
+      "statuses": {
+        "Completed": 97,
+        "Not Yet Started": 4,
+        "On-Going": 391
+      }
+    },
+    {
+      "category": "GAA 2022 FAPs",
+      "project_count": 3,
+      "total_budget": 18999056441.469997,
+      "total_paid": 0.0,
+      "avg_budget": 6333018813.823333,
+      "avg_progress": 56.95666666666667,
+      "statuses": {
+        "On-Going": 3
+      }
+    },
+    {
+      "category": "Unprogrammed Appropriations 2024",
+      "project_count": 198,
+      "total_budget": 16084846814.6,
+      "total_paid": 0.0,
+      "avg_budget": 81236600.07373738,
+      "avg_progress": 72.79262626262627,
+      "statuses": {
+        "Completed": 22,
+        "Not Yet Started": 3,
+        "On-Going": 173
+      }
+    },
+    {
+      "category": "GAA 2023 CSSP",
+      "project_count": 241,
+      "total_budget": 13902632495.15,
+      "total_paid": 0.0,
+      "avg_budget": 57687271.76410788,
+      "avg_progress": 90.28842323651452,
+      "statuses": {
+        "Completed": 122,
+        "On-Going": 119
+      }
+    },
+    {
+      "category": "GAA 2016 Foreign Assisted Projects",
+      "project_count": 1,
+      "total_budget": 13230000000.0,
+      "total_paid": 0.0,
+      "avg_budget": 13230000000.0,
+      "avg_progress": 65.44,
+      "statuses": {
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2024 OO-2",
+      "project_count": 130,
+      "total_budget": 12639299564.8,
+      "total_paid": 0.0,
+      "avg_budget": 97225381.2676923,
+      "avg_progress": 84.52553846153846,
+      "statuses": {
+        "Completed": 13,
+        "On-Going": 117
+      }
+    },
+    {
+      "category": "GAA 2018 OO-1",
+      "project_count": 183,
+      "total_budget": 12481823638.96,
+      "total_paid": 0.0,
+      "avg_budget": 68206686.55169399,
+      "avg_progress": 99.75344262295083,
+      "statuses": {
+        "Completed": 179,
+        "On-Going": 2,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "GAA 2016 MFO-3",
+      "project_count": 107,
+      "total_budget": 10333425611.74,
+      "total_paid": 0.0,
+      "avg_budget": 96574071.137757,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 107
+      }
+    },
+    {
+      "category": "GAA 2023 OO-1",
+      "project_count": 133,
+      "total_budget": 9591180839.8,
+      "total_paid": 0.0,
+      "avg_budget": 72114141.65263157,
+      "avg_progress": 91.80353383458647,
+      "statuses": {
+        "Completed": 80,
+        "On-Going": 53
+      }
+    },
+    {
+      "category": "GAA 2023 FAPs",
+      "project_count": 1,
+      "total_budget": 9109964205.23,
+      "total_paid": 0.0,
+      "avg_budget": 9109964205.23,
+      "avg_progress": 1.74,
+      "statuses": {
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Flood Control Structures, Roads",
+      "project_count": 109,
+      "total_budget": 8265621313.9,
+      "total_paid": 0.0,
+      "avg_budget": 75831388.20091742,
+      "avg_progress": 85.36082568807339,
+      "statuses": {
+        "Completed": 74,
+        "On-Going": 35
+      }
+    },
+    {
+      "category": "GAA 2022 CSSP",
+      "project_count": 139,
+      "total_budget": 7546844385.46,
+      "total_paid": 0.0,
+      "avg_budget": 54293844.49971223,
+      "avg_progress": 95.1561870503597,
+      "statuses": {
+        "Completed": 103,
+        "On-Going": 34,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "GAA 2016 Locally Funded Projects",
+      "project_count": 390,
+      "total_budget": 7102799931.29,
+      "total_paid": 0.0,
+      "avg_budget": 18212307.516128205,
+      "avg_progress": 99.74358974358974,
+      "statuses": {
+        "Completed": 388,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "Bridges, Consultancy, Roads",
+      "project_count": 1,
+      "total_budget": 6738359886.39,
+      "total_paid": 0.0,
+      "avg_budget": 6738359886.39,
+      "avg_progress": 100.0,
+      "statuses": {
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2022 OO-1",
+      "project_count": 80,
+      "total_budget": 6565311322.59,
+      "total_paid": 0.0,
+      "avg_budget": 82066391.53237501,
+      "avg_progress": 91.867875,
+      "statuses": {
+        "Completed": 57,
+        "On-Going": 21,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "GAA 2025 CP",
+      "project_count": 234,
+      "total_budget": 5769536952.52,
+      "total_paid": 0.0,
+      "avg_budget": 24656140.822735045,
+      "avg_progress": 69.34824786324786,
+      "statuses": {
+        "Completed": 21,
+        "Not Yet Started": 4,
+        "On-Going": 209
+      }
+    },
+    {
+      "category": "GAA 2016 MFO-2",
+      "project_count": 130,
+      "total_budget": 5552565004.17,
+      "total_paid": 0.0,
+      "avg_budget": 42712038.49361539,
+      "avg_progress": 99.23076923076923,
+      "statuses": {
+        "Completed": 129,
+        "Terminated": 1
+      }
+    },
+    {
+      "category": "GAA 2020 OO-1",
+      "project_count": 95,
+      "total_budget": 5448604277.64,
+      "total_paid": 0.0,
+      "avg_budget": 57353729.23831579,
+      "avg_progress": 99.30431578947368,
+      "statuses": {
+        "Completed": 89,
+        "On-Going": 4,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "GAA 2019 OO-1",
+      "project_count": 89,
+      "total_budget": 5408541919.88,
+      "total_paid": 0.0,
+      "avg_budget": 60770133.931235954,
+      "avg_progress": 98.76550561797752,
+      "statuses": {
+        "Completed": 85,
+        "On-Going": 3,
+        "Terminated": 1
+      }
+    },
+    {
+      "category": "Trust Funds 2023",
+      "project_count": 5,
+      "total_budget": 4597564789.76,
+      "total_paid": 0.0,
+      "avg_budget": 919512957.952,
+      "avg_progress": 41.284000000000006,
+      "statuses": {
+        "On-Going": 5
+      }
+    },
+    {
+      "category": "GAA 2018 LP",
+      "project_count": 199,
+      "total_budget": 4325426407.85,
+      "total_paid": 0.0,
+      "avg_budget": 21735811.09472362,
+      "avg_progress": 99.49748743718592,
+      "statuses": {
+        "Completed": 198,
+        "Terminated": 1
+      }
+    },
+    {
+      "category": "GAA 2017 MFO-2",
+      "project_count": 79,
+      "total_budget": 4274206174.64,
+      "total_paid": 0.0,
+      "avg_budget": 54103875.62835443,
+      "avg_progress": 99.83240506329115,
+      "statuses": {
+        "Completed": 76,
+        "On-Going": 2,
+        "Terminated": 1
+      }
+    },
+    {
+      "category": "GAA 2025 DA FMR",
+      "project_count": 220,
+      "total_budget": 4156015320.16,
+      "total_paid": 0.0,
+      "avg_budget": 18890978.728,
+      "avg_progress": 55.98659090909091,
+      "statuses": {
+        "Completed": 14,
+        "Not Yet Started": 16,
+        "On-Going": 190
+      }
+    },
+    {
+      "category": "GAA 2024 CP",
+      "project_count": 80,
+      "total_budget": 3988965244.7400002,
+      "total_paid": 0.0,
+      "avg_budget": 49862065.559250005,
+      "avg_progress": 86.194625,
+      "statuses": {
+        "Completed": 36,
+        "On-Going": 44
+      }
+    },
+    {
+      "category": "GAA 2023 OO-2",
+      "project_count": 39,
+      "total_budget": 3798940327.55,
+      "total_paid": 0.0,
+      "avg_budget": 97408726.3474359,
+      "avg_progress": 95.40205128205127,
+      "statuses": {
+        "Completed": 18,
+        "On-Going": 21
+      }
+    },
+    {
+      "category": "GAA 2021 LP",
+      "project_count": 109,
+      "total_budget": 3679066737.14,
+      "total_paid": 0.0,
+      "avg_budget": 33752905.8453211,
+      "avg_progress": 97.65467889908257,
+      "statuses": {
+        "Completed": 92,
+        "On-Going": 15,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "GAA 2021 OO-1",
+      "project_count": 82,
+      "total_budget": 3638946549.61,
+      "total_paid": 0.0,
+      "avg_budget": 44377396.94646341,
+      "avg_progress": 94.52560975609757,
+      "statuses": {
+        "Completed": 72,
+        "On-Going": 5,
+        "Terminated": 5
+      }
+    },
+    {
+      "category": "GAA 2017 LFP",
+      "project_count": 216,
+      "total_budget": 3508305497.65,
+      "total_paid": 0.0,
+      "avg_budget": 16242155.081712963,
+      "avg_progress": 99.07356481481482,
+      "statuses": {
+        "Completed": 213,
+        "On-Going": 2,
+        "Terminated": 1
+      }
+    },
+    {
+      "category": "GAA 2020 LP",
+      "project_count": 95,
+      "total_budget": 3304825728.81,
+      "total_paid": 0.0,
+      "avg_budget": 34787639.25063158,
+      "avg_progress": 97.8738947368421,
+      "statuses": {
+        "Completed": 87,
+        "On-Going": 6,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "GAA 2024 LP",
+      "project_count": 29,
+      "total_budget": 3288283649.66,
+      "total_paid": 0.0,
+      "avg_budget": 113389091.3675862,
+      "avg_progress": 63.19206896551724,
+      "statuses": {
+        "Completed": 3,
+        "Not Yet Started": 2,
+        "On-Going": 24
+      }
+    },
+    {
+      "category": "GAA 2025 FAPs",
+      "project_count": 2,
+      "total_budget": 3283611404.3500004,
+      "total_paid": 0.0,
+      "avg_budget": 1641805702.1750002,
+      "avg_progress": 0.805,
+      "statuses": {
+        "Not Yet Started": 1,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2017 MFO-3",
+      "project_count": 36,
+      "total_budget": 3168790177.56,
+      "total_paid": 0.0,
+      "avg_budget": 88021949.37666667,
+      "avg_progress": 94.44444444444444,
+      "statuses": {
+        "Completed": 34,
+        "Terminated": 2
+      }
+    },
+    {
+      "category": "GAA 2018 Foreign Assisted Projects",
+      "project_count": 3,
+      "total_budget": 3078596653.86,
+      "total_paid": 0.0,
+      "avg_budget": 1026198884.62,
+      "avg_progress": 99.03666666666668,
+      "statuses": {
+        "Completed": 2,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2024 DepEd BEFF",
+      "project_count": 99,
+      "total_budget": 2857520499.96,
+      "total_paid": 0.0,
+      "avg_budget": 28863843.433939394,
+      "avg_progress": 70.25060606060606,
+      "statuses": {
+        "Completed": 12,
+        "Not Yet Started": 4,
+        "On-Going": 83
+      }
+    },
+    {
+      "category": "GAA 2018 Other Infrastructure (CSSP)",
+      "project_count": 37,
+      "total_budget": 2585178185.24,
+      "total_paid": 0.0,
+      "avg_budget": 69869680.68216215,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 37
+      }
+    },
+    {
+      "category": "Unprogrammed Appropriations 2023",
+      "project_count": 57,
+      "total_budget": 2490713661.63,
+      "total_paid": 0.0,
+      "avg_budget": 43696730.90578947,
+      "avg_progress": 43.184035087719295,
+      "statuses": {
+        "Completed": 5,
+        "Not Yet Started": 1,
+        "On-Going": 51
+      }
+    },
+    {
+      "category": "Bridges, Flood Control Structures, Roads",
+      "project_count": 10,
+      "total_budget": 2463595576.77,
+      "total_paid": 0.0,
+      "avg_budget": 246359557.677,
+      "avg_progress": 98.933,
+      "statuses": {
+        "Completed": 9,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2021 FAPs",
+      "project_count": 2,
+      "total_budget": 2298053482.2,
+      "total_paid": 0.0,
+      "avg_budget": 1149026741.1,
+      "avg_progress": 91.595,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2025 LFP",
+      "project_count": 66,
+      "total_budget": 2192639033.06,
+      "total_paid": 0.0,
+      "avg_budget": 33221803.53121212,
+      "avg_progress": 59.43545454545454,
+      "statuses": {
+        "Completed": 1,
+        "Not Yet Started": 3,
+        "On-Going": 62
+      }
+    },
+    {
+      "category": "Flood Control Structures, Waterway",
+      "project_count": 26,
+      "total_budget": 1994732372.3799999,
+      "total_paid": 0.0,
+      "avg_budget": 76720475.86076923,
+      "avg_progress": 99.80730769230769,
+      "statuses": {
+        "Completed": 25,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2024 FAPs",
+      "project_count": 4,
+      "total_budget": 1808463079.6399999,
+      "total_paid": 0.0,
+      "avg_budget": 452115769.90999997,
+      "avg_progress": 45.510000000000005,
+      "statuses": {
+        "On-Going": 4
+      }
+    },
+    {
+      "category": "GAA 2018 OO-2",
+      "project_count": 29,
+      "total_budget": 1752749900.45,
+      "total_paid": 0.0,
+      "avg_budget": 60439651.739655174,
+      "avg_progress": 99.99310344827587,
+      "statuses": {
+        "Completed": 29
+      }
+    },
+    {
+      "category": "GAA 2021 CSSP",
+      "project_count": 42,
+      "total_budget": 1743349988.57,
+      "total_paid": 0.0,
+      "avg_budget": 41508333.06119047,
+      "avg_progress": 99.64285714285714,
+      "statuses": {
+        "Completed": 40,
+        "On-Going": 2
+      }
+    },
+    {
+      "category": "GAA 2025 DEPED BEFF",
+      "project_count": 183,
+      "total_budget": 1696513674.6,
+      "total_paid": 0.0,
+      "avg_budget": 9270566.527868852,
+      "avg_progress": 50.44120218579235,
+      "statuses": {
+        "Completed": 4,
+        "Not Yet Started": 19,
+        "On-Going": 160
+      }
+    },
+    {
+      "category": "GAA 2022 OO-2",
+      "project_count": 15,
+      "total_budget": 1548895713.46,
+      "total_paid": 0.0,
+      "avg_budget": 103259714.23066667,
+      "avg_progress": 94.11533333333334,
+      "statuses": {
+        "Completed": 8,
+        "On-Going": 7
+      }
+    },
+    {
+      "category": "GAA 2019 LP",
+      "project_count": 85,
+      "total_budget": 1476134771.46,
+      "total_paid": 0.0,
+      "avg_budget": 17366291.428941175,
+      "avg_progress": 99.86223529411765,
+      "statuses": {
+        "Completed": 84,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2024 SUCs Infrastructure Projects",
+      "project_count": 37,
+      "total_budget": 1255143342.02,
+      "total_paid": 0.0,
+      "avg_budget": 33922793.027567565,
+      "avg_progress": 64.7654054054054,
+      "statuses": {
+        "On-Going": 37
+      }
+    },
+    {
+      "category": "GAA 2024 DOH HFEP",
+      "project_count": 55,
+      "total_budget": 1074416587.84,
+      "total_paid": 0.0,
+      "avg_budget": 19534847.05163636,
+      "avg_progress": 53.74090909090909,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 54
+      }
+    },
+    {
+      "category": "Trust Funds 2024",
+      "project_count": 27,
+      "total_budget": 1008659643.36,
+      "total_paid": 0.0,
+      "avg_budget": 37357764.56888889,
+      "avg_progress": 56.614444444444445,
+      "statuses": {
+        "Completed": 2,
+        "Not Yet Started": 2,
+        "On-Going": 23
+      }
+    },
+    {
+      "category": "Bridges, Flood Control Structures",
+      "project_count": 13,
+      "total_budget": 960446766.49,
+      "total_paid": 0.0,
+      "avg_budget": 73880520.49923077,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 13
+      }
+    },
+    {
+      "category": "GAA 2019 CSSP",
+      "project_count": 40,
+      "total_budget": 889356074.73,
+      "total_paid": 0.0,
+      "avg_budget": 22233901.86825,
+      "avg_progress": 99.90275,
+      "statuses": {
+        "Completed": 39,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2019 OO-2",
+      "project_count": 12,
+      "total_budget": 880661880.61,
+      "total_paid": 0.0,
+      "avg_budget": 73388490.05083333,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 12
+      }
+    },
+    {
+      "category": "GAA 2023 LP",
+      "project_count": 8,
+      "total_budget": 787813060.86,
+      "total_paid": 0.0,
+      "avg_budget": 98476632.6075,
+      "avg_progress": 90.05,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 7
+      }
+    },
+    {
+      "category": "PAMANA 2024",
+      "project_count": 12,
+      "total_budget": 765582620.71,
+      "total_paid": 0.0,
+      "avg_budget": 63798551.725833334,
+      "avg_progress": 70.83583333333333,
+      "statuses": {
+        "Completed": 2,
+        "On-Going": 10
+      }
+    },
+    {
+      "category": "GAA 2024 DA FMR",
+      "project_count": 35,
+      "total_budget": 740361883.57,
+      "total_paid": 0.0,
+      "avg_budget": 21153196.673428573,
+      "avg_progress": 73.41514285714287,
+      "statuses": {
+        "Completed": 9,
+        "Not Yet Started": 1,
+        "On-Going": 25
+      }
+    },
+    {
+      "category": "GAA 2020 CSSP",
+      "project_count": 23,
+      "total_budget": 731846640.77,
+      "total_paid": 0.0,
+      "avg_budget": 31819419.16391304,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 23
+      }
+    },
+    {
+      "category": "Septage and Sewerage Plants",
+      "project_count": 4,
+      "total_budget": 676200137.75,
+      "total_paid": 0.0,
+      "avg_budget": 169050034.4375,
+      "avg_progress": 87.955,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 3
+      }
+    },
+    {
+      "category": "GAA 2025 LS Itemization",
+      "project_count": 67,
+      "total_budget": 640798740.75,
+      "total_paid": 0.0,
+      "avg_budget": 9564160.309701493,
+      "avg_progress": 73.24567164179105,
+      "statuses": {
+        "Completed": 17,
+        "Not Yet Started": 3,
+        "On-Going": 47
+      }
+    },
+    {
+      "category": "GAA 2021 OO-2",
+      "project_count": 15,
+      "total_budget": 605502142.61,
+      "total_paid": 0.0,
+      "avg_budget": 40366809.50733333,
+      "avg_progress": 98.452,
+      "statuses": {
+        "Completed": 12,
+        "On-Going": 3
+      }
+    },
+    {
+      "category": "GAA 2019 FAPs",
+      "project_count": 3,
+      "total_budget": 553772693.62,
+      "total_paid": 0.0,
+      "avg_budget": 184590897.87333333,
+      "avg_progress": 68.47333333333334,
+      "statuses": {
+        "On-Going": 3
+      }
+    },
+    {
+      "category": "GAA 2018 Augmentation",
+      "project_count": 4,
+      "total_budget": 522771340.92,
+      "total_paid": 0.0,
+      "avg_budget": 130692835.23,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 4
+      }
+    },
+    {
+      "category": "GAA 2020 OO-2",
+      "project_count": 8,
+      "total_budget": 511316257.09000003,
+      "total_paid": 0.0,
+      "avg_budget": 63914532.136250004,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 8
+      }
+    },
+    {
+      "category": "GAA 2017 NDRRMF",
+      "project_count": 15,
+      "total_budget": 478127307.82,
+      "total_paid": 0.0,
+      "avg_budget": 31875153.854666665,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 15
+      }
+    },
+    {
+      "category": "GAA 2023 Augmentation",
+      "project_count": 6,
+      "total_budget": 473791029.49,
+      "total_paid": 0.0,
+      "avg_budget": 78965171.58166666,
+      "avg_progress": 84.98333333333333,
+      "statuses": {
+        "On-Going": 6
+      }
+    },
+    {
+      "category": "GAA 2016 DepED BEFF",
+      "project_count": 28,
+      "total_budget": 410786398.11,
+      "total_paid": 0.0,
+      "avg_budget": 14670942.789642857,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 28
+      }
+    },
+    {
+      "category": "Contingent Fund 2019 Extended",
+      "project_count": 13,
+      "total_budget": 344913213.03,
+      "total_paid": 0.0,
+      "avg_budget": 26531785.617692307,
+      "avg_progress": 92.3076923076923,
+      "statuses": {
+        "Completed": 12,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2023 DepEd BEFF",
+      "project_count": 22,
+      "total_budget": 329476274.11,
+      "total_paid": 0.0,
+      "avg_budget": 14976194.277727274,
+      "avg_progress": 84.34045454545455,
+      "statuses": {
+        "Completed": 8,
+        "On-Going": 14
+      }
+    },
+    {
+      "category": "Multi Purpose Buildings, School Buildings",
+      "project_count": 22,
+      "total_budget": 278378069.62,
+      "total_paid": 0.0,
+      "avg_budget": 12653548.61909091,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 22
+      }
+    },
+    {
+      "category": "Multi Purpose Buildings, Roads",
+      "project_count": 6,
+      "total_budget": 259720999.29999998,
+      "total_paid": 0.0,
+      "avg_budget": 43286833.21666666,
+      "avg_progress": 86.94,
+      "statuses": {
+        "Completed": 4,
+        "On-Going": 2
+      }
+    },
+    {
+      "category": "GAA 2018 DepEd BEFF",
+      "project_count": 4,
+      "total_budget": 258979050.3,
+      "total_paid": 0.0,
+      "avg_budget": 64744762.575,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 4
+      }
+    },
+    {
+      "category": "GAA 2016 DA Farm-to-Market Roads",
+      "project_count": 36,
+      "total_budget": 258914556.57,
+      "total_paid": 0.0,
+      "avg_budget": 7192071.015833333,
+      "avg_progress": 97.22222222222223,
+      "statuses": {
+        "Completed": 35,
+        "Terminated": 1
+      }
+    },
+    {
+      "category": "Roads, Water Supply Systems",
+      "project_count": 12,
+      "total_budget": 226648101.91,
+      "total_paid": 0.0,
+      "avg_budget": 18887341.82583333,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 12
+      }
+    },
+    {
+      "category": "Special Road Support Fund 2017",
+      "project_count": 3,
+      "total_budget": 214679114.7,
+      "total_paid": 0.0,
+      "avg_budget": 71559704.89999999,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 3
+      }
+    },
+    {
+      "category": "Trust Funds 2021",
+      "project_count": 11,
+      "total_budget": 204328398.76,
+      "total_paid": 0.0,
+      "avg_budget": 18575308.978181817,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 11
+      }
+    },
+    {
+      "category": "Trust Funds 2017",
+      "project_count": 2,
+      "total_budget": 186402019.72,
+      "total_paid": 0.0,
+      "avg_budget": 93201009.86,
+      "avg_progress": 98.34,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2023 DA FMR",
+      "project_count": 13,
+      "total_budget": 177929750.44,
+      "total_paid": 0.0,
+      "avg_budget": 13686903.879999999,
+      "avg_progress": 83.10307692307691,
+      "statuses": {
+        "Completed": 7,
+        "On-Going": 6
+      }
+    },
+    {
+      "category": "GAA 2018 NDRRMF",
+      "project_count": 3,
+      "total_budget": 160130786.25,
+      "total_paid": 0.0,
+      "avg_budget": 53376928.75,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 3
+      }
+    },
+    {
+      "category": "Support for Infrastructure Projects and Social Program 2018",
+      "project_count": 4,
+      "total_budget": 158858623.26,
+      "total_paid": 0.0,
+      "avg_budget": 39714655.815,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 4
+      }
+    },
+    {
+      "category": "PAMANA 2018",
+      "project_count": 4,
+      "total_budget": 156531003.84,
+      "total_paid": 0.0,
+      "avg_budget": 39132750.96,
+      "avg_progress": 98.5175,
+      "statuses": {
+        "Completed": 3,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Trust Funds 2025",
+      "project_count": 5,
+      "total_budget": 144909914.14,
+      "total_paid": 0.0,
+      "avg_budget": 28981982.827999998,
+      "avg_progress": 44.876,
+      "statuses": {
+        "On-Going": 5
+      }
+    },
+    {
+      "category": "GAA 2017 DA FMR",
+      "project_count": 18,
+      "total_budget": 141163979.59,
+      "total_paid": 0.0,
+      "avg_budget": 7842443.310555556,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 18
+      }
+    },
+    {
+      "category": "Trust Funds 2018",
+      "project_count": 3,
+      "total_budget": 130050829.22999999,
+      "total_paid": 0.0,
+      "avg_budget": 43350276.41,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 3
+      }
+    },
+    {
+      "category": "Multi Purpose Buildings, Other Buildings, Roads",
+      "project_count": 2,
+      "total_budget": 114944014.07,
+      "total_paid": 0.0,
+      "avg_budget": 57472007.035,
+      "avg_progress": 70.46000000000001,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2016 NDRRMF",
+      "project_count": 4,
+      "total_budget": 113936180.74000001,
+      "total_paid": 0.0,
+      "avg_budget": 28484045.185000002,
+      "avg_progress": 75.0,
+      "statuses": {
+        "Completed": 3,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2018 DA FMR",
+      "project_count": 18,
+      "total_budget": 106110318.24,
+      "total_paid": 0.0,
+      "avg_budget": 5895017.68,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 18
+      }
+    },
+    {
+      "category": "GAA 2022 LP",
+      "project_count": 2,
+      "total_budget": 97405188.66,
+      "total_paid": 0.0,
+      "avg_budget": 48702594.33,
+      "avg_progress": 97.565,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Bridges, Multi Purpose Buildings, Roads",
+      "project_count": 1,
+      "total_budget": 96499948.13,
+      "total_paid": 0.0,
+      "avg_budget": 96499948.13,
+      "avg_progress": 50.98,
+      "statuses": {
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Trust Funds 2022",
+      "project_count": 2,
+      "total_budget": 96388286.35000001,
+      "total_paid": 0.0,
+      "avg_budget": 48194143.175000004,
+      "avg_progress": 50.0,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2021 DA FMR",
+      "project_count": 3,
+      "total_budget": 94463688.89,
+      "total_paid": 0.0,
+      "avg_budget": 31487896.296666667,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 3
+      }
+    },
+    {
+      "category": "GAA 2019 NDRRMF",
+      "project_count": 7,
+      "total_budget": 91442404.71000001,
+      "total_paid": 0.0,
+      "avg_budget": 13063200.672857145,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 7
+      }
+    },
+    {
+      "category": "Hospitals, Other Buildings, Roads",
+      "project_count": 4,
+      "total_budget": 77803210.0,
+      "total_paid": 0.0,
+      "avg_budget": 19450802.5,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 4
+      }
+    },
+    {
+      "category": "Hospitals, Other Buildings, Roads, Water Supply Systems",
+      "project_count": 4,
+      "total_budget": 76898788.69,
+      "total_paid": 0.0,
+      "avg_budget": 19224697.1725,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 4
+      }
+    },
+    {
+      "category": "R.A. 11494 DA FMR 2020",
+      "project_count": 4,
+      "total_budget": 74535063.29,
+      "total_paid": 0.0,
+      "avg_budget": 18633765.8225,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 4
+      }
+    },
+    {
+      "category": "Accessibility Facility, Multi Purpose Buildings",
+      "project_count": 2,
+      "total_budget": 73317495.69,
+      "total_paid": 0.0,
+      "avg_budget": 36658747.845,
+      "avg_progress": 86.13499999999999,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Special Road Support Fund 2016",
+      "project_count": 2,
+      "total_budget": 73025852.92,
+      "total_paid": 0.0,
+      "avg_budget": 36512926.46,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "Buildings",
+      "project_count": 1981,
+      "total_budget": 71285420.62,
+      "total_paid": 0.0,
+      "avg_budget": 35984.56366481575,
+      "avg_progress": 0.0009793033821302371,
+      "statuses": {
+        "For Procurement": 1980,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "GAA 2019 DA FMR",
+      "project_count": 9,
+      "total_budget": 59488488.47,
+      "total_paid": 0.0,
+      "avg_budget": 6609832.052222222,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 9
+      }
+    },
+    {
+      "category": "Hospitals, Multi Purpose Buildings",
+      "project_count": 3,
+      "total_budget": 53965007.17,
+      "total_paid": 0.0,
+      "avg_budget": 17988335.723333333,
+      "avg_progress": 66.66666666666667,
+      "statuses": {
+        "Completed": 1,
+        "On-Going": 2
+      }
+    },
+    {
+      "category": "Other Buildings, Roads, Water Supply Systems",
+      "project_count": 3,
+      "total_budget": 53648747.03,
+      "total_paid": 0.0,
+      "avg_budget": 17882915.676666666,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 3
+      }
+    },
+    {
+      "category": "Flood Control Structures, Roads, Waterway",
+      "project_count": 1,
+      "total_budget": 49457567.25,
+      "total_paid": 0.0,
+      "avg_budget": 49457567.25,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Trust Funds 2019",
+      "project_count": 1,
+      "total_budget": 48829014.84,
+      "total_paid": 0.0,
+      "avg_budget": 48829014.84,
+      "avg_progress": 0.0,
+      "statuses": {
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Bridges, Flood Control Structures, Waterway",
+      "project_count": 1,
+      "total_budget": 48705999.58,
+      "total_paid": 0.0,
+      "avg_budget": 48705999.58,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Rain Water Collector, Water Supply Systems",
+      "project_count": 2,
+      "total_budget": 41777770.52,
+      "total_paid": 0.0,
+      "avg_budget": 20888885.26,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "PAGCOR Silid Aralan FY 2016",
+      "project_count": 1,
+      "total_budget": 39769619.9,
+      "total_paid": 0.0,
+      "avg_budget": 39769619.9,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Bridges, Flood Control Structures, Multi Purpose Buildings, Roads",
+      "project_count": 1,
+      "total_budget": 39555000.0,
+      "total_paid": 0.0,
+      "avg_budget": 39555000.0,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Other Buildings, Roads",
+      "project_count": 2,
+      "total_budget": 39401877.24,
+      "total_paid": 0.0,
+      "avg_budget": 19700938.62,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "Roads, School Buildings",
+      "project_count": 2,
+      "total_budget": 29278961.17,
+      "total_paid": 0.0,
+      "avg_budget": 14639480.585,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "Trust Funds 2016",
+      "project_count": 1,
+      "total_budget": 24340537.31,
+      "total_paid": 0.0,
+      "avg_budget": 24340537.31,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Flood Control Structures, Multi Purpose Buildings",
+      "project_count": 2,
+      "total_budget": 24122140.0,
+      "total_paid": 0.0,
+      "avg_budget": 12061070.0,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "GAA 2020 DA FMR",
+      "project_count": 2,
+      "total_budget": 24011922.57,
+      "total_paid": 0.0,
+      "avg_budget": 12005961.285,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "Multi Purpose Buildings, Other Buildings",
+      "project_count": 3,
+      "total_budget": 23773881.87,
+      "total_paid": 0.0,
+      "avg_budget": 7924627.29,
+      "avg_progress": 66.66666666666667,
+      "statuses": {
+        "Completed": 2,
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Other Buildings, Water Supply Systems",
+      "project_count": 1,
+      "total_budget": 19856902.7,
+      "total_paid": 0.0,
+      "avg_budget": 19856902.7,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Hospitals, Other Buildings, Water Supply Systems",
+      "project_count": 1,
+      "total_budget": 19700528.32,
+      "total_paid": 0.0,
+      "avg_budget": 19700528.32,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Other Buildings, Roads, School Buildings",
+      "project_count": 1,
+      "total_budget": 19470652.15,
+      "total_paid": 0.0,
+      "avg_budget": 19470652.15,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Hospitals, Roads",
+      "project_count": 1,
+      "total_budget": 19388908.94,
+      "total_paid": 0.0,
+      "avg_budget": 19388908.94,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "GAA 2016 DOH HFEP",
+      "project_count": 1,
+      "total_budget": 19303000.51,
+      "total_paid": 0.0,
+      "avg_budget": 19303000.51,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Hospitals, Multi Purpose Buildings, Other Buildings, Roads",
+      "project_count": 1,
+      "total_budget": 19111772.7,
+      "total_paid": 0.0,
+      "avg_budget": 19111772.7,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Roads, School Buildings, Water Supply Systems",
+      "project_count": 1,
+      "total_budget": 15756256.13,
+      "total_paid": 0.0,
+      "avg_budget": 15756256.13,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "SRA 2022 Farm-to-Mill Roads and Bridges",
+      "project_count": 2,
+      "total_budget": 11636953.47,
+      "total_paid": 0.0,
+      "avg_budget": 5818476.735,
+      "avg_progress": 100.0,
+      "statuses": {
+        "On-Going": 2
+      }
+    },
+    {
+      "category": "Bridges, Multi Purpose Buildings",
+      "project_count": 2,
+      "total_budget": 11520373.36,
+      "total_paid": 0.0,
+      "avg_budget": 5760186.68,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "SRA 2016 Farm-to-Mill Roads",
+      "project_count": 1,
+      "total_budget": 11244415.38,
+      "total_paid": 0.0,
+      "avg_budget": 11244415.38,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "SRA 2018 Farm-to-Mill Roads",
+      "project_count": 1,
+      "total_budget": 10959599.24,
+      "total_paid": 0.0,
+      "avg_budget": 10959599.24,
+      "avg_progress": 0.0,
+      "statuses": {
+        "On-Going": 1
+      }
+    },
+    {
+      "category": "Flood Control Structures, School Buildings",
+      "project_count": 2,
+      "total_budget": 10817878.309999999,
+      "total_paid": 0.0,
+      "avg_budget": 5408939.154999999,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 2
+      }
+    },
+    {
+      "category": "Flood Control Structures, Water Supply Systems",
+      "project_count": 1,
+      "total_budget": 7519312.99,
+      "total_paid": 0.0,
+      "avg_budget": 7519312.99,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "GAA 2017 DepEd BEFF",
+      "project_count": 1,
+      "total_budget": 5092374.34,
+      "total_paid": 0.0,
+      "avg_budget": 5092374.34,
+      "avg_progress": 100.0,
+      "statuses": {
+        "Completed": 1
+      }
+    },
+    {
+      "category": "Bridges: Construction - Concrete (Superstructure) - with Cast-in-Place Piles",
+      "project_count": 15,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 15
+      }
+    },
+    {
+      "category": "Bridges: Construction - Concrete (Superstructure) - with Driven Piles",
+      "project_count": 8,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 8
+      }
+    },
+    {
+      "category": "Bridges: Construction - Concrete (Superstructure) - without Piles",
+      "project_count": 7,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 7
+      }
+    },
+    {
+      "category": "Bridges: Construction - Steel (Superstructure) - with Cast-in-Place Piles",
+      "project_count": 4,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 4
+      }
+    },
+    {
+      "category": "Bridges: Construction - Steel (Superstructure) - with Driven Piles",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Bridges: Construction - Steel (Superstructure) - without Piles",
+      "project_count": 2,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 2
+      }
+    },
+    {
+      "category": "Bridges: Maintenance",
+      "project_count": 9,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 9
+      }
+    },
+    {
+      "category": "Bridges: Rehabilitation - Concrete (Superstructure) - with Cast-in-Place Piles",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Bridges: Rehabilitation - Concrete (Superstructure) - without Piles",
+      "project_count": 7,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 7
+      }
+    },
+    {
+      "category": "Bridges: Rehabilitation - Steel (Superstructure) - without Piles",
+      "project_count": 4,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 4
+      }
+    },
+    {
+      "category": "Bridges: Retrofitting - Concrete (Superstructure) - without Piles",
+      "project_count": 2,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 2
+      }
+    },
+    {
+      "category": "Building: Completion",
+      "project_count": 40,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 40
+      }
+    },
+    {
+      "category": "Building: Renovation",
+      "project_count": 4,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 4
+      }
+    },
+    {
+      "category": "Building: Restoration",
+      "project_count": 2,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 2
+      }
+    },
+    {
+      "category": "Buildings: Construction - with Piles - Low Rise - Concrete (Frame) - Cast-in-Place Piles (1 to 5 Storeys)",
+      "project_count": 6,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 6
+      }
+    },
+    {
+      "category": "Buildings: Construction - with Piles - Low Rise - Concrete (Frame) - Driven Piles (1 to 5 Storeys)",
+      "project_count": 10,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 10
+      }
+    },
+    {
+      "category": "Buildings: Construction - with Piles - Medium Rise - Concrete (Frame) - Cast-in-Place Piles (6 to 15 Storeys)",
+      "project_count": 2,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 2
+      }
+    },
+    {
+      "category": "Buildings: Construction - without Piles - Low Rise - Concrete (Frame) (1 to 5 Storeys)",
+      "project_count": 503,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 503
+      }
+    },
+    {
+      "category": "Buildings: Construction - without Piles - Low Rise - Steel (Frame) (1 to 5 Storeys)",
+      "project_count": 9,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 9
+      }
+    },
+    {
+      "category": "Buildings: Repair",
+      "project_count": 277,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 277
+      }
+    },
+    {
+      "category": "Buildings: Retrofitting - Low Rise (1 to 5 Storeys)",
+      "project_count": 9,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 9
+      }
+    },
+    {
+      "category": "Dam: Construction - Concrete Dams",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Electrical Work: Construction - Road Safety System (e.g. Solar LED  Street Lights, Solar Studs, Signalization)",
+      "project_count": 5,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 5
+      }
+    },
+    {
+      "category": "Flood Control: Construction - Bank Protection Structure",
+      "project_count": 5,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 5
+      }
+    },
+    {
+      "category": "Flood Control: Construction - Dikes/Levees",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Flood Control: Construction - Drainage (e.g., Closed and Open Conduits, Spillway)",
+      "project_count": 16,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 16
+      }
+    },
+    {
+      "category": "Flood Control: Construction - Pumping Station",
+      "project_count": 4,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 4
+      }
+    },
+    {
+      "category": "Flood Control: Construction - Shore Protection (e.g., Seawall, Breakwater)",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Flood Control: Construction - Slope Protection using Structural Measures (e.g., Revetment, Retaining Structures, Rock Netting, Concrete Crib, Shotcrete, MSE Walls, Gabions, Riprap, Masonry)",
+      "project_count": 20,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 20
+      }
+    },
+    {
+      "category": "Ports/Harbors: Construction - Causeway/Wharf - with Driven Piles",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Road: Construction - Road Safety System (e.g. Roadway Delineation, Roadside Barrier System, Signages, Active Transport Facilities)",
+      "project_count": 2,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 2
+      }
+    },
+    {
+      "category": "Roads: Construction - Asphalt",
+      "project_count": 10,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 10
+      }
+    },
+    {
+      "category": "Roads: Construction - Drainage (e.g. Reinforced Concrete Pipe Culvert, Reinforced Concrete Box Culvert)",
+      "project_count": 2,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 2
+      }
+    },
+    {
+      "category": "Roads: Construction - Gravel",
+      "project_count": 7,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 7
+      }
+    },
+    {
+      "category": "Roads: Construction - PCCP",
+      "project_count": 194,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 194
+      }
+    },
+    {
+      "category": "Roads: Construction - Slope Protection using Structural Measures (e.g. Revetment, Retaining Structures, Rock Netting, Concrete Crib, Shotcrete, MSE Walls, Gabions, Riprap, Masonry)",
+      "project_count": 55,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 55
+      }
+    },
+    {
+      "category": "Roads: Maintenance",
+      "project_count": 3,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 3
+      }
+    },
+    {
+      "category": "Roads: Maintenance  - Asphalt",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Roads: Rehabilitation - PCCP",
+      "project_count": 32,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 32
+      }
+    },
+    {
+      "category": "Water Supply (Level 1): Construction (Shallow Wells/Rainwater Collectors)",
+      "project_count": 9,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 9
+      }
+    },
+    {
+      "category": "Water Supply (Level 2 & 3): Construction (Piped Water with Communal/Private Water Point)",
+      "project_count": 1,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 1
+      }
+    },
+    {
+      "category": "Water Supply (Level 2): Construction (Piped Water with Communal/Solar-powered Water System)",
+      "project_count": 17,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 17
+      }
+    },
+    {
+      "category": "Water Supply (Level 3): Construction (Private Water Point/Solar-powered Water System)",
+      "project_count": 2,
+      "total_budget": 0.0,
+      "total_paid": 0.0,
+      "avg_budget": 0.0,
+      "avg_progress": 0.0,
+      "statuses": {
+        "For Procurement": 2
+      }
+    }
+  ]
+}

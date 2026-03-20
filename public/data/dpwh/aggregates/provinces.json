@@ -1,0 +1,5070 @@
+{
+  "metadata": {
+    "title": "DPWH Provinces",
+    "source": "Department of Public Works and Highways",
+    "generated_at": "2026-01-14T19:44:54.108404",
+    "total_items": 220,
+    "total_projects": 248220,
+    "total_budget": 6379081440395.461,
+    "total_paid": 0.0,
+    "avg_progress": 92.22502292321327
+  },
+  "data": [
+    {
+      "province": "Region X",
+      "region": "Region X",
+      "project_count": 3305,
+      "total_budget": 252538435537.29,
+      "total_paid": 0.0,
+      "avg_budget": 76411024.36831771,
+      "avg_progress": 93.5028078668684,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 1589
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 676
+        },
+        {
+          "category": "Bridges",
+          "count": 338
+        }
+      ]
+    },
+    {
+      "province": "Region XI",
+      "region": "Region XI",
+      "project_count": 1697,
+      "total_budget": 188007052450.78,
+      "total_paid": 0.0,
+      "avg_budget": 110787891.83899823,
+      "avg_progress": 88.43235710076605,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 1021
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 177
+        },
+        {
+          "category": "Bridges, Roads",
+          "count": 119
+        }
+      ]
+    },
+    {
+      "province": "Region IV-B",
+      "region": "Region IV-B",
+      "project_count": 1370,
+      "total_budget": 175208467847.65,
+      "total_paid": 0.0,
+      "avg_budget": 127889392.58952554,
+      "avg_progress": 72.40691240875913,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 720
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 422
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 119
+        }
+      ]
+    },
+    {
+      "province": "Region V",
+      "region": "Region V",
+      "project_count": 1923,
+      "total_budget": 156857887125.71,
+      "total_paid": 0.0,
+      "avg_budget": 81569364.07993239,
+      "avg_progress": 79.24504420176807,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 772
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 385
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 307
+        }
+      ]
+    },
+    {
+      "province": "Region XIII",
+      "region": "Region XIII",
+      "project_count": 1391,
+      "total_budget": 155911566102.82,
+      "total_paid": 0.0,
+      "avg_budget": 112085956.93948239,
+      "avg_progress": 89.25309849029475,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 732
+        },
+        {
+          "category": "Bridges",
+          "count": 176
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 148
+        }
+      ]
+    },
+    {
+      "province": "Region I",
+      "region": "Region I",
+      "project_count": 2285,
+      "total_budget": 137250629403.92,
+      "total_paid": 0.0,
+      "avg_budget": 60065920.96451641,
+      "avg_progress": 81.06467833698031,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 865
+        },
+        {
+          "category": "Bridges",
+          "count": 548
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 391
+        }
+      ]
+    },
+    {
+      "province": "Region VIII",
+      "region": "Region VIII",
+      "project_count": 1423,
+      "total_budget": 128269044987.67,
+      "total_paid": 0.0,
+      "avg_budget": 90139877.01171468,
+      "avg_progress": 81.48610681658468,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 537
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 193
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 166
+        }
+      ]
+    },
+    {
+      "province": "Region IV-A",
+      "region": "Region IV-A",
+      "project_count": 1435,
+      "total_budget": 112485330847.28,
+      "total_paid": 0.0,
+      "avg_budget": 78386990.13747735,
+      "avg_progress": 69.36724738675959,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 548
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 266
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 223
+        }
+      ]
+    },
+    {
+      "province": "Region IX",
+      "region": "Region IX",
+      "project_count": 1526,
+      "total_budget": 109580382943.14,
+      "total_paid": 0.0,
+      "avg_budget": 71808901.01123197,
+      "avg_progress": 77.34266710353866,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 868
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 181
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 158
+        }
+      ]
+    },
+    {
+      "province": "Bulacan 1st DEO",
+      "region": "Region III",
+      "project_count": 3573,
+      "total_budget": 99871096298.94,
+      "total_paid": 0.0,
+      "avg_budget": 27951608.25607053,
+      "avg_progress": 85.54345088161209,
+      "top_categories": [
+        {
+          "category": "Flood Control and Drainage",
+          "count": 1292
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 1094
+        },
+        {
+          "category": "Roads",
+          "count": 1046
+        }
+      ]
+    },
+    {
+      "province": "Region III",
+      "region": "Region III",
+      "project_count": 1236,
+      "total_budget": 93404828090.24,
+      "total_paid": 0.0,
+      "avg_budget": 75570249.26394823,
+      "avg_progress": 78.00070388349515,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 497
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 245
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 238
+        }
+      ]
+    },
+    {
+      "province": "Region XII",
+      "region": "Region XII",
+      "project_count": 1438,
+      "total_budget": 91630012583.99,
+      "total_paid": 0.0,
+      "avg_budget": 63720453.81362309,
+      "avg_progress": 87.09450625869262,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 601
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 301
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 148
+        }
+      ]
+    },
+    {
+      "province": "Metro Manila 1st DEO",
+      "region": "National Capital Region",
+      "project_count": 3673,
+      "total_budget": 85686242549.0,
+      "total_paid": 0.0,
+      "avg_budget": 23328680.24748162,
+      "avg_progress": 92.33097740266811,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1885
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 816
+        },
+        {
+          "category": "Roads",
+          "count": 721
+        }
+      ]
+    },
+    {
+      "province": "Region VI",
+      "region": "Region VI",
+      "project_count": 1202,
+      "total_budget": 84232199281.93,
+      "total_paid": 0.0,
+      "avg_budget": 70076704.89345257,
+      "avg_progress": 85.80921797004991,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 529
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 218
+        },
+        {
+          "category": "Bridges",
+          "count": 125
+        }
+      ]
+    },
+    {
+      "province": "Tarlac DEO",
+      "region": "Region III",
+      "project_count": 2370,
+      "total_budget": 78081176517.95,
+      "total_paid": 0.0,
+      "avg_budget": 32945644.100400843,
+      "avg_progress": 96.6484388185654,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 854
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 830
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 477
+        }
+      ]
+    },
+    {
+      "province": "Abra DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 1754,
+      "total_budget": 68815259826.84,
+      "total_paid": 0.0,
+      "avg_budget": 39233329.433774225,
+      "avg_progress": 89.10080957810719,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 810
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 411
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 351
+        }
+      ]
+    },
+    {
+      "province": "Cordillera Administrative Region",
+      "region": "Cordillera Administrative Region",
+      "project_count": 630,
+      "total_budget": 67901710083.76,
+      "total_paid": 0.0,
+      "avg_budget": 107780492.19644445,
+      "avg_progress": 88.49592063492064,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 326
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 54
+        },
+        {
+          "category": "GAA 2016 MFO-1",
+          "count": 54
+        }
+      ]
+    },
+    {
+      "province": "Albay 2nd DEO",
+      "region": "Region V",
+      "project_count": 1973,
+      "total_budget": 67578784279.41,
+      "total_paid": 0.0,
+      "avg_budget": 34251791.32255956,
+      "avg_progress": 86.27082108464268,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 677
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 649
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 517
+        }
+      ]
+    },
+    {
+      "province": "Region VII",
+      "region": "Region VII",
+      "project_count": 682,
+      "total_budget": 62727408899.72,
+      "total_paid": 0.0,
+      "avg_budget": 91975672.87348974,
+      "avg_progress": 79.41956011730205,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 287
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 146
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 92
+        }
+      ]
+    },
+    {
+      "province": "Bulacan 2nd DEO",
+      "region": "Region III",
+      "project_count": 2453,
+      "total_budget": 62431123133.07,
+      "total_paid": 0.0,
+      "avg_budget": 25450926.6747126,
+      "avg_progress": 96.99466367713005,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 873
+        },
+        {
+          "category": "Roads",
+          "count": 783
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 560
+        }
+      ]
+    },
+    {
+      "province": "Region II",
+      "region": "Region II",
+      "project_count": 750,
+      "total_budget": 60459285188.22,
+      "total_paid": 0.0,
+      "avg_budget": 80612380.25096,
+      "avg_progress": 79.94293333333333,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 352
+        },
+        {
+          "category": "Bridges",
+          "count": 173
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 74
+        }
+      ]
+    },
+    {
+      "province": "Metro Manila 3rd DEO",
+      "region": "National Capital Region",
+      "project_count": 2506,
+      "total_budget": 57833965462.21,
+      "total_paid": 0.0,
+      "avg_budget": 23078198.50846369,
+      "avg_progress": 90.75683160415004,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 921
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 776
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 495
+        }
+      ]
+    },
+    {
+      "province": "North Manila DEO",
+      "region": "National Capital Region",
+      "project_count": 1764,
+      "total_budget": 57446225400.28,
+      "total_paid": 0.0,
+      "avg_budget": 32565887.415124714,
+      "avg_progress": 93.08498866213152,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 566
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 564
+        },
+        {
+          "category": "Roads",
+          "count": 363
+        }
+      ]
+    },
+    {
+      "province": "Roads Management Cluster I (Bilateral)",
+      "region": "Central Office",
+      "project_count": 54,
+      "total_budget": 56504597870.56,
+      "total_paid": 0.0,
+      "avg_budget": 1046381442.0474074,
+      "avg_progress": 80.64481481481481,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 34
+        },
+        {
+          "category": "Bridges, Roads",
+          "count": 4
+        },
+        {
+          "category": "GAA 2024 FAPs",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "province": "Cavite 1st DEO",
+      "region": "Region IV-A",
+      "project_count": 1966,
+      "total_budget": 54193574047.48,
+      "total_paid": 0.0,
+      "avg_budget": 27565398.803397764,
+      "avg_progress": 85.75025432349949,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 768
+        },
+        {
+          "category": "Roads",
+          "count": 481
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 447
+        }
+      ]
+    },
+    {
+      "province": "Batangas 4th DEO",
+      "region": "Region IV-A",
+      "project_count": 3356,
+      "total_budget": 53711001027.14,
+      "total_paid": 0.0,
+      "avg_budget": 16004469.912735399,
+      "avg_progress": 95.6047705601907,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1644
+        },
+        {
+          "category": "Roads",
+          "count": 1057
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 264
+        }
+      ]
+    },
+    {
+      "province": "National Capital Region",
+      "region": "National Capital Region",
+      "project_count": 522,
+      "total_budget": 52545706196.84,
+      "total_paid": 0.0,
+      "avg_budget": 100662272.40773946,
+      "avg_progress": 60.937356321839076,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 227
+        },
+        {
+          "category": "Roads",
+          "count": 117
+        },
+        {
+          "category": "Bridges",
+          "count": 53
+        }
+      ]
+    },
+    {
+      "province": "Davao City DEO",
+      "region": "Region XI",
+      "project_count": 2159,
+      "total_budget": 52329268333.22,
+      "total_paid": 0.0,
+      "avg_budget": 24237734.290514126,
+      "avg_progress": 97.43926817971283,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 789
+        },
+        {
+          "category": "Roads",
+          "count": 724
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 406
+        }
+      ]
+    },
+    {
+      "province": "Quezon City 1st DEO",
+      "region": "National Capital Region",
+      "project_count": 2214,
+      "total_budget": 49240984166.96,
+      "total_paid": 0.0,
+      "avg_budget": 22240733.589412827,
+      "avg_progress": 89.04130081300814,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1045
+        },
+        {
+          "category": "Roads",
+          "count": 597
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 386
+        }
+      ]
+    },
+    {
+      "province": "Flood Control Management Cluster",
+      "region": "Central Office",
+      "project_count": 187,
+      "total_budget": 45292772780.97,
+      "total_paid": 0.0,
+      "avg_budget": 242207341.0747059,
+      "avg_progress": 88.80438502673796,
+      "top_categories": [
+        {
+          "category": "Flood Control and Drainage",
+          "count": 178
+        },
+        {
+          "category": "GAA 2017 MFO-2",
+          "count": 4
+        },
+        {
+          "category": "Bridges",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "province": "Sorsogon DEO",
+      "region": "Region V",
+      "project_count": 938,
+      "total_budget": 44635378644.79,
+      "total_paid": 0.0,
+      "avg_budget": 47585691.518965885,
+      "avg_progress": 87.68508528784648,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 395
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 245
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 154
+        }
+      ]
+    },
+    {
+      "province": "Pampanga 1st DEO",
+      "region": "Region III",
+      "project_count": 2656,
+      "total_budget": 42598944894.13,
+      "total_paid": 0.0,
+      "avg_budget": 16038759.372789908,
+      "avg_progress": 92.71070406626507,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1214
+        },
+        {
+          "category": "Roads",
+          "count": 835
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 297
+        }
+      ]
+    },
+    {
+      "province": "Romblon DEO",
+      "region": "Region IV-B",
+      "project_count": 1377,
+      "total_budget": 42226231261.85,
+      "total_paid": 0.0,
+      "avg_budget": 30665382.179992735,
+      "avg_progress": 95.26888162672476,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 494
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 445
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 202
+        }
+      ]
+    },
+    {
+      "province": "Ilocos Norte 1st DEO",
+      "region": "Region I",
+      "project_count": 3363,
+      "total_budget": 42062457760.82,
+      "total_paid": 0.0,
+      "avg_budget": 12507421.27886411,
+      "avg_progress": 84.66116859946477,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1139
+        },
+        {
+          "category": "Roads",
+          "count": 1100
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 852
+        }
+      ]
+    },
+    {
+      "province": "Cebu 7th DEO",
+      "region": "Region VII",
+      "project_count": 738,
+      "total_budget": 41593847152.04,
+      "total_paid": 0.0,
+      "avg_budget": 56360226.49327914,
+      "avg_progress": 76.5189837398374,
+      "top_categories": [
+        {
+          "category": "Flood Control and Drainage",
+          "count": 310
+        },
+        {
+          "category": "Roads",
+          "count": 285
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 55
+        }
+      ]
+    },
+    {
+      "province": "Zambales 1st DEO",
+      "region": "Region III",
+      "project_count": 1234,
+      "total_budget": 38915630161.52,
+      "total_paid": 0.0,
+      "avg_budget": 31536167.06768233,
+      "avg_progress": 89.44053484602917,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 429
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 356
+        },
+        {
+          "category": "Roads",
+          "count": 325
+        }
+      ]
+    },
+    {
+      "province": "Nueva Ecija 1st DEO",
+      "region": "Region III",
+      "project_count": 2505,
+      "total_budget": 37770614936.86,
+      "total_paid": 0.0,
+      "avg_budget": 15078089.795153692,
+      "avg_progress": 97.33426746506986,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1174
+        },
+        {
+          "category": "Roads",
+          "count": 822
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 271
+        }
+      ]
+    },
+    {
+      "province": "Pangasinan 3rd DEO",
+      "region": "Region I",
+      "project_count": 2527,
+      "total_budget": 37022243072.17,
+      "total_paid": 0.0,
+      "avg_budget": 14650669.992944201,
+      "avg_progress": 91.1117728531856,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1144
+        },
+        {
+          "category": "Roads",
+          "count": 765
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 477
+        }
+      ]
+    },
+    {
+      "province": "Laguna 2nd DEO",
+      "region": "Region IV-A",
+      "project_count": 1474,
+      "total_budget": 36584701120.19,
+      "total_paid": 0.0,
+      "avg_budget": 24820014.328487113,
+      "avg_progress": 88.44583446404341,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 627
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 425
+        },
+        {
+          "category": "Roads",
+          "count": 255
+        }
+      ]
+    },
+    {
+      "province": "Tarlac 2nd DEO",
+      "region": "Region III",
+      "project_count": 1148,
+      "total_budget": 36367577120.16,
+      "total_paid": 0.0,
+      "avg_budget": 31679074.14648084,
+      "avg_progress": 96.62380662020907,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 418
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 338
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 311
+        }
+      ]
+    },
+    {
+      "province": "Davao de Oro 1st DEO",
+      "region": "Region XI",
+      "project_count": 2281,
+      "total_budget": 36161003936.23,
+      "total_paid": 0.0,
+      "avg_budget": 15853136.315751866,
+      "avg_progress": 97.86012713722052,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 1363
+        },
+        {
+          "category": "Roads",
+          "count": 511
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 135
+        }
+      ]
+    },
+    {
+      "province": "Isabela 4th DEO",
+      "region": "Region II",
+      "project_count": 1774,
+      "total_budget": 35965057987.93,
+      "total_paid": 0.0,
+      "avg_budget": 20273426.148776777,
+      "avg_progress": 85.39015783540023,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 779
+        },
+        {
+          "category": "Roads",
+          "count": 510
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 302
+        }
+      ]
+    },
+    {
+      "province": "Batangas 2nd DEO",
+      "region": "Region IV-A",
+      "project_count": 1590,
+      "total_budget": 35731117628.86,
+      "total_paid": 0.0,
+      "avg_budget": 22472401.02444025,
+      "avg_progress": 90.57621383647799,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 776
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 414
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 198
+        }
+      ]
+    },
+    {
+      "province": "Quezon 3rd DEO",
+      "region": "Region IV-A",
+      "project_count": 1221,
+      "total_budget": 33794883024.03,
+      "total_paid": 0.0,
+      "avg_budget": 27678036.874717444,
+      "avg_progress": 94.58211302211302,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 459
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 391
+        },
+        {
+          "category": "Bridges",
+          "count": 119
+        }
+      ]
+    },
+    {
+      "province": "Cavite 3rd DEO",
+      "region": "Region IV-A",
+      "project_count": 778,
+      "total_budget": 33122625501.54,
+      "total_paid": 0.0,
+      "avg_budget": 42574068.768046275,
+      "avg_progress": 87.70487146529562,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 231
+        },
+        {
+          "category": "Roads",
+          "count": 231
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 220
+        }
+      ]
+    },
+    {
+      "province": "Quezon 2nd DEO",
+      "region": "Region IV-A",
+      "project_count": 1268,
+      "total_budget": 32624889370.34,
+      "total_paid": 0.0,
+      "avg_budget": 25729408.02077287,
+      "avg_progress": 94.90543375394321,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 452
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 427
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 137
+        }
+      ]
+    },
+    {
+      "province": "Negros Occidental 1st DEO",
+      "region": "Negros Island Region",
+      "project_count": 1911,
+      "total_budget": 31531653361.73,
+      "total_paid": 0.0,
+      "avg_budget": 16500080.25208268,
+      "avg_progress": 97.84746729461015,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 852
+        },
+        {
+          "category": "Roads",
+          "count": 603
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 236
+        }
+      ]
+    },
+    {
+      "province": "Quezon 1st DEO",
+      "region": "Region IV-A",
+      "project_count": 1524,
+      "total_budget": 31510745958.41,
+      "total_paid": 0.0,
+      "avg_budget": 20676342.492395014,
+      "avg_progress": 93.03459317585302,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 707
+        },
+        {
+          "category": "Roads",
+          "count": 504
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 133
+        }
+      ]
+    },
+    {
+      "province": "Nueva Ecija 2nd DEO",
+      "region": "Region III",
+      "project_count": 1605,
+      "total_budget": 31379384707.13,
+      "total_paid": 0.0,
+      "avg_budget": 19551018.509115264,
+      "avg_progress": 97.21383177570094,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 602
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 577
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 271
+        }
+      ]
+    },
+    {
+      "province": "Quezon 4th DEO",
+      "region": "Region IV-A",
+      "project_count": 1796,
+      "total_budget": 31218785701.91,
+      "total_paid": 0.0,
+      "avg_budget": 17382397.38413697,
+      "avg_progress": 96.88919265033407,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 727
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 651
+        },
+        {
+          "category": "Bridges",
+          "count": 146
+        }
+      ]
+    },
+    {
+      "province": "Isabela 3rd DEO",
+      "region": "Region II",
+      "project_count": 1546,
+      "total_budget": 30468397334.74,
+      "total_paid": 0.0,
+      "avg_budget": 19707889.608499356,
+      "avg_progress": 91.29990297542044,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 567
+        },
+        {
+          "category": "Roads",
+          "count": 519
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 244
+        }
+      ]
+    },
+    {
+      "province": "Quezon City 2nd DEO",
+      "region": "National Capital Region",
+      "project_count": 1334,
+      "total_budget": 30140599034.32,
+      "total_paid": 0.0,
+      "avg_budget": 22594152.19964018,
+      "avg_progress": 91.18170164917541,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 602
+        },
+        {
+          "category": "Roads",
+          "count": 369
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 226
+        }
+      ]
+    },
+    {
+      "province": "Camarines Norte DEO",
+      "region": "Region V",
+      "project_count": 1743,
+      "total_budget": 29901823717.75,
+      "total_paid": 0.0,
+      "avg_budget": 17155377.921830177,
+      "avg_progress": 94.60413080895009,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 829
+        },
+        {
+          "category": "Roads",
+          "count": 493
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 255
+        }
+      ]
+    },
+    {
+      "province": "Albay 1st DEO",
+      "region": "Region V",
+      "project_count": 628,
+      "total_budget": 29549295697.11,
+      "total_paid": 0.0,
+      "avg_budget": 47053018.62597134,
+      "avg_progress": 94.67608280254777,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 224
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 184
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 103
+        }
+      ]
+    },
+    {
+      "province": "South Manila DEO",
+      "region": "National Capital Region",
+      "project_count": 1357,
+      "total_budget": 29274586250.97,
+      "total_paid": 0.0,
+      "avg_budget": 21573018.607936624,
+      "avg_progress": 90.35367722918203,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 494
+        },
+        {
+          "category": "Roads",
+          "count": 476
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 238
+        }
+      ]
+    },
+    {
+      "province": "Misamis Occidental 2nd DEO",
+      "region": "Region X",
+      "project_count": 1127,
+      "total_budget": 28312398242.56,
+      "total_paid": 0.0,
+      "avg_budget": 25121915.03332742,
+      "avg_progress": 93.13205856255546,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 447
+        },
+        {
+          "category": "Roads",
+          "count": 440
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 62
+        }
+      ]
+    },
+    {
+      "province": "Samar 1st DEO",
+      "region": "Region VIII",
+      "project_count": 1150,
+      "total_budget": 28272583543.58,
+      "total_paid": 0.0,
+      "avg_budget": 24584855.255286958,
+      "avg_progress": 94.79845217391305,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 478
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 354
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 182
+        }
+      ]
+    },
+    {
+      "province": "Sorsogon 2nd DEO",
+      "region": "Region V",
+      "project_count": 851,
+      "total_budget": 27927668351.7,
+      "total_paid": 0.0,
+      "avg_budget": 32817471.623619273,
+      "avg_progress": 91.91003525264395,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 299
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 242
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 196
+        }
+      ]
+    },
+    {
+      "province": "Rizal 1st DEO",
+      "region": "Region IV-A",
+      "project_count": 1551,
+      "total_budget": 27855142323.31,
+      "total_paid": 0.0,
+      "avg_budget": 17959472.806776274,
+      "avg_progress": 87.83885880077369,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 606
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 457
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 312
+        }
+      ]
+    },
+    {
+      "province": "Leyte 4th DEO",
+      "region": "Region VIII",
+      "project_count": 1263,
+      "total_budget": 27624191471.0,
+      "total_paid": 0.0,
+      "avg_budget": 21871885.566904195,
+      "avg_progress": 95.99996832937451,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 470
+        },
+        {
+          "category": "Roads",
+          "count": 408
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 117
+        }
+      ]
+    },
+    {
+      "province": "Aurora DEO",
+      "region": "Region III",
+      "project_count": 1499,
+      "total_budget": 27299910396.91,
+      "total_paid": 0.0,
+      "avg_budget": 18212081.652374916,
+      "avg_progress": 94.60637091394264,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 574
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 551
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 174
+        }
+      ]
+    },
+    {
+      "province": "Southern Leyte 1st DEO",
+      "region": "Region VIII",
+      "project_count": 1171,
+      "total_budget": 27193654423.2,
+      "total_paid": 0.0,
+      "avg_budget": 23222591.309308283,
+      "avg_progress": 97.87801878736123,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 446
+        },
+        {
+          "category": "Roads",
+          "count": 396
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 141
+        }
+      ]
+    },
+    {
+      "province": "Davao Oriental 1st DEO",
+      "region": "Region XI",
+      "project_count": 1191,
+      "total_budget": 26956980432.98,
+      "total_paid": 0.0,
+      "avg_budget": 22633904.64565911,
+      "avg_progress": 94.49735516372796,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 521
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 362
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 149
+        }
+      ]
+    },
+    {
+      "province": "Pampanga 3rd DEO",
+      "region": "Region III",
+      "project_count": 1102,
+      "total_budget": 26934255986.15,
+      "total_paid": 0.0,
+      "avg_budget": 24441248.626270417,
+      "avg_progress": 94.20186025408348,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 355
+        },
+        {
+          "category": "Roads",
+          "count": 338
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 295
+        }
+      ]
+    },
+    {
+      "province": "Metro Manila 2nd DEO",
+      "region": "National Capital Region",
+      "project_count": 1285,
+      "total_budget": 26915855802.43,
+      "total_paid": 0.0,
+      "avg_budget": 20946191.285937745,
+      "avg_progress": 88.06186770428016,
+      "top_categories": [
+        {
+          "category": "Flood Control and Drainage",
+          "count": 540
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 315
+        },
+        {
+          "category": "Roads",
+          "count": 254
+        }
+      ]
+    },
+    {
+      "province": "Iloilo 2nd DEO",
+      "region": "Region VI",
+      "project_count": 1753,
+      "total_budget": 26906090549.56,
+      "total_paid": 0.0,
+      "avg_budget": 15348597.004883058,
+      "avg_progress": 96.77792926411865,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 813
+        },
+        {
+          "category": "Roads",
+          "count": 669
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 133
+        }
+      ]
+    },
+    {
+      "province": "Cebu 1st DEO",
+      "region": "Region VII",
+      "project_count": 1290,
+      "total_budget": 26244442372.13,
+      "total_paid": 0.0,
+      "avg_budget": 20344528.970643412,
+      "avg_progress": 91.68093798449613,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 590
+        },
+        {
+          "category": "Roads",
+          "count": 423
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 150
+        }
+      ]
+    },
+    {
+      "province": "Cebu 6th DEO",
+      "region": "Region VII",
+      "project_count": 1113,
+      "total_budget": 25933712135.7,
+      "total_paid": 0.0,
+      "avg_budget": 23300729.68167116,
+      "avg_progress": 92.64522012578617,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 435
+        },
+        {
+          "category": "Roads",
+          "count": 284
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 117
+        }
+      ]
+    },
+    {
+      "province": "Surigao del Norte 2nd DEO",
+      "region": "Region XIII",
+      "project_count": 1195,
+      "total_budget": 25811102209.25,
+      "total_paid": 0.0,
+      "avg_budget": 21599248.710669458,
+      "avg_progress": 91.79972384937238,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 510
+        },
+        {
+          "category": "Roads",
+          "count": 314
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 184
+        }
+      ]
+    },
+    {
+      "province": "Davao del Sur DEO",
+      "region": "Region XI",
+      "project_count": 1300,
+      "total_budget": 25751207504.93,
+      "total_paid": 0.0,
+      "avg_budget": 19808621.15763846,
+      "avg_progress": 92.03893846153846,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 604
+        },
+        {
+          "category": "Roads",
+          "count": 416
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 102
+        }
+      ]
+    },
+    {
+      "province": "Bohol 3rd DEO",
+      "region": "Region VII",
+      "project_count": 1663,
+      "total_budget": 25728157892.93,
+      "total_paid": 0.0,
+      "avg_budget": 15470930.78348166,
+      "avg_progress": 96.5979013830427,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 664
+        },
+        {
+          "category": "Roads",
+          "count": 551
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 123
+        }
+      ]
+    },
+    {
+      "province": "Las Piñas-Muntinlupa DEO",
+      "region": "National Capital Region",
+      "project_count": 1276,
+      "total_budget": 25523431379.34,
+      "total_paid": 0.0,
+      "avg_budget": 20002689.168761756,
+      "avg_progress": 92.70360501567399,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 543
+        },
+        {
+          "category": "Roads",
+          "count": 370
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 265
+        }
+      ]
+    },
+    {
+      "province": "Mindoro Occidental DEO",
+      "region": "Region IV-B",
+      "project_count": 1206,
+      "total_budget": 25482462470.27,
+      "total_paid": 0.0,
+      "avg_budget": 21129736.708349917,
+      "avg_progress": 92.68612769485904,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 511
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 289
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 189
+        }
+      ]
+    },
+    {
+      "province": "Davao Occidental DEO",
+      "region": "Region XI",
+      "project_count": 1207,
+      "total_budget": 24778574978.1,
+      "total_paid": 0.0,
+      "avg_budget": 20529059.633885667,
+      "avg_progress": 96.47942004971003,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 580
+        },
+        {
+          "category": "Roads",
+          "count": 390
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 128
+        }
+      ]
+    },
+    {
+      "province": "Cagayan 2nd DEO",
+      "region": "Region II",
+      "project_count": 1639,
+      "total_budget": 24746699084.88,
+      "total_paid": 0.0,
+      "avg_budget": 15098657.159780355,
+      "avg_progress": 96.23970713849909,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 698
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 563
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 153
+        }
+      ]
+    },
+    {
+      "province": "Batangas 1st DEO",
+      "region": "Region IV-A",
+      "project_count": 1679,
+      "total_budget": 24726455557.98,
+      "total_paid": 0.0,
+      "avg_budget": 14726894.316843359,
+      "avg_progress": 93.02665872543182,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 668
+        },
+        {
+          "category": "Roads",
+          "count": 657
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 148
+        }
+      ]
+    },
+    {
+      "province": "Batangas 3rd DEO",
+      "region": "Region IV-A",
+      "project_count": 1797,
+      "total_budget": 24721112154.22,
+      "total_paid": 0.0,
+      "avg_budget": 13756879.329003897,
+      "avg_progress": 88.4498998330551,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 734
+        },
+        {
+          "category": "Roads",
+          "count": 643
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 144
+        }
+      ]
+    },
+    {
+      "province": "Davao del Norte DEO",
+      "region": "Region XI",
+      "project_count": 1659,
+      "total_budget": 24628836885.57,
+      "total_paid": 0.0,
+      "avg_budget": 14845591.853869801,
+      "avg_progress": 96.09647980711271,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 887
+        },
+        {
+          "category": "Roads",
+          "count": 465
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 90
+        }
+      ]
+    },
+    {
+      "province": "Roads Management Cluster II (Multilateral)",
+      "region": "Central Office",
+      "project_count": 27,
+      "total_budget": 24154342926.76,
+      "total_paid": 0.0,
+      "avg_budget": 894605293.5837036,
+      "avg_progress": 84.0988888888889,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 10
+        },
+        {
+          "category": "Bridges, Roads",
+          "count": 6
+        },
+        {
+          "category": "GAA 2018 Foreign Assisted Projects",
+          "count": 3
+        }
+      ]
+    },
+    {
+      "province": "Mindoro Oriental DEO",
+      "region": "Region IV-B",
+      "project_count": 1534,
+      "total_budget": 23725443342.26,
+      "total_paid": 0.0,
+      "avg_budget": 15466390.705514992,
+      "avg_progress": 96.0336440677966,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 570
+        },
+        {
+          "category": "Roads",
+          "count": 563
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 161
+        }
+      ]
+    },
+    {
+      "province": "Leyte 1st DEO",
+      "region": "Region VIII",
+      "project_count": 1145,
+      "total_budget": 23700663227.99,
+      "total_paid": 0.0,
+      "avg_budget": 20699269.194751095,
+      "avg_progress": 78.6344366812227,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 424
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 346
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 166
+        }
+      ]
+    },
+    {
+      "province": "Malabon-Navotas DEO",
+      "region": "National Capital Region",
+      "project_count": 975,
+      "total_budget": 23591467746.83,
+      "total_paid": 0.0,
+      "avg_budget": 24196377.1762359,
+      "avg_progress": 93.77212307692308,
+      "top_categories": [
+        {
+          "category": "Flood Control and Drainage",
+          "count": 344
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 296
+        },
+        {
+          "category": "Roads",
+          "count": 254
+        }
+      ]
+    },
+    {
+      "province": "Eastern Samar DEO",
+      "region": "Region VIII",
+      "project_count": 1690,
+      "total_budget": 23194186913.3,
+      "total_paid": 0.0,
+      "avg_budget": 13724370.954615384,
+      "avg_progress": 90.31797041420118,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 812
+        },
+        {
+          "category": "Roads",
+          "count": 433
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 155
+        }
+      ]
+    },
+    {
+      "province": "Misamis Oriental 1st DEO",
+      "region": "Region X",
+      "project_count": 1233,
+      "total_budget": 23091415395.04,
+      "total_paid": 0.0,
+      "avg_budget": 18727830.8151176,
+      "avg_progress": 98.08635847526358,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 587
+        },
+        {
+          "category": "Roads",
+          "count": 239
+        },
+        {
+          "category": "Bridges",
+          "count": 152
+        }
+      ]
+    },
+    {
+      "province": "Albay 3rd DEO",
+      "region": "Region V",
+      "project_count": 1019,
+      "total_budget": 22817660149.6,
+      "total_paid": 0.0,
+      "avg_budget": 22392208.1939156,
+      "avg_progress": 89.98990186457311,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 412
+        },
+        {
+          "category": "Roads",
+          "count": 280
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 199
+        }
+      ]
+    },
+    {
+      "province": "Davao City 2nd DEO",
+      "region": "Region XI",
+      "project_count": 1238,
+      "total_budget": 22622332894.73,
+      "total_paid": 0.0,
+      "avg_budget": 18273289.8988126,
+      "avg_progress": 99.45845718901454,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 518
+        },
+        {
+          "category": "Roads",
+          "count": 467
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 68
+        }
+      ]
+    },
+    {
+      "province": "Bukidnon 2nd DEO",
+      "region": "Region X",
+      "project_count": 1543,
+      "total_budget": 22487524279.19,
+      "total_paid": 0.0,
+      "avg_budget": 14573897.783013608,
+      "avg_progress": 93.94665586519767,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 748
+        },
+        {
+          "category": "Roads",
+          "count": 433
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 180
+        }
+      ]
+    },
+    {
+      "province": "Cotabato 2nd DEO",
+      "region": "Region XII",
+      "project_count": 1314,
+      "total_budget": 22382556234.75,
+      "total_paid": 0.0,
+      "avg_budget": 17033908.854452055,
+      "avg_progress": 98.21427701674277,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 673
+        },
+        {
+          "category": "Roads",
+          "count": 377
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 86
+        }
+      ]
+    },
+    {
+      "province": "Marinduque DEO",
+      "region": "Region IV-B",
+      "project_count": 1104,
+      "total_budget": 22316834049.1,
+      "total_paid": 0.0,
+      "avg_budget": 20214523.595199276,
+      "avg_progress": 95.8968115942029,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 429
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 387
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 152
+        }
+      ]
+    },
+    {
+      "province": "Aklan DEO",
+      "region": "Region VI",
+      "project_count": 1631,
+      "total_budget": 22217836270.65,
+      "total_paid": 0.0,
+      "avg_budget": 13622217.210698958,
+      "avg_progress": 92.37014714898835,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 856
+        },
+        {
+          "category": "Roads",
+          "count": 471
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 164
+        }
+      ]
+    },
+    {
+      "province": "Davao Oriental 2nd DEO",
+      "region": "Region XI",
+      "project_count": 979,
+      "total_budget": 22188103918.68,
+      "total_paid": 0.0,
+      "avg_budget": 22664048.94655771,
+      "avg_progress": 94.06726251276814,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 386
+        },
+        {
+          "category": "Roads",
+          "count": 343
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 105
+        }
+      ]
+    },
+    {
+      "province": "Antique DEO",
+      "region": "Region VI",
+      "project_count": 1371,
+      "total_budget": 22105985947.98,
+      "total_paid": 0.0,
+      "avg_budget": 16123986.832954047,
+      "avg_progress": 94.58380014587893,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 618
+        },
+        {
+          "category": "Roads",
+          "count": 433
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 100
+        }
+      ]
+    },
+    {
+      "province": "Negros Oriental 2nd DEO",
+      "region": "Negros Island Region",
+      "project_count": 1188,
+      "total_budget": 21980472730.74,
+      "total_paid": 0.0,
+      "avg_budget": 18502081.42318182,
+      "avg_progress": 93.22501683501685,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 510
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 434
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 128
+        }
+      ]
+    },
+    {
+      "province": "Camarines Sur 2nd DEO",
+      "region": "Region V",
+      "project_count": 706,
+      "total_budget": 21825015091.07,
+      "total_paid": 0.0,
+      "avg_budget": 30913619.109164305,
+      "avg_progress": 95.68045325779036,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 247
+        },
+        {
+          "category": "Roads",
+          "count": 217
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 132
+        }
+      ]
+    },
+    {
+      "province": "Cagayan 3rd DEO",
+      "region": "Region II",
+      "project_count": 1423,
+      "total_budget": 21690043753.45,
+      "total_paid": 0.0,
+      "avg_budget": 15242476.284926213,
+      "avg_progress": 89.30801124385103,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 562
+        },
+        {
+          "category": "Roads",
+          "count": 463
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 126
+        }
+      ]
+    },
+    {
+      "province": "Camarines Sur 5th DEO",
+      "region": "Region V",
+      "project_count": 908,
+      "total_budget": 21402527426.74,
+      "total_paid": 0.0,
+      "avg_budget": 23571065.447951544,
+      "avg_progress": 96.30636563876651,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 322
+        },
+        {
+          "category": "Roads",
+          "count": 313
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 182
+        }
+      ]
+    },
+    {
+      "province": "Pangasinan 1st DEO",
+      "region": "Region I",
+      "project_count": 1562,
+      "total_budget": 21391511044.3,
+      "total_paid": 0.0,
+      "avg_budget": 13694949.452176696,
+      "avg_progress": 96.64354673495518,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 751
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 536
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 121
+        }
+      ]
+    },
+    {
+      "province": "Bukidnon 1st DEO",
+      "region": "Region X",
+      "project_count": 1177,
+      "total_budget": 21199127276.42,
+      "total_paid": 0.0,
+      "avg_budget": 18011153.166032284,
+      "avg_progress": 96.68581988105353,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 504
+        },
+        {
+          "category": "Roads",
+          "count": 391
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 92
+        }
+      ]
+    },
+    {
+      "province": "Nueva Vizcaya DEO",
+      "region": "Region II",
+      "project_count": 859,
+      "total_budget": 21060111221.27,
+      "total_paid": 0.0,
+      "avg_budget": 24517009.570745055,
+      "avg_progress": 94.46743888242142,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 309
+        },
+        {
+          "category": "Roads",
+          "count": 247
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 157
+        }
+      ]
+    },
+    {
+      "province": "Zambales 2nd DEO",
+      "region": "Region III",
+      "project_count": 811,
+      "total_budget": 20896248482.12,
+      "total_paid": 0.0,
+      "avg_budget": 25766027.721479654,
+      "avg_progress": 95.8333908754624,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 333
+        },
+        {
+          "category": "Roads",
+          "count": 255
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 150
+        }
+      ]
+    },
+    {
+      "province": "Pampanga 2nd DEO",
+      "region": "Region III",
+      "project_count": 1168,
+      "total_budget": 20865609578.64,
+      "total_paid": 0.0,
+      "avg_budget": 17864391.762534246,
+      "avg_progress": 97.74947773972603,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 500
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 306
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 273
+        }
+      ]
+    },
+    {
+      "province": "Cebu City DEO",
+      "region": "Region VII",
+      "project_count": 1414,
+      "total_budget": 20835099096.55,
+      "total_paid": 0.0,
+      "avg_budget": 14734864.990487976,
+      "avg_progress": 91.2344271570014,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 508
+        },
+        {
+          "category": "Roads",
+          "count": 473
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 285
+        }
+      ]
+    },
+    {
+      "province": "Rizal 2nd DEO",
+      "region": "Region IV-A",
+      "project_count": 987,
+      "total_budget": 20831582333.04,
+      "total_paid": 0.0,
+      "avg_budget": 21105959.810577508,
+      "avg_progress": 93.25080040526848,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 386
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 307
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 210
+        }
+      ]
+    },
+    {
+      "province": "Camarines Sur 4th DEO",
+      "region": "Region V",
+      "project_count": 1118,
+      "total_budget": 20625500755.59,
+      "total_paid": 0.0,
+      "avg_budget": 18448569.548828267,
+      "avg_progress": 96.41160107334525,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 440
+        },
+        {
+          "category": "Roads",
+          "count": 401
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 99
+        }
+      ]
+    },
+    {
+      "province": "Bataan 2nd DEO",
+      "region": "Region III",
+      "project_count": 853,
+      "total_budget": 20475231019.6,
+      "total_paid": 0.0,
+      "avg_budget": 24003787.83071512,
+      "avg_progress": 92.05819460726846,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 332
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 267
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 128
+        }
+      ]
+    },
+    {
+      "province": "La Union 2nd DEO",
+      "region": "Region I",
+      "project_count": 1061,
+      "total_budget": 20456268829.47,
+      "total_paid": 0.0,
+      "avg_budget": 19280177.973110273,
+      "avg_progress": 94.38836003770028,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 397
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 344
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 218
+        }
+      ]
+    },
+    {
+      "province": "Isabela 1st DEO",
+      "region": "Region II",
+      "project_count": 1297,
+      "total_budget": 20169991853.13,
+      "total_paid": 0.0,
+      "avg_budget": 15551265.885219738,
+      "avg_progress": 94.3548033924441,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 507
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 448
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 125
+        }
+      ]
+    },
+    {
+      "province": "Misamis Oriental 2nd DEO",
+      "region": "Region X",
+      "project_count": 1142,
+      "total_budget": 19979907821.73,
+      "total_paid": 0.0,
+      "avg_budget": 17495540.99976357,
+      "avg_progress": 95.09563922942206,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 598
+        },
+        {
+          "category": "Roads",
+          "count": 301
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 67
+        }
+      ]
+    },
+    {
+      "province": "Surigao del Norte 1st DEO",
+      "region": "Region XIII",
+      "project_count": 871,
+      "total_budget": 19946527243.9,
+      "total_paid": 0.0,
+      "avg_budget": 22900720.14225029,
+      "avg_progress": 94.83579793340986,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 461
+        },
+        {
+          "category": "Roads",
+          "count": 282
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 67
+        }
+      ]
+    },
+    {
+      "province": "Negros Oriental 3rd DEO",
+      "region": "Negros Island Region",
+      "project_count": 1036,
+      "total_budget": 19718205758.09,
+      "total_paid": 0.0,
+      "avg_budget": 19033017.141013514,
+      "avg_progress": 97.26052123552122,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 407
+        },
+        {
+          "category": "Roads",
+          "count": 404
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 113
+        }
+      ]
+    },
+    {
+      "province": "Biliran DEO",
+      "region": "Region VIII",
+      "project_count": 1261,
+      "total_budget": 19652218956.09,
+      "total_paid": 0.0,
+      "avg_budget": 15584630.417200634,
+      "avg_progress": 93.6442268041237,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 404
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 386
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 317
+        }
+      ]
+    },
+    {
+      "province": "Bohol 1st DEO",
+      "region": "Region VII",
+      "project_count": 1395,
+      "total_budget": 19182230589.22,
+      "total_paid": 0.0,
+      "avg_budget": 13750702.931340503,
+      "avg_progress": 95.6614265232975,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 676
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 513
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 70
+        }
+      ]
+    },
+    {
+      "province": "Surigao del Sur 1st DEO",
+      "region": "Region XIII",
+      "project_count": 1018,
+      "total_budget": 19166495901.29,
+      "total_paid": 0.0,
+      "avg_budget": 18827599.117180746,
+      "avg_progress": 94.81211198428291,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 429
+        },
+        {
+          "category": "Roads",
+          "count": 233
+        },
+        {
+          "category": "Bridges",
+          "count": 95
+        }
+      ]
+    },
+    {
+      "province": "Pangasinan 2nd DEO",
+      "region": "Region I",
+      "project_count": 1793,
+      "total_budget": 19082796463.43,
+      "total_paid": 0.0,
+      "avg_budget": 10642942.812844396,
+      "avg_progress": 91.68605688789738,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 689
+        },
+        {
+          "category": "Roads",
+          "count": 605
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 310
+        }
+      ]
+    },
+    {
+      "province": "Laguna 3rd DEO",
+      "region": "Region IV-A",
+      "project_count": 1055,
+      "total_budget": 19015904531.920002,
+      "total_paid": 0.0,
+      "avg_budget": 18024554.058691945,
+      "avg_progress": 89.03438862559241,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 447
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 393
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 60
+        }
+      ]
+    },
+    {
+      "province": "Sarangani DEO",
+      "region": "Region XII",
+      "project_count": 1048,
+      "total_budget": 18900914955.67,
+      "total_paid": 0.0,
+      "avg_budget": 18035224.1943416,
+      "avg_progress": 93.96521946564886,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 470
+        },
+        {
+          "category": "Roads",
+          "count": 245
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 80
+        }
+      ]
+    },
+    {
+      "province": "South Cotabato 1st DEO",
+      "region": "Region XII",
+      "project_count": 1369,
+      "total_budget": 18599236104.27,
+      "total_paid": 0.0,
+      "avg_budget": 13586001.537085464,
+      "avg_progress": 96.9580569758948,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 700
+        },
+        {
+          "category": "Roads",
+          "count": 385
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 98
+        }
+      ]
+    },
+    {
+      "province": "Lanao del Norte 1st DEO",
+      "region": "Region X",
+      "project_count": 1035,
+      "total_budget": 18304810029.79,
+      "total_paid": 0.0,
+      "avg_budget": 17685806.792067632,
+      "avg_progress": 98.28812560386474,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 444
+        },
+        {
+          "category": "Roads",
+          "count": 375
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 102
+        }
+      ]
+    },
+    {
+      "province": "Laguna 1st DEO",
+      "region": "Region IV-A",
+      "project_count": 869,
+      "total_budget": 18269190603.57,
+      "total_paid": 0.0,
+      "avg_budget": 21023234.29639816,
+      "avg_progress": 95.4788492520138,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 414
+        },
+        {
+          "category": "Roads",
+          "count": 296
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 84
+        }
+      ]
+    },
+    {
+      "province": "Iloilo 1st DEO",
+      "region": "Region VI",
+      "project_count": 1131,
+      "total_budget": 18201305733.85,
+      "total_paid": 0.0,
+      "avg_budget": 16093108.517992925,
+      "avg_progress": 93.49381962864722,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 471
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 323
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 145
+        }
+      ]
+    },
+    {
+      "province": "Lower Kalinga DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 1098,
+      "total_budget": 17941613332.14,
+      "total_paid": 0.0,
+      "avg_budget": 16340267.151311476,
+      "avg_progress": 90.31789617486339,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 499
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 225
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 176
+        }
+      ]
+    },
+    {
+      "province": "Cagayan 1st DEO",
+      "region": "Region II",
+      "project_count": 1238,
+      "total_budget": 17749283507.64,
+      "total_paid": 0.0,
+      "avg_budget": 14337062.607140549,
+      "avg_progress": 92.36698707592892,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 592
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 383
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 117
+        }
+      ]
+    },
+    {
+      "province": "Surigao del Sur 2nd DEO",
+      "region": "Region XIII",
+      "project_count": 824,
+      "total_budget": 17681154183.78,
+      "total_paid": 0.0,
+      "avg_budget": 21457711.388082523,
+      "avg_progress": 96.05125,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 398
+        },
+        {
+          "category": "Roads",
+          "count": 259
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 43
+        }
+      ]
+    },
+    {
+      "province": "Samar 2nd DEO",
+      "region": "Region VIII",
+      "project_count": 730,
+      "total_budget": 17412469704.61,
+      "total_paid": 0.0,
+      "avg_budget": 23852698.22549315,
+      "avg_progress": 87.87535616438356,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 303
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 217
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 65
+        }
+      ]
+    },
+    {
+      "province": "Cebu 3rd DEO",
+      "region": "Region VII",
+      "project_count": 963,
+      "total_budget": 17400331208.03,
+      "total_paid": 0.0,
+      "avg_budget": 18068879.75911734,
+      "avg_progress": 96.57953271028038,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 496
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 275
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 97
+        }
+      ]
+    },
+    {
+      "province": "Cavite 2nd DEO",
+      "region": "Region IV-A",
+      "project_count": 778,
+      "total_budget": 17316619202.71,
+      "total_paid": 0.0,
+      "avg_budget": 22257865.29911311,
+      "avg_progress": 94.2585089974293,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 312
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 311
+        },
+        {
+          "category": "Bridges",
+          "count": 43
+        }
+      ]
+    },
+    {
+      "province": "Isabela 2nd DEO",
+      "region": "Region II",
+      "project_count": 1160,
+      "total_budget": 17233343450.86,
+      "total_paid": 0.0,
+      "avg_budget": 14856330.561086208,
+      "avg_progress": 95.77971551724139,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 574
+        },
+        {
+          "category": "Roads",
+          "count": 328
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 134
+        }
+      ]
+    },
+    {
+      "province": "Northern Samar 2nd DEO",
+      "region": "Region VIII",
+      "project_count": 746,
+      "total_budget": 17090422454.55,
+      "total_paid": 0.0,
+      "avg_budget": 22909413.47794906,
+      "avg_progress": 97.10793565683646,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 334
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 181
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 78
+        }
+      ]
+    },
+    {
+      "province": "Ilocos Sur 2nd DEO",
+      "region": "Region I",
+      "project_count": 1133,
+      "total_budget": 17084738088.05,
+      "total_paid": 0.0,
+      "avg_budget": 15079203.961209178,
+      "avg_progress": 94.86443954104149,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 451
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 306
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 249
+        }
+      ]
+    },
+    {
+      "province": "Leyte 5th DEO",
+      "region": "Region VIII",
+      "project_count": 1017,
+      "total_budget": 17075399714.63,
+      "total_paid": 0.0,
+      "avg_budget": 16789970.22087512,
+      "avg_progress": 95.66421828908554,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 410
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 303
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 101
+        }
+      ]
+    },
+    {
+      "province": "Palawan 2nd DEO",
+      "region": "Region IV-B",
+      "project_count": 1228,
+      "total_budget": 16679237638.43,
+      "total_paid": 0.0,
+      "avg_budget": 13582441.073640065,
+      "avg_progress": 95.1074674267101,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 561
+        },
+        {
+          "category": "Roads",
+          "count": 360
+        },
+        {
+          "category": "Bridges",
+          "count": 136
+        }
+      ]
+    },
+    {
+      "province": "Ilocos Norte 2nd DEO",
+      "region": "Region I",
+      "project_count": 1291,
+      "total_budget": 16310260218.91,
+      "total_paid": 0.0,
+      "avg_budget": 12633818.914725019,
+      "avg_progress": 87.7938652207591,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 518
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 448
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 195
+        }
+      ]
+    },
+    {
+      "province": "Butuan City DEO",
+      "region": "Region XIII",
+      "project_count": 1031,
+      "total_budget": 16264255219.42,
+      "total_paid": 0.0,
+      "avg_budget": 15775223.297206596,
+      "avg_progress": 90.89908826382154,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 444
+        },
+        {
+          "category": "Roads",
+          "count": 374
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 73
+        }
+      ]
+    },
+    {
+      "province": "Cebu 2nd DEO",
+      "region": "Region VII",
+      "project_count": 1231,
+      "total_budget": 16214298146.27,
+      "total_paid": 0.0,
+      "avg_budget": 13171647.55992689,
+      "avg_progress": 95.21700243704306,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 574
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 432
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 110
+        }
+      ]
+    },
+    {
+      "province": "Apayao 2nd DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 700,
+      "total_budget": 16197560586.99,
+      "total_paid": 0.0,
+      "avg_budget": 23139372.267128572,
+      "avg_progress": 91.43624285714286,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 317
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 194
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 67
+        }
+      ]
+    },
+    {
+      "province": "Cebu 4th DEO",
+      "region": "Region VII",
+      "project_count": 1060,
+      "total_budget": 16050782544.01,
+      "total_paid": 0.0,
+      "avg_budget": 15142247.683028301,
+      "avg_progress": 93.19145283018868,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 597
+        },
+        {
+          "category": "Roads",
+          "count": 257
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 93
+        }
+      ]
+    },
+    {
+      "province": "Cotabato 1st DEO",
+      "region": "Region XII",
+      "project_count": 1072,
+      "total_budget": 16046265383.57,
+      "total_paid": 0.0,
+      "avg_budget": 14968531.141389925,
+      "avg_progress": 98.09111940298507,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 524
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 345
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 81
+        }
+      ]
+    },
+    {
+      "province": "Negros Occidental 2nd DEO",
+      "region": "Negros Island Region",
+      "project_count": 1012,
+      "total_budget": 16033772376.01,
+      "total_paid": 0.0,
+      "avg_budget": 15843648.592895256,
+      "avg_progress": 97.67037549407114,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 526
+        },
+        {
+          "category": "Roads",
+          "count": 274
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 83
+        }
+      ]
+    },
+    {
+      "province": "Iloilo 3rd DEO",
+      "region": "Region VI",
+      "project_count": 1314,
+      "total_budget": 15940964737.07,
+      "total_paid": 0.0,
+      "avg_budget": 12131632.21999239,
+      "avg_progress": 94.11667427701674,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 836
+        },
+        {
+          "category": "Roads",
+          "count": 307
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 56
+        }
+      ]
+    },
+    {
+      "province": "Leyte 2nd DEO",
+      "region": "Region VIII",
+      "project_count": 1028,
+      "total_budget": 15931271173.81,
+      "total_paid": 0.0,
+      "avg_budget": 15497345.499815175,
+      "avg_progress": 96.90534046692608,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 488
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 313
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 91
+        }
+      ]
+    },
+    {
+      "province": "Palawan 1st DEO",
+      "region": "Region IV-B",
+      "project_count": 1225,
+      "total_budget": 15872389608.01,
+      "total_paid": 0.0,
+      "avg_budget": 12957052.741232654,
+      "avg_progress": 94.13405714285715,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 626
+        },
+        {
+          "category": "Roads",
+          "count": 328
+        },
+        {
+          "category": "Bridges",
+          "count": 85
+        }
+      ]
+    },
+    {
+      "province": "Bohol 2nd DEO",
+      "region": "Region VII",
+      "project_count": 1334,
+      "total_budget": 15790326431.11,
+      "total_paid": 0.0,
+      "avg_budget": 11836826.410127437,
+      "avg_progress": 96.34334332833583,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 647
+        },
+        {
+          "category": "Roads",
+          "count": 453
+        },
+        {
+          "category": "Bridges",
+          "count": 65
+        }
+      ]
+    },
+    {
+      "province": "Southern Mindoro DEO",
+      "region": "Region IV-B",
+      "project_count": 1180,
+      "total_budget": 15761974490.57,
+      "total_paid": 0.0,
+      "avg_budget": 13357605.500483051,
+      "avg_progress": 96.93409322033898,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 442
+        },
+        {
+          "category": "Roads",
+          "count": 435
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 144
+        }
+      ]
+    },
+    {
+      "province": "Buildings and Special Projects Management Cluster",
+      "region": "Central Office",
+      "project_count": 11,
+      "total_budget": 15711635726.65,
+      "total_paid": 0.0,
+      "avg_budget": 1428330520.6045454,
+      "avg_progress": 64.37454545454545,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 8
+        },
+        {
+          "category": "Buildings",
+          "count": 2
+        },
+        {
+          "category": "Trust Funds 2023",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "province": "Bukidnon 3rd DEO",
+      "region": "Region X",
+      "project_count": 1026,
+      "total_budget": 15710810478.27,
+      "total_paid": 0.0,
+      "avg_budget": 15312680.778040936,
+      "avg_progress": 92.06772904483431,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 420
+        },
+        {
+          "category": "Roads",
+          "count": 332
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 126
+        }
+      ]
+    },
+    {
+      "province": "South Cotabato 2nd DEO",
+      "region": "Region XII",
+      "project_count": 1325,
+      "total_budget": 15686761565.44,
+      "total_paid": 0.0,
+      "avg_budget": 11839065.332407547,
+      "avg_progress": 98.43716226415094,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 850
+        },
+        {
+          "category": "Roads",
+          "count": 262
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 114
+        }
+      ]
+    },
+    {
+      "province": "Benguet 1st DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 835,
+      "total_budget": 15620337037.46,
+      "total_paid": 0.0,
+      "avg_budget": 18706990.46402395,
+      "avg_progress": 95.44784431137724,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 406
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 184
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 97
+        }
+      ]
+    },
+    {
+      "province": "Bacolod City DEO",
+      "region": "Negros Island Region",
+      "project_count": 1083,
+      "total_budget": 15595081981.02,
+      "total_paid": 0.0,
+      "avg_budget": 14399891.025872577,
+      "avg_progress": 96.12260387811634,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 490
+        },
+        {
+          "category": "Roads",
+          "count": 324
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 118
+        }
+      ]
+    },
+    {
+      "province": "Tacloban City DEO",
+      "region": "Region VIII",
+      "project_count": 756,
+      "total_budget": 15560074852.05,
+      "total_paid": 0.0,
+      "avg_budget": 20582109.59265873,
+      "avg_progress": 82.92174603174603,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 313
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 239
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 109
+        }
+      ]
+    },
+    {
+      "province": "Camarines Sur 1st DEO",
+      "region": "Region V",
+      "project_count": 827,
+      "total_budget": 15529663175.19,
+      "total_paid": 0.0,
+      "avg_budget": 18778310.97362757,
+      "avg_progress": 90.2955985489722,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 338
+        },
+        {
+          "category": "Roads",
+          "count": 294
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 70
+        }
+      ]
+    },
+    {
+      "province": "Pangasinan 4th DEO",
+      "region": "Region I",
+      "project_count": 1102,
+      "total_budget": 15398065166.44,
+      "total_paid": 0.0,
+      "avg_budget": 13972835.904210526,
+      "avg_progress": 94.7496279491833,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 394
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 334
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 266
+        }
+      ]
+    },
+    {
+      "province": "Masbate 2nd DEO",
+      "region": "Region V",
+      "project_count": 813,
+      "total_budget": 15359195847.12,
+      "total_paid": 0.0,
+      "avg_budget": 18891999.81195572,
+      "avg_progress": 93.18447724477244,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 313
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 274
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 68
+        }
+      ]
+    },
+    {
+      "province": "Catanduanes DEO",
+      "region": "Region V",
+      "project_count": 1001,
+      "total_budget": 15284416026.31,
+      "total_paid": 0.0,
+      "avg_budget": 15269146.87943057,
+      "avg_progress": 93.32804195804195,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 376
+        },
+        {
+          "category": "Roads",
+          "count": 318
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 133
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga City 2nd DEO",
+      "region": "Region IX",
+      "project_count": 1036,
+      "total_budget": 15207835218.4,
+      "total_paid": 0.0,
+      "avg_budget": 14679377.623938223,
+      "avg_progress": 90.32926640926641,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 447
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 266
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 185
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga del Sur 1st DEO",
+      "region": "Region IX",
+      "project_count": 973,
+      "total_budget": 15187386870.7,
+      "total_paid": 0.0,
+      "avg_budget": 15608825.149743063,
+      "avg_progress": 95.63026721479959,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 420
+        },
+        {
+          "category": "Roads",
+          "count": 399
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 69
+        }
+      ]
+    },
+    {
+      "province": "Bataan 1st DEO",
+      "region": "Region III",
+      "project_count": 860,
+      "total_budget": 14735966833.42,
+      "total_paid": 0.0,
+      "avg_budget": 17134845.155139536,
+      "avg_progress": 93.79366279069768,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 343
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 252
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 167
+        }
+      ]
+    },
+    {
+      "province": "Iloilo 4th DEO",
+      "region": "Region VI",
+      "project_count": 877,
+      "total_budget": 14586831806.83,
+      "total_paid": 0.0,
+      "avg_budget": 16632647.44222349,
+      "avg_progress": 96.43095781071835,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 474
+        },
+        {
+          "category": "Roads",
+          "count": 273
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 50
+        }
+      ]
+    },
+    {
+      "province": "Lanao del Norte 2nd DEO",
+      "region": "Region X",
+      "project_count": 936,
+      "total_budget": 14423748835.43,
+      "total_paid": 0.0,
+      "avg_budget": 15409988.072040599,
+      "avg_progress": 98.84345085470086,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 408
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 378
+        },
+        {
+          "category": "Bridges",
+          "count": 75
+        }
+      ]
+    },
+    {
+      "province": "Capiz 2nd DEO",
+      "region": "Region VI",
+      "project_count": 1002,
+      "total_budget": 14345148239.210001,
+      "total_paid": 0.0,
+      "avg_budget": 14316515.208792416,
+      "avg_progress": 93.20144710578843,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 456
+        },
+        {
+          "category": "Roads",
+          "count": 327
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 64
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga Sibugay 1st DEO",
+      "region": "Region IX",
+      "project_count": 844,
+      "total_budget": 14254924778.4,
+      "total_paid": 0.0,
+      "avg_budget": 16889721.3014218,
+      "avg_progress": 91.4704383886256,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 403
+        },
+        {
+          "category": "Roads",
+          "count": 245
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 70
+        }
+      ]
+    },
+    {
+      "province": "Agusan del Norte DEO",
+      "region": "Region XIII",
+      "project_count": 688,
+      "total_budget": 14114866320.3,
+      "total_paid": 0.0,
+      "avg_budget": 20515794.070203487,
+      "avg_progress": 98.34998546511628,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 278
+        },
+        {
+          "category": "Roads",
+          "count": 225
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 76
+        }
+      ]
+    },
+    {
+      "province": "Cebu 5th DEO",
+      "region": "Region VII",
+      "project_count": 1000,
+      "total_budget": 13988482550.67,
+      "total_paid": 0.0,
+      "avg_budget": 13988482.55067,
+      "avg_progress": 95.52333999999999,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 504
+        },
+        {
+          "category": "Roads",
+          "count": 368
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 42
+        }
+      ]
+    },
+    {
+      "province": "Quirino DEO",
+      "region": "Region II",
+      "project_count": 1241,
+      "total_budget": 13974807231.03,
+      "total_paid": 0.0,
+      "avg_budget": 11260924.440797744,
+      "avg_progress": 97.49423851732475,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 670
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 392
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 50
+        }
+      ]
+    },
+    {
+      "province": "Davao de Oro 2nd DEO",
+      "region": "Region XI",
+      "project_count": 328,
+      "total_budget": 13931381414.05,
+      "total_paid": 0.0,
+      "avg_budget": 42473723.82332317,
+      "avg_progress": 88.5873780487805,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 119
+        },
+        {
+          "category": "Roads",
+          "count": 104
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 42
+        }
+      ]
+    },
+    {
+      "province": "Leyte 3rd DEO",
+      "region": "Region VIII",
+      "project_count": 1018,
+      "total_budget": 13882359100.49,
+      "total_paid": 0.0,
+      "avg_budget": 13636894.990658153,
+      "avg_progress": 93.79205304518663,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 387
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 329
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 133
+        }
+      ]
+    },
+    {
+      "province": "Northern Samar 1st DEO",
+      "region": "Region VIII",
+      "project_count": 1006,
+      "total_budget": 13619651755.74,
+      "total_paid": 0.0,
+      "avg_budget": 13538421.228369782,
+      "avg_progress": 86.91171968190855,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 383
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 345
+        },
+        {
+          "category": "Bridges",
+          "count": 117
+        }
+      ]
+    },
+    {
+      "province": "Negros Occidental 3rd DEO",
+      "region": "Negros Island Region",
+      "project_count": 985,
+      "total_budget": 13354877328.75,
+      "total_paid": 0.0,
+      "avg_budget": 13558251.095177665,
+      "avg_progress": 98.67223350253806,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 537
+        },
+        {
+          "category": "Roads",
+          "count": 298
+        },
+        {
+          "category": "Bridges",
+          "count": 83
+        }
+      ]
+    },
+    {
+      "province": "Negros Oriental 1st DEO",
+      "region": "Negros Island Region",
+      "project_count": 994,
+      "total_budget": 13266879201.44,
+      "total_paid": 0.0,
+      "avg_budget": 13346960.967243461,
+      "avg_progress": 96.22514084507041,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 462
+        },
+        {
+          "category": "Roads",
+          "count": 291
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 104
+        }
+      ]
+    },
+    {
+      "province": "Iloilo City DEO",
+      "region": "Region VI",
+      "project_count": 982,
+      "total_budget": 13111561323.12,
+      "total_paid": 0.0,
+      "avg_budget": 13351895.441059064,
+      "avg_progress": 91.09200610997964,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 449
+        },
+        {
+          "category": "Roads",
+          "count": 367
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 98
+        }
+      ]
+    },
+    {
+      "province": "Agusan del Sur 2nd DEO",
+      "region": "Region XIII",
+      "project_count": 737,
+      "total_budget": 12826142811.74,
+      "total_paid": 0.0,
+      "avg_budget": 17403178.849036634,
+      "avg_progress": 96.66758480325643,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 297
+        },
+        {
+          "category": "Roads",
+          "count": 267
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 58
+        }
+      ]
+    },
+    {
+      "province": "Nueva Vizcaya 2nd DEO",
+      "region": "Region II",
+      "project_count": 683,
+      "total_budget": 12770890299.09,
+      "total_paid": 0.0,
+      "avg_budget": 18698228.842005856,
+      "avg_progress": 94.55081991215226,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 270
+        },
+        {
+          "category": "Roads",
+          "count": 254
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 74
+        }
+      ]
+    },
+    {
+      "province": "Sultan Kudarat 1st DEO",
+      "region": "Region XII",
+      "project_count": 704,
+      "total_budget": 12666029514.24,
+      "total_paid": 0.0,
+      "avg_budget": 17991519.196363635,
+      "avg_progress": 97.42741477272726,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 350
+        },
+        {
+          "category": "Roads",
+          "count": 201
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 77
+        }
+      ]
+    },
+    {
+      "province": "Benguet 2nd DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 747,
+      "total_budget": 12604124981.61,
+      "total_paid": 0.0,
+      "avg_budget": 16872991.943253014,
+      "avg_progress": 97.15372155287818,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 370
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 140
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 79
+        }
+      ]
+    },
+    {
+      "province": "Sultan Kudarat 2nd DEO",
+      "region": "Region XII",
+      "project_count": 1161,
+      "total_budget": 12594356503.62,
+      "total_paid": 0.0,
+      "avg_budget": 10847852.285633076,
+      "avg_progress": 98.54399655469423,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 803
+        },
+        {
+          "category": "Roads",
+          "count": 196
+        },
+        {
+          "category": "Bridges",
+          "count": 53
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga del Norte 1st DEO",
+      "region": "Region IX",
+      "project_count": 835,
+      "total_budget": 12553855351.55,
+      "total_paid": 0.0,
+      "avg_budget": 15034557.307245508,
+      "avg_progress": 94.25554491017965,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 347
+        },
+        {
+          "category": "Roads",
+          "count": 284
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 57
+        }
+      ]
+    },
+    {
+      "province": "Misamis Occidental 1st DEO",
+      "region": "Region X",
+      "project_count": 882,
+      "total_budget": 12398956556.74,
+      "total_paid": 0.0,
+      "avg_budget": 14057773.873854876,
+      "avg_progress": 97.09490929705215,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 424
+        },
+        {
+          "category": "Roads",
+          "count": 294
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 48
+        }
+      ]
+    },
+    {
+      "province": "Guimaras DEO",
+      "region": "Region VI",
+      "project_count": 853,
+      "total_budget": 12357867902.92,
+      "total_paid": 0.0,
+      "avg_budget": 14487535.642344667,
+      "avg_progress": 96.60296600234467,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 423
+        },
+        {
+          "category": "Roads",
+          "count": 306
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 44
+        }
+      ]
+    },
+    {
+      "province": "Negros Occidental 4th DEO",
+      "region": "Negros Island Region",
+      "project_count": 886,
+      "total_budget": 12357618300.68,
+      "total_paid": 0.0,
+      "avg_budget": 13947650.452234764,
+      "avg_progress": 97.98462753950339,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 375
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 361
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 56
+        }
+      ]
+    },
+    {
+      "province": "Bulacan 3rd DEO",
+      "region": "Region III",
+      "project_count": 226,
+      "total_budget": 12093235186.16,
+      "total_paid": 0.0,
+      "avg_budget": 53509890.20424779,
+      "avg_progress": 26.776592920353984,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 81
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 70
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 36
+        }
+      ]
+    },
+    {
+      "province": "Upper Kalinga DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 645,
+      "total_budget": 11912995441.0,
+      "total_paid": 0.0,
+      "avg_budget": 18469760.37364341,
+      "avg_progress": 93.81423255813954,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 284
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 122
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 102
+        }
+      ]
+    },
+    {
+      "province": "Agusan del Sur 1st DEO",
+      "region": "Region XIII",
+      "project_count": 667,
+      "total_budget": 11548675069.83,
+      "total_paid": 0.0,
+      "avg_budget": 17314355.427031484,
+      "avg_progress": 95.82146926536731,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 306
+        },
+        {
+          "category": "Roads",
+          "count": 168
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 65
+        }
+      ]
+    },
+    {
+      "province": "La Union 1st DEO",
+      "region": "Region I",
+      "project_count": 827,
+      "total_budget": 11515090030.37,
+      "total_paid": 0.0,
+      "avg_budget": 13923929.903712213,
+      "avg_progress": 95.72548972188633,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 298
+        },
+        {
+          "category": "Roads",
+          "count": 281
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 118
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga Sibugay 2nd DEO",
+      "region": "Region IX",
+      "project_count": 893,
+      "total_budget": 11467155307.85,
+      "total_paid": 0.0,
+      "avg_budget": 12841159.359294513,
+      "avg_progress": 95.75115341545353,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 458
+        },
+        {
+          "category": "Roads",
+          "count": 265
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 61
+        }
+      ]
+    },
+    {
+      "province": "Cagayan de Oro City 1st DEO",
+      "region": "Region X",
+      "project_count": 658,
+      "total_budget": 11392095409.38,
+      "total_paid": 0.0,
+      "avg_budget": 17313214.907872338,
+      "avg_progress": 95.86819148936169,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 309
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 228
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 53
+        }
+      ]
+    },
+    {
+      "province": "Capiz 1st DEO",
+      "region": "Region VI",
+      "project_count": 769,
+      "total_budget": 11347319891.67,
+      "total_paid": 0.0,
+      "avg_budget": 14755942.64196359,
+      "avg_progress": 90.77587776332899,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 339
+        },
+        {
+          "category": "Roads",
+          "count": 278
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 77
+        }
+      ]
+    },
+    {
+      "province": "Masbate 3rd DEO",
+      "region": "Region V",
+      "project_count": 681,
+      "total_budget": 11289988405.24,
+      "total_paid": 0.0,
+      "avg_budget": 16578543.913715124,
+      "avg_progress": 91.55220264317181,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 262
+        },
+        {
+          "category": "Roads",
+          "count": 262
+        },
+        {
+          "category": "Bridges",
+          "count": 56
+        }
+      ]
+    },
+    {
+      "province": "Ilocos Sur 1st DEO",
+      "region": "Region I",
+      "project_count": 943,
+      "total_budget": 11112121247.76,
+      "total_paid": 0.0,
+      "avg_budget": 11783797.71766702,
+      "avg_progress": 94.83886532343584,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 300
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 273
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 223
+        }
+      ]
+    },
+    {
+      "province": "Baguio City DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 876,
+      "total_budget": 11023249195.5,
+      "total_paid": 0.0,
+      "avg_budget": 12583617.803082192,
+      "avg_progress": 95.60472602739726,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 389
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 299
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 74
+        }
+      ]
+    },
+    {
+      "province": "Camiguin DEO",
+      "region": "Region X",
+      "project_count": 693,
+      "total_budget": 10935255399.21,
+      "total_paid": 0.0,
+      "avg_budget": 15779589.32064935,
+      "avg_progress": 96.33835497835497,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 266
+        },
+        {
+          "category": "Roads",
+          "count": 209
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 92
+        }
+      ]
+    },
+    {
+      "province": "Palawan 3rd DEO",
+      "region": "Region IV-B",
+      "project_count": 774,
+      "total_budget": 10859659094.34,
+      "total_paid": 0.0,
+      "avg_budget": 14030567.305348838,
+      "avg_progress": 97.29096899224807,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 338
+        },
+        {
+          "category": "Roads",
+          "count": 245
+        },
+        {
+          "category": "Bridges",
+          "count": 87
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga del Sur 2nd DEO",
+      "region": "Region IX",
+      "project_count": 1022,
+      "total_budget": 10744588144.67,
+      "total_paid": 0.0,
+      "avg_budget": 10513295.6405773,
+      "avg_progress": 94.97489236790607,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 610
+        },
+        {
+          "category": "Roads",
+          "count": 263
+        },
+        {
+          "category": "Bridges",
+          "count": 49
+        }
+      ]
+    },
+    {
+      "province": "Camarines Sur 3rd DEO",
+      "region": "Region V",
+      "project_count": 812,
+      "total_budget": 10713401154.66,
+      "total_paid": 0.0,
+      "avg_budget": 13193843.786527093,
+      "avg_progress": 91.2511330049261,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 323
+        },
+        {
+          "category": "Roads",
+          "count": 255
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 124
+        }
+      ]
+    },
+    {
+      "province": "Siquijor DEO",
+      "region": "Negros Island Region",
+      "project_count": 742,
+      "total_budget": 10640257827.41,
+      "total_paid": 0.0,
+      "avg_budget": 14339970.117803235,
+      "avg_progress": 87.62087601078167,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 331
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 270
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 70
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga del Norte 3rd DEO",
+      "region": "Region IX",
+      "project_count": 732,
+      "total_budget": 10152420058.56,
+      "total_paid": 0.0,
+      "avg_budget": 13869426.309508195,
+      "avg_progress": 95.46819672131147,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 304
+        },
+        {
+          "category": "Roads",
+          "count": 244
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 69
+        }
+      ]
+    },
+    {
+      "province": "Mountain Province 1st DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 906,
+      "total_budget": 10088986223.52,
+      "total_paid": 0.0,
+      "avg_budget": 11135746.38357616,
+      "avg_progress": 91.10789183222958,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 496
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 140
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 94
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga del Norte 2nd DEO",
+      "region": "Region IX",
+      "project_count": 800,
+      "total_budget": 9988664608.6,
+      "total_paid": 0.0,
+      "avg_budget": 12485830.760750001,
+      "avg_progress": 93.145175,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 369
+        },
+        {
+          "category": "Roads",
+          "count": 273
+        },
+        {
+          "category": "Bridges",
+          "count": 50
+        }
+      ]
+    },
+    {
+      "province": "Dinagat Islands DEO",
+      "region": "Region XIII",
+      "project_count": 831,
+      "total_budget": 9749252310.77,
+      "total_paid": 0.0,
+      "avg_budget": 11731952.239193743,
+      "avg_progress": 93.8515523465704,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 435
+        },
+        {
+          "category": "Roads",
+          "count": 219
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 46
+        }
+      ]
+    },
+    {
+      "province": "Masbate 1st DEO",
+      "region": "Region V",
+      "project_count": 455,
+      "total_budget": 9283961526.47,
+      "total_paid": 0.0,
+      "avg_budget": 20404311.04718681,
+      "avg_progress": 94.79687912087913,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 240
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 105
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 49
+        }
+      ]
+    },
+    {
+      "province": "Cagayan de Oro City 2nd DEO",
+      "region": "Region X",
+      "project_count": 601,
+      "total_budget": 9276672227.7,
+      "total_paid": 0.0,
+      "avg_budget": 15435394.721630616,
+      "avg_progress": 94.15595673876872,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 280
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 170
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 74
+        }
+      ]
+    },
+    {
+      "province": "Cotabato City DEO",
+      "region": "Region XII",
+      "project_count": 500,
+      "total_budget": 7579064616.63,
+      "total_paid": 0.0,
+      "avg_budget": 15158129.23326,
+      "avg_progress": 99.8,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 215
+        },
+        {
+          "category": "Roads",
+          "count": 206
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 51
+        }
+      ]
+    },
+    {
+      "province": "Apayao 1st DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 418,
+      "total_budget": 7491767056.18,
+      "total_paid": 0.0,
+      "avg_budget": 17922887.694210526,
+      "avg_progress": 95.07610047846889,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 172
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 113
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 38
+        }
+      ]
+    },
+    {
+      "province": "Cotabato 3rd DEO",
+      "region": "Region XII",
+      "project_count": 443,
+      "total_budget": 7365430589.64,
+      "total_paid": 0.0,
+      "avg_budget": 16626254.15268623,
+      "avg_progress": 92.23634311512414,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 173
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 159
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 27
+        }
+      ]
+    },
+    {
+      "province": "Batanes DEO",
+      "region": "Region II",
+      "project_count": 573,
+      "total_budget": 6906312297.71,
+      "total_paid": 0.0,
+      "avg_budget": 12052901.04312391,
+      "avg_progress": 88.45537521815008,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 225
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 142
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 88
+        }
+      ]
+    },
+    {
+      "province": "Mountain Province 2nd DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 337,
+      "total_budget": 6899003927.69,
+      "total_paid": 0.0,
+      "avg_budget": 20471821.74388724,
+      "avg_progress": 93.7999703264095,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 190
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 53
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 39
+        }
+      ]
+    },
+    {
+      "province": "Isabela City DEO",
+      "region": "Region IX",
+      "project_count": 488,
+      "total_budget": 6762386646.68,
+      "total_paid": 0.0,
+      "avg_budget": 13857349.685819672,
+      "avg_progress": 92.41122950819673,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 196
+        },
+        {
+          "category": "Roads",
+          "count": 146
+        },
+        {
+          "category": "Water Provision and Storage",
+          "count": 76
+        }
+      ]
+    },
+    {
+      "province": "Ifugao 2nd DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 475,
+      "total_budget": 6479723356.05,
+      "total_paid": 0.0,
+      "avg_budget": 13641522.854842106,
+      "avg_progress": 94.55317894736842,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 201
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 158
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 26
+        }
+      ]
+    },
+    {
+      "province": "Ifugao 1st DEO",
+      "region": "Cordillera Administrative Region",
+      "project_count": 501,
+      "total_budget": 5515223761.47,
+      "total_paid": 0.0,
+      "avg_budget": 11008430.661616767,
+      "avg_progress": 86.47071856287425,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 250
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 171
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 24
+        }
+      ]
+    },
+    {
+      "province": "Bataan 3rd DEO",
+      "region": "Region III",
+      "project_count": 108,
+      "total_budget": 3974057677.81,
+      "total_paid": 0.0,
+      "avg_budget": 36796830.35009259,
+      "avg_progress": 27.775833333333335,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 42
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 37
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 10
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga del Norte 4th DEO",
+      "region": "Region IX",
+      "project_count": 133,
+      "total_budget": 3384607672.35,
+      "total_paid": 0.0,
+      "avg_budget": 25448177.987593986,
+      "avg_progress": 93.14127819548872,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 67
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 27
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 12
+        }
+      ]
+    },
+    {
+      "province": "Bridges Management Cluster",
+      "region": "Central Office",
+      "project_count": 10,
+      "total_budget": 3187784181.62,
+      "total_paid": 0.0,
+      "avg_budget": 318778418.162,
+      "avg_progress": 68.986,
+      "top_categories": [
+        {
+          "category": "Bridges",
+          "count": 8
+        },
+        {
+          "category": "Bridges, Roads",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "province": "Iligan City DEO",
+      "region": "Region X",
+      "project_count": 184,
+      "total_budget": 3057356714.19,
+      "total_paid": 0.0,
+      "avg_budget": 16616069.098858695,
+      "avg_progress": 86.05456521739131,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 76
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 56
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 17
+        }
+      ]
+    },
+    {
+      "province": "Davao del Norte 2nd DEO",
+      "region": "Region XI",
+      "project_count": 117,
+      "total_budget": 2931742050.36,
+      "total_paid": 0.0,
+      "avg_budget": 25057624.362051282,
+      "avg_progress": 48.68666666666667,
+      "top_categories": [
+        {
+          "category": "GAA 2025 SSP",
+          "count": 30
+        },
+        {
+          "category": "Roads",
+          "count": 21
+        },
+        {
+          "category": "Roads: Construction - PCCP",
+          "count": 20
+        }
+      ]
+    },
+    {
+      "province": "Iloilo 6th DEO",
+      "region": "Region VI",
+      "project_count": 153,
+      "total_budget": 2662535652.04,
+      "total_paid": 0.0,
+      "avg_budget": 17402193.804183006,
+      "avg_progress": 52.041633986928105,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 63
+        },
+        {
+          "category": "Roads",
+          "count": 50
+        },
+        {
+          "category": "Buildings",
+          "count": 14
+        }
+      ]
+    },
+    {
+      "province": "Negros Island Region",
+      "region": "Negros Island Region",
+      "project_count": 26,
+      "total_budget": 2121308096.64,
+      "total_paid": 0.0,
+      "avg_budget": 81588772.9476923,
+      "avg_progress": 53.07115384615384,
+      "top_categories": [
+        {
+          "category": "GAA 2025 OO-1",
+          "count": 8
+        },
+        {
+          "category": "Roads",
+          "count": 5
+        },
+        {
+          "category": "Flood Control and Drainage",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "province": "Davao City 3rd DEO",
+      "region": "Region XI",
+      "project_count": 55,
+      "total_budget": 1859916751.42,
+      "total_paid": 0.0,
+      "avg_budget": 33816668.207636364,
+      "avg_progress": 67.06163636363637,
+      "top_categories": [
+        {
+          "category": "GAA 2025 SSP",
+          "count": 17
+        },
+        {
+          "category": "Roads",
+          "count": 9
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "province": "Negros Occidental 5th DEO",
+      "region": "Negros Island Region",
+      "project_count": 70,
+      "total_budget": 1500869296.89,
+      "total_paid": 0.0,
+      "avg_budget": 21440989.95557143,
+      "avg_progress": 72.53757142857143,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 35
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 9
+        },
+        {
+          "category": "GAA 2025 OO-1",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "province": "Bureau of Construction",
+      "region": "Central Office",
+      "project_count": 8,
+      "total_budget": 1288737079.04,
+      "total_paid": 0.0,
+      "avg_budget": 161092134.88,
+      "avg_progress": 74.205,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 4
+        },
+        {
+          "category": "Roads",
+          "count": 3
+        },
+        {
+          "category": "Bridges",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "province": "Southern Leyte 2nd DEO",
+      "region": "Region VIII",
+      "project_count": 103,
+      "total_budget": 1141807687.84,
+      "total_paid": 0.0,
+      "avg_budget": 11085511.532427184,
+      "avg_progress": 46.77310679611651,
+      "top_categories": [
+        {
+          "category": "Buildings and Facilities",
+          "count": 24
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 22
+        },
+        {
+          "category": "Building: Completion",
+          "count": 16
+        }
+      ]
+    },
+    {
+      "province": "Bukidnon 4th DEO",
+      "region": "Region X",
+      "project_count": 64,
+      "total_budget": 1004957948.8100001,
+      "total_paid": 0.0,
+      "avg_budget": 15702467.950156251,
+      "avg_progress": 74.31765625,
+      "top_categories": [
+        {
+          "category": "Roads",
+          "count": 27
+        },
+        {
+          "category": "Buildings and Facilities",
+          "count": 13
+        },
+        {
+          "category": "GAA 2025 SSP",
+          "count": 9
+        }
+      ]
+    },
+    {
+      "province": "Zamboanga City 1st DEO",
+      "region": "Region IX",
+      "project_count": 13,
+      "total_budget": 406618053.42,
+      "total_paid": 0.0,
+      "avg_budget": 31278311.801538464,
+      "avg_progress": 42.8523076923077,
+      "top_categories": [
+        {
+          "category": "Flood Control and Drainage",
+          "count": 5
+        },
+        {
+          "category": "Unprogrammed Appropriations 2024",
+          "count": 3
+        },
+        {
+          "category": "Buildings: Repair",
+          "count": 2
+        }
+      ]
+    }
+  ]
+}

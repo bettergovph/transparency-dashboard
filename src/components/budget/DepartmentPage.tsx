@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation, Link } from 'react-router-dom'
+import { useParams, useLocation, Link, useNavigate } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Building2, TrendingUp } from 'lucide-react'
 import Navigation from '../Navigation'
@@ -12,6 +12,7 @@ import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, R
 
 interface Agency {
   id: string  // Composite key: "department_id-agency_code"
+  slug: string
   agency_code: string  // Original agency code
   description: string
   department_id: string
@@ -20,24 +21,32 @@ interface Agency {
 
 interface Department {
   id: string
+  slug: string
   description: string
   years: Record<string, { count: number; amount: number }>
 }
 
 const DepartmentPage = () => {
-  const { slug } = useParams<{ slug: string }>()
+  const { slug, year } = useParams<{ slug: string; year: string }>()
+  const navigate = useNavigate()
   const location = useLocation()
   const departmentId = location.state?.departmentId
 
   const [department, setDepartment] = useState<Department | null>(null)
   const [agencies, setAgencies] = useState<Agency[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(year ? parseInt(year) : 2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
 
   useEffect(() => {
     loadData()
   }, [departmentId])
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(parseInt(year))
+    }
+  }, [year])
 
   const loadData = async () => {
     try {
@@ -53,7 +62,7 @@ const DepartmentPage = () => {
 
       // Find the department
       const foundDept = deptData.data.find((d: Department) =>
-        d.id === departmentId || toSlug(d.description) === slug
+        d.id === departmentId || d.slug === slug
       )
 
       if (foundDept) {
@@ -61,10 +70,10 @@ const DepartmentPage = () => {
 
         // Get years
         const years = Object.keys(foundDept.years).map(Number).sort((a, b) => b - a)
-        setAvailableYears(years)
-        if (years.length > 0) {
-          setSelectedYear(years[0])
-        }
+        setAvailableYears(years.reverse())
+        // if (!year && years.length > 0) {
+        //   setSelectedYear(years[0])
+        // }
 
         // Filter agencies for this department
         const deptAgencies = agenciesData.data.filter((a: Agency) => a.department_id === foundDept.id)
@@ -107,7 +116,7 @@ const DepartmentPage = () => {
             <CardContent className="p-8 text-center">
               <Building2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Department not found</h3>
-              <Link to="/budget/departments" className="text-blue-600 hover:text-blue-800">
+              <Link to={`/budget/${selectedYear}/departments`} className="text-blue-600 hover:text-blue-800">
                 ← Back to departments
               </Link>
             </CardContent>
@@ -177,9 +186,9 @@ const DepartmentPage = () => {
           title={department.description}
           subtitle={`Department ID: ${department.id} · Browse agencies and allocations`}
           icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
-          availableYears={availableYears}
+          availableYears={availableYears.reverse()}
           selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
+          onYearChange={(newYear) => navigate(`/budget/${newYear}/departments/${slug}`)}
           showSearch={false}
         />
 
@@ -308,7 +317,7 @@ const DepartmentPage = () => {
                   return (
                     <Link
                       key={agency.id}
-                      to={`/budget/departments/${slug}/agencies/${toSlug(agency.description)}`}
+                      to={`/budget/${selectedYear}/departments/${slug}/agencies/${agency.slug}`}
                       state={{
                         agencyId: agency.id,
                         agencyName: agency.description,

@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
-import { useParams, useLocation, Link } from 'react-router-dom'
+import { useParams, useLocation, Link, useNavigate } from 'react-router-dom'
 import { Helmet } from '@dr.pogodin/react-helmet'
 import { Building2, TrendingUp, Package, ChartBarStacked } from 'lucide-react'
 import Navigation from '../Navigation'
 import Footer from '../Footer'
 import BudgetHeader from './BudgetHeader'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { toSlug } from '@/lib/utils'
 import { formatGAAAmount } from '@/lib/formatGAAAmount'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, BarChart, Bar } from 'recharts'
 
 interface Agency {
   id: string  // Composite key: "department_id-agency_code"
+  slug: string
   agency_code: string  // Original agency code
   description: string
   department_id: string
@@ -45,7 +45,8 @@ interface Object {
 }
 
 const AgencyPage = () => {
-  const { agencySlug } = useParams<{ deptSlug: string; agencySlug: string }>()
+  const { agencySlug, deptSlug, year } = useParams<{ deptSlug: string; agencySlug: string; year: string }>()
+  const navigate = useNavigate()
   const location = useLocation()
   const agencyId = location.state?.agencyId
   const departmentName = location.state?.departmentName
@@ -57,13 +58,19 @@ const AgencyPage = () => {
   const [expenses, setExpenses] = useState<Expense[]>([])
   const [objects, setObjects] = useState<Object[]>([])
   const [loading, setLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(year ? parseInt(year) : 2026)
   const [availableYears, setAvailableYears] = useState<number[]>([])
   const [activeTab, setActiveTab] = useState<'fund_subcategories' | 'expenses' | 'objects'>('fund_subcategories')
 
   useEffect(() => {
     loadData()
   }, [agencyId])
+
+  useEffect(() => {
+    if (year) {
+      setSelectedYear(parseInt(year))
+    }
+  }, [year])
 
   const loadData = async () => {
     try {
@@ -85,7 +92,7 @@ const AgencyPage = () => {
 
       // Find the agency
       const foundAgency = agenciesData.data.find((a: Agency) =>
-        a.id === agencyId || toSlug(a.description) === agencySlug
+        a.id === agencyId || a.slug === agencySlug
       )
 
       if (foundAgency) {
@@ -99,10 +106,10 @@ const AgencyPage = () => {
 
         // Get years
         const years = Object.keys(foundAgency.years).map(Number).sort((a, b) => b - a)
-        setAvailableYears(years)
-        if (years.length > 0) {
-          setSelectedYear(years[0])
-        }
+        setAvailableYears(years.reverse())
+        // if (!year && years.length > 0) {
+        //   setSelectedYear(years[0])
+        // }
 
         // Filter fund subcategories, expenses, and objects for this agency using composite ID
         const agencyFunds = fundData.data.filter((f: FundSubCategory) =>
@@ -114,8 +121,6 @@ const AgencyPage = () => {
         const agencyObjects = objectsData.data.filter((o: Object) =>
           o.agency_id === foundAgency.id  // Match using composite agency ID
         )
-
-        console.log(`Found ${agencyFunds.length} funds, ${agencyExpenses.length} expenses, and ${agencyObjects.length} objects for agency ${foundAgency.id}`)
 
         setFundSubCategories(agencyFunds)
         setExpenses(agencyExpenses)
@@ -157,7 +162,7 @@ const AgencyPage = () => {
             <CardContent className="p-8 text-center">
               <Building2 className="h-12 w-12 text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Agency not found</h3>
-              <Link to="/budget/departments" className="text-blue-600 hover:text-blue-800">
+              <Link to={`/budget/${selectedYear}/departments`} className="text-blue-600 hover:text-blue-800">
                 ← Back to departments
               </Link>
             </CardContent>
@@ -233,15 +238,15 @@ const AgencyPage = () => {
 
       <Navigation />
 
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50">
+      <div className="min-h-screen from-blue-50 via-white to-green-50">
         {/* Sticky Header */}
         <BudgetHeader
           title={agency.description}
           subtitle={`Agency ID: ${agency.id} · ${department?.description || departmentName || 'Department'}`}
           icon={<Building2 className="h-5 w-5 md:h-6 md:w-6 text-white" />}
-          availableYears={availableYears}
+          availableYears={availableYears.reverse()}
           selectedYear={selectedYear}
-          onYearChange={setSelectedYear}
+          onYearChange={(newYear) => navigate(`/budget/${newYear}/departments/${deptSlug}/agencies/${agencySlug}`)}
           showSearch={false}
         />
 

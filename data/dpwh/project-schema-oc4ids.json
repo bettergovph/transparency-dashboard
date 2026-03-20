@@ -1,0 +1,720 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DPWH Project - OC4IDS Compatible",
+  "description": "DPWH infrastructure project schema compatible with Open Contracting for Infrastructure Data Standard (OC4IDS) v0.9.5",
+  "type": "object",
+  "required": ["id", "title", "description"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Globally unique identifier for this infrastructure project with prefix 'ph-dpwh-'",
+      "pattern": "^ph-dpwh-[0-9]{2}[A-Z]{2}[0-9]{4}$",
+      "examples": ["ph-dpwh-21NA0052", "ph-dpwh-23LF0026"]
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date on which project-level information was last updated (ISO 8601 format)"
+    },
+    "language": {
+      "type": "string",
+      "description": "The default language of the data using ISO639-1 codes",
+      "examples": ["en", "fil"],
+      "default": "en"
+    },
+    "identifiers": {
+      "type": "array",
+      "description": "Internal identifiers for the project",
+      "items": {
+        "type": "object",
+        "required": ["scheme", "id"],
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "description": "The scheme or codelist from which the identifier is taken",
+            "examples": ["PH-DPWH"]
+          },
+          "id": {
+            "type": "string",
+            "description": "The identifier taken from the scheme",
+            "examples": ["21NA0052"]
+          },
+          "legalName": {
+            "type": "string",
+            "description": "The legally registered name of the organization"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URI to identify the project"
+          }
+        }
+      }
+    },
+    "publicAuthority": {
+      "type": "object",
+      "description": "The public authority responsible for this project",
+      "required": ["name", "id"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the public authority",
+          "default": "Department of Public Works and Highways"
+        },
+        "id": {
+          "type": "string",
+          "description": "The identifier for the public authority",
+          "default": "PH-DPWH"
+        }
+      }
+    },
+    "title": {
+      "type": "string",
+      "description": "The title of the project"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of this project"
+    },
+    "status": {
+      "type": "string",
+      "description": "The current phase or status of this project",
+      "enum": [
+        "identification",
+        "preparation",
+        "implementation",
+        "completion",
+        "cancelled"
+      ]
+    },
+    "type": {
+      "type": "string",
+      "description": "Whether the primary focus of this project is construction, rehabilitation, maintenance, or expansion",
+      "enum": [
+        "construction",
+        "rehabilitation",
+        "replacement",
+        "expansion",
+        "maintenance",
+        "decommissioning"
+      ]
+    },
+    "sector": {
+      "type": "array",
+      "description": "The sector(s) this project relates to using OC4IDS projectSector codelist",
+      "items": {
+        "type": "string",
+        "enum": [
+          "transport",
+          "transport.road",
+          "transport.rail",
+          "transport.air",
+          "transport.water",
+          "water",
+          "water.waterSupply",
+          "water.irrigation",
+          "water.drainage",
+          "water.floodControl",
+          "energy",
+          "buildings",
+          "multiSector"
+        ]
+      }
+    },
+    "purpose": {
+      "type": "string",
+      "description": "The socioeconomic purpose of this project"
+    },
+    "additionalClassifications": {
+      "type": "array",
+      "description": "Additional classifications of the project",
+      "items": {
+        "type": "object",
+        "required": ["scheme", "id", "description"],
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "description": "The classification scheme"
+          },
+          "id": {
+            "type": "string",
+            "description": "The classification code"
+          },
+          "description": {
+            "type": "string",
+            "description": "A textual description or title for the classification"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URI for the classification"
+          }
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "description": "Total project value and budget information",
+      "properties": {
+        "description": {
+          "type": "string",
+          "description": "A short description of the budget source and allocation"
+        },
+        "amount": {
+          "type": "object",
+          "description": "The projected costs or allocated budget for the project",
+          "required": ["amount", "currency"],
+          "properties": {
+            "amount": {
+              "type": "number",
+              "description": "The monetary value",
+              "minimum": 0
+            },
+            "currency": {
+              "type": "string",
+              "description": "The currency using ISO 4217 currency codes",
+              "default": "PHP"
+            }
+          }
+        },
+        "approvalDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The date on which the project budget was approved"
+        }
+      }
+    },
+    "period": {
+      "type": "object",
+      "description": "The period over which this project is planned to run",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The start date for the period (ISO 8601 format)"
+        },
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The end date for the period (ISO 8601 format)"
+        },
+        "maxExtentDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The maximum extent of the period"
+        },
+        "durationInDays": {
+          "type": "integer",
+          "description": "The duration of the period in days"
+        }
+      }
+    },
+    "locations": {
+      "type": "array",
+      "description": "Information about the locations where the project is taking place",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A local identifier for this location"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of this location"
+          },
+          "region": {
+            "type": "string",
+            "description": "The region where the project is located"
+          },
+          "locality": {
+            "type": "string",
+            "description": "The locality (city, municipality, or province) where the project is located"
+          },
+          "address": {
+            "type": "object",
+            "description": "An address",
+            "properties": {
+              "streetAddress": {
+                "type": "string"
+              },
+              "locality": {
+                "type": "string"
+              },
+              "region": {
+                "type": "string"
+              },
+              "postalCode": {
+                "type": "string"
+              },
+              "countryName": {
+                "type": "string",
+                "default": "Philippines"
+              }
+            }
+          },
+          "geometry": {
+            "type": "object",
+            "description": "Location coordinates in GeoJSON format",
+            "required": ["type", "coordinates"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The GeoJSON geometry type",
+                "enum": ["Point", "LineString", "Polygon", "MultiPoint", "MultiLineString", "MultiPolygon"]
+              },
+              "coordinates": {
+                "description": "The GeoJSON coordinates [longitude, latitude] for Point geometry",
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    },
+                    "minItems": 2,
+                    "maxItems": 2
+                  },
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "array"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "gazetteer": {
+            "type": "object",
+            "description": "Identifiers from a gazetteer service",
+            "required": ["scheme", "identifiers"],
+            "properties": {
+              "scheme": {
+                "type": "string",
+                "description": "The gazetteer scheme"
+              },
+              "identifiers": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URI to a further description of the location"
+          }
+        }
+      }
+    },
+    "parties": {
+      "type": "array",
+      "description": "Information on the organizations involved in the project",
+      "items": {
+        "type": "object",
+        "required": ["name", "id", "roles"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the organization"
+          },
+          "id": {
+            "type": "string",
+            "description": "A local identifier for this organization"
+          },
+          "identifier": {
+            "type": "object",
+            "description": "A unique identifier for the organization",
+            "required": ["scheme", "id"],
+            "properties": {
+              "scheme": {
+                "type": "string",
+                "description": "The identifier scheme"
+              },
+              "id": {
+                "type": "string",
+                "description": "The organization identifier"
+              },
+              "legalName": {
+                "type": "string",
+                "description": "The legally registered name"
+              }
+            }
+          },
+          "roles": {
+            "type": "array",
+            "description": "The roles of this organization in the project",
+            "items": {
+              "type": "string",
+              "enum": [
+                "publicAuthority",
+                "procuringEntity",
+                "buyer",
+                "administrativeEntity",
+                "supplier",
+                "tenderer",
+                "funder",
+                "enquirer",
+                "reviewer",
+                "constructionCompany",
+                "consultant",
+                "civilSociety",
+                "other"
+              ]
+            }
+          },
+          "contactPoint": {
+            "type": "object",
+            "description": "Contact details for the organization",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string",
+                "format": "email"
+              },
+              "telephone": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "array",
+      "description": "Actual metrics for this project, such as physical or financial progress",
+      "items": {
+        "type": "object",
+        "required": ["id", "title"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "An identifier for this metric",
+            "examples": ["physicalProgress", "actualExpenditure"]
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of this metric"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of this metric"
+          },
+          "observations": {
+            "type": "array",
+            "description": "Observations of this metric",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "A local identifier for this observation"
+                },
+                "period": {
+                  "type": "object",
+                  "description": "The period over which this observation is measured",
+                  "properties": {
+                    "startDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                },
+                "measure": {
+                  "type": "number",
+                  "description": "The value of the observation"
+                },
+                "value": {
+                  "type": "object",
+                  "description": "The monetary value of the observation",
+                  "required": ["amount", "currency"],
+                  "properties": {
+                    "amount": {
+                      "type": "number"
+                    },
+                    "currency": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "unit": {
+                  "type": "object",
+                  "description": "The unit of measurement",
+                  "required": ["name"],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "examples": ["percent", "kilometers", "square meters"]
+                    },
+                    "scheme": {
+                      "type": "string",
+                      "examples": ["UNCEFACT"]
+                    },
+                    "id": {
+                      "type": "string",
+                      "examples": ["P1"]
+                    }
+                  }
+                },
+                "dimensions": {
+                  "type": "object",
+                  "description": "Dimensions of the observation",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "notes": {
+                  "type": "string",
+                  "description": "Any notes on this observation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "documents": {
+      "type": "array",
+      "description": "Links to documents relating to the project",
+      "items": {
+        "type": "object",
+        "required": ["id", "documentType", "url"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A local identifier for this document"
+          },
+          "documentType": {
+            "type": "string",
+            "description": "The type of the document",
+            "enum": [
+              "needsAssessment",
+              "feasibilityStudy",
+              "projectApproval",
+              "budgetApproval",
+              "technicalSpecifications",
+              "programOfWork",
+              "tenderNotice",
+              "awardNotice",
+              "contractSigned",
+              "noticeToProceed",
+              "completionCertificate",
+              "projectPhoto",
+              "videoMedia",
+              "other"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the document"
+          },
+          "description": {
+            "type": "string",
+            "description": "A description of the document"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "A direct link to the document"
+          },
+          "datePublished": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date the document was published"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date the document was last modified"
+          },
+          "format": {
+            "type": "string",
+            "description": "The format of the document",
+            "examples": ["application/pdf", "image/jpeg", "video/mp4"]
+          },
+          "language": {
+            "type": "string",
+            "description": "The language of the document"
+          }
+        }
+      }
+    },
+    "contractingProcesses": {
+      "type": "array",
+      "description": "Information about contracting processes for different aspects of the project",
+      "items": {
+        "type": "object",
+        "required": ["id", "summary"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "A local identifier for this contracting process"
+          },
+          "summary": {
+            "type": "object",
+            "description": "Summary information about this contracting process",
+            "properties": {
+              "ocid": {
+                "type": "string",
+                "description": "The Open Contracting ID (OCID) for this contracting process"
+              },
+              "title": {
+                "type": "string",
+                "description": "The title of this contracting process"
+              },
+              "description": {
+                "type": "string",
+                "description": "A description of this contracting process"
+              },
+              "status": {
+                "type": "string",
+                "description": "The current status of the contracting process"
+              },
+              "tender": {
+                "type": "object",
+                "description": "Information about the tender",
+                "properties": {
+                  "tenderPeriod": {
+                    "type": "object",
+                    "properties": {
+                      "startDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "endDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    }
+                  }
+                }
+              },
+              "contracts": {
+                "type": "array",
+                "description": "Contracts awarded under this contracting process",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "dateSigned": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "value": {
+                      "type": "object",
+                      "required": ["amount", "currency"],
+                      "properties": {
+                        "amount": {
+                          "type": "number"
+                        },
+                        "currency": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "sourceSystem": {
+            "type": "string",
+            "description": "An identifier for the system from which this data originates"
+          },
+          "releases": {
+            "type": "array",
+            "description": "OCDS releases for this contracting process",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "relatedProjects": {
+      "type": "array",
+      "description": "Related or component projects",
+      "items": {
+        "type": "object",
+        "required": ["id", "relationship"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "The identifier of the related project"
+          },
+          "relationship": {
+            "type": "string",
+            "description": "The relationship between this project and the related project",
+            "enum": [
+              "parent",
+              "child",
+              "component",
+              "prior",
+              "related"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "description": "The title of the related project"
+          },
+          "scheme": {
+            "type": "string",
+            "description": "The scheme for the related project identifier"
+          },
+          "uri": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URI for the related project"
+          }
+        }
+      }
+    },
+    "completion": {
+      "type": "object",
+      "description": "Information provided at project completion",
+      "properties": {
+        "endDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The actual completion date for the project"
+        },
+        "endDateDetails": {
+          "type": "string",
+          "description": "Details related to the end date"
+        },
+        "finalValue": {
+          "type": "object",
+          "description": "The total cost of the project at completion",
+          "required": ["amount", "currency"],
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string"
+            }
+          }
+        },
+        "finalValueDetails": {
+          "type": "string",
+          "description": "Details related to the final value"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

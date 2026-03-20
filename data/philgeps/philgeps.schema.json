@@ -1,0 +1,110 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PhilGEPS Contract Award",
+  "description": "Schema for records in data/philgeps/philgeps.parquet (PhilGEPS contract awards extract). Each object represents a single awarded contract.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Primary key for this record. Derived from a 16-byte internal identifier in the source system.",
+      "examples": [
+        "0f3a1b2c3d4e5f60718293a4b5c6d7e"
+      ]
+    },
+    "reference_id": {
+      "type": "string",
+      "description": "PhilGEPS opportunity/reference ID for this procurement (as displayed on PhilGEPS portal).",
+      "examples": [
+        "9412345",
+        "10023456"
+      ]
+    },
+    "contract_no": {
+      "type": "string",
+      "description": "Contract number or internal control number, if provided by the procuring entity.",
+      "examples": [
+        "2023-ABC-042",
+        "PB-2024-0015"
+      ]
+    },
+    "award_title": {
+      "type": "string",
+      "description": "Title of the awarded contract (often mirrors the notice title).",
+      "examples": [
+        "Procurement of Office Supplies",
+        "Road Rehabilitation along National Highway"
+      ]
+    },
+    "notice_title": {
+      "type": "string",
+      "description": "Original notice title published in PhilGEPS.",
+      "examples": [
+        "Supply and Delivery of ICT Equipment",
+        "Construction of Two-Storey School Building"
+      ]
+    },
+    "awardee_name": {
+      "type": "string",
+      "description": "Name of the winning supplier/contractor as listed in PhilGEPS.",
+      "examples": [
+        "ABC Trading Corporation",
+        "XYZ Construction, Inc."
+      ]
+    },
+    "organization_name": {
+      "type": "string",
+      "description": "Name of the procuring entity/organization that issued the notice.",
+      "examples": [
+        "Department of Public Works and Highways - Region IV-A",
+        "Department of Education - Division of Quezon City"
+      ]
+    },
+    "area_of_delivery": {
+      "type": "string",
+      "description": "Free-text description of the area/place of delivery or project location as provided in PhilGEPS.",
+      "examples": [
+        "Quezon City, Metro Manila",
+        "Davao City",
+        "Nationwide"
+      ]
+    },
+    "business_category": {
+      "type": "string",
+      "description": "Primary business category of the procurement (as categorized in PhilGEPS).",
+      "examples": [
+        "Construction Projects",
+        "Consulting Services",
+        "Goods"
+      ]
+    },
+    "contract_amount": {
+      "type": "number",
+      "description": "Total contract amount in Philippine Peso (PHP). Stored as a floating-point number in the parquet source.",
+      "minimum": 0,
+      "examples": [
+        1500000.0,
+        25000000.5
+      ]
+    },
+    "award_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the contract was awarded, in ISO 8601 format (converted from timestamp in parquet).",
+      "examples": [
+        "2023-07-15T10:30:00Z",
+        "2024-01-05T16:45:00+08:00"
+      ]
+    },
+    "award_status": {
+      "type": "string",
+      "description": "Status of the award record (e.g., Active, Cancelled, Failed). Values are taken directly from PhilGEPS.",
+      "examples": [
+        "Awarded",
+        "Cancelled",
+        "Failed"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

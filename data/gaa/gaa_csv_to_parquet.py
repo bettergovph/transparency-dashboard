@@ -77,6 +77,41 @@ def extract_year_from_filename(filename: str) -> Optional[int]:
     return int(m.group(1)) if m else None
 
 
+def normalize_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Normalize column names to handle year-to-year variations.
+    
+    Handles:
+    - 2026: UACS_OBJ_CD, UACS_OBJ_DSC → unified to uacs_sobj_cd, uacs_sobj_dsc
+    - Whitespace variations in AMT column
+    
+    Args:
+        df: DataFrame with original columns
+        
+    Returns:
+        DataFrame with normalized column names
+    """
+    # Create a mapping for column normalization
+    col_mapping = {}
+    
+    for col in df.columns:
+        normalized = col.strip().lower()
+        
+        # Handle UACS_OBJ_CD/DSC → UACS_SOBJ_CD/DSC (for 2026 compatibility)
+        if normalized == 'uacs_obj_cd':
+            col_mapping[col] = 'uacs_sobj_cd'
+        elif normalized == 'uacs_obj_dsc':
+            col_mapping[col] = 'uacs_sobj_dsc'
+        # Handle whitespace variations in AMT (" AMT", " AMT ", etc.)
+        elif 'amt' in normalized and normalized.strip() == 'amt':
+            col_mapping[col] = 'amt'
+        else:
+            col_mapping[col] = normalized
+    
+    df = df.rename(columns=col_mapping)
+    return df
+
+
 def load_csv_with_year(csv_path: str, default_year: Optional[int]) -> Optional[pd.DataFrame]:
     """
     Load a CSV file and ensure it has a 'year' column.
@@ -85,6 +120,10 @@ def load_csv_with_year(csv_path: str, default_year: Optional[int]) -> Optional[p
     - First tries to infer year from filename
     - Falls back to default_year if provided
     - Returns None if year cannot be determined
+    
+    Handles column name variations across years:
+    - 2026: UACS_OBJ_CD/UACS_OBJ_DSC are normalized to uacs_sobj_cd/uacs_sobj_dsc
+    - AMT column whitespace variations are normalized
     
     Args:
         csv_path: Path to CSV file
@@ -109,8 +148,9 @@ def load_csv_with_year(csv_path: str, default_year: Optional[int]) -> Optional[p
     # Clean column names (strip whitespace and BOM)
     df.columns = df.columns.str.strip().str.replace('\ufeff', '')
     
-    # Lowercase all column names
-    df.columns = df.columns.str.lower()
+    # Normalize columns to handle year-to-year variations
+    # This converts UACS_OBJ_CD/DSC (2026) to uacs_sobj_cd/uacs_sobj_dsc (standard)
+    df = normalize_columns(df)
 
     # Look for existing year column (case-insensitive)
     year_col = None
@@ -156,6 +196,11 @@ def load_csv_with_year(csv_path: str, default_year: Optional[int]) -> Optional[p
         else:
             # Keep other columns as strings for consistency
             df[col] = df[col].astype(str)
+    
+    # Log column normalization for debugging
+    if 'uacs_sobj_cd' in df.columns:
+        year_val = df['year'].iloc[0] if len(df) > 0 else 'unknown'
+        print(f"    Normalized columns (year {year_val})")
 
     return df
 

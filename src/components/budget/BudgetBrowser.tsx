@@ -43,7 +43,7 @@ interface Department {
 
 const BudgetBrowser = () => {
   const [isDataLoading, setIsDataLoading] = useState(true)
-  const [selectedYear, setSelectedYear] = useState<number>(2025)
+  const [selectedYear, setSelectedYear] = useState<number>(2026)
   const [searchQuery, setSearchQuery] = useState('')
 
   // Aggregate data
@@ -161,7 +161,7 @@ const BudgetBrowser = () => {
             {/* Sticky Header */}
             <BudgetHeader
               title="GAA Budget Browser"
-              subtitle="General Appropriations Act (2020-2025)"
+              subtitle="General Appropriations Act (2020-2026)"
               icon={<ChartBarStackedIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />}
               availableYears={availableYears}
               selectedYear={selectedYear}
@@ -182,7 +182,7 @@ const BudgetBrowser = () => {
                       Click any department to drill down into agencies, fund categories, expense categories, and detailed line items.
                     </p>
                     <Link
-                      to="/budget/departments"
+                      to={`/budget/${selectedYear}/departments`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-blue-900 hover:text-blue-950 bg-blue-100 px-3 py-2 rounded-lg transition-colors"
                     >
                       <Building2 className="h-4 w-4" />
@@ -245,7 +245,7 @@ const BudgetBrowser = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-indigo-600" />
-                      Year-over-Year Budget Trend (2020-2025)
+                      Year-over-Year Budget Trend (2020-2026)
                     </CardTitle>
                     <CardDescription>
                       Total national budget appropriations by year
@@ -332,7 +332,7 @@ const BudgetBrowser = () => {
                       </CardDescription>
                     </div>
                     <Link
-                      to="/budget/departments"
+                      to={`/budget/${selectedYear}/departments`}
                       className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 px-4 py-2 rounded-lg transition-colors"
                     >
                       <Building2 className="h-4 w-4" />
@@ -363,7 +363,7 @@ const BudgetBrowser = () => {
                       return (
                         <Link
                           key={dept.id}
-                          to={`/budget/departments/${toSlug(dept.description)}`}
+                          to={`/budget/${selectedYear}/departments/${toSlug(dept.description)}`}
                           state={{ departmentId: dept.id, departmentName: dept.description }}
                         >
                           <div className="p-4 bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border border-blue-100 hover:shadow-lg transition-all cursor-pointer hover:border-blue-300">

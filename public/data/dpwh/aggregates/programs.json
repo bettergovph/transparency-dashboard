@@ -1,0 +1,30 @@
+{
+  "metadata": {
+    "title": "DPWH Programs",
+    "source": "Department of Public Works and Highways",
+    "generated_at": "2026-01-14T19:44:54.161320",
+    "total_items": 2,
+    "total_projects": 248220,
+    "total_budget": 6379081440395.461,
+    "total_paid": 0.0,
+    "avg_progress": 92.22502292321327
+  },
+  "data": [
+    {
+      "program_name": "Regular Infra",
+      "project_count": 198464,
+      "total_budget": 5715174320866.38,
+      "total_paid": 0.0,
+      "avg_budget": 28797032.816361558,
+      "avg_progress": 94.49538173169945
+    },
+    {
+      "program_name": "Outside Infra",
+      "project_count": 43157,
+      "total_budget": 663907119529.08,
+      "total_paid": 0.0,
+      "avg_budget": 15383532.67208286,
+      "avg_progress": 95.88626989827839
+    }
+  ]
+}
