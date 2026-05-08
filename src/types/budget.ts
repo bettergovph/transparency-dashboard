@@ -10,8 +10,10 @@ export interface BudgetDocument {
   uacs_fundsubcat_dsc: string; // sub_category
   uacs_exp_cd: string; // expense code
   uacs_exp_dsc: string; // exp
-  uacs_sobj_cd: string; // object code
-  uacs_sobj_dsc: string; // object
+  uacs_sobj_cd: string; // sub-object code
+  uacs_sobj_dsc: string; // sub-object
+  uacs_obj_cd: string; // object code
+  uacs_obj_dsc: string; // object
   uacs_div_dsc: string; // division
 }
 
