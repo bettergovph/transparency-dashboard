@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, ChartBarStackedIcon, HardHat, Search, CircleQuestionMark } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, ChartBarStackedIcon, HardHat, Search, CircleQuestionMark, Network } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -20,6 +20,7 @@ const Navigation = () => {
     { path: '/organizations', label: 'Organizations', icon: Building2 },
     { path: '/locations', label: 'Locations', icon: MapPin },
     { path: '/categories', label: 'Categories', icon: Grid3x3 },
+    { path: '/network', label: '3D Network Graph', icon: Network },
   ]
 
   const taxCollectionItems = [
