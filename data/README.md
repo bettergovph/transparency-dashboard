@@ -145,6 +145,18 @@ duckdb < convert_oc4ids.sql
 
 This will create `philgeps/oc4ids.json` (approx. 1GB).
 
+## Step 9: Generate the 3D Network Graph Data
+
+The `/network` page reads static JSON from `public/data/network/`. Regenerate it whenever `philgeps.parquet` is updated:
+
+```bash
+pip install duckdb
+cd data/philgeps
+python generate_network_graph.py --input philgeps.parquet
+```
+
+This writes `index.json` (the category list plus the whole-universe overview) and one `categories/<slug>.json` per business category. Each category file holds the top 400 contractors and top 200 departments by contract value, plus provinces and regions. Takes about 30 seconds and produces about 12MB. Run with `--help` to change the limits.
+
 
 ## Notes
 
