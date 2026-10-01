@@ -147,7 +147,7 @@ This will create `philgeps/oc4ids.json` (approx. 1GB).
 
 ## Step 9: Generate the 3D Network Graph Data
 
-The `/network` page reads static JSON from `public/data/network/`. Regenerate it whenever `philgeps.parquet` is updated:
+The `/universe` page reads static JSON from `public/data/network/`. Regenerate it whenever `philgeps.parquet` is updated:
 
 ```bash
 pip install duckdb

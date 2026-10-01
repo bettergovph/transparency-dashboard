@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, ChartBarStackedIcon, HardHat, Search, CircleQuestionMark, Network } from 'lucide-react'
+import { Home, Users, Building2, Grid3x3, MapPin, Menu, X, Facebook, ChevronDown, TrendingUp, ShoppingCart, Coins, ChartBarStackedIcon, HardHat, Search, CircleQuestionMark, Orbit } from 'lucide-react'
 import { useState, useRef, useEffect } from 'react'
 
 const Navigation = () => {
@@ -20,7 +20,6 @@ const Navigation = () => {
     { path: '/organizations', label: 'Organizations', icon: Building2 },
     { path: '/locations', label: 'Locations', icon: MapPin },
     { path: '/categories', label: 'Categories', icon: Grid3x3 },
-    { path: '/network', label: '3D Network Graph', icon: Network },
   ]
 
   const taxCollectionItems = [
@@ -270,6 +269,18 @@ const Navigation = () => {
                   </div>
                 )}
               </div>
+
+              {/* Universe */}
+              <Link
+                to="/universe"
+                className={`flex items-center gap-2 px-3 xl:px-4 py-2 text-sm xl:text-md transition-colors ${isActive('/universe')
+                  ? 'border-b text-blue-600 font-bold'
+                  : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                  }`}
+              >
+                <Orbit className="h-4 w-4" />
+                Universe
+              </Link>
             </div>
           </div>
 
@@ -324,6 +335,18 @@ const Navigation = () => {
             >
               <Home className="h-5 w-5" />
               Home
+            </Link>
+
+            <Link
+              to="/universe"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`flex items-center gap-3 px-4 py-3 text-sm transition-colors ${isActive('/universe')
+                ? 'bg-blue-50 text-blue-600 font-semibold border-l-4 border-blue-600'
+                : 'text-gray-700 hover:bg-gray-50'
+                }`}
+            >
+              <Orbit className="h-5 w-5" />
+              Universe
             </Link>
 
             {/* Procurement Section */}

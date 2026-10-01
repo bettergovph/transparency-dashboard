@@ -8,7 +8,7 @@ import { CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js'
 import type { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import {
   Orbit, Search, X, Eye, EyeOff, ZoomIn, ZoomOut, Maximize2, RotateCcw,
-  Pause, Play, ChevronRight, ArrowUpRight, Sparkles, Telescope, PanelLeftOpen, PanelLeftClose,
+  Pause, Play, ChevronRight, ArrowUpRight, Sparkles, Telescope, PanelLeftOpen, PanelLeftClose, Minimize2,
 } from 'lucide-react'
 import Navigation from '../Navigation'
 import { createLabel, createNodeVisual, createOrbitRings, createSky, type NodeVisual } from './cosmos'
@@ -50,6 +50,64 @@ const prefersReducedMotion = () =>
 const panel = 'bg-[#070a1a]/75 backdrop-blur-md border border-white/10 rounded-2xl shadow-[0_0_60px_-20px_rgba(56,189,248,0.45)]'
 const eyebrow = 'font-mono text-[10px] uppercase tracking-[0.25em] text-sky-300/70'
 
+const CRUMB_CHARS = 14
+const CURRENT_CRUMB_CHARS = 24
+const TRAIL_CRUMBS = 3
+
+const shorten = (text: string, max = CRUMB_CHARS) => (text.length > max ? `${text.slice(0, max - 1).trimEnd()}…` : text)
+
+interface Crumb {
+  key: string
+  /** Full name, shown on hover */
+  title: string
+  kind?: string
+  color?: string
+  /** Body to fly to; omitted for the universe and category roots */
+  node?: GraphNode
+}
+
+function Breadcrumbs({ crumbs, onSelect }: { crumbs: Crumb[]; onSelect: (crumb: Crumb) => void }) {
+  // Universe and category stay pinned; a long trail keeps only its deepest steps
+  const roots = crumbs.filter(c => !c.node)
+  const steps = crumbs.filter(c => c.node)
+  const shown: (Crumb | { key: string; hidden: Crumb[] })[] = steps.length > TRAIL_CRUMBS
+    ? [...roots, { key: 'gap', hidden: steps.slice(0, -TRAIL_CRUMBS) }, ...steps.slice(-TRAIL_CRUMBS)]
+    : crumbs
+  return (
+    <nav aria-label="Breadcrumb" className="pointer-events-auto max-w-full">
+      <ol className="flex items-center gap-0.5 rounded-full border border-white/10 bg-[#070a1a]/60 backdrop-blur-md px-1.5 py-1 shadow-[0_0_30px_-12px_rgba(56,189,248,0.6)] overflow-hidden">
+        {shown.map((crumb, i) => {
+          const last = i === shown.length - 1
+          return (
+            <li key={crumb.key} className="flex items-center gap-0.5 min-w-0">
+              {i > 0 && <ChevronRight className="h-3 w-3 shrink-0 text-slate-600" aria-hidden />}
+              {'hidden' in crumb ? (
+                <span className="px-1.5 text-[11px] text-slate-500" title={crumb.hidden.map(c => c.title).join(' › ')}>…</span>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => onSelect(crumb)}
+                  disabled={last}
+                  aria-current={last ? 'page' : undefined}
+                  title={crumb.kind ? `${crumb.kind}: ${crumb.title}` : crumb.title}
+                  className={`flex items-center gap-1.5 rounded-full px-2 py-0.5 text-[11px] leading-5 whitespace-nowrap transition-colors ${last
+                    ? 'bg-white/10 text-white font-medium cursor-default'
+                    : 'text-slate-400 hover:text-white hover:bg-white/5'}`}
+                >
+                  {crumb.color && (
+                    <span className="h-1.5 w-1.5 rounded-full shrink-0" style={{ backgroundColor: crumb.color, boxShadow: `0 0 6px ${crumb.color}` }} />
+                  )}
+                  {shorten(crumb.title, last ? CURRENT_CRUMB_CHARS : CRUMB_CHARS)}
+                </button>
+              )}
+            </li>
+          )
+        })}
+      </ol>
+    </nav>
+  )
+}
+
 function HudButton({ label, onClick, children }: { label: string; onClick: () => void; children: React.ReactNode }) {
   return (
     <button onClick={onClick} title={label} aria-label={label} className="p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10">
@@ -64,6 +122,7 @@ export default function OCDSNetworkGraph() {
   const categorySlug = searchParams.get('category')
 
   const graphRef = useRef<FG | undefined>(undefined)
+  const pageRef = useRef<HTMLDivElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
   const visualsRef = useRef(new Map<string, NodeVisual>())
   const sceneReadyRef = useRef(false)
@@ -81,7 +140,10 @@ export default function OCDSNetworkGraph() {
   })
   const [orbits, setOrbits] = useState(true)
   const [autoRotate, setAutoRotate] = useState(() => !prefersReducedMotion())
-  const [selected, setSelected] = useState<GraphNode | null>(null)
+  // The path clicked through the graph; its last entry is the selected body
+  const [trail, setTrail] = useState<GraphNode[]>([])
+  const selected = trail.length ? trail[trail.length - 1] : null
+  const [fullView, setFullView] = useState(false)
   const [hovered, setHovered] = useState<GraphNode | null>(null)
   const [pointer, setPointer] = useState({ x: 0, y: 0 })
   const [showCatalog, setShowCatalog] = useState(() => typeof window === 'undefined' || window.innerWidth >= 1024)
@@ -125,7 +187,7 @@ export default function OCDSNetworkGraph() {
           v.label?.element.remove()
         })
         visualsRef.current.clear()
-        setSelected(null)
+        setTrail([])
         setHovered(null)
         setNodeQuery('')
         setGraph(g)
@@ -170,6 +232,23 @@ export default function OCDSNetworkGraph() {
   }, [graph, density, visibleTypes])
 
   const nodeById = useMemo(() => new Map(graph?.nodes.map(n => [n.id, n]) ?? []), [graph])
+
+  // Links point outward from the category: category -> region -> province -> department -> contractor
+  const graphLinks = useMemo(() => {
+    const adjacent = new Map<string, Set<string>>()
+    const parents = new Map<string, { id: string; value: number }[]>()
+    for (const l of graph?.links ?? []) {
+      const s = linkEndId(l.source)
+      const t = linkEndId(l.target)
+      if (!adjacent.has(s)) adjacent.set(s, new Set())
+      if (!adjacent.has(t)) adjacent.set(t, new Set())
+      adjacent.get(s)!.add(t)
+      adjacent.get(t)!.add(s)
+      if (!parents.has(t)) parents.set(t, [])
+      parents.get(t)!.push({ id: s, value: l.value })
+    }
+    return { adjacent, parents }
+  }, [graph])
 
   const neighbors = useMemo(() => {
     const map = new Map<string, Set<string>>()
@@ -316,18 +395,49 @@ export default function OCDSNetworkGraph() {
     fg.cameraPosition(position, { x, y, z }, 1400)
   }, [])
 
+  /** Follow the biggest-spending parent links back up to the top of the hierarchy */
+  const pathFromRoot = useCallback((node: GraphNode) => {
+    const path = [node]
+    const seen = new Set([node.id])
+    let current = node
+    while (path.length < 8) {
+      const parent = [...(graphLinks.parents.get(current.id) ?? [])]
+        .sort((a, b) => b.value - a.value)
+        .map(p => nodeById.get(p.id))
+        .find(p => p && !seen.has(p.id))
+      if (!parent) break
+      path.unshift(parent)
+      seen.add(parent.id)
+      current = parent
+    }
+    return path
+  }, [graphLinks, nodeById])
+
   const selectNode = useCallback((node: GraphNode) => {
-    setSelected(node)
+    setTrail(prev => {
+      const at = prev.findIndex(n => n.id === node.id)
+      if (at >= 0) return prev.slice(0, at + 1)
+      const last = prev[prev.length - 1]
+      if (last && graphLinks.adjacent.get(last.id)?.has(node.id)) return [...prev, node]
+      return pathFromRoot(node)
+    })
     flyTo(node)
-  }, [flyTo])
+  }, [flyTo, graphLinks, pathFromRoot])
 
   const clearSelection = useCallback(() => {
-    setSelected(null)
+    setTrail([])
     graphRef.current?.zoomToFit(1200, 60)
   }, [])
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setSelected(null) }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return
+      // First Escape clears the selection, the next one leaves full view
+      setTrail(prev => {
+        if (!prev.length) setFullView(false)
+        return []
+      })
+    }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [])
@@ -354,9 +464,21 @@ export default function OCDSNetworkGraph() {
     fg.cameraPosition({ x: x * factor, y: y * factor, z: z * factor }, undefined, 500)
   }, [])
 
-  const toggleFullscreen = useCallback(() => {
-    if (document.fullscreenElement) document.exitFullscreen()
-    else containerRef.current?.requestFullscreen()
+  // Full view hides the site header and, where supported, takes over the whole screen
+  const toggleFullView = useCallback(() => {
+    if (fullView) {
+      setFullView(false)
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {})
+    } else {
+      setFullView(true)
+      pageRef.current?.requestFullscreen?.().catch(() => {})
+    }
+  }, [fullView])
+
+  useEffect(() => {
+    const onChange = () => { if (!document.fullscreenElement) setFullView(false) }
+    document.addEventListener('fullscreenchange', onChange)
+    return () => document.removeEventListener('fullscreenchange', onChange)
   }, [])
 
   const openCategory = useCallback((slug: string | null) => {
@@ -399,18 +521,49 @@ export default function OCDSNetworkGraph() {
     return c
   }, [view])
 
+  const crumbs = useMemo(() => {
+    const list: Crumb[] = [{
+      key: 'universe',
+      title: 'Universe',
+    }]
+    if (currentCategory) {
+      list.push({
+        key: 'category',
+        title: currentCategory.name,
+        color: NODE_COLORS.category,
+      })
+    }
+    for (const node of trail) {
+      if (node.type === 'category' && node.name === currentCategory?.name) continue
+      list.push({
+        key: node.id,
+        title: node.name,
+        kind: NODE_SINGULAR[node.type],
+        color: NODE_COLORS[node.type],
+        node,
+      })
+    }
+    return list
+  }, [trail, currentCategory])
+
+  const onCrumb = useCallback((crumb: Crumb) => {
+    if (crumb.node) selectNode(crumb.node)
+    else if (crumb.key === 'universe' && categorySlug) openCategory(null)
+    else clearSelection()
+  }, [categorySlug, openCategory, clearSelection, selectNode])
+
   const presentTypes = useMemo(() => NODE_TYPES.filter(t => graph?.nodes.some(n => n.type === t)), [graph])
   const focusValue = currentCategory?.total ?? index?.totals.value ?? 0
   const focusCount = currentCategory?.count ?? index?.totals.contracts ?? 0
 
   return (
-    <div className="h-[100dvh] flex flex-col bg-[#02030a] overflow-hidden">
+    <div ref={pageRef} className={`flex flex-col bg-[#02030a] overflow-hidden ${fullView ? 'fixed inset-0 z-50' : 'h-[100dvh]'}`}>
       <Helmet>
         <title>{currentCategory ? `${currentCategory.name} - ` : ''}Procurement Cosmos - PhilGEPS Network Graph</title>
         <meta name="description" content="Explore Philippine government procurement as a 3D network of contractors, departments, provinces, regions and business categories." />
-        <link rel="canonical" href="https://philgeps.bettergov.ph/network" />
+        <link rel="canonical" href="https://philgeps.bettergov.ph/universe" />
       </Helmet>
-      <Navigation />
+      {!fullView && <Navigation />}
 
       <main
         ref={containerRef}
@@ -435,7 +588,7 @@ export default function OCDSNetworkGraph() {
             nodeThreeObject={nodeThreeObject}
             onNodeClick={selectNode}
             onNodeHover={node => setHovered(node ?? null)}
-            onBackgroundClick={() => setSelected(null)}
+            onBackgroundClick={() => setTrail([])}
             linkColor={linkColor}
             linkWidth={linkWidth}
             linkOpacity={1}
@@ -456,16 +609,21 @@ export default function OCDSNetworkGraph() {
         {/* Vignette to sink the edges into deep space */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_55%,rgba(2,3,10,0.85)_100%)]" />
 
-        {/* Title / breadcrumb */}
-        <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 text-center px-4 w-full max-w-xl hidden md:block">
-          <p className={eyebrow}>PhilGEPS · Open Contracting</p>
-          <h1 className="mt-1 text-xl sm:text-2xl font-semibold text-white tracking-tight drop-shadow-[0_0_18px_rgba(125,211,252,0.45)] truncate">
-            {currentCategory ? currentCategory.name : 'Procurement Cosmos'}
-          </h1>
-          <p className="mt-1 text-xs text-slate-400">
-            {formatPeso(focusValue)} · {focusCount.toLocaleString()} contracts
-            {currentCategory && ` · ${currentCategory.contractors.toLocaleString()} contractors`}
-          </p>
+        {/* Title + breadcrumb trail */}
+        <div className="pointer-events-none absolute inset-x-0 top-4 z-[5] flex flex-col items-center px-4">
+          <div className="hidden md:block text-center w-full max-w-xl">
+            <p className={eyebrow}>PhilGEPS · Open Contracting</p>
+            <h1 className="mt-1 text-xl sm:text-2xl font-semibold text-white tracking-tight drop-shadow-[0_0_18px_rgba(125,211,252,0.45)] truncate">
+              {currentCategory ? currentCategory.name : 'Procurement Cosmos'}
+            </h1>
+            <p className="mt-1 text-xs text-slate-400">
+              {formatPeso(focusValue)} · {focusCount.toLocaleString()} contracts
+              {currentCategory && ` · ${currentCategory.contractors.toLocaleString()} contractors`}
+            </p>
+          </div>
+          <div className="mt-14 md:mt-3 max-w-full md:max-w-[42rem]">
+            <Breadcrumbs crumbs={crumbs} onSelect={onCrumb} />
+          </div>
         </div>
 
         {/* Catalogue of category systems */}
@@ -524,7 +682,16 @@ export default function OCDSNetworkGraph() {
         </div>
 
         {/* Find a body in the current system */}
-        <div className="absolute top-4 right-4 z-10 w-72 max-w-[calc(100%-2rem)] hidden sm:block">
+        <div className="absolute top-4 right-4 z-10 flex items-start gap-2">
+        <button
+          onClick={toggleFullView}
+          className={`${panel} order-last flex items-center gap-2 px-3 py-2 text-xs text-slate-200 hover:text-white hover:border-sky-400/50`}
+          title={fullView ? 'Exit full view (Esc)' : 'Full view'}
+        >
+          {fullView ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          <span className="font-mono uppercase tracking-[0.2em] hidden sm:inline">{fullView ? 'Exit' : 'Full view'}</span>
+        </button>
+        <div className="w-72 hidden sm:block">
           <div className={`${panel} px-3 py-2 flex items-center gap-2 focus-within:border-sky-400/60`}>
             <Search className="h-4 w-4 text-slate-400" />
             <input
@@ -553,10 +720,11 @@ export default function OCDSNetworkGraph() {
             </div>
           )}
         </div>
+        </div>
 
         {/* Selected body */}
         {selected && (
-          <aside className={`${panel} absolute z-20 right-4 top-4 sm:top-20 bottom-36 w-[22rem] max-w-[calc(100%-2rem)] flex flex-col overflow-hidden`}>
+          <aside className={`${panel} absolute z-20 right-4 top-28 sm:top-20 bottom-36 w-[22rem] max-w-[calc(100%-2rem)] flex flex-col overflow-hidden`}>
             <div className="p-4 border-b border-white/10">
               <div className="flex items-start gap-3">
                 <span
@@ -686,7 +854,9 @@ export default function OCDSNetworkGraph() {
           <HudButton label="Zoom in" onClick={() => zoom(0.7)}><ZoomIn className="h-4 w-4" /></HudButton>
           <HudButton label="Zoom out" onClick={() => zoom(1.4)}><ZoomOut className="h-4 w-4" /></HudButton>
           <HudButton label="Reset view" onClick={clearSelection}><RotateCcw className="h-4 w-4" /></HudButton>
-          <HudButton label="Fullscreen" onClick={toggleFullscreen}><Maximize2 className="h-4 w-4" /></HudButton>
+          <HudButton label={fullView ? 'Exit full view' : 'Full view'} onClick={toggleFullView}>
+            {fullView ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          </HudButton>
         </div>
         </div>
 
