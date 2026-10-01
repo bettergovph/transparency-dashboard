@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import DataHighlights from './components/DataHighlights'
 import EnhancedSearchInterface from './components/EnhancedSearchInterface'
 import AwardeePage from './components/AwardeePage'
@@ -34,6 +35,15 @@ import DPWHContractorPage from './components/dpwh/DPWHContractorPage'
 import DPWHContractorProjectsPage from './components/dpwh/DPWHContractorProjectsPage'
 import DPWHProjectPage from './components/dpwh/DPWHProjectPage'
 
+// three.js is heavy, so the network graph is only loaded when visited
+const OCDSNetworkGraph = lazy(() => import('./components/network/OCDSNetworkGraph'))
+
+// The universe used to live at /network; keep old links (and their ?category=) working
+function NetworkRedirect() {
+  const { search } = useLocation()
+  return <Navigate to={`/universe${search}`} replace />
+}
+
 function App() {
   return (
     <BrowserRouter>
@@ -66,6 +76,8 @@ function App() {
         <Route path="/dpwh/contractors/:slug" element={<DPWHContractorPage />} />
         <Route path="/dpwh/contractors/:slug/projects" element={<DPWHContractorProjectsPage />} />
         <Route path="/dpwh/projects/:contractId" element={<DPWHProjectPage />} />
+        <Route path="/universe" element={<Suspense fallback={<div className="h-screen bg-[#02030a]" />}><OCDSNetworkGraph /></Suspense>} />
+        <Route path="/network" element={<NetworkRedirect />} />
         <Route path="/contractors" element={<ContractorsPage />} />
         <Route path="/organizations" element={<OrganizationsListPage />} />
         <Route path="/locations" element={<LocationsListPage />} />
