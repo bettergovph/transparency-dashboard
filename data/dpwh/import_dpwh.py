@@ -1,6 +1,7 @@
 import os
 import argparse
 from pathlib import Path
+import numpy as np
 import pandas as pd
 from meilisearch import Client
 from dotenv import load_dotenv
@@ -94,10 +95,12 @@ for batch_idx in range(num_batches):
     # Convert to dict and handle date serialization
     records = batch_df.to_dict('records')
     
-    # Convert date objects to strings for JSON serialization
+    # Convert Parquet arrays, missing values, and dates for JSON serialization
     for record in records:
         for key, value in record.items():
-            if pd.isna(value):
+            if isinstance(value, np.ndarray):
+                record[key] = value.tolist()
+            elif pd.isna(value):
                 record[key] = None
             elif hasattr(value, 'isoformat'):
                 # Convert date/datetime to ISO format string
