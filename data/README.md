@@ -26,7 +26,7 @@ Use DuckDB to extract and prepare the aggregated data using the provided SQL scr
 
 ```bash
 cd data/philgeps
-duckdb < philgeps.parquet
+duckdb < philgeps-extract.sql
 ```
 
 This will create the necessary parquet files for aggregated data (area_of_deliveries, awardees, business_categories, organizations).
@@ -41,13 +41,15 @@ Convert the parquet file to CSV and split it into batches:
 cd data
 
 # First, export the parquet to CSV using DuckDB
-duckdb -c "COPY (SELECT uuid() as id, * FROM 'philgeps/philgeps.parquet') TO 'philgeps/philgeps.csv' (HEADER, DELIMITER ',')"
+duckdb < philgeps/philgeps-export.sql
 
 # Split the CSV into batch files (50,000 rows per batch)
 python split-csv.py philgeps/philgeps.csv --batch-size 50000 --output-dir philgeps/philgeps_batches
 ```
 
 This creates smaller CSV files in `philgeps/philgeps_batches/` directory (e.g., `batch_0001.csv`, `batch_0002.csv`, etc.).
+
+**Record ids are deterministic:** `id` is an md5 of the record's content plus an occurrence number (`<md5>-1`, `<md5>-2`, ...) for rows that are exact copies of each other. Re-exporting the same parquet gives the same ids. The id shipped in the parquet is kept as `source_id`.
 
 **Note:** You can adjust the `--batch-size` parameter based on your system's memory. Larger batches = faster import but more memory usage.
 
