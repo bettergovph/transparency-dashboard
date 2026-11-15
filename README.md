@@ -27,16 +27,26 @@ A modern, responsive search interface for Philippine government procurement reco
 
 ## 🚀 Quick Start
 
+### 0. Fork the Repository
+
+- Click the **Fork** button on GitHub to create your own copy.
+- Open your forked repository and click **Code**.
+- Copy your fork's HTTPS URL.
+
+Example:
+```bash
+https://github.com/<your-username>/transparency-dashboard.git
+```
+
 ### 1. Clone and Install
 
 ```bash
-git clone <repository-url>
+git clone <your-forked-repository-url>
 cd philgeps
 npm install
 ```
 
 ### 2. Environment Setup
-
 Copy the environment example file and configure your settings:
 
 ```bash
